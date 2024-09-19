@@ -1,3 +1,6 @@
+import AboutSection from "@/Components/AboutSection";
+import HeroSection from "@/Components/HeroSection";
+import OfferSection from "@/Components/OfferSection";
 import Slider from "@/Components/Slider";
 import Image from "next/image";
 
@@ -6,7 +9,10 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="">
-      <Slider/>
+      <Slider />
+      <HeroSection></HeroSection>
+      <AboutSection></AboutSection>
+      <OfferSection></OfferSection>
     </div>
   );
 }
