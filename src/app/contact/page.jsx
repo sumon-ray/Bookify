@@ -17,7 +17,7 @@ export default function page() {
 
 
     return (
-        <section className="mt-24">
+        <section className="mt-9">
             <div className="flex items-center justify-center gap-20">
 
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
