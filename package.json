@@ -12,7 +12,12 @@
     "next": "14.2.12",
     "react": "^18",
     "react-dom": "^18",
+<<<<<<< HEAD
     "react-icons": "^5.3.0"
+=======
+    "react-icons": "^5.3.0",
+    "swiper": "^11.1.14"
+>>>>>>> 1e558f8256f818158a14ff5d42e093924464dc18
   },
   "devDependencies": {
     "eslint": "^8",
