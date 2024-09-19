@@ -1,6 +1,21 @@
+"use client"
 import { GrSend } from "react-icons/gr";
+import Swal from "sweetalert2";
 
 export default function page() {
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Thankyou for contact us",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
+
     return (
         <section className="mt-24">
             <div className="flex items-center justify-center gap-20">
@@ -134,7 +149,7 @@ export default function page() {
                 </div>
 
                 <div className="p-4 py-6 rounded-lg">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="-mx-2 md:items-center md:flex">
                             <div className="flex-1 px-2">
                                 <label className="block mb-2 text-sm font-bold">
@@ -144,7 +159,7 @@ export default function page() {
                                     type="text"
                                     placeholder="Enter your first name"
                                     className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg  focus:ring-[#A85D3299] focus:outline-none focus:ring"
-                                />
+                                    required />
                             </div>
 
                             <div className="flex-1 px-2 mt-4 md:mt-0">
@@ -155,7 +170,7 @@ export default function page() {
                                     type="text"
                                     placeholder="Enter your last name"
                                     className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg  focus:ring-[#A85D3299] focus:outline-none focus:ring"
-                                />
+                                    required />
                             </div>
                         </div>
 
@@ -167,7 +182,7 @@ export default function page() {
                                 type="email"
                                 placeholder="Enter your email address"
                                 className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg  focus:ring-[#A85D3299] focus:outline-none focus:ring"
-                            />
+                                required />
                         </div>
 
                         <div className="w-full mt-4">
@@ -177,12 +192,13 @@ export default function page() {
                             <textarea
                                 className="block resize-none w-full h-32 px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg md:h-56  focus:ring-[#A85D3299] focus:outline-none focus:ring"
                                 placeholder="Message"
+                                required
                             ></textarea>
                         </div>
 
                         <button className="flex items-center justify-between w-full px-6 py-3 mt-5 text-white text-sm font-bold bg-[#A85D32] rounded-xl">
                             <span>Send Message </span>
-                            <GrSend className="text-xl"/>
+                            <GrSend className="text-xl" />
                         </button>
                     </form>
                 </div>
