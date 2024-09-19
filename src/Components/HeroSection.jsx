@@ -6,6 +6,7 @@ import React from "react";
 export default function HeroSection() {
   return (
     <section className="bg-[#eeebe4] dark:bg-gray-900">
+        {/* -------------- */}
       <div className="container px-6 py-16 mx-auto text-center">
         <div className="max-w-screen-xl mx-auto">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5 text-[64px] text-gray-400">
