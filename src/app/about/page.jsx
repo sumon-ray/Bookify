@@ -10,7 +10,7 @@ export default function AboutPage() {
 
             {/* BookChimp */}
             <div className="max-w-6xl mx-auto my-20">
-                <div className="grid grid-cols-2 gap-10">
+                <div className="grid grid-cols-2 gap-9">
 
                     <div className="h-64 w-full lg:h-auto">
                         <div
@@ -22,37 +22,26 @@ export default function AboutPage() {
                     </div>
 
                     <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] ">
-                        <div className="max-w-xl">
-                           <h1>About us</h1>
-                           
+                        <div className="max-w-xl space-y-1">
+                            <h4 className="text-[#A85D32] font-black ">About us</h4>
+                            <h1 className="text-3xl font-bold text-balance">About Book Chimp</h1>
+                            <p className="pb-3 text-balance">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem nihil ratione eveniet magnam, corporis qui tempore numquam totam mollitia asperiores dolor laborum saepe eum reiciendis. Non vel praesentium inventore blanditiis?</p>
+                            <button className="bg-[#A85D32] text-white p-2 font-bold rounded-lg">Our Service</button>
                         </div>
                     </div>
 
                     <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] ">
-                        <div className="max-w-xl">
-                            <h2 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
-                                Build Your New <span className="text-blue-600 dark:text-blue-400">Idea</span>
-                            </h2>
-
-                            <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi cum cupiditate ducimus, fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates.
-                            </p>
-
-                            <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
-                                <a href="#" className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700">
-                                    Get Started
-                                </a>
-                                <a href="#" className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md lg:mx-4 hover:bg-gray-300">
-                                    Learn More
-                                </a>
-                            </div>
+                        <div className="max-w-xl text-right">
+                            <h3 className="text-2xl font-serif font-bold text-balance">Which book has had the biggest impact on your life? Share your story in the comments.</h3>
+                            <p className="pt-3 pb-5 text-balance">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat doloremque possimus culpa dolorem incidunt expedita architecto, nulla quos deleniti dolor vel aspernatur earum temporibus id ad molestiae. Neque, et vel?</p>
+                            <button className="bg-[#A85D32] text-white p-2 font-bold rounded-lg">Our Project</button>
                         </div>
                     </div>
 
                     <div className="h-64 w-full lg:h-auto">
                         <div
                             className="w-full h-full bg-cover rounded-2xl"
-                            style={{ backgroundImage: "url(https://images.unsplash.com/photo-1508394522741-82ac9c15ba69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=748&q=80)" }}
+                            style={{ backgroundImage: "url(https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)" }}
                         >
                             <div className="w-full h-full rounded-2xl bg-black opacity-25"></div>
                         </div>
