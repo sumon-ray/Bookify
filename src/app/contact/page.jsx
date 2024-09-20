@@ -19,7 +19,7 @@ export default function page() {
 
     return (
         <section className="mt-9">
-            <div className="flex items-center justify-center gap-20">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-20">
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
                     <div className="bg-[#A85D3233] p-6 rounded-2xl">
                         <span className="inline-block p-3 text-[#A85D32] rounded-full bg-[#A85D3233] dark:bg-gray-800">
