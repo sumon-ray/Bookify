@@ -39,7 +39,7 @@ const Slider = () => {
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide>
+                {/* <SwiperSlide>
                     <div
                         className="w-full lg:h-[70vh] md:h-[70vh] h-[50vh] bg-cover bg-center"
                         style={{ backgroundImage: "url('https://i.ibb.co.com/XbWXrjV/sample-2.jpg')" }}
@@ -50,7 +50,7 @@ const Slider = () => {
                             <button className='border-2 border-[#064532] text-[#064532] p-2 text-xl mt-2'>Shop Now</button>
                         </div>
                     </div>
-                </SwiperSlide>
+                </SwiperSlide> */}
                 <SwiperSlide>
                     <div
                         className="w-full lg:h-[70vh] md:h-[70vh] h-[50vh] bg-cover bg-center openSans"
