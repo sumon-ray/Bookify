@@ -1,3 +1,4 @@
+import React from 'react';
 
 const Footer = () => {
     return (
@@ -6,7 +7,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div>
                         <div className="text-teal-600">
-                        <img classNameName='lg:w-[150px] w-[120px]' src="https://i.ibb.co.com/r5ZT3xQ/bookify1-removebg-preview.png" alt="Bookify" />
+                        <img className='lg:w-[150px] w-[120px]' src="https://i.ibb.co.com/r5ZT3xQ/bookify1-removebg-preview.png" alt="Bookify" />
                         </div>
 
                         <p className="mt-4 max-w-xs text-gray-500">
@@ -203,4 +204,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
