@@ -8,10 +8,10 @@ export default function AboutSection() {
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
           <Image
-            src=""
+            src="https://merakiui.com/images/components/Email-campaign-bro.svg"
             alt=""
-            width={500}
-            height={500}
+            width={600}
+            height={600}
             className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
           />
         </div>
