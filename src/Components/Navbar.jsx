@@ -42,7 +42,7 @@ const Navbar = () => {
     return (
         <div>
           {/*  */}
-            <nav className='md:flex items-center justify-center lg:justify-between bg-white py-4 md:px-10 px-7'>
+            <nav className='md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7'>
                 <div className=' cursor-pointer '>
                     <img className='lg:w-[150px] w-[120px]' src="https://i.ibb.co.com/r5ZT3xQ/bookify1-removebg-preview.png" alt="Bookify" />
                 </div>
