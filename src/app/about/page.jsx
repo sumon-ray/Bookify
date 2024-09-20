@@ -10,7 +10,7 @@ export default function AboutPage() {
 
             {/* BookChimp */}
             <div className="max-w-6xl mx-auto my-20">
-                <div className="grid grid-cols-2 gap-9">
+                <div className="grid  md:grid-cols-2 gap-9 px-6 md:px-0">
 
                     <div className="h-64 w-full lg:h-auto">
                         <div
