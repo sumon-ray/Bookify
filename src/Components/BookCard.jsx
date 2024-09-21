@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card } from "flowbite-react";
@@ -18,6 +17,7 @@ export function BookCard() {
       <p className="font-normal text-gray-700 dark:text-gray-400">
         Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
       </p>
+       
     </Card>
      <Card
       className="max-w-sm mx-auto my-10"
