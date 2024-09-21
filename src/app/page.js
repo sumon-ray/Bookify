@@ -4,11 +4,9 @@ import OfferSection from "@/Components/OfferSection";
 import Slider from "@/Components/Slider";
 
 
-// aaaaaaaaa
-
 export default function Home() {
   return (
-    <div className="">
+    <div>
       <Slider />
       <HeroSection></HeroSection>
       <AboutSection></AboutSection>
