@@ -1,6 +1,7 @@
 "use client";
 
-import { Card } from "flowbite-react";
+import { Card,Button } from "flowbite-react";
+ 
 
 export function BookCard() {
   return (
@@ -17,7 +18,7 @@ export function BookCard() {
       <p className="font-normal text-gray-700 dark:text-gray-400">
         Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
       </p>
-       
+      <Button>learn More</Button>
     </Card>
      <Card
       className="max-w-sm mx-auto my-10"
@@ -45,6 +46,7 @@ export function BookCard() {
         Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
       </p>
     </Card>
+   
  </div>
   );
 }
