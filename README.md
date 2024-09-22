@@ -13,3 +13,8 @@ It is safer for us to prevent any accidental conflicts
 ## For Now Use This Components Library
 1. https://mambaui.com/components/breadcrumb
 2. https://merakiui.com/components/application-ui/buttons
+3. https://flowbite-react.com/docs/guides/next-js 
+
+## Ignore
+
+1. Daisy Ui
