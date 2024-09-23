@@ -23,22 +23,22 @@
   
   /* Keep your custom styles for larger screens */
   .swiper-button-prev {
-      color: white !important;
+      color: black !important;
   }
   
   .swiper-button-prev::after {
-      background: #1604ac;
+      background: #f8c3af;
       font-size: 18px !important;
       padding: 8px;
       border-radius: 5px;
   }
   
   .swiper-button-next {
-      color: white !important;
+      color: black !important;
   }
   
   .swiper-button-next::after {
-      background: #1604ac;
+      background: #f8c3af;
       font-size: 18px !important;
       padding: 8px;
       border-radius: 5px;

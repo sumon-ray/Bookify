@@ -29,7 +29,7 @@ const Slider = () => {
                 <SwiperSlide>
                     <div className="mx-auto   xl:w-full 2xl:w-2/3">
                         <img
-                            src="https://i.ibb.co.com/x2hJQbJ/2.png"
+                            src="https://i.ibb.co.com/KVJXWVY/Really-great-brand.png"
                             alt="Slide 1"
                             className="w-full h-auto"
                             priority
@@ -40,14 +40,15 @@ const Slider = () => {
                 <SwiperSlide>
                     <div className="mx-auto   xl:w-full 2xl:w-2/3">
                         <img
-                            src="https://i.ibb.co.com/wdNrFS8/1.png"
-                            layout="responsive"
-
-                            alt="Slide 2"
+                            src="https://i.ibb.co.com/412j2pB/Really-great-brand-1.png"
+                            alt="Slide 1"
+                            className="w-full h-auto"
                             priority
                         />
                     </div>
+
                 </SwiperSlide>
+                
             </Swiper>
 
 
