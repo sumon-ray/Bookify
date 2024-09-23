@@ -1,0 +1,20 @@
+.container {
+    width: 100%;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+}
+
+.slideWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+}
+
+.responsiveImage {
+    width: 100%;
+    height: auto; 
+    object-fit: cover; 
+}
+
+

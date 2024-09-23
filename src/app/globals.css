@@ -27,7 +27,7 @@
   }
   
   .swiper-button-prev::after {
-      background: #1604ac;
+      background: #a7a7a7;
       font-size: 18px !important;
       padding: 8px;
       border-radius: 5px;
@@ -38,7 +38,7 @@
   }
   
   .swiper-button-next::after {
-      background: #1604ac;
+      background: #a7a7a7;
       font-size: 18px !important;
       padding: 8px;
       border-radius: 5px;
