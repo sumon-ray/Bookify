@@ -27,18 +27,18 @@ const Slider = () => {
             className="mySwiper"
         >
             <SwiperSlide>
-                <div>
+                <div className="mx-auto xl:w-full">
                     <img
                         src="https://i.ibb.co.com/x2hJQbJ/2.png"
                         layout="responsive"
-                     
                         alt="Slide 1"
                         priority
+                        
                     />
                 </div>
             </SwiperSlide>
             <SwiperSlide>
-                <div>
+            <div className="mx-auto xl:w-full">
                     <img
                         src="https://i.ibb.co.com/wdNrFS8/1.png"
                         layout="responsive"
