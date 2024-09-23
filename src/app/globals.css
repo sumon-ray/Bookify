@@ -2,25 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (max-width: 478px) {
-    /* Mobile Styles for Swiper Buttons */
-    .swiper-button-prev {
-        position: relative !important;
-        left: 40% !important;
-    }
-
-    .swiper-button-next {
-        position: relative !important;
-        right: -50% !important;
-        bottom: 22px !important;
-    }
-
-    /* Hide Swiper Pagination on Mobile */
-    .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
-        display: none !important;
-    }
-}
-  
   /* Keep your custom styles for larger screens */
   .swiper-button-prev {
       color: white !important;

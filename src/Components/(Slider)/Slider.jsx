@@ -25,11 +25,11 @@ const Slider = () => {
                 }}
                 navigation={true}
                 modules={[Pagination, Navigation, Autoplay]}
-                autoplay={{ delay: 3000 }} // Enable autoplay if needed
-                className={styles.mySwiper} // Use the class from your CSS module if needed
+                autoplay={{ delay: 3000 }} 
+                className={styles.mySwiper} 
             >
                 <SwiperSlide>
-                    <div className={styles.slideWrapper}> {/* Use styles.slideWrapper */}
+                    <div className={styles.slideWrapper}> 
                         <img className='h-full'
                             src="https://i.ibb.co/8NszP8B/sample-1.jpg"
                             alt="Slide 1"
