@@ -19,8 +19,4 @@ It is safer for us to prevent any accidental conflicts
 
 1. Daisy Ui
 
-Image Optimization: Use Next.js image optimization to serve images in the best format.
-Caching: Use CDN for static assets and caching strategies for frequently accessed data.
-
-📌By following this structure, Bookify will offer a robust, scalable platform that fosters book exchange and community engagement. The technology stack and architectural decisions ensure optimal performance and security.
 
