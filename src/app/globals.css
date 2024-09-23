@@ -2,3 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+  /* Keep your custom styles for larger screens */
+  .swiper-button-prev {
+      color: white !important;
+  }
+  
+  .swiper-button-prev::after {
+      background: #a7a7a7;
+      font-size: 18px !important;
+      padding: 8px;
+      border-radius: 5px;
+  }
+  
+  .swiper-button-next {
+      color: white !important;
+  }
+  
+  .swiper-button-next::after {
+      background: #a7a7a7;
+      font-size: 18px !important;
+      padding: 8px;
+      border-radius: 5px;
+  }
+  
