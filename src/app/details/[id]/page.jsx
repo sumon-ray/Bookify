@@ -1,6 +1,21 @@
 "use client"
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+
+
 
 export default function Details({ params }) {
+
+    const { data , error , isLoading } = useQuery({
+        queryKey: ['details of book'],
+        queryFn: async () => {
+            const res = await axios(`https://bookify-server-lilac.vercel.app/book/${params?.id}`)
+            const data =  await res.data
+            return data
+        }
+    })
+
+    
     return (
         <section className="space-y-10">
             {/* title of details */}
@@ -12,11 +27,11 @@ export default function Details({ params }) {
 
             <div className="flex gap-x-10 max-w-7xl mx-auto">
                 {/* img */}
-                <figure className="w-1/2 h-96 bg-[#EFEEE9]">
+                <figure className="w-1/2 bg-[#EFEEE9]">
                     <img src="" alt="" />
                 </figure>
                 {/* details */}
-                <div className="w-1/2 py- space-y-2">
+                <div className="w-1/2 py-3 space-y-2">
                     <h1 className="font-bold text-2xl capitalize">{'To Kill a Mockingbird'}</h1>
                     <div className="flex items-center mb-5">
                         <svg className="w-4 h-4 ms-1 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">

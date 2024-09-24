@@ -17,7 +17,6 @@ const Category = () => {
         }
     };
 
-     console.log(books)
 
 
     // Fetch new data whenever activeTab changes
