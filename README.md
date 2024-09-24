@@ -14,6 +14,8 @@ It is safer for us to prevent any accidental conflicts
 1. https://mambaui.com/components/breadcrumb
 2. https://merakiui.com/components/application-ui/buttons
 3. https://flowbite-react.com/docs/guides/next-js 
+4. https://wind-ui.com
+5. https://magicui.design
 
 ## Ignore
 
