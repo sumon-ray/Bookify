@@ -17,6 +17,13 @@ It is safer for us to prevent any accidental conflicts
 4. https://wind-ui.com
 5. https://magicui.design
 
+## Typography
+1. https://undraw.co/illustrations
+2. https://iconscout.com/
+3. https://www.mockupworld.co/
+4. https://graphicburger.com
+5. https://unblast.com/mockups
+
 ## Ignore
 
 1. Daisy Ui
