@@ -17,6 +17,9 @@ const Category = () => {
         }
     };
 
+     console.log(books)
+
+
     // Fetch new data whenever activeTab changes
     useEffect(() => {
         fetchBooks(activeTab);
@@ -52,13 +55,7 @@ const Category = () => {
                     books.map((book) => (
                         <Card
                             key={book._id}
-                            coverImage={book.coverImage}
-                            title={book.title}
-                            author={book.author}
-                            genre={book.genre}
-                            rating={book.rating}
-                            location={book.location}
-                            link="https://prototurk.com/soru/3764-css-ile-resim-golgelendirmesini-nasil-yaparim" // Replace with the actual link if available
+                            Data={book}
                         />
                     ))
                 ) : (
