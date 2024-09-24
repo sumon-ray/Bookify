@@ -23,7 +23,7 @@ export default function Details({ params }) {
                     <p><span className="font-bold mr-1">Published:</span>{1999}</p>
                     <p><span className="font-bold mr-1">Total Page:</span>{281}</p>
                     <p><span className="font-bold mr-1">location:</span>{'Dhaka'}</p>
-                    
+                    <p className="text-balance max-w-xl"><span className="font-bold mr-1">Description:</span>{'A deep philosophical novel that delves  into faith, free will, and morality.'}</p>
                 </div>
             </div>
         </section>
