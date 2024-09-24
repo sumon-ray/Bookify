@@ -1,8 +1,8 @@
+import Link from 'next/link';
 import React from 'react';
 
-const Card = ({Data}) => {
-    console.log(Data)
-    const { title, author, genre, condition, description, coverImage, exchangeStatus, publishYear, totalPage, location, rating , _id} = Data || {}
+const Card = ({ Data }) => {
+    const { title, author, genre, condition, description, coverImage, exchangeStatus, publishYear, totalPage, location, rating, _id } = Data || {}
     return (
         <div className="flex items-center justify-center bg-white">
             <div className="relative lg:w-[450px] w-[250px] lg:h-[400px] md:h-[250px] h-[250px] rounded-2xl overflow-hidden transition-transform duration-300 transform hover:scale-105"> {/* Added hover scale here */}
@@ -14,10 +14,7 @@ const Card = ({Data}) => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 hover:opacity-100 transition-opacity duration-300"></div>
                 </figure>
-                <a
-                    className="absolute inset-0 flex flex-col justify-end p-6 z-10"
-                    href={`/details/${_id}`}
-                >
+                <Link className="absolute inset-0 flex flex-col justify-end p-6 z-10" href={`/details/${_id}`}>
                     <span className="bg-pink-500 rounded-full text-white py-1 px-3 w-1/4 text-xs">{genre}</span>
                     <h2 className="text-white text-xl font-bold mt-2">{title}</h2>
                     <footer className="items-center mt-4 text-white text-sm">
@@ -46,7 +43,7 @@ const Card = ({Data}) => {
                             <span className="ml-2">{author}</span>
                         </div>
                     </footer>
-                </a>
+                </Link>
             </div>
         </div>
     );
