@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
   /* Keep your custom styles for larger screens */
+
   .swiper-button-prev {
       color: white !important;
   }
