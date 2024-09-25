@@ -1,12 +1,12 @@
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
 import Image from 'next/image';
 
 const Card = ({ book }) => {
-    const { coverImage, title, author, genre, rating, location, price, publishYear } = book;
+    const { coverImage, title, author, genre, rating, location, price, publishYear, _id } = book;
     console.log(book);
     return (
-        <Link href="#" className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md: hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 w-fit">
+        <Link href={`/details/${_id}`} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md: hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 w-fit">
             {/* Image */}
             <Image
                 className="object-cover w-full  rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
@@ -50,11 +50,15 @@ const Card = ({ book }) => {
                         {rating}
                     </span>
                 </div>
-
-              
             </div>
+
+
+
+
+
+
         </Link>
-    );
+    )
 };
 
 export default Card;
