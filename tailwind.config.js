@@ -11,7 +11,7 @@ module.exports = {
     flowbite.content(),
 
   ],
-
+// 
   theme: {
     extend: {
       colors: {

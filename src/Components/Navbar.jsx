@@ -71,12 +71,12 @@ const Navbar = () => {
                 pathName === link.path && "text-white font-extrabold"
               } md:ml-8 lg:text-[16px] md:my-0 my-7`}
             >
-              <a
+              <Link
                 href={link.path}
                 className="text-[#064532] hover:text-gray-400 font-bold duration-500"
               >
                 {link.title}
-              </a>
+              </Link>
             </li>
           ))}
           <button className=" lg:hidden block bg-transparent border-2 border-[#064532] p-3 rounded-lg">
