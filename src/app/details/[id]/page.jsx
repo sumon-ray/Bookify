@@ -19,8 +19,6 @@ export default function Details({ params }) {
     })
     const { title, author, genre, condition, description, coverImage, exchangeStatus, publishYear, totalPage, location, rating } = data || {}
 
-    
-
 
 
     return (
@@ -32,7 +30,7 @@ export default function Details({ params }) {
             </div>
 
             {/* img and details */}
-            <div className="flex gap-x-10 max-w-6xl mx-auto pt-4 pb-8">
+            <div className="flex gap-x-10 max-w-6xl mx-auto pt-4 pb-5">
 
                 {/* img */}
                 <figure className="w-[40%] bg-[#EFEEE9] flex items-center justify-center">
@@ -77,22 +75,34 @@ export default function Details({ params }) {
             </div>
 
             {/* tabs */}
-            <div className='max-w-6xl mx-auto pb-20'>
+            <div className='max-w-6xl mx-auto'>
 
                 <div className="text-sm font-medium text-center text-black border-b-2 border-[#ffffff]">
                     <ul className="flex flex-wrap justify-center -mb-px">
                         <li className="me-2" onClick={() => {
-
+                            setOpen(1)
                         }}>
-                            <p className="inline-block p-4 border-b-2 border-transparent rounded-t-lg ">Summary</p>
+                            <p className={`inline-block p-4 ${open === 1 ? 'border-b-2 border-black rounded-t-lg' : ''}`}>Summary</p>
                         </li>
-                        <li className="me-2">
-                            <p className="inline-block p-4 border-b-2 border-black rounded-t-lg active">Specification</p>
+                        <li className="me-2" onClick={() => {
+                            setOpen(2)
+                        }}>
+                            <p className={`inline-block p-4 ${open === 2 ? 'border-b-2 border-black rounded-t-lg' : ''}`}>Specification</p>
                         </li>
-                        <li className="me-2">
-                            <p className="inline-block p-4 border-b-2 border-transparent rounded-t-lg  ">Author</p>
+                        <li className="me-2" onClick={() => {
+                            setOpen(3)
+                        }}>
+                            <p className={`inline-block p-4 ${open === 3 ? 'border-b-2 border-black rounded-t-lg' : ''}`}>Author</p>
                         </li>
                     </ul>
+                </div>
+
+                <div className='pt-5 pb-14 px-24 text-balance'>
+                    <p className={open === 1 ? 'block' : 'hidden'}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem aspernatur nemo est deleniti ipsum expedita non cumque voluptatibus suscipit voluptatum nam saepe voluptatem soluta optio harum, repudiandae eius, beatae veritatis.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ea voluptatum nostrum voluptate! Fugit officiis accusantium vel fugiat. Ea obcaecati excepturi perspiciatis velit accusamus assumenda sunt aliquid iure fugit repudiandae.
+                    </p>
+                    <p className={open === 2 ? 'block' : 'hidden'}>Coming soon</p>
+                    <p className={open === 3 ? 'block' : 'hidden'}>Coming soon</p>
                 </div>
 
             </div>
