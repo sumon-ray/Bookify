@@ -1,3 +1,6 @@
+import { FaBook, FaBookOpen } from 'react-icons/fa'
+import img from '../../assets/images/book.png'
+
 export default function DashboardNavbar() {
     return (
         <div>
@@ -5,7 +8,9 @@ export default function DashboardNavbar() {
                 <div className="px-3 py-3 lg:px-5 lg:pl-3">
 
                     <div className="flex items-center justify-between">
+                        
                         <div className="flex items-center justify-start rtl:justify-end">
+
                             <button
                                 data-drawer-target="logo-sidebar"
                                 data-drawer-toggle="logo-sidebar"
@@ -27,17 +32,15 @@ export default function DashboardNavbar() {
                                     ></path>
                                 </svg>
                             </button>
-                            <a href="https://flowbite.com" className="flex ms-2 md:me-24">
-                                <img
-                                    src="https://flowbite.com/docs/images/logo.svg"
-                                    className="h-8 me-3"
-                                    alt="FlowBite Logo"
-                                />
-                                <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap ">
-                                    Flowbite
-                                </span>
-                            </a>
+
+                            {/* website logo */}
+                            <div className="flex items-center">
+                                <FaBookOpen className='text-blue-500 text-3xl font-bold' />
+                                 <h1 className='font-black text-2xl text-blue-500 uppercase -mt-1'>Bookify</h1>
+                            </div>
+
                         </div>
+                        
                         <div className="flex items-center">
                             <div className="flex items-center ms-3">
                                 <div>
@@ -111,6 +114,7 @@ export default function DashboardNavbar() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </nav>
