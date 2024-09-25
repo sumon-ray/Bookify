@@ -1,66 +1,85 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from 'react';
-import Card from './Card'; // Make sure to adjust the import path accordingly
+import { Tabs, Spin } from 'antd';
+import Card from './Card'; // Assuming you have a Card component for displaying book info
 
 const Category = () => {
-    const [activeTab, setActiveTab] = useState('Classic'); // Default tab
+    const [activeTab, setActiveTab] = useState(''); // Default tab
     const [books, setBooks] = useState([]); // State for fetched books
+    const [genres, setGenres] = useState([]); // State for unique genres
+    const [loading, setLoading] = useState(true); // Loading state
+    const [error, setError] = useState(null); // Error state
 
-    // Function to fetch books based on genre
-    const fetchBooks = async (genre) => {
+    // Function to fetch books and extract genres
+    const fetchBooks = async () => {
         try {
-            const response = await fetch(`https://bookify-server-lilac.vercel.app/books?genre=${genre}`);
+            const response = await fetch('https://bookify-server-lilac.vercel.app/books');
             const data = await response.json();
-            setBooks(data); // Set fetched books to state
+
+            // Extract unique genres from books
+            const uniqueGenres = [...new Set(data.map(book => book.genre))];
+            setGenres(uniqueGenres);
+
+            // Set first genre as active by default
+            if (uniqueGenres.length > 0) {
+                setActiveTab(uniqueGenres[0]);
+            }
+            setBooks(data);
         } catch (error) {
-            console.error("Error fetching books:", error);
+            setError("Error fetching books: " + error.message);
+        } finally {
+            setLoading(false);
         }
     };
 
-
-
-    // Fetch new data whenever activeTab changes
+    // Fetch books when component mounts
     useEffect(() => {
-        fetchBooks(activeTab);
-    }, [activeTab]);
+        fetchBooks();
+    }, []);
 
     return (
-        <div>
-            {/* Tabs */}
-            <div className="flex justify-center my-16">
-                {['Classic', 'Science Fiction', 'Fantasy'].map((genre) => (
-                    <button
-                        key={genre}
-                        className={`relative px-4 py-2 transition duration-300 ease-in-out ${
-                            activeTab === genre
-                                ? 'text-[#62ab00] border-b-2 border-[#62ab00] rounded-lg shadow-lg'
-                                : 'text-black rounded-md'
-                        }`}
-                        onClick={() => setActiveTab(genre)}
-                    >
-                        {genre}
-                        <span
-                            className={`absolute left-1/2 transform -translate-x-1/2 bottom-[-6px] h-0 border-t-4 border-transparent ${
-                                activeTab === genre ? 'border-b-[#62ab00]' : 'border-b-transparent'
-                            }`}
-                        ></span>
-                    </button>
-                ))}
-            </div>
+        <div className="container mx-auto px-4 md:px-8 lg:px-16">
+            {/* Error handling */}
+            {error && <p className="text-red-500 text-center my-4">{error}</p>}
 
-            {/* Book List */}
-            <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 md:grid-cols-4 gap-4">
-                {books.length > 0 ? (
-                    books.map((book) => (
-                        <Card
-                            key={book._id}
-                            Data={book}
-                        />
-                    ))
-                ) : (
-                    <p>No books available in this genre.</p>
-                )}
-            </div>
+            {/* Loading Spinner */}
+            {loading ? (
+                <div className="flex justify-center items-center h-64">
+                    <Spin size="large" />
+                </div>
+            ) : (
+                <>
+                    {/* Ant Design Tabs */}
+                    <Tabs
+                        activeKey={activeTab}
+                        onChange={(key) => setActiveTab(key)}
+                        
+                        className="my-8"
+                    >
+                        {genres.length > 0 ? (
+                            genres.map((genre) => (
+                                <Tabs.TabPane tab={genre} key={genre}>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                                        {/* Filter books based on genre */}
+                                        {books.filter(book => book.genre === genre).length > 0 ? (
+                                            books.filter(book => book.genre === genre).map((book) => (
+                                                <Card
+                                                    key={book._id}
+                                                    book={book}
+                                                />
+                                            ))
+                                        ) : (
+                                            <p className="text-center col-span-full">No books available in this genre.</p>
+                                        )}
+                                    </div>
+                                </Tabs.TabPane>
+                            ))
+                        ) : (
+                            <Tabs.TabPane tab="No genres available" disabled />
+                        )}
+                    </Tabs>
+                </>
+            )}
         </div>
     );
 };
