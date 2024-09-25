@@ -24,6 +24,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <QueryProvider>
       <html lang="en">

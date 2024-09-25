@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useState } from 'react';
 
 
-
 export default function Details({ params }) {
 
     const [open, setOpen] = useState(1)
@@ -20,7 +19,6 @@ export default function Details({ params }) {
     const { title, author, genre, condition, description, coverImage, exchangeStatus, publishYear, totalPage, location, rating } = data || {}
 
 
-
     return (
         <section className="space-y-10">
 
@@ -33,7 +31,7 @@ export default function Details({ params }) {
             <div className="flex gap-x-10 max-w-6xl mx-auto pt-4 pb-5">
 
                 {/* img */}
-                <figure className="w-[40%] bg-[#EFEEE9] flex items-center justify-center">
+                <figure className="w-[40%] bg-[#EFEEE9] flex items-center justify-center border border-black">
                     <img src={coverImage} alt="" className='w-[90%] h-[400px]' />
                 </figure>
                 {/* details */}
@@ -66,8 +64,8 @@ export default function Details({ params }) {
                     <p className="text-balance"><span className="font-bold mr-1">Description:</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam pariatur voluptatibus maxime ab veritatis id inventore necessitatibus quae in sapiente dolores deserunt, sit officiis earum voluptate perspiciatis tempore adipisci non!</p>
                     {/* button */}
                     <div className='pt-1'>
-                        <button type="button" className="text-white bg-black  focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 ">Dark</button>
-                        <button type="button" class="text-black bg-white border border-black focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2">Light</button>
+                        <button type="button" className="text-white bg-black  focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 ">Add to cart</button>
+                        <button type="button" class="text-black bg-white border border-black focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2">Edit</button>
                     </div>
 
                 </div>
