@@ -1,10 +1,13 @@
 "use client"
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useState } from 'react';
 
 
 
 export default function Details({ params }) {
+
+    const [open, setOpen] = useState(1)
 
     const { data, error, isLoading } = useQuery({
         queryKey: ['details of book'],
@@ -14,8 +17,11 @@ export default function Details({ params }) {
             return data
         }
     })
-
     const { title, author, genre, condition, description, coverImage, exchangeStatus, publishYear, totalPage, location, rating } = data || {}
+
+    
+
+
 
     return (
         <section className="space-y-10">
@@ -73,16 +79,18 @@ export default function Details({ params }) {
             {/* tabs */}
             <div className='max-w-6xl mx-auto pb-20'>
 
-                <div className="text-sm font-medium text-center text-black border-b border-[#00000099] dark:text-gray-400 dark:border-gray-700">
+                <div className="text-sm font-medium text-center text-black border-b-2 border-[#ffffff]">
                     <ul className="flex flex-wrap justify-center -mb-px">
-                        <li className="me-2">
-                            <a href="#" className="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Summary</a>
+                        <li className="me-2" onClick={() => {
+
+                        }}>
+                            <p className="inline-block p-4 border-b-2 border-transparent rounded-t-lg ">Summary</p>
                         </li>
                         <li className="me-2">
-                            <a href="#" className="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500" aria-current="page">Specification</a>
+                            <p className="inline-block p-4 border-b-2 border-black rounded-t-lg active">Specification</p>
                         </li>
                         <li className="me-2">
-                            <a href="#" className="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Author</a>
+                            <p className="inline-block p-4 border-b-2 border-transparent rounded-t-lg  ">Author</p>
                         </li>
                     </ul>
                 </div>

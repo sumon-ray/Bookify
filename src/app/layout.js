@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import QueryProvider from "./QueryProvider";
+import 'react-tabs/style/react-tabs.css';
 
 
 
