@@ -1,7 +1,8 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const handler = NextAuth({
+export const authOptions = {
+  secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
@@ -37,26 +38,48 @@ const handler = NextAuth({
       },
     }),
   ],
-});
+
+  callbacks: {
+    async jwt({ token, user, account }) {
+      if (account) {
+        token.type = user.type;
+      }
+      return token;
+    },
+
+    async session({ session, token }) {
+      session.user.type = token.type;
+      return session;
+    },
+  },
+};
+
+const handler = NextAuth(authOptions);
 
 const users = [
   {
     id: 1,
     name: "Naeem",
     email: "n@gmail.com",
+    type: "Admin",
     password: "password",
+    image: "https://picsum.photos/200",
   },
   {
     id: 2,
-    name: "Mannan",
-    email: "m@gmail.com",
+    name: "Sumon",
+    email: "s@gmail.com",
+    type: "Modarator",
     password: "password",
+    image: "https://picsum.photos/200",
   },
   {
     id: 3,
-    name: "Momin",
-    email: "Mo@gmail.com",
+    name: "Afser",
+    email: "a@gmail.com",
+    type: "Guest",
     password: "password",
+    image: "https://picsum.photos/200",
   },
 ];
 
