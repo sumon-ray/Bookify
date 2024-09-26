@@ -1,10 +1,17 @@
 "use client";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
+  const session = useSession();
+  const pathName = usePathname();
+
+  // console.log(session);
   // Define navigation links
   const links = [
     {
@@ -27,16 +34,15 @@ const Navbar = () => {
     //     title: "Category",
     //     path: '/category'
     // },
-    // {
-    //     title: "Dashbord",
-    //     path: '/dashbord'
-    // },
+    {
+      title: "Dashboard",
+      path: "/dashboard",
+    },
   ];
 
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
   // for PathName
-  const pathName = usePathname();
 
   return (
     <div>
@@ -83,12 +89,45 @@ const Navbar = () => {
             Login
           </button>
         </ul>
-        <Link
-          href="/api/auth/signin"
-          className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg"
-        >
-          Login
-        </Link>
+
+        <div className="flex gap-2">
+          {session.status === "authenticated" ? (
+            <>
+              <div className="flex">
+                <Image
+                  src={session?.data?.user?.image}
+                  width={50}
+                  height={50}
+                  className="rounded-full"
+                  alt="profile-image"
+                ></Image>
+                <div>
+                  <h3>{session?.data?.user?.email}</h3>
+                  <h3>{session?.data?.user?.type}</h3>
+                </div>
+              </div>
+              <button
+                onClick={() => signOut()}
+                className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href="api/auth/signup">
+                <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
+                  Sign Up
+                </button>
+              </Link>
+              <Link href="/api/auth/signin">
+                <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
+                  Login
+                </button>
+              </Link>
+            </>
+          )}
+        </div>
       </nav>
     </div>
   );
