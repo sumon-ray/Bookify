@@ -12,21 +12,24 @@ export default function AboutSection() {
             alt="about-section"
             width={600}
             height={600}
-            className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
+            className="  sm:h-64 lg:h-96 xl:h-112 2xl:h-128  rounded-md "
           />
+      
+
         </div>
 
-        <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-          <h1 className="text-3xl font-bold leading-none sm:text-6xl">
-            BookiFy
+        <div className=" md:mr-5 md:ml-5 ">
+          
+          <h1 className="text-3xl flex gap-2 font-bold leading-none sm:text-6xl">
+           <p className="text-[#A85D32]">About</p> BookiFy
           </h1>
-          <p className="mt-4 mb-4 text-lg sm:mb-5">
-            Learn more about our Bookify click through the link..
+          <p className="mt-4 mb-4 text-lg  sm:mb-5 text-gray-700">
+          Welcome to Bookify, your ultimate destination for discovering, exchanging, and sharing books! At Bookify, we believe in the power of stories to connect, inspire, and transform lives. Our mission is to create a thriving community where book lovers can come together to explore new titles, swap their favorite reads, and cultivate a passion for literature.We are passionate about making books more accessible.
           </p>
-          <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+          <div className="flex flex-col space-y-4 sm:items-center text-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 md:justify-start lg:justify-start">
             <Link
               href="/about"
-              className=" md:px-8 py-3 text-lg font-semibold border rounded bg-[#A85D32] text-white"
+              className=" md:px-8 py-3 text-lg font-semibold border rounded-full bg-[#A85D32] text-white"
             >
               Learn More
             </Link>

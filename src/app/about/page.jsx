@@ -1,54 +1,62 @@
+
+import Image from "next/image";
 export default function AboutPage() {
     return (
         <div>
-            <div className="w-full bg-center bg-cover h-[38rem]" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80')" }}>
+            <div className="w-full bg-center bg-cover h-[250px]" style={{ backgroundImage: "url('https://i.ibb.co.com/MByfHgW/spectacular-wall-wooden-background-classical-library-books-library-study-living-room-education-10412.jpg')" }}>
                 <div className="flex items-center justify-center w-full h-full bg-gray-900/40">
-                    <h1 className="font-black text-5xl text-white">About us</h1>
+                    <h1 className="font-bold text-5xl text-gray-100">About us</h1>
                 </div>
             </div>
 
+            <div className="container mx-auto  p-4 grid lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-5 ">
+        <div className="flex items-center justify-center  mt-8 lg:mt-0  sm:h-64 lg:h-96 xl:h-112 2xl:h-128">
+      
+        <Image
+            src="https://i.ibb.co.com/4VyWbf5/pexels-photo-7273787.jpg"
+            alt=""
+            width={600}
+            height={600}
+            className="  sm:h-64 lg:h-96 xl:h-112 2xl:h-128  rounded-md "
+          />
+      
 
-            {/* BookChimp */}
-            <div className="max-w-6xl mx-auto my-20">
-                <div className="grid  md:grid-cols-2 gap-9 px-6 md:px-0">
+        </div>
 
-                    <div className="h-64 w-full lg:h-auto">
-                        <div
-                            className="w-full h-full bg-cover rounded-2xl"
-                            style={{ backgroundImage: "url(https://images.unsplash.com/photo-1508394522741-82ac9c15ba69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=748&q=80)" }}
-                        >
-                            <div className="w-full h-full bg-black opacity-25 rounded-2xl"></div>
-                        </div>
-                    </div>
-
-                    <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] ">
-                        <div className="max-w-xl space-y-1">
-                            <h4 className="text-[#A85D32] font-black ">About us</h4>
-                            <h1 className="text-3xl font-bold text-balance">About Book Chimp</h1>
-                            <p className="pb-3 text-balance">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem nihil ratione eveniet magnam, corporis qui tempore numquam totam mollitia asperiores dolor laborum saepe eum reiciendis. Non vel praesentium inventore blanditiis?</p>
-                            <button className="bg-[#A85D32] text-white p-2 font-bold rounded-lg">Our Service</button>
-                        </div>
-                    </div>
-
-                    <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] ">
-                        <div className="max-w-xl text-right">
-                            <h3 className="text-2xl font-serif font-bold text-balance">Which book has had the biggest impact on your life? Share your story in the comments.</h3>
-                            <p className="pt-3 pb-5 text-balance">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat doloremque possimus culpa dolorem incidunt expedita architecto, nulla quos deleniti dolor vel aspernatur earum temporibus id ad molestiae. Neque, et vel?</p>
-                            <button className="bg-[#A85D32] text-white p-2 font-bold rounded-lg">Our Project</button>
-                        </div>
-                    </div>
-
-                    <div className="h-64 w-full lg:h-auto">
-                        <div
-                            className="w-full h-full bg-cover rounded-2xl"
-                            style={{ backgroundImage: "url(https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)" }}
-                        >
-                            <div className="w-full h-full rounded-2xl bg-black opacity-25"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+        <div className=" md:mr-5 md:ml-5 ">
+          
+          <h1 className="text-3xl flex gap-2 font-bold leading-none sm:text-6xl">
+           <p className="text-[#A85D32]">About</p> BookiFy
+          </h1>
+          <p className="mt-4 mb-4 text-lg  sm:mb-5 text-gray-700">
+          Welcome to Bookify, your ultimate destination for discovering, exchanging, and sharing books! At Bookify, we believe in the power of stories to connect, inspire, and transform lives. Our mission is to create a thriving community where book lovers can come together to explore new titles, swap their favorite reads, and cultivate a passion for literature.We are passionate about making books more accessible.At Bookify, we believe every book has a story, not just within its pages but in the journey it takes from one reader to another. 
+          </p>
+         
+        </div>
+      </div>
+      <h1 className="font-bold text-2xl container mx-auto p-2 mb-4 mt-4">Our Mission</h1>
+      <div className="container mx-auto grid-cols-1 p-2 grid  lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-5   ">
+      
+      <p>
+      <span className="font-semibold">Book Exchange Platform</span> We offer a unique platform where users can exchange books easily, allowing everyone to enjoy more stories without the clutter of owning too many physical copies.
+      </p> 
+      <p>
+      <span className="font-semibold">Sustainable Reading</span> Our mission is to promote eco-friendly reading habits by encouraging the sharing and recycling of books among the community.
+      </p> 
+      <p>
+      <span className="font-semibold">Community-Centric</span>  From timeless classics to modern bestsellers, Bookify is home to a diverse collection of books across various genres, catering to readers with different tastes and preferences.
+      </p> 
+      <p>
+      <span className="font-semibold">Easy Access</span> Whether you’re looking to trade, explore new titles, or connect with fellow book enthusiasts, Bookify makes it easy to discover and share the
+      </p> 
+      <p>
+      <span className="font-semibold">Affordable</span> Enjoy access to a wide range of books without spending a fortune. Our book exchange platform promotes affordability and accessibility for everyone.
+      </p> 
+      <p>
+      <span className="font-semibold">User-Friendly</span> Our platform is designed to provide a seamless experience, making book discovery, exchanges, and interactions smooth and enjoyable.
+      </p> 
+      </div>
+       
         </div>
     )
 }
