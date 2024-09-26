@@ -30,10 +30,10 @@ const Slider = () => {
             >
                 <SwiperSlide>
                     <div className={styles.slideWrapper}> 
-                        <img className='h-full'
+                        <img 
                             src="https://i.ibb.co/8NszP8B/sample-1.jpg"
                             alt="Slide 1"
-                            className={styles.responsiveImage} 
+                            className={`${styles.responsiveImage} h-full`} 
                         />
                     </div>
                 </SwiperSlide>

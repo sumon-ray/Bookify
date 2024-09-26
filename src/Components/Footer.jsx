@@ -1,6 +1,7 @@
 "use client"
 
 import { usePathname } from 'next/navigation';
+import { FaBookOpen } from 'react-icons/fa';
 
 const Footer = () => {
     const pathName = usePathname();
@@ -15,8 +16,9 @@ const Footer = () => {
             <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div>
-                        <div className="text-teal-600">
-                            <img className='lg:w-[150px] w-[120px]' src="https://i.ibb.co.com/r5ZT3xQ/bookify1-removebg-preview.png" alt="Bookify" />
+                        <div className="flex items-center text-blue-500 ">
+                            <FaBookOpen className='text-3xl font-bold' />
+                            <h1 className='font-black text-2xl  uppercase -mt-1'>Bookify</h1>
                         </div>
 
                         <p className="mt-4 max-w-xs text-gray-500">
