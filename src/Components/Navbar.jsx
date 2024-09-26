@@ -27,10 +27,10 @@ const Navbar = () => {
     //     title: "Category",
     //     path: '/category'
     // },
-    // {
-    //     title: "Dashbord",
-    //     path: '/dashbord'
-    // },
+    {
+        title: "Dashboard",
+        path: '/dashboard'
+    },
   ];
 
   // State for handling mobile menu toggle
