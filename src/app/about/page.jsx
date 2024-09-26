@@ -26,7 +26,7 @@ export default function AboutPage() {
         <div className=" md:mr-5 md:ml-5 ">
           
           <h1 className="text-3xl flex gap-2 font-bold leading-none sm:text-6xl">
-           <p className="text-[#A85D32]">About</p> BookiFy
+           <p className="text-[#EFEEE9]">About</p> BookiFy
           </h1>
           <p className="mt-4 mb-4 text-lg  sm:mb-5 text-gray-700">
           Welcome to Bookify, your ultimate destination for discovering, exchanging, and sharing books! At Bookify, we believe in the power of stories to connect, inspire, and transform lives. Our mission is to create a thriving community where book lovers can come together to explore new titles, swap their favorite reads, and cultivate a passion for literature.We are passionate about making books more accessible.At Bookify, we believe every book has a story, not just within its pages but in the journey it takes from one reader to another. 
