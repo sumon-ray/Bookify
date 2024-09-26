@@ -19,7 +19,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Create Next App",
+  title: "Bookify",
   description: "Book is Love ",
 };
 
