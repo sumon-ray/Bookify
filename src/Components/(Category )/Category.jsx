@@ -53,13 +53,13 @@ const Category = () => {
                     <Tabs
                         activeKey={activeTab}
                         onChange={(key) => setActiveTab(key)}
-                        
-                        className="my-8"
+                        tabBarStyle={{ color: 'red' }}
+                        className="my-8 text-black"
                     >
                         {genres.length > 0 ? (
                             genres.map((genre) => (
-                                <Tabs.TabPane tab={genre} key={genre}>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                                <Tabs.TabPane tab={genre} key={genre} >
+                                    <div className="grid grid-cols-1 text-black  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                                         {/* Filter books based on genre */}
                                         {books.filter(book => book.genre === genre).length > 0 ? (
                                             books.filter(book => book.genre === genre).map((book) => (

@@ -6,10 +6,10 @@ const Card = ({ book }) => {
     const { coverImage, title, author, genre, rating, location, price, publishYear, _id } = book;
     console.log(book);
     return (
-        <Link href={`/details/${_id}`} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md: hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 w-fit">
+        <Link href={`/details/${_id}`} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md: hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 w-full">
             {/* Image */}
             <Image
-                className="object-cover w-full  rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                className="object-cover w-full  rounded-t-lg lg:h-64 h-60 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
                 src={coverImage}
                 alt={title}
                 height={500}
@@ -21,13 +21,13 @@ const Card = ({ book }) => {
                 <h5 className="mb-2 lg:text-2xl md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {title}
                 </h5>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    {`Author: ${author}`}
+                <p className=" font-normal text-gray-700 dark:text-gray-400">
+                    <span className='font-bold'>Author:</span> {author}
                 </p>
 
                 {/* Additional Details */}
-                <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
-                    {`Genre: ${genre} | Published: ${publishYear} | Location: ${location}`}
+                <p className="mb-2 text-sm text-gray-600 dark:text-gray-400">
+                    <span className='font-bold'>Genre:</span> {genre} <br /> <span className='font-bold'>Published:</span>  {publishYear} | <span className='font-bold'>Location:</span> {location}
                 </p>
 
                 {/* Rating */}
