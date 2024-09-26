@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Tabs, Spin } from 'antd';
-import Card from './Card'; // Assuming you have a Card component for displaying book info
-
+import Card from './Card'; 
+import SearchBook from '../(Search)/page';
+// Assuming you have a Card component for displaying book inform
 const Category = () => {
     const [activeTab, setActiveTab] = useState(''); // Default tab
     const [books, setBooks] = useState([]); // State for fetched books
@@ -24,7 +25,9 @@ const Category = () => {
             if (uniqueGenres.length > 0) {
                 setActiveTab(uniqueGenres[0]);
             }
+
             setBooks(data);
+
         } catch (error) {
             setError("Error fetching books: " + error.message);
         } finally {
@@ -38,7 +41,10 @@ const Category = () => {
     }, []);
 
     return (
-        <div className="container mx-auto px-4 md:px-8 lg:px-16">
+     <>
+   
+    <div className="container mx-auto px-4 md:px-8 lg:px-16">
+        <SearchBook />
             {/* Error handling */}
             {error && <p className="text-red-500 text-center my-4">{error}</p>}
 
@@ -81,6 +87,7 @@ const Category = () => {
                 </>
             )}
         </div>
+     </>
     );
 };
 
