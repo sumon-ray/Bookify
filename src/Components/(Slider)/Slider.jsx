@@ -46,7 +46,7 @@ const Slider = () => {
                         />
                     </div>
                 </SwiperSlide> */}
-                <SwiperSlide>
+                {/* <SwiperSlide>
                     <div className="mx-auto   xl:w-full 2xl:w-2/3">
                         <img
                             src="https://i.ibb.co.com/XbWXrjV/sample-2.jpg"
@@ -56,7 +56,7 @@ const Slider = () => {
                         />
                     </div>
 
-                </SwiperSlide>
+                </SwiperSlide> */}
                 <SwiperSlide>
                     <div className="mx-auto   xl:w-full 2xl:w-2/3">
                         <img
