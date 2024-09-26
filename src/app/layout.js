@@ -4,6 +4,7 @@ import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import { BookCard } from "@/Components/BookCard";
 import ManualCard from "@/Components/ManualCard";
+import AuthProvider from "@/services/AuthProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,16 +25,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-      >
-        <Navbar/>
-        
-        {children}
-        <BookCard />
-        <ManualCard />
-        <Footer/>
-      </body>
+      <AuthProvider>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        >
+          <Navbar />
+
+          {children}
+          <BookCard />
+          <ManualCard />
+          <Footer />
+        </body>
+      </AuthProvider>
     </html>
   );
 }
