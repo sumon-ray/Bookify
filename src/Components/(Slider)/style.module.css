@@ -18,3 +18,17 @@
 }
 
 
+@media (max-width: 478px) {
+
+    .responsiveImage {
+        width: 100%;
+        height:16rem;
+    } 
+}
+@media (max-width: 800px) {
+
+    .responsiveImage {
+        width: 100%;
+        height:20rem;
+    } 
+}
