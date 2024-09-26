@@ -109,3 +109,5 @@ const Slider = () => {
 };
 
 export default Slider;
+
+// sarfaraj
