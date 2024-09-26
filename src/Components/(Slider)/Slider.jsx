@@ -49,7 +49,7 @@ const Slider = () => {
                 <SwiperSlide>
                     <div className="mx-auto   xl:w-full 2xl:w-2/3">
                         <img
-                            src="https://i.ibb.co.com/KVJXWVY/Really-great-brand.png"
+                            src="https://i.ibb.co.com/XbWXrjV/sample-2.jpg"
                             alt="Slide 1"
                             className="w-full h-auto"
                             priority
