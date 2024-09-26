@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import QueryProvider from "./QueryProvider";
+import 'react-tabs/style/react-tabs.css';
 
 
 
@@ -18,15 +19,16 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Create Next App",
+  title: "Bookify",
   description: "Book is Love ",
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <QueryProvider>
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED]`}>
           <Navbar />
           {children}
           <Footer />
