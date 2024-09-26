@@ -1,53 +1,64 @@
+import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 
-const Card = ({ coverImage, title, author, genre, rating, location, link }) => {
+const Card = ({ book }) => {
+    const { coverImage, title, author, genre, rating, location, price, publishYear, _id } = book;
+    console.log(book);
     return (
-        <div className="flex items-center justify-center bg-white">
-            <div className="relative lg:w-[450px] w-[250px] lg:h-[400px] md:h-[250px] h-[250px] rounded-2xl overflow-hidden transition-transform duration-300 transform hover:scale-105"> {/* Added hover scale here */}
-                <figure className="w-full h-full overflow-hidden">
-                    <img
-                        src={coverImage}
-                        alt={title}
-                        className="w-full h-full object-cover transition-transform duration-300" // Keep transition here for smooth effect
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 hover:opacity-100 transition-opacity duration-300"></div>
-                </figure>
-                <a
-                    className="absolute inset-0 flex flex-col justify-end p-6 z-10"
-                    href={link}
-                >
-                    <span className="bg-pink-500 rounded-full text-white py-1 px-3 w-1/4 text-xs">{genre}</span>
-                    <h2 className="text-white text-xl font-bold mt-2">{title}</h2>
-                    <footer className="items-center mt-4 text-white text-sm">
-                        <div className='flex items-center my-4'>
-                            <time className="flex items-center">
-                                <svg className="w-4 h-4 text-yellow-400" fill="currentColor">
-                                    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-8h4v2h-6V7h2v5z" />
-                                </svg>
-                                <span className="ml-1">Dec 13, 2021</span>
-                            </time>
-                            <span className="flex items-center ml-4">
-                                <svg className="w-4 h-4 text-yellow-400" fill="currentColor">
-                                    <path d="M5.455 15L1 18.5V3a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1v12H5.455zm-.692-2H16V4H3v10.385L4.763 13zM8 17h10.237L20 18.385V8h1a1 1 0 0 1 1 1v13.5L17.545 19H9a1 1 0 0 1-1-1v-1z" />
-                                </svg>
-                                <span className="ml-1">120</span>
-                            </span>
-                        </div>
-                        <div className="flex items-center mr-4">
-                            <figure className="w-9 h-9 overflow-hidden rounded-full">
-                                <img
-                                    src="https://cdn.pixabay.com/photo/2016/11/29/03/15/man-1867009_960_720.jpg"
-                                    alt={author}
-                                    className="w-full h-full object-cover"
-                                />
-                            </figure>
-                            <span className="ml-2">{author}</span>
-                        </div>
-                    </footer>
-                </a>
+        <Link href={`/details/${_id}`} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md: hover:bg-gray-100 dark:border-gray-700  dark:hover:bg-gray-700 w-fit">
+            {/* Image */}
+            <Image
+                className="object-cover w-full  rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                src={coverImage}
+                alt={title}
+                height={500}
+                width={500}
+            />
+
+            {/* Card Content */}
+            <div className="flex flex-col justify-between lg:p-4 p-2 leading-normal">
+                <h5 className="mb-2 lg:text-2xl md:text-xl font-bold tracking-tight  ">
+                    {title}
+                </h5>
+                <p className="mb-3 font-normal text-gray-700 ">
+                    {`Author: ${author}`}
+                </p>
+
+                {/* Additional Details */}
+                <p className="mb-3 text-sm text-gray-600 ">
+                    {`Genre: ${genre} | Published: ${publishYear} | Location: ${location}`}
+                </p>
+
+                {/* Rating */}
+                <div className="flex items-center mt-2.5 mb-5 sm:flex-wrap ">
+                    <div className="flex items-center  space-x-1 rtl:space-x-reverse">
+                        {[...Array(5)].map((_, index) => (
+                            <svg
+                                key={index}
+                                className={`w-4 h-4 ${index < rating ? 'text-yellow-300' : 'text-gray-200 dark:text-gray-600'}`}
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor"
+                                viewBox="0 0 22 20"
+                            >
+                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                        ))}
+                    </div>
+                    <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">
+                        {rating}
+                    </span>
+                </div>
             </div>
-        </div>
-    );
+
+
+
+
+
+
+        </Link>
+    )
 };
 
 export default Card;

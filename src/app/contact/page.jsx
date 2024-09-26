@@ -22,7 +22,7 @@ export default function page() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-20">
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
                     <div className="bg-[#A85D3233] p-6 rounded-2xl">
-                        <span className="inline-block p-3 text-[#A85D32] rounded-full bg-[#A85D3233] dark:bg-gray-800">
+                        <span className="inline-block p-3 text-[#A85D32] rounded-full bg-[#A85D3233] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
