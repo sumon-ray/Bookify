@@ -28,19 +28,26 @@ const Navbar = () => {
     //     title: "Category",
     //     path: '/category'
     // },
-    // {
-    //     title: "Dashbord",
-    //     path: '/dashbord'
-    // },
+    {
+        title: "Dashboard",
+        path: '/dashboard'
+    },
   ];
 
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
   // for PathName
   const pathName = usePathname();
+  if (pathName.includes('/dashboard')) {
+    return (
+      <>
+      </>
+    )
+  }
 
   return (
     <div>
+
       {/*  */}
       <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
         <div className=" cursor-pointer ">
@@ -61,9 +68,8 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-16" : "top-[-490px]"
-          }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-16" : "top-[-490px]"
+            }`}
         >
           {links.map((link) => (
             <li

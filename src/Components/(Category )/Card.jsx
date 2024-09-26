@@ -18,7 +18,7 @@ const Card = ({ book }) => {
 
             {/* Card Content */}
             <div className="flex flex-col justify-between lg:p-4 p-2 leading-normal">
-                <h5 className="mb-2 lg:text-2xl md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 lg:text-2xl md:text-xl font-bold tracking-tight  ">
                     {title}
                 </h5>
                 <p className=" font-normal text-gray-700 dark:text-gray-400">
