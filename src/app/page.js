@@ -3,6 +3,7 @@ import AboutSection from "@/Components/AboutSection";
 import OfferSection from "@/Components/OfferSection";
 import Slider from "@/Components/(Slider)/Slider";
 import Category from "@/Components/(Category )/Category";
+// import TopAuthor from "@/Components/(TopAuthor)/TopAuthor";
 
 
 export default function Home() {
@@ -12,7 +13,7 @@ export default function Home() {
       <OfferSection></OfferSection>
       {/* <HeroSection></HeroSection> */}
       <AboutSection></AboutSection>
-    
+      {/* <TopAuthor/> */}
       <Category/>
     </div>
   );
