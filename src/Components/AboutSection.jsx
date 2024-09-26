@@ -31,7 +31,7 @@ const AboutSection = () => {
           <p className="py-6">
           Bookify offer a simple yet impactful way to share knowledge and stories within a community. By swapping unused books, participants reduce waste and promote sustainability.
           </p>
-          <button className="btn btn-primary bg-black text-white">Get More info</button>
+          <button className="btn btn-warning bg-black text-white">Get More info</button>
         </div>
       </div>
     </div>
