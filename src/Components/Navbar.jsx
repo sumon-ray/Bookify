@@ -46,6 +46,7 @@ const Navbar = () => {
 
   return (
     <div>
+
       {/*  */}
       <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
         <div className=" cursor-pointer ">
@@ -66,23 +67,21 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-16" : "top-[-490px]"
-          }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-16" : "top-[-490px]"
+            }`}
         >
           {links.map((link) => (
             <li
               key={link.path}
-              className={`${
-                pathName === link.path && "text-white font-extrabold"
-              } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+              className={`${pathName === link.path && "text-white font-extrabold"
+                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
             >
-              <a
+              <Link
                 href={link.path}
                 className="text-[#064532] hover:text-gray-400 font-bold duration-500"
               >
                 {link.title}
-              </a>
+              </Link>
             </li>
           ))}
           <button className=" lg:hidden block bg-transparent border-2 border-[#064532] p-3 rounded-lg">
