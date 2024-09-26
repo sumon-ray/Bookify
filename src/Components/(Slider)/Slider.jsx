@@ -37,7 +37,7 @@ const Slider = () => {
                         />
                     </div>
                 </SwiperSlide>
-                <SwiperSlide>
+                {/* <SwiperSlide>
                     <div className={styles.slideWrapper}>
                         <img
                             src="https://i.ibb.co/8NszP8B/sample-1.jpg"
@@ -45,6 +45,28 @@ const Slider = () => {
                             className={styles.responsiveImage}
                         />
                     </div>
+                </SwiperSlide> */}
+                <SwiperSlide>
+                    <div className="mx-auto   xl:w-full 2xl:w-2/3">
+                        <img
+                            src="https://i.ibb.co.com/KVJXWVY/Really-great-brand.png"
+                            alt="Slide 1"
+                            className="w-full h-auto"
+                            priority
+                        />
+                    </div>
+
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="mx-auto   xl:w-full 2xl:w-2/3">
+                        <img
+                            src="https://i.ibb.co.com/412j2pB/Really-great-brand-1.png"
+                            alt="Slide 1"
+                            className="w-full h-auto"
+                            priority
+                        />
+                    </div>
+
                 </SwiperSlide>
             </Swiper>
         </div>
