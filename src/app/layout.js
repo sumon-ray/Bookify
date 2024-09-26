@@ -2,8 +2,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import { BookCard } from "@/Components/BookCard";
-import ManualCard from "@/Components/ManualCard";
+import QueryProvider from "./QueryProvider";
+import 'react-tabs/style/react-tabs.css';
+
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,18 +24,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-      >
-        <Navbar/>
-        
-        {children}
-        <BookCard />
-        <ManualCard />
-        <Footer/>
-      </body>
-    </html>
+    <QueryProvider>
+      <html lang="en">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED]`}>
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </QueryProvider>
   );
 }

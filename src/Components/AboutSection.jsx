@@ -4,13 +4,12 @@ import React from "react";
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#F3F2EC] dark:text-gray-800 pt-20 pb-20">
-      <div className="container mx-auto  p-4 grid lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-5 ">
-        <div className="flex items-center justify-center  mt-8 lg:mt-0  sm:h-64 lg:h-96 xl:h-112 2xl:h-128">
-      
-        <Image
-            src="https://i.ibb.co.com/4VyWbf5/pexels-photo-7273787.jpg"
-            alt=""
+    <section className="dark:bg-gray-100 dark:text-gray-800">
+      <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+        <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+          <Image
+            src="https://merakiui.com/images/components/Email-campaign-bro.svg"
+            alt="about-section"
             width={600}
             height={600}
             className="  sm:h-64 lg:h-96 xl:h-112 2xl:h-128  rounded-md "
