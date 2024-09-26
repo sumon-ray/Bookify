@@ -13,15 +13,16 @@ const Navbar = () => {
 
   // console.log(session);
   // Define navigation links
+  
   const links = [
     {
       title: "Home",
       path: "/",
     },
-    {
-      title: "About",
-      path: "/about",
-    },
+    // {
+    //   title: "About",
+    //   path: "/about",
+    // },
     {
       title: "Contact",
       path: "/contact",
@@ -73,8 +74,9 @@ const Navbar = () => {
           {links.map((link) => (
             <li
               key={link.path}
-              className={`${pathName === link.path && "text-white font-extrabold"
-                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+              className={`${
+                pathName === link.path && "text-white font-extrabold border-b-2 border-black"
+              } md:ml-8 lg:text-[16px] md:my-0 my-7`}
             >
               <Link
                 href={link.path}

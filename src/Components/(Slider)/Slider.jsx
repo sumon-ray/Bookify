@@ -37,14 +37,17 @@ const Slider = () => {
                         />
                     </div>
                 </SwiperSlide>
+       
                 <SwiperSlide>
-                    <div className={styles.slideWrapper}>
+                    <div className="mx-auto   xl:w-full 2xl:w-2/3">
                         <img
-                            src="https://i.ibb.co/8NszP8B/sample-1.jpg"
-                            alt="Slide 2"
-                            className={styles.responsiveImage}
+                            src="https://i.ibb.co.com/412j2pB/Really-great-brand-1.png"
+                            alt="Slide 1"
+                            className="w-full h-auto"
+                            priority
                         />
                     </div>
+
                 </SwiperSlide>
             </Swiper>
         </div>
@@ -52,3 +55,5 @@ const Slider = () => {
 };
 
 export default Slider;
+
+// sarfaraj

@@ -3,8 +3,9 @@ import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import { BookCard } from "@/Components/BookCard";
-import ManualCard from "@/Components/ManualCard";
+// import ManualCard from "@/Components/ManualCard";
 import AuthProvider from "@/services/AuthProvider";
+import QueryProvider from "./QueryProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,26 +19,26 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Create Next App",
+  title: "Bookify",
   description: "Book is Love ",
 };
 
 export default function RootLayout({ children }) {
-  
   return (
     <html lang="en">
-      <AuthProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-        >
-          <Navbar />
-
-          {children}
-          <BookCard />
-          <ManualCard />
-          <Footer />
-        </body>
-      </AuthProvider>
+      <QueryProvider>
+        <AuthProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99]`}
+          >
+            <Navbar />
+            {children}
+            <BookCard />
+            {/* <ManualCard /> */}
+            <Footer />
+          </body>
+        </AuthProvider>
+      </QueryProvider>
     </html>
   );
 }
