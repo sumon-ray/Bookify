@@ -28,7 +28,7 @@ const Slider = () => {
                 autoplay={{ delay: 3000 }} 
                 className={styles.mySwiper} 
             >
-                <SwiperSlide>
+                {/* <SwiperSlide>
                     <div className={styles.slideWrapper}> 
                         <img className='h-full'
                             src="https://i.ibb.co/8NszP8B/sample-1.jpg"
@@ -74,3 +74,5 @@ const Slider = () => {
 };
 
 export default Slider;
+
+// sarfaraj
