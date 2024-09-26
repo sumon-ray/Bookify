@@ -35,7 +35,7 @@ const AddCraft = () => {
 
 
   return (
-    <section className="space-y-6">
+    <section className="space-y-6 pb-12">
 
       <div className="bg-[#EFEEE9] rounded-md p-6">
         <h1 className="text-3xl font-black uppercase text-center">Add your book</h1>
@@ -55,13 +55,13 @@ const AddCraft = () => {
             </div>
 
             <div className="col-span-full sm:col-span-2">
-              <label htmlFor="email" className="text-sm uppercase">short description</label>
-              <input id="description" type="text" placeholder="Short description" className="w-full rounded-md text-black pl-1 " required />
+              <label htmlFor="email" className="text-sm uppercase">description</label>
+              <input id="description" type="text" placeholder="Description" className="w-full rounded-md text-black pl-1 " required />
             </div>
 
             <div className="col-span-full sm:col-span-2">
               <label htmlFor="address" className="text-sm uppercase">price</label>
-              <input id="price" type="text" placeholder="price" className="w-full rounded-md text-black pl-1 " required />
+              <input id="price" type="text" placeholder="Price" className="w-full rounded-md text-black pl-1 " required />
             </div>
 
             <div className="col-span-full sm:col-span-2 uppercase">
@@ -70,24 +70,24 @@ const AddCraft = () => {
             </div>
 
             <div className="col-span-full sm:col-span-2">
-              <label htmlFor="state" className="text-sm uppercase">customization</label>
-              <input id="customization" type="text" placeholder="Customization" className="w-full rounded-md pl-1 text-black" required />
+              <label htmlFor="state" className="text-sm uppercase">Condition</label>
+              <input id="customization" type="text" placeholder="Condition" className="w-full rounded-md pl-1 text-black" required />
             </div>
 
             <div className="col-span-full sm:col-span-2">
-              <label className="text-sm uppercase">processing time</label>
-              <input id="processing" type="text" placeholder='Processing time'
+              <label className="text-sm uppercase">exchange Status</label>
+              <input id="processing" type="text" placeholder='Status'
                 className="w-full rounded-md text-black pl-1 " required />
             </div>
 
             <div className="col-span-full sm:col-span-2">
-              <label className="text-sm uppercase">subcategory Name</label>
-              <input id="subcategory" type="text" placeholder="Subcategory" className="w-full rounded-md text-black pl-1 " required />
+              <label className="text-sm uppercase">category </label>
+              <input id="Category" type="text" placeholder="Category" className="w-full rounded-md text-black pl-1 " required />
             </div>
 
             <div className="col-span-full sm:col-span-2">
-              <label className="text-sm uppercase">stockStatus</label>
-              <input id="stock" type="text" placeholder="StockStatus" className="w-full rounded-md text-black pl-1 " required />
+              <label className="text-sm uppercase">total Page</label>
+              <input id="stock" type="text" placeholder="Total Page" className="w-full rounded-md text-black pl-1 " required />
             </div>
 
             <div className="col-span-full sm:col-span-2">
@@ -96,12 +96,12 @@ const AddCraft = () => {
             </div>
 
             <div className="col-span-full sm:col-span-2">
-              <label className="text-sm uppercase">ITEM NAME</label>
-              <input id="Item" type="text" placeholder="Item name" className="w-full rounded-md text-black pl-1 " required />
+              <label className="text-sm uppercase">location</label>
+              <input id="Item" type="text" placeholder="Location" className="w-full rounded-md text-black pl-1 " required />
             </div>
 
-            <div className="col-span-full sm:col-span-2 relative">
-              <button type="button" className="text-white bg-black focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm uppercase w-full h-[65.5%] absolute bottom-0">Add to cart</button>
+            <div className="col-span-full sm:col-span-2 md:relative">
+              <button type="button" className="text-white bg-black focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm uppercase w-full md:h-[65.5%] md:absolute p-4 md:p-0 md:bottom-0">Add to cart</button>
             </div>
 
           </div>
