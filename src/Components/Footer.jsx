@@ -1,17 +1,28 @@
-import React from 'react';
+"use client"
+
+import { usePathname } from 'next/navigation';
+import { FaBookOpen } from 'react-icons/fa';
 
 const Footer = () => {
+    const pathName = usePathname();
+    if (pathName.includes('/dashboard')) {
+        return (
+            <>
+            </>
+        )
+    }
     return (
         <footer className="bg-white">
             <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div>
-                        <div className="text-teal-600">
-                        <img className='lg:w-[150px] w-[120px]' src="https://i.ibb.co.com/r5ZT3xQ/bookify1-removebg-preview.png" alt="Bookify" />
+                        <div className="flex items-center text-blue-500 ">
+                            <FaBookOpen className='text-3xl font-bold' />
+                            <h1 className='font-black text-2xl  uppercase -mt-1'>Bookify</h1>
                         </div>
 
                         <p className="mt-4 max-w-xs text-gray-500">
-                        Bookify is a dynamic book exchange platform that connects readers and book enthusiasts. Exchange, sell, or borrow books effortlessly. Explore our wide range of genres and find your next great read with ease.
+                            Bookify is a dynamic book exchange platform that connects readers and book enthusiasts. Exchange, sell, or borrow books effortlessly. Explore our wide range of genres and find your next great read with ease.
                         </p>
 
                         <ul className="mt-8 flex gap-6">
@@ -112,7 +123,7 @@ const Footer = () => {
 
                     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
                         <div>
-                            <p className="font-medium text-gray-900">Services</p>
+                            <p className="font-medium ">Services</p>
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
@@ -138,7 +149,7 @@ const Footer = () => {
                         </div>
 
                         <div>
-                            <p className="font-medium text-gray-900">Company</p>
+                            <p className="font-medium ">Company</p>
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
@@ -156,7 +167,7 @@ const Footer = () => {
                         </div>
 
                         <div>
-                            <p className="font-medium text-gray-900">Helpful Links</p>
+                            <p className="font-medium ">Helpful Links</p>
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
@@ -174,7 +185,7 @@ const Footer = () => {
                         </div>
 
                         <div>
-                            <p className="font-medium text-gray-900">Legal</p>
+                            <p className="font-medium ">Legal</p>
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>

@@ -1,38 +1,42 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image'
+// import img1 from "../assets/images/About/about1.jpg"
+import img1 from "../assets/images/About/about1.jpg"
+import img2 from "../assets/images/About/about2.jpg"
+import { Button } from 'flowbite-react';
 
-export default function AboutSection() {
+const AboutSection = () => {
   return (
-    <section className="dark:bg-gray-100 dark:text-gray-800">
-      <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-        <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+    <div className="hero min-h-screen bg-base-200 mt-10 mb-10 max-w-7xl mx-auto">
+      <div className="hero-content flex flex-col lg:flex-row">
+        <div className='lg:w-1/2 relative'>
           <Image
-            src="https://merakiui.com/images/components/Email-campaign-bro.svg"
-            alt="about-section"
-            width={600}
-            height={600}
-            className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
+            src={img2}
+            alt="About Image 1"
+            className="w-3/4 rounded-lg shadow-2xl"
+            width={500} 
+            height={400}
+          />
+          <Image
+            src={img1} 
+            alt="About Image 2"
+            className="w-1/2 absolute right-5 top-1/3 border-[#000000B3] hover:border-[#000000] border-8 rounded-lg shadow-2xl"
+            width={250}
+            height={300}
           />
         </div>
-
-        <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-          <h1 className="text-3xl font-bold leading-none sm:text-6xl">
-            BookiFy
+        <div className='lg:w-1/2 space-y-3 p-4'>
+          <h3 className='text-3xl text-black font-bold'>About Us</h3>
+          <h1 className="text-3xl font-bold">
+          We strive to foster a culture of sharing by promoting book exchanges and enhancing access to knowledge.
           </h1>
-          <p className="mt-4 mb-4 text-lg sm:mb-5">
-            Learn more about our Bookify click through the link..
+          <p className="pb-1">
+          Bookify offer a simple yet impactful way to share knowledge and stories within a community. By swapping unused books, participants reduce waste and promote sustainability.
           </p>
-          <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-            <Link
-              href="/about"
-              className=" md:px-8 py-3 text-lg font-semibold border rounded bg-[#A85D32] text-white"
-            >
-              Learn More
-            </Link>
-          </div>
+          <Button size='lg' className='outline  bg-zinc-500'> Get More Info </Button>
         </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default AboutSection;

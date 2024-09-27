@@ -1,4 +1,5 @@
 "use client"
+import { BsChatLeftText } from "react-icons/bs";
 import { GrSend } from "react-icons/gr";
 import Swal from "sweetalert2";
 
@@ -18,11 +19,13 @@ export default function page() {
 
 
     return (
-        <section className="mt-9">
+        <section className="my-9">
             <div className="flex flex-col md:flex-row items-center justify-center gap-20">
+
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-                    <div className="bg-[#A85D3233] p-6 rounded-2xl">
-                        <span className="inline-block p-3 text-[#A85D32] rounded-full bg-[#A85D3233] dark:bg-gray-800">
+
+                    <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
+                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#00000059] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -45,32 +48,14 @@ export default function page() {
                         <p className="mt-2 text-sm">
                             Our friendly team is here to help.
                         </p>
-                        <p className="mt-2 text-sm text-[#A85D32]">
+                        <p className="mt-2 text-sm text-black">
                             bookify@gmail.com
                         </p>
                     </div>
 
-                    <div className="bg-[#A85D3233] p-6 rounded-2xl">
-                        <span className="inline-block p-3 text-[#A85D32] rounded-full bg-[#A85D3233]">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                className="w-5 h-5"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                                />
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                                />
-                            </svg>
+                    <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
+                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#00000059] ">
+                            <BsChatLeftText />
                         </span>
 
                         <h2 className="mt-2.5 font-black">
@@ -79,13 +64,13 @@ export default function page() {
                         <p className="mt-2 text-sm">
                             Our friendly team is here to help.
                         </p>
-                        <p className="mt-2 text-sm text-[#A85D32]">
+                        <p className="mt-2 text-sm text-black">
                             Start new chat
                         </p>
                     </div>
 
-                    <div className="bg-[#A85D3233] p-6 rounded-2xl">
-                        <span className="inline-block p-3 text-[#A85D32] rounded-full bg-[#A85D3233]">
+                    <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
+                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#00000059] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -113,13 +98,13 @@ export default function page() {
                         <p className="mt-2 text-sm">
                             Come say hello at our office HQ.
                         </p>
-                        <p className="mt-2 text-sm text-[#A85D32]">
+                        <p className="mt-2 text-sm text-black">
                             Dhaka,Bangladesh
                         </p>
                     </div>
 
-                    <div className="bg-[#A85D3233] p-6 rounded-2xl">
-                        <span className="inline-block p-3 text-[#A85D32] rounded-full bg-[#A85D3233]">
+                    <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
+                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#00000059] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -142,10 +127,11 @@ export default function page() {
                         <p className="mt-2 text-sm">
                             Mon-Fri from 8am to 5pm.
                         </p>
-                        <p className="mt-2 text-sm text-[#A85D32]">
+                        <p className="mt-2 text-sm text-black">
                             +1 (555) 000-0000
                         </p>
                     </div>
+
                 </div>
 
                 <div className="p-4 py-6 rounded-lg">
@@ -158,7 +144,7 @@ export default function page() {
                                 <input
                                     type="text"
                                     placeholder="Enter your first name"
-                                    className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg  focus:ring-[#A85D3299] focus:outline-none focus:ring"
+                                    className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
                                     required />
                             </div>
 
@@ -169,7 +155,7 @@ export default function page() {
                                 <input
                                     type="text"
                                     placeholder="Enter your last name"
-                                    className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg  focus:ring-[#A85D3299] focus:outline-none focus:ring"
+                                    className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
                                     required />
                             </div>
                         </div>
@@ -181,7 +167,7 @@ export default function page() {
                             <input
                                 type="email"
                                 placeholder="Enter your email address"
-                                className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg  focus:ring-[#A85D3299] focus:outline-none focus:ring"
+                                className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
                                 required />
                         </div>
 
@@ -190,13 +176,13 @@ export default function page() {
                                 Message
                             </label>
                             <textarea
-                                className="block resize-none w-full h-32 px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg md:h-56  focus:ring-[#A85D3299] focus:outline-none focus:ring"
+                                className="block resize-none w-full h-32 px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg md:h-56  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
                                 placeholder="Message"
                                 required
                             ></textarea>
                         </div>
 
-                        <button className="flex items-center justify-between w-full px-6 py-3 mt-5 text-white text-sm font-bold bg-[#A85D32] rounded-xl">
+                        <button className="flex items-center justify-between w-full px-6 py-3 mt-5 text-black text-sm font-bold bg-[#EFEEE9] rounded-xl">
                             <span>Send Message </span>
                             <GrSend className="text-xl" />
                         </button>
