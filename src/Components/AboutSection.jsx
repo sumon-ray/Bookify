@@ -5,8 +5,8 @@ import img2 from "../assets/images/About/about2.jpg"
 
 const AboutSection = () => {
   return (
-    <div className="hero min-h-screen bg-base-200 mt-10 mb-10 mr-10 ml-10">
-      <div className="hero-content flex flex-col lg:flex-row">
+    <div className="hero min-h-screen bg-base-200 max-w-7xl mx-auto mt-[100px]">
+      <div className="hero-content flex flex-col lg:flex-row items-center">
         <div className='lg:w-1/2 relative'>
           <Image
             src={img2}
@@ -23,15 +23,15 @@ const AboutSection = () => {
             height={300}
           />
         </div>
-        <div className='lg:w-1/2 space-y-5 p-4'>
+        <div className='lg:w-1/2 space-y-3 p-4'>
           <h3 className='text-3xl text-black font-bold'>About Us</h3>
           <h1 className="text-3xl font-bold">
           We strive to foster a culture of sharing by promoting book exchanges and enhancing access to knowledge.
           </h1>
-          <p className="py-6">
+          <p className="pb-1">
           Bookify offer a simple yet impactful way to share knowledge and stories within a community. By swapping unused books, participants reduce waste and promote sustainability.
           </p>
-          <button className="btn btn-warning bg-black text-white">Get More info</button>
+          <button className="btn btn-warning bg-black text-white p-4 rounded-xl">Get More info</button>
         </div>
       </div>
     </div>
