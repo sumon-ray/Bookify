@@ -45,11 +45,18 @@ const Navbar = () => {
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
   // for PathName
+  if (pathName.includes('/dashboard')) {
+    return (
+      <div>
+       
+      </div>
+    )
+  }
 
   return (
     <div>
       {/*  */}
-      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
+     <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
         <div className="flex items-center text-blue-500">
           <FaBookOpen className=" text-3xl font-bold" />
           <h1 className="font-black text-2xl  uppercase -mt-1">Bookify</h1>
