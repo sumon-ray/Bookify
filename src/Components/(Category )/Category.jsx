@@ -56,23 +56,24 @@ const Category = () => {
 
                 {/* Stylish Genre Select dropdown */}
                 <div className="w-full sm:w-2/5 lg:w-1/3">
-                    <Select
-                        onChange={(e) => setActiveGenre(e.target.value)}
-                        value={activeGenre}
-                        icon={HiOutlineBookOpen} // Add icon to make it more stylish
-                        className="block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
-                    >
-                        <option value="">Select a Genre</option>
-                        {genres.length > 0 ? (
-                            genres.map((genre, index) => (
-                                <option key={index} value={genre}>
-                                    {genre}
-                                </option>
-                            ))
-                        ) : (
-                            <option disabled>No genres available</option>
-                        )}
-                    </Select>
+                <select
+  onChange={(e) => setActiveGenre(e.target.value)}
+  value={activeGenre}
+className="block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm customSelect"
+>
+  <option value="">Select a Genre</option>
+  {genres.length > 0 ? (
+    genres.map((genre, index) => (
+      <option key={index} value={genre}>
+        {genre}
+      </option>
+    ))
+  ) : (
+    <option disabled>No genres available</option>
+  )}
+</select>
+
+
                 </div>
             </div>
 

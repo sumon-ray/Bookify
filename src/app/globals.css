@@ -29,3 +29,10 @@
       border-radius: 5px;
   }
   
+  /* Add this to your style.module.css */
+.customSelect:focus {
+    border-color: #737373 !important; /* This will ensure the border is red */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 0.2px #737373;
+  }
+  
