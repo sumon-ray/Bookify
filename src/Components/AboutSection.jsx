@@ -18,7 +18,7 @@ const AboutSection = () => {
           <Image
             src={img1} 
             alt="About Image 2"
-            className="w-1/2 absolute right-5 top-1/3 border-black border-[#000000B3] hover:border-[#000000] border-8 rounded-lg shadow-2xl"
+            className="w-1/2 absolute right-5 top-1/3 border-[#000000B3] hover:border-[#000000] border-8 rounded-lg shadow-2xl"
             width={250}
             height={300}
           />
