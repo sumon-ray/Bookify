@@ -2,8 +2,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import { BookCard } from "@/Components/BookCard";
-// import ManualCard from "@/Components/ManualCard";
 import AuthProvider from "@/services/AuthProvider";
 import QueryProvider from "./QueryProvider";
 
@@ -33,8 +31,7 @@ export default function RootLayout({ children }) {
           >
             <Navbar />
             {children}
-            <BookCard />
-            {/* <ManualCard /> */}
+
             <Footer />
           </body>
         </AuthProvider>
