@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function page() {
@@ -17,6 +18,31 @@ export default function page() {
             </h1>
           </div>
 
+          <div className="relative flex items-center mt-8">
+            <span className="absolute">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+            </span>
+
+            <input
+              type="text"
+              name='name'
+              className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              placeholder="Your Name"
+            />
+          </div>
           <div className="relative flex items-center mt-8">
             <span className="absolute">
               <svg
@@ -62,6 +88,7 @@ export default function page() {
 
             <input
               type="password"
+              name="password"
               className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Password"
             />
@@ -73,7 +100,7 @@ export default function page() {
             </button>
 
             <p className="mt-4 text-center text-gray-600 dark:text-gray-400">
-              or sign up with
+              or
             </p>
 
             <a
@@ -103,12 +130,15 @@ export default function page() {
             </a>
 
             <div className="mt-6 text-center ">
-              <a
-                href="#"
-                className="text-sm text-blue-500 hover:underline dark:text-blue-400"
-              >
-                Already have an account yet? Sign In
-              </a>
+              <span>
+                Already have an account yet?{" "}
+                <Link
+                  href={"/api/auth/signin"}
+                  className="text-sm text-blue-500 hover:underline dark:text-blue-400"
+                >
+                  Sign In
+                </Link>
+              </span>
             </div>
           </div>
         </form>
