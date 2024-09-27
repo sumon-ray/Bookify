@@ -6,7 +6,7 @@ import { Button } from 'flowbite-react';
 
 const AboutSection = () => {
   return (
-    <div className="hero min-h-screen bg-base-200 mt-10 mb-10 max-w-7xl mx-auto">
+    <div className="hero  bg-base-200 pt-20 mb-36  max-w-7xl mx-auto ">
       <div className="hero-content flex flex-col lg:flex-row">
         <div className='lg:w-1/2 relative'>
           <Image

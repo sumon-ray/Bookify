@@ -20,7 +20,7 @@
     "flowbite-react": "^0.10.1",
     "mongoose": "^8.6.3",
     "next": "^14.2.13",
-    "next-auth": "^4.24.7",
+    "next-auth": "^4.24.8",
     "react": "^18",
     "react-awesome-button": "^7.0.5",
     "react-dom": "^18",
