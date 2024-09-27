@@ -1,45 +1,41 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image'
+// import img1 from "../assets/images/About/about1.jpg"
+import img1 from "../assets/images/About/about1.jpg"
+import img2 from "../assets/images/About/about2.jpg"
 
-export default function AboutSection() {
+const AboutSection = () => {
   return (
-    <section className="dark:bg-gray-100 dark:text-gray-800 mt-16 mb-16">
-      
-
-            <div className="container mx-auto  p-4 grid lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-5 ">
-        <div className="flex items-center justify-center  mt-8 lg:mt-0  sm:h-64 lg:h-96 xl:h-112 2xl:h-128">
-      
-        <Image
-            src="https://i.ibb.co.com/4VyWbf5/pexels-photo-7273787.jpg"
-            alt=""
-            width={600}
-            height={600}
-            className="  sm:h-64 lg:h-96 xl:h-112 2xl:h-128  rounded-md "
+    <div className="hero min-h-screen bg-base-200 mt-10 mb-10 mr-10 ml-10">
+      <div className="hero-content flex flex-col lg:flex-row">
+        <div className='lg:w-1/2 relative'>
+          <Image
+            src={img2}
+            alt="About Image 1"
+            className="w-3/4 rounded-lg shadow-2xl"
+            width={500} 
+            height={400}
           />
-      
-
+          <Image
+            src={img1} 
+            alt="About Image 2"
+            className="w-1/2 absolute right-5 top-1/3 border-black border-[#000000B3] hover:border-[#000000] border-8 rounded-lg shadow-2xl"
+            width={250}
+            height={300}
+          />
         </div>
-
-        <div className=" md:mr-5 md:ml-5 ">
-          
-          <h1 className="text-3xl flex gap-2 font-bold leading-none sm:text-6xl">
-           <p className="text-[#EFEEE9]">About</p> BookiFy
+        <div className='lg:w-1/2 space-y-5 p-4'>
+          <h3 className='text-3xl text-black font-bold'>About Us</h3>
+          <h1 className="text-3xl font-bold">
+          We strive to foster a culture of sharing by promoting book exchanges and enhancing access to knowledge.
           </h1>
-          <p className="mt-4 mb-4 text-lg  sm:mb-5 text-gray-700">
-          Welcome to Bookify, your ultimate destination for discovering, exchanging, and sharing books! At Bookify, we believe in the power of stories to connect, inspire, and transform lives. Our mission is to create a thriving community where book lovers can come together to explore new titles, swap their favorite reads, and cultivate a passion for literature.We are passionate about making books more accessible
+          <p className="py-6">
+          Bookify offer a simple yet impactful way to share knowledge and stories within a community. By swapping unused books, participants reduce waste and promote sustainability.
           </p>
-          <div className="flex flex-col space-y-4 sm:items-center text-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 md:justify-start lg:justify-start">
-            <Link
-              href="/about"
-              className=" md:px-8 py-3 text-lg font-semibold border rounded-full bg-[#EFEEE9] text-white"
-            >
-              Learn More
-            </Link>
-          </div>
+          <button className="btn btn-warning bg-black text-white">Get More info</button>
         </div>
-        
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default AboutSection;
