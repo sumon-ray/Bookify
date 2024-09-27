@@ -24,12 +24,12 @@ const AboutSection = () => {
             height={300}
           />
         </div>
-        <div className='lg:w-1/2 space-y-5 p-4'>
+        <div className='lg:w-1/2 space-y-3 p-4'>
           <h3 className='text-3xl text-black font-bold'>About Us</h3>
           <h1 className="text-3xl font-bold">
           We strive to foster a culture of sharing by promoting book exchanges and enhancing access to knowledge.
           </h1>
-          <p className="py-6">
+          <p className="pb-1">
           Bookify offer a simple yet impactful way to share knowledge and stories within a community. By swapping unused books, participants reduce waste and promote sustainability.
           </p>
           <Button size='lg' className='outline  bg-zinc-500'> Get More Info </Button>

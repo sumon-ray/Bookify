@@ -26,7 +26,7 @@ const Slider = () => {
                     clickable: true,
                 }}
                 navigation={true}
-                modules={[Pagination, Navigation]}
+                modules={[Pagination, Navigation,Autoplay]}
                 autoplay={{ delay: 3000 }}
                 className={styles.mySwiper}
             >
@@ -50,7 +50,7 @@ const Slider = () => {
                        <p className='text-xl'>
                        Cover up front of book and leave summary
                        </p>
-                       <Button className='outline my-4 bg-zinc-500'> Shop Now</Button>
+                       <Button size='lg' className='outline   my-4 bg-zinc-500'> Shop Now</Button>
                  </div>
                     </div>
                 </SwiperSlide>
@@ -64,3 +64,4 @@ const Slider = () => {
 };
 
 export default Slider;
+

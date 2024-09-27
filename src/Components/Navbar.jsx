@@ -1,11 +1,18 @@
 "use client";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import React, { useState } from "react";
 import { FaBookOpen } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
+  const session = useSession();
+  const pathName = usePathname();
+
+  // console.log(session);
   // Define navigation links
 
   const links = [
@@ -31,29 +38,21 @@ const Navbar = () => {
     // },
     {
       title: "Dashboard",
-      path: '/dashboard'
+      path: "/dashboard",
     },
   ];
 
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
   // for PathName
-  const pathName = usePathname();
-  if (pathName.includes('/dashboard')) {
-    return (
-      <>
-      </>
-    )
-  }
 
   return (
     <div>
-
       {/*  */}
       <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
         <div className="flex items-center text-blue-500">
-          <FaBookOpen className=' text-3xl font-bold' />
-          <h1 className='font-black text-2xl  uppercase -mt-1'>Bookify</h1>
+          <FaBookOpen className=" text-3xl font-bold" />
+          <h1 className="font-black text-2xl  uppercase -mt-1">Bookify</h1>
         </div>
 
         {/* Hamburger icon for mobile */}
@@ -66,14 +65,17 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-16" : "top-[-490px]"
-            }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            open ? "top-16" : "top-[-490px]"
+          }`}
         >
           {links.map((link) => (
             <li
               key={link.path}
-              className={`${pathName === link.path && "text-white font-extrabold border-b-2 border-black"
-                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+              className={`${
+                pathName === link.path &&
+                "text-white font-extrabold border-b-2 border-black"
+              } md:ml-8 lg:text-[16px] md:my-0 my-7`}
             >
               <Link
                 href={link.path}
@@ -87,12 +89,45 @@ const Navbar = () => {
             Login
           </button>
         </ul>
-        <Link
-          href="/api/auth/signin"
-          className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg"
-        >
-          Login
-        </Link>
+
+        <div className="flex gap-2">
+          {session.status === "authenticated" ? (
+            <>
+              <div className="flex">
+                <Image
+                  src={session?.data?.user?.image}
+                  width={50}
+                  height={50}
+                  className="rounded-full"
+                  alt="profile-image"
+                ></Image>
+                <div>
+                  <h3>{session?.data?.user?.email}</h3>
+                  <h3>{session?.data?.user?.type}</h3>
+                </div>
+              </div>
+              <button
+                onClick={() => signOut()}
+                className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href="api/auth/signup">
+                <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
+                  Sign Up
+                </button>
+              </Link>
+              <Link href="/api/auth/signin">
+                <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
+                  Login
+                </button>
+              </Link>
+            </>
+          )}
+        </div>
       </nav>
     </div>
   );
