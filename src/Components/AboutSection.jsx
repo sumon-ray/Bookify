@@ -2,11 +2,12 @@ import Image from 'next/image'
 // import img1 from "../assets/images/About/about1.jpg"
 import img1 from "../assets/images/About/about1.jpg"
 import img2 from "../assets/images/About/about2.jpg"
+import { Button } from 'flowbite-react';
 
 const AboutSection = () => {
   return (
-    <div className="hero min-h-screen bg-base-200 max-w-7xl mx-auto mt-[100px]">
-      <div className="hero-content flex flex-col lg:flex-row items-center">
+    <div className="hero min-h-screen bg-base-200 mt-10 mb-10 max-w-7xl mx-auto">
+      <div className="hero-content flex flex-col lg:flex-row">
         <div className='lg:w-1/2 relative'>
           <Image
             src={img2}
@@ -31,7 +32,7 @@ const AboutSection = () => {
           <p className="pb-1">
           Bookify offer a simple yet impactful way to share knowledge and stories within a community. By swapping unused books, participants reduce waste and promote sustainability.
           </p>
-          <button className="btn btn-warning bg-black text-white p-4 rounded-xl">Get More info</button>
+          <Button size='lg' className='outline  bg-zinc-500'> Get More Info </Button>
         </div>
       </div>
     </div>
