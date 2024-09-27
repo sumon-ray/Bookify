@@ -5,15 +5,15 @@
 }
 
 .slideWrapper {
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100%; 
+    align-items: center; */
+    /* height: ;  */
 }
 
 .responsiveImage {
     width: 100%;
-    height: auto; 
+    /* height:100vh ;  */
     object-fit: cover; 
 }
 

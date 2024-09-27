@@ -1,9 +1,10 @@
-import React from 'react'
+import MyBooks from "./myBooks/page";
 
 export default function Dashboard() {
     return (
-        <div className='mt-40 text-center'>
-          this is Dashboard
+        <div>
+            {/* just for testing it will be change on future */}
+            <MyBooks />
         </div>
     )
 }

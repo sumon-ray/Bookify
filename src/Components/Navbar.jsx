@@ -2,20 +2,21 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+import { FaBookOpen } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
   // Define navigation links
-  
+
   const links = [
     {
       title: "Home",
       path: "/",
     },
-    {
-      title: "About",
-      path: "/about",
-    },
+    // {
+    //   title: "About",
+    //   path: "/about",
+    // },
     {
       title: "Contact",
       path: "/contact",
@@ -29,8 +30,8 @@ const Navbar = () => {
     //     path: '/category'
     // },
     {
-        title: "Dashboard",
-        path: '/dashboard'
+      title: "Dashboard",
+      path: '/dashboard'
     },
   ];
 
@@ -50,12 +51,9 @@ const Navbar = () => {
 
       {/*  */}
       <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
-        <div className=" cursor-pointer ">
-          <img
-            className="lg:w-[150px] w-[120px]"
-            src="https://i.ibb.co.com/r5ZT3xQ/bookify1-removebg-preview.png"
-            alt="Bookify"
-          />
+        <div className="flex items-center text-blue-500">
+          <FaBookOpen className=' text-3xl font-bold' />
+          <h1 className='font-black text-2xl  uppercase -mt-1'>Bookify</h1>
         </div>
 
         {/* Hamburger icon for mobile */}
@@ -74,9 +72,8 @@ const Navbar = () => {
           {links.map((link) => (
             <li
               key={link.path}
-              className={`${
-                pathName === link.path && "text-white font-extrabold border-b-2 border-black"
-              } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+              className={`${pathName === link.path && "text-white font-extrabold border-b-2 border-black"
+                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
             >
               <Link
                 href={link.path}
