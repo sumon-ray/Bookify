@@ -1,6 +1,5 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -93,7 +92,7 @@ const Navbar = () => {
         <div className="flex gap-2">
           {session.status === "authenticated" ? (
             <>
-              <div className="flex">
+              {/* <div className="flex">
                 <Image
                   src={session?.data?.user?.image}
                   width={50}
@@ -105,7 +104,7 @@ const Navbar = () => {
                   <h3>{session?.data?.user?.email}</h3>
                   <h3>{session?.data?.user?.type}</h3>
                 </div>
-              </div>
+              </div> */}
               <button
                 onClick={() => signOut()}
                 className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg"
