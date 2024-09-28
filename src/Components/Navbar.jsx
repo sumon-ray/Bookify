@@ -56,7 +56,7 @@ const Navbar = () => {
     <div>
       {/*  */}
      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
-        <div className="flex items-center text-blue-500">
+        <div className="flex items-center text-[#B7B7B7]">
           <FaBookOpen className=" text-3xl font-bold" />
           <h1 className="font-black text-2xl  uppercase -mt-1">Bookify</h1>
         </div>

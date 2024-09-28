@@ -64,7 +64,7 @@ export default function Details({ params }) {
                     <p className="text-balance"><span className="font-bold mr-1">Description:</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam pariatur voluptatibus maxime ab veritatis id inventore necessitatibus quae in sapiente dolores deserunt, sit officiis earum voluptate perspiciatis tempore adipisci non!</p>
                     {/* button */}
                     <div className='pt-1'>
-                        <button type="button" className="text-white bg-black  focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 ">Add to cart</button>
+                        <button type="button" className="text-[#B7B7B7] bg-black  focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 ">Add to cart</button>
                         <button type="button" class="text-black bg-white border border-black focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2">Edit</button>
                     </div>
 
