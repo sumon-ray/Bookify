@@ -4,6 +4,7 @@ import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import AuthProvider from "@/services/AuthProvider";
 import QueryProvider from "./QueryProvider";
+import { dbConnect } from "@/lib/mongo";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,7 +22,10 @@ export const metadata = {
   description: "Book is Love ",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const conn = await dbConnect();
+
+
   return (
     <html lang="en">
       <QueryProvider>

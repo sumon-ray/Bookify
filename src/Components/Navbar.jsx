@@ -1,18 +1,28 @@
 "use client";
-import { signOut, useSession } from "next-auth/react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import React, { useState } from "react";
 import { FaBookOpen } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Logout from "@/Components/Authentication/Logout";
+// import { CircleUserRound } from "lucide-react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import { CircleUserRound } from "lucide-react";
 
 const Navbar = () => {
-  const session = useSession();
+  const { data: session } = useSession();
+  // Extracting name and email
+  const loggedInUser = session?.user;
+  const userName = loggedInUser?.name;
+  // const image = session?.user?.image;
+  // console.log(image);
+
   const pathName = usePathname();
 
-  // console.log(session);
-  // Define navigation links
+  // console.log(userName);
 
   const links = [
     {
@@ -44,18 +54,14 @@ const Navbar = () => {
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
   // for PathName
-  if (pathName.includes('/dashboard')) {
-    return (
-      <div>
-       
-      </div>
-    )
+  if (pathName.includes("/dashboard")) {
+    return <div></div>;
   }
 
   return (
     <div>
       {/*  */}
-     <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
+      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
         <div className="flex items-center text-blue-500">
           <FaBookOpen className=" text-3xl font-bold" />
           <h1 className="font-black text-2xl  uppercase -mt-1">Bookify</h1>
@@ -96,43 +102,40 @@ const Navbar = () => {
           </button>
         </ul>
 
-        <div className="flex gap-2">
-          {session.status === "authenticated" ? (
-            <>
-              {/* <div className="flex">
-                <Image
-                  src={session?.data?.user?.image}
-                  width={50}
-                  height={50}
-                  className="rounded-full"
-                  alt="profile-image"
-                ></Image>
-                <div>
-                  <h3>{session?.data?.user?.email}</h3>
-                  <h3>{session?.data?.user?.type}</h3>
-                </div>
-              </div> */}
-              <button
-                onClick={() => signOut()}
-                className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link href="api/auth/signup">
-                <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
-                  Sign Up
-                </button>
-              </Link>
-              <Link href="/api/auth/signin">
-                <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
-                  Login
-                </button>
-              </Link>
-            </>
-          )}
+        <div>
+          <ul className="flex pt-1 items-center justify-center">
+            {userName ? (
+              <li className="flex gap-1">
+                <Link href="/">
+                  {session?.user?.image ? (
+                    <Image
+                      src={session?.user?.image}
+                      alt={session?.user?.name}
+                      width={50}
+                      height={50}
+                      className="rounded-full"
+                    />
+                  ) : (
+                    <CircleUserRound className="mt-4 mx-2" />
+                  )}
+                </Link>
+                <Logout></Logout>
+              </li>
+            ) : (
+              <>
+                <li className="mx-2">
+                  <Link href="/login">
+                    <button
+                      className="btn text-[16px] lg:block hidden border-2
+                    border-[#064532] p-3 px-4 rounded-lg"
+                    >
+                      Login
+                    </button>
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
       </nav>
     </div>

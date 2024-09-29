@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Card = ({ book }) => {
     const { coverImage, title, author, genre, rating, location, exchangeStatus, publishYear, _id, totalPage } = book;
-    console.log(book);
+    // console.log(book);
     return (
         <Link href={`/details/${_id}`} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md: hover:bg-gray-100  lg:h-60 w-full">
             {/* Image */}
