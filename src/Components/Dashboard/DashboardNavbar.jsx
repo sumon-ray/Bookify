@@ -1,11 +1,12 @@
 import { FaBookOpen } from 'react-icons/fa'
 import { HiMenuAlt2 } from "react-icons/hi";
 import { CgProfile } from 'react-icons/cg'
+import { GiBookmarklet } from 'react-icons/gi';
 
 export default function DashboardNavbar() {
     return (
         <div>
-            <nav className="fixed top-0 z-50 w-full bg-[#EFEEE9]">
+            <nav className="fixed top-0 z-50 w-full bg-white">
                 <div className="p-3 lg:px-5 lg:pl-3">
 
                     <div className="flex items-center justify-between">
@@ -17,10 +18,10 @@ export default function DashboardNavbar() {
                                 <HiMenuAlt2 className='text-black text-3xl' />
                             </button>
 
-                            {/* website logo */}
-                            <div className="flex items-center">
-                                <FaBookOpen className='text-blue-500 text-3xl font-bold' />
-                                <h1 className='font-black text-2xl text-blue-500 uppercase -mt-1'>Bookify</h1>
+                            {/* bookify logo */}
+                            <div className="flex items-center text-[#B7B7B7]">
+                                <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
+                                <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
                             </div>
 
                         </div>
