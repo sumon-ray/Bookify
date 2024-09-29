@@ -3,36 +3,89 @@
 @tailwind utilities;
 
 
-  /* Keep your custom styles for larger screens */
+/* Keep your custom styles for larger screens */
 
-  .swiper-button-prev {
-      color: black !important;
-  }
-  
-  .swiper-button-prev::after {
-      /* background: whitesmoke; */
-      box-shadow: inset;
+.swiper-button-prev {
+    color: black !important;
+}
 
-      font-size: 18px !important;
-      padding: 8px;
-      border-radius: 5px;
-  }
-  
-  .swiper-button-next {
-      color: black !important;
-  }
-  
-  .swiper-button-next::after {
-      /* background: whitesmoke; */
-      font-size: 18px !important;
-      padding: 8px;
-      border-radius: 5px;
-  }
-  
-  /* Add this to your style.module.css */
+.swiper-button-prev::after {
+    /* background: whitesmoke; */
+    box-shadow: inset;
+
+    font-size: 18px !important;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.swiper-button-next {
+    color: black !important;
+}
+
+.swiper-button-next::after {
+    /* background: whitesmoke; */
+    font-size: 18px !important;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* Add this to your style.module.css */
 .customSelect:focus {
-    border-color: #737373 !important; /* This will ensure the border is red */
-    outline: none; /* Remove default outline */
+    border-color: #737373 !important;
+    /* This will ensure the border is red */
+    outline: none;
+    /* Remove default outline */
     box-shadow: 0 0 0 0.2px #737373;
-  }
-  
+}
+
+
+/* button class */
+
+.btn_1 {
+    color: #B7B7B7;
+    background-color: black;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    /* Rounded corners */
+    font-size: 0.875rem;
+    /* Small text */
+    padding: 0.5rem 1.25rem;
+    /* Padding: 0.5rem top-bottom, 1.25rem left-right */
+    margin-right: 0.5rem;
+    /* Margin-end */
+    margin-bottom: 0.5rem;
+    /* Margin-bottom */
+
+    outline: none;
+    /* Remove outline on focus */
+}
+
+.btn_1:focus {
+    box-shadow: 0 0 0 4px #B7B7B7;
+    /* Focus ring */
+}
+
+.btn_2 {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    /* Rounded corners */
+    font-size: 0.875rem;
+    /* Small text */
+    padding: 0.5rem 1.25rem;
+    /* Padding: 0.5rem top-bottom, 1.25rem left-right */
+    margin-right: 0.5rem;
+    /* Margin-end */
+    margin-bottom: 0.5rem;
+    /* Margin-bottom */
+
+    outline: none;
+    /* Remove outline on focus */
+}
+
+.btn_2:focus {
+    box-shadow: 0 0 0 4px #B7B7B7;
+    /* Focus ring */
+}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { FaBookOpen } from "react-icons/fa";
 
 export default function page() {
   return (
@@ -7,11 +8,10 @@ export default function page() {
       <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <form className="w-full max-w-md">
           <div className="flex flex-col justify-center items-center">
-            <img
-              className="lg:w-[250px] md:w-100px]"
-              src="https://i.ibb.co.com/r5ZT3xQ/bookify1-removebg-preview.png"
-              alt="Bookify"
-            />
+            <div className="flex items-center text-blue-500">
+              <FaBookOpen className=" text-3xl font-bold" />
+              <h1 className="font-black text-2xl  uppercase -mt-1">Bookify</h1>
+            </div>
 
             <h1 className="mt-3  text-2xl font-semibold text-gray-800 capitalize sm:text-3xl dark:text-white">
               Sign Up
@@ -38,7 +38,7 @@ export default function page() {
 
             <input
               type="text"
-              name='name'
+              name="name"
               className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Your Name"
             />
@@ -68,7 +68,7 @@ export default function page() {
             />
           </div>
 
-          <div className="relative flex items-center mt-4">
+          <div className="relative flex items-center mt-8">
             <span className="absolute">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

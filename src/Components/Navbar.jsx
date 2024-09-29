@@ -1,6 +1,5 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -45,12 +44,19 @@ const Navbar = () => {
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
   // for PathName
+  if (pathName.includes('/dashboard')) {
+    return (
+      <div>
+       
+      </div>
+    )
+  }
 
   return (
     <div>
       {/*  */}
-      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
-        <div className="flex items-center text-blue-500">
+     <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
+        <div className="flex items-center text-[#B7B7B7]">
           <FaBookOpen className=" text-3xl font-bold" />
           <h1 className="font-black text-2xl  uppercase -mt-1">Bookify</h1>
         </div>
@@ -93,7 +99,7 @@ const Navbar = () => {
         <div className="flex gap-2">
           {session.status === "authenticated" ? (
             <>
-              <div className="flex">
+              {/* <div className="flex">
                 <Image
                   src={session?.data?.user?.image}
                   width={50}
@@ -105,7 +111,7 @@ const Navbar = () => {
                   <h3>{session?.data?.user?.email}</h3>
                   <h3>{session?.data?.user?.type}</h3>
                 </div>
-              </div>
+              </div> */}
               <button
                 onClick={() => signOut()}
                 className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg"

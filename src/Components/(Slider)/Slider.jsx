@@ -55,13 +55,12 @@ const Slider = () => {
                     </div>
                 </SwiperSlide>
           
-                <SwiperSlide>
+                {/* <SwiperSlide>
                     <Component />
-                </SwiperSlide>
+                </SwiperSlide> */}
             </Swiper>
         </div>
     );
 };
 
 export default Slider;
-
