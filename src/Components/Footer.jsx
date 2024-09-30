@@ -1,6 +1,7 @@
 "use client"
 import { usePathname } from 'next/navigation';
 import { FaBookOpen } from 'react-icons/fa';
+import { GiBookmarklet } from 'react-icons/gi';
 
 const Footer = () => {
     const pathName = usePathname();
@@ -14,10 +15,13 @@ const Footer = () => {
         <footer className="bg-white">
             <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+
                     <div>
-                        <div className="flex items-center text-blue-500 ">
-                            <FaBookOpen className='text-3xl font-bold' />
-                            <h1 className='font-black text-2xl  uppercase -mt-1'>Bookify</h1>
+
+                        {/* bookify logo */}
+                        <div className="flex items-center text-[#B7B7B7]">
+                            <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
+                            <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
                         </div>
 
                         <p className="mt-4 max-w-xs text-gray-500">
@@ -205,6 +209,7 @@ const Footer = () => {
                             </ul>
                         </div>
                     </div>
+                    
                 </div>
 
                 <p className="text-xs text-gray-500">&copy; 2024. Bookify. All rights reserved.</p>

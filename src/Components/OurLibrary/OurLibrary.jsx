@@ -45,7 +45,7 @@ const OurLibrary = () => {
                     {/* Vertical Image */}
                 </div>
 
-                <div className='lg:w-[70%] h-[850px]  grid lg:grid-cols-4 md:grid-cols-3 overflow-scroll px-20 py-6 gap-3 '>
+                <div className='lg:w-[70%] h-[850px]  grid lg:grid-cols-4 md:grid-cols-3 overflow-y-scroll px-20 py-6 gap-3 '>
                     {filteredBooks.map((book, index) => (
                         <div key={index} className='w-[160px] h-[250px] '>
                             <img className='w-[160px] h-[200px]' src={book.coverImage} alt={book.title} />

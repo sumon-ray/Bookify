@@ -7,7 +7,7 @@ export default function DetailsTab({ Book }) {
     const { title, author, genre, condition, exchangeStatus, totalPage, location, description } = Book || {}
 
     return (
-        <div className='max-w-6xl mx-auto'>
+        <div className='max-w-6xl mx-auto pb-10'>
 
             {/* tabs */}
             <div className="text-sm font-medium text-center text-black border-b-2 border-[#ffffff]">
