@@ -1,26 +1,23 @@
-// lib/connectDB.js
-import { MongoClient } from "mongodb";
+import { MongoClient, ServerApiVersion } from "mongodb";
 
 let db;
-let client;
 
-const connectDB = async () => {
-  if (db) return db; // Return the cached DB connection
+export const connectDB = async () => {
+  if (db) return db;
+  try {
+    const uri = process.env.NEXT_PUBLIC_MONGODB_URI;
+    console.log(uri);
+    const client = new MongoClient(uri, {
+      serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+      },
+    });
 
-  const uri = process.env.MONGODB_URI; // Use environment variable for MongoDB connection
-
-  if (!uri) {
-    throw new Error("Please define the MONGODB_URI in .env.local");
+    db = client.db("bookifyDB");
+    return db;
+  } catch (error) {
+    console.log(error);
   }
-
-  client = new MongoClient(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-
-  await client.connect();
-  db = client.db("yourDatabaseName"); // replace with your DB name
-  return db;
 };
-
-export default connectDB;

@@ -44,18 +44,14 @@ const Navbar = () => {
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
   // for PathName
-  if (pathName.includes('/dashboard')) {
-    return (
-      <div>
-       
-      </div>
-    )
+  if (pathName.includes("/dashboard")) {
+    return <div></div>;
   }
 
   return (
     <div>
       {/*  */}
-     <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
+      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
         <div className="flex items-center text-blue-500">
           <FaBookOpen className=" text-3xl font-bold" />
           <h1 className="font-black text-2xl  uppercase -mt-1">Bookify</h1>
@@ -97,7 +93,15 @@ const Navbar = () => {
         </ul>
 
         <div className="flex gap-2">
-          {session.status === "authenticated" ? (
+          {session?.status === "loading" && <h6>Loading...</h6>}
+          {session?.status === "unauthenticated" && (
+            <Link href="/login">
+              <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
+                Login
+              </button>
+            </Link>
+          )}
+          {session?.status === "authenticated" && (
             <>
               {/* <div className="flex">
                 <Image
@@ -118,19 +122,6 @@ const Navbar = () => {
               >
                 Logout
               </button>
-            </>
-          ) : (
-            <>
-              <Link href="api/auth/signup">
-                <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
-                  Sign Up
-                </button>
-              </Link>
-              <Link href="/api/auth/signin">
-                <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
-                  Login
-                </button>
-              </Link>
             </>
           )}
         </div>
