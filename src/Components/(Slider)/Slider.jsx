@@ -1,13 +1,12 @@
 "use client";
-
 import { SiGitbook } from "react-icons/si";
 import { IoIosPeople } from "react-icons/io";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
 
 const Slider = () => {
@@ -36,8 +35,7 @@ const Slider = () => {
 
                 </div>
 
-                <button className="flex items-center gap-x-1 font-bold p-3 bg-white rounded-md ">Go to collection <HiOutlineArrowNarrowRight className="text-xl mt-1"/> </button>
-
+                <button className="flex items-center gap-x-1 font-bold p-3 bg-white rounded-md ">Go to collection <HiOutlineArrowNarrowRight className="text-xl mt-1" /> </button>
             </div>
 
             <div className="w-1/2"> {/* 2nd div */}
