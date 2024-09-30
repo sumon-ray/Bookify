@@ -22,14 +22,6 @@ const Navbar = () => {
       title: "Contact",
       path: "/contact",
     },
-    // {
-    //     title: "Blogs",
-    //     path: '/blogs'
-    // },
-    // {
-    //     title: "Category",
-    //     path: '/category'
-    // },
     {
       title: "Dashboard",
       path: "/dashboard",
