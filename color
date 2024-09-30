@@ -1,8 +1,18 @@
+<<<<<<< HEAD
 for button and background
 #B7B7B7 
+=======
+button class:
+btn_1
+btn_2
+
+background
+>>>>>>> ddee610762a4b28a3c242a5b185d4a68a0aea2a3
 #EFEEE9
 
-gray and black for text
+theme color already set
+
+this two color for text
 #B7B7B7
 #000000
 
