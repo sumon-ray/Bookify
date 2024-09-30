@@ -13,12 +13,15 @@ export default function Home() {
   return (
     <div>
       <Slider />
-      <OfferSection></OfferSection>
+
+
+      {/* don't touch the commented part */}
+      {/* <OfferSection></OfferSection> */}
       {/* <HeroSection></HeroSection> */}
-      <AboutSection></AboutSection>
+      {/* <AboutSection></AboutSection> */}
       {/* <TopAuthor/> */}
-      <Category/>
-      <NewsletterSection/>
+      {/* <Category/> */}
+      {/* <NewsletterSection/> */}
     </div>
   );
 }
