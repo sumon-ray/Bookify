@@ -13,6 +13,7 @@ import {
 import { Button } from "flowbite-react";
 // import React, { useRef } from 'react';
 import LottieAnimation from "./LottieAnimation";
+import OurMission from "../OurMission";
 
 // Extend Three.js objects to be used declaratively in R3F
 // extend({ BoxGeometry, MeshStandardMaterial });
@@ -39,7 +40,7 @@ const FloatingCube = () => {
 
 export default function AboutUs() {
   return (
-    <section className="bg-[#fdf6f6]  py-16">
+    <section className="bg-[#fdf6f6]  pt-16 pb-6">
       <div className="container px-8 lg:px-20 mx-auto flex flex-col-reverse md:flex-row items-center justify-between">
         {/* Left Section */}
         <div className="md:w-1/2 mb-10 md:mb-0 text-justify flex flex-col items-center justify-center   md:text-left px-4">
@@ -105,17 +106,7 @@ export default function AboutUs() {
       </div>
 
       {/* Our Mission Section */}
-      <div className="container px-8 lg:px-24 mx-auto text-center mt-16">
-        <h2 className="text-4xl font-bold mb-6">Our Mission</h2>
-        <p className=" text-lg max-w-2xl mx-auto mb-8">
-          At BookSwap, our mission is to promote a sustainable, community-driven
-          exchange of books. We believe in the power of shared stories and the
-          importance of fostering a global reading community.
-        </p>
-        <Button color="indigo" className="" size="lg">
-          Join the Movement
-        </Button>
-      </div>
+ <OurMission />
     </section>
   );
 }
