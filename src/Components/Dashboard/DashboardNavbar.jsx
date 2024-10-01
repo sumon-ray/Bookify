@@ -6,23 +6,30 @@ export default function DashboardNavbar() {
     return (
         <div>
             <nav className="fixed top-0 z-50 w-full bg-white">
-                <div className="p-3 lg:px-5 lg:pl-3">
+                <div className="py-2.5 lg:py-4 pl-4 pr-4">
 
                     <div className="flex items-center justify-between">
 
                         {/* website logo and other */}
                         <div className="flex items-center justify-start rtl:justify-end">
 
-                            <div className="sm:hidden">
-                               <TemporaryDrawer />
+                            {/* menu */}
+                            <div className="md:hidden">
+                                <TemporaryDrawer />
                             </div>
 
                             {/* bookify logo */}
-                            <div className="flex items-center text-[#B7B7B7]">
+                            <div className="hidden md:flex items-center text-[#B7B7B7]">
                                 <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
                                 <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
                             </div>
 
+                        </div>
+
+                        {/* bookify logo */}
+                        <div className="flex md:hidden items-center text-[#B7B7B7]">
+                            <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
+                            <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
                         </div>
 
                         {/* user profile and other */}
