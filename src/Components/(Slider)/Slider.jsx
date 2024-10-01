@@ -14,7 +14,7 @@ const Slider = () => {
 
         <div className="bg-[#EFEEE9] md:min-h-[calc(100vh-86px)] md:flex items-center justify-between pl-32"> {/* Main div */}
 
-            <div className="w-1/2 space-y-3"> {/* 1st div */}
+               <div className="w-1/2 space-y-3"> {/* 1st div */}
                 <h1 className="text-2xl lg:text-5xl  font-semibold text-[#000000]">Swap Books,<br /> Share Knowledge!</h1>
 
                 <p className="text-lg text-balance">Join Bookify today,
@@ -36,9 +36,9 @@ const Slider = () => {
                 </div>
 
                 <button className="flex items-center gap-x-1 font-bold p-3 bg-white rounded-md ">Go to collection <HiOutlineArrowNarrowRight className="text-xl mt-1" /> </button>
-            </div>
+               </div>
 
-            <div className="w-1/2"> {/* 2nd div */}
+               <div className="w-1/2"> {/* 2nd div */}
 
                 <div> {/* Slider */}
                     <Swiper
@@ -102,7 +102,7 @@ const Slider = () => {
                     </Swiper>
                 </div>
 
-            </div>
+               </div>
 
         </div>
     );
