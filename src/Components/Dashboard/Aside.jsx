@@ -15,7 +15,7 @@ export default function Aside() {
     return (
         <>
 
-            <aside className="fixed top-0 left-0 z-40 min-w-[165px] h-screen pt-[78px] transition-transform -translate-x-full bg-white  md:translate-x-0">
+            <aside className="fixed top-0 left-0 z-40 min-w-[175px] h-screen pt-[78px] transition-transform -translate-x-full bg-white  md:translate-x-0">
 
                 <div className="h-full pl-3 pr-2 overflow-y-auto relative">
 
