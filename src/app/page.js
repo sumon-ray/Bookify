@@ -18,7 +18,6 @@ export default function Home() {
       <Slider />
       <OurCollection/>
       <OurLibrary/>
-
       {/* don't touch the commented part */}
       {/* <OfferSection></OfferSection> */}
       {/* <HeroSection></HeroSection> */}

@@ -15,10 +15,14 @@
     "@mui/material": "^6.1.1",
     "@nextui-org/react": "^2.4.8",
     "@react-aria/utils": "^3.25.2",
+    "@react-three/drei": "^9.114.0",
+    "@react-three/fiber": "^8.17.9",
     "@tanstack/react-query": "^5.56.2",
     "antd": "^5.21.1",
     "axios": "^1.7.7",
     "flowbite-react": "^0.10.1",
+    "framer-motion": "^11.9.0",
+    "lottie-react": "^2.4.0",
     "mongoose": "^8.6.3",
     "next": "^14.2.13",
     "next-auth": "^4.24.8",
@@ -32,7 +36,8 @@
     "react-tabs": "^6.0.2",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.14.0",
-    "swiper": "^11.1.14"
+    "swiper": "^11.1.14",
+    "three": "^0.169.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
