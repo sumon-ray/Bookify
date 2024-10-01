@@ -2,18 +2,13 @@
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import React, { useState } from "react";
-import { FaBookOpen } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { GiBookmarklet, GiHamburgerMenu } from "react-icons/gi";
+
 
 const Navbar = () => {
   const session = useSession();
   const pathName = usePathname();
-
-  // console.log(session);
-  // Define navigation links
-
   const links = [
     {
       title: "Home",
@@ -27,20 +22,11 @@ const Navbar = () => {
       title: "Contact",
       path: "/contact",
     },
-    // {
-    //     title: "Blogs",
-    //     path: '/blogs'
-    // },
-    // {
-    //     title: "Category",
-    //     path: '/category'
-    // },
     {
       title: "Dashboard",
       path: "/dashboard",
     },
   ];
-
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
   // for PathName
@@ -50,11 +36,12 @@ const Navbar = () => {
 
   return (
     <div>
-      {/*  */}
       <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
-        <div className="flex items-center text-blue-500">
-          <FaBookOpen className=" text-3xl font-bold" />
-          <h1 className="font-black text-2xl  uppercase -mt-1">Bookify</h1>
+
+        {/* bookify logo */}
+        <div className="flex items-center text-[#B7B7B7]">
+          <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
+          <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
         </div>
 
         {/* Hamburger icon for mobile */}
@@ -67,17 +54,15 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-16" : "top-[-490px]"
-          }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-16" : "top-[-490px]"
+            }`}
         >
           {links.map((link) => (
             <li
               key={link.path}
-              className={`${
-                pathName === link.path &&
+              className={`${pathName === link.path &&
                 "text-white font-extrabold border-b-2 border-black"
-              } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
             >
               <Link
                 href={link.path}
@@ -125,6 +110,7 @@ const Navbar = () => {
             </>
           )}
         </div>
+
       </nav>
     </div>
   );
