@@ -18,7 +18,7 @@ const SearchBook = ({ onSearch }) => {
                     id="search"
                     value={searchQuery}
                     onChange={handleSearch}
-                    className="block w-full px-4 py-2 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-zinc-500 focus:border-zinc-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="block w-full px-4 py-2 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-zinc-500 focus:border-zinc-500 "
                     placeholder="Search for books..."
                 />
                 <button
