@@ -1,9 +1,12 @@
 "use client"
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-
 import ImgDetails from './ImgDetails';
 import DetailsTab from './DetailsTab';
+import DetailsCard from './DetailsCard';
+import { ImBooks } from "react-icons/im";
+import { FaBook } from 'react-icons/fa';
+
 
 
 export default function Details({ params }) {
@@ -21,12 +24,23 @@ export default function Details({ params }) {
 
     return (
         <section className="space-y-10 pb-20">
-            {/* title of details */}
+            {/* title */}
             <div className="bg-[#EFEEE9] p-6">
                 <h1 className="text-3xl font-black uppercase text-center">Book Details</h1>
             </div>
+
             <ImgDetails Book={data} />
             <DetailsTab Book={data} />
+
+            {/* related book title */}
+            <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-80 mx-auto'>
+                <h1 className='flex items-center justify-center text-2xl uppercase font-bold '>
+                    <FaBook className='text-xl -mb-0.5' /> Related Books
+                </h1>
+            </div>
+
+            <DetailsCard genre={data?.genre} id={params?.id}/>
+
         </section>
     )
 }

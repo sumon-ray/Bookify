@@ -1,87 +1,80 @@
+import { connectDB } from "@/lib/connectDB";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+import bcrypt from "bcrypt";
 
-export const authOptions = {
-  secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
+const handler = NextAuth({
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60,
+    maxAge: 30 * 30 * 60 * 60,
   },
   providers: [
     CredentialsProvider({
       credentials: {
-        email: {
-          label: "Email",
-          type: "email",
-          required: true,
-          placeholder: "Your Email",
-        },
-        password: {
-          label: "Password",
-          type: "password",
-          required: true,
-          placeholder: "Enter Password",
-        },
+        email: {},
+        password: {},
       },
-    
       async authorize(credentials) {
         const { email, password } = credentials;
-        if (!credentials) {
+        if (!email || !password) {
           return null;
         }
-        if (email) {
-          const currentUser = users.find((user) => user.email === email);
-          if (currentUser) {
-            if (currentUser.password === password) return currentUser;
-          }
+        const db = await connectDB();
+        const currentUser = await db.collection("users").findOne({ email });
+        if (!currentUser) {
+          return null;
         }
-        return null;
+        const passwordMatched = bcrypt.compareSync(
+          password,
+          currentUser.password
+        );
+        if (!passwordMatched) {
+          return null;
+        }
+
+        return currentUser;
       },
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
 
+  pages: {
+    signIn: "/login",
+  },
+
   callbacks: {
-    async jwt({ token, user, account }) {
-      if (account) {
-        token.type = user.type;
+    async signIn({ user, account }) {
+      if (account.provider === "google") {
+        const { name, email, image } = user;
+        try {
+          const db = await connectDB();
+          const userCollection = db.collection("users");
+  
+          // Check if the user already exists
+          const userExist = await userCollection.findOne({ email });
+  
+          if (!userExist) {
+            // Only insert necessary fields
+            const newUser = { name, email, image, createdAt: new Date() };
+            const res = await userCollection.insertOne(newUser);
+            return user; // Sign in the user after adding to the DB
+          } else {
+            return user; // User exists, continue sign in
+          }
+        } catch (error) {
+          console.error("Error during sign-in:", error);
+          return false; // Return false to block sign in in case of error
+        }
+      } else {
+        return user; // For other providers, allow sign in
       }
-      return token;
-    },
-
-    async session({ session, token }) {
-      session.user.type = token.type;
-      return session;
     },
   },
-};
-
-const handler = NextAuth(authOptions);
-
-const users = [
-  {
-    id: 1,
-    name: "Naeem",
-    email: "n@gmail.com",
-    type: "Admin",
-    password: "password",
-    image: "https://picsum.photos/200",
-  },
-  {
-    id: 2,
-    name: "Sumon",
-    email: "s@gmail.com",
-    type: "Modarator",
-    password: "password",
-    image: "https://picsum.photos/200",
-  },
-  {
-    id: 3,
-    name: "Afser",
-    email: "a@gmail.com",
-    type: "Guest",
-    password: "password",
-    image: "https://picsum.photos/200",
-  },
-];
+  
+});
 
 export { handler as GET, handler as POST };

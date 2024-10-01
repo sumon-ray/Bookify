@@ -1,64 +1,109 @@
 "use client";
-
-import { Open_Sans } from 'next/font/google';
-import styles from './style.module.css';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { SiGitbook } from "react-icons/si";
+import { IoIosPeople } from "react-icons/io";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import Component from './Component';
-import { Button } from 'flowbite-react';
 
-const openSans = Open_Sans({
-    subsets: ['cyrillic-ext'],
-    weight: ['400', '700', '800'],
-});
 
 const Slider = () => {
     return (
-        <div className={styles.container}>
-            <Swiper
-                slidesPerView={1}
-                spaceBetween={30}
-                loop={true}
-                pagination={{
-                    clickable: true,
-                }}
-                navigation={true}
-                modules={[Pagination, Navigation,Autoplay]}
-                autoplay={{ delay: 3000 }}
-                className={styles.mySwiper}
-            >
-                {/* Slide 1 */}
-                <SwiperSlide>
-                    <div
-                        // className="h-[100%]"
-                        className={styles.slideWrapper}
-                        style={{
-                            backgroundImage: 'url("https://i.ibb.co/8NszP8B/sample-1.jpg")',
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            height: '400px', // Set height as needed
-                        }}
-                    >
-                       
-                 <div className="flex flex-col w-2/3 lg:p-8 md:-mx-9 top-20 absolute items-center text-left">
-                 <h1 className=' flex text-3xl md:text-4xl font-bold'>
-                       H.G.Wells Empire of the Ants
-                       </h1>
-                       <p className='text-xl'>
-                       Cover up front of book and leave summary
-                       </p>
-                       <Button size='lg' className='outline   my-4 bg-zinc-500'> Shop Now</Button>
-                 </div>
+
+        <div className="bg-[#EFEEE9] md:min-h-[calc(100vh-86px)] md:flex items-center justify-between pl-32"> {/* Main div */}
+
+            <div className="w-1/2 space-y-3"> {/* 1st div */}
+                <h1 className="text-2xl lg:text-5xl  font-semibold text-[#000000]">Swap Books,<br /> Share Knowledge!</h1>
+
+                <p className="text-lg text-balance">Join Bookify today,
+                    where you can easily exchange books with fellow readers,
+                    and embark on exciting literary adventures together!</p>
+
+                <div className='flex items-center gap-x-10 pt-1.5 pb-0.5'>
+
+                    <div> {/*book Collections*/}
+                        <p className="font-bold text-[#000000] text-xl flex justify-start items-center gap-2"><SiGitbook className="text-3xl" /><span>300+</span></p>
+                        <p className="font-bold text-[#000000]">Collections</p>
                     </div>
-                </SwiperSlide>
-          
-                {/* <SwiperSlide>
-                    <Component />
-                </SwiperSlide> */}
-            </Swiper>
+
+                    <div> {/*book Customers*/}
+                        <p className="font-bold text-[#000000] text-xl flex justify-start items-center gap-2"><IoIosPeople className="text-3xl" /> <span>120</span></p>
+                        <p className="font-bold text-[#000000]">Customers</p>
+                    </div>
+
+                </div>
+
+                <button className="flex items-center gap-x-1 font-bold p-3 bg-white rounded-md ">Go to collection <HiOutlineArrowNarrowRight className="text-xl mt-1" /> </button>
+            </div>
+
+            <div className="w-1/2"> {/* 2nd div */}
+
+                <div> {/* Slider */}
+                    <Swiper
+                        className=' w-full  h-full'
+                        modules={[Navigation, Pagination, Autoplay]}
+                        spaceBetween={0}
+                        navigation
+                        pagination={{ clickable: true }}
+                        autoplay={{ delay: 6000 }}
+                        loop={true}
+                        breakpoints={{
+                            // Breakpoint for very large devices (1400px and up)
+                            1400: {
+                                slidesPerView: 2.5, // Set slidesPerView for 1400px and larger
+                                spaceBetween: 0, // Set spaceBetween for very large screens
+                            },
+                            // Breakpoint for large devices (1200px - 1399px)
+                            1200: {
+                                slidesPerView: 2.5, // Set slidesPerView for large devices
+                                spaceBetween: 0, // Set spaceBetween for large screens (lg)
+                            },
+                            // Breakpoint for small laptops (1024px - 1199px)
+                            1024: {
+                                slidesPerView: 1, // Set slidesPerView for small laptops
+                                spaceBetween: 0, // Adjust spaceBetween as needed for small laptops
+                            },
+                            // Breakpoint for medium devices (768px - 1023px)
+                            768: {
+                                slidesPerView: 1, // Set slidesPerView to 1 for medium devices
+                                spaceBetween: 80, // Set spaceBetween for medium screens (md)
+                            },
+                        }}
+
+                    >
+                        {/* Example Slides */}
+
+                        <SwiperSlide style={{ width: 200 }}>
+                            <div>
+                                <img className="h-80 w-56 rounded-xl" src="https://i.ibb.co.com/gtxLxvr/book6.jpg" />
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide style={{ width: 200 }}>
+                            <div>
+                                <img className="h-80 w-56 rounded-xl" src="https://i.ibb.co.com/gtxLxvr/book6.jpg" />
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide style={{ width: 200 }}>
+                            <div>
+                                <img className="h-80 w-56 rounded-xl" src="https://i.ibb.co.com/gtxLxvr/book6.jpg" />
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide style={{ width: 200 }}>
+                            <div>
+                                <img className="h-80 w-56 rounded-xl" src="https://i.ibb.co.com/gtxLxvr/book6.jpg" />
+                            </div>
+                        </SwiperSlide>
+
+                    </Swiper>
+                </div>
+
+            </div>
+
         </div>
     );
 };
