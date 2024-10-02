@@ -36,7 +36,7 @@ export default function MyBookCard({ book }) {
                     <h3><span className="font-bold">location: </span>{location}</h3>
                     <div className='flex items-center pt-0.5'>
                         <button type="button" className="text-black bg-[#EFEEE9]  focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 ">Delete</button>
-                        <button type="button" class="text-black bg-white border border-black focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2">Edit</button>
+                        <button type="button" className="text-black bg-white border border-black focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2">Edit</button>
                     </div>
                 </div>
 
