@@ -96,7 +96,9 @@
      transition: 0.8s;
    }
  }
- 
+ .hoverColor:hover{
+  background-color: rgb(177, 175, 175)!important;
+ }
  .card:hover::before {
    clip-path: circle(110vw at 100% 100%);
  }
@@ -107,7 +109,9 @@
    height: 100%;
    z-index: -1; /* Behind the text */
  }
- 
+ /* figure {
+  z-index: -1;
+} */
  /* Updated Card Styles with Proper Clip-Path and Background Image Positioning */
  .card:nth-child(1) .circle {
    background: url("https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=2071&auto=format&fit=crop") no-repeat center / cover;
