@@ -4,7 +4,8 @@ import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import AuthProvider from "@/services/AuthProvider";
 import QueryProvider from "./QueryProvider";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
+// import { Toaster } from 'react-hot-toast';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
