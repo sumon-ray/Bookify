@@ -6,11 +6,11 @@ import Slider from "@/Components/(Slider)/Slider";
 import Category from "@/Components/(Category )/Category";
 import OurCollection from "@/Components/OurCollection";
 import OurLibrary from "@/Components/OurLibrary/OurLibrary";
+import BookReview from "@/Components/BookReview/FlipCard";
 
 // import '../Components/(Slider)/style.module.css'
 
 // import TopAuthor from "@/Components/(TopAuthor)/TopAuthor";
-
 
 export default function Home() {
   return (
@@ -25,6 +25,7 @@ export default function Home() {
       {/* <TopAuthor/> */}
       {/* <Category/> */}
       {/* <NewsletterSection/> */}
+      <BookReview />
     </div>
   );
 }
