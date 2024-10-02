@@ -32,18 +32,10 @@ const OurLibrary = () => {
             <h1 className='text-5xl font-bold text-center pt-9 pb-4'>Explore Our Library</h1>
 
             {/* Tab Buttons */}
-            <div className='space-x-3 py-4 flex flex-wrap items-center justify-center'>
-                {genres.map((genre) => (
-                    <Button 
-                        key={genre} 
-                        onClick={() => handleGenreChange(genre)} 
-                        className={`btn ${selectedGenre === genre 
-                            ? 'bg-zinc-400 hoverColor text-black hover:bg-zinc-500' 
-                            : 'bg-[#EFEEE9] text-black hoverColor '}`}
-                    >
-                        {genre}
-                    </Button>
-                ))}
+            <div className='space-x-3 py-4'>
+                <button onClick={() => handleGenreChange('Classic')} className={` border-2 p-3 rounded-lg ${selectedGenre === 'Classic' ? 'bg-[#B7B7B7] text-black' : 'bg-[#EFEEE9] text-[#000000]'}`}>Classic</button>
+                <button onClick={() => handleGenreChange('Historical Fiction')} className={`border-2 p-3 rounded-lg ${selectedGenre === 'Historical Fiction' ? 'bg-[#B7B7B7] text-black' : 'bg-[#EFEEE9] text-[#000000]'}`}>Historical Fiction</button>
+                <button onClick={() => handleGenreChange('Modernist Fiction')} className={`border-2 p-3 rounded-lg ${selectedGenre === 'Modernist Fiction' ? 'bg-[#B7B7B7] text-black' : 'bg-[#EFEEE9] text-[#000000]'}`}>Modernist Fiction</button>
             </div>
 
             {/* Book Display */}
