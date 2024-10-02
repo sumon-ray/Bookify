@@ -1,46 +1,114 @@
-import React from 'react'
+"use client"
 
-export default function MyBookCard({ book }) {
-    const { title, author, genre, condition, coverImage, exchangeStatus, location, rating } = book || {}
+import React, { useEffect, useState } from 'react';
+import { useSearchContext } from './SearchProvider';
+
+const MyBookCard = () => {
+    const [allBooks, setAllBooks] = useState([]);  // Store all fetched books
+    const [filteredBooks, setFilteredBooks] = useState([]);  // Store filtered books based on search
+    const [selectedGenre, setSelectedGenre] = useState('Classic');
+    const [error, setError] = useState(null);  // Handle errors
+    const { searchQuery } = useSearchContext();  // Get search query from context
+
+    const genres = ['Classic', 'Historical Fiction', 'Modernist Fiction', 'Fantasy', 'Science Fiction', 'Romance', 'Thriller'];
+
+    // Fetch books based on genre when the genre changes
+    useEffect(() => {
+        fetchBooksByGenre(selectedGenre);
+    }, [selectedGenre]);
+
+    // Filter books when the search query changes
+    useEffect(() => {
+        if (searchQuery) {
+            const filtered = allBooks.filter((book) =>
+                book.title.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+            setFilteredBooks(filtered);
+        } else {
+            setFilteredBooks(allBooks);  // If search query is cleared, show all books
+        }
+    }, [searchQuery, allBooks]);
+
+    const fetchBooksByGenre = (genre) => {
+        setError(null);  // Reset error before fetching
+        fetch(`https://bookify-server-lilac.vercel.app/books?genre=${genre}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length === 0) {
+                    setAllBooks([]);  // No books found
+                    setFilteredBooks([]);  // No filtered books
+                } else {
+                    setAllBooks(data);  // Store all fetched books
+                    setFilteredBooks(data);  // Initially, show all books of the genre
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching books:', error);
+                setError('Failed to fetch books. Please try again later.');
+            });
+    };
+
+    const handleGenreChange = (genre) => {
+        setSelectedGenre(genre);
+    };
+
     return (
-        <div>
-            <div className="flex gap-4 md:gap-7 h-[300px] md:h-64 bg-white rounded-2xl" >
+        <div className='container mx-auto py-10'>
+            <h1 className='text-5xl font-bold text-center pb-6'>Explore Our Library</h1>
 
-                <img className="h-[300px] md:h-64 w-[200px] md:w-[300px] rounded-l-2xl"
-                    src={coverImage} alt="" />
-
-                <div className="pt-2.5 space-y-1">
-                    <h1 className="font-bold text-lg">{title}</h1>
-                    {/* rating */}
-                    <div className="flex items-center mb-5">
-                        <svg className="w-4 h-4 ms-1 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg className="w-4 h-4 ms-1 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg className="w-4 h-4 ms-1 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg className="w-4 h-4 ms-1 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg className="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                    </div>
-                    <h3><span className="font-bold">Author: </span>{author}</h3>
-                    <h3><span className="font-bold">Genre: </span>{genre}</h3>
-                    <h3><span className="font-bold">Condition: </span>{condition}</h3>
-                    <h3><span className="font-bold">Exchange: </span>{exchangeStatus}</h3>
-                    <h3><span className="font-bold">location: </span>{location}</h3>
-                    <div className='flex items-center pt-0.5'>
-                        <button type="button" className="text-black bg-[#EFEEE9]  focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 ">Delete</button>
-                        <button type="button" class="text-black bg-white border border-black focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2">Edit</button>
-                    </div>
-                </div>
-
+            {/* Genre Buttons */}
+            <div className='flex flex-wrap justify-center gap-3 mb-8'>
+                {genres.map((genre) => (
+                    <button
+                        key={genre}
+                        onClick={() => handleGenreChange(genre)}
+                        className={`px-4 py-2 rounded-lg border-2 text-sm md:text-base font-medium transition-all ${selectedGenre === genre 
+                            ? 'bg-[#B7B7B7] text-black' 
+                            : 'bg-[#EFEEE9] text-black'}`}
+                    >
+                        {genre}
+                    </button>
+                ))}
             </div>
+
+            {/* Error or No Books Found */}
+            {error ? (
+                <div className='text-center py-8'>
+                    <img
+                        src='/path_to_error_image/book_logo.png'  // Replace with the path to your error image
+                        alt='Error'
+                        className='mx-auto w-32 h-32 mb-4'
+                    />
+                    <p className='text-lg font-semibold text-red-600'>{error}</p>
+                </div>
+            ) : filteredBooks.length === 0 ? (
+                <div className='text-center py-8'>
+                    <img
+                        src='/path_to_no_books_image/book_logo.png'  // Replace with the path to your "no books" image
+                        alt='No books found'
+                        className='mx-auto w-32 h-32 mb-4'
+                    />
+                    <p className='text-lg font-semibold text-gray-700'>No books found in this genre.</p>
+                </div>
+            ) : (
+                /* Book Grid */
+                <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+                    {filteredBooks.map((book, index) => (
+                        <div key={index} className='bg-white p-4 rounded-lg shadow-md transition-shadow hover:shadow-lg'>
+                            <img 
+                                src={book.coverImage} 
+                                alt={book.title} 
+                                className='w-full h-48 object-cover rounded-t-lg mb-2' 
+                            />
+                            <h2 className='text-lg font-semibold mt-2'>{book.title}</h2>
+                            <p className='text-sm text-gray-600'>{book.author}</p>
+                            <p className='text-sm text-gray-500'>{book.genre}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
-    )
-}
+    );
+};
+
+export default MyBookCard;
