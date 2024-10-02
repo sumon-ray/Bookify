@@ -5,12 +5,19 @@ import TemporaryDrawer from "./Drawer";
 import { usePathname } from 'next/navigation';
 import { IoIosSearch, IoMdNotificationsOutline } from 'react-icons/io';
 import { MdOutlineKeyboardVoice } from 'react-icons/md';
+import { useSearchContext } from '@/app/(dashboard)/dashboard/myBooks/SearchProvider';
 
 export default function DashboardNavbar() {
 
     let pathName = usePathname().split('/')
     pathName = pathName[pathName.length - 1]
 
+    const { setSearchQuery } = useSearchContext();  // Get the setSearchQuery function from context
+
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);  
+        console.log(e.target.value)
+    };
 
     return (
         <div>
@@ -40,14 +47,20 @@ export default function DashboardNavbar() {
 
                         {/* input logo */}
                         <div className='hidden md:flex items-center'>
-                            <input className='bg-[#EFEEE9CC] border-0 rounded-md pr-16' type="text" placeholder='Search...' />
-                            <div className='flex items-center gap-1 -ml-[65px]'>
-                                <IoIosSearch className='text-xl' />
-                                <div className='bg-[#0000001A] p-2.5 rounded-bl-3xl rounded-md rounded-tl-none'>
-                                    <MdOutlineKeyboardVoice className='text-xl text-black' />
-                                </div>
-                            </div>
-                        </div>
+  <input 
+    className='bg-[#EFEEE9CC] border-0 rounded-md pr-16' 
+    type="text" 
+    placeholder='Search...'
+    onChange={handleSearch}  // Add this line to bind the search input
+  />
+  <div className='flex items-center gap-1 -ml-[65px]'>
+    <IoIosSearch className='text-xl' />
+    <div className='bg-[#0000001A] p-2.5 rounded-bl-3xl rounded-md rounded-tl-none'>
+      <MdOutlineKeyboardVoice className='text-xl text-black' />
+    </div>
+  </div>
+</div>
+
 
 
                         {/* bookify logo */}
