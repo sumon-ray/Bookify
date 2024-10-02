@@ -22,14 +22,10 @@ const Navbar = () => {
       title: "Contact",
       path: "/contact",
     },
-    // {
-    //     title: "Blogs",
-    //     path: '/blogs'
-    // },
-    // {
-    //     title: "Category",
-    //     path: '/category'
-    // },
+    {
+      title: "About",
+      path: "/about",
+    },
     {
       title: "Dashboard",
       path: "/dashboard",
@@ -38,12 +34,8 @@ const Navbar = () => {
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
   // for PathName
-  if (pathName.includes('/dashboard')) {
-    return (
-      <div>
-
-      </div>
-    )
+  if (pathName.includes("/dashboard")) {
+    return <div></div>;
   }
 
   return (
@@ -90,7 +82,15 @@ const Navbar = () => {
         </ul>
 
         <div className="flex gap-2">
-          {session.status === "authenticated" ? (
+          {session?.status === "loading" && <h6>Loading...</h6>}
+          {session?.status === "unauthenticated" && (
+            <Link href="/login">
+              <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
+                Login
+              </button>
+            </Link>
+          )}
+          {session?.status === "authenticated" && (
             <>
               {/* <div className="flex">
                 <Image
@@ -111,19 +111,6 @@ const Navbar = () => {
               >
                 Logout
               </button>
-            </>
-          ) : (
-            <>
-              <Link href="api/auth/signup">
-                <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
-                  Sign Up
-                </button>
-              </Link>
-              <Link href="/api/auth/signin">
-                <button className="btn text-[16px] lg:block hidden border-2 border-[#064532] p-3 px-4 rounded-lg">
-                  Login
-                </button>
-              </Link>
             </>
           )}
         </div>

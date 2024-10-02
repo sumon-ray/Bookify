@@ -16,7 +16,7 @@ export default function MyBooks() {
     })
 
     return (
-        <section className="space-y-12">
+        <section className="space-y-9">
 
             {/* my book page title and filter */}
             <div className="bg-[#EFEEE9] flex items-center justify-between rounded-md p-6">

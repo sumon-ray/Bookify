@@ -40,7 +40,7 @@ const Category = () => {
 
     const filteredBooks = books.filter(book => {
         const matchesGenre = book.genre === activeGenre;
-        const matchesSearch = book.title?.toLowerCase().includes(searchQuery?.toLowerCase());
+        const matchesSearch = book?.title?.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesGenre && matchesSearch;
     });
 
