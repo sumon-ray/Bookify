@@ -12,7 +12,7 @@ const LottieAnimation = () => {
            
             aria-label="Lottie animation" // Use aria-label for accessibility
             loop 
-            className='lg:w-[600px] lg:h-[400px] '
+            className='lg:w-[700px] lg:h-[400px] '
             autoplay 
         />
     );

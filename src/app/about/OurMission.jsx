@@ -6,13 +6,13 @@ import { FaRecycle, FaPeopleArrows, FaBookOpen } from "react-icons/fa"; // Impor
 
 const OurMission = () => {
   return (
-    <div className="container bg-[#fdf6f6] px-8 lg:px-24 mx-auto text-center mt-16">
+    <div className="container bg-[#fdf6f6] pb-6 px-8 lg:px-24 mx-auto text-center ">
       <div className="flex flex-col justify-center items-center">
         <Lottie 
           animationData={lottieImage}
           aria-label="Lottie animation" // Use aria-label for accessibility
           loop
-          className=" lg:hidden w-[150px] :h-[200px]"
+          className="  w-[150px] :h-[200px]"
           autoplay
         />
         <h2 className="text-4xl font-bold mb-6">Our Mission</h2>
@@ -24,6 +24,7 @@ const OurMission = () => {
         <Button color="indigo" className="" size="lg">
           Join the Movement
         </Button>
+        
       </div>
 
       {/* Additional Information Section */}
