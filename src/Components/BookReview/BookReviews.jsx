@@ -2,7 +2,7 @@ import React from 'react';
 
 const BookReviews = () => {
     return (
-        <div className='border-2 h-[100vh] border-red-600 container mx-auto'>
+        <div className='border-2  border-red-600 container mx-auto'>
             <h2 className='text-5xl font-bold text-center my-10 text-black'> Famous Book Review </h2>
 
             <div className='text-3xl grid grid-cols-12 border-2 border-green-800  gap-6 h-[790px]'> {/* Added gap for spacing */}
