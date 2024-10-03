@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { IoIosSearch, IoMdNotificationsOutline } from 'react-icons/io';
 import { MdOutlineKeyboardVoice } from 'react-icons/md';
 import { useSearchContext } from '@/app/(dashboard)/dashboard/myBooks/SearchProvider';
+import Link from 'next/link';
 
 export default function DashboardNavbar() {
 
@@ -35,10 +36,10 @@ export default function DashboardNavbar() {
                             </div>
 
                             {/* bookify logo */}
-                            <div className="hidden md:flex items-center text-[#B7B7B7]">
+                            <Link href={'/'} className="hidden md:flex items-center text-[#B7B7B7]">
                                 <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
                                 <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
-                            </div>
+                            </Link>
 
                             {/* active route name show */}
                             <h3 className='text-xl font-bold pl-8 uppercase hidden md:block'>{pathName}</h3>

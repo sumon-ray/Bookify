@@ -6,26 +6,8 @@ import './style.css';
 const OurLibrary = () => {
     const [filteredBooks, setFilteredBooks] = useState([]);
     const [selectedGenre, setSelectedGenre] = useState('Classic'); 
-    const genres = ['Classic', 'Historical Fiction', 'Modernist Fiction', 'Fantasy', 'Science Fiction', 'Romance', 'Thriller']; // Add all your genres here
-
-    // Fetch books based on the selected genre from the API
-    useEffect(() => {
-        fetchBooksByGenre(selectedGenre); // Fetch Classic books initially
-    }, [selectedGenre]);
-
-    // Function to fetch books by genre from API
-    const fetchBooksByGenre = (genre) => {
-        fetch(`https://bookify-server-lilac.vercel.app/books?genre=${genre}`)
-            .then(response => response.json())
-            .then(data => setFilteredBooks(data))
-            .catch(error => console.error('Error fetching books:', error));
-    };
-
-    // Handle genre change
-    const handleGenreChange = (genre) => {
-        setSelectedGenre(genre);
-        fetchBooksByGenre(genre); // Fetch books when genre changes
-    };
+   
+  
 
     return (
         <div className='container mx-auto px-8 lg:px-20'>

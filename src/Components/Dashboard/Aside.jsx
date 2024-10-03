@@ -29,7 +29,7 @@ export default function Aside() {
                         </li>
 
                         <li>
-                            <Link href={``} className="flex items-center gap-1 px-2 py-1">
+                            <Link href={`/dashboard`} className="flex items-center gap-1 px-2 py-1">
                                 <IoHomeOutline />
                                 <span className="font-bold">Home</span>
                             </Link>
