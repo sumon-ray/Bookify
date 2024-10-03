@@ -5,6 +5,8 @@ import { useSearchContext } from "./SearchProvider";
 import { FaFilter } from "react-icons/fa";
 import { HiOutlineBookOpen } from "react-icons/hi";
 import HomePagination from "./HomePagination";
+import Lottie from "lottie-react";
+import lottieImage from "../../../..//../public/image/404.json"; 
 
 const MyBookCard = () => {
   const [allBooks, setAllBooks] = useState([]); 
@@ -62,14 +64,13 @@ const MyBookCard = () => {
   };
 
   return (
-    <div className="container mx-auto pb-8">
+    <div className="container mx-auto px-8 md:px-0 pb-8">
 
       <div className="py-2 flex items-center justify-between">
         <h1 className="text-[#000000] font-semibold text-[18.61px]">
           Best Popular
         </h1>
         <div className="flex items-center justify-center gap-4 px-2 py-1 relative">
-          {/* FaFilter Icon positioned to the left */}
           <FaFilter className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-[#364957] text-sm sm:text-lg" />
 
           <select
@@ -109,8 +110,16 @@ const MyBookCard = () => {
           <p className="text-lg font-semibold text-red-600">{error}</p>
         </div>
       ) : filteredBooks.length === 0 ? (
-        <div className="col-span-full flex flex-col items-center justify-center py-16">
-          <HiOutlineBookOpen className="w-20 h-20 text-gray-400 mb-4" />
+        <div className="col-span-full flex flex-col items-center   justify-center">
+          {/* <HiOutlineBookOpen className="w-20 h-20 text-gray-400 mb-4" /> */}
+          <Lottie 
+            animationData={lottieImage}
+           
+            aria-label="Lottie animation" 
+            loop 
+            className='w-48  h-48 '
+            autoplay 
+        />
           <h2 className="text-xl font-semibold text-gray-700 mb-2">
             No books found
           </h2>
