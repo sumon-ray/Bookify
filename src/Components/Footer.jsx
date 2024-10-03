@@ -1,3 +1,7 @@
+'use client'
+
+import { divider } from "@nextui-org/react";
+import { useParams, usePathname } from "next/navigation";
 import React from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
@@ -10,7 +14,17 @@ import { FaCcAmex } from "react-icons/fa";
 import { FaCcPaypal } from "react-icons/fa";
 import { FaGooglePay } from "react-icons/fa";
 
+
+
 const Footer = () => {
+   
+   const route = usePathname()
+   console.log(route)
+  
+   if(route.includes('dashboard')){
+    return <div></div>
+   }
+
   return (
     <footer className="bg-white text-black py-12 px-8 ">
       <div className="w-full flex mx-auto gap-8 px-4 flex-col md:flex-row">
@@ -136,7 +150,7 @@ const Footer = () => {
         {/* Newsletter and Payment Section */}
         <div className="space-y-4 w-full md:w-1/3 flex flex-col">
 
-          <div className="border-2 p-4 h-1/2 bg-gray-100 rounded-xl space-y-2 flex flex-col justify-center items-center space-y-3">
+          <div className="border-2 p-4 h-1/2 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-3">
             <h2 className="text-2xl font-bold">Subscribe to our newsletter!</h2>
             <form className="flex gap-2">
               <input
@@ -145,7 +159,7 @@ const Footer = () => {
                 className="p-2 rounded-md w-[250px] text-gray-800"/>
               <button
                 type="submit"
-                className="bg-black rounded-r-md text-white px-4 py-2 -ml-6 rounded-r-md hover:bg-gray-200 hover:text-black"
+                className="bg-black text-white px-4 py-2 -ml-6 rounded-r-md hover:bg-gray-200 hover:text-black"
               >
                 Submit
               </button>
@@ -161,6 +175,7 @@ const Footer = () => {
             <FaGooglePay />
           </div>
         </div>
+
       </div>
     </footer>
   );
