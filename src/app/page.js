@@ -7,11 +7,12 @@ import Category from "@/Components/(Category )/Category";
 import OurCollection from "@/Components/OurCollection";
 import OurLibrary from "@/Components/OurLibrary/OurLibrary";
 import FaqSection from "@/Components/FaqSection";
+import BookReviews from "@/Components/BookReview/BookReviews";
+
 
 // import '../Components/(Slider)/style.module.css'
 
 // import TopAuthor from "@/Components/(TopAuthor)/TopAuthor";
-
 
 export default function Home() {
   return (
@@ -20,7 +21,7 @@ export default function Home() {
       <OurCollection/>
       <OurLibrary/>
       <FaqSection/>
-
+      <BookReviews/>
       {/* don't touch the commented part */}
       {/* <OfferSection></OfferSection> */}
       {/* <HeroSection></HeroSection> */}
@@ -28,6 +29,7 @@ export default function Home() {
       {/* <TopAuthor/> */}
       {/* <Category/> */}
       {/* <NewsletterSection/> */}
+    
     </div>
   );
 }

@@ -73,7 +73,7 @@ const SignUp = () => {
           <div className="mt-4">
             <label
               className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
-              for="LoggingEmailAddress"
+             
             >
               Name
             </label>
@@ -87,7 +87,7 @@ const SignUp = () => {
           <div className="mt-4">
             <label
               className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
-              for="LoggingEmailAddress"
+           
             >
               Email Address
             </label>
@@ -103,7 +103,7 @@ const SignUp = () => {
             <div className="flex justify-between">
               <label
                 className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
-                for="loggingPassword"
+               
               >
                 Password
               </label>
@@ -118,10 +118,10 @@ const SignUp = () => {
           </div>
 
           {/* Error handle */}
-          <div class="flex w-full max-w-sm overflow-hidden  dark:bg-gray-800">
-            <div class="px-4 py-2 -mx-3">
-              <div class="mx-3">
-                <span class="font-semibold text-red-500 dark:text-red-400"></span>
+          <div className="flex w-full max-w-sm overflow-hidden  dark:bg-gray-800">
+            <div className="px-4 py-2 -mx-3">
+              <div className="mx-3">
+                <span className="font-semibold text-red-500 dark:text-red-400"></span>
               </div>
             </div>
           </div>

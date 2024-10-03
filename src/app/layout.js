@@ -4,6 +4,9 @@ import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import AuthProvider from "@/services/AuthProvider";
 import QueryProvider from "./QueryProvider";
+import { Toaster } from "react-hot-toast";
+import { SearchProvider } from "./(dashboard)/dashboard/myBooks/SearchProvider";
+// import { Toaster } from 'react-hot-toast';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,11 +27,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <QueryProvider>
+<SearchProvider>
+<QueryProvider>
         <AuthProvider>
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99]`}
           >
+            <Toaster />
             <Navbar />
             {children}
 
@@ -36,6 +41,7 @@ export default function RootLayout({ children }) {
           </body>
         </AuthProvider>
       </QueryProvider>
+</SearchProvider>
     </html>
   );
 }

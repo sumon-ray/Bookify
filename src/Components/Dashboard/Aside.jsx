@@ -38,7 +38,7 @@ export default function Aside() {
                         <li>
                             <Link href={`/dashboard/myBooks`} className="flex items-center gap-1 px-2 py-1 ">
                                 <PiBooks />
-                                <span className="font-bold">My Shelf</span>
+                                <span className="font-bold">My Books</span>
                             </Link>
                         </li>
 
