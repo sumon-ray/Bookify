@@ -15,7 +15,7 @@ const Footer = () => {
     <footer className="bg-white text-black py-12 ">
       <div className="w-full flex mx-auto gap-8 px-4 flex-col md:flex-row">
         <div className="w-full md:w-2/3 border-2 p-2 bg-gray-100 rounded-xl flex flex-col justify-center items-center">
-          <div className="md:flex justify-between gap-16">
+          <div className="md:flex justify-between gap-24">
             {/* Contact Section */}
             <div className="space-y-4">
               <h2 className="text-lg font-bold">Contact Us</h2>
