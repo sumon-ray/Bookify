@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FaBookOpen } from "react-icons/fa";
+import { GiBookmarklet } from "react-icons/gi";
 
 const SignUp = () => {
   const router = useRouter();
@@ -49,10 +50,10 @@ const SignUp = () => {
       ></div>
 
       <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
-        <div className="flex justify-center mx-auto  text-blue-500">
-          <FaBookOpen className=" text-3xl font-bold" />
-          <h1 className="font-black text-2xl  uppercase -mt-1">Bookify</h1>
-        </div>
+      <div className="flex items-center justify-center text-[#B7B7B7]">
+            <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
+            <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
+          </div>
 
         <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
           Welcome back!
