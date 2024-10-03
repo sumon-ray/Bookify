@@ -57,12 +57,11 @@ export default function DashboardNavbar() {
                             />
                             <div className='flex items-center gap-1 -ml-[65px]'>
                                 <IoIosSearch className='text-xl' />
-                                <div className='bg-[#0000001A] p-2.5 rounded-bl-3xl rounded-md rounded-tl-none'>
-                                    <MdOutlineKeyboardVoice className='text-xl text-black' />
+                                <div className='bg-[#364957] p-2.5 rounded-bl-3xl rounded-md rounded-tl-none'>
+                                    <MdOutlineKeyboardVoice className='text-xl text-white' />
                                 </div>
                             </div>
                         </div>
-
 
 
                         {/* bookify logo */}
