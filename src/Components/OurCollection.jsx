@@ -6,11 +6,11 @@ const OurCollection = () => {
         >
             <h1 className='text-4xl font-bold text-center p-4 max-w-[500px] mx-auto rounded-tl-2xl rounded-br-2xl mb-8 border border-black text-black'> Explore Our Collection</h1>
 
-            <div className='md:grid lg:flex flex-wrap w-full md:grid-cols-3 grid-cols-1  justify-center items-center gap-10 md:pl-0 pl-14'>
+            <div className='md:grid lg:flex flex-wrap w-full md:grid-cols-3 grid-cols-1  justify-center items-center gap-10 md:pl-0 pl-14 '>
                   
-                <div className=" w-[218px] h-[180px]  rounded-2xl bg-[#EFEEE9] px-6 mt-36 ">
+                <div className=" w-[218px]  h-[180px]  rounded-2xl bg-[#EFEEE9] px-6 mt-36 ">
                     <div
-                        className="w-[168px] h-[226px]  mt-[-130px] hover:mt-[-150px] hover: rounded-xl bg-cover bg-center"
+                        className="md:w-[168px] w-[150px] md:h-[226px] h-[200px] md:mt-[-130px] mt-[-200px] hover:mt-[-150px] hover: rounded-xl bg-cover bg-center"
                         style={{
                             backgroundImage: "url('https://i.postimg.cc/qMHvYp9P/Animal-Farm.jpg')"
                         }}
