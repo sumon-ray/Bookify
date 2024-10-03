@@ -12,7 +12,7 @@ export default function DashboardNavbar() {
     let pathName = usePathname().split('/')
     pathName = pathName[pathName.length - 1]
 
-    const { setSearchQuery } = useSearchContext();  // Get the setSearchQuery function from context
+    const { setSearchQuery } = useSearchContext();  
 
     const handleSearch = (e) => {
         setSearchQuery(e.target.value);  
