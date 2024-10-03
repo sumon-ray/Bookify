@@ -41,13 +41,14 @@ const FaqSection = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-start p-8 bg-gray rounded-lg max-w-5xl mx-auto ">
+    <div className="flex flex-col lg:flex-row justify-between items-center p-8 rounded-lg max-w-5xl mx-auto py-14 md:py-20 space-y-8">
+
       {/* Image Section */}
       <div className="w-full">
         <img
           src="https://i.postimg.cc/Lshjjt8d/Book-FAQ.png"
           alt="Glasses and Book"
-          className="object-cover w-80 mt-10"
+          className="object-cover w-[350px]"
         />
       </div>
 
@@ -74,6 +75,7 @@ const FaqSection = () => {
           </div>
         ))}
       </div>
+
     </div>
   );
 };
