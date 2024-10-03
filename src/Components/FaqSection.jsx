@@ -41,13 +41,13 @@ const FaqSection = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-start p-8 bg-gray rounded-lg max-w-5xl mx-auto gap-4">
+    <div className="flex flex-col lg:flex-row justify-between items-start p-8 bg-gray rounded-lg max-w-5xl mx-auto ">
       {/* Image Section */}
       <div className="w-full">
         <img
-          src="https://i.postimg.cc/bvzFj6s8/FAQ-SARFARAJ.jpg"
+          src="https://i.postimg.cc/Lshjjt8d/Book-FAQ.png"
           alt="Glasses and Book"
-          className="object-cover w-full"
+          className="object-cover w-80 mt-10"
         />
       </div>
 
