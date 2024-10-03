@@ -4,7 +4,7 @@ const OurCollection = () => {
     return (
         <div className="max-w-7xl mx-auto  lg:pt-[100px]  py-6 mb-10"
         >
-            <h1 className='text-4xl font-bold text-center p-4 max-w-[500px] mx-auto rounded-tl-2xl rounded-br-2xl mb-10 border border-black text-black'> Explore Our Collection</h1>
+            <h1 className='text-4xl font-bold text-center p-4 max-w-[500px] mx-auto rounded-tl-2xl rounded-br-2xl mb-8 border border-black text-black'> Explore Our Collection</h1>
 
             <div className='md:grid lg:flex flex-wrap w-full md:grid-cols-3 grid-cols-1  justify-center items-center gap-10 md:pl-0 pl-14'>
                   

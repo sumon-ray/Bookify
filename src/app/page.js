@@ -20,8 +20,8 @@ export default function Home() {
       <Slider />
       <OurCollection/>
       <OurLibrary/>
-      <FaqSection/>
       <BookReviews/>
+      <FaqSection/>
       {/* don't touch the commented part */}
       {/* <OfferSection></OfferSection> */}
       {/* <HeroSection></HeroSection> */}
