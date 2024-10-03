@@ -1,36 +1,38 @@
 import React from "react";
-// import lottieImage from "../../../public/image/our_mission.json";
-import lottieImage from "../../../public/image/miss.json";
+import lottieImage from "../../../public/Animation.json";
 import Lottie from "lottie-react";
 import { Button } from "flowbite-react";
-import { FaRecycle, FaPeopleArrows, FaBookOpen } from "react-icons/fa"; 
+import { FaRecycle, FaPeopleArrows, FaBookOpen } from "react-icons/fa";
 
 const OurMission = () => {
   return (
-    <div className="container bg-[#fdf6f6] pb-6 px-8 lg:px-24 mx-auto text-center ">
+    <div className="container mt-10 lg:pb-6 px-8 lg:px-24 mx-auto text-center ">
       <div className="flex flex-col justify-center items-center">
-        <Lottie 
-          // animationData={lottieImage}
+        <h2 className="text-4xl flex items-center justify-center font-bold mb-6">
+          Our Mission
+          {/* <Lottie 
+          animationData={lottieImage}
           aria-label="Lottie animation"
           loop
-          className="  w-[150px] :h-[200px]"
+          className="  w-[80px] :h-[200px]"
           autoplay
-        />
-        <h2 className="text-4xl font-bold mt-6  mb-8">Our Mission</h2>
+        /> */}
+        </h2>
         <p className="text-lg max-w-2xl mx-auto mb-8">
           At BookSwap, our mission is to promote a sustainable, community-driven
           exchange of books. We believe in the power of shared stories and the
           importance of fostering a global reading community.
         </p>
-        <Button color="" className="outline outline-2 outline-[#364957]" size="lg">
+        <Button
+          color=""
+          className="outline outline-2 outline-[#364957]"
+          size="lg"
+        >
           Join the Movement
         </Button>
-        
       </div>
 
-      {/* Additional Information Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
-        {/* Icon 1: Sustainability */}
         <div className="flex flex-col items-center text-center">
           <FaRecycle className="text-5xl text-[#364957] mb-4" />
           <h3 className="text-2xl font-semibold mb-2">Sustainability</h3>
@@ -40,7 +42,6 @@ const OurMission = () => {
           </p>
         </div>
 
-        {/* Icon 2: Community */}
         <div className="flex flex-col items-center text-center">
           <FaPeopleArrows className="text-5xl text-[#364957] mb-4" />
           <h3 className="text-2xl font-semibold mb-2">Community</h3>
@@ -50,7 +51,6 @@ const OurMission = () => {
           </p>
         </div>
 
-        {/* Icon 3: Knowledge Sharing */}
         <div className="flex flex-col items-center text-center">
           <FaBookOpen className="text-5xl text-[#364957] mb-4" />
           <h3 className="text-2xl font-semibold mb-2">Knowledge Sharing</h3>
