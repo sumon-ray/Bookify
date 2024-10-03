@@ -33,9 +33,9 @@ const page = () => {
     <>
       <div className="flex flex-row w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-4xl my-8">
         <div
-          className="hidden bg-cover lg:block lg:w-1/2"
+          className="hidden bg-contain lg:block lg:w-1/2 mx-6 my-8"
           style={{
-            backgroundImage: "url('https://i.ibb.co/52MW2SQ/login.jpg')",
+            backgroundImage: "url('https://i.ibb.co/3d0DvB0/signin.png')",
           }}
         ></div>
 
