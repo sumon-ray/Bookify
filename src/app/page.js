@@ -6,6 +6,7 @@ import Slider from "@/Components/(Slider)/Slider";
 import Category from "@/Components/(Category )/Category";
 import OurCollection from "@/Components/OurCollection";
 import OurLibrary from "@/Components/OurLibrary/OurLibrary";
+import FaqSection from "@/Components/FaqSection";
 
 // import '../Components/(Slider)/style.module.css'
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Slider />
       <OurCollection/>
       <OurLibrary/>
+      <FaqSection/>
 
       {/* don't touch the commented part */}
       {/* <OfferSection></OfferSection> */}
