@@ -97,7 +97,7 @@ const Navbar = () => {
         <div className="flex lg:justify-center   items-center gap-2">
           {session?.status === "unauthenticated" && (
             <Link href="/login">
-              <button className="btn text-[16px] lg:block hidden border-2 font-semibold bg-[#B7B7B7]  text-[#000000] p-3 px-4 rounded-lg">
+              <button className="btn text-[16px] lg:block hidden border-2 font-semibold bg-[#B7B7B7]  text-[#064532] p-3 px-4 rounded-lg">
                 Sign In
               </button>
             </Link>
