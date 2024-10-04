@@ -7,16 +7,18 @@ import { IoIosSearch, IoMdNotificationsOutline } from 'react-icons/io';
 import { MdOutlineKeyboardVoice } from 'react-icons/md';
 import { useSearchContext } from '@/app/(dashboard)/dashboard/myBooks/SearchProvider';
 import Link from 'next/link';
+import img from '../../assets/images/About/logo (1).png'
+import Image from 'next/image';
 
 export default function DashboardNavbar() {
 
     let pathName = usePathname().split('/')
     pathName = pathName[pathName.length - 1]
 
-    const { setSearchQuery } = useSearchContext();  
+    const { setSearchQuery } = useSearchContext();
 
     const handleSearch = (e) => {
-        setSearchQuery(e.target.value);  
+        setSearchQuery(e.target.value);
         console.log(e.target.value)
     };
 
@@ -36,9 +38,8 @@ export default function DashboardNavbar() {
                             </div>
 
                             {/* bookify logo */}
-                            <Link href={'/'} className="hidden md:flex items-center text-[#B7B7B7]">
-                                <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
-                                <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
+                            <Link href={'/'} className="hidden md:flex">
+                                    <Image src={img} className="h-12 w-36 -ml-3" height={20} width={200} />
                             </Link>
 
                             {/* active route name show */}
@@ -48,19 +49,19 @@ export default function DashboardNavbar() {
 
                         {/* input logo */}
                         <div className='hidden md:flex items-center'>
-  <input 
-    className='bg-[#EFEEE9CC] border-0 rounded-md pr-16' 
-    type="text" 
-    placeholder='Search...'
-    onChange={handleSearch}  // Add this line to bind the search input
-  />
-  <div className='flex items-center gap-1 -ml-[65px]'>
-    <IoIosSearch className='text-xl' />
-    <div className='bg-[#0000001A] p-2.5 rounded-bl-3xl rounded-md rounded-tl-none'>
-      <MdOutlineKeyboardVoice className='text-xl text-black' />
-    </div>
-  </div>
-</div>
+                            <input
+                                className='bg-[#EFEEE9CC] border-0 rounded-md pr-16'
+                                type="text"
+                                placeholder='Search...'
+                                onChange={handleSearch}  // Add this line to bind the search input
+                            />
+                            <div className='flex items-center gap-1 -ml-[65px]'>
+                                <IoIosSearch className='text-xl' />
+                                <div className='bg-[#0000001A] p-2.5 rounded-bl-3xl rounded-md rounded-tl-none'>
+                                    <MdOutlineKeyboardVoice className='text-xl text-black' />
+                                </div>
+                            </div>
+                        </div>
 
 
 

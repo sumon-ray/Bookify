@@ -18,18 +18,17 @@ export default function Home() {
   return (
     <div>
       <Slider />
-      <OurCollection/>
-      <OurLibrary/>
-      <BookReviews/>
-      <FaqSection/>
+      <OurCollection />
+      <OurLibrary />
+      <BookReviews />
+      <AboutSection />
+      <FaqSection />
       {/* don't touch the commented part */}
       {/* <OfferSection></OfferSection> */}
       {/* <HeroSection></HeroSection> */}
-      {/* <AboutSection></AboutSection> */}
       {/* <TopAuthor/> */}
       {/* <Category/> */}
       {/* <NewsletterSection/> */}
-    
     </div>
   );
 }

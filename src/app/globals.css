@@ -5,6 +5,23 @@
 
 /* Keep your custom styles for larger screens */
 
+/* ::before,
+::after {
+  box-sizing: border-box; 
+  border-width: 0; 
+
+} */
+
+.timeline-component{
+    box-sizing: border-box; /* 1 */
+  border-width: 0; 
+
+}
+
+.timeline-item {
+    border: none; /* Remove any border */
+  }
+
 .swiper-button-prev {
     color: black !important;
 }

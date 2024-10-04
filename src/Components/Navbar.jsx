@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { GiBookmarklet, GiHamburgerMenu } from "react-icons/gi";
+import img from '../../src/assets/images/About/logo (1).png'
 
 const Navbar = () => {
   const session = useSession();
@@ -42,11 +43,10 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-4 md:px-10 px-7">
+      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7">
         {/* bookify logo */}
-        <div className="flex items-center text-[#B7B7B7]">
-          <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
-          <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
+        <div>
+          <Image src={img} className="h-[68px] w-36" height={20} width={200}/>
         </div>
 
         {/* Hamburger icon for mobile */}
@@ -97,7 +97,7 @@ const Navbar = () => {
         <div className="flex lg:justify-center   items-center gap-2">
           {session?.status === "unauthenticated" && (
             <Link href="/login">
-              <button className="btn text-[16px] lg:block hidden border-2 font-semibold bg-[#B7B7B7]  text-[#064532] p-3 px-4 rounded-lg">
+              <button className="btn text-[16px] lg:block hidden font-semibold bg-[#364957]  text-white p-3 px-4 rounded-lg">
                 Sign In
               </button>
             </Link>
