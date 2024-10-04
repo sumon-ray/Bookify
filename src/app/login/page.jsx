@@ -1,16 +1,16 @@
 "use client";
 import SocialLogin from "@/Components/SocialLogin";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { GiBookmarklet } from "react-icons/gi";
+import img from "../../../src/assets/images/About/logo (1).png";
+import Image from "next/image";
 
 const page = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const session = useSession();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ const page = () => {
     <>
       <div className="flex flex-row w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-4xl my-8">
         <div
-          className="hidden bg-contain lg:block lg:w-1/2 mx-6 my-8"
+          className="hidden bg-cover lg:block lg:w-1/2 mx-6 my-8"
           style={{
             backgroundImage: "url('https://i.ibb.co/3d0DvB0/signin.png')",
           }}
@@ -41,8 +41,12 @@ const page = () => {
 
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
           <div className="flex items-center justify-center text-[#B7B7B7]">
-            <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
-            <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
+            <Image
+              src={img}
+              className="h-[68px] w-36"
+              height={20}
+              width={200}
+            />
           </div>
 
           <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
