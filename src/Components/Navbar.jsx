@@ -115,9 +115,9 @@ const Navbar = () => {
                     <>
                       <Image
                         src={session?.data?.user?.image}
-                        width={50}
-                        height={50}
-                        className="rounded-full"
+                        width={32}
+                        height={32}
+                        className="rounded-full hover:border-2"
                         alt="profile-image"
                       ></Image>
                     </>
@@ -133,7 +133,7 @@ const Navbar = () => {
                 <>
                   <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
                     <div className="px-4 py-3">
-                      <span className="block text-sm text-gray-900 dark:text-white">
+                      <span className="block text-sm  text-gray-900 dark:text-white">
                         {session?.data?.user?.name}
                       </span>
                       <span className="block text-sm  text-gray-500 truncate">
