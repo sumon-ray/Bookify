@@ -1,10 +1,11 @@
-import MyBooks from "./myBooks/page";
+import Banner from "./myBooks/Banner";
+import MyBookCard from "./myBooks/MyBookCard";
 
 export default function Dashboard() {
     return (
         <div>
-            {/* just for testing it will be change on future */}
-            <MyBooks />
+           <Banner />
+          <MyBookCard />
         </div>
     )
 }

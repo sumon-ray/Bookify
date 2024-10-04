@@ -4,19 +4,31 @@ import NewsletterSection from "@/Components/NewsletterSection";
 import OfferSection from "@/Components/OfferSection";
 import Slider from "@/Components/(Slider)/Slider";
 import Category from "@/Components/(Category )/Category";
-// import TopAuthor from "@/Components/(TopAuthor)/TopAuthor";
+import OurCollection from "@/Components/OurCollection";
+import OurLibrary from "@/Components/OurLibrary/OurLibrary";
+import FaqSection from "@/Components/FaqSection";
+import BookReviews from "@/Components/BookReview/BookReviews";
 
+
+// import '../Components/(Slider)/style.module.css'
+
+// import TopAuthor from "@/Components/(TopAuthor)/TopAuthor";
 
 export default function Home() {
   return (
     <div>
       <Slider />
-      <OfferSection></OfferSection>
+      <OurCollection />
+      <OurLibrary />
+      <BookReviews />
+      <AboutSection />
+      <FaqSection />
+      {/* don't touch the commented part */}
+      {/* <OfferSection></OfferSection> */}
       {/* <HeroSection></HeroSection> */}
-      <AboutSection></AboutSection>
       {/* <TopAuthor/> */}
-      <Category/>
-      <NewsletterSection/>
+      {/* <Category/> */}
+      {/* <NewsletterSection/> */}
     </div>
   );
 }

@@ -1,67 +1,82 @@
 "use client";
-
-import { Open_Sans } from 'next/font/google';
-import styles from './style.module.css';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { SiGitbook } from "react-icons/si";
+import { IoIosPeople } from "react-icons/io";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import Component from './Component';
-import { Button } from 'flowbite-react';
-
-const openSans = Open_Sans({
-    subsets: ['cyrillic-ext'],
-    weight: ['400', '700', '800'],
-});
+import './slider.css'; // Ensure this is correctly pointing to your CSS
 
 const Slider = () => {
     return (
-        <div className={styles.container}>
-            <Swiper
-                slidesPerView={1}
-                spaceBetween={30}
-                loop={true}
-                pagination={{
-                    clickable: true,
-                }}
-                navigation={true}
-                modules={[Pagination, Navigation,Autoplay]}
-                autoplay={{ delay: 3000 }}
-                className={styles.mySwiper}
-            >
-                {/* Slide 1 */}
-                <SwiperSlide>
-                    <div
-                        // className="h-[100%]"
-                        className={styles.slideWrapper}
-                        style={{
-                            backgroundImage: 'url("https://i.ibb.co/8NszP8B/sample-1.jpg")',
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            height: '400px', // Set height as needed
+        <div className="bg-[#EFEEE9] md:min-h-[calc(100vh-86px)] md:flex items-center justify-between pl-32">
+            <div className="w-1/2 space-y-3">
+                <h1 className="text-2xl lg:text-5xl font-semibold text-[#000000]">Swap Books,<br /> Share Knowledge!</h1>
+                <p className="text-lg text-balance">Join Bookify today,
+                    where you can easily exchange books with fellow readers,
+                    and embark on exciting literary adventures together!</p>
+                <div className='flex items-center gap-x-10 pt-1.5 pb-0.5'>
+                    <div>
+                        <p className="font-bold text-[#000000] text-xl flex justify-start items-center gap-2">
+                            <SiGitbook className="text-3xl" /><span>300+</span>
+                        </p>
+                        <p className="font-bold text-[#000000]">Collections</p>
+                    </div>
+                    <div>
+                        <p className="font-bold text-[#000000] text-xl flex justify-start items-center gap-2">
+                            <IoIosPeople className="text-3xl" /><span>120</span>
+                        </p>
+                        <p className="font-bold text-[#000000]">Customers</p>
+                    </div>
+                </div>
+                <button className="flex items-center gap-x-1 font-bold p-3 bg-white rounded-md ">
+                    Go to collection <HiOutlineArrowNarrowRight className="text-xl mt-1" />
+                </button>
+            </div>
+
+            <div className="w-1/2">
+                <div>
+                    <Swiper
+                        className='w-full h-full'
+                        modules={[Navigation, Pagination, Autoplay]}
+                        spaceBetween={0}
+                        navigation // Enables navigation buttons
+                        pagination={{ clickable: true }}
+                        breakpoints={{
+                            1400: { slidesPerView: 2.5, spaceBetween: 0 },
+                            1200: { slidesPerView: 2.5, spaceBetween: 0 },
+                            1024: { slidesPerView: 1, spaceBetween: 0 },
+                            768: { slidesPerView: 1, spaceBetween: 80 },
                         }}
                     >
-                       
-                 <div className="flex flex-col w-2/3 lg:p-8 md:-mx-9 top-20 absolute items-center text-left">
-                 <h1 className=' flex text-3xl md:text-4xl font-bold'>
-                       H.G.Wells Empire of the Ants
-                       </h1>
-                       <p className='text-xl'>
-                       Cover up front of book and leave summary
-                       </p>
-                       <Button size='lg' className='outline   my-4 bg-zinc-500'> Shop Now</Button>
-                 </div>
-                    </div>
-                </SwiperSlide>
-          
-                {/* <SwiperSlide>
-                    <Component />
-                </SwiperSlide> */}
-            </Swiper>
+                        {/* Example Slides */}
+                        <SwiperSlide style={{ width: 150 }}>
+                            <div>
+                                <img className="h-80 w-[225px] rounded-xl" src={`https://i.postimg.cc/g2KRL9zP/download.jpg`} />
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide style={{ width: 150 }}>
+                            <div>
+                                <img className="h-80 w-[225px] rounded-xl" src="https://i.postimg.cc/prgQCK4b/download.png" />
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide style={{ width: 150 }}>
+                            <div>
+                                <img className="h-80 w-[225px] rounded-xl" src="https://i.postimg.cc/0jGh12s4/Rectangle-12-2.png" />
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide style={{ width: 150 }}>
+                            <div>
+                                <img className="h-80 w-[225px] rounded-xl" src="https://i.ibb.co/gtxLxvr/book6.jpg" />
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
+            </div>
         </div>
     );
 };
 
 export default Slider;
-
