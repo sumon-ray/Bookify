@@ -50,7 +50,8 @@ export default function DashboardNavbar() {
                         {/* input logo */}
                         <div className='hidden md:flex items-center'>
                             <input
-                                className='bg-[#EFEEE9CC] border-0 rounded-md pr-16'
+                                className='bg-[#EFEEE9CC] 
+                                outline-none focus:outline-none focus:ring-0 focus:outline-gray-600 border-none rounded-md pr-16'
                                 type="text"
                                 placeholder='Search...'
                                 onChange={handleSearch}  // Add this line to bind the search input
