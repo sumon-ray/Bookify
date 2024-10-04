@@ -2,7 +2,7 @@ import React from 'react';
 
 const BookReviews = () => {
     return (
-        <div className='md:h-[100vh]  container mx-auto my-10'>
+        <div className='md:h-[100vh] px-8 lg:px-24 container mx-auto my-10'>
             <h2 className='text-5xl font-bold text-center my-10 text-black'>Famous Book Review</h2>
             <div className='text-3xl grid grid-cols-12  lg:gap-4 gap-2 h-[790px] p-6'>
 
