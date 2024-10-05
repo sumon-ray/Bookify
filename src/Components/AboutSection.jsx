@@ -6,15 +6,16 @@ import { Button } from 'flowbite-react';
 
 const AboutSection = () => {
   return (
-    <div className="max-w-7xl mx-auto pb-10 pt-16">
+    <div className="max-w-7xl mx-auto pb-10 lg:pt-40  ">  
       <div className="flex flex-col lg:flex-row">
         <div className='lg:w-1/2 relative'>
           <Image
             src={img2}
             alt="About Image 1"
             className="w-3/4 rounded-lg shadow-xl"
-            width={500} 
+            width={400} 
             height={400}
+            
           />
           <Image
             src={img1} 
