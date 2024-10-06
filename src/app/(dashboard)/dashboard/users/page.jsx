@@ -15,7 +15,7 @@ const user = () => {
         <table className="w-full table-auto bg-gray-900 text-gray-100">
           <thead>
             <tr className="text-left">
-              <th className="p-4">User</th>
+              <th className="p-4">Name</th>
               <th className="p-4">Date</th>
               <th className="p-4">Email</th>
               <th className="p-4">Action</th>
