@@ -11,8 +11,8 @@ import './slider.css'; // Ensure this is correctly pointing to your CSS
 
 const Slider = () => {
     return (
-        <div className="bg-[#EFEEE9] md:min-h-[calc(100vh-86px)] md:flex items-center justify-between pl-32">
-            <div className="w-1/2 space-y-3">
+        <div className="bg-[#EFEEE9] md:min-h-[calc(100vh-86px)] md:flex items-center justify-between md:pl-32  ">
+            <div className="md:w-1/2 space-y-3 md:mb-0 mb-4 pl-10">
                 <h1 className="text-2xl lg:text-5xl font-semibold text-[#000000]">Swap Books,<br /> Share Knowledge!</h1>
                 <p className="text-lg text-balance">Join Bookify today,
                     where you can easily exchange books with fellow readers,
@@ -36,7 +36,7 @@ const Slider = () => {
                 </button>
             </div>
 
-            <div className="w-1/2">
+            <div className="md:w-1/2">
                 <div>
                     <Swiper
                         className='w-full h-full'
@@ -54,22 +54,22 @@ const Slider = () => {
                         {/* Example Slides */}
                         <SwiperSlide style={{ width: 150 }}>
                             <div>
-                                <img className="h-80 w-[225px] rounded-xl" src={`https://i.postimg.cc/g2KRL9zP/download.jpg`} />
+                                <img className="h-80 md:w-[225px] w-full rounded-xl" src={`https://i.postimg.cc/g2KRL9zP/download.jpg`} />
                             </div>
                         </SwiperSlide>
                         <SwiperSlide style={{ width: 150 }}>
                             <div>
-                                <img className="h-80 w-[225px] rounded-xl" src="https://i.postimg.cc/prgQCK4b/download.png" />
+                                <img className="h-80 md:w-[225px] w-full rounded-xl" src="https://i.postimg.cc/prgQCK4b/download.png" />
                             </div>
                         </SwiperSlide>
                         <SwiperSlide style={{ width: 150 }}>
                             <div>
-                                <img className="h-80 w-[225px] rounded-xl" src="https://i.postimg.cc/0jGh12s4/Rectangle-12-2.png" />
+                                <img className="h-80 md:w-[225px] w-full rounded-xl" src="https://i.postimg.cc/0jGh12s4/Rectangle-12-2.png" />
                             </div>
                         </SwiperSlide>
                         <SwiperSlide style={{ width: 150 }}>
                             <div>
-                                <img className="h-80 w-[225px] rounded-xl" src="https://i.ibb.co/gtxLxvr/book6.jpg" />
+                                <img className="h-80 md:w-[225px] w-full rounded-xl" src="https://i.ibb.co/gtxLxvr/book6.jpg" />
                             </div>
                         </SwiperSlide>
                     </Swiper>
