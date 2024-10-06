@@ -1,5 +1,5 @@
 // import HeroSection from "@/Components/HeroSection";
-import AboutSection from "@/Components/AboutSection";
+// import AboutSection from "@/Components/AboutSection";
 import NewsletterSection from "@/Components/NewsletterSection";
 import OfferSection from "@/Components/OfferSection";
 import Slider from "@/Components/(Slider)/Slider";
@@ -21,7 +21,7 @@ export default function Home() {
       <OurCollection />
       <OurLibrary />
       <BookReviews />
-      <AboutSection />
+      {/* <AboutSection /> */}
       <FaqSection />
       {/* don't touch the commented part */}
       {/* <OfferSection></OfferSection> */}

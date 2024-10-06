@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import img from '../../assets/images/About/logo (1).png'
+import img from "../../assets/images/About/logo (1).png";
 import Image from "next/image";
 
 const SignUp = () => {
@@ -44,23 +44,25 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex flex-row-reverse w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl my-8">
+    <div className="flex flex-row-reverse w-full max-w-sm mx-auto overflow-hidden   lg:max-w-4xl my-20">
       <div
-        className="hidden bg-cover mx-6 my-8 lg:block lg:w-1/2 "
+        className="hidden bg-cover lg:block lg:w-1/2 mx-6 my-8 "
         style={{
           backgroundImage: "url('https://i.ibb.co/rxGD6T6/signup.png')",
         }}
       ></div>
 
       <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
-        <div className="flex items-center justify-center text-[#B7B7B7]">
-        <Image
+        <Link href={"/"}>
+          <div className="flex items-center justify-center text-[#B7B7B7]">
+            <Image
               src={img}
               className="h-[68px] w-36"
               height={20}
               width={200}
             />
-        </div>
+          </div>
+        </Link>
 
         <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
           Welcome back!
@@ -83,7 +85,7 @@ const SignUp = () => {
               Name
             </label>
             <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300"
               type="text"
               name="name"
               id="name"
@@ -95,7 +97,7 @@ const SignUp = () => {
               Email Address
             </label>
             <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300"
               type="email"
               name="email"
               id="email"
@@ -111,7 +113,7 @@ const SignUp = () => {
             </div>
 
             <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300"
               type="password"
               name="password"
               id="password"
@@ -131,7 +133,7 @@ const SignUp = () => {
           <div className="mt-6">
             <button
               type="submit"
-              className="w-full px-6 py-3 text-sm font-medium tracking-wide  bg-[#B7B7B7]  text-[#064532] capitalize transition-colors duration-300 transform  rounded-lg"
+              className="w-full px-6 py-3 text-sm font-medium tracking-wide  bg-[#364957]  text-[#ffffff]  capitalize transition-colors duration-300 transform  rounded-lg"
               disabled={loading} // Disable button when loading
             >
               {loading ? (

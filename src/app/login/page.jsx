@@ -31,7 +31,7 @@ const page = () => {
   };
   return (
     <>
-      <div className="flex flex-row w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-4xl my-8">
+      <div className="flex flex-row w-full max-w-sm mx-auto overflow-hidden  rounded-lg  lg:max-w-4xl my-20">
         <div
           className="hidden bg-cover lg:block lg:w-1/2 mx-6 my-8"
           style={{
@@ -40,14 +40,16 @@ const page = () => {
         ></div>
 
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
-          <div className="flex items-center justify-center text-[#B7B7B7]">
-            <Image
-              src={img}
-              className="h-[68px] w-36"
-              height={20}
-              width={200}
-            />
-          </div>
+          <Link href={"/"}>
+            <div className="flex items-center justify-center text-[#B7B7B7]">
+              <Image
+                src={img}
+                className="h-[68px] w-36"
+                height={20}
+                width={200}
+              />
+            </div>
+          </Link>
 
           <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
             Welcome back!
@@ -71,7 +73,7 @@ const page = () => {
                 Email Address
               </label>
               <input
-                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300"
                 type="email"
                 name="email"
                 id="email"
@@ -93,7 +95,7 @@ const page = () => {
               </div>
 
               <input
-                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 "
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300"
                 type="password"
                 name="password"
                 id="password"
@@ -115,7 +117,7 @@ const page = () => {
             <div className="mt-6">
               <button
                 type="submit"
-                className="w-full px-6 py-3 text-sm font-medium tracking-wide bg-[#B7B7B7]  text-[#064532]  capitalize transition-colors duration-300 transform rounded-lg"
+                className="w-full px-6 py-3 text-sm font-medium tracking-wide bg-[#364957]  text-[#ffffff]  capitalize transition-colors duration-300 transform rounded-lg"
                 disabled={loading} // Disable button when loading
               >
                 {loading ? (
