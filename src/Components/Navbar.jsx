@@ -17,21 +17,21 @@ const Navbar = () => {
       title: "Home",
       path: "/",
     },
-    // {
-    //   title: "About",
-    //   path: "/about",
-    // },
+    {
+      title:"Our Books",
+      path:"/ourbooks"
+    },
     {
       title: "Contact",
       path: "/contact",
     },
     {
-      title: "About",
-      path: "/about",
+      title: "Dashboard",
+      path: "/dashboard"
     },
     {
-      title: "Dashboard",
-      path: "/dashboard",
+      title: "About",
+      path: "/about",
     },
   ];
   // State for handling mobile menu toggle
@@ -43,7 +43,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7">
+      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7 || md:fixed z-50 w-full top-0 md:rounded-br-full md:rounded-bl-full">
         {/* bookify logo */}
         <div>
           <Image src={img} className="h-[68px] w-36" height={20} width={200}/>
@@ -115,9 +115,9 @@ const Navbar = () => {
                     <>
                       <Image
                         src={session?.data?.user?.image}
-                        width={32}
-                        height={32}
-                        className="rounded-full hover:border-2"
+                        width={50}
+                        height={50}
+                        className="rounded-full"
                         alt="profile-image"
                       ></Image>
                     </>
@@ -133,7 +133,7 @@ const Navbar = () => {
                 <>
                   <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
                     <div className="px-4 py-3">
-                      <span className="block text-sm  text-gray-900 dark:text-white">
+                      <span className="block text-sm text-gray-900 dark:text-white">
                         {session?.data?.user?.name}
                       </span>
                       <span className="block text-sm  text-gray-500 truncate">
