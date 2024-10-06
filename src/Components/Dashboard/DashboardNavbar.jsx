@@ -46,12 +46,18 @@ export default function DashboardNavbar() {
                 />
               </Link>
 
-              {/* active route name show */}
-              <h3 className="text-xl font-bold pl-8 uppercase hidden md:block">
-                {pathName}
-              </h3>
-            </div>
 
+              {/* menu */}
+              <div className="md:hidden">
+                <TemporaryDrawer />
+              </div>
+
+
+
+              {/* active route name show */}
+              <h3 className='text-xl font-bold pl-8 uppercase hidden md:block'>{pathName}</h3>
+
+            </div>
             {/* input logo */}
             <div className="hidden md:flex items-center">
               <input
@@ -68,13 +74,6 @@ export default function DashboardNavbar() {
                 </div>
               </div>
             </div>
-
-            {/* bookify logo */}
-            <div className="flex md:hidden items-center text-[#B7B7B7]">
-              <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
-              <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
-            </div>
-
             {/* user profile and other */}
             <div className="flex items-center gap-4">
               {/* notification */}

@@ -17,21 +17,21 @@ const Navbar = () => {
       title: "Home",
       path: "/",
     },
-    // {
-    //   title: "About",
-    //   path: "/about",
-    // },
+    {
+      title:"Our Books",
+      path:"/ourbooks"
+    },
     {
       title: "Contact",
       path: "/contact",
     },
     {
-      title: "About",
-      path: "/about",
+      title: "Dashboard",
+      path: "/dashboard"
     },
     {
-      title: "Dashboard",
-      path: "/dashboard",
+      title: "About",
+      path: "/about",
     },
   ];
   // State for handling mobile menu toggle
@@ -46,11 +46,12 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7">
-      {/* bookify logo */}
-      <div>
-        <Image src={img} className="h-[68px] w-36" height={20} width={200} />
-      </div>
+    <div>
+      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7 || md:fixed z-50 w-full top-0 md:rounded-br-ful md:rounded-bl-ful">
+        {/* bookify logo */}
+        <div>
+          <Image src={img} className="h-[68px] w-36" height={20} width={200}/>
+        </div>
 
       {/* Hamburger icon for mobile */}
       <div
@@ -166,6 +167,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
+    </div>
   );
 };
 

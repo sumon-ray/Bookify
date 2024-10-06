@@ -6,7 +6,7 @@ import OurJourney from "./OurJourney/OurJourney";
 
 const AboutPage = () => {
   return (
-    <div>
+    <div className="pt-10 md:pt-12">
       <AboutSection />
       {/* <Review /> */}
       <OurJourney />

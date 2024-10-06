@@ -11,7 +11,7 @@ import './slider.css'; // Ensure this is correctly pointing to your CSS
 
 const Slider = () => {
     return (
-        <div className="bg-[#EFEEE9] md:min-h-[calc(100vh-86px)] md:flex items-center justify-between md:pl-32  ">
+        <div className="bg-[#EFEEE9] md:min-h-[99.7vh] md:flex items-center justify-between md:pl-32  ">
             <div className="md:w-1/2 space-y-3 md:mb-0 mb-4 pl-10">
                 <h1 className="text-2xl lg:text-5xl font-semibold text-[#000000]">Swap Books,<br /> Share Knowledge!</h1>
                 <p className="text-lg text-balance">Join Bookify today,
