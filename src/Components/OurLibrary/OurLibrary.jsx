@@ -24,7 +24,7 @@ const OurLibrary = () => {
 
   return (
     <div className="max-w-7xl mx-auto py-16">
-      <h1 className="text-4xl font-bold text-center pb-9">Explore Our Library</h1>
+      <h1 className="md:text-4xl text-2xl font-bold text-center pb-9">Explore Our Library</h1>
 
       {/* Tab Buttons */}
       <div className="space-x-3 py-4">
@@ -49,20 +49,20 @@ const OurLibrary = () => {
       </div>
 
       {/* Book Display */}
-      <div className="flex items-start gap-12 pt-2">
+      <div className="flex lg:flex-row flex-col items-start  gap-12 pt-2">
         {/* Static Image */}
-        <figure className="w-[30%]">
+        <figure className="lg:w-[30%] w-full ">
           <Image
             src={img}
             width={400}
             height={100}
-            className="w-[400px] h-auto rounded-2xl"
+            className="lg:w-[400px] w-full lg:h-auto h-[300px] rounded-2xl bg-cover"
             alt="Library Feature Image"
           />
         </figure>
 
         {/* Dynamic Book Grid */}
-        <div className="grid md:grid-cols-4 gap-8 w-[70%]">
+        <div className="md:grid flex flex-col md:grid-cols-4 gap-8 lg:w-[70%] md:w-[750px] w-full items-center justify-center">
           {data?.slice(0, 12).map((book, i) => (
             <Link
               href={`/details/${book?._id}`}
