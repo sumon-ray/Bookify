@@ -12,6 +12,10 @@
 
 } */
 
+body{
+ /* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ; */
+}
+
 .timeline-component{
     box-sizing: border-box; /* 1 */
   border-width: 0; 

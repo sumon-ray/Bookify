@@ -1,3 +1,4 @@
+
 import { FaTrashAlt } from 'react-icons/fa';
 
 export default function page() {
@@ -52,4 +53,17 @@ export default function page() {
     </div>
   );
 };
+
+
+import React from 'react';
+
+const page = () => {
+    return (
+        <div>
+         this is user pageeeeee..
+        </div>
+    );
+};
+
+export default page;
 

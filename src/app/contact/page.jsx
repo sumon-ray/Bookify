@@ -19,7 +19,7 @@ export default function page() {
 
 
     return (
-        <section className="my-9">
+        <section className="my-7 pt-20">
             <div className="flex flex-col md:flex-row items-center justify-center gap-20">
 
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
