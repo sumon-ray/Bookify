@@ -1,3 +1,4 @@
+
 import { FaTrashAlt } from 'react-icons/fa';
 import { FiEdit3 } from "react-icons/fi";
 
@@ -57,4 +58,17 @@ export default function page() {
     </div>
   );
 };
+
+
+import React from 'react';
+
+const page = () => {
+    return (
+        <div>
+         this is user pageeeeee..
+        </div>
+    );
+};
+
+export default page;
 
