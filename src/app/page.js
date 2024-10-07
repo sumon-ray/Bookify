@@ -1,5 +1,5 @@
 // import HeroSection from "@/Components/HeroSection";
-import AboutSection from "@/Components/AboutSection";
+// import AboutSection from "@/Components/AboutSection";
 import NewsletterSection from "@/Components/NewsletterSection";
 import OfferSection from "@/Components/OfferSection";
 import Slider from "@/Components/(Slider)/Slider";
@@ -18,18 +18,17 @@ export default function Home() {
   return (
     <div>
       <Slider />
-      <OurCollection/>
-      <OurLibrary/>
-      <FaqSection/>
-      <BookReviews/>
+      <OurCollection />
+      <OurLibrary />
+      <BookReviews />
+      {/* <AboutSection /> */}
+      <FaqSection />
       {/* don't touch the commented part */}
       {/* <OfferSection></OfferSection> */}
       {/* <HeroSection></HeroSection> */}
-      {/* <AboutSection></AboutSection> */}
       {/* <TopAuthor/> */}
       {/* <Category/> */}
       {/* <NewsletterSection/> */}
-    
     </div>
   );
 }

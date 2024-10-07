@@ -4,34 +4,34 @@ import React from "react";
 const Banner = () => {
   const backgroundImageStyle = {
     backgroundImage: "url('/image/banner.png')",
-    backgroundSize: "cover", // Ensures the image covers the entire div
-    backgroundPosition: "center", // Centers the image
-    height: "400px", // Adjust the height as needed
-    width: "100%", // Full width
+    backgroundSize: "cover", 
+    backgroundPosition: "center", 
+    height: "400px", 
+    width: "100%",
   };
   const backgroundImageStyle2 = {
     backgroundImage: "url('/image/RectangleLight.png')",
-    backgroundSize: "cover", // Ensures the image covers the entire div
-    backgroundPosition: "center", // Centers the image
-    height: "400px", // Adjust the height as needed
-    width: "50%", // Full width
+    backgroundSize: "cover", 
+    backgroundPosition: "center", 
+    height: "400px", 
+    width: "50%", 
   };
 
  
   const backgroundImageStyle3 = {
     backgroundImage: "url('/image/banner.png')",
-    backgroundSize: "cover", // Ensures the image covers the entire div
-    backgroundPosition: "center", // Centers the image
-    height: "400px", // Adjust the height as needed
-    width: "100%", // Full width on all screens
+    backgroundSize: "cover", 
+    backgroundPosition: "center", 
+    height: "400px", 
+    width: "100%", 
   };
 
   const backgroundImageStyle4 = {
     backgroundImage: "url('/image/RectangleLight.png')",
-    backgroundSize: "cover", // Ensures the image covers the entire div
-    backgroundPosition: "center", // Centers the image
-    height: "100%", // Full height of the parent div
-    width: "100%", // Full width for mobile, adjust for larger screens
+    backgroundSize: "cover",
+    backgroundPosition: "center", 
+    height: "100%", 
+    width: "100%",
   };
 
 
@@ -49,11 +49,11 @@ const Banner = () => {
             Dialogue is a many-sided critical concept; at once an ancient
             philosophical genre, a formal component of fiction and drama,
           </p>
-          <div className="flex gap-2">
-            <button className="bg-[#364957] px-2 py-2 rounded-md text-white ">
+          <div className="flex gap-6 ">
+            <button className="bg-[#364957] px-2 py-2   rounded-md text-white ">
               Claim Discount
             </button>
-            <button className="px-1 py-1  lg:px-2 lg:py-2 rounded-md text-[#364957] bg-[#FFFFFF]">
+            <button className="px-2 py-2   rounded-md text-[#364957] bg-[#FFFFFF]">
               Open Flash
             </button>
           </div>

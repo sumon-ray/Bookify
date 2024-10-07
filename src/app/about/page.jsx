@@ -1,16 +1,16 @@
-// src/app/about/AboutPage.js
 "use client";
 
-import React from "react";
-import AboutSection from "./(AboutSection)/AboutSection"; // Adjust as necessary based on your structure
-// import Review from "./Review";
+import AboutSection from "./AboutSection"; 
+import HowItWorks from "./HowItWorks/HowItWorks";
+import OurJourney from "./OurJourney/OurJourney";
 
 const AboutPage = () => {
   return (
-    <div>
+    <div className="pt-10 md:pt-12">
       <AboutSection />
       {/* <Review /> */}
-
+      <OurJourney />
+      <HowItWorks />
     </div>
   );
 };

@@ -41,6 +41,7 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
 
   pages: {
     signIn: "/login",
@@ -53,10 +54,10 @@ const handler = NextAuth({
         try {
           const db = await connectDB();
           const userCollection = db.collection("users");
-  
+
           // Check if the user already exists
           const userExist = await userCollection.findOne({ email });
-  
+
           if (!userExist) {
             // Only insert necessary fields
             const newUser = { name, email, image, createdAt: new Date() };
@@ -74,7 +75,6 @@ const handler = NextAuth({
       }
     },
   },
-  
 });
 
 export { handler as GET, handler as POST };

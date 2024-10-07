@@ -29,7 +29,7 @@ export default function Aside() {
                         </li>
 
                         <li>
-                            <Link href={``} className="flex items-center gap-1 px-2 py-1">
+                            <Link href={`/dashboard`} className="flex items-center gap-1 px-2 py-1">
                                 <IoHomeOutline />
                                 <span className="font-bold">Home</span>
                             </Link>
@@ -71,7 +71,7 @@ export default function Aside() {
                         </li>
 
                         <li>
-                            <Link href={``} className="flex items-center gap-1 p-2 ">
+                            <Link href={'/dashboard/users'} className="flex items-center gap-1 p-2 ">
                                 <TbUserShield OpenReader className="text-xl" />
                                 <span className="font-bold">Users</span>
                             </Link>
@@ -85,7 +85,7 @@ export default function Aside() {
                             Bookify pro</h1>
                         <p className="text-xs pb-1.5">Get access to all <br />
                             features on tetumbas</p>
-                        <button className="bg-[#B7B7B7BF bg-white font-semibold py-1 px-3 rounded-md ">Get pro</button>
+                        <button className="bg-[#364957] font-semibold py-1 px-3 rounded-md text-white">Get pro</button>
                     </div>
 
                 </div>
