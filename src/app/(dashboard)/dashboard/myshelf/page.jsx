@@ -1,4 +1,4 @@
-export default function page() => {
+export default function page()  {
     return (
       <div className="py-8 bg-white px-8">
         <div className="flex justify-between items-center mb-4">
