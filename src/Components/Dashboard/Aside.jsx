@@ -7,7 +7,7 @@ import { MdMenuBook } from "react-icons/md";
 import { PiBooks } from "react-icons/pi";
 import { TbExchange, TbUserShield } from "react-icons/tb";
 
-
+import { FiBookOpen } from "react-icons/fi";
 
 
 
@@ -71,9 +71,17 @@ export default function Aside() {
                         </li>
 
                         <li>
-                            <Link href={'/dashboard/users'} className="flex items-center gap-1 p-2 ">
+
+                            <Link href={`/dashboard/users`} className="flex items-center gap-1 p-2 ">
+
                                 <TbUserShield OpenReader className="text-xl" />
                                 <span className="font-bold">Users</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href={`/dashboard/myshelf`} className="flex items-center gap-1 p-2 ">
+                                <FiBookOpen OpenReader className="text-xl" />
+                                <span className="font-bold">My Shelft</span>
                             </Link>
                         </li>
 

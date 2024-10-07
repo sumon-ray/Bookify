@@ -1,7 +1,7 @@
 import React from 'react';
-
+// 
 const BookReviews = () => {
-    return (
+    return ( 
         <div className='md:h-[100vh] h-full px-8 lg:px-24 container mx-auto lg:my-6 md:mb-[150px] mb-[550px]'>
             <h2 className='md:text-4xl text-2xl font-bold text-center md:my-10 my-3 text-black'>Famous Book Review</h2>
             <div className='text-3xl grid grid-cols-12  lg:gap-4 gap-2 h-[790px] p-6  '>
