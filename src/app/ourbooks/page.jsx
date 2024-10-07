@@ -1,5 +1,6 @@
+import AllBooks from "./AllBooks";
+import Categories from "./Categories";
 import OurBooksBanner from "./OurBooksBanner";
-import Trending from "./Trending";
 import Writers from "./Writers";
 
 export default function page() {
@@ -7,7 +8,8 @@ export default function page() {
         <div className="space-y-6 pb-14">
             <OurBooksBanner />
             <Writers />
-            <Trending />
+            <Categories />
+            <AllBooks />
         </div>
     )
 }
