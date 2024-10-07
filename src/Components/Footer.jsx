@@ -1,7 +1,6 @@
 "use client";
 
-import { divider } from "@nextui-org/react";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
@@ -21,7 +20,7 @@ const Footer = () => {
   if (
     route.includes("dashboard") ||
     route.includes("/login") ||
-    route.includes("/signup")
+    route.includes("/sighup")
   ) {
     return <div></div>;
   }

@@ -1,12 +1,12 @@
 import { connectDB } from "@/lib/connectDB";
-
 export const GET = async () => {
   try {
-    const db = await connectDB;
+    const db = await connectDB();
     const userCollection = db.collection("users");
 
     // fetch all data
     const users = await userCollection.find().toArray();
+    // console.log(users)
 
     // response with the users data
     return Response.json(users, { status: 200 });
