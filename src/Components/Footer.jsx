@@ -16,7 +16,7 @@ import { FaGooglePay } from "react-icons/fa";
 
 const Footer = () => {
   const route = usePathname();
-  console.log(route);
+  // console.log(route);
 
   if (
     route.includes("dashboard") ||
