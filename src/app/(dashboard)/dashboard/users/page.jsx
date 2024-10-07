@@ -1,18 +1,19 @@
 import { FaTrashAlt } from 'react-icons/fa';
+import { FiEdit3 } from "react-icons/fi";
 
 export default function page() {
   const users = [
-    { id: 1, name: "wrong tru", date: "10/6/2024", email: "info@fashionshop.com" },
-    { id: 2, name: "harray porter", date: "10/6/2024", email: "info@fashionshop.com" },
-    { id: 3, name: "Ribbed Tank Top", date: "10/6/2024", email: "info@fashionshop.com" },
-    { id: 4, name: "Oversized Motif T-shirt", date: "10/6/2024", email: "info@fashionshop.com" },
-    { id: 5, name: "Jersey thong body", date: "10/6/2024", email: "info@fashionshop.com" },
+    { id: 1, name: "wrong tru",  email: "info@fashionshop.com" },
+    { id: 2, name: "harray porter",  email: "info@fashionshop.com" },
+    { id: 3, name: "Ribbed Tank Top",  email: "info@fashionshop.com" },
+    { id: 4, name: "Oversized Motif T-shirt",  email: "info@fashionshop.com" },
+    { id: 5, name: "Jersey thong body",  email: "info@fashionshop.com" },
   ];
 
   return (
     <div className="container mx-auto p-4">
       <div className="overflow-x-auto">
-        <table className="w-full table-auto bg-gray-900 text-gray-100">
+        <table className="w-full table-auto  text-black">
           <thead>
             <tr className="text-left">
               <th className="p-4">Name</th>
@@ -37,13 +38,17 @@ export default function page() {
                     </div>
                   </div>
                 </td>
-                <td className="p-4">  {new Date(user.date).toLocaleDateString()}</td>
+                <td className="p-4">  {new Date().toLocaleDateString()}</td>
                 <td className="p-4">{user.email}</td>
-                <td className="p-4">
-                  <button className="text-red-500 hover:text-red-700">
-                    <FaTrashAlt size={20} />
-                  </button>
-                </td>
+                <td className="p-4 flex gap-8">
+                <button className="text-red-500 hover:text-red-700">
+                  <FaTrashAlt size={20} />
+                </button>
+                <button className="text-green-500 hover:text-green-700">
+                  <FiEdit3 size={20} />
+                </button>
+              </td>
+
               </tr>
             ))}
           </tbody>
