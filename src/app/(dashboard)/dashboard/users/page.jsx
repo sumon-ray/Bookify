@@ -1,6 +1,6 @@
 import { FaTrashAlt } from 'react-icons/fa';
 
-const user = () => {
+export default function page() => {
   const users = [
     { id: 1, name: "wrong tru", date: "10/6/2024", email: "info@fashionshop.com" },
     { id: 2, name: "harray porter", date: "10/6/2024", email: "info@fashionshop.com" },
