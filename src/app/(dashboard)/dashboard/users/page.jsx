@@ -2,10 +2,13 @@
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 
 const page = () => {
   // Fetch users on component mount
+  const session = useSession();
   const { data, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
@@ -14,15 +17,19 @@ const page = () => {
     },
   });
 
+
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/users/${id}`);
+      await axios.delete(`http://localhost:3000/api/users/${id}`);
       // Refetch users after deletion
       refetch();
     } catch (error) {
       console.error("Error deleting user:", error);
     }
   };
+
+  console.log(session)
+
 
   return (
     <section className="container px-4 mx-auto">
@@ -198,7 +205,10 @@ const page = () => {
                             </svg>
                           </button>
 
-                          <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                          <Link
+                            href={`/dashboard/users/${user._id}`}
+                            className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
@@ -213,7 +223,7 @@ const page = () => {
                                 d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
                               />
                             </svg>
-                          </button>
+                          </Link>
                         </div>
                       </td>
                     </tr>
