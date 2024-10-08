@@ -10,7 +10,8 @@ import { useSearchContext } from "@/app/(dashboard)/dashboard/myBooks/SearchProv
 import Link from "next/link";
 import img from "../../assets/images/About/logo (1).png";
 import Image from "next/image";
-
+import Lottie from "lottie-react";
+import lottieImage from "../../../public/voice3.json";
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
@@ -90,24 +91,40 @@ export default function DashboardNavbar() {
               </h3>
             </div>
 
-            <div className="hidden md:flex items-center">
-              <input
-                className="bg-[#EFEEE9CC] 
-                                outline-none focus:outline-none focus:ring-0 focus:outline-gray-600 border-none rounded-md pr-16"
-                type="text"
-                placeholder="Search..."
-                onChange={handleSearch}
-                value={searchQuery}
-              />
-              <div className="flex items-center gap-1 -ml-[65px]">
-                <IoIosSearch className="text-xl" onClick={handleSearchClick} />
-                <div
-                  className={`bg-[#0000001A] p-2.5 rounded-bl-3xl rounded-md rounded-tl-none ${
-                    isListening ? "animate-pulse" : ""
-                  }`}
-                  onClick={handleVoiceInput}
-                >
-                  <MdOutlineKeyboardVoice className="text-xl text-black" />
+            <div className="flex items-center justify-center w-full">
+              <div className="relative w-full max-w-md">
+                <input
+                  className="bg-[#EFEEE9CC] mx-auto  w-full
+                 outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1]     focus:border-[#a1a5a8b1]  
+                 rounded-md py-3  px-4 pr-14 sm:pr-16 md:pr-20"
+                  type="text"
+                  placeholder="Search..."
+                  onChange={handleSearch}
+                  value={searchQuery}
+                />
+                <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
+                  <IoIosSearch
+                    className="text-xl cursor-pointer"
+                    onClick={handleSearchClick}
+                  />
+                  <div
+                    className={`bg-[#0000001A] p-3 translate-x-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer ${
+                      isListening ? "" : ""
+                    }`}
+                    onClick={handleVoiceInput}
+                  >
+                    {isListening ? (
+                      <Lottie
+                        animationData={lottieImage}
+                        aria-label="Lottie animation"
+                        loop
+                        className=" w-[40px] h-[24px]"
+                        autoplay
+                      />
+                    ) : (
+                      <MdOutlineKeyboardVoice className="text-2xl text-black" />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

@@ -6,14 +6,14 @@ import { FaFilter } from "react-icons/fa";
 import { HiOutlineBookOpen } from "react-icons/hi";
 import HomePagination from "./HomePagination";
 import Lottie from "lottie-react";
-import lottieImage from "../../../..//../public/image/404.json"; 
+import lottieImage from "../../../..//../public/image/404.json";
 
 const MyBookCard = () => {
-  const [allBooks, setAllBooks] = useState([]); 
-  const [filteredBooks, setFilteredBooks] = useState([]); 
+  const [allBooks, setAllBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("Classic");
   const [error, setError] = useState(null);
-  const { searchQuery } = useSearchContext(); 
+  const { searchQuery } = useSearchContext();
 
   const genres = [
     "Classic",
@@ -36,21 +36,21 @@ const MyBookCard = () => {
       );
       setFilteredBooks(filtered);
     } else {
-      setFilteredBooks(allBooks); 
+      setFilteredBooks(allBooks);
     }
   }, [searchQuery, allBooks]);
 
   const fetchBooksByGenre = (genre) => {
-    setError(null); 
+    setError(null);
     fetch(`https://bookify-server-lilac.vercel.app/books?genre=${genre}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.length === 0) {
-          setAllBooks([]); 
-          setFilteredBooks([]); 
+          setAllBooks([]);
+          setFilteredBooks([]);
         } else {
-          setAllBooks(data); 
-          setFilteredBooks(data); 
+          setAllBooks(data);
+          setFilteredBooks(data);
         }
       })
       .catch((error) => {
@@ -65,7 +65,6 @@ const MyBookCard = () => {
 
   return (
     <div className="container mx-auto px-8 md:px-0 pb-8">
-
       <div className="py-2 flex items-center justify-between">
         <h1 className="text-[#000000] font-semibold text-[18.61px]">
           Best Popular
@@ -76,13 +75,13 @@ const MyBookCard = () => {
           <select
             value={selectedGenre}
             onChange={handleGenreChange}
-            className="pl-10 sm:pl-12 pr-4 py-2 text-center text-xs sm:text-sm md:text-base text-black outline outline-[#364957] outline-1 rounded-lg appearance-none bg-transparent custom-select focus:outline-none focus:ring- 4 focus:ring-[#131515] focus:bg-white focus:text-black hover:bg-gray-100 custom-select"
+            className="pl-10 sm:pl-12 pr-4 py-2 text-center text-xs sm:text-sm md:text-base text-black outline-none  focus:outline-none focus:ring-0  border border-[#a1a5a8b1]     focus:border-[#a1a5a8b1]    rounded-lg appearance-none bg-transparent custom-select  focus:text-black  custom-select"
           >
             {genres.map((genre) => (
               <option
                 key={genre}
                 value={genre}
-                className="hover:bg-[#364957] !hover:text-white outline-none "
+                className="hover:bg-[#364957]  border border-[#a1a5a8b1]     focus:border-[#a1a5a8b1]   !hover:text-white outline-none "
               >
                 {genre}
               </option>
@@ -90,7 +89,7 @@ const MyBookCard = () => {
           </select>
         </div>
       </div>
-
+      {/* outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1]     focus:border-[#a1a5a8b1]   */}
       <style jsx>{`
         .custom-select {
           -webkit-appearance: none;
@@ -103,7 +102,7 @@ const MyBookCard = () => {
       {error ? (
         <div className="text-center py-8">
           <img
-            src="/path_to_error_image/book_logo.png" 
+            src="/path_to_error_image/book_logo.png"
             alt="Error"
             className="mx-auto w-32 h-32 mb-4"
           />
@@ -112,14 +111,13 @@ const MyBookCard = () => {
       ) : filteredBooks.length === 0 ? (
         <div className="col-span-full flex flex-col items-center   justify-center">
           {/* <HiOutlineBookOpen className="w-20 h-20 text-gray-400 mb-4" /> */}
-          <Lottie 
+          <Lottie
             animationData={lottieImage}
-           
-            aria-label="Lottie animation" 
-            loop 
-            className='w-48  h-48 '
-            autoplay 
-        />
+            aria-label="Lottie animation"
+            loop
+            className="w-48  h-48 "
+            autoplay
+          />
           <h2 className="text-xl font-semibold text-gray-700 mb-2">
             No books found
           </h2>
@@ -129,7 +127,6 @@ const MyBookCard = () => {
           </p>
         </div>
       ) : (
-
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredBooks.map((book, index) => (
             <div
@@ -149,8 +146,7 @@ const MyBookCard = () => {
         </div>
       )}
 
-    <HomePagination />
-
+      <HomePagination />
     </div>
   );
 };
