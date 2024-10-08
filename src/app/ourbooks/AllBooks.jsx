@@ -17,6 +17,10 @@ export default function AllBooks() {
         }
     })
 
+    const uniqueGenre = [...new Set(data?.map(book => book.Genre))];
+    console.log(uniqueGenre)
+
+
 
 
 
@@ -25,51 +29,70 @@ export default function AllBooks() {
         <div className='pt-7 max-w-7xl mx-auto flex gap-10'>
 
             {/* filter option */}
-            <div className='w-[18%] space-y-2'>
+            <div className='w-[22%] space-y-2'>
                 <h3 className='text-lg font-bold'>Filter Option</h3>
                 <div className='h-96 space-y-4'>
 
-                    <select className='w-56 border border-[#EFEEE9] rounded-md'>
+                    <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
                         <option value="volvo">Volvo</option>
                         <option value="saab">Saab</option>
                         <option value="mercedes">Mercedes</option>
                         <option value="audi">Audi</option>
                     </select>
 
-                    <select className='w-56 border border-[#EFEEE9] rounded-md'>
+                    <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
                         <option value="volvo">Volvo</option>
                         <option value="saab">Saab</option>
                         <option value="mercedes">Mercedes</option>
                         <option value="audi">Audi</option>
                     </select>
 
-                    <select className='w-56 border border-[#EFEEE9] rounded-md'>
+                    <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
                         <option value="volvo">Volvo</option>
                         <option value="saab">Saab</option>
                         <option value="mercedes">Mercedes</option>
                         <option value="audi">Audi</option>
                     </select>
 
-                    <select className='w-56 border border-[#EFEEE9] rounded-md'>
+                    <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
                         <option value="volvo">Volvo</option>
                         <option value="saab">Saab</option>
                         <option value="mercedes">Mercedes</option>
                         <option value="audi">Audi</option>
                     </select>
-
 
                     {/* check box */}
                     <div>
-                        <ul className="w-56 text-sm font-medium border rounded-md">
-                            <h3 className="ps-3 pt-1">Category</h3>
-                            <li className="w-full">
-                                <div className="flex items-center ps-3">
-                                    <input type="checkbox" className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
-                                    <label className="w-full py-3 ms-2 text-sm font-medium ">
-                                        Vue JS
-                                    </label>
+                        <ul className="text-sm font-medium border rounded-md bg-white">
+                            <h3 className="ps-3 pt-2 pb-1">Category</h3>
+                            {/* checkbox */}
+                            <div className='flex'>
+                                <div>
+                                    {
+                                        uniqueGenre?.slice(0, 6).map(book => <li className="w-full">
+                                            <div className="flex items-center ps-3">
+                                                <input type="checkbox" className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                                                <label className="w-full py-3 ms-2 text-sm font-medium ">
+                                                    {book.split(' ').slice(0, 1)}
+                                                </label>
+                                            </div>
+                                        </li>)
+                                    }
                                 </div>
-                            </li>
+
+                                <div>
+                                    {
+                                        uniqueGenre?.slice(6, 12).map(book => <li className="w-full">
+                                            <div className="flex items-center ps-3">
+                                                <input type="checkbox" className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                                                <label className="w-full py-3 ms-2 text-sm font-medium ">
+                                                    {book.split(' ').slice(0, 1)}
+                                                </label>
+                                            </div>
+                                        </li>)
+                                    }
+                                </div>
+                            </div>
                         </ul>
                     </div>
 
@@ -77,7 +100,7 @@ export default function AllBooks() {
             </div>
 
             {/* Books */}
-            <div className='w-[82%] space-y-2'>
+            <div className='w-[80%] space-y-2'>
                 <h3 className='text-lg font-bold'>Books</h3>
                 <div className='grid grid-cols-5 gap-8'>
                     {
