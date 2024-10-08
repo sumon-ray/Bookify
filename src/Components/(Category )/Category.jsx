@@ -61,7 +61,7 @@ const Category = () => {
                         onChange={(e) => setActiveGenre(e.target.value)}
                         value={activeGenre}
                         icon={HiOutlineBookOpen} // Add icon to make it more stylish
-                        className="block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
+                        className="block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500"
                     >
                         <option value="">Select a Genre</option>
                         {genres.length > 0 ? (

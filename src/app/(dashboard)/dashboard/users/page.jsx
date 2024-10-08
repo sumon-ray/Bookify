@@ -34,7 +34,7 @@ const page = () => {
   return (
     <section className="container px-4 mx-auto">
       <div className="flex items-center gap-x-3">
-        <h2 className="text-lg font-medium text-gray-800 dark:text-white">
+        <h2 className="text-lg font-medium text-gray-800 ">
           Team members
         </h2>
 
@@ -157,7 +157,7 @@ const page = () => {
                               alt={user?.name}
                             />
                             <div>
-                              <h2 className="font-medium text-gray-800 dark:text-white ">
+                              <h2 className="font-medium text-gray-800  ">
                                 {user?.name}
                               </h2>
                               <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
