@@ -27,10 +27,10 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-white text-black py-12 px-8 ">
+    <footer className="bg-white text-black md:py-6 lg:py-12 md:px-4 lg:px-8 ">
       <div className="w-full flex mx-auto gap-8 px-4 flex-col md:flex-row">
         <div className="w-full md:w-2/3 border-2 p-2 py-6 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-5">
-          <div className="md:flex justify-between gap-24 ">
+          <div className="md:flex justify-between md:gap-4 lg:gap-24 p-2 ">
             {/* Contact Section */}
             <div className="space-y-4">
               <h2 className="text-lg font-bold">Contact Us</h2>
@@ -159,7 +159,7 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="p-2 rounded-md w-[250px] text-gray-800"
+                className="p-2 rounded-md w-full text-gray-800"
               />
               <button
                 type="submit"
