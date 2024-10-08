@@ -134,7 +134,7 @@ const MyBookCard = () => {
           {filteredBooks.map((book, index) => (
             <div
               key={index}
-              className="bg-white p-4 rounded-lg shadow-md transition-shadow hover:shadow-lg"
+              className="bg-[#EFEEE9] p-4 rounded-lg shadow-sm transition-shadow "
             >
               <img
                 src={book.coverImage}
