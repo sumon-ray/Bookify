@@ -22,7 +22,7 @@ export default function Aside() {
                     <ul className="space-y-1 font-medium">
 
                         <li>
-                            <Link href={``} className="flex items-center gap-1 px-2 py-1 ">
+                            <Link href={`/dashboard/dashboardM`} className="flex items-center gap-1 px-2 py-1 ">
                                 <LuLayoutDashboard />
                                 <span className="font-bold">Dashboard</span>
                             </Link>

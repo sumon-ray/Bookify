@@ -384,6 +384,7 @@ const BookReviews = () => {
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
 
