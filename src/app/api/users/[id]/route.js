@@ -28,3 +28,26 @@ export async function DELETE(req, { params }) {
     );
   }
 }
+
+
+export async function PUT(req, { params }) {
+    const db = await connectDB();
+    const { id } = params;
+    const data = await req.json();
+  
+    try {
+      const result = await db.collection("users").updateOne(
+        { _id: new ObjectId(id) },
+        { $set: data }
+      );
+  
+      if (result.matchedCount === 0) {
+        return new Response(JSON.stringify({ message: "User not found" }), { status: 404 });
+      }
+  
+      return new Response(JSON.stringify({ message: "User updated successfully" }), { status: 200 });
+    } catch (error) {
+      console.error("Error updating user:", error);
+      return new Response(JSON.stringify({ message: "Error updating user", error: error.message }), { status: 500 });
+    }
+  }
