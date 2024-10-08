@@ -55,7 +55,7 @@ const TopAuthor = () => {
 
                         <div className="w-2/3 p-4 md:p-4">
                             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Fiction</p>
-                            <h1 className=" font-bold text-gray-800 dark:text-white">War and Peace</h1>
+                            <h1 className=" font-bold text-gray-800 ">War and Peace</h1>
 
                             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400"><span className="font-bold">author:</span> Fyodor Dostoevsky</p>
                             <p className=" text-sm text-gray-600 dark:text-gray-400"><span className="font-bold">condition:</span> Good</p>
@@ -73,7 +73,7 @@ const TopAuthor = () => {
 
                         <div className="w-2/3 p-4 md:p-4">
                             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Fiction</p>
-                            <h1 className=" font-bold text-gray-800 dark:text-white">War and Peace</h1>
+                            <h1 className=" font-bold text-gray-800 ">War and Peace</h1>
 
                             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400"><span className="font-bold">author:</span> Fyodor Dostoevsky</p>
                             <p className=" text-sm text-gray-600 dark:text-gray-400"><span className="font-bold">condition:</span> Good</p>
@@ -91,7 +91,7 @@ const TopAuthor = () => {
 
                         <div className="w-2/3 p-4 md:p-4">
                             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Fiction</p>
-                            <h1 className=" font-bold text-gray-800 dark:text-white">War and Peace</h1>
+                            <h1 className=" font-bold text-gray-800 ">War and Peace</h1>
 
                             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400"><span className="font-bold">author:</span> Fyodor Dostoevsky</p>
                             <p className=" text-sm text-gray-600 dark:text-gray-400"><span className="font-bold">condition:</span> Good</p>
@@ -109,7 +109,7 @@ const TopAuthor = () => {
 
                         <div className="w-2/3 p-4 md:p-4">
                             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Fiction</p>
-                            <h1 className=" font-bold text-gray-800 dark:text-white">War and Peace</h1>
+                            <h1 className=" font-bold text-gray-800 ">War and Peace</h1>
 
                             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400"><span className="font-bold">author:</span> Fyodor Dostoevsky</p>
                             <p className=" text-sm text-gray-600 dark:text-gray-400"><span className="font-bold">condition:</span> Good</p>
