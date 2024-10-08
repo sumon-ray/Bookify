@@ -22,9 +22,12 @@
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "flowbite-react": "^0.10.1",
     "framer-motion": "^11.9.0",
     "lottie-react": "^2.4.0",
+    "lucide-react": "^0.447.0",
     "mongoose": "^8.6.3",
     "next": "^14.2.14",
     "next-auth": "^4.24.8",
@@ -41,6 +44,8 @@
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.14.0",
     "swiper": "^11.1.14",
+    "tailwind-merge": "^2.5.3",
+    "tailwindcss-animate": "^1.0.7",
     "three": "^0.169.0"
   },
   "devDependencies": {

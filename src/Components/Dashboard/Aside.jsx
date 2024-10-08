@@ -74,8 +74,6 @@ export default function Aside() {
 
                             <Link href={`/dashboard/users`} className="flex items-center gap-1 p-2 ">
 
-                            <Link href={'/dashboard/users'} className="flex items-center gap-1 p-2 ">
-
                                 <TbUserShield OpenReader className="text-xl" />
                                 <span className="font-bold">Users</span>
                             </Link>
