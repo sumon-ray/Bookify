@@ -2,18 +2,27 @@
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Users } from "lucide-react";
+import Image from "next/image";
 
 const page = () => {
   // Fetch users on component mount
-  const { data } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios("https://bookify-server-lilac.vercel.app/users");
-      const data = await res.data;
-      return data;
+      const res = await axios.get("http://localhost:3000/api/users");
+      return res.data;
     },
   });
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/api/users/${id}`);
+      // Refetch users after deletion
+      refetch();
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
 
   return (
     <section className="container px-4 mx-auto">
@@ -129,8 +138,10 @@ const page = () => {
                           />
 
                           <div className="flex items-center gap-x-2">
-                            <img
+                            <Image
                               className="object-cover w-10 h-10 rounded-full"
+                              width={30}
+                              height={30}
                               src={
                                 user?.image
                                   ? user?.image
@@ -167,7 +178,10 @@ const page = () => {
 
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <div className="flex items-center gap-x-6">
-                          <button className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
+                          <button
+                            onClick={() => handleDelete(user?._id)}
+                            className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
