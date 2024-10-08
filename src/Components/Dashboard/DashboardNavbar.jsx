@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
 import { GiBookmarklet } from "react-icons/gi";
 import TemporaryDrawer from "./Drawer";
@@ -9,34 +10,72 @@ import { useSearchContext } from "@/app/(dashboard)/dashboard/myBooks/SearchProv
 import Link from "next/link";
 import img from "../../assets/images/About/logo (1).png";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
+
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = SpeechRecognition ? new SpeechRecognition() : null;
 
 export default function DashboardNavbar() {
-  const session = useSession();
+  const [isListening, setIsListening] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
+
+  const { setSearchQuery: updateSearchContext } = useSearchContext();
 
   let pathName = usePathname().split("/");
   pathName = pathName[pathName.length - 1];
 
-  const { setSearchQuery } = useSearchContext();
-
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-    console.log(e.target.value);
+    const query = e.target.value;
+    setSearchQuery(query);
+    updateSearchContext(query);
+    setIsSearching(false);
   };
+
+  const handleVoiceInput = () => {
+    if (recognition) {
+      if (!isListening) {
+        setIsListening(true);
+        recognition.start();
+      }
+    } else {
+      alert("Speech recognition not supported in this browser.");
+    }
+  };
+
+  const handleSearchClick = () => {
+    updateSearchContext(searchQuery);
+    setIsSearching(true);
+  };
+
+  useEffect(() => {
+    if (recognition) {
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setSearchQuery(transcript);
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Voice recognition error:", event.error);
+        setIsListening(false);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+    }
+  }, [updateSearchContext]);
 
   return (
     <div>
       <nav className="fixed top-0 z-50 w-full bg-white">
         <div className="py-2.5 lg:py-4 pl-4 pr-4">
           <div className="flex items-center justify-between">
-            {/* website logo and other */}
             <div className="flex items-center justify-start rtl:justify-end">
-              {/* menu */}
               <div className="md:hidden">
                 <TemporaryDrawer />
               </div>
 
-              {/* bookify logo */}
               <Link href={"/"} className="hidden md:flex">
                 <Image
                   src={img}
@@ -46,58 +85,50 @@ export default function DashboardNavbar() {
                 />
               </Link>
 
-
-              {/* menu */}
-              <div className="md:hidden">
-                <TemporaryDrawer />
-              </div>
-
-
-
-              {/* active route name show */}
-              <h3 className='text-xl font-bold pl-8 uppercase hidden md:block'>{pathName}</h3>
-
+              <h3 className="text-xl font-bold pl-8 uppercase hidden md:block">
+                {pathName}
+              </h3>
             </div>
-            {/* input logo */}
+
             <div className="hidden md:flex items-center">
               <input
                 className="bg-[#EFEEE9CC] 
                                 outline-none focus:outline-none focus:ring-0 focus:outline-gray-600 border-none rounded-md pr-16"
                 type="text"
                 placeholder="Search..."
-                onChange={handleSearch} // Add this line to bind the search input
+                onChange={handleSearch}
+                value={searchQuery}
               />
               <div className="flex items-center gap-1 -ml-[65px]">
-                <IoIosSearch className="text-xl" />
-                <div className="bg-[#0000001A] p-2.5 rounded-bl-3xl rounded-md rounded-tl-none">
+                <IoIosSearch className="text-xl" onClick={handleSearchClick} />
+                <div
+                  className={`bg-[#0000001A] p-2.5 rounded-bl-3xl rounded-md rounded-tl-none ${
+                    isListening ? "animate-pulse" : ""
+                  }`}
+                  onClick={handleVoiceInput}
+                >
                   <MdOutlineKeyboardVoice className="text-xl text-black" />
                 </div>
               </div>
             </div>
-            {/* user profile and other */}
+
+            <div className="flex md:hidden items-center text-[#B7B7B7]">
+              <GiBookmarklet className="text-3xl font-bold -mb-1.5" />
+              <h1 className="font-black text-2xl uppercase -mt-1">Bookify</h1>
+            </div>
+
             <div className="flex items-center gap-4">
-              {/* notification */}
               <p>
                 <IoMdNotificationsOutline className="text-2xl" />
               </p>
-              {/* profile logo */}
-              <div className="relative  text-left hidden md:block">
-                <button type="button" className="flex text-sm ">
-                  {session?.data?.user.image ? (
-                    <>
-                      <Image
-                        src={session?.data?.user?.image}
-                        width={32}
-                        height={32}
-                        className="rounded-full hover:border-2"
-                        alt="profile-image"
-                      ></Image>
-                    </>
-                  ) : (
-                    <>
-                      <CgProfile className="text-black font-black text-3xl" />
-                    </>
-                  )}
+              <div>
+                <button
+                  type="button"
+                  className="flex text-sm "
+                  aria-expanded="false"
+                  data-dropdown-toggle="dropdown-user"
+                >
+                  <CgProfile className="text-black font-black text-3xl" />
                 </button>
               </div>
             </div>
