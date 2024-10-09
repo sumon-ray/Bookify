@@ -50,19 +50,14 @@ export default function Aside() {
                             </Link>
                         </li>
 
-                        <li>
+                        {/* <li>
                             <Link href={``} className="flex items-center gap-1 p-2 ">
                                 <TbExchange className="text-xl" />
                                 <span className="font-bold">Exchange</span>
                             </Link>
-                        </li>
+                        </li> */}
 
-                        <li>
-                            <Link href={``} className="flex items-center gap-1 p-2 ">
-                                <MdMenuBook OpenReader className="text-xl" />
-                                <span className="font-bold">Our Books</span>
-                            </Link>
-                        </li>
+                       
 
                         <li>
                             <Link href={``} className="flex items-center gap-1 p-2 ">
@@ -79,12 +74,12 @@ export default function Aside() {
                                 <span className="font-bold">Users</span>
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link href={`/dashboard/myshelf`} className="flex items-center gap-1 p-2 ">
                                 <FiBookOpen OpenReader className="text-xl" />
                                 <span className="font-bold">My Shelft</span>
                             </Link>
-                        </li>
+                        </li> */}
 
                     </ul>
 
