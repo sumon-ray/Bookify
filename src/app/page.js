@@ -6,7 +6,7 @@ import Slider from "@/Components/(Slider)/Slider";
 import Category from "@/Components/(Category )/Category";
 import OurCollection from "@/Components/OurCollection";
 import OurLibrary from "@/Components/OurLibrary/OurLibrary";
-import FaqSection from "@/Components/FaqSection";
+// import FaqSection from "@/Components/FaqSection";
 import BookReviews from "@/Components/BookReview/BookReviews";
 
 
@@ -22,7 +22,7 @@ export default function Home() {
       <OurLibrary />
       <BookReviews />
       {/* <AboutSection /> */}
-      <FaqSection />
+      {/* <FaqSection /> */}
       {/* don't touch the commented part */}
       {/* <OfferSection></OfferSection> */}
       {/* <HeroSection></HeroSection> */}
