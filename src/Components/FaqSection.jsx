@@ -53,7 +53,7 @@ const FaqSection = () => {
       </div>
 
       {/* FAQ Section */}
-      <div className="bg-white text-black p-6 rounded-lg w-full lg:w-1/2 mb-10">
+      <div className="bg-white text-black p-6 rounded-lg w-full lg:w-1/2 mb-10 space-y-10">
         <h1 className='text-2xl font-semibold mb-2'>
           People also ask-
         </h1>
