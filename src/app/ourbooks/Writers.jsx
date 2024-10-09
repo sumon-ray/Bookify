@@ -3,15 +3,15 @@
 
 export default function Writers() {
     return (
-        <div className="space-y-4 max-w-7xl mx-auto pb-10">
+        <div className="space-y-4 max-w-7xl mx-auto pb-10 px-5 lg:px-3 ">
 
             {/* title */}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-center xl:justify-between">
                 <h2 className="text-xl font-bold">Writers</h2>
-                <h2>See more...</h2>
+                <h2 className="hidden xl:block">See more...</h2>
             </div>
 
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-center xl:justify-between gap-10 flex-wrap">
                 
                 <figure>
                     <img className="size-16 rounded-full" src={`./writers/w2.jpg`} />
@@ -61,10 +61,10 @@ export default function Writers() {
                     <img className="size-16 rounded-full" src={`./writers/w12.jpeg`} />
                 </figure>
                 
-                <figure>
+                {/* <figure>
                     <img className="size-16 rounded-full" src={`./writers/w13.jpeg`} />
                 </figure>
-                
+                 */}
             </div>
 
 

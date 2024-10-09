@@ -4,15 +4,15 @@ export default function ImgDetails({ Book }) {
 
     return (
 
-        <div className="flex gap-x-10 max-w-6xl mx-auto pt-4 pb-5">
+        <div className="flex flex-col md:flex-row gap-x-10 max-w-6xl mx-auto pt-1 pb-5 px-7 ">
 
             {/* img */}
-            <figure className="w-[40%] bg-[#EFEEE9] px-7 py-[18px] flex items-center justify-center border border-black rounded-md">
+            <figure className="md:w-[40%] bg-[#EFEEE9] px-7 py-[18px] flex items-center justify-center border border-black rounded-md">
                 <img src={coverImage} alt="" className='w-full h-[370px] rounded-md' />
             </figure>
             {/* details */}
-            <div className="w-[60%] py-2 space-y-2">
-                <h1 className="font-bold text-2xl capitalize">{title}</h1>
+            <div className="md:w-[60%] py-2 space-y-2 pl-1 md:pl-0">
+                <h1 className="font-bold text-xl md:text-2xl capitalize ">{title}</h1>
 
                 {/* star */}
                 <div className="flex items-center mb-5">
