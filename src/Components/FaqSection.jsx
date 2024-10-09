@@ -53,8 +53,8 @@ const FaqSection = () => {
       </div>
 
       {/* FAQ Section */}
-      <div className="bg-white text-black p-4  sm:p-6 rounded-lg w-full lg:w-1/2 ">
-        <h1 className="text-xl sm:text-2xl font-semibold mb-4">
+      <div className="bg-white text-black p-6 rounded-lg w-full lg:w-1/2 mb-10 space-y-10">
+        <h1 className='text-2xl font-semibold mb-2'>
           People also ask-
         </h1>
         {/* FAQ Accordion */}
@@ -68,7 +68,7 @@ const FaqSection = () => {
               <span>{activeIndex === index ? '-' : '+'}</span>
             </div>
             {activeIndex === index && (
-              <div className="mt-2 text-sm sm:text-base">
+              <div className="mt-4 text-black text-sm">
                 <p>{faq.answer}</p>
               </div>
             )}
