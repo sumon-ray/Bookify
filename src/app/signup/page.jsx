@@ -26,7 +26,7 @@ const SignUp = () => {
       name: e.target.name.value,
       email: e.target.email.value,
       password: e.target.password.value,
-      userImage: data.data.display_url,
+      image: data.data.display_url,
       role: "user",
       createdAt: new Date(),
     };
