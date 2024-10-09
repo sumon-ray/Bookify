@@ -36,7 +36,7 @@ const Footer = () => {
               <h2 className="text-lg font-bold">Contact Us</h2>
               <p>www.bookify06@gmail.com</p>
               <p>Dhaka, Bangladesh</p>
-              <p>+88018********</p>
+              <p>+8802-8123456</p>
               <div className="flex space-x-4 mt-4 text-xl items-center justify-center">
                 {/* Social Media Icons */}
                 <a href="#" aria-label="Facebook">
