@@ -1,4 +1,4 @@
-'use client';  
+'use client';
 
 import { useState } from 'react';
 
@@ -41,19 +41,19 @@ const FaqSection = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-center p-8 rounded-lg max-w-5xl mx-auto py-14 md:py-20 space-y-8">
+    <div className="flex flex-col lg:flex-row justify-between items-center p-8 lg:space-x-16 space-y-8 lg:space-y-0 rounded-lg lg:px-20 mx-auto">
 
       {/* Image Section */}
-      <div className="w-full">
+      <div className="w-full lg:w-1/2 flex justify-center lg:justify-center">
         <img
           src="https://i.postimg.cc/Lshjjt8d/Book-FAQ.png"
           alt="Glasses and Book"
-          className="object-cover w-[350px] mx-auto md:mx-auto lg:mx-0"
+          className="object-cover w-[300px] md:w-[350px] lg:w-[400px]"
         />
       </div>
 
       {/* FAQ Section */}
-      <div className="bg-white text-black p-6 rounded-lg w-full max-w-md">
+      <div className="bg-white text-black p-6 rounded-lg w-full lg:w-1/2 mb-10 ">
         <h1 className='text-2xl font-semibold mb-2'>
           People also ask-
         </h1>
