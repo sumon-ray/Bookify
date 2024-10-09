@@ -8,6 +8,7 @@ import { PiBooks } from "react-icons/pi";
 import { TbExchange, TbUserShield } from "react-icons/tb";
 
 import { FiBookOpen } from "react-icons/fi";
+import PremiumBoard from "./PremiumBoard";
 
 
 
@@ -49,19 +50,14 @@ export default function Aside() {
                             </Link>
                         </li>
 
-                        <li>
+                        {/* <li>
                             <Link href={``} className="flex items-center gap-1 p-2 ">
                                 <TbExchange className="text-xl" />
                                 <span className="font-bold">Exchange</span>
                             </Link>
-                        </li>
+                        </li> */}
 
-                        <li>
-                            <Link href={``} className="flex items-center gap-1 p-2 ">
-                                <MdMenuBook OpenReader className="text-xl" />
-                                <span className="font-bold">Our Books</span>
-                            </Link>
-                        </li>
+                       
 
                         <li>
                             <Link href={``} className="flex items-center gap-1 p-2 ">
@@ -78,23 +74,17 @@ export default function Aside() {
                                 <span className="font-bold">Users</span>
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link href={`/dashboard/myshelf`} className="flex items-center gap-1 p-2 ">
                                 <FiBookOpen OpenReader className="text-xl" />
                                 <span className="font-bold">My Shelft</span>
                             </Link>
-                        </li>
+                        </li> */}
 
                     </ul>
 
-                    <div className="bg-[#EFEEE9] rounded-md text-black text-center p-3 space-y-0.5 absolute bottom-8">
-                        <h1 className="font-bold flex flex-col items-center">
-                            <GiBookmarklet className="text-3xl font-bold -mb-0.5" />
-                            Bookify pro</h1>
-                        <p className="text-xs pb-1.5">Get access to all <br />
-                            features on tetumbas</p>
-                        <button className="bg-[#364957] font-semibold py-1 px-3 rounded-md text-white">Get pro</button>
-                    </div>
+       
+                <PremiumBoard />
 
                 </div>
 

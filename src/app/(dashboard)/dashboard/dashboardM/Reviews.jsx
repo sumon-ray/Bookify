@@ -1,6 +1,5 @@
 "use client";
 
-import React from 'react';
 import { TrendingUp } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
@@ -13,7 +12,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
@@ -41,17 +39,16 @@ const chartConfig = {
   },
 };
 
+// Reviews component
 const Reviews = () => {
   return (
     <Card className="shadow-none border-none rounded-xl">
-       <CardHeader className="items-start pb-0 font-bold ">
-          <CardTitle className="font-bold">Total Reviews </CardTitle>
-          <CardDescription>January - June 2024</CardDescription>
-        </CardHeader>
+      <CardHeader className="items-start pb-0 font-bold">
+        <CardTitle className="font-bold">Total Reviews</CardTitle>
+        <CardDescription>January - June 2024</CardDescription>
+      </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig}
-        className="max-h-[215px]"
-        >
+        <ChartContainer config={chartConfig} className="max-h-[252px]">
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -70,7 +67,14 @@ const Reviews = () => {
           </BarChart>
         </ChartContainer>
       </CardContent>
-      
+      <CardFooter className="flex-col items-start gap-2 text-sm">
+        <div className="flex gap-2 font-medium leading-none">
+          Trending up by 0.2% this month <TrendingUp className="h-4 w-4" />
+        </div>
+        <div className="leading-none text-muted-foreground">
+          Showing total Reviews for the last 6 months
+        </div>
+      </CardFooter>
     </Card>
   );
 };

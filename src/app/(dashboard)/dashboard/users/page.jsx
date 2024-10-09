@@ -2,25 +2,59 @@
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Users } from "lucide-react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+
+import toast, { Toaster } from "react-hot-toast";
 
 const page = () => {
   // Fetch users on component mount
-  const { data } = useQuery({
+  const session = useSession();
+  const { data, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios("https://bookify-server-lilac.vercel.app/users");
-      const data = await res.data;
-      return data;
+      const res = await axios.get("http://localhost:3000/api/users");
+      return res.data;
     },
   });
+  // console.log(data);
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/api/users/${id}`);
+      // Refetch users after deletion
+      refetch();
+      toast.success("Deleted Successfully!");
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
+  const handleToggleRole = async (id, currentRole) => {
+    const newRole = currentRole === "admin" ? "user" : "admin";
+    try {
+      // Send PATCH request to update the role
+      const res = await axios.patch(`http://localhost:3000/api/users/${id}`, {
+        role: newRole,
+      });
+
+      if (res.status === 200) {
+        toast.success("User role updated successfully!");
+        refetch(); // Refetch users to reflect the change
+      }
+    } catch (error) {
+      console.error("Error updating user role:", error);
+      toast.error("Failed to update user role");
+    }
+  };
+
+  // console.log(session);
 
   return (
     <section className="container px-4 mx-auto">
+      <Toaster></Toaster>
       <div className="flex items-center gap-x-3">
-        <h2 className="text-lg font-medium text-gray-800 dark:text-white">
-          Team members
-        </h2>
+        <h2 className="text-lg font-medium text-gray-800 ">Team members</h2>
 
         <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">
           users
@@ -129,8 +163,10 @@ const page = () => {
                           />
 
                           <div className="flex items-center gap-x-2">
-                            <img
+                            <Image
                               className="object-cover w-10 h-10 rounded-full"
+                              width={30}
+                              height={30}
                               src={
                                 user?.image
                                   ? user?.image
@@ -139,7 +175,7 @@ const page = () => {
                               alt={user?.name}
                             />
                             <div>
-                              <h2 className="font-medium text-gray-800 dark:text-white ">
+                              <h2 className="font-medium text-gray-800  ">
                                 {user?.name}
                               </h2>
                               <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
@@ -150,13 +186,23 @@ const page = () => {
                         </div>
                       </td>
                       <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                        <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                        {session?.status === "authenticated" ? (
+                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
-                          <h2 className="text-sm font-normal text-emerald-500">
-                            Active
-                          </h2>
-                        </div>
+                            <h2 className="text-sm font-normal text-emerald-500">
+                              Active
+                            </h2>
+                          </div>
+                        ) : (
+                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                            <span className="h-1.5 w-1.5 rounded-full bg-red-500"></span>
+
+                            <h2 className="text-sm font-normal text-red-500">
+                              Inactive
+                            </h2>
+                          </div>
+                        )}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                         {user?.role}
@@ -167,7 +213,10 @@ const page = () => {
 
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <div className="flex items-center gap-x-6">
-                          <button className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
+                          <button
+                            onClick={() => handleDelete(user?._id)}
+                            className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
@@ -184,7 +233,12 @@ const page = () => {
                             </svg>
                           </button>
 
-                          <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                          <button
+                            onClick={() =>
+                              handleToggleRole(user._id, user.role)
+                            }
+                            className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
@@ -199,6 +253,9 @@ const page = () => {
                                 d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
                               />
                             </svg>
+                            {user?.role === "admin"
+                              ? "Revoke Admin"
+                              : "Make Admin"}
                           </button>
                         </div>
                       </td>

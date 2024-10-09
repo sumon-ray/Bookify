@@ -48,7 +48,7 @@ const FaqSection = () => {
         <img
           src="https://i.postimg.cc/Lshjjt8d/Book-FAQ.png"
           alt="Glasses and Book"
-          className="object-cover w-[350px]"
+          className="object-cover w-[350px] mx-auto md:mx-auto lg:mx-0"
         />
       </div>
 
