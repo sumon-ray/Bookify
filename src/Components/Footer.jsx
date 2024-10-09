@@ -2,20 +2,21 @@
 
 import { usePathname } from "next/navigation";
 import React from "react";
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { FaApplePay } from "react-icons/fa";
-import { FaCcVisa } from "react-icons/fa";
-import { FaCcMastercard } from "react-icons/fa";
-import { FaCcAmex } from "react-icons/fa";
-import { FaCcPaypal } from "react-icons/fa";
-import { FaGooglePay } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+  FaYoutube,
+  FaApplePay,
+  FaCcVisa,
+  FaCcMastercard,
+  FaCcAmex,
+  FaCcPaypal,
+  FaGooglePay,
+} from "react-icons/fa";
 
 const Footer = () => {
   const route = usePathname();
-  // console.log(route);
 
   if (
     route.includes("dashboard") ||
@@ -26,17 +27,17 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-white text-black md:py-6 lg:py-12 md:px-4 lg:px-8 ">
-      <div className="w-full flex mx-auto gap-8 px-4 flex-col md:flex-row">
-        <div className="w-full md:w-2/3 border-2 p-2 py-6 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-5">
-          <div className="md:flex justify-between md:gap-4 lg:gap-24 p-2 ">
+    <footer className="bg-white text-black py-6 px-4 lg:py-12 lg:px-8">
+      <div className="w-full flex flex-col lg:flex-row gap-8 mx-auto">
+        <div className="w-full lg:w-2/3 border-2 p-4 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full p-2 text-center flex items-center justify-center flex-col">
             {/* Contact Section */}
             <div className="space-y-4">
               <h2 className="text-lg font-bold">Contact Us</h2>
               <p>www.bookify06@gmail.com</p>
               <p>Dhaka, Bangladesh</p>
               <p>+88018********</p>
-              <div className="flex space-x-4 mt-4 text-xl">
+              <div className="flex space-x-4 mt-4 text-xl text-center items-center justify-center">
                 {/* Social Media Icons */}
                 <a href="#">
                   <FaFacebook />
@@ -108,7 +109,7 @@ const Footer = () => {
             </div>
 
             {/* Quick Help Section */}
-            <div className="space-y-4 b-">
+            <div className="space-y-4">
               <h2 className="text-lg font-bold">Quick Help</h2>
               <ul className="space-y-2">
                 <li>
@@ -135,26 +136,24 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex justify-between">
+          <div className="text-center text-sm">
             {/* Copyright Section */}
-            <div className=" text-center text-sm">
-              <p>© Copyright The Readers. All rights reserved.</p>
-              <p>
-                Site by{" "}
-                <a className="font-bold" href="">
-                  Bookify{" "}
-                </a>
-                .
-              </p>
-            </div>
+            <p>© Copyright The Readers. All rights reserved.</p>
+            <p>
+              Site by{" "}
+              <a className="font-bold" href="#">
+                Bookify
+              </a>
+              .
+            </p>
           </div>
         </div>
 
         {/* Newsletter and Payment Section */}
-        <div className="space-y-4 w-full md:w-1/3 flex flex-col">
-          <div className="border-2 p-4 h-1/2 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-3">
-            <h2 className="text-2xl font-bold">Subscribe to our newsletter!</h2>
-            <form className="flex gap-2">
+        <div className="w-full lg:w-1/3 flex flex-col space-y-6">
+          <div className="border-2 p-4 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-3 h-1/2">
+            <h2 className="text-2xl font-bold text-center">Subscribe to our newsletter!</h2>
+            <form className="flex gap-2 w-full">
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -162,14 +161,14 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="bg-[#364957] text-white px-4 py-2 -ml-6 rounded-r-md hover:bg-gray-200 hover:text-black"
+                className="bg-[#364957] text-white px-4 py-2 rounded-md hover:bg-gray-200 hover:text-black"
               >
                 Submit
               </button>
             </form>
           </div>
 
-          <div className="flex mt-4 space-x-2 text-5xl p-4 border-2 h-1/2 justify-center items-center rounded-xl bg-gray-100">
+          <div className="flex justify-center items-center space-x-4 text-5xl p-4 border-2 rounded-xl bg-gray-100 h-1/2">
             <FaApplePay />
             <FaCcVisa />
             <FaCcMastercard />
