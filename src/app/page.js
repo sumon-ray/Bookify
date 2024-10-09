@@ -1,12 +1,12 @@
 // import HeroSection from "@/Components/HeroSection";
-import AboutSection from "@/Components/AboutSection";
+// import AboutSection from "@/Components/AboutSection";
 import NewsletterSection from "@/Components/NewsletterSection";
 import OfferSection from "@/Components/OfferSection";
 import Slider from "@/Components/(Slider)/Slider";
 import Category from "@/Components/(Category )/Category";
 import OurCollection from "@/Components/OurCollection";
 import OurLibrary from "@/Components/OurLibrary/OurLibrary";
-import FaqSection from "@/Components/FaqSection";
+// import FaqSection from "@/Components/FaqSection";
 import BookReviews from "@/Components/BookReview/BookReviews";
 
 
@@ -21,8 +21,8 @@ export default function Home() {
       <OurCollection />
       <OurLibrary />
       <BookReviews />
-      <AboutSection />
-      <FaqSection />
+      {/* <AboutSection /> */}
+      {/* <FaqSection /> */}
       {/* don't touch the commented part */}
       {/* <OfferSection></OfferSection> */}
       {/* <HeroSection></HeroSection> */}
