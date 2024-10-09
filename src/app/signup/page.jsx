@@ -118,11 +118,9 @@ const SignUp = () => {
           </div>
 
           <div className="mt-4">
-            <div className="flex justify-between">
-              <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
-                Password
-              </label>
-            </div>
+            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
+              Password
+            </label>
 
             <input
               className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300"
