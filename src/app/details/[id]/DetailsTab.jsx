@@ -25,13 +25,13 @@ export default function DetailsTab({ Book }) {
                     <li className="me-2" onClick={() => {
                         setOpen(3)
                     }}>
-                        <p className={`inline-block p-4 ${open === 3 ? 'border-b-2 border-black rounded-t-lg' : ''}`}>Author</p>
+                        <p className={`inline-block p-4 ${open === 3 ? 'border-b-2 border-black rounded-t-lg' : ''}`}>Reviews</p>
                     </li>
                 </ul>
             </div>
 
             {/* content */}
-            <div className='text-balance pt-4'>
+            <div className='text-balance pt-4 px-4 md:px-0'>
 
                 {/* summary */}
                 <p className={open === 1 ? 'block text-center' : 'hidden'}>
