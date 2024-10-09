@@ -1,4 +1,4 @@
-'use client';  
+'use client';
 
 import { useState } from 'react';
 
@@ -41,34 +41,34 @@ const FaqSection = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-center p-8 rounded-lg max-w-5xl mx-auto py-14 md:py-20 space-y-8">
+    <div className=" flex mt-8  flex-col lg:flex-row justify-between items-center px-8  space-y-8 lg:space-y-0 rounded-lg lg:px-28 pb-6  mx-auto">
 
       {/* Image Section */}
-      <div className="w-full">
+      <div className="w-full lg:w-1/2 flex justify-center">
         <img
           src="https://i.postimg.cc/Lshjjt8d/Book-FAQ.png"
           alt="Glasses and Book"
-          className="object-cover w-[350px] mx-auto md:mx-auto lg:mx-0"
+          className="object-cover w-[250px] sm:w-[300px] md:w-[350px] lg:w-[400px] mx-auto"
         />
       </div>
 
       {/* FAQ Section */}
-      <div className="bg-white text-black p-6 rounded-lg w-full max-w-md">
+      <div className="bg-white text-black p-6 rounded-lg w-full lg:w-1/2 mb-10 space-y-10">
         <h1 className='text-2xl font-semibold mb-2'>
           People also ask-
         </h1>
         {/* FAQ Accordion */}
         {faqs.map((faq, index) => (
-          <div key={index} className="mb-4">
+          <div key={index} className="mb-4 border-b pb-2">
             <div
               onClick={() => toggleAccordion(index)}
-              className="cursor-pointer text-xl font-semibold flex justify-between items-center"
+              className="cursor-pointer text-base sm:text-lg md:text-xl font-semibold flex justify-between items-center"
             >
               <span>{faq.question}</span>
               <span>{activeIndex === index ? '-' : '+'}</span>
             </div>
             {activeIndex === index && (
-              <div className="mt-2 text-black text-sm">
+              <div className="mt-4 text-black text-sm">
                 <p>{faq.answer}</p>
               </div>
             )}
