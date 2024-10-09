@@ -60,7 +60,13 @@ const handler = NextAuth({
 
           if (!userExist) {
             // Only insert necessary fields
-            const newUser = { name, email, image, createdAt: new Date() };
+            const newUser = {
+              name,
+              email,
+              image,
+              role: "user",
+              createdAt: new Date(),
+            };
             const res = await userCollection.insertOne(newUser);
             return user; // Sign in the user after adding to the DB
           } else {
