@@ -12,9 +12,8 @@ import img from "../../assets/images/About/logo (1).png";
 import Image from "next/image";
 import Lottie from "lottie-react";
 import lottieImage from "../../../public/voice3.json";
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = SpeechRecognition ? new SpeechRecognition() : null;
+
+let recognition; // Declare the recognition variable outside of the component
 
 export default function DashboardNavbar() {
   const [isListening, setIsListening] = useState(false);
@@ -22,7 +21,6 @@ export default function DashboardNavbar() {
   const [isSearching, setIsSearching] = useState(false);
 
   const { setSearchQuery: updateSearchContext } = useSearchContext();
-
   let pathName = usePathname().split("/");
   pathName = pathName[pathName.length - 1];
 
@@ -50,20 +48,27 @@ export default function DashboardNavbar() {
   };
 
   useEffect(() => {
-    if (recognition) {
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        setSearchQuery(transcript);
-      };
+    // Ensure this runs only on the client side
+    if (typeof window !== "undefined") {
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognition = SpeechRecognition ? new SpeechRecognition() : null;
 
-      recognition.onerror = (event) => {
-        console.error("Voice recognition error:", event.error);
-        setIsListening(false);
-      };
+      if (recognition) {
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          setSearchQuery(transcript);
+        };
 
-      recognition.onend = () => {
-        setIsListening(false);
-      };
+        recognition.onerror = (event) => {
+          console.error("Voice recognition error:", event.error);
+          setIsListening(false);
+        };
+
+        recognition.onend = () => {
+          setIsListening(false);
+        };
+      }
     }
   }, [updateSearchContext]);
 
@@ -78,12 +83,7 @@ export default function DashboardNavbar() {
               </div>
 
               <Link href={"/"} className="hidden md:flex">
-                <Image
-                  src={img}
-                  className="h-12 w-36 -ml-3"
-                  height={20}
-                  width={200}
-                />
+                <Image src={img} className=" w-40" height={20} width={200} />
               </Link>
 
               <h3 className="text-xl font-bold pl-8 uppercase hidden md:block">
@@ -92,23 +92,21 @@ export default function DashboardNavbar() {
             </div>
 
             <div className="flex items-center justify-center w-full">
-              <div className="relative w-full max-w-md">
+              <div className=" relative w-40 lg:w-72 md:w-52 ">
                 <input
-                  className="bg-[#EFEEE9CC] mx-auto  w-full
-                 outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1]     focus:border-[#a1a5a8b1]  
-                 rounded-md py-3  px-4 pr-14 sm:pr-16 md:pr-20"
+                  className="bg-[#EFEEE9CC] w-full outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1] focus:border-[#a1a5a8b1] rounded-md py-2 px-4 pr-14"
                   type="text"
                   placeholder="Search..."
                   onChange={handleSearch}
                   value={searchQuery}
                 />
-                <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
+                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
                   <IoIosSearch
                     className="text-xl cursor-pointer"
                     onClick={handleSearchClick}
                   />
                   <div
-                    className={`bg-[#0000001A] p-3 translate-x-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer ${
+                    className={`bg-[#0000001A] p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer ${
                       isListening ? "" : ""
                     }`}
                     onClick={handleVoiceInput}
@@ -118,7 +116,7 @@ export default function DashboardNavbar() {
                         animationData={lottieImage}
                         aria-label="Lottie animation"
                         loop
-                        className=" w-[40px] h-[24px]"
+                        className="w-[40px] h-[24px]"
                         autoplay
                       />
                     ) : (

@@ -43,6 +43,7 @@
     "react-tabs": "^6.0.2",
     "recharts": "^2.12.7",
     "rn-range-slider": "^2.2.2",
+    "sharp": "^0.33.5",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.14.0",
     "swiper": "^11.1.14",

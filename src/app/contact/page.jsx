@@ -25,7 +25,7 @@ export default function page() {
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
 
                     <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
-                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#00000059] ">
+                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -54,7 +54,7 @@ export default function page() {
                     </div>
 
                     <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
-                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#00000059] ">
+                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
                             <BsChatLeftText />
                         </span>
 
@@ -70,7 +70,7 @@ export default function page() {
                     </div>
 
                     <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
-                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#00000059] ">
+                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -104,7 +104,7 @@ export default function page() {
                     </div>
 
                     <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
-                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#00000059] ">
+                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -182,7 +182,7 @@ export default function page() {
                             ></textarea>
                         </div>
 
-                        <button className="flex items-center justify-between w-full px-6 py-3 mt-5 text-black text-sm font-bold bg-[#EFEEE9] rounded-xl">
+                        <button className="flex items-center justify-between w-full px-6 py-3 mt-5 text-white text-sm font-bold bg-[#364957] rounded-xl">
                             <span>Send Message </span>
                             <GrSend className="text-xl" />
                         </button>

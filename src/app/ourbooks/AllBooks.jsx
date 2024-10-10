@@ -39,10 +39,10 @@ export default function AllBooks() {
     return (
         <div className='pt-7 max-w-7xl mx-auto'>
 
-            <div className='flex gap-10'>
+            <div className='flex flex-col md:flex-row gap-10'>
 
                 {/* filter option */}
-                <div className='w-[22%] space-y-3'>
+                <div className='hidden md:block md:w-[22%] space-y-3'>
                     <h3 className='text-lg font-bold'>Filter Option</h3>
                     <div className='space-y-2.5'>
 
@@ -131,11 +131,101 @@ export default function AllBooks() {
 
                     </div>
                 </div>
+                {/* filter option */}
+                <div className='block md:hidden md:w-[22%] space-y-3'>
+                    <h3 className='text-lg font-bold text-center'>Filter Option</h3>
+                    <div className='space-y-2.5 flex flex-col md:flex-none items-center md:items-start'>
+
+                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
+                            <option value="volvo" selected disabled>Author</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+
+                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
+                            <option value="volvo" selected disabledselected disabled>Publisher</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+
+                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
+                            <option value="volvo" selected disabled>Publish Year</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+
+                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
+                            <option value="volvo" selected disabled>Language</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+
+                        {/* check box */}
+                        <div>
+                            <ul className="text-sm font-medium border rounded-md bg-white p-1 pb-1.5">
+                                <h3 className="ps-3 pt-2 pb-1">Category</h3>
+                                {/* checkbox */}
+                                <div className='flex'>
+                                    <div>
+                                        {
+                                            uniqueGenre?.slice(0, 6).map(book => <li className="w-full">
+                                                <div className="flex items-center ps-3">
+                                                    <input type="checkbox" className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                                                    <label className="w-full py-2 ms-2 text-sm font-medium ">
+                                                        {book.split(' ').slice(0, 1)}
+                                                    </label>
+                                                </div>
+                                            </li>)
+                                        }
+                                    </div>
+
+                                    <div>
+                                        {
+                                            uniqueGenre?.slice(6, 12).map(book => <li className="w-full">
+                                                <div className="flex items-center ps-3">
+                                                    <input type="checkbox" className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                                                    <label className="w-full py-2 ms-2 text-sm font-medium ">
+                                                        {book.split(' ').slice(0, 1)}
+                                                    </label>
+                                                </div>
+                                            </li>)
+                                        }
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+
+                        {/* price range taker */}
+                        <div className='bg-white rounded-md border p-4 py-2 space-y-1'>
+                            <h3 className='font-medium'>Price Range</h3>
+                            <div className='flex justify-center'>
+                                <Box sx={{ width: 225 }} >
+                                    <Slider
+                                        getAriaLabel={() => 'Temperature range'}
+                                        value={value}
+                                        onChange={handleChange}
+                                        valueLabelDisplay="auto"
+                                        getAriaValueText={valuetext}
+                                        color="#000000"
+                                    />
+                                </Box>
+                            </div>
+                        </div>
+
+                        {/* search button */}
+
+
+                    </div>
+                </div>
 
                 {/* Books */}
-                <div className='w-[80%] space-y-3'>
-                    <h3 className='text-lg font-bold'>Books</h3>
-                    <div className='grid grid-cols-5 gap-8'>
+                <div className='md:w-[80%] space-y-3 flex flex-col items-center md:items-start'>
+                    <h3 className='text-xl md:text-lg font-bold'>Books</h3>
+                    <div className='grid grid-cols-2 md:grid-cols-5 gap-8'>
                         {
                             data?.slice(0, 10).map((book, idx) =>
                                 <div
@@ -167,7 +257,7 @@ export default function AllBooks() {
 
             </div>
 
-            <div className='flex items-center justify-between pt-3'>
+            <div className='flex items-center justify-center md:justify-between gap-x-32 md:gap-x-0 pt-5 md:pt-3'>
 
                 <button className='bg-[#364957] text-white w-[21%] py-2 rounded-md flex items-center justify-between px-3 gap-x-1'>
                     <span>Search</span>
