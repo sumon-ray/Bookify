@@ -29,7 +29,7 @@ const Navbar = () => {
     },
     {
       title: "Dashboard",
-      path: "/dashboard",
+      path: "/dashboard/dashboardd"
     },
     {
       title: "About",
@@ -162,14 +162,29 @@ const Navbar = () => {
                       </li>
                     </ul>
                   </div>
-                </>
-              ) : (
-                <></>
-              )}
-            </>
-          )}
-        </div>
-      </nav>
+                  <ul className="pt-2" aria-labelledby="user-menu-button">
+                    <li>
+                      <Link
+                        href="/dashboard/dashboardd"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+                      >
+                        Dashboard
+                      </Link>
+                    </li>
+
+                    <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <button onClick={() => signOut()}>Sign out</button>
+                    </li>
+                  </ul>
+               
+              </>
+            ) : (
+              <></>
+            )}
+          </>
+        )}
+      </div>
+    </nav>
     </div>
   );
 };
