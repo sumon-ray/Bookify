@@ -31,7 +31,7 @@ export async function DELETE(req, { params }) {
 
 export async function PUT(req, { params }) {
   const db = await connectDB();
-  const { id } = params;
+  const { id } = params; // The user ID
   const data = await req.json();
 
   try {
