@@ -21,7 +21,7 @@ export default function Aside() {
       <div className="h-full pl-3 pr-2 overflow-y-auto relative">
         <ul className="space-y-1 font-medium">
           <li>
-            <Link href={`/dashboard/dashboardd`} className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard/dashboardM')}`}>
+            <Link href={`/dashboard/dashboardd`} className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard/dashboardd')}`}>
               <LuLayoutDashboard />
               <span className="font-bold">Dashboard</span>
             </Link>
