@@ -23,9 +23,9 @@ export default function Details({ params }) {
 
 
     return (
-        <section className="space-y-10 pb-20">
+        <section className="space-y-10 mt-0 md:mt-20 mb-16 md:mb-20">
             {/* title */}
-            <div className="bg-[#EFEEE9] p-6">
+            <div className="bg-[#EFEEE9] p-6 ">
                 <h1 className="text-3xl font-black uppercase text-center">Book Details</h1>
             </div>
 

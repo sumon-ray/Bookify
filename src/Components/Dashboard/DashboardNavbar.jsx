@@ -12,6 +12,7 @@ import img from "../../assets/images/About/logo (1).png";
 import Image from "next/image";
 import Lottie from "lottie-react";
 import lottieImage from "../../../public/voice3.json";
+import { useSession } from "next-auth/react";
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
