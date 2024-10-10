@@ -11,10 +11,10 @@
 
 {
   "compilerOptions": {
-    "baseUrl": ".",  // Sets the base directory to the project root
+    "baseUrl": ".",  
     "paths": {
-      "@/*": ["./src/*"]  // Maps the @/ alias to the src directory
+      "@/*": ["./src/*"] 
     }
   },
-  "include": ["src"]  // Ensures that files inside src are included
+  "include": ["src"]  
 }

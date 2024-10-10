@@ -13,7 +13,7 @@ const page = () => {
   const { data, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios.get("https://bookify-alpha-ten.vercel.app/api/users");
+      const res = await axios.get("https://bookify-mocha.vercel.app/api/users");
       return res.data;
     },
   });
@@ -21,7 +21,7 @@ const page = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://bookify-alpha-ten.vercel.app/api/users/${id}`);
+      await axios.delete(`https://bookify-mocha.vercel.app/api/users/${id}`);
       // Refetch users after deletion
       refetch();
       toast.success("Deleted Successfully!");
@@ -35,7 +35,7 @@ const page = () => {
 
     try {
       // Send PATCH request to update the role
-      const res = await axios.patch(`https://bookify-alpha-ten.vercel.app/api/users/${id}`, {
+      const res = await axios.patch(`https://bookify-mocha.vercel.app/api/users/${id}`, {
         role: newRole,
       });
 
