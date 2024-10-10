@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { usePathname } from 'next/navigation';
 import Link from "next/link";
@@ -10,10 +10,14 @@ import { PiBooks } from "react-icons/pi";
 import { TbExchange, TbUserShield } from "react-icons/tb";
 import { FiBookOpen } from "react-icons/fi";
 import PremiumBoard from "./PremiumBoard";
+
 export default function Aside() {
   const pathname = usePathname(); 
+  
   const checkActive = (route) => {
-    return pathname === route ? 'text-[#FFFFFF] bg-[#364957] rounded-md' : 'text-black';
+    return pathname === route || (route === '/dashboard' && pathname === '/dashboard/home') 
+      ? 'text-[#FFFFFF] bg-[#364957] rounded-md' 
+      : 'text-black';
   };
   
   return (
@@ -21,13 +25,7 @@ export default function Aside() {
       <div className="h-full pl-3 pr-2 overflow-y-auto relative">
         <ul className="space-y-1 font-medium">
           <li>
-            <Link href={`/dashboard/dashboardd`} className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard/dashboardd')}`}>
-              <LuLayoutDashboard />
-              <span className="font-bold">Dashboard</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="/dashboard" className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard')}`}>
+            <Link href="/dashboard/home" className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard')}`}>
               <IoHomeOutline />
               <span className="font-bold">Home</span>
             </Link>
