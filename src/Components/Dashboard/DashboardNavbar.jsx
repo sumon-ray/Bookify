@@ -12,11 +12,7 @@ import img from "../../assets/images/About/logo (1).png";
 import Image from "next/image";
 import Lottie from "lottie-react";
 import lottieImage from "../../../public/voice3.json";
-import { useSession } from "next-auth/react";
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = SpeechRecognition ? new SpeechRecognition() : null;
-
+import { useSession } from "next-auth/react"; 
 export default function DashboardNavbar() {
   const session = useSession();
   const [isListening, setIsListening] = useState(false);
@@ -28,6 +24,20 @@ export default function DashboardNavbar() {
 
   let pathName = usePathname().split("/");
   pathName = pathName[pathName.length - 1];
+
+  const [recognition, setRecognition] = useState(null);
+
+  // Set up speech recognition in useEffect to avoid SSR issues
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognitionInstance = SpeechRecognition
+        ? new SpeechRecognition()
+        : null;
+      setRecognition(recognitionInstance);
+    }
+  }, []);
 
   const handleSearch = (e) => {
     const query = e.target.value;
@@ -67,7 +77,7 @@ export default function DashboardNavbar() {
         setIsListening(false);
       };
     }
-  }, [updateSearchContext]);
+  }, [recognition]);
 
   return (
     <div>
