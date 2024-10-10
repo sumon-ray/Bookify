@@ -13,7 +13,7 @@ const Slider = () => {
     return (
         <div className="bg-[#EFEEE9] md:min-h-[99.7vh] md:flex items-center justify-between md:pl-32  ">
             <div className="md:w-1/2 space-y-3 md:mb-0 mb-4 pl-10">
-                <h1 className="text-2xl lg:text-5xl font-semibold text-[#000000]">Swap Books,<br /> Share Knowledge!</h1>
+                <h1 className="text-2xl lg:text-5xl font-semibold text-[#000000] bg-indigo-400">Swap Books,<br /> Share Knowledge!</h1>
                 <p className="text-lg text-balance">Join Bookify today,
                     where you can easily exchange books with fellow readers,
                     and embark on exciting literary adventures together!</p>

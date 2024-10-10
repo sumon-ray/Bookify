@@ -10,14 +10,12 @@ import { PiBooks } from "react-icons/pi";
 import { TbExchange, TbUserShield } from "react-icons/tb";
 import { FiBookOpen } from "react-icons/fi";
 import PremiumBoard from "./PremiumBoard";
-
 export default function Aside() {
   const pathname = usePathname(); 
-
   const checkActive = (route) => {
     return pathname === route ? 'text-[#FFFFFF] bg-[#364957] rounded-md' : 'text-black';
   };
-
+  
   return (
     <aside className="fixed top-1 left-0 z-40 min-w-[175px] h-screen pt-[78px] transition-transform -translate-x-full bg-white md:translate-x-0">
       <div className="h-full pl-3 pr-2 overflow-y-auto relative">
@@ -77,7 +75,6 @@ export default function Aside() {
             </Link>
           </li>
         </ul>
-
         <PremiumBoard />
       </div>
     </aside>

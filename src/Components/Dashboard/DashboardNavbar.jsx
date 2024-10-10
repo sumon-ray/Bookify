@@ -12,10 +12,9 @@ import img from "../../assets/images/About/logo (1).png";
 import Image from "next/image";
 import Lottie from "lottie-react";
 import lottieImage from "../../../public/voice3.json";
-import { signOut, useSession } from "next-auth/react";
-import { FaSignOutAlt, FaUserEdit } from "react-icons/fa";
-
-let recognition; // Declare the recognition variable outside of the component
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = SpeechRecognition ? new SpeechRecognition() : null;
 
 export default function DashboardNavbar() {
   const session = useSession();
@@ -25,6 +24,7 @@ export default function DashboardNavbar() {
   const [toggle, setToggle] = useState(false);
 
   const { setSearchQuery: updateSearchContext } = useSearchContext();
+
   let pathName = usePathname().split("/");
   pathName = pathName[pathName.length - 1];
 
@@ -52,27 +52,19 @@ export default function DashboardNavbar() {
   };
 
   useEffect(() => {
-    // Ensure this runs only on the client side
-    if (typeof window !== "undefined") {
-      const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
-      recognition = SpeechRecognition ? new SpeechRecognition() : null;
+    if (recognition) {
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setSearchQuery(transcript);
+      };
 
-      if (recognition) {
-        recognition.onresult = (event) => {
-          const transcript = event.results[0][0].transcript;
-          setSearchQuery(transcript);
-        };
-
-        recognition.onerror = (event) => {
-          console.error("Voice recognition error:", event.error);
-          setIsListening(false);
-        };
-
-        recognition.onend = () => {
-          setIsListening(false);
-        };
-      }
+      recognition.onerror = (event) => {
+        console.error("Voice recognition error:", event.error);
+        setIsListening(false);
+      };
+      recognition.onend = () => {
+        setIsListening(false);
+      };
     }
   }, [updateSearchContext]);
 
@@ -98,7 +90,9 @@ export default function DashboardNavbar() {
             <div className="flex items-center justify-center w-full">
               <div className=" relative w-40 lg:w-72 md:w-52 ">
                 <input
-                  className="bg-[#EFEEE9CC] w-full outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1] focus:border-[#a1a5a8b1] rounded-md py-2 px-4 pr-14"
+                  className="bg-[#EFEEE9CC] w-full
+              outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1] 
+             focus:border-[#a1a5a8b1] rounded-md py-2 px-4 pr-14"
                   type="text"
                   placeholder="Search..."
                   onChange={handleSearch}
