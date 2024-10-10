@@ -21,7 +21,7 @@ const Footer = () => {
   if (
     route.includes("dashboard") ||
     route.includes("/login") ||
-    route.includes("/sighup")
+    route.includes("/signup") // Fixed typo from "/sighup" to "/signup"
   ) {
     return <div></div>;
   }
@@ -30,25 +30,25 @@ const Footer = () => {
     <footer className="bg-white text-black py-6 px-4 lg:py-12 lg:px-8">
       <div className="w-full flex flex-col lg:flex-row gap-8 mx-auto">
         <div className="w-full lg:w-2/3 border-2 p-4 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full p-2 text-center flex items-center justify-center flex-col">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full p-2 text-center">
             {/* Contact Section */}
             <div className="space-y-4">
               <h2 className="text-lg font-bold">Contact Us</h2>
               <p>www.bookify06@gmail.com</p>
               <p>Dhaka, Bangladesh</p>
-              <p>+88018********</p>
-              <div className="flex space-x-4 mt-4 text-xl text-center items-center justify-center">
+              <p>+8802-8123456</p>
+              <div className="flex space-x-4 mt-4 text-xl items-center justify-center">
                 {/* Social Media Icons */}
-                <a href="#">
+                <a href="#" aria-label="Facebook">
                   <FaFacebook />
                 </a>
-                <a href="#">
+                <a href="#" aria-label="Instagram">
                   <FaInstagram />
                 </a>
-                <a href="#">
+                <a href="#" aria-label="Twitter">
                   <FaTwitter />
                 </a>
-                <a href="#">
+                <a href="#" aria-label="YouTube">
                   <FaYoutube />
                 </a>
               </div>
@@ -158,17 +158,18 @@ const Footer = () => {
                 type="email"
                 placeholder="Enter your email"
                 className="p-2 rounded-md w-full text-gray-800"
+                required
               />
               <button
                 type="submit"
-                className="bg-[#364957] text-white px-4 py-2 rounded-md hover:bg-gray-200 hover:text-black"
+                className="bg-[#364957] text-white px-4 py-2 rounded-md hover:bg-gray-200 hover:text-black transition-colors duration-300"
               >
                 Submit
               </button>
             </form>
           </div>
 
-          <div className="flex justify-center items-center space-x-4 text-5xl p-4 border-2 rounded-xl bg-gray-100 h-1/2">
+          <div className="flex justify-center items-center space-x-4 text-3xl p-4 border-2 rounded-xl bg-gray-100 h-1/2">
             <FaApplePay />
             <FaCcVisa />
             <FaCcMastercard />

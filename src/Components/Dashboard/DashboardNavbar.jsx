@@ -12,15 +12,19 @@ import img from "../../assets/images/About/logo (1).png";
 import Image from "next/image";
 import Lottie from "lottie-react";
 import lottieImage from "../../../public/voice3.json";
-
-let recognition; // Declare the recognition variable outside of the component
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = SpeechRecognition ? new SpeechRecognition() : null;
 
 export default function DashboardNavbar() {
+  const session = useSession();
   const [isListening, setIsListening] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   const { setSearchQuery: updateSearchContext } = useSearchContext();
+
   let pathName = usePathname().split("/");
   pathName = pathName[pathName.length - 1];
 
@@ -48,27 +52,19 @@ export default function DashboardNavbar() {
   };
 
   useEffect(() => {
-    // Ensure this runs only on the client side
-    if (typeof window !== "undefined") {
-      const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
-      recognition = SpeechRecognition ? new SpeechRecognition() : null;
+    if (recognition) {
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setSearchQuery(transcript);
+      };
 
-      if (recognition) {
-        recognition.onresult = (event) => {
-          const transcript = event.results[0][0].transcript;
-          setSearchQuery(transcript);
-        };
-
-        recognition.onerror = (event) => {
-          console.error("Voice recognition error:", event.error);
-          setIsListening(false);
-        };
-
-        recognition.onend = () => {
-          setIsListening(false);
-        };
-      }
+      recognition.onerror = (event) => {
+        console.error("Voice recognition error:", event.error);
+        setIsListening(false);
+      };
+      recognition.onend = () => {
+        setIsListening(false);
+      };
     }
   }, [updateSearchContext]);
 
@@ -94,7 +90,9 @@ export default function DashboardNavbar() {
             <div className="flex items-center justify-center w-full">
               <div className=" relative w-40 lg:w-72 md:w-52 ">
                 <input
-                  className="bg-[#EFEEE9CC] w-full outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1] focus:border-[#a1a5a8b1] rounded-md py-2 px-4 pr-14"
+                  className="bg-[#EFEEE9CC] w-full
+              outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1] 
+             focus:border-[#a1a5a8b1] rounded-md py-2 px-4 pr-14"
                   type="text"
                   placeholder="Search..."
                   onChange={handleSearch}
@@ -136,16 +134,60 @@ export default function DashboardNavbar() {
               <p>
                 <IoMdNotificationsOutline className="text-2xl" />
               </p>
-              <div>
-                <button
-                  type="button"
-                  className="flex text-sm "
-                  aria-expanded="false"
-                  data-dropdown-toggle="dropdown-user"
-                >
-                  <CgProfile className="text-black font-black text-3xl" />
-                </button>
-              </div>
+              {session?.status === "authenticated" && (
+                <>
+                  <div className="relative  text-left hidden md:block">
+                    <button
+                      type="button"
+                      className="flex text-sm "
+                      onClick={() => setToggle(!toggle)}
+                    >
+                      {session?.data?.user.image ? (
+                        <>
+                          <Image
+                            src={session?.data?.user?.image}
+                            width={50}
+                            height={50}
+                            className="rounded-full hover:border-2"
+                            alt="profile-image"
+                          ></Image>
+                        </>
+                      ) : (
+                        <>
+                          <CgProfile className="text-black font-black text-3xl" />
+                        </>
+                      )}
+                    </button>
+                  </div>
+
+                  {toggle ? (
+                    <>
+                      <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
+                        <div className="px-4 py-2">
+                          <span className="block text-sm   ">
+                            {session?.data?.user?.name}
+                          </span>
+                          <span className="block text-sm  text-gray-500 truncate">
+                            {session?.data?.user?.email}
+                          </span>
+                        </div>
+                        <ul className="pt-1" aria-labelledby="user-menu-button">
+                          <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center ">
+                            <FaUserEdit className="mr-1" />
+                            <Link href={"/user/update"}>Update Profile</Link>
+                          </li>
+                          <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
+                            <FaSignOutAlt className="mr-1" />
+                            <button onClick={() => signOut()}>Sign out</button>
+                          </li>
+                        </ul>
+                      </div>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
