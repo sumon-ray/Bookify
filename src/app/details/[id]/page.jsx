@@ -12,7 +12,7 @@ import { FaBook } from 'react-icons/fa';
 export default function Details({ params }) {
 
 
-    const { data } = useQuery({
+    const { data  } = useQuery({
         queryKey: ['details of book'],
         queryFn: async () => {
             const res = await axios(`https://bookify-server-lilac.vercel.app/book/${params?.id}`)
@@ -23,9 +23,9 @@ export default function Details({ params }) {
 
 
     return (
-        <section className="space-y-10 pb-20">
+        <section className="space-y-10 mt-0 md:mt-20 mb-16 md:mb-20">
             {/* title */}
-            <div className="bg-[#EFEEE9] p-6">
+            <div className="bg-[#EFEEE9] p-6 ">
                 <h1 className="text-3xl font-black uppercase text-center">Book Details</h1>
             </div>
 
@@ -39,7 +39,7 @@ export default function Details({ params }) {
                 </h1>
             </div>
 
-            <DetailsCard genre={data?.genre} id={params?.id}/>
+            <DetailsCard genre={data?.genre} id={params?.id} />
 
         </section>
     )
