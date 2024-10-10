@@ -20,12 +20,12 @@ export default function Aside() {
     <aside className="fixed top-1 left-0 z-40 min-w-[175px] h-screen pt-[78px] transition-transform -translate-x-full bg-white md:translate-x-0">
       <div className="h-full pl-3 pr-2 overflow-y-auto relative">
         <ul className="space-y-1 font-medium">
-          {/* <li>
-            <Link href="/dashboard" className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard')}`}>
+          <li>
+            <Link href={`/dashboard/dashboardd`} className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard/dashboardd')}`}>
               <LuLayoutDashboard />
               <span className="font-bold">Dashboard</span>
             </Link>
-          </li> */}
+          </li>
           <li>
             <Link href="/dashboard" className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard')}`}>
               <IoHomeOutline />
