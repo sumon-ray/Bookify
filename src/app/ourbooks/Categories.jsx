@@ -28,18 +28,18 @@ export default function Categories() {
 
 
     return (
-        <div className="max-w-7xl mx-auto space-y-10">
+        <div className="max-w-7xl mx-auto space-y-12 px-6">
             {/* view all categories */}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-center lg:justify-between">
                 <h1 className="text-xl font-bold">View All Categories</h1>
-                <div className="flex items-center w-3/4">
+                <div className=" hidden lg:flex items-center justify-between w-3/4">
                     <div className="w-full border border-[#EFEEE9] -mr-5"></div>
                     <Image src={img} height={50} width={100} className="w-24 h-[75px] -mt-5" />
                 </div>
             </div>
 
             {/* categories grid */}
-            <div className="grid grid-cols-6 gap-12">
+            <div className="grid grid-cols-3 lg:grid-cols-6 gap-12">
                 <CategoryCard img={img2} genre={'Learn'}/>
                 <CategoryCard img={img3} genre={'Motivation'}/>
                 <CategoryCard img={img4} genre={'Family'}/>

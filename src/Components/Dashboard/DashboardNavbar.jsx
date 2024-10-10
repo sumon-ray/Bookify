@@ -17,9 +17,11 @@ const SpeechRecognition =
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
 
 export default function DashboardNavbar() {
+  const session = useSession();
   const [isListening, setIsListening] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   const { setSearchQuery: updateSearchContext } = useSearchContext();
 
@@ -132,16 +134,60 @@ export default function DashboardNavbar() {
               <p>
                 <IoMdNotificationsOutline className="text-2xl" />
               </p>
-              <div>
-                <button
-                  type="button"
-                  className="flex text-sm "
-                  aria-expanded="false"
-                  data-dropdown-toggle="dropdown-user"
-                >
-                  <CgProfile className="text-black font-black text-3xl" />
-                </button>
-              </div>
+              {session?.status === "authenticated" && (
+                <>
+                  <div className="relative  text-left hidden md:block">
+                    <button
+                      type="button"
+                      className="flex text-sm "
+                      onClick={() => setToggle(!toggle)}
+                    >
+                      {session?.data?.user.image ? (
+                        <>
+                          <Image
+                            src={session?.data?.user?.image}
+                            width={50}
+                            height={50}
+                            className="rounded-full hover:border-2"
+                            alt="profile-image"
+                          ></Image>
+                        </>
+                      ) : (
+                        <>
+                          <CgProfile className="text-black font-black text-3xl" />
+                        </>
+                      )}
+                    </button>
+                  </div>
+
+                  {toggle ? (
+                    <>
+                      <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
+                        <div className="px-4 py-2">
+                          <span className="block text-sm   ">
+                            {session?.data?.user?.name}
+                          </span>
+                          <span className="block text-sm  text-gray-500 truncate">
+                            {session?.data?.user?.email}
+                          </span>
+                        </div>
+                        <ul className="pt-1" aria-labelledby="user-menu-button">
+                          <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center ">
+                            <FaUserEdit className="mr-1" />
+                            <Link href={"/user/update"}>Update Profile</Link>
+                          </li>
+                          <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
+                            <FaSignOutAlt className="mr-1" />
+                            <button onClick={() => signOut()}>Sign out</button>
+                          </li>
+                        </ul>
+                      </div>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
