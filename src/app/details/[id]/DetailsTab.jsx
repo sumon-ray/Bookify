@@ -11,7 +11,7 @@ export default function DetailsTab({ Book }) {
     const [open, setOpen] = useState(1);
     const { title, author, genre, condition, exchangeStatus, totalPage, location, description } = Book || {}
 
-    const { data } = useQuery({
+    const { data , refetch } = useQuery({
         queryKey: ['review'],
         queryFn: async () => {
             const res = await axios(`https://bookify-server-lilac.vercel.app/reviews`)
@@ -123,13 +123,13 @@ export default function DetailsTab({ Book }) {
                 </div>
                 {/* Author */}
                 <div className={open === 3 ? 'block' : 'hidden'}>
-                    <Review />
+                    <Review refetch={refetch} />
                     <Divider orientation="horizontal" className='py-2.5' />
                     {/* reviews */}
                     <>
 
                         {
-                            data?.map((review, i) => <PeopleReview key={i} />)
+                            data?.map((review, i) => <PeopleReview key={i} data={review}  />)
                         }
 
                     </>

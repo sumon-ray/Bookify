@@ -2,7 +2,7 @@ import { Box, Button, Rating } from "@mui/material";
 import React from "react";
 import SendReview from "./SendReview";
 
-export default function Review() {
+export default function Review({refetch}) {
     const [value, setValue] = React.useState(2);
 
     return (
@@ -26,7 +26,7 @@ export default function Review() {
                         />
                     </Box>
                     {/* <Button variant="contained" className="bg-[#364957]" size="small">write review</Button> */}
-                    <SendReview />
+                    <SendReview refetch={refetch}/>
                 </div>
 
                 {/* total review */}

@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-function SendReview() {
+function SendReview({refetch}) {
     const [isOpen, setIsOpen] = useState(false);
     const [rating, setRating] = useState(0);
     const pathName = usePathname().split('/')[2]
@@ -12,7 +12,7 @@ function SendReview() {
     function handleSubmit(e) {
         e.preventDefault();
         const comment = {
-            profile: '',
+            profile: 'https://media.istockphoto.com/id/1332100919/vector/man-icon-black-icon-person-symbol.jpg?s=612x612&w=0&k=20&c=AVVJkvxQQCuBhawHrUhDRTCeNQ3Jgt0K1tXjJsFy1eg=',
             name: 'Afsar',
             rating,
             review: e.target.review.value,
@@ -23,6 +23,7 @@ function SendReview() {
                 if (data.data.insertedId) {
                     setIsOpen(false);
                     toast.success(` Submitted Successfully`)
+                    refetch()
                 }
             })
     }
