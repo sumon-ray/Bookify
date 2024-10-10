@@ -1,7 +1,20 @@
+// {
+//   "compilerOptions": {
+//     "paths": {
+//       "@/*": ["./src/*"]
+//     }
+//   }
+// }
+
+
+
+
 {
   "compilerOptions": {
+    "baseUrl": ".",  // Sets the base directory to the project root
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"]  // Maps the @/ alias to the src directory
     }
-  }
+  },
+  "include": ["src"]  // Ensures that files inside src are included
 }
