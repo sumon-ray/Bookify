@@ -27,7 +27,7 @@ const Navbar = () => {
     },
     {
       title: "Dashboard",
-      path: "/dashboard"
+      path: "/dashboard/dashboardd"
     },
     {
       title: "About",
@@ -148,7 +148,7 @@ const Navbar = () => {
                   <ul className="pt-2" aria-labelledby="user-menu-button">
                     <li>
                       <Link
-                        href="/dashboard"
+                        href="/dashboard/dashboardd"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
                       >
                         Dashboard

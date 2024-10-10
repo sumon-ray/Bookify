@@ -51,7 +51,7 @@ const CustomerSatisfaction = () => {
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig}
-                className="max-h-full"
+                    className="max-h-[250px]"
                 >
                     <AreaChart
                         accessibilityLayer
@@ -99,7 +99,9 @@ const CustomerSatisfaction = () => {
                         <div className="flex items-center gap-2 font-medium leading-none">
                             Trending up by 4.2% this month <TrendingUp className="h-4 w-4" />
                         </div>
-
+                        <div className="leading-none text-muted-foreground">
+                            Showing total visitors for the last 6 months
+                        </div>
                     </div>
                 </div>
             </CardFooter>

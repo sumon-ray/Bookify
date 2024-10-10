@@ -1,4 +1,4 @@
-import Visitor from '@/app/(dashboard)/dashboard/dashboardM/Visitor';
+import Visitor from '@/app/(dashboard)/dashboard/dashboardd/Visitor';
 import React from 'react';
 import { GiCardExchange } from "react-icons/gi";
 import { IoIosBookmarks } from "react-icons/io";
