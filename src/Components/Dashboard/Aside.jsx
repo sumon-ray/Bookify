@@ -25,7 +25,7 @@ export default function Aside() {
       <div className="h-full pl-3 pr-2 overflow-y-auto relative">
         <ul className="space-y-1 font-medium">
           <li>
-            <Link href="/dashboard/home" className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard')}`}>
+            <Link href="/dashboard" className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard')}`}>
               <IoHomeOutline />
               <span className="font-bold">Home</span>
             </Link>
@@ -65,7 +65,7 @@ export default function Aside() {
               <TbUserShield className="text-xl" />
               <span className="font-bold">Users</span>
             </Link>
-          </li>
+          </li> 
           <li>
             <Link href="/dashboard/myshelf" className={`flex items-center gap-2 p-2 ${checkActive('/dashboard/myshelf')}`}>
               <FiBookOpen className="text-xl" />

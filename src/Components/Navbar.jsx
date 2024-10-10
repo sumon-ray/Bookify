@@ -162,20 +162,8 @@ const Navbar = () => {
                       </li>
                     </ul>
                   </div>
-                  <ul className="pt-2" aria-labelledby="user-menu-button">
-                    <li>
-                      <Link
-                        href="/dashboard/home"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
-                      >
-                        Dashboard
-                      </Link>
-                    </li>
 
-                    <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      <button onClick={() => signOut()}>Sign out</button>
-                    </li>
-                  </ul>
+                  
                
               </>
             ) : (
