@@ -10,7 +10,6 @@ import ListItemText from '@mui/material/ListItemText';
 import { HiMenuAlt2 } from 'react-icons/hi';
 import { usePathname } from 'next/navigation'; 
 import Link from 'next/link';
-
 import { IoHomeOutline } from 'react-icons/io5';
 import { MdMenuBook, MdOutlineAddCircleOutline, MdOutlineMessage } from 'react-icons/md';
 import { PiBooks } from 'react-icons/pi';
@@ -23,10 +22,6 @@ export default function TemporaryDrawer() {
 
   const checkActive = (route) => {
     return pathname === route ? 'bg-[#364957] text-[#FFFFFF]' : 'text-black';
-  };
-
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
   };
 
   const handleLinkClick = () => {
@@ -153,10 +148,10 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      <button onClick={toggleDrawer(true)}>
+      <button onClick={()=>setOpen(true)}>
         <HiMenuAlt2 className="text-black text-3xl -mb-2" />
       </button>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
+      <Drawer open={open} onClose={()=>setOpen(false)}>
         {DrawerList}
       </Drawer>
     </div>

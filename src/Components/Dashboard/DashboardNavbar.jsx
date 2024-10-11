@@ -82,23 +82,23 @@ export default function DashboardNavbar() {
   return (
     <div>
       <nav className="fixed top-0 z-50 w-full bg-white">
-        <div className="py-2.5 lg:py-4 pl-4 pr-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center justify-start rtl:justify-end">
+        <div className="py-1 pr-3">
+
+          <div className="flex items-center justify-betwe">
+
+            <div>
+
               <div className="md:hidden">
                 <TemporaryDrawer />
               </div>
 
               <Link href={"/"} className="hidden md:flex">
-                <Image src={img} className=" w-40" height={20} width={200} />
+                <Image src={img} className="h-[62px] -mr-6" height={20} width={200} />
               </Link>
 
-              <h3 className="text-xl font-bold pl-8 uppercase hidden md:block">
-                {pathName}
-              </h3>
             </div>
 
-            <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center">
               <div className=" relative w-40 lg:w-72 md:w-52 ">
                 <input
                   className="bg-[#EFEEE9CC] w-full
@@ -200,7 +200,9 @@ export default function DashboardNavbar() {
                 </>
               )}
             </div>
+            
           </div>
+
         </div>
       </nav>
     </div>
