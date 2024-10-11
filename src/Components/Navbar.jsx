@@ -9,6 +9,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import img from "../../src/assets/images/About/logo (1).png";
 import { FaChalkboardTeacher, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import ProfileUpdateModal from "./ProfileUpdateModal";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const session = useSession();
@@ -152,14 +153,21 @@ const Navbar = () => {
                       <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
                         <FaChalkboardTeacher className="mr-1" />
                         <Link href="/dashboard">Dashboard</Link>
-                      </li>                    
-                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center ">
+                      </li>
+                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  items-center hidden ">
                         <FaUserEdit className="mr-1" />
-                      <ProfileUpdateModal></ProfileUpdateModal>
+                        <ProfileUpdateModal></ProfileUpdateModal>
                       </li>
                       <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
                         <FaSignOutAlt className="mr-1" />
-                        <button onClick={() => signOut()}>Sign out</button>
+                        <button
+                          onClick={() => {
+                            signOut();
+                            toast.success("Signed out successfully!");
+                          }}
+                        >
+                          Sign out
+                        </button>
                       </li>
                     </ul>
                   </div>

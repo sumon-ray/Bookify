@@ -14,6 +14,7 @@ import Lottie from "lottie-react";
 import lottieImage from "../../../public/voice3.json";
 import { signOut, useSession } from "next-auth/react";
 import { FaSignOutAlt, FaUserEdit } from "react-icons/fa";
+import ProfileUpdateModal from "../ProfileUpdateModal";
 
 let recognition; // Declare the recognition variable outside of the component
 
@@ -180,7 +181,7 @@ export default function DashboardNavbar() {
                         <ul className="pt-1" aria-labelledby="user-menu-button">
                           <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center ">
                             <FaUserEdit className="mr-1" />
-                            <Link href={"/user/update"}>Update Profile</Link>
+                            <ProfileUpdateModal></ProfileUpdateModal>
                           </li>
                           <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
                             <FaSignOutAlt className="mr-1" />
