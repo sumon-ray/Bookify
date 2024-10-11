@@ -33,7 +33,7 @@ const SignUp = () => {
     const { email, password } = newUser;
     console.log(email, password);
 
-    const resp = await fetch("https://bookify-alpha-ten.vercel.app/signup/api", {
+    const resp = await fetch("http://localhost:3000/signup/api", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {

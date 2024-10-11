@@ -117,6 +117,7 @@ const Navbar = () => {
                   type="button"
                   className="flex text-sm "
                   onClick={() => setToggle(!toggle)}
+                  onChange={() => setToggle(!toggle)}
                 >
                   {session?.data?.user.image ? (
                     <>

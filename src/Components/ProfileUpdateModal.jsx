@@ -21,7 +21,7 @@ const ProfileUpdateModal = () => {
   const { data, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios.get("https://bookify-alpha-ten.vercel.app/api/users");
+      const res = await axios.get("http://localhost:3000/api/users");
       return res.data;
     },
   });
@@ -50,7 +50,7 @@ const ProfileUpdateModal = () => {
 
       // Send PUT request to update user data
       const res = await axios.put(
-        `https://bookify-alpha-ten.vercel.app/api/users/${user._id}`,
+        `http://localhost:3000/api/users/${user._id}`,
         updatedUser
       );
 
