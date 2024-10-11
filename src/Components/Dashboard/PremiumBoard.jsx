@@ -15,14 +15,10 @@ const PremiumBoard = () => {
             width={100}
           />
         </div>
-        <p className="text-xl flex gap-1">
-          Bookify Pro
-          {/* <span className="bg-gray-200 bg-opacity-15 rounded-md px-2 font-bold">
-          </span> */}
-        </p>
+  
       </h1>
       <p className="text-xs">Unlock access to all features on Tetumbas</p>
-      <button className="bg-white text- text-black font-semibold px-2 py-1 rounded-full shadow-md hover:bg-gray-200 transition-all duration-300">
+      <button className="bg-white text- text-black font-semibold px-2 py-1 rounded-md shadow-md hover:bg-gray-200 transition-all duration-300">
         Get Pro
       </button>
     </div>

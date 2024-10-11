@@ -1,10 +1,26 @@
 "use client"
 import { useState } from 'react';
+import Review from './Review';
+import { Divider, Rating } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import PeopleReview from './PeopleReview';
 
 export default function DetailsTab({ Book }) {
 
     const [open, setOpen] = useState(1);
     const { title, author, genre, condition, exchangeStatus, totalPage, location, description } = Book || {}
+
+    const { data , refetch } = useQuery({
+        queryKey: ['review'],
+        queryFn: async () => {
+            const res = await axios(`https://bookify-server-lilac.vercel.app/reviews`)
+            const data = await res.data;
+            return data
+        }
+
+    })
+
 
     return (
         <div className='max-w-6xl mx-auto pb-10'>
@@ -106,7 +122,18 @@ export default function DetailsTab({ Book }) {
 
                 </div>
                 {/* Author */}
-                <p className={open === 3 ? 'block' : 'hidden'}>Coming soon</p>
+                <div className={open === 3 ? 'block' : 'hidden'}>
+                    <Review refetch={refetch} />
+                    <Divider orientation="horizontal" className='py-2.5' />
+                    {/* reviews */}
+                    <>
+
+                        {
+                            data?.map((review, i) => <PeopleReview key={i} data={review}  />)
+                        }
+
+                    </>
+                </div>
 
             </div>
 

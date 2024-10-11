@@ -30,7 +30,7 @@ const Navbar = () => {
     },
     {
       title: "Dashboard",
-      path: "/dashboard",
+      path: "/dashboard"
     },
     {
       title: "About",
@@ -171,14 +171,17 @@ const Navbar = () => {
                       </li>
                     </ul>
                   </div>
-                </>
-              ) : (
-                <></>
-              )}
-            </>
-          )}
-        </div>
-      </nav>
+
+                  
+               
+              </>
+            ) : (
+              <></>
+            )}
+          </>
+        )}
+      </div>
+    </nav>
     </div>
   );
 };
