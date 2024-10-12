@@ -10,7 +10,6 @@ import ListItemText from '@mui/material/ListItemText';
 import { HiMenuAlt2 } from 'react-icons/hi';
 import { usePathname } from 'next/navigation'; 
 import Link from 'next/link';
-
 import { IoHomeOutline } from 'react-icons/io5';
 import { MdMenuBook, MdOutlineAddCircleOutline, MdOutlineMessage } from 'react-icons/md';
 import { PiBooks } from 'react-icons/pi';
@@ -23,10 +22,6 @@ export default function TemporaryDrawer() {
 
   const checkActive = (route) => {
     return pathname === route ? 'bg-[#364957] text-[#FFFFFF]' : 'text-black';
-  };
-
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
   };
 
   const handleLinkClick = () => {
@@ -95,20 +90,6 @@ export default function TemporaryDrawer() {
         <ListItem disablePadding>
           <ListItemButton 
             component={Link} 
-            href="/dashboard/ourBooks" 
-            onClick={handleLinkClick} 
-            className={`flex items-center gap-2 p-2 ${checkActive('/dashboard/ourBooks')}`}
-          >
-            <ListItemIcon>
-              <MdMenuBook />
-            </ListItemIcon>
-            <ListItemText primary="Our Books" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton 
-            component={Link} 
             href="/dashboard/messages" 
             onClick={handleLinkClick} 
             className={`flex items-center gap-2 p-2 ${checkActive('/dashboard/messages')}`}
@@ -134,29 +115,17 @@ export default function TemporaryDrawer() {
           </ListItemButton>
         </ListItem>
 
-        <ListItem disablePadding>
-          <ListItemButton 
-            component={Link} 
-            href="/dashboard/myshelf" 
-            onClick={handleLinkClick} 
-            className={`flex items-center gap-2 p-2 ${checkActive('/dashboard/myshelf')}`}
-          >
-            <ListItemIcon>
-              <FiBookOpen />
-            </ListItemIcon>
-            <ListItemText primary="My Shelf" />
-          </ListItemButton>
-        </ListItem>
+        
       </List>
     </Box>
   );
 
   return (
     <div>
-      <button onClick={toggleDrawer(true)}>
-        <HiMenuAlt2 className="text-black text-3xl -mb-2" />
+      <button onClick={()=>setOpen(true)}>
+        <HiMenuAlt2 className="text-black text-3xl -mb-2 ml-2" />
       </button>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
+      <Drawer open={open} onClose={()=>setOpen(false)}>
         {DrawerList}
       </Drawer>
     </div>
