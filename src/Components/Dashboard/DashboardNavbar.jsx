@@ -5,7 +5,7 @@ import { GiBookmarklet } from "react-icons/gi";
 import TemporaryDrawer from "./Drawer";
 import { usePathname } from "next/navigation";
 import { IoIosSearch, IoMdNotificationsOutline } from "react-icons/io";
-import { MdOutlineKeyboardVoice, MdOutlineWbSunny } from "react-icons/md";
+import { MdOutlineKeyboardVoice, MdOutlineMessage, MdOutlineWbSunny } from "react-icons/md";
 import { useSearchContext } from "@/app/(dashboard)/dashboard/myBooks/SearchProvider";
 import Link from "next/link";
 import img from "../../assets/images/About/logo (1).png";
@@ -20,6 +20,9 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { IoMoonOutline } from "react-icons/io5";
+import { RiMessage2Line } from "react-icons/ri";
+import { TbFocusCentered } from "react-icons/tb";
+import { FiSettings } from "react-icons/fi";
 
 
 
@@ -101,7 +104,7 @@ export default function DashboardNavbar() {
   return (
     <div>
       <nav className="fixed top-0 z-50 w-full bg-white">
-        <div className="py-1 pr-3">
+        <div className="py-1 pr-3.5">
 
           <div className="flex items-center justify-between">
 
@@ -158,23 +161,22 @@ export default function DashboardNavbar() {
               </div>
 
               {/* all menu */}
-              <div className="flex items-center">
+              <div className="flex items-center gap-x-6">
 
                 <button className="bg-[#36495733] text-black rounded-full p-2">
                   <MdOutlineWbSunny className="text-xl" />
                 </button>
 
                 <div>
-                  <Button className="bg-[#36495733] text-black rounded-full p-2"
+                  <button className="bg-[#36495733] text-black rounded-full p-2"
                     id="basic-button"
                     aria-controls={open ? 'basic-menu' : undefined}
                     aria-haspopup="true"
                     size="small"
                     aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                  >
+                    onClick={handleClick}>
                     <IoMdNotificationsOutline className="text-xl" />
-                  </Button>
+                  </button>
                   <Menu
                     id="basic-menu"
                     anchorEl={anchorEl}
@@ -190,7 +192,57 @@ export default function DashboardNavbar() {
                   </Menu>
                 </div>
 
-                {/* notification and profile */}
+                <div>
+                  <button className="bg-[#36495733] text-black rounded-full p-2"
+                    id="basic-button"
+                    aria-controls={open ? 'basic-menu' : undefined}
+                    aria-haspopup="true"
+                    size="small"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}>
+                    <MdOutlineMessage className="text-xl" />
+                  </button>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      'aria-labelledby': 'basic-button',
+                    }}
+                  >
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                  </Menu>
+                </div>
+
+                <div>
+                  <button className="bg-[#36495733] text-black rounded-full p-2"
+                    id="basic-button"
+                    aria-controls={open ? 'basic-menu' : undefined}
+                    aria-haspopup="true"
+                    size="small"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}>
+                    <TbFocusCentered className="text-xl" />
+                  </button>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      'aria-labelledby': 'basic-button',
+                    }}
+                  >
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                  </Menu>
+                </div>
+
+                {/* profile */}
                 <div>
                   {session?.status === "authenticated" && (
                     <>
@@ -204,8 +256,8 @@ export default function DashboardNavbar() {
                             <>
                               <Image
                                 src={session?.data?.user?.image}
-                                width={50}
-                                height={50}
+                                width={35.5}
+                                height={35.5}
                                 className="rounded-full hover:border-2"
                                 alt="profile-image"
                               ></Image>
@@ -247,6 +299,11 @@ export default function DashboardNavbar() {
                     </>
                   )}
                 </div>
+
+                <div className="border-l border-black pl-4">
+                  <FiSettings className="text-2xl animate-spin [animation-duration:2s]"/>
+                </div>
+
               </div>
 
             </div>
