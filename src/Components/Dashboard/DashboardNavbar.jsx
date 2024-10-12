@@ -125,7 +125,7 @@ export default function DashboardNavbar() {
             <div className="flex items-center justify-between w-[86%]">
 
               {/* search */}
-              <div className="flex items-center justify-center">
+              <div className="hidden md:flex items-center justify-center ">
                 <div className=" relative w-40 lg:w-72 md:w-52 ">
                   <input
                     className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
@@ -160,8 +160,9 @@ export default function DashboardNavbar() {
                 </div>
               </div>
 
+
               {/* all menu */}
-              <div className="flex items-center gap-x-6">
+              <div className="hidden md:flex items-center gap-x-6 ">
 
                 <button className="bg-[#36495733] text-black rounded-full p-2">
                   <MdOutlineWbSunny className="text-xl" />
@@ -301,12 +302,16 @@ export default function DashboardNavbar() {
                 </div>
 
                 <div className="border-l border-black pl-4">
-                  <FiSettings className="text-2xl animate-spin [animation-duration:2s]"/>
+                  <FiSettings className="text-2xl animate-spin [animation-duration:2s]" />
                 </div>
 
               </div>
 
             </div>
+
+            <Link href={"/"} className="flex md:hidden mr-2">
+              <Image src={img} className="h-[52px] max-w-[135px] -mr-6" height={20} width={200} />
+            </Link>
 
           </div>
 

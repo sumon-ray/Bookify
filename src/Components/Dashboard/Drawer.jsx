@@ -90,20 +90,6 @@ export default function TemporaryDrawer() {
         <ListItem disablePadding>
           <ListItemButton 
             component={Link} 
-            href="/dashboard/ourBooks" 
-            onClick={handleLinkClick} 
-            className={`flex items-center gap-2 p-2 ${checkActive('/dashboard/ourBooks')}`}
-          >
-            <ListItemIcon>
-              <MdMenuBook />
-            </ListItemIcon>
-            <ListItemText primary="Our Books" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton 
-            component={Link} 
             href="/dashboard/messages" 
             onClick={handleLinkClick} 
             className={`flex items-center gap-2 p-2 ${checkActive('/dashboard/messages')}`}
@@ -129,19 +115,7 @@ export default function TemporaryDrawer() {
           </ListItemButton>
         </ListItem>
 
-        <ListItem disablePadding>
-          <ListItemButton 
-            component={Link} 
-            href="/dashboard/myshelf" 
-            onClick={handleLinkClick} 
-            className={`flex items-center gap-2 p-2 ${checkActive('/dashboard/myshelf')}`}
-          >
-            <ListItemIcon>
-              <FiBookOpen />
-            </ListItemIcon>
-            <ListItemText primary="My Shelf" />
-          </ListItemButton>
-        </ListItem>
+        
       </List>
     </Box>
   );
@@ -149,7 +123,7 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <button onClick={()=>setOpen(true)}>
-        <HiMenuAlt2 className="text-black text-3xl -mb-2" />
+        <HiMenuAlt2 className="text-black text-3xl -mb-2 ml-2" />
       </button>
       <Drawer open={open} onClose={()=>setOpen(false)}>
         {DrawerList}
