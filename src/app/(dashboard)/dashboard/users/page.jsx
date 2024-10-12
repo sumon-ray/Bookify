@@ -18,7 +18,7 @@ const page = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axios.get(
-        "https://bookify-server-lilac.vercel.app/users"
+        "http://localhost:4000/users"
       );
       return res.data;
     },
@@ -77,7 +77,7 @@ const page = () => {
         try {
           // Proceed with deletion
           await axios.delete(
-            `https://bookify-server-lilac.vercel.app/user?id=${id}`
+            `http://localhost:4000/user?id=${id}`
           );
 
           // Refetch users after deletion
@@ -113,7 +113,7 @@ const page = () => {
         try {
           // Send PUT request to update only the role
           const res = await axios.patch(
-            `https://bookify-server-lilac.vercel.app/user?id=${id}`,
+            `http://localhost:4000/user?id=${id}`,
             {
               role: newRole, // Sending only the 'role' field
             }
@@ -333,7 +333,7 @@ const page = () => {
                             onClick={() =>
                               handleToggleRole(user._id, user.role)
                             }
-                            className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 hidden dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
+                            className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500  dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
