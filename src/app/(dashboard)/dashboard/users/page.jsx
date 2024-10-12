@@ -17,9 +17,7 @@ const page = () => {
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios.get(
-        "http://localhost:4000/users"
-      );
+      const res = await axios.get("http://localhost:4000/users");
       return res.data;
     },
   });
@@ -76,9 +74,7 @@ const page = () => {
       if (result.isConfirmed) {
         try {
           // Proceed with deletion
-          await axios.delete(
-            `http://localhost:4000/user?id=${id}`
-          );
+          await axios.delete(`http://localhost:4000/user?id=${id}`);
 
           // Refetch users after deletion
           refetch();
@@ -112,12 +108,9 @@ const page = () => {
       if (result.isConfirmed) {
         try {
           // Send PUT request to update only the role
-          const res = await axios.patch(
-            `http://localhost:4000/user?id=${id}`,
-            {
-              role: newRole, // Sending only the 'role' field
-            }
-          );
+          const res = await axios.patch(`http://localhost:4000/user?id=${id}`, {
+            role: newRole, // Sending only the 'role' field
+          });
 
           if (res.status === 200) {
             refetch();
@@ -282,7 +275,8 @@ const page = () => {
                         </div>
                       </td>
                       <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                        {session?.status === "authenticated" ? (
+                        {session?.status === "authenticated" &&
+                        session?.data?.user?.name == user?.name ? (
                           <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
                             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
