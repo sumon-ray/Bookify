@@ -21,11 +21,11 @@ export default function Aside() {
   };
   
   return (
-    <aside className="fixed top-1 left-0 z-40 w-[180px] h-screen pt-[78px] transition-transform -translate-x-full bg-white md:translate-x-0">
+    <aside className="fixed top-1 left-0 z-40 w-[184px] h-screen pt-[78px] transition-transform -translate-x-full bg-white md:translate-x-0">
       <div className="h-full pl-3 pr-2 overflow-y-auto relative">
         <ul className="space-y-1 font-medium">
           <li>
-            <Link href="/dashboard/home" className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard')}`}>
+            <Link href="/dashboard" className={`flex items-center gap-2 px-2 py-1 ${checkActive('/dashboard')}`}>
               <IoHomeOutline />
               <span className="font-bold">Home</span>
             </Link>
