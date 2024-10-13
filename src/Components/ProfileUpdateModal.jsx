@@ -14,7 +14,7 @@ const ProfileUpdateModal = () => {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:4000/users");
+      const res = await axios.get("https://bookify-server-lilac.vercel.app/users");
       return res.data;
     },
   });
@@ -59,7 +59,7 @@ const ProfileUpdateModal = () => {
 
       // Send PUT request to update the user
       const res = await axios.put(
-        `http://localhost:4000/user?id=${user?._id}`,
+        `https://bookify-server-lilac.vercel.app/user?id=${user?._id}`,
         updatedUser
       );
 
