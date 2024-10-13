@@ -9,12 +9,12 @@ export default function NotFound() {
         <img
           src="https://i.postimg.cc/0yLNc315/404-snow.gif"
           alt="404 Not Found"
-          className="w-64 h-64 md:w-full md:h-full lg:w-full lg:h-full mt-4 border-2 border-[#364957]"
+          className="w-64 h-64 md:w-full md:h-full lg:w-full lg:h-full mt-12 border-2 border-gray"
         />
       </div>
 
       {/* Right Side - Text */}
-      <div className="lg:w-1/2 text-center lg:text-left pl-6 mt-16">
+      <div className="lg:w-1/2 text-center lg:text-left pl-8 mt-16">
         <h2 className="text-4xl font-semibold mb-4 drop-shadow-lg">Oops! Page Not Found</h2>
         <p className="text-xl mb-6 max-w-md drop-shadow-md">
           Sorry, the page you're looking for doesn't exist.
