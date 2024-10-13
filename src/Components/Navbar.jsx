@@ -9,7 +9,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import img from "../../src/assets/images/About/logo (1).png";
 import { FaChalkboardTeacher, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import ProfileUpdateModal from "./ProfileUpdateModal";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
   const session = useSession();
@@ -30,7 +30,7 @@ const Navbar = () => {
     },
     {
       title: "Dashboard",
-      path: "/dashboard"
+      path: "/dashboard",
     },
     {
       title: "About",
@@ -39,6 +39,7 @@ const Navbar = () => {
   ];
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
+
   // for PathName
   if (
     pathName.includes("/dashboard") ||
@@ -47,10 +48,12 @@ const Navbar = () => {
   ) {
     return <div></div>;
   }
+
   // console.log(session);
 
   return (
     <div>
+      <Toaster></Toaster>
       <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7 || md:fixed z-50 w-full top-0 md:rounded-br-ful md:rounded-bl-ful">
         {/* bookify logo */}
         <div>
@@ -154,7 +157,7 @@ const Navbar = () => {
                         <FaChalkboardTeacher className="mr-1" />
                         <Link href="/dashboard">Dashboard</Link>
                       </li>
-                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  items-center hidden ">
+                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  items-center flex ">
                         <FaUserEdit className="mr-1" />
                         <ProfileUpdateModal></ProfileUpdateModal>
                       </li>
@@ -171,17 +174,14 @@ const Navbar = () => {
                       </li>
                     </ul>
                   </div>
-
-                  
-               
-              </>
-            ) : (
-              <></>
-            )}
-          </>
-        )}
-      </div>
-    </nav>
+                </>
+              ) : (
+                <></>
+              )}
+            </>
+          )}
+        </div>
+      </nav>
     </div>
   );
 };
