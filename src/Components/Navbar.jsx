@@ -74,9 +74,10 @@ const Navbar = () => {
     return <div></div>;
   }
 
+
   return (
     <div className="overflow-hidden">
-      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10  md:fixed z-50 w-full top-0 ">
+      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7 || md:fixed z-50 w-full top-0 md:rounded-br-ful md:rounded-bl-ful">
         {/* bookify logo */}
         <div>
           <Image src={img} className="h-14 md:h-[68px] w-28  md:w-36" height={20} width={200} />
@@ -128,7 +129,7 @@ const Navbar = () => {
                   }}
                 >
                   {links?.slice(1, 3).map(link => <MenuItem onClick={handleClose} style={{ fontWeight: 'bold', fontSize: '15px' }}>
-                   <Link className={`${pathName === link?.path ? 'border-b-2 border-black' : ''}`} href={link?.path}>{link?.title}</Link>
+                    <Link className={`${pathName === link?.path ? 'border-b-2 border-black' : ''}`} href={link?.path}>{link?.title}</Link>
                   </MenuItem>)}
                 </Menu>
               </div>

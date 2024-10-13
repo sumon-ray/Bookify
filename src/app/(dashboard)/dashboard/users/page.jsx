@@ -17,9 +17,7 @@ const page = () => {
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios.get(
-        "https://bookify-server-lilac.vercel.app/users"
-      );
+      const res = await axios.get("http://localhost:4000/users");
       return res.data;
     },
   });
@@ -76,9 +74,7 @@ const page = () => {
       if (result.isConfirmed) {
         try {
           // Proceed with deletion
-          await axios.delete(
-            `https://bookify-server-lilac.vercel.app/user?id=${id}`
-          );
+          await axios.delete(`http://localhost:4000/user?id=${id}`);
 
           // Refetch users after deletion
           refetch();
@@ -112,12 +108,9 @@ const page = () => {
       if (result.isConfirmed) {
         try {
           // Send PUT request to update only the role
-          const res = await axios.patch(
-            `https://bookify-server-lilac.vercel.app/user?id=${id}`,
-            {
-              role: newRole, // Sending only the 'role' field
-            }
-          );
+          const res = await axios.patch(`http://localhost:4000/user?id=${id}`, {
+            role: newRole, // Sending only the 'role' field
+          });
 
           if (res.status === 200) {
             refetch();
@@ -282,7 +275,8 @@ const page = () => {
                         </div>
                       </td>
                       <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                        {session?.status === "authenticated" ? (
+                        {session?.status === "authenticated" &&
+                        session?.data?.user?.name == user?.name ? (
                           <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
                             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
@@ -333,7 +327,7 @@ const page = () => {
                             onClick={() =>
                               handleToggleRole(user._id, user.role)
                             }
-                            className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 hidden dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
+                            className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500  dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"

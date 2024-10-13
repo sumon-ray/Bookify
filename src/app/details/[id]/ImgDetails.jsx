@@ -10,6 +10,7 @@ export default function ImgDetails({ Book }) {
             <figure className="md:w-[40%] bg-[#EFEEE9] px-7 py-[18px] flex items-center justify-center border border-black rounded-md">
                 <img src={coverImage} alt="" className='w-full h-[370px] rounded-md' />
             </figure>
+            <div></div>
             {/* details */}
             <div className="md:w-[60%] py-2 space-y-2 pl-1 md:pl-0">
                 <h1 className="font-bold text-xl md:text-2xl capitalize ">{title}</h1>
