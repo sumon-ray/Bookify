@@ -9,20 +9,44 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import img from "../../src/assets/images/About/logo (1).png";
 import { FaChalkboardTeacher, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import ProfileUpdateModal from "./ProfileUpdateModal";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import { Menu, MenuItem } from "@mui/material";  // Import Menu and MenuItem from Material UI
 
 const Navbar = () => {
   const session = useSession();
   const pathName = usePathname();
   const [toggle, setToggle] = useState(false);
+  const [down, setDown] = useState(false)
+  console.log(pathName)
+
+  // State for controlling Menu component
+  const [anchorEl, setAnchorEl] = useState(null);
+  const openMenu = Boolean(anchorEl);
+
+  // Handle menu open/close
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    setDown(true)
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setDown(false)
+  };
+
   const links = [
     {
       title: "Home",
       path: "/",
     },
     {
-      title: "Our Books",
-      path: "/ourbooks",
+      title: "Rent Books",
+      path: "/rentbooks",
+    },
+    {
+      title: "Audio Books",
+      path: "/audiobooks",
     },
     {
       title: "Contact",
@@ -37,6 +61,7 @@ const Navbar = () => {
       path: "/about",
     },
   ];
+
   // State for handling mobile menu toggle
   let [open, setOpen] = useState(false);
 
@@ -49,15 +74,13 @@ const Navbar = () => {
     return <div></div>;
   }
 
-  // console.log(session);
 
   return (
-    <div>
-      <Toaster></Toaster>
+    <div className="overflow-hidden">
       <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7 || md:fixed z-50 w-full top-0 md:rounded-br-ful md:rounded-bl-ful">
         {/* bookify logo */}
         <div>
-          <Image src={img} className="h-[68px] w-36" height={20} width={200} />
+          <Image src={img} className="h-14 md:h-[68px] w-28  md:w-36" height={20} width={200} />
         </div>
 
         {/* Hamburger icon for mobile */}
@@ -71,37 +94,63 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div>
           <ul
-            className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-              open ? "top-16" : "top-[-490px]"
-            }`}
+            className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-16" : "top-[-490px]"
+              }`}
           >
-            {links.map((link) => (
+            {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
-                className={`${
-                  pathName === link.path &&
-                  "text-white font-extrabold border-b-2 border-black"
-                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${pathName === link.path &&
+                  "font-bold border-b-2 border-black"
+                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}
-                  className="text-[#064532] hover:text-gray-400 font-bold duration-500"
+                  className="text-[black] hover:text-gray-400 font-bold duration-500"
                 >
                   {link.title}
                 </Link>
               </li>
             ))}
-            <li className="lg:hidden text-[#064532] hover:text-gray-400 font-bold duration-500">
-              {session?.status === "unauthenticated" && (
-                <Link href="/login">Sign In</Link>
-              )}
+
+            {/* Details and Summary Route */}
+            <li className="md:ml-8 lg:text-[16px] md:my-0 my-7 font-bold">
+              <button className={`flex items-center ${(pathName === '/rentbooks' || pathName === '/audiobooks') && 'border-b-2 border-black'}`} onClick={handleClick}>
+                Our store {down ? <IoIosArrowDown className="-mb-1" /> : <IoIosArrowForward className="-mb-1" />}
+              </button>
+              <div>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={openMenu}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                  }}
+                >
+                  {links?.slice(1, 3).map(link => <MenuItem onClick={handleClose} style={{ fontWeight: 'bold', fontSize: '15px' }}>
+                    <Link className={`${pathName === link?.path ? 'border-b-2 border-black' : ''}`} href={link?.path}>{link?.title}</Link>
+                  </MenuItem>)}
+                </Menu>
+              </div>
             </li>
 
-            <li className="md:hidden text-[#064532] hover:text-gray-400 font-bold duration-500">
-              {session?.status === "authenticated" && (
-                <button onClick={() => signOut()}>Sign Out</button>
-              )}
-            </li>
+            {/* Contact and remaining links */}
+            {links.slice(3).map((link) => (
+              <li
+                key={link.path}
+                className={`${pathName === link.path &&
+                  " font-extrabold border-b-2 border-black"
+                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+              >
+                <Link
+                  href={link.path}
+                  className="text-[black] hover:text-gray-400 font-bold duration-500"
+                >
+                  {link.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -116,71 +165,64 @@ const Navbar = () => {
 
           {session?.status === "authenticated" && (
             <>
-              <div className="relative  text-left hidden md:block">
+              <div className="relative text-left hidden md:block">
                 <button
                   type="button"
-                  className="flex text-sm "
+                  className="flex text-sm"
                   onClick={() => setToggle(!toggle)}
                   onChange={() => setToggle(!toggle)}
                 >
                   {session?.data?.user.image ? (
-                    <>
-                      <Image
-                        src={session?.data?.user?.image}
-                        width={32}
-                        height={32}
-                        className="rounded-full hover:border-2"
-                        alt="profile-image"
-                      ></Image>
-                    </>
+                    <Image
+                      src={session?.data?.user?.image}
+                      width={32}
+                      height={32}
+                      className="rounded-full hover:border-2"
+                      alt="profile-image"
+                    />
                   ) : (
-                    <>
-                      <CgProfile className="text-black font-black text-3xl" />
-                    </>
+                    <CgProfile className="text-black font-black text-3xl" />
                   )}
                 </button>
               </div>
 
               {toggle ? (
-                <>
-                  <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
-                    <div className="px-4 py-2">
-                      <span className="block text-sm   ">
-                        {session?.data?.user?.name}
-                      </span>
-                      <span className="block text-sm  text-gray-500 truncate">
-                        {session?.data?.user?.email}
-                      </span>
-                    </div>
-                    <ul className="pt-1" aria-labelledby="user-menu-button">
-                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                        <FaChalkboardTeacher className="mr-1" />
-                        <Link href="/dashboard">Dashboard</Link>
-                      </li>
-                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  items-center flex ">
-                        <FaUserEdit className="mr-1" />
-                        <ProfileUpdateModal></ProfileUpdateModal>
-                      </li>
-                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
-                        <FaSignOutAlt className="mr-1" />
-                        <button
-                          onClick={() => {
-                            signOut();
-                            toast.success("Signed out successfully!");
-                          }}
-                        >
-                          Sign out
-                        </button>
-                      </li>
-                    </ul>
+                <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
+                  <div className="px-4 py-2">
+                    <span className="block text-sm">
+                      {session?.data?.user?.name}
+                    </span>
+                    <span className="block text-sm text-gray-500 truncate">
+                      {session?.data?.user?.email}
+                    </span>
                   </div>
-                </>
-              ) : (
-                <></>
-              )}
+                  <ul className="pt-1" aria-labelledby="user-menu-button">
+                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                      <FaChalkboardTeacher className="mr-1" />
+                      <Link href="/dashboard">Dashboard</Link>
+                    </li>
+                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden items-center">
+                      <FaUserEdit className="mr-1" />
+                      <ProfileUpdateModal />
+                    </li>
+                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
+                      <FaSignOutAlt className="mr-1" />
+                      <button
+                        onClick={() => {
+                          signOut();
+                          toast.success("Signed out successfully!");
+                        }}
+                      >
+                        Sign out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              ) : null}
             </>
           )}
         </div>
+
       </nav>
     </div>
   );
