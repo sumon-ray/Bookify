@@ -173,7 +173,7 @@ const AddBook = () => {
           </div>
 
           <div className="col-span-full sm:col-span-2 md:relative">
-            <button type="submit" className="flex items-center justify-between gap-x-1 text-black text-sm font-bold bg-[#EFEEE9] rounded-lg  w-full md:h-[65.5%] md:absolute px-4 p-4  md:bottom-0 focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]">
+            <button type="submit" className="flex items-center justify-between gap-x-1 text-white text-sm font-bold  bg-[#364957] rounded-lg  w-full md:h-[65.5%] md:absolute px-4 p-4  md:bottom-0 focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]">
               <span>
                 Add Book
               </span>
