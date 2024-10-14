@@ -53,13 +53,13 @@ const FaqSection = () => {
       </div>
 
       {/* FAQ Section */}
-      <div className="bg-white text-black p-6 rounded-lg w-full lg:w-1/2 mb-10 space-y-10">
+      <div className="bg-white text-black p-12 rounded-lg w-full lg:w-1/2 mb-10 space-y-6">
         <h1 className='text-2xl font-semibold mb-2'>
           People also ask-
         </h1>
         {/* FAQ Accordion */}
         {faqs.map((faq, index) => (
-          <div key={index} className="mb-4 border-b pb-2">
+          <div key={index} className="mb-2 border-b ">
             <div
               onClick={() => toggleAccordion(index)}
               className="cursor-pointer text-base sm:text-lg md:text-xl font-semibold flex justify-between items-center"
@@ -68,7 +68,7 @@ const FaqSection = () => {
               <span>{activeIndex === index ? '-' : '+'}</span>
             </div>
             {activeIndex === index && (
-              <div className="mt-4 text-black text-sm">
+              <div className="mt-2 text-black text-sm">
                 <p>{faq.answer}</p>
               </div>
             )}
