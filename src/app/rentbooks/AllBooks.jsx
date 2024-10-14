@@ -20,17 +20,23 @@ function valuetext(value) {
 export default function AllBooks() {
     const [currentPage, setCurrentPage] = React.useState(1)
     const [value, setValue] = React.useState([20, 37]);
+    const limit = 10
 
     const { data, refetch } = useQuery({
         queryKey: ['rent data', currentPage],
         queryFn: async () => {
-            const res = await axios(`http://localhost:4000/rent?limit=10&currentPage=${currentPage}`)
+            const res = await axios(`http://localhost:4000/rent?limit=${limit}&currentPage=${currentPage}`)
             const data = await res.data
             return data
         }
     })
     const uniqueGenre = [...new Set(data?.result?.map(book => book.Genre))];
-
+    const uniqueAuthor = [...new Set(data?.result?.map(book => book.Author))];
+    const uniquePublisher = [...new Set(data?.result?.map(book => book.Publisher))];
+    const uniqueYear = [...new Set(data?.result?.map(book => book['Year of Publication']))]
+    const uniqueLanguage = [...new Set(data?.result?.map(book => book.Language))]
+    const uniqueNumber = [...new Set(data?.result?.map(book => book.Price))]
+    const maxNumber = Math.max(...uniqueNumber)
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -48,42 +54,34 @@ export default function AllBooks() {
 
             <div className='flex flex-col md:flex-row gap-10'>
 
-                {/* filter option */}
+                {/* filter option big device*/}
                 <div className='hidden md:block md:w-[22%] space-y-3'>
                     <h3 className='text-lg font-bold'>Filter Option</h3>
                     <div className='space-y-2.5'>
 
-                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
+                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Author</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                            {uniqueAuthor?.map((author, i) => <option key={i} value={author}>{author}</option>)}
                         </select>
 
-                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
-                            <option value="volvo" selected disabledselected disabled>Publisher</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                            <option value="volvo" selected disabled>Publisher</option>
+                            {uniquePublisher?.map((publisher, i) => <option key={i} value={publisher}>{publisher}</option>)}
                         </select>
 
-                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
+                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Publish Year</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                            {uniqueYear?.map((Year, i) => <option key={i} value={Year}>{Year}</option>)}
                         </select>
 
-                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
+                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Language</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                            {uniqueLanguage?.map((Language, i) => <option key={i} value={Language}>{Language}</option>)}
                         </select>
 
                         {/* check box */}
                         <div>
-                            <ul className="text-sm font-medium border rounded-md bg-white p-1 pb-1.5">
+                            <ul className="text-sm font-medium rounded-md bg-[#EFEEE9] p-1 pb-1.5">
                                 <h3 className="ps-3 pt-2 pb-1">Category</h3>
                                 {/* checkbox */}
                                 <div className='flex'>
@@ -117,59 +115,52 @@ export default function AllBooks() {
                         </div>
 
                         {/* price range taker */}
-                        <div className='bg-white rounded-md border p-4 py-2 space-y-1'>
+                        <div className='bg-[#EFEEE9] rounded-md p-4 py-2 space-y-1'>
                             <h3 className='font-medium'>Price Range</h3>
-                            <div className='flex justify-center'>
+                            <div className='flex justify-center text-[#364957]'>
                                 <Box sx={{ width: 225 }} >
                                     <Slider
-                                        getAriaLabel={() => 'Temperature range'}
+                                        getAriaLabel={() => 'Range'}
                                         value={value}
                                         onChange={handleChange}
                                         valueLabelDisplay="auto"
                                         getAriaValueText={valuetext}
-                                        color="#000000"
+                                        color="white"
+                                        min={1}
+                                        max={maxNumber}
                                     />
                                 </Box>
                             </div>
                         </div>
 
-                        {/* search button */}
-
-
                     </div>
                 </div>
-                {/* filter option */}
+
+                {/* filter option small device */}
                 <div className='block md:hidden md:w-[22%] space-y-3'>
                     <h3 className='text-lg font-bold text-center'>Filter Option</h3>
                     <div className='space-y-2.5 flex flex-col md:flex-none items-center md:items-start'>
 
-                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
+                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Author</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                            {uniqueAuthor?.map((author, i) => <option key={i} value={author}>{author}</option>)}
                         </select>
 
-                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
-                            <option value="volvo" selected disabledselected disabled>Publisher</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                            <option value="volvo" selected disabled>Publisher</option>
+                            {uniquePublisher?.map((publisher, i) => <option key={i} value={publisher}>{publisher}</option>)}
                         </select>
 
-                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
+                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Publish Year</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                            {uniqueYear?.map((Year, i) => <option key={i} value={Year}>{Year}</option>)}
                         </select>
 
-                        <select className='w-[270px] border border-[#EFEEE9] rounded-md'>
+                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Language</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                            {uniqueLanguage?.map((Language, i) => <option key={i} value={Language}>{Language}</option>)}
                         </select>
+
 
                         {/* check box */}
                         <div>
@@ -209,7 +200,7 @@ export default function AllBooks() {
                         {/* price range taker */}
                         <div className='bg-white rounded-md border p-4 py-2 space-y-1'>
                             <h3 className='font-medium'>Price Range</h3>
-                            <div className='flex justify-center'>
+                            <div className='flex justify-center text-[#364957]'>
                                 <Box sx={{ width: 225 }} >
                                     <Slider
                                         getAriaLabel={() => 'Temperature range'}
@@ -234,7 +225,7 @@ export default function AllBooks() {
                     <h3 className='text-xl md:text-lg font-bold'>Books</h3>
                     <div className='grid grid-cols-2 md:grid-cols-5 gap-6'>
                         {
-                            data?.result?.slice(0, 10).map((book, idx) =>
+                            data?.result?.slice(0, limit).map((book, idx) =>
                                 <Link
                                     href={''}
                                     key={idx}
