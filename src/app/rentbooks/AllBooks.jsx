@@ -7,6 +7,9 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { IoSearchSharp } from 'react-icons/io5';
 import { Pagination, Stack } from '@mui/material';
+import Link from 'next/link';
+import { FaCartPlus } from 'react-icons/fa6';
+import './pagination.css'
 
 function valuetext(value) {
     return `${value}°C`;
@@ -15,24 +18,28 @@ function valuetext(value) {
 
 
 export default function AllBooks() {
+    const [currentPage, setCurrentPage] = React.useState(1)
+    const [value, setValue] = React.useState([20, 37]);
 
-    const { data } = useQuery({
-        queryKey: ['rent data'],
+    const { data, refetch } = useQuery({
+        queryKey: ['rent data', currentPage],
         queryFn: async () => {
-            const res = await axios(`https://bookify-server-lilac.vercel.app/rent`)
+            const res = await axios(`http://localhost:4000/rent?limit=10&currentPage=${currentPage}`)
             const data = await res.data
             return data
         }
     })
+    const uniqueGenre = [...new Set(data?.result?.map(book => book.Genre))];
 
-    const uniqueGenre = [...new Set(data?.map(book => book.Genre))];
-    const [value, setValue] = React.useState([20, 37]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
-
+    const handlePageChange = (e, page) => {
+        setCurrentPage(page)
+        refetch()
+    }
 
 
 
@@ -225,32 +232,36 @@ export default function AllBooks() {
                 {/* Books */}
                 <div className='md:w-[80%] space-y-3 flex flex-col items-center md:items-start'>
                     <h3 className='text-xl md:text-lg font-bold'>Books</h3>
-                    <div className='grid grid-cols-2 md:grid-cols-5 gap-8'>
+                    <div className='grid grid-cols-2 md:grid-cols-5 gap-6'>
                         {
-                            data?.slice(0, 10).map((book, idx) =>
-                                <div
-                                    href={``}
+                            data?.result?.slice(0, 10).map((book, idx) =>
+                                <Link
+                                    href={''}
                                     key={idx}
-                                    className="w-44 h-[250px] bg-[#ffffff] flex flex-col justify-center items-center rounded-lg p-4 border ">
+                                    className="md:w-[180px] h-auto bg-[#EFEEE9]  rounded-md "
+                                >
                                     <div className="space-y-3">
                                         <Image
                                             src={book?.coverImage}
-                                            className="w-36 h-40 rounded-lg"
+                                            className="w-full h-[205px] rounded-t-md"
                                             height={150}
                                             width={200}
-                                            alt={book?.title || 'Book Cover'}
+                                            alt={book?.Title || 'Book Cover'}
                                         />
-                                        <div className="pl-1 text-center">
+                                        <div className="text-left pl-2 pb-2 relative">
                                             <h1 className="font-bold md:uppercase" title={book?.Title}>
-                                                {book?.Title?.split(' ').slice(0, 2).join(' ')}
+                                                {book?.Title.slice(0, 13)}...
                                             </h1>
-                                            <h1 className="font-normal">{book?.Author?.split(' ').slice(0, 2).join(' ')}</h1>
-                                            <div>
 
+                                            <div className='flex items-center justify-between pr-2'>
+                                                <h1 className="font-medium">{book?.Price}$</h1>
+                                                <span className='bg-[#364957] rounded-tl-2xl rounded-br-md text-white p-2 absolute right-0 bottom-0'><FaCartPlus className='text-lg' /></span>
                                             </div>
+
                                         </div>
                                     </div>
-                                </div>)
+                                </Link>
+                            )
                         }
                     </div>
                 </div>
@@ -265,7 +276,11 @@ export default function AllBooks() {
                 </button>
 
                 <Stack spacing={0}>
-                    <Pagination count={2} variant="outline"
+                    <Pagination
+                        count={data?.totalPages}
+                        variant="outline"
+                        page={currentPage}
+                        onChange={handlePageChange}
                         sx={{
                             '& .MuiPaginationItem-root': {
                                 color: 'black',
@@ -280,6 +295,6 @@ export default function AllBooks() {
 
             </div>
 
-        </div>
+        </div >
     )
 }
