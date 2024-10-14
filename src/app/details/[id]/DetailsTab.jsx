@@ -121,7 +121,7 @@ export default function DetailsTab({ Book }) {
                     </div>
 
                 </div>
-                {/* Author */}
+                {/* Review */}
                 <div className={open === 3 ? 'block' : 'hidden'}>
                     <Review refetch={refetch} />
                     <Divider orientation="horizontal" className='py-2.5' />
