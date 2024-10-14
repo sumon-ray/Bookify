@@ -1,10 +1,13 @@
+import { FaEdit } from "react-icons/fa"
+import { TbExchange } from "react-icons/tb"
+
 export default function ImgDetails({ Book }) {
 
     const { title, author, genre, condition, owner, coverImage, exchangeStatus, publishYear, totalPage, location, rating } = Book || {}
 
     return (
 
-        <div className="flex flex-col md:flex-row gap-x-10 max-w-6xl mx-auto pt-1 pb-5 px-7 ">
+        <div className="flex flex-col md:flex-row gap-x-5 max-w-6xl mx-auto pt-1 pb-5 px-7 ">
 
             {/* img */}
             <figure className="md:w-[40%] bg-[#EFEEE9] px-7 py-[18px] flex items-center justify-center border border-black rounded-md">
@@ -44,9 +47,9 @@ export default function ImgDetails({ Book }) {
                 <p><span className="font-bold mr-1">Rating:</span>{rating}</p>
                 <p><span className="font-bold mr-1">location:</span>{location}</p>
                 {/* button */}
-                <div className='pt-1'>
-                    <button type="button" className="btn_1">Add to cart</button>
-                    <button type="button" className="btn_2">Edit</button>
+                <div className='pt-1 flex items-center'>
+                    <button type="button" className="btn_1 flex items-center"><TbExchange />Exchange</button>
+                    <button type="button" className="btn_2 flex items-center"><FaEdit className="-mt-[0.5px]" />Edit</button>
                 </div>
 
             </div>
