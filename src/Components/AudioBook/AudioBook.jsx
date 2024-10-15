@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const AudioBook = () => {
@@ -93,7 +94,7 @@ const AudioBook = () => {
                     </div>
                 </div> */}
 
-                <div className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
+                <Link href={"/audiobooks"} className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
                     <div className=''>
                         <img
                             className=" h-full w-[250px] rounded hidden md:block"
@@ -173,9 +174,9 @@ const AudioBook = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
                 
-                <div className="lg:h-[250px] flex  bg-white shadow-lg rounded-lg">
+                <Link href={"/audiobooks"} className="lg:h-[250px] flex  bg-white shadow-lg rounded-lg">
                     <div>
                         <img
                             className="h-full w-[250px]   rounded hidden md:block"
@@ -255,9 +256,9 @@ const AudioBook = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
 
-                <div className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
+                <Link href={"/audiobooks"} className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
                     <div>
                         <img
                             className="h-full w-[250px] rounded hidden md:block"
@@ -337,9 +338,9 @@ const AudioBook = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
 
-                <div className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
+                <Link href={"/audiobooks"} className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
                     <div>
                         <img
                             className="h-full w-[250px] rounded hidden md:block"
@@ -419,7 +420,7 @@ const AudioBook = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
 
             </div>
 
