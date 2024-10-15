@@ -57,7 +57,7 @@ const FaqSection = () => {
         <h1 className='text-2xl font-semibold mb-2'>
           People also ask-
         </h1>
-        {/* FAQ Accordion */}
+        {/* FAQ Accordion mapping */}
         {faqs.map((faq, index) => (
           <div key={index} className="mb-2 border-b ">
             <div
