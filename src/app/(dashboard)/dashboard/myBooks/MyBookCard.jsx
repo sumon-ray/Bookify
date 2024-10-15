@@ -7,10 +7,12 @@ import { HiOutlineBookOpen } from "react-icons/hi";
 import Lottie from "lottie-react";
 import lottieImage from "../../../..//../public/image/404.json";
 import { Pagination } from "flowbite-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const MyBookCard = () => {
-  const [allBooks, setAllBooks] = useState([]); 
-  const [filteredBooks, setFilteredBooks] = useState([]); 
+  const [allBooks, setAllBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("Classic");
   const [error, setError] = useState(null);
   const { searchQuery } = useSearchContext();
@@ -28,8 +30,8 @@ const MyBookCard = () => {
   ];
 
   useEffect(() => {
-    fetchBooksByGenre(selectedGenre, currentPage); 
-  }, [selectedGenre, currentPage]); 
+    fetchBooksByGenre(selectedGenre, currentPage);
+  }, [selectedGenre, currentPage]);
 
   useEffect(() => {
     if (searchQuery) {
@@ -44,24 +46,26 @@ const MyBookCard = () => {
 
   const fetchBooksByGenre = (genre, page = 1, limit = 10) => {
     setError(null);
-    fetch(`https://bookify-server-lilac.vercel.app/books?genre=${genre}&page=${page}&limit=${limit}`)
+    fetch(
+      `https://bookify-server-lilac.vercel.app/books/paginated?genre=${genre}&page=${page}&limit=${limit}`
+    )
       .then((response) => response.json())
       .then((data) => {
-        console.log("Fetched data:", data); 
-        const { books, totalPages } = data; 
-  
+        console.log("Fetched data:", data);
+        const { books, totalPages } = data;
+
         if (!Array.isArray(books)) {
           throw new Error("Expected an array of books");
         }
-        
+
         if (books.length === 0) {
-          setAllBooks([]);  
-          setFilteredBooks([]); 
-          setTotalPages(0); 
+          setAllBooks([]);
+          setFilteredBooks([]);
+          setTotalPages(0);
         } else {
           setAllBooks(books);
           setFilteredBooks(books);
-          setTotalPages(totalPages); 
+          setTotalPages(totalPages);
         }
       })
       .catch((error) => {
@@ -75,9 +79,9 @@ const MyBookCard = () => {
   };
 
   const handlePageChange = (page) => {
-    if (page < 1 || page > totalPages) return; 
+    if (page < 1 || page > totalPages) return;
     setCurrentPage(page);
-    fetchBooksByGenre(selectedGenre, page); 
+    fetchBooksByGenre(selectedGenre, page);
   };
 
   return (
@@ -137,25 +141,36 @@ const MyBookCard = () => {
             No books found
           </h2>
           <p className="text-gray-500">
-            We couldn't find any books that match this genre or your search query.
+            We couldn't find any books that match this genre or your search
+            query.
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {filteredBooks.map((book, index) => (
-            <div
+            <Link
+            href={`/details/${book?._id}`}
+
+              // card
               key={index}
-              className="bg-[#EFEEE9] p-4 rounded-lg shadow-sm transition-shadow"
+              className=" flex flex-col justify-center items-center h-auto bg-[#EFEEE9]  rounded-md "
             >
-              <img
-                src={book.coverImage}
-                alt={book.title}
-                className="w-full h-48 object-cover rounded-t-lg mb-2"
-              />
-              <h2 className="text-lg font-semibold mt-2">{book.title}</h2>
-              <p className="text-sm text-gray-600">{book.author}</p>
-              <p className="text-sm text-gray-500">{book.genre}</p>
-            </div>
+              <div className="space-y-3">
+                <Image
+                  src={book?.coverImage}
+                  className="w-[210px] h-[210px] pt-2 rounded-t-md"
+                  height={150}
+                  width={150}
+                  alt={book?.Title || "Book Cover"}
+                />
+                <div className="text-left pl-2 pb-2 ">
+                  <h1 className="font-bold md:uppercase" title={book?.title}>
+                    {book?.title.slice(0, 13)}...
+                  </h1>
+                  <h1 className="font-medium">{book?.owner}</h1>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       )}
@@ -165,7 +180,11 @@ const MyBookCard = () => {
             <li>
               <a
                 onClick={() => handlePageChange(currentPage - 1)}
-                className={`flex items-center justify-center px-4 h-10 leading-tight ${currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'}`}
+                className={`flex items-center justify-center px-4 h-10 leading-tight ${
+                  currentPage === 1
+                    ? "text-gray-400 cursor-not-allowed"
+                    : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                }`}
                 disabled={currentPage === 1}
               >
                 Previous
@@ -175,7 +194,11 @@ const MyBookCard = () => {
               <li key={index}>
                 <a
                   onClick={() => handlePageChange(index + 1)}
-                  className={`flex items-center justify-center px-4 h-10 leading-tight ${currentPage === index + 1 ? 'text-blue-600 bg-blue-50' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'}`}
+                  className={`flex items-center justify-center px-4 h-10 leading-tight ${
+                    currentPage === index + 1
+                      ? "text-blue-600 bg-blue-50"
+                      : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  }`}
                 >
                   {index + 1}
                 </a>
@@ -184,7 +207,11 @@ const MyBookCard = () => {
             <li>
               <a
                 onClick={() => handlePageChange(currentPage + 1)}
-                className={`flex items-center justify-center px-4 h-10 leading-tight ${currentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'}`}
+                className={`flex items-center justify-center px-4 h-10 leading-tight ${
+                  currentPage === totalPages
+                    ? "text-gray-400 cursor-not-allowed"
+                    : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                }`}
                 disabled={currentPage === totalPages}
               >
                 Next
