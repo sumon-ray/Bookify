@@ -2,16 +2,16 @@ import React from 'react';
 
 const AudioBook = () => {
     return (
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-7xl mx-auto  my-6'>
             <h1 className="md:text-4xl text-2xl font-bold text-center pb-9">
-                Explore Our Library
+                Audio Books
             </h1>
 
 
-            <div className='px-4 grid lg:grid-cols-2 grid-cols-1 gap-4'>
+            <div className='px-4 grid lg:grid-cols-2 grid-cols-1 gap-4 mb-5'>
 
 
-                <div className="flex border bg-white shadow-lg rounded-lg">
+                {/* <div className="flex border bg-white shadow-lg rounded-lg">
                     <div>
                         <img
                             className="w-full rounded hidden md:block"
@@ -91,12 +91,12 @@ const AudioBook = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
-                <div className="flex border bg-white shadow-lg rounded-lg">
-                    <div>
+                <div className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
+                    <div className=''>
                         <img
-                            className="lg:w-[400px] w-full rounded hidden md:block"
+                            className=" h-full w-[250px] rounded hidden md:block"
                             src="https://i.ibb.co.com/kMFzvDH/download.jpg"
                             alt="Album Pic"
                         />
@@ -109,7 +109,7 @@ const AudioBook = () => {
                                 </h3>
                                 <p className="text-sm text-grey mt-1">Ghost Stories</p>
                             </div>
-                            <div className="text-red-lighter">
+                            <div className="">
                                 <svg
                                     className="w-4 h-4"
                                     fill="currentColor"
@@ -175,11 +175,11 @@ const AudioBook = () => {
                     </div>
                 </div>
                 
-                <div className="flex border bg-white shadow-lg rounded-lg">
+                <div className="lg:h-[250px] flex  bg-white shadow-lg rounded-lg">
                     <div>
                         <img
-                            className="w-full rounded hidden md:block"
-                            src="https://i.ibb.co.com/Xx7687S/download-2.jpg"
+                            className="h-full w-[250px]   rounded hidden md:block"
+                            src="https://i.ibb.co.com/tQLbTvd/71rkr-F9-XPHL-AC-UF1000-1000-QL80.jpg"
                             alt="Album Pic"
                         />
                     </div>
@@ -256,10 +256,11 @@ const AudioBook = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex border bg-white shadow-lg rounded-lg">
+
+                <div className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
                     <div>
                         <img
-                            className="w-full rounded hidden md:block"
+                            className="h-full w-[250px] rounded hidden md:block"
                             src="https://i.ibb.co.com/LJxncXK/download-1.jpg"
                             alt="Album Pic"
                         />
@@ -338,10 +339,10 @@ const AudioBook = () => {
                     </div>
                 </div>
 
-                <div className="flex border bg-white shadow-lg rounded-lg">
+                <div className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
                     <div>
                         <img
-                            className="w-full rounded hidden md:block"
+                            className="h-full w-[250px] rounded hidden md:block"
                             src="https://i.ibb.co.com/Cmftf5n/download-3.jpg"
                             alt="Album Pic"
                         />
