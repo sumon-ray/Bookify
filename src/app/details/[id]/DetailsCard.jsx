@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { MdDelete } from "react-icons/md";
 
 export default function DetailsCard({ genre, id }) {
 
@@ -18,29 +19,35 @@ export default function DetailsCard({ genre, id }) {
 
 
     return (
-        <div className="max-w-6xl mx-auto flex justify-center">
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-16">
+        <div className="max-w-6xl mx-auto ">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
                 {
-                    relatedBook?.map(book => <Link 
+                    relatedBook?.map((book,i) =>  <Link
                         href={`/details/${book?._id}`}
-                        key={book?._id}
-                        className="w-44 h-[250px] bg-[#EFEEE9] flex flex-col justify-center items-center rounded-lg p-4">
+                        key={i}
+                        className="w-auto h-auto bg-[#EFEEE9]  rounded-md "
+                      >
                         <div className="space-y-3">
-                            <Image
-                                src={book?.coverImage}
-                                className="w-36 h-40 rounded-lg"
-                                height={150}
-                                width={200}
-                                alt={book?.title || 'Book Cover'}
-                            />
-                            <div className="pl-1 text-center text-black">
-                                <h1 className="font-bold md:uppercase" title={book?.title}>
-                                    {book?.title?.split(' ').slice(0, 2).join(' ')}
-                                </h1>
-                                <h1 className="font-normal">{book?.author?.split(' ').slice(0, 2).join(' ')}</h1>
+                          <Image
+                            src={book?.coverImage}
+                            className="w-full h-[210px] rounded-t-md"
+                            height={150}
+                            width={200}
+                            alt={book?.title || 'Book Cover'}
+                          />
+                          <div className="text-left pl-2 pb-2 ">
+                            <h1 className="font-bold md:uppercase" title={book?.title}>
+                              {book?.title.slice(0, 13)}...
+                            </h1>
+            
+                            <div className='flex items-center justify-between'>
+                              <h1 className="font-medium">{book?.owner}</h1>
+                              {/* <div><MdDelete className='text-xl' /></div> */}
                             </div>
+            
+                          </div>
                         </div>
-                    </Link>)
+                      </Link>)
                 }
             </div>
         </div>

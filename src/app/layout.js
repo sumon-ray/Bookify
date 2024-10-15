@@ -5,6 +5,7 @@ import Footer from "@/Components/Footer";
 import AuthProvider from "@/services/AuthProvider";
 import QueryProvider from "./QueryProvider";
 import { Toaster } from "react-hot-toast";
+// import { SearchProvider } from "./(dashboard)/dashboard/SearchProvider";
 import { SearchProvider } from "./(dashboard)/dashboard/myBooks/SearchProvider";
 // import { Toaster } from 'react-hot-toast';
 

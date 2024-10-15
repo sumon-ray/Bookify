@@ -70,7 +70,7 @@ const OurLibrary = () => {
       {/* Dynamic Category Selector */}
       <div className="py-4 px-5 md:pl-20 lg:pl-0">
         <select
-          className="lg:w-[27%] md:w-[90%] w-full p-3 px-4  rounded-md font-bold bg-white border border-gray-300"
+          className="lg:w-[27%] md:w-[90%] w-full p-3 px-4  rounded-md font-bold bg-white border-none border-gray-300"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
@@ -103,31 +103,32 @@ const OurLibrary = () => {
         </figure>
 
         {/* Dynamic Book Grid */}
-        <div className="md:grid flex flex-col lg:grid-cols-4 md:grid-cols-3 md:pl-20 lg:pl-0  lg:gap-8 gap-y-4 lg:w-[70%] md:w-[700px] w-full items-center justify-center ">
-          {displayedBooks.map((book, i) => (
+        <div className="grid  lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:pl-20 lg:pl-0  lg:gap-8 gap-4 gap-y-4 lg:w-[70%] md:w-[700px] w-full items-center justify-center p-3">
+          {displayedBooks.map((book, idx) => (
             <Link
               href={`/details/${book?._id}`}
-              key={i}
-              className="w-48 h-[284px] bg-[#EFEEE9] flex flex-col justify-center items-center rounded-lg p-4"
+              key={idx}
+              className="w-auto h-auto bg-[#EFEEE9] rounded-md"
             >
               <div className="space-y-3">
                 <Image
                   src={book?.coverImage}
-                  className="w-40 h-44 rounded-lg"
+                  className="w-full h-[210px] rounded-t-md"
                   height={150}
                   width={200}
-                  alt={book?.title || "Book Cover"}
+                  alt={book?.Title || "Book Cover"}
                 />
-                <div className="text-left pl-1">
-                  <h1 className="font-bold md:uppercase" title={book?.title}>
-                    {book?.title?.slice(0, 13)}...
+                <div className="text-left pl-2 pb-2">
+                  <h1 className="font-bold md:uppercase" title={book?.Title}>
+                    {book?.Title?.slice(0, 13)}...
                   </h1>
-                  <h1 className="font-medium">{book?.owner}</h1>
+                  <h1 className="font-medium">{book?.Author}</h1>
                 </div>
               </div>
             </Link>
           ))}
         </div>
+
       </div>
 
       {/* Pagination Controls */}
