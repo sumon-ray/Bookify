@@ -76,24 +76,24 @@ const Navbar = () => {
                 key={link.path}
                 className={`${
                   pathName === link.path &&
-                  "text-white font-extrabold border-b-2 border-black"
-                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                  "text-white font-extrabold border-b-2 md:w-auto w-fit  border-black"
+                } md:ml-8 lg:text-[16px] md:my-0 my-3`}
               >
                 <Link
                   href={link.path}
-                  className="text-[#064532] hover:text-gray-400 font-bold duration-500"
+                  className="text-black hover:text-gray-400 font-bold duration-500"
                 >
                   {link.title}
                 </Link>
               </li>
             ))}
-            <li className="lg:hidden text-[#064532] hover:text-gray-400 font-bold duration-500">
+            <li className="lg:hidden text-black hover:text-gray-400 font-bold duration-500">
               {session?.status === "unauthenticated" && (
                 <Link href="/login">Sign In</Link>
               )}
             </li>
 
-            <li className="md:hidden text-[#064532] hover:text-gray-400 font-bold duration-500">
+            <li className="md:hidden text-black hover:text-gray-400 font-bold duration-500">
               {session?.status === "authenticated" && (
                 <button onClick={() => signOut()}>Sign Out</button>
               )}

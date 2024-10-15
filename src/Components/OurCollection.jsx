@@ -6,11 +6,11 @@ const OurCollection = () => {
         >
             <h1 className='md:text-4xl text-xl font-bold text-center md:p-4 p-2 max-w-[500px] mx-auto rounded-tl-2xl rounded-br-2xl mb-8 border border-black text-black'> Explore Our Collection</h1>
 
-            <div className='md:grid lg:flex flex flex-wrap w-full md:grid-cols-3 grid-cols-1  justify-center items-center gap-10 md:pl-0  '> 
+            <div className=' lg:flex flex flex-wrap w-full   justify-center items-center gap-10 md:pl-0  '> 
                   {/*  */}
-                 <div className="border-2 border-[#EFEEE9] w-[218px] h-[180px]  rounded-2xl bg-[#EFEEE9] px-6 mt-36 ">
+                 <div className="border-2  border-[#EFEEE9]  md:w-[218px] w-[200px] md:h-[180px] h-[150px]  rounded-2xl bg-[#EFEEE9] md:px-6 px-[15px] mt-36 ">
                     <div
-                        className="w-[168px] h-[226px]  mt-[-130px] hover:mt-[-150px]  rounded-xl bg-cover bg-center"
+                        className="w-[168px] md:h-[226px] h-[200px]   mt-[-130px] hover:mt-[-150px]  rounded-xl bg-cover bg-center"
                         style={{
                             backgroundImage: "url('https://i.postimg.cc/qMHvYp9P/Animal-Farm.jpg')"
                         }}
@@ -24,9 +24,9 @@ const OurCollection = () => {
 
                 </div>
 
-                <div className="border-2 border-[#EFEEE9] w-[218px] h-[180px] rounded-2xl bg-[#EFEEE9] px-6 mt-36">
+                <div className="border-2  border-[#EFEEE9] md:w-[218px] w-[200px] md:h-[180px] h-[150px] rounded-2xl bg-[#EFEEE9] md:px-6 px-[15px] mt-36">
                     <div
-                        className="w-[168px] h-[226px]  mt-[-130px] bg-cover bg-center hover:mt-[-150px] hover: rounded-xl"
+                        className="w-[168px] md:h-[226px] h-[200px] mt-[-130px] bg-cover bg-center hover:mt-[-150px] hover: rounded-xl"
                         style={{
                             backgroundImage: "url('https://i.ibb.co.com/CPFGtyM/book5.jpg')"
                         }}
@@ -40,9 +40,9 @@ const OurCollection = () => {
 
                 </div>
 
-                <div className="border-2 border-[#EFEEE9] w-[218px] h-[180px] rounded-2xl bg-[#EFEEE9] px-6 mt-36">
+                <div className="border-2 border-[#EFEEE9]  md:w-[218px] w-[200px] md:h-[180px] h-[150px] rounded-2xl bg-[#EFEEE9] md:px-6 px-[15px] mt-36">
                     <div
-                        className="w-[168px] h-[226px]  mt-[-130px] bg-cover bg-center hover:mt-[-150px] hover: rounded-xl"
+                        className="w-[168px] md:h-[226px] h-[200px]  mt-[-130px] bg-cover bg-center hover:mt-[-150px] hover: rounded-xl"
                         style={{
                             backgroundImage: "url('https://i.ibb.co.com/2v34KGC/book4.jpg')"
                         }}
@@ -56,9 +56,9 @@ const OurCollection = () => {
 
                 </div>
 
-                <div className="border-2 border-[#EFEEE9] w-[218px] h-[180px] rounded-2xl bg-[#EFEEE9] px-6 mt-36">
+                <div className="border-2 border-[#EFEEE9] md:w-[218px] w-[200px] md:h-[180px] h-[150px] rounded-2xl bg-[#EFEEE9] md:px-6 px-[15px] mt-36">
                     <div
-                        className="w-[168px] h-[226px]  mt-[-130px] bg-cover bg-center hover:mt-[-150px] hover: rounded-xl "
+                        className="w-[168px] md:h-[226px] h-[200px]  mt-[-130px] bg-cover bg-center hover:mt-[-150px] hover: rounded-xl "
                         style={{
                             backgroundImage: "url('https://i.ibb.co.com/r0n0yHV/book2.jpg')"
                         }}
@@ -72,9 +72,9 @@ const OurCollection = () => {
 
                 </div>
 
-                <div className="border-2 border-[#EFEEE9] w-[218px] h-[180px] rounded-2xl bg-[#EFEEE9] px-6 mt-36">
+                <div className="border-2 border-[#EFEEE9] md:w-[218px] w-[200px] md:h-[180px] h-[150px] rounded-2xl bg-[#EFEEE9] md:px-6 px-[15px] mt-36">
                     <div
-                        className="w-[168px] h-[226px]  mt-[-130px] bg-cover bg-center  hover:mt-[-150px] hover: rounded-xl "
+                        className="w-[168px] md:h-[226px] h-[200px]  mt-[-130px] bg-cover bg-center  hover:mt-[-150px] hover: rounded-xl "
                         style={{
                             backgroundImage: "url('https://i.ibb.co.com/gtxLxvr/book6.jpg')"
                         }}

@@ -25,7 +25,7 @@ export default function AllBooks() {
         }
     })
 
-    const uniqueGenre = [...new Set(data?.map(book => book.Genre))];
+    const uniqueGenre = [...new Set(data?.map(book => book?.Genre))];
     const [value, setValue] = React.useState([20, 37]);
 
     const handleChange = (event, newValue) => {
