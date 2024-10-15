@@ -1,5 +1,6 @@
 import { Button, Rating } from '@mui/material';
 import axios from 'axios';
+import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -7,13 +8,16 @@ import toast from 'react-hot-toast';
 function SendReview({refetch}) {
     const [isOpen, setIsOpen] = useState(false);
     const [rating, setRating] = useState(0);
-    const pathName = usePathname().split('/')[2]
+    const pathName = usePathname().split('/')[2];
+    const session = useSession()
 
+    
     function handleSubmit(e) {
         e.preventDefault();
         const comment = {
-            profile: 'https://media.istockphoto.com/id/1332100919/vector/man-icon-black-icon-person-symbol.jpg?s=612x612&w=0&k=20&c=AVVJkvxQQCuBhawHrUhDRTCeNQ3Jgt0K1tXjJsFy1eg=',
-            name: 'Afsar',
+            profile: session?.data?.user?.image || '',
+            name: session?.data?.user?.name || '',
+            email: session?.data?.user?.email || '',
             rating,
             review: e.target.review.value,
             bookId: pathName
