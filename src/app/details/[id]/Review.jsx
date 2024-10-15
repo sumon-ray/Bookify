@@ -1,11 +1,12 @@
 import { Box, Button, Rating } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import SendReview from "./SendReview";
 
 export default function Review({ refetch, Data }) {
     const [value, setValue] = React.useState(4);
+    const [openStar, setOpenStar] = useState(false)
     const totalRating = Data?.reduce((p, c) => p + c.rating, 0);
-    const averageRating = totalRating / Data?.length || 0;
+    const averageRating = parseInt(totalRating / Data?.length || 0);
 
     return (
         <div className="space-y-5 px-3">
@@ -23,12 +24,12 @@ export default function Review({ refetch, Data }) {
                             value={value}
                             onChange={(event, newValue) => {
                                 setValue(newValue);
+                                setOpenStar(true)
                             }}
                             size="large"
                         />
                     </Box>
-                    {/* <Button variant="contained" className="bg-[#364957]" size="small">write review</Button> */}
-                    <SendReview refetch={refetch} />
+                    <SendReview refetch={refetch} openStar={openStar} setOpenStar={setOpenStar} value={value}/>
                 </div>
 
                 {/* total review */}
