@@ -24,7 +24,7 @@ export default function page() {
 
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
 
-                    <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
+                    <div className="bg-[#EFEEE9CC] p-8 rounded-2xl">
                         <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@ export default function page() {
                                 viewBox="0 0 24 24"
                                 strokeWidth="1.5"
                                 stroke="currentColor"
-                                className="w-5 h-5"
+                                className="w-6 h-6"
                             >
                                 <path
                                     strokeLinecap="round"
@@ -53,9 +53,9 @@ export default function page() {
                         </p>
                     </div>
 
-                    <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
+                    <div className="bg-[#EFEEE9CC] p-8 rounded-2xl">
                         <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
-                            <BsChatLeftText />
+                            <BsChatLeftText className="text-xl"/>
                         </span>
 
                         <h2 className="mt-2.5 font-black">
@@ -69,7 +69,7 @@ export default function page() {
                         </p>
                     </div>
 
-                    <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
+                    <div className="bg-[#EFEEE9CC] p-8 rounded-2xl">
                         <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ export default function page() {
                                 viewBox="0 0 24 24"
                                 strokeWidth="1.5"
                                 stroke="currentColor"
-                                className="w-5 h-5"
+                                className="w-6 h-6"
                             >
                                 <path
                                     strokeLinecap="round"
@@ -103,7 +103,7 @@ export default function page() {
                         </p>
                     </div>
 
-                    <div className="bg-[#EFEEE9CC] p-6 rounded-2xl">
+                    <div className="bg-[#EFEEE9CC] p-8 rounded-2xl">
                         <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +111,7 @@ export default function page() {
                                 viewBox="0 0 24 24"
                                 strokeWidth="1.5"
                                 stroke="currentColor"
-                                className="w-5 h-5"
+                                className="w-6 h-6"
                             >
                                 <path
                                     strokeLinecap="round"
@@ -160,7 +160,7 @@ export default function page() {
                             </div>
                         </div>
 
-                        <div className="mt-4">
+                        <div className="mt-2.5">
                             <label className="block mb-2 text-sm font-bold">
                                 Email address
                             </label>
@@ -171,18 +171,18 @@ export default function page() {
                                 required />
                         </div>
 
-                        <div className="w-full mt-4">
+                        <div className="w-full mt-2.5">
                             <label className="block mb-2 text-sm font-bold">
                                 Message
                             </label>
                             <textarea
-                                className="block resize-none w-full h-32 px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg md:h-56  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
+                                className="block resize-none w-full h-32 px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg md:h-[196px]  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
                                 placeholder="Message"
                                 required
                             ></textarea>
                         </div>
 
-                        <button className="flex items-center justify-between w-full px-6 py-3 mt-5 text-white text-sm font-bold bg-[#364957] rounded-xl">
+                        <button className="flex items-center justify-between w-full px-6 py-3 mt-4 text-white text-sm font-bold bg-[#364957] rounded-md">
                             <span>Send Message </span>
                             <GrSend className="text-xl" />
                         </button>

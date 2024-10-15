@@ -9,12 +9,12 @@ import PeopleReview from './PeopleReview';
 export default function DetailsTab({ Book }) {
 
     const [open, setOpen] = useState(1);
-    const { title, author, genre, condition, exchangeStatus, totalPage, location, description } = Book || {}
+    const { title, author, genre, condition, exchangeStatus, totalPage, location, description , _id} = Book || {}
 
     const { data , refetch } = useQuery({
         queryKey: ['review'],
         queryFn: async () => {
-            const res = await axios(`https://bookify-server-lilac.vercel.app/reviews`)
+            const res = await axios(`https://bookify-server-lilac.vercel.app/reviews?bookId=${_id}`)
             const data = await res.data;
             return data
         }
@@ -123,7 +123,7 @@ export default function DetailsTab({ Book }) {
                 </div>
                 {/* Review */}
                 <div className={open === 3 ? 'block' : 'hidden'}>
-                    <Review refetch={refetch} />
+                    <Review Data={data} refetch={refetch} />
                     <Divider orientation="horizontal" className='py-2.5' />
                     {/* reviews */}
                     <>

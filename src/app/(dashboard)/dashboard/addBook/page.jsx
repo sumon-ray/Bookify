@@ -6,6 +6,7 @@ import { GrSend } from "react-icons/gr";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
 
 const AddBook = () => {
 
@@ -17,20 +18,21 @@ const AddBook = () => {
       return data
     }
   })
+  const session = useSession()
   const uniqueGenre = [...new Set(data?.map((book) => book?.genre))]
   const uniqueCity = [...new Set(data?.map(book => book?.location))];
   const [Genre, setGenre] = useState('');
   const [location, setLocation] = useState('')
 
   async function addBook(e) {
-   
+
     e.preventDefault();
     const title = e.target.title.value;
     const AuthorEmail = e.target.email.value;
     const description = e.target.description.value;
     const author = e.target.Writer.value;
     const rating = e.target.rating.value;
-    const publishYear = e.target.publishedYear.value;
+    const publishYear = e.target.publishedYear.value.split('-')[0];
     const condition = 'Good';
     const exchangeStatus = 'Available';
     const genre = Genre;
@@ -39,7 +41,8 @@ const AddBook = () => {
     const formData = new FormData();
     formData.append('image', image)
     const { data } = await axios.post('https://api.imgbb.com/1/upload?key=52396a4930fb920fb80bbebb2b3fe41d', formData)
-    axios.post('https://bookify-server-lilac.vercel.app/test', {
+
+    axios.post('https://bookify-server-lilac.vercel.app/book', {
       coverImage: data.data.display_url,
       location,
       title,
@@ -52,8 +55,8 @@ const AddBook = () => {
       exchangeStatus,
       genre,
       totalPage,
-      owner: 'me',
-      AuthorProfile: '2'
+      owner: session?.data?.user?.name || '',
+      AuthorProfile: session?.data?.user?.image || '',
     }).then(data => {
       if (data.data.insertedId) {
         toast.custom((t) => (
@@ -74,7 +77,8 @@ const AddBook = () => {
             </div>
           </div>
         ))
-        e.target.reset()
+        // e.target.reset()
+
       }
     })
 
@@ -100,7 +104,7 @@ const AddBook = () => {
 
           <div className="col-span-full sm:col-span-2">
             <label className="text-sm uppercase">email</label>
-            <input required type="email" name="email" placeholder="Email" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
+            <input required type="email" name="email" placeholder="Email" value={session?.data?.user?.email} className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
           </div>
 
           <div className="col-span-full sm:col-span-2">
@@ -153,7 +157,7 @@ const AddBook = () => {
 
           <div className="col-span-full sm:col-span-2">
             <label className="text-sm uppercase">total Page</label>
-            <input required id="totalPage" type="text" placeholder="Total Page" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
+            <input required id="totalPage" type="number" placeholder="Total Page" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
           </div>
 
           {/* photo */}
