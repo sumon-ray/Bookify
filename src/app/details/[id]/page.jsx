@@ -20,8 +20,8 @@ export default function Details({ params }) {
             return data
         }
     })
-
-
+ 
+ 
     return (
         <section className="space-y-10 mt-0 md:mt-20 mb-16 md:mb-20">
             {/* title */}

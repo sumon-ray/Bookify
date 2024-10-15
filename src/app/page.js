@@ -29,6 +29,7 @@ export default function Home() {
       {/* <TopAuthor/> */}
       {/* <Category/> */}
       {/* <NewsletterSection/> */}
+      
     </div>
   );
 }
