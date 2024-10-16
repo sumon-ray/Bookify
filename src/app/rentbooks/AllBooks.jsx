@@ -19,7 +19,13 @@ function valuetext(value) {
 
 export default function AllBooks() {
     const [currentPage, setCurrentPage] = React.useState(1)
-    const [value, setValue] = React.useState([20, 37]);
+    const [value, setValue] = React.useState([0, 0]);
+    // select state
+    const [Author, setAuthor] = React.useState('');
+    const [Publisher, setPublisher] = React.useState('');
+    const [PublishYear, setPublishYear] = React.useState('');
+    const [Language, setLanguage] = React.useState('');
+    const [SelectedCategories, setSelectedCategories] = React.useState([])
     const limit = 10
     const { data, refetch } = useQuery({
         queryKey: ['rent data', currentPage],
@@ -45,12 +51,6 @@ export default function AllBooks() {
         refetch()
     }
 
-    // select state
-    const [Author, setAuthor] = React.useState('');
-    const [Publisher, setPublisher] = React.useState('');
-    const [PublishYear, setPublishYear] = React.useState('');
-    const [Language, setLanguage] = React.useState('');
-
     // select function 
     const handleAuthor = function (e) {
         setAuthor(e.target.value)
@@ -63,15 +63,14 @@ export default function AllBooks() {
     }
     const handleLanguage = function (e) {
         setLanguage(e.target.value)
-    }    
+    }
 
-    function handleSubmit(e){
-    
+
+    function handleSubmit(e) {
         e.preventDefault();
         const checkboxes = Array.from(e.target.querySelectorAll('input[name="checkbox"]:checked'));
         const selectedValues = checkboxes.map(checkbox => checkbox.value);
-        console.log(selectedValues);
-
+        setSelectedCategories(selectedValues)
     }
 
 
