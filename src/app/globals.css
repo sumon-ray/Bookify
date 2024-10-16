@@ -21,6 +21,9 @@ body{
   border-width: 0; 
 
 }
+.css-zza0ns-MuiBadge-badge {
+  background-color: #364957;
+}
 
 .timeline-item {
     border: none; /* Remove any border */
