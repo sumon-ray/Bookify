@@ -59,10 +59,10 @@ const Navbar = () => {
       title: "Contact",
       path: "/contact",
     },
-    {
-      title: "Dashboard",
-      path: "/dashboard",
-    },
+    // {
+    //   title: "Dashboard",
+    //   path: "/dashboard",
+    // },
     {
       title: "About",
       path: "/about",

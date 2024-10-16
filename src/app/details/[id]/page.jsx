@@ -11,16 +11,14 @@ import { FaBook } from 'react-icons/fa';
 
 export default function Details({ params }) {
 
-
     const { data  } = useQuery({
         queryKey: ['details of book'],
         queryFn: async () => {
             const res = await axios(`https://bookify-server-lilac.vercel.app/book/${params?.id}`)
             const data = await res.data
-            return data
+            return data 
         }
     })
- 
  
     return (
         <section className="space-y-10 mt-0 md:mt-20 mb-16 md:mb-20">

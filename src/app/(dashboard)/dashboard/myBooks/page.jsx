@@ -29,8 +29,8 @@ const MenuProps = {
 };
 
 const sortingOptions = [
-  { label: "Pages: Low to High", value: "pages_asc" },
-  { label: "Pages: High to Low", value: "pages_desc" },
+  { label: "Total Pages: Low to High", value: "totalPage_asc" },
+  { label: "Total Pages: High to Low", value: "totalPage_desc" },
 ];
 
 function getStyles(option, selectedOption, theme) {
@@ -47,7 +47,6 @@ export default function MyBooks() {
   const theme = useTheme();
   const queryClient = useQueryClient();
 
-  // State for Snackbar notifications
   const [snackbar, setSnackbar] = React.useState({
     open: false,
     message: "",
@@ -74,10 +73,9 @@ export default function MyBooks() {
       );
       return res.data;
     },
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,
   });
 
-  // Delete book mutation
   const deleteBookMutation = useMutation({
     mutationFn: async (bookId) => {
       const response = await axios.delete(
@@ -86,7 +84,7 @@ export default function MyBooks() {
       return response.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["myBooks"]); 
+      queryClient.invalidateQueries(["myBooks"]);
       setSnackbar({
         open: true,
         message: "Book deleted successfully!",
@@ -103,17 +101,20 @@ export default function MyBooks() {
     },
   });
 
-  // Compute sorted books using useMemo
   const sortedBooks = React.useMemo(() => {
     if (!data) return [];
 
+    console.log("Books data:", data);
+
     const booksCopy = [...data];
 
-    if (sortOrder === "pages_asc") {
-      booksCopy.sort((a, b) => a.pages - b.pages);
-    } else if (sortOrder === "pages_desc") {
-      booksCopy.sort((a, b) => b.pages - a.pages);
+    if (sortOrder === "totalPage_asc") {
+      booksCopy.sort((a, b) => (a.totalPage || 0) - (b.totalPage || 0));
+    } else if (sortOrder === "totalPage_desc") {
+      booksCopy.sort((a, b) => (b.totalPage || 0) - (a.totalPage || 0));
     }
+
+    console.log("Sorted Books:", booksCopy);
 
     return booksCopy;
   }, [data, sortOrder]);
@@ -160,7 +161,6 @@ export default function MyBooks() {
             Lost in the pages, where every book is a new adventure <br /> and
             love for stories grows deeper with each turn.
           </p>
-          {/* Add Book Button with Routing */}
           <Link href="/dashboard/addBook" className="inline-block">
             <button className="flex items-center justify-center gap-0.5 bg-[#364957] text-white font-medium px-4 py-1.5 rounded-lg hover:bg-[#2c3e50] transition">
               <IoAdd className="text-white text-lg" />
@@ -180,31 +180,54 @@ export default function MyBooks() {
         </figure>
       </div>
 
+      {/* className=" border border-[#a1a5a8b1]  focus:border-[#a1a5a8b1] !hover:text-white outline-none" */}
+
       {/* Sorting Dropdown */}
       <div className="flex items-center justify-between pt-4 pb-5">
         <h1 className="text-xl font-bold">My Books</h1>
         <div className="bg-gray-100 rounded-md p-2">
           <FormControl sx={{ width: 200 }} size="small">
             <Select
+              className=" " // Ensure the background doesn't change
               displayEmpty
               value={sortOrder}
               onChange={handleSortChange}
-              input={<OutlinedInput />}
+              input={
+                <OutlinedInput
+                  sx={{ border: "#a1a5a8b1", outline: "#a1a5a8b1" }}
+                />
+              }
               renderValue={(selected) => {
                 if (selected === "") {
                   return (
                     <em className="flex items-center font-medium gap-x-1">
-                      Sort by Pages
+                      Sort by Total Pages
                     </em>
                   );
                 }
                 const selectedLabel = sortingOptions.find(
                   (option) => option.value === selected
                 )?.label;
-                return selectedLabel || "Sort by Pages";
+                return selectedLabel || "Sort by Total Pages";
               }}
               MenuProps={MenuProps}
-              inputProps={{ "aria-label": "Sort by Pages" }}
+              inputProps={{ "aria-label": "Sort by Total Pages" }}
+              sx={{
+                "& .MuiSelect-select": {
+                  border: "#a1a5a8b1", // Remove border
+                  outline: "#a1a5a8b1", // Remove outline
+                  "&:focus": {
+                    border: "#a1a5a8b1", // Remove focus border
+                    outline: "#a1a5a8b1", // Remove focus outline
+                  },
+                },
+                "& .MuiSelect-icon": {
+                  color: "#a1a5a8b1", // Set your desired icon color
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  border: "none", // Remove the default outline
+                },
+              }}
             >
               <MenuItem disabled value="">
                 <em>Select Sorting</em>
@@ -249,16 +272,17 @@ export default function MyBooks() {
                         ? book.title.length > 13
                           ? `${book.title.slice(0, 13)}...`
                           : book.title
-                        : "Untitled"}
+                        : ""}
                     </h1>
-                    <h1 className="font-medium">
-                      {book?.author || book?.owner || "Unknown Author"}
-                    </h1>
+                    <p className="text-gray-600 text-sm">
+                      {book?.author || "Unknown Author"}
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      Total Pages: {book?.totalPage || "N/A"}
+                    </p>
                   </div>
                 </div>
               </Link>
-
-              {/* Delete Button */}
               <Tooltip title="Delete">
                 <button
                   onClick={(e) => {
@@ -280,8 +304,8 @@ export default function MyBooks() {
             </div>
           ))
         ) : (
-          <p className="col-span-full text-center text-gray-500">
-            No books found.
+          <p className="text-center col-span-full">
+            No books available. Please add some!
           </p>
         )}
       </div>
