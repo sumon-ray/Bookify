@@ -19,36 +19,50 @@ function valuetext(value) {
 
 export default function AllBooks() {
     const [currentPage, setCurrentPage] = React.useState(1)
-    const [value, setValue] = React.useState([0, 0]);
+    const [value, setValue] = React.useState([1, 500]);
+    const [mainData, setMainData] = React.useState([])
     // select state
     const [Author, setAuthor] = React.useState('');
     const [Publisher, setPublisher] = React.useState('');
     const [PublishYear, setPublishYear] = React.useState('');
     const [Language, setLanguage] = React.useState('');
-    const [SelectedCategories, setSelectedCategories] = React.useState([])
+    const [SelectedCategories, setSelectedCategories] = React.useState([]);
+    const [search, setSearch] = React.useState(false)
     const limit = 10
+
+    // alert(typeof(PublishYear))
+
     const { data, refetch } = useQuery({
-        queryKey: ['rent data', currentPage],
+        queryKey: ['rent data', currentPage, search],
         queryFn: async () => {
-            const res = await axios(`http://localhost:4000/rent?limit=${limit}&currentPage=${currentPage}`)
+            const res = await axios(`https://bookify-server-lilac.vercel.app/rent?limit=${limit}&currentPage=${currentPage}&Author=${Author}&Publisher=${Publisher}&PublishYear=${PublishYear}&Language=${Language}&Genre=${SelectedCategories}&Price=${value}`)
             const data = await res.data
             return data
         }
     })
-    const uniqueGenre = [...new Set(data?.result?.map(book => book?.Genre))];
-    const uniqueAuthor = [...new Set(data?.result?.map(book => book?.Author))];
-    const uniquePublisher = [...new Set(data?.result?.map(book => book?.Publisher))];
-    const uniqueYear = [...new Set(data?.result?.map(book => book['Year of Publication']))]
-    const uniqueLanguage = [...new Set(data?.result?.map(book => book?.Language))]
-    const uniqueNumber = [...new Set(data?.result?.map(book => book?.Price))]
+
+    React.useEffect(() => {
+        axios(`https://bookify-server-lilac.vercel.app/rent-values`)
+            .then(data => setMainData(data.data))
+            .catch(error => console.log(error))
+    }, [])
+
+
+    const uniqueGenre = [...new Set(mainData?.map(book => book?.Genre))];
+    const uniqueAuthor = [...new Set(mainData?.map(book => book?.Author))];
+    const uniquePublisher = [...new Set(mainData?.map(book => book?.Publisher))];
+    const uniqueYear = [...new Set(mainData?.map(book => book['Year of Publication']))]
+    const uniqueLanguage = [...new Set(mainData?.map(book => book?.Language))]
+    const uniqueNumber = [...new Set(mainData?.map(book => book?.Price))]
     const maxNumber = Math.max(...uniqueNumber)
+    const minNumber = Math.min(...uniqueNumber)
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        refetch()
     };
     const handlePageChange = (e, page) => {
         setCurrentPage(page)
-        refetch()
     }
 
     // select function 
@@ -65,12 +79,13 @@ export default function AllBooks() {
         setLanguage(e.target.value)
     }
 
-
     function handleSubmit(e) {
         e.preventDefault();
         const checkboxes = Array.from(e.target.querySelectorAll('input[name="checkbox"]:checked'));
         const selectedValues = checkboxes.map(checkbox => checkbox.value);
         setSelectedCategories(selectedValues)
+        setSearch(!search)
+        refetch()
     }
 
 
@@ -85,27 +100,26 @@ export default function AllBooks() {
                     <h3 className='text-lg font-bold'>Filter Option</h3>
                     <div className='space-y-2.5'>
 
-                        <select onChange={handleAuthor} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handleAuthor} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Author</option>
                             <option value="">All</option>
                             {uniqueAuthor?.map((author, i) => <option key={i} value={author}>{author}</option>)}
                         </select>
 
-                        <select onChange={handlePublisher} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handlePublisher} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Publisher</option>
                             <option value="">All</option>
                             {uniquePublisher?.map((publisher, i) => <option key={i} value={publisher}>{publisher}</option>)}
                         </select>
 
-                        <select onChange={handlePublishYear} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handlePublishYear} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Publish Year</option>
                             <option value="">All</option>
                             {uniqueYear?.map((Year, i) => <option key={i} value={Year}>{Year}</option>)}
                         </select>
 
-                        <select onChange={handleLanguage} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handleLanguage} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Language</option>
-                            <option value="">All</option>
                             {uniqueLanguage?.map((Language, i) => <option key={i} value={Language}>{Language}</option>)}
                         </select>
 
@@ -156,7 +170,7 @@ export default function AllBooks() {
                                         valueLabelDisplay="auto"
                                         getAriaValueText={valuetext}
                                         color="white"
-                                        min={1}
+                                        min={minNumber}
                                         max={maxNumber}
                                     />
                                 </Box>
@@ -171,30 +185,32 @@ export default function AllBooks() {
                     <h3 className='text-lg font-bold text-center'>Filter Option</h3>
                     <div className='space-y-2.5 flex flex-col md:flex-none items-center md:items-start'>
 
-                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handleAuthor} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Author</option>
+                            <option value="">All</option>
                             {uniqueAuthor?.map((author, i) => <option key={i} value={author}>{author}</option>)}
                         </select>
 
-                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handlePublisher} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Publisher</option>
+                            <option value="">All</option>
                             {uniquePublisher?.map((publisher, i) => <option key={i} value={publisher}>{publisher}</option>)}
                         </select>
 
-                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handlePublishYear} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Publish Year</option>
+                            <option value="">All</option>
                             {uniqueYear?.map((Year, i) => <option key={i} value={Year}>{Year}</option>)}
                         </select>
 
-                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handleLanguage} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Language</option>
                             {uniqueLanguage?.map((Language, i) => <option key={i} value={Language}>{Language}</option>)}
                         </select>
 
-
                         {/* check box */}
                         <div>
-                            <ul className="text-sm font-medium border rounded-md bg-white p-1 pb-1.5">
+                            <ul className="text-sm font-medium rounded-md bg-[#EFEEE9] p-1 pb-1.5">
                                 <h3 className="ps-3 pt-2 pb-1">Category</h3>
                                 {/* checkbox */}
                                 <div className='flex'>
@@ -202,7 +218,7 @@ export default function AllBooks() {
                                         {
                                             uniqueGenre?.slice(0, 6).map(book => <li className="w-full">
                                                 <div className="flex items-center ps-3">
-                                                    <input type="checkbox" className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                                                    <input type="checkbox" value={book} name='checkbox' className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">
                                                         {book.split(' ').slice(0, 1)}
                                                     </label>
@@ -215,7 +231,7 @@ export default function AllBooks() {
                                         {
                                             uniqueGenre?.slice(6, 12).map(book => <li className="w-full">
                                                 <div className="flex items-center ps-3">
-                                                    <input type="checkbox" className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                                                    <input type="checkbox" name='checkbox' value={book} className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">
                                                         {book.split(' ').slice(0, 1)}
                                                     </label>
@@ -228,24 +244,23 @@ export default function AllBooks() {
                         </div>
 
                         {/* price range taker */}
-                        <div className='bg-white rounded-md border p-4 py-2 space-y-1'>
+                        <div className='bg-[#EFEEE9] rounded-md p-4 py-2 space-y-1'>
                             <h3 className='font-medium'>Price Range</h3>
                             <div className='flex justify-center text-[#364957]'>
                                 <Box sx={{ width: 225 }} >
                                     <Slider
-                                        getAriaLabel={() => 'Temperature range'}
+                                        getAriaLabel={() => 'Range'}
                                         value={value}
                                         onChange={handleChange}
                                         valueLabelDisplay="auto"
                                         getAriaValueText={valuetext}
-                                        color="#000000"
+                                        color="white"
+                                        min={minNumber}
+                                        max={maxNumber}
                                     />
                                 </Box>
                             </div>
                         </div>
-
-                        {/* search button */}
-
 
                     </div>
                 </div>
@@ -261,7 +276,7 @@ export default function AllBooks() {
                                     key={idx}
                                     className="md:w-[180px] h-auto bg-[#EFEEE9]  rounded-md "
                                 >
-                                    <div className="space-y-3">
+                                    <div className="space-y-1.5">
                                         <Image
                                             src={book?.coverImage}
                                             className="w-full h-[205px] rounded-t-md"
@@ -269,7 +284,7 @@ export default function AllBooks() {
                                             width={200}
                                             alt={book?.Title || 'Book Cover'}
                                         />
-                                        <div className="text-left pl-2 pb-2 relative">
+                                        <div className="text-left pl-2 pb-1.5 relative">
                                             <h1 className="font-bold md:uppercase" title={book?.Title}>
                                                 {book?.Title.slice(0, 13)}...
                                             </h1>
