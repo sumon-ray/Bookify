@@ -2,7 +2,7 @@
 import SocialLogin from "@/Components/SocialLogin";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import img from "../../../src/assets/images/About/logo (1).png";
 import Image from "next/image";
@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 
 const page = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const path = searchParams.get("redirect");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -21,7 +23,8 @@ const page = () => {
     const resp = await signIn("credentials", {
       email,
       password,
-      redirect: false,
+      redirect: true,
+      callbackUrl: path ? path : "/",
     });
     if (resp.status === 200) {
       router.push("/");
@@ -33,15 +36,15 @@ const page = () => {
   };
   return (
     <>
-      <div className="flex flex-row w-full max-w-sm mx-auto overflow-hidden  rounded-lg  lg:max-w-4xl my-20">
+      <div className="flex justify-center max-w-7xl flex-row-reverse w-full  mx-auto overflow-hidden rounded-lg my-16">
         <div
-          className="hidden bg-cover lg:block lg:w-1/2 mx-6 my-8"
+          className="hidden bg-center bg-no-repeat lg:block w-1/2 mx-6 my-8"
           style={{
             backgroundImage: "url('https://i.ibb.co/3d0DvB0/signin.png')",
           }}
         ></div>
 
-        <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
+        <div className="w-full mx-6 my-8 lg:px-16 md:px-8 lg:w-1/2">
           <Link href={"/"}>
             <div className="flex items-center justify-center text-[#B7B7B7]">
               <Image
@@ -127,8 +130,8 @@ const page = () => {
                     <svg
                       class="animate-spin border-indigo-300"
                       xmlns="http://www.w3.org/2000/svg"
-                      width="25"
-                      height="25"
+                      width="20"
+                      height="20"
                       viewBox="0 0 30 30"
                       fill="none"
                     >

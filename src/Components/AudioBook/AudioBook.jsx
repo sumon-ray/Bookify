@@ -3,7 +3,7 @@ import React from 'react';
 
 const AudioBook = () => {
     return (
-        <div className='max-w-7xl mx-auto  my-6'>
+        <div className='max-w-7xl mx-auto  py-8'>
             <h1 className="md:text-4xl text-2xl font-bold text-center pb-9">
                 Audio Books
             </h1>
@@ -175,7 +175,7 @@ const AudioBook = () => {
                         </div>
                     </div>
                 </Link>
-                
+
                 <Link href={"/audiobooks"} className="lg:h-[250px] flex  bg-white shadow-lg rounded-lg">
                     <div>
                         <img

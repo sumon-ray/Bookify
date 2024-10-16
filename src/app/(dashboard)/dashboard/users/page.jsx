@@ -17,7 +17,9 @@ const page = () => {
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios.get("https://bookify-server-lilac.vercel.app/users");
+      const res = await axios.get(
+        "https://bookify-server-lilac.vercel.app/users"
+      );
       return res.data;
     },
   });
@@ -74,7 +76,9 @@ const page = () => {
       if (result.isConfirmed) {
         try {
           // Proceed with deletion
-          await axios.delete(`https://bookify-server-lilac.vercel.app/user?id=${id}`);
+          await axios.delete(
+            `https://bookify-server-lilac.vercel.app/user?id=${id}`
+          );
 
           // Refetch users after deletion
           refetch();
@@ -108,9 +112,12 @@ const page = () => {
       if (result.isConfirmed) {
         try {
           // Send PUT request to update only the role
-          const res = await axios.patch(`https://bookify-server-lilac.vercel.app/user?id=${id}`, {
-            role: newRole, // Sending only the 'role' field
-          });
+          const res = await axios.patch(
+            `https://bookify-server-lilac.vercel.app/user?id=${id}`,
+            {
+              role: newRole, // Sending only the 'role' field
+            }
+          );
 
           if (res.status === 200) {
             refetch();

@@ -116,13 +116,13 @@ const OurLibrary = () => {
                   className="w-full h-[210px] rounded-t-md"
                   height={150}
                   width={200}
-                  alt={book?.Title || "Book Cover"}
+                  alt={book?.title || "Book Cover"}
                 />
                 <div className="text-left pl-2 pb-2">
-                  <h1 className="font-bold md:uppercase" title={book?.Title}>
-                    {book?.Title?.slice(0, 13)}...
+                  <h1 className="font-bold md:uppercase" title={book?.title}>
+                    {book?.title?.slice(0, 13)}...
                   </h1>
-                  <h1 className="font-medium">{book?.Author}</h1>
+                  <h1 className="font-medium">{book?.author}</h1>
                 </div>
               </div>
             </Link>
