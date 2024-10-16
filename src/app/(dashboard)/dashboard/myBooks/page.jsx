@@ -62,17 +62,12 @@ export default function MyBooks() {
     setSortOrder(value);
   };
 
-  // Fetch books based on sort order
+  // Fetch books without sorting parameters
   const { data, isLoading, error } = useQuery({
-    queryKey: ["myBooks", sortOrder],
+    queryKey: ["myBooks"],
     queryFn: async () => {
-      const sortQuery = sortOrder
-        ? sortOrder === "pages_asc"
-          ? "&sort=pages&order=asc"
-          : "&sort=pages&order=desc"
-        : "";
       const res = await axios.get(
-        `https://bookify-server-lilac.vercel.app/books?email=abcd@gmail.com${sortQuery}`
+        `https://bookify-server-lilac.vercel.app/books?email=abcd@gmail.com`
       );
       return res.data;
     },
@@ -88,7 +83,7 @@ export default function MyBooks() {
       return response.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["myBooks", sortOrder]); 
+      queryClient.invalidateQueries(["myBooks"]); 
       setSnackbar({
         open: true,
         message: "Book deleted successfully!",
@@ -104,6 +99,21 @@ export default function MyBooks() {
       });
     },
   });
+
+  // Compute sorted books using useMemo
+  const sortedBooks = React.useMemo(() => {
+    if (!data) return [];
+
+    const booksCopy = [...data];
+
+    if (sortOrder === "pages_asc") {
+      booksCopy.sort((a, b) => a.pages - b.pages);
+    } else if (sortOrder === "pages_desc") {
+      booksCopy.sort((a, b) => b.pages - a.pages);
+    }
+
+    return booksCopy;
+  }, [data, sortOrder]);
 
   if (isLoading)
     return (
@@ -212,54 +222,65 @@ export default function MyBooks() {
 
       {/* Books Grid */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
-        {data?.map((book) => (
-          <div
-            key={book._id}
-            className="w-auto h-auto bg-[#EFEEE9] rounded-md shadow-md hover:shadow-lg transition relative"
-          >
-            <Link href={`/details/${book._id}`} className="w-auto h-auto bg-[#EFEEE9] rounded-md ">
-              <div className="space-y-3">
-                <Image
-                  src={book?.coverImage}
-                  className="w-full h-[210px] rounded-t-md"
-                  height={150}
-                  width={200}
-                  alt={book?.title || "Book Cover"}
-                />
-                <div className="text-left pl-2 pb-2">
-                  <h1 className="font-bold md:uppercase" title={book?.title}>
-                    {book?.title
-                      ? book.title.length > 13
-                        ? `${book.title.slice(0, 13)}...`
-                        : book.title
-                      : "Untitled"}
-                  </h1>
-                  <h1 className="font-medium">{book?.author || book?.owner || "Unknown Author"}</h1>
-                </div>
-              </div>
-            </Link>
-
-            {/* Delete Button */}
-            <Tooltip title="Delete">
-              <button
-                onClick={(e) => {
-                  e.preventDefault(); // Prevent link navigation
-                  if (confirm("Are you sure you want to delete this book?")) {
-                    deleteBookMutation.mutate(book._id);
-                  }
-                }}
-                className="absolute bottom-1 right-2 text-[#364957] hover:text-red-700 bg-white rounded-full p-1 shadow-md"
-                aria-label="Delete Book"
+        {sortedBooks.length > 0 ? (
+          sortedBooks.map((book) => (
+            <div
+              key={book._id}
+              className="w-auto h-auto bg-[#EFEEE9] rounded-md shadow-md hover:shadow-lg transition relative"
+            >
+              <Link
+                href={`/details/${book._id}`}
+                className="w-auto h-auto bg-[#EFEEE9] rounded-md "
               >
-                {deleteBookMutation.isLoading ? (
-                  <CircularProgress size={20} />
-                ) : (
-                  <MdDelete className="text-xl" />
-                )}
-              </button>
-            </Tooltip>
-          </div>
-        ))}
+                <div className="space-y-3">
+                  <Image
+                    src={book?.coverImage}
+                    className="w-full h-[210px] rounded-t-md"
+                    height={210}
+                    width={150}
+                    alt={book?.title || "Book Cover"}
+                  />
+                  <div className="text-left pl-2 pb-2">
+                    <h1 className="font-bold md:uppercase" title={book?.title}>
+                      {book?.title
+                        ? book.title.length > 13
+                          ? `${book.title.slice(0, 13)}...`
+                          : book.title
+                        : "Untitled"}
+                    </h1>
+                    <h1 className="font-medium">
+                      {book?.author || book?.owner || "Unknown Author"}
+                    </h1>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Delete Button */}
+              <Tooltip title="Delete">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevent link navigation
+                    if (confirm("Are you sure you want to delete this book?")) {
+                      deleteBookMutation.mutate(book._id);
+                    }
+                  }}
+                  className="absolute bottom-1 right-2 text-[#364957] hover:text-red-700 bg-white rounded-full p-1 shadow-md"
+                  aria-label="Delete Book"
+                >
+                  {deleteBookMutation.isLoading ? (
+                    <CircularProgress size={20} />
+                  ) : (
+                    <MdDelete className="text-xl" />
+                  )}
+                </button>
+              </Tooltip>
+            </div>
+          ))
+        ) : (
+          <p className="col-span-full text-center text-gray-500">
+            No books found.
+          </p>
+        )}
       </div>
     </section>
   );
