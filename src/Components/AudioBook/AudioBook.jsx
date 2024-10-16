@@ -4,7 +4,7 @@ import React from 'react';
 const AudioBook = () => {
     return (
         <div className='max-w-7xl mx-auto  py-8'>
-            <h1 className="md:text-4xl text-2xl font-bold text-center pb-9">
+            <h1 className="md:text-4xl text-xl font-bold text-center md:p-4 p-2 md:w-[500px] w-[270px] mx-auto rounded-tl-2xl rounded-br-2xl md:mb-12 mb-8 border border-black text-black">
                 Audio Books
             </h1>
 

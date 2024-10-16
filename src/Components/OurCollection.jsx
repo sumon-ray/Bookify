@@ -4,7 +4,7 @@ const OurCollection = () => {
     return (
         <div className="max-w-7xl mx-auto  lg:pt-[100px]  py-6 mb-10"
         >
-            <h1 className='md:text-4xl text-xl font-bold text-center md:p-4 p-2 max-w-[500px] mx-auto rounded-tl-2xl rounded-br-2xl mb-8 border border-black text-black'> Explore Our Collection</h1>
+            <h1 className='md:text-4xl text-xl font-bold text-center md:p-4 p-2 md:w-[500px] w-[270px] mx-auto rounded-tl-2xl rounded-br-2xl md:mb-12 mb-8 border border-black text-black'> Explore Our Collection</h1>
 
             <div className=' lg:flex flex flex-wrap w-full   justify-center items-center gap-10 md:pl-0  '> 
                   {/*  */}
