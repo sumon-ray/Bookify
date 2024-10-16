@@ -93,10 +93,10 @@ export default function AllBooks() {
     return (
         <form onSubmit={handleSubmit} className='pt-7 max-w-7xl mx-auto'>
 
-            <div className='flex flex-col md:flex-row gap-10'>
+            <div className='flex flex-col-reverse lg:flex-row gap-7'>
 
                 {/* filter option big device*/}
-                <div className='hidden md:block md:w-[22%] space-y-3'>
+                <div className='hidden lg:block md:w-[22%] space-y-3'>
                     <h3 className='text-lg font-bold'>Filter Option</h3>
                     <div className='space-y-2.5'>
 
@@ -181,9 +181,9 @@ export default function AllBooks() {
                 </div>
 
                 {/* filter option small device */}
-                <div className='block md:hidden md:w-[22%] space-y-3'>
+                <div className='block lg:hidden lg:w-[22%] space-y-3'>
                     <h3 className='text-lg font-bold text-center'>Filter Option</h3>
-                    <div className='space-y-2.5 flex flex-col md:flex-none items-center md:items-start'>
+                    <div className='space-y-2.5 flex flex-col lg:flex-none items-center lg:items-start'>
 
                         <select required onChange={handleAuthor} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Author</option>
@@ -210,10 +210,10 @@ export default function AllBooks() {
 
                         {/* check box */}
                         <div>
-                            <ul className="text-sm font-medium rounded-md bg-[#EFEEE9] p-1 pb-1.5">
+                            <ul className="text-sm font-medium rounded-md bg-[#EFEEE9] w-[271px] pl-3 pb-1.5">
                                 <h3 className="ps-3 pt-2 pb-1">Category</h3>
                                 {/* checkbox */}
-                                <div className='flex'>
+                                <div className='flex gap-x-2'>
                                     <div>
                                         {
                                             uniqueGenre?.slice(0, 6).map(book => <li className="w-full">
@@ -244,7 +244,7 @@ export default function AllBooks() {
                         </div>
 
                         {/* price range taker */}
-                        <div className='bg-[#EFEEE9] rounded-md p-4 py-2 space-y-1'>
+                        <div className='bg-[#EFEEE9] rounded-md p-6 py-2 space-y-1'>
                             <h3 className='font-medium'>Price Range</h3>
                             <div className='flex justify-center text-[#364957]'>
                                 <Box sx={{ width: 225 }} >
@@ -266,32 +266,29 @@ export default function AllBooks() {
                 </div>
 
                 {/* Books */}
-                <div className='md:w-[80%] space-y-3 flex flex-col items-center md:items-start'>
+                <div className='w-full lg:w-[80%] space-y-3 flex flex-col items-center lg:items-start px-4 lg:px-0'>
                     <h3 className='text-xl md:text-lg font-bold'>Books</h3>
-                    <div className='grid grid-cols-2 md:grid-cols-5 gap-6'>
+                    <div className='grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-5 md:gap-3 lg:gap-6'>
                         {
                             data?.result?.slice(0, limit).map((book, idx) =>
                                 <Link
                                     href={''}
                                     key={idx}
-                                    className="md:w-[180px] h-auto bg-[#EFEEE9]  rounded-md "
+                                    className="w-[189px] md:w-auto lg:w-[185px] h-auto bg-[#EFEEE9]  rounded-md "
+                                    title={book?.Title}
                                 >
-                                    <div className="space-y-1.5">
+                                    <div className="">
                                         <Image
                                             src={book?.coverImage}
                                             className="w-full h-[205px] rounded-t-md"
                                             height={150}
-                                            width={200}
+                                            width={220}
                                             alt={book?.Title || 'Book Cover'}
                                         />
-                                        <div className="text-left pl-2 pb-1.5 relative">
-                                            <h1 className="font-bold md:uppercase" title={book?.Title}>
-                                                {book?.Title.slice(0, 13)}...
-                                            </h1>
-
+                                        <div className="text-left pl-2 pb-1.5 pt-[4.5px] relative">
                                             <div className='flex items-center justify-between pr-2'>
                                                 <h1 className="font-medium">{book?.Price}$</h1>
-                                                <span className='bg-[#364957] rounded-tl-2xl rounded-br-md text-white p-2 absolute right-0 bottom-0'><FaCartPlus className='text-lg' /></span>
+                                                <span className='bg-[#364957] rounded-tl-2xl rounded-bl-2xl rounded-br-md text-white p-2 absolute right-0 bottom-0'><FaCartPlus className='text-lg' /></span>
                                             </div>
 
                                         </div>
@@ -304,9 +301,9 @@ export default function AllBooks() {
 
             </div>
 
-            <div className='flex items-center justify-center md:justify-between gap-x-32 md:gap-x-0 pt-5 md:pt-3'>
+            <div className='flex flex-col md:flex-row items-center justify-center md:justify-between  pt-3.5 md:pt-3 gap-y-2 px-0 md:px-4 lg:px-0'>
 
-                <button type='submit' className='bg-[#364957] text-white w-[21%] py-2 rounded-md flex items-center justify-between px-3 gap-x-1'>
+                <button type='submit' className='bg-[#364957] text-white w-[270px] md:w-[21%] py-2 rounded-md flex items-center justify-between px-3 gap-x-1'>
                     <span>Search</span>
                     <span><IoSearchSharp /></span>
                 </button>
