@@ -82,7 +82,7 @@ export default function Page({ params }) {
               )}
             </div>
             <div className="bg-slate-50 text-slate-500 dark:bg-slate-600 dark:text-slate-200 rounded-b-xl flex items-center">
-              {currentAudio && <Player audioUrl={currentAudio.audioUrl}></Player>}
+              {currentAudio && <Player audioUrl={'https://p.scdn.co/mp3-preview/c8080e7c61e8a83df8cee7a59cc77f8b75d24cd5?cid=f6a40776580943a7bc5173125a1e8832%20thanks%20spotify '}></Player>}
             </div>
           </div>
         </div>
