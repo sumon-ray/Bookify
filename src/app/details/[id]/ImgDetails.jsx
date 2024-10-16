@@ -1,9 +1,41 @@
+import axios from "axios"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/router"
+import toast from "react-hot-toast"
 import { FaEdit } from "react-icons/fa"
 import { TbExchange } from "react-icons/tb"
 
-export default function ImgDetails({ Book }) {
 
-    const { title, author, genre, condition, owner, coverImage, exchangeStatus, publishYear, totalPage, location, rating } = Book || {}
+export default function ImgDetails({ Book }) {
+    // const router = useRouter()
+    const { title, author, genre, condition, owner, coverImage, exchangeStatus, publishYear, totalPage, location, rating, AuthorEmail, _id } = Book || {}
+
+    const session = useSession()
+
+    const addToTakeBook = () => {
+        // Check if the user is trying to exchange their own book
+        if (AuthorEmail === session?.data?.user?.email) {
+            toast.error("You cannot exchange your own book!");
+            return;
+        }
+
+        // POST request to the server using Axios
+        axios.post("https://bookify-server-lilac.vercel.app/take-book", {
+            ...Book,
+            requester: session?.data?.user?.email,
+            bookId: _id,
+        })
+            .then(response => {
+                // Handle success response
+                toast.success("The book has been added to your exchange list!")
+                // router.push('/exchange')
+            })
+            .catch(error => {
+                // Handle error response
+                toast.error("Something went wrong! Please try again.");
+            });
+    };
+
 
     return (
 
@@ -48,7 +80,9 @@ export default function ImgDetails({ Book }) {
                 <p><span className="font-bold mr-1">location:</span>{location}</p>
                 {/* button */}
                 <div className='pt-1 flex items-center'>
-                    <button type="button" className="btn_1 flex items-center"><TbExchange />Exchange</button>
+                    <button onClick={addToTakeBook} type="button" className="btn_1 flex items-center">
+                        <TbExchange />Exchange
+                    </button>
                     <button type="button" className="btn_2 flex items-center"><FaEdit className="-mt-[0.5px]" />Edit</button>
                 </div>
 
