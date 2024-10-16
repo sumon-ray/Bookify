@@ -11,14 +11,14 @@ import { FaChalkboardTeacher, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import ProfileUpdateModal from "./ProfileUpdateModal";
 import toast from "react-hot-toast";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
-import { Menu, MenuItem } from "@mui/material";  // Import Menu and MenuItem from Material UI
+import { Menu, MenuItem } from "@mui/material"; // Import Menu and MenuItem from Material UI
 
 const Navbar = () => {
   const session = useSession();
   const pathName = usePathname();
   const [toggle, setToggle] = useState(false);
-  const [down, setDown] = useState(false)
-  console.log(pathName)
+  const [down, setDown] = useState(false);
+  // console.log(pathName);
 
   // State for controlling Menu component
   const [anchorEl, setAnchorEl] = useState(null);
@@ -27,12 +27,12 @@ const Navbar = () => {
   // Handle menu open/close
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    setDown(true)
+    setDown(true);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
-    setDown(false)
+    setDown(false);
   };
 
   const links = [
@@ -74,13 +74,17 @@ const Navbar = () => {
     return <div></div>;
   }
 
-
   return (
     <div className="overflow-hidden">
       <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7 || md:fixed z-50 w-full top-0 md:rounded-br-ful md:rounded-bl-ful">
         {/* bookify logo */}
         <div>
-          <Image src={img} className="h-14 md:h-[68px] w-28  md:w-36" height={20} width={200} />
+          <Image
+            src={img}
+            className="h-14 md:h-[68px] w-28  md:w-36"
+            height={20}
+            width={200}
+          />
         </div>
 
         {/* Hamburger icon for mobile */}
@@ -94,15 +98,16 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div>
           <ul
-            className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-16" : "top-[-490px]"
-              }`}
+            className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+              open ? "top-16" : "top-[-490px]"
+            }`}
           >
             {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path &&
-                  "font-bold border-b-2 border-black"
-                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${
+                  pathName === link.path && "font-bold border-b-2 border-black"
+                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}
@@ -115,8 +120,19 @@ const Navbar = () => {
 
             {/* Details and Summary Route */}
             <li className="md:ml-8 lg:text-[16px] md:my-0 my-7 font-bold">
-              <button className={`flex items-center ${(pathName === '/rentbooks' || pathName === '/audiobooks') && 'border-b-2 border-black'}`} onClick={handleClick}>
-                Our store {down ? <IoIosArrowDown className="-mb-1" /> : <IoIosArrowForward className="-mb-1" />}
+              <button
+                className={`flex items-center ${
+                  (pathName === "/rentbooks" || pathName === "/audiobooks") &&
+                  "border-b-2 border-black"
+                }`}
+                onClick={handleClick}
+              >
+                Our store{" "}
+                {down ? (
+                  <IoIosArrowDown className="-mb-1" />
+                ) : (
+                  <IoIosArrowForward className="-mb-1" />
+                )}
               </button>
               <div>
                 <Menu
@@ -125,12 +141,26 @@ const Navbar = () => {
                   open={openMenu}
                   onClose={handleClose}
                   MenuListProps={{
-                    'aria-labelledby': 'basic-button',
+                    "aria-labelledby": "basic-button",
                   }}
                 >
-                  {links?.slice(1, 3).map(link => <MenuItem onClick={handleClose} style={{ fontWeight: 'bold', fontSize: '15px' }}>
-                    <Link className={`${pathName === link?.path ? 'border-b-2 border-black' : ''}`} href={link?.path}>{link?.title}</Link>
-                  </MenuItem>)}
+                  {links?.slice(1, 3).map((link) => (
+                    <MenuItem
+                      onClick={handleClose}
+                      style={{ fontWeight: "bold", fontSize: "15px" }}
+                    >
+                      <Link
+                        className={`${
+                          pathName === link?.path
+                            ? "border-b-2 border-black"
+                            : ""
+                        }`}
+                        href={link?.path}
+                      >
+                        {link?.title}
+                      </Link>
+                    </MenuItem>
+                  ))}
                 </Menu>
               </div>
             </li>
@@ -139,9 +169,10 @@ const Navbar = () => {
             {links.slice(3).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path &&
+                className={`${
+                  pathName === link.path &&
                   " font-extrabold border-b-2 border-black"
-                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}
@@ -201,7 +232,7 @@ const Navbar = () => {
                       <FaChalkboardTeacher className="mr-1" />
                       <Link href="/dashboard">Dashboard</Link>
                     </li>
-                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden items-center">
+                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
                       <FaUserEdit className="mr-1" />
                       <ProfileUpdateModal />
                     </li>
@@ -222,7 +253,6 @@ const Navbar = () => {
             </>
           )}
         </div>
-
       </nav>
     </div>
   );
