@@ -15,6 +15,7 @@ import Tooltip from "@mui/material/Tooltip";
 import CircularProgress from "@mui/material/CircularProgress";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import { useSession } from "next-auth/react";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -62,12 +63,14 @@ export default function MyBooks() {
     setSortOrder(value);
   };
 
+  const session= useSession()
+
   // Fetch books without sorting parameters
   const { data, isLoading, error } = useQuery({
     queryKey: ["myBooks"],
     queryFn: async () => {
       const res = await axios.get(
-        `https://bookify-server-lilac.vercel.app/books?email=abcd@gmail.com`
+        `https://bookify-server-lilac.vercel.app/books?email=${session?.data?.user?.email}`
       );
       return res.data;
     },
