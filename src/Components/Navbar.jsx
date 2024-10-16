@@ -49,7 +49,7 @@ const Navbar = () => {
     },
     {
       title: "Audio Books",
-      path: "/audiobooks",
+      path: "/audiobooks/id",
     },
     {
       title: "Exchange",
