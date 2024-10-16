@@ -14,7 +14,7 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const image = e.target.file.files[0]; 
+    const image = e.target.file.files[0];
     const formData = new FormData();
     formData.append("image", image);
     const { data } = await axios.post(
@@ -29,9 +29,10 @@ const SignUp = () => {
       role: "user",
       createdAt: new Date(),
     };
-    const { email, password } = newUser;   
+    const { email, password } = newUser;
 
-    const resp = await fetch("http://localhost:3000/signup/api", {
+    // http://localhost:3000/signup/api
+    const resp = await fetch("https://bookify-server-lilac.vercel.app/user", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {
@@ -54,15 +55,15 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex flex-row-reverse w-full max-w-sm mx-auto overflow-hidden   lg:max-w-4xl my-20">
+    <div className="flex justify-center w-full max-w-7xl mx-auto overflow-hidden rounded-lg my-4">
       <div
-        className="hidden bg-cover lg:block lg:w-1/2 mx-6 my-8 "
+        className="hidden bg-center bg-no-repeat lg:block w-1/2 mx-6 my-8"
         style={{
           backgroundImage: "url('https://i.ibb.co/rxGD6T6/signup.png')",
         }}
       ></div>
 
-      <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
+      <div className="w-full mx-6 my-8 lg:px-16 md:px-8 lg:w-1/2">
         <Link href={"/"}>
           <div className="flex items-center justify-center text-[#B7B7B7]">
             <Image
@@ -163,8 +164,8 @@ const SignUp = () => {
                   <svg
                     class="animate-spin border-indigo-300"
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
+                    width="20"
+                    height="20"
                     viewBox="0 0 30 30"
                     fill="none"
                   >
