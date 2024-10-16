@@ -20,8 +20,8 @@ const Navbar = () => {
   const session = useSession();
   const pathName = usePathname();
   const [toggle, setToggle] = useState(false);
-  const [down, setDown] = useState(false)
-  console.log(pathName)
+  const [down, setDown] = useState(false);
+  // console.log(pathName);
 
   // State for controlling Menu component
   const [anchorEl, setAnchorEl] = useState(null);
@@ -30,12 +30,12 @@ const Navbar = () => {
   // Handle menu open/close
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    setDown(true)
+    setDown(true);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
-    setDown(false)
+    setDown(false);
   };
 
   const links = [
@@ -81,13 +81,17 @@ const Navbar = () => {
     return <div></div>;
   }
 
-
   return (
     <div className="overflow-hidden">
       <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7 || md:fixed z-50 w-full top-0 md:rounded-br-ful md:rounded-bl-ful">
         {/* bookify logo */}
         <div>
-          <Image src={img} className="h-14 md:h-[68px] w-28  md:w-36" height={20} width={200} />
+          <Image
+            src={img}
+            className="h-14 md:h-[68px] w-28  md:w-36"
+            height={20}
+            width={200}
+          />
         </div>
 
         {/* Hamburger icon for mobile */}
@@ -132,7 +136,7 @@ const Navbar = () => {
                   open={openMenu}
                   onClose={handleClose}
                   MenuListProps={{
-                    'aria-labelledby': 'basic-button',
+                    "aria-labelledby": "basic-button",
                   }}
                 >
                   {links?.slice(1, 3).map(link => <MenuItem onClick={handleClose} style={{ fontWeight: '', fontSize: '15px' }}>
@@ -225,7 +229,7 @@ const Navbar = () => {
                       <FaChalkboardTeacher className="mr-1" />
                       <Link href="/dashboard">Dashboard</Link>
                     </li>
-                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden items-center">
+                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
                       <FaUserEdit className="mr-1" />
                       <ProfileUpdateModal />
                     </li>
@@ -246,7 +250,6 @@ const Navbar = () => {
             </>
           )}
         </div>
-
       </nav>
     </div>
   );

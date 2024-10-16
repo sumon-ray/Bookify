@@ -35,12 +35,12 @@ export default function AllBooks() {
             return data
         }
     })
-    const uniqueGenre = [...new Set(data?.result?.map(book => book.Genre))];
-    const uniqueAuthor = [...new Set(data?.result?.map(book => book.Author))];
-    const uniquePublisher = [...new Set(data?.result?.map(book => book.Publisher))];
+    const uniqueGenre = [...new Set(data?.result?.map(book => book?.Genre))];
+    const uniqueAuthor = [...new Set(data?.result?.map(book => book?.Author))];
+    const uniquePublisher = [...new Set(data?.result?.map(book => book?.Publisher))];
     const uniqueYear = [...new Set(data?.result?.map(book => book['Year of Publication']))]
-    const uniqueLanguage = [...new Set(data?.result?.map(book => book.Language))]
-    const uniqueNumber = [...new Set(data?.result?.map(book => book.Price))]
+    const uniqueLanguage = [...new Set(data?.result?.map(book => book?.Language))]
+    const uniqueNumber = [...new Set(data?.result?.map(book => book?.Price))]
     const maxNumber = Math.max(...uniqueNumber)
 
     const handleChange = (event, newValue) => {
