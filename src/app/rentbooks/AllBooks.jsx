@@ -19,9 +19,14 @@ function valuetext(value) {
 
 export default function AllBooks() {
     const [currentPage, setCurrentPage] = React.useState(1)
-    const [value, setValue] = React.useState([20, 37]);
+    const [value, setValue] = React.useState([0, 0]);
+    // select state
+    const [Author, setAuthor] = React.useState('');
+    const [Publisher, setPublisher] = React.useState('');
+    const [PublishYear, setPublishYear] = React.useState('');
+    const [Language, setLanguage] = React.useState('');
+    const [SelectedCategories, setSelectedCategories] = React.useState([])
     const limit = 10
-
     const { data, refetch } = useQuery({
         queryKey: ['rent data', currentPage],
         queryFn: async () => {
@@ -41,16 +46,37 @@ export default function AllBooks() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
     const handlePageChange = (e, page) => {
         setCurrentPage(page)
         refetch()
     }
 
+    // select function 
+    const handleAuthor = function (e) {
+        setAuthor(e.target.value)
+    }
+    const handlePublisher = function (e) {
+        setPublisher(e.target.value)
+    }
+    const handlePublishYear = function (e) {
+        setPublishYear(e.target.value)
+    }
+    const handleLanguage = function (e) {
+        setLanguage(e.target.value)
+    }
+
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const checkboxes = Array.from(e.target.querySelectorAll('input[name="checkbox"]:checked'));
+        const selectedValues = checkboxes.map(checkbox => checkbox.value);
+        setSelectedCategories(selectedValues)
+    }
+
 
 
     return (
-        <div className='pt-7 max-w-7xl mx-auto'>
+        <form onSubmit={handleSubmit} className='pt-7 max-w-7xl mx-auto'>
 
             <div className='flex flex-col md:flex-row gap-10'>
 
@@ -59,23 +85,27 @@ export default function AllBooks() {
                     <h3 className='text-lg font-bold'>Filter Option</h3>
                     <div className='space-y-2.5'>
 
-                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select onChange={handleAuthor} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Author</option>
+                            <option value="">All</option>
                             {uniqueAuthor?.map((author, i) => <option key={i} value={author}>{author}</option>)}
                         </select>
 
-                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select onChange={handlePublisher} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Publisher</option>
+                            <option value="">All</option>
                             {uniquePublisher?.map((publisher, i) => <option key={i} value={publisher}>{publisher}</option>)}
                         </select>
 
-                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select onChange={handlePublishYear} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Publish Year</option>
+                            <option value="">All</option>
                             {uniqueYear?.map((Year, i) => <option key={i} value={Year}>{Year}</option>)}
                         </select>
 
-                        <select className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select onChange={handleLanguage} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Language</option>
+                            <option value="">All</option>
                             {uniqueLanguage?.map((Language, i) => <option key={i} value={Language}>{Language}</option>)}
                         </select>
 
@@ -89,7 +119,7 @@ export default function AllBooks() {
                                         {
                                             uniqueGenre?.slice(0, 6).map(book => <li className="w-full">
                                                 <div className="flex items-center ps-3">
-                                                    <input type="checkbox" className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                                                    <input type="checkbox" value={book} name='checkbox' className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">
                                                         {book.split(' ').slice(0, 1)}
                                                     </label>
@@ -102,7 +132,7 @@ export default function AllBooks() {
                                         {
                                             uniqueGenre?.slice(6, 12).map(book => <li className="w-full">
                                                 <div className="flex items-center ps-3">
-                                                    <input type="checkbox" className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                                                    <input type="checkbox" name='checkbox' value={book} className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">
                                                         {book.split(' ').slice(0, 1)}
                                                     </label>
@@ -261,7 +291,7 @@ export default function AllBooks() {
 
             <div className='flex items-center justify-center md:justify-between gap-x-32 md:gap-x-0 pt-5 md:pt-3'>
 
-                <button className='bg-[#364957] text-white w-[21%] py-2 rounded-md flex items-center justify-between px-3 gap-x-1'>
+                <button type='submit' className='bg-[#364957] text-white w-[21%] py-2 rounded-md flex items-center justify-between px-3 gap-x-1'>
                     <span>Search</span>
                     <span><IoSearchSharp /></span>
                 </button>
@@ -286,6 +316,6 @@ export default function AllBooks() {
 
             </div>
 
-        </div >
+        </form >
     )
 }
