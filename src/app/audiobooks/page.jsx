@@ -86,7 +86,6 @@ export default function page() {
             </div>
           </div>
         </div>
-
         {/* Audio Books List Div */}
         <div>
           <div className="inline-block w-full  overflow-x-scroll">
