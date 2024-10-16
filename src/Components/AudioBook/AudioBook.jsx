@@ -4,7 +4,7 @@ import React from 'react';
 const AudioBook = () => {
     return (
         <div className='max-w-7xl mx-auto  py-8'>
-            <h1 className="md:text-4xl text-2xl font-bold text-center pb-9">
+            <h1 className="md:text-4xl text-xl font-bold text-center md:p-4 p-2 md:w-[500px] w-[270px] mx-auto rounded-tl-2xl rounded-br-2xl md:mb-12 mb-8 border border-black text-black">
                 Audio Books
             </h1>
 
@@ -94,10 +94,10 @@ const AudioBook = () => {
                     </div>
                 </div> */}
 
-                <Link href={"/audiobooks"} className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
+                <Link href={`/audiobooks/${"670e75ef820558c8cb5a0da0"}`} className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
                     <div className=''>
                         <img
-                            className=" h-full w-[250px] rounded hidden md:block"
+                            className="h-full w-[250px] rounded-tl rounded-bl   hidden md:block"
                             src="https://i.ibb.co.com/kMFzvDH/download.jpg"
                             alt="Album Pic"
                         />
@@ -110,7 +110,7 @@ const AudioBook = () => {
                                 </h3>
                                 <p className="text-sm text-grey mt-1">Ghost Stories</p>
                             </div>
-                            <div className="">
+                            <div>
                                 <svg
                                     className="w-4 h-4"
                                     fill="currentColor"
@@ -176,10 +176,11 @@ const AudioBook = () => {
                     </div>
                 </Link>
 
-                <Link href={"/audiobooks"} className="lg:h-[250px] flex  bg-white shadow-lg rounded-lg">
+
+                <Link href={`/audiobooks/${'670e75ef820558c8cb5a0da4'}`} className="lg:h-[250px] flex  bg-white shadow-lg rounded-lg">
                     <div>
                         <img
-                            className="h-full w-[250px]   rounded hidden md:block"
+                            className="h-full w-[250px]  rounded-tl rounded-bl hidden md:block"
                             src="https://i.ibb.co.com/tQLbTvd/71rkr-F9-XPHL-AC-UF1000-1000-QL80.jpg"
                             alt="Album Pic"
                         />
@@ -258,10 +259,10 @@ const AudioBook = () => {
                     </div>
                 </Link>
 
-                <Link href={"/audiobooks"} className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
+                <Link href={`/audiobooks/${'670e75ef820558c8cb5a0da2'}`} className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
                     <div>
                         <img
-                            className="h-full w-[250px] rounded hidden md:block"
+                            className="h-full w-[250px] rounded-tl rounded-bl hidden md:block"
                             src="https://i.ibb.co.com/LJxncXK/download-1.jpg"
                             alt="Album Pic"
                         />
@@ -340,10 +341,10 @@ const AudioBook = () => {
                     </div>
                 </Link>
 
-                <Link href={"/audiobooks"} className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
+                <Link href={`/audiobooks/${'670e75ef820558c8cb5a0da3'}`} className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg">
                     <div>
                         <img
-                            className="h-full w-[250px] rounded hidden md:block"
+                            className="h-full w-[250px] rounded-tl rounded-bl hidden md:block"
                             src="https://i.ibb.co.com/Cmftf5n/download-3.jpg"
                             alt="Album Pic"
                         />
