@@ -6,13 +6,12 @@ import { TbExchange } from "react-icons/tb";
 import Link from "next/link"; // Assuming you're using Next.js for navigation
 
 export default function Page() {
-  const ShowGiveBook = [0]
+  const ShowGiveBook = []
 
 
   const [giveBooksModal, setgiveBooksModal] = useState(false);
   const [books, setBooks] = useState([]);
-  const [giveBooks, setGivsBooks] = useState ([])
-  console.log(ShowGiveBook);
+  const [giveBooks] = useState([])
   // Fetch books when the modal opens
   const fetchBooks = async () => {
     try {
@@ -28,6 +27,11 @@ export default function Page() {
       fetchBooks();
     }
   }, [giveBooksModal]);
+
+  const handleChoose = function (book) {
+    giveBooks.push(book)
+    console.log(giveBooks)
+  }
 
   return (
     <div className="max-w-7xl mx-auto md:pt-20 min-h-screen">
@@ -69,7 +73,9 @@ export default function Page() {
       {/* Exchange Button */}
       <div className="flex justify-center items-center my-8">
         <button type="button" className="btn_1 flex items-center">
-          <TbExchange /> Exchange
+          <div>
+            <TbExchange /> Exchange
+          </div>
         </button>
       </div>
 
@@ -118,7 +124,7 @@ export default function Page() {
                               aria-hidden
                               className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                             ></span>
-                            <button onClick={()=> ShowGiveBook.push(book)} className="relative">choose</button>
+                            <button onClick={()=>{handleChoose(book)}} className="relative">choose</button>
                           </button>
                         </td>
                       </tr>
