@@ -153,13 +153,13 @@ const MyBookCard = () => {
 
               // card
               key={index}
-              className=" flex flex-col justify-center items-center h-auto bg-[#EFEEE9]  rounded-md "
+              className="w-fit mx-auto flex flex-col justify-center items-center h-auto bg-[#EFEEE9]  rounded-md "
             >
-              <div className="space-y-3">
+              <div className="space-y-3 flex flex-col justify-center">
                 <Image
                   src={book?.coverImage}
-                  className="w-[210px] h-[210px] pt-2 rounded-t-md"
-                  height={150}
+                  className="w-[200px] mx-auto  h-[210px] rounded-t-md"
+                  height={210}
                   width={150}
                   alt={book?.Title || "Book Cover"}
                 />
