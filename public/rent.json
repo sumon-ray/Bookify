@@ -310,7 +310,7 @@
         "Author": "Fredrik Backman",
         "AuthorEmail": "abcd@gmail.com",
         "Genre": "Comedy",
-        "coverImage": "https://example.com/anxious-people.jpg",
+        "coverImage": "https://i.postimg.cc/gjDrrBMD/Anxious-People.jpg",
         "Price": "400",
         "Publisher": "Atria Books",
         "Year of Publication": "2019",
@@ -395,7 +395,7 @@
         "Author": "Ann Patchett",
         "AuthorEmail": "bookify06@gmail.com",
         "Genre": "Historical Fiction",
-        "coverImage": "https://example.com/dutch-house.jpg",
+        "coverImage": "https://i.postimg.cc/qMh9JCzt/The-Dutch-House.jpg",
         "Price": "400",
         "Publisher": "HarperCollins",
         "Year of Publication": "2019",
@@ -423,6 +423,6 @@
         "Rating": 4.7,
         "Description": "Based on true events, this novel explores the struggle of Native American tribes against government termination policies in the 1950s.",
         "Condition": "Slightly Used"
-      }
+      }      
   ]
   
