@@ -59,10 +59,10 @@ const Navbar = () => {
       title: "Contact",
       path: "/contact",
     },
-    {
-      title: "Dashboard",
-      path: "/dashboard",
-    },
+    // {
+    //   title: "Dashboard",
+    //   path: "/dashboard",
+    // },
     {
       title: "About",
       path: "/about",
@@ -126,7 +126,7 @@ const Navbar = () => {
 
             {/* our store */}
             <li className="md:ml-8 lg:text-[16px] md:my-0 my-7 font-normal">
-              <button className={`flex items-center ${(pathName === '/rentbooks' || pathName === '/audiobooks') && 'font-black '}`} onClick={handleClick}>
+              <button className={`flex items-center ${(pathName === '/rentbooks' || pathName.includes('/audiobooks')) && 'font-black '}`} onClick={handleClick}>
                 Our store {down ? <IoIosArrowDown className="-mb-1" /> : <IoIosArrowForward className="-mb-1" />}
               </button>
               <div>

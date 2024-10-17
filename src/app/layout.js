@@ -28,21 +28,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-<SearchProvider>
-<QueryProvider>
-        <AuthProvider>
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99]`}
-          >
-            <Toaster />
-            <Navbar />
-            {children}
+      <SearchProvider>
+        <QueryProvider>
+          <AuthProvider>
+            <body
+              className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99]`}
+            >
+              <Toaster />
+              <Navbar />
+              {children}
 
-            <Footer />
-          </body>
-        </AuthProvider>
-      </QueryProvider>
-</SearchProvider>
+              <Footer />
+            </body>
+          </AuthProvider>
+        </QueryProvider>
+      </SearchProvider>
     </html>
   );
 }

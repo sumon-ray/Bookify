@@ -4,6 +4,9 @@ import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { TbExchange } from "react-icons/tb";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function ImgDetails({ Book = {} }) {
   const {
@@ -19,9 +22,36 @@ export default function ImgDetails({ Book = {} }) {
     location,
     rating,
     _id,
+    AuthorEmail
   } = Book;
 
   const [isLoading, setLoading] = useState(false);
+
+  const session = useSession()
+
+    const addToTakeBook = () => {
+        // Check if the user is trying to exchange their own book
+        if (AuthorEmail === session?.data?.user?.email) {
+            toast.error("You cannot exchange your own book!");
+            return;
+        }
+
+        // POST request to the server using Axios
+        axios.post("https://bookify-server-lilac.vercel.app/take-book", {
+            ...Book,
+            requester: session?.data?.user?.email,
+            bookId: _id,
+        })
+            .then(response => {
+                // Handle success response
+                toast.success("The book has been added to your exchange list!")
+                // router.push('/exchange')
+            })
+            .catch(error => {
+                // Handle error response
+                toast.error("Something went wrong! Please try again.");
+            });
+    };
 
   return (
     <div className="flex flex-col md:flex-row gap-x-5 max-w-6xl mx-auto pt-1 pb-5 px-7">
@@ -91,7 +121,7 @@ export default function ImgDetails({ Book = {} }) {
         </p>
 
         <div className="pt-1 flex items-center">
-          <button type="button" className="btn_1 flex items-center">
+          <button onClick={addToTakeBook} type="button" className="btn_1 flex items-center">
             <TbExchange />
             Exchange
           </button>
@@ -107,6 +137,6 @@ export default function ImgDetails({ Book = {} }) {
           <p className="text-blue-600 mt-4">Updating book data...</p>
         )}
       </div>
-    </div>
-  );
+    </div>
+  );
 }
