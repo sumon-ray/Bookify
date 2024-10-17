@@ -14,7 +14,7 @@ const Banner = () => {
     backgroundSize: "cover",
     backgroundPosition: "center",
     height: "400px",
-    width: "100%",
+    width: "50%",
   };
 
   return (
