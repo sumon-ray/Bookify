@@ -40,22 +40,22 @@ export default function ImgDetails({ Book = {} }) {
       return;
     }
 
-    // POST request to the server using Axios
-    axios.post("https://bookify-server-lilac.vercel.app/take-book", {
-      ...Book,
-      requester: session?.data?.user?.email,
-      bookId: _id,
-    })
-      .then(response => {
-        // Handle success response
-        toast.success("The book has been added to your exchange list!")
-        // router.push('/exchange')
-      })
-      .catch(error => {
-        // Handle error response
-        toast.error("Something went wrong! Please try again.");
-      });
-  };
+        // POST request to the server
+        axios.post("https://bookify-server-lilac.vercel.app/take-book", {
+            ...Book,
+            requester: session?.data?.user?.email,
+            bookId: _id,
+        })
+            .then(response => {
+                // Handle success response
+                toast.success("Added in exchange list")
+                // router.push('/exchange')
+            })
+            .catch(error => {
+                // Handle error response
+                toast.error("Something went wrong! Please try again.");
+            });
+    };
 
   return (
     <div className="flex flex-col md:flex-row gap-3 md:gap-8 max-w-6xl mx-auto pt-1 pb-5 px-7">
