@@ -3,6 +3,55 @@ import { useEffect, useState } from "react";
 import Player from "@/Components/Player";
 import Link from "next/link";
 
+
+const audioBooks = [
+  {
+    "title": "Nexus: A Brief History of Information Networks from the Stone Age to AI Audiobook",
+    "author": "Yuval Noah Harari",
+    "audioBookCover": "https://media.audiobookstore.com/i/b/ib01/ib01-square-1536.jpg",
+    "audioURL": "https://media.audiobookstore.com/i/b/ib01/ib01-sample.mp3",
+    "duration": "17.50 hours",
+    "releaseDate": "September 2024",
+    "publisher": "Bookify"
+  },
+  {
+    "title": "The Women: A Novel Audiobook",
+    "author": "Kristin Hannah",
+    "audioBookCover": "https://media.audiobookstore.com/i/b/ib01/ib01-square-1536.jpg",  
+    "audioURL": "https://media.audiobookstore.com/h/k/hk07/hk07-sample.mp3",
+    "duration": "17.50 hours",
+    "relaseDate": "September 2024",
+    "publisher": "Bookify"
+  },
+  {
+    "title": "It Ends with Us Audiobook",
+    "author": "Colleen Hoover",
+    "audioBookCover": "https://media.audiobookstore.com/b/t/btqz/btqz-square-1536.jpg",
+    "audioURL": "https://media.audiobookstore.com/b/t/btqz/btqz-sample.mp3",
+    "duration": "17.50 hours",
+    "relaseDate": "September 2024",
+    "publisher": "Bookify"
+  },
+  {
+    "title": "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones Audiobook",
+    "author": "James Clear",
+    "audioBookCover": "https://media.audiobookstore.com/c/r/cr0m/cr0m-square-1536.jpg",
+    "audioURL": "https://media.audiobookstore.com/c/r/cr0m/cr0m-sample.mp3",
+    "duration": "17.50 hours",
+    "relaseDate": "September 2024",
+    "publisher": "Bookify"
+  },
+  {
+    "title": "Eruption Audiobook",
+    "author": "James Patterson, Michael Crichton",
+    "audioBookCover": "https://media.audiobookstore.com/h/x/hxy5/hxy5-square-1536.jpg",
+    "audioURL": "https://media.audiobookstore.com/h/x/hxy5/hxy5-sample.mp3",
+    "duration": "17.50 hours",
+    "relaseDate": "September 2024",
+    "publisher": "Bookify"
+  }
+]
+
 export default function Page({ params }) {
   const [audioBooks, setAudioBooks] = useState([]);
   const [currentAudio, setCurrentAudio] = useState({
@@ -82,7 +131,7 @@ export default function Page({ params }) {
               )}
             </div>
             <div className="bg-slate-50 text-slate-500 dark:bg-slate-600 dark:text-slate-200 rounded-b-xl flex items-center">
-              {currentAudio && <Player audioUrl={'https://p.scdn.co/mp3-preview/c8080e7c61e8a83df8cee7a59cc77f8b75d24cd5?cid=f6a40776580943a7bc5173125a1e8832%20thanks%20spotify '}></Player>}
+              {currentAudio && <Player audioUrl={'https://media.audiobookstore.com/d/h/dhim/dhim-sample.mp3'}></Player>}
             </div>
           </div>
         </div>

@@ -10,7 +10,6 @@ import FaqSection from "@/Components/FaqSection";
 import BookReviews from "@/Components/BookReview/BookReviews";
 import AudioBook from "@/Components/AudioBook/AudioBook";
 
-
 // import '../Components/(Slider)/style.module.css'
 
 // import TopAuthor from "@/Components/(TopAuthor)/TopAuthor";
@@ -22,7 +21,8 @@ export default function Home() {
       <OurCollection />
       <OurLibrary />
       {/* <BookReviews /> */}
-      <AudioBook/>
+      <AudioBook />
+
       {/* <AboutSection /> */}
       <FaqSection />
       {/* don't touch the commented part */}
@@ -31,7 +31,6 @@ export default function Home() {
       {/* <TopAuthor/> */}
       {/* <Category/> */}
       {/* <NewsletterSection/> */}
-      
     </div>
   );
 }
