@@ -138,7 +138,7 @@ const Footer = () => {
 
           <div className="text-left w-full text-sm ">
             {/* Copyright Section */}
-            <p className="lg:text-left ml-11 md:text-center">© Copyright The Readers. All rights reserved Site by <span className="font-bold" href="#">
+            <p className="lg:text-left ml-10 md:text-center">© Copyright The Readers. All rights reserved Site by <span className="font-bold" href="#">
                 Bookify
               </span>
               .</p>                         
