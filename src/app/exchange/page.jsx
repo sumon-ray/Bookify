@@ -60,7 +60,7 @@ export default function Page() {
   const fetchTakeBooks = async () => {
     setLoading(true)
     try {
-      const response = await axios.get(`https://bookify-server-lilac.vercel.app/take-book?email=nuhash3218@gmail.com`);
+      const response = await axios.get(`https://bookify-server-lilac.vercel.app/take-book?email=${user}`);
       const data = await response.data
       setTakeBooksMine(data); // Assuming the response is an array of books
       setLoading(false)
