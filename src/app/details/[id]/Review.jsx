@@ -10,7 +10,7 @@ export default function Review({ refetch, Data }) {
 
     return (
         <div className="space-y-5 px-3">
-            <h1 className="text-2xl font-bold">Reviews and Ratings</h1>
+            <h1 className="text-xl md:text-2xl font-bold">Reviews and Ratings</h1>
 
             {/* rate and review */}
             <div className="flex justify-between">
