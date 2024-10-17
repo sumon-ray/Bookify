@@ -86,10 +86,12 @@ const AudioBook = () => {
     }
   };
   return (
-    <div className="max-w-7xl mx-auto  py-8">
-      <h1 className="md:text-4xl text-xl font-bold text-center md:p-4 p-2 md:w-[500px] w-[270px] mx-auto rounded-tl-2xl rounded-br-2xl md:mb-12 mb-8 border border-black text-black">
-        Audio Books
-      </h1>
+    <div className="max-w-7xl mx-auto  py-8 space-y-10">
+      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto'>
+        <h1 className='text-2xl uppercase font-bold text-center'>
+          Explore Audio Collection
+        </h1>
+      </div>
 
       <div className="px-4 grid lg:grid-cols-2 grid-cols-1 gap-4 mb-5">
         {audioBooks.slice(0, 4).map((b) => (
