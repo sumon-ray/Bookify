@@ -11,9 +11,9 @@ import { FaChalkboardTeacher, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import ProfileUpdateModal from "./ProfileUpdateModal";
 import toast from "react-hot-toast";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
-import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
-import { Menu, MenuItem } from "@mui/material";  // Import Menu and MenuItem from Material UI
+import Badge from "@mui/material/Badge";
+import MailIcon from "@mui/icons-material/Mail";
+import { Menu, MenuItem } from "@mui/material"; // Import Menu and MenuItem from Material UI
 import { TbExchange } from "react-icons/tb";
 
 const Navbar = () => {
@@ -105,20 +105,18 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div>
           <ul
-            className={`md:flex font-normal md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-16" : "top-[-490px]"
-              }`}
+            className={`md:flex font-normal md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+              open ? "top-16" : "top-[-490px]"
+            }`}
           >
             {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path &&
-                  "font-black"
-                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${
+                  pathName === link.path && "font-black"
+                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
-                <Link
-                  href={link.path}
-                  className="text-[black] duration-500"
-                >
+                <Link href={link.path} className="text-[black] duration-500">
                   {link.title}
                 </Link>
               </li>
@@ -126,8 +124,19 @@ const Navbar = () => {
 
             {/* our store */}
             <li className="md:ml-8 lg:text-[16px] md:my-0 my-7 font-normal">
-              <button className={`flex items-center ${(pathName === '/rentbooks' || pathName === '/audiobooks') && 'font-black '}`} onClick={handleClick}>
-                Our store {down ? <IoIosArrowDown className="-mb-1" /> : <IoIosArrowForward className="-mb-1" />}
+              <button
+                className={`flex items-center ${
+                  (pathName === "/rentbooks" || pathName === "/audiobooks") &&
+                  "font-black "
+                }`}
+                onClick={handleClick}
+              >
+                Our store{" "}
+                {down ? (
+                  <IoIosArrowDown className="-mb-1" />
+                ) : (
+                  <IoIosArrowForward className="-mb-1" />
+                )}
               </button>
               <div>
                 <Menu
@@ -139,42 +148,59 @@ const Navbar = () => {
                     "aria-labelledby": "basic-button",
                   }}
                 >
-                  {links?.slice(1, 3).map(link => <MenuItem onClick={handleClose} style={{ fontWeight: '', fontSize: '15px' }}>
-                    <Link className={`${pathName === link?.path ? 'font-black' : ''}`} href={link?.path}>{link?.title}</Link>
-                  </MenuItem>)}
+                  {links?.slice(1, 3).map((link) => (
+                    <MenuItem
+                      onClick={handleClose}
+                      style={{ fontWeight: "", fontSize: "15px" }}
+                    >
+                      <Link
+                        className={`${
+                          pathName === link?.path ? "font-black" : ""
+                        }`}
+                        href={link?.path}
+                      >
+                        {link?.title}
+                      </Link>
+                    </MenuItem>
+                  ))}
                 </Menu>
               </div>
             </li>
 
             <li className="md:ml-4 lg:text-[16px] md:my-0 my-7 font-normal">
-              {
-                links?.slice(3, 4).map(link =>
-                  <Link href={link?.path} className={`flex items-center ${pathName === link?.path ? 'font-black' : ''}`}>
-                    {links?.slice(3, 4).map(link => <p>{link?.title}</p>)}
-                    <Badge badgeContent={4} color="primary"
-                      anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                      }}>
-                      <TbExchange className="text-xl -mb-1" />
-                    </Badge>
-                  </Link>)
-              }
-
+              {links?.slice(3, 4).map((link) => (
+                <Link
+                  href={link?.path}
+                  className={`flex items-center ${
+                    pathName === link?.path ? "font-black" : ""
+                  }`}
+                >
+                  {links?.slice(3, 4).map((link) => (
+                    <p>{link?.title}</p>
+                  ))}
+                  <Badge
+                    badgeContent={4}
+                    color="primary"
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                  >
+                    <TbExchange className="text-xl -mb-1" />
+                  </Badge>
+                </Link>
+              ))}
             </li>
 
             {/* Contact and remaining links */}
             {links.slice(4).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path &&
-                  " font-black"
-                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${
+                  pathName === link.path && " font-black"
+                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
-                <Link
-                  href={link.path}
-                  className="text-[black] duration-500"
-                >
+                <Link href={link.path} className="text-[black] duration-500">
                   {link.title}
                 </Link>
               </li>
@@ -193,10 +219,10 @@ const Navbar = () => {
 
           {session?.status === "authenticated" && (
             <>
-              <div className="relative text-left hidden md:block">
+              <div className="relative text-left hidden md:block ">
                 <button
                   type="button"
-                  className="flex text-sm"
+                  className="flex items-center text-sm"
                   onClick={() => setToggle(!toggle)}
                   onChange={() => setToggle(!toggle)}
                 >
@@ -211,19 +237,19 @@ const Navbar = () => {
                   ) : (
                     <CgProfile className="text-black font-black text-3xl" />
                   )}
+                  <div className="ml-2 text-left ">
+                    <p className="block text-sm font-normal space-x-6">
+                      {session?.data?.user?.name}
+                    </p>
+                    <p className="block text-[12px] text-gray-500 truncate">
+                      {session?.data?.user?.email}
+                    </p>
+                  </div>
                 </button>
               </div>
 
               {toggle ? (
                 <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
-                  <div className="px-4 py-2">
-                    <span className="block text-sm">
-                      {session?.data?.user?.name}
-                    </span>
-                    <span className="block text-sm text-gray-500 truncate">
-                      {session?.data?.user?.email}
-                    </span>
-                  </div>
                   <ul className="pt-1" aria-labelledby="user-menu-button">
                     <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
                       <FaChalkboardTeacher className="mr-1" />
