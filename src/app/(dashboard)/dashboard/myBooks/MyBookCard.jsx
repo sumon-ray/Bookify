@@ -180,10 +180,10 @@ const MyBookCard = () => {
             <li>
               <a
                 onClick={() => handlePageChange(currentPage - 1)}
-                className={`flex items-center justify-center px-4 h-10 leading-tight ${
+                className={`cursor-pointer flex items-center  justify-center px-4 h-10 leading-tight ${
                   currentPage === 1
-                    ? "text-gray-400 cursor-not-allowed"
-                    : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    ? "text-gray-400 "
+                    : " hover:bg-gray-100 hover:text-gray-700"
                 }`}
                 disabled={currentPage === 1}
               >
@@ -196,7 +196,7 @@ const MyBookCard = () => {
                   onClick={() => handlePageChange(index + 1)}
                   className={`flex items-center justify-center px-4 h-10 leading-tight ${
                     currentPage === index + 1
-                      ? "text-blue-600 bg-blue-50"
+                      ? "text-white bg-[#364957] rounded-md"
                       : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                   }`}
                 >
@@ -207,10 +207,10 @@ const MyBookCard = () => {
             <li>
               <a
                 onClick={() => handlePageChange(currentPage + 1)}
-                className={`flex items-center justify-center px-4 h-10 leading-tight ${
+                className={`flex items-center justify-center cursor-pointer px-4 h-10 leading-tight ${
                   currentPage === totalPages
-                    ? "text-gray-400 cursor-not-allowed"
-                    : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    ? "text-gray-400 "
+                    : " hover:bg-gray-100 hover:text-gray-700"
                 }`}
                 disabled={currentPage === totalPages}
               >
