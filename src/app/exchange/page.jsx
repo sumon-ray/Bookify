@@ -25,15 +25,14 @@ export default function Page() {
   //Choose (give and take books states) 
   const [giveBooks, setGivesBooks] = useState([])
   const [takeBooks, setTakeBooks] = useState([])
-  console.log(books);
 
-  // fuction of set current book to state
-  const hanleChooseBtn = (book) => {
-    // ShowGiveBook.push(book)
-    setGivesBooks((prev) => [...prev, book]);
-    setgiveBooksModal(false)
-  }
-  console.log(giveBooks);
+  // // fuction of set current book to state
+  // const hanleChooseBtn = (book) => {
+  //   // ShowGiveBook.push(book)
+  //   setGivesBooks((prev) => [...prev, book]);
+  //   setgiveBooksModal(false)
+  // }
+  console.log(books);
 
   // Fetch books when the modal opens (GiVE BOOKS)
   const fetchBooks = async () => {
@@ -45,7 +44,6 @@ export default function Page() {
     }
   };
   // Fetch books when the modal opens (Take BOOKS)
-
   const fetchAllBooks = async () => {
     try {
       const response = await axios.get('https://bookify-server-lilac.vercel.app/books');
@@ -101,24 +99,22 @@ export default function Page() {
       });
   };
   // Post to Exchange Collection (give)
-  const addToGiveBook = (book) => {
+  useEffect(() => {
+    const fetchGiveBooks = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`https://bookify-server-lilac.vercel.app/give-book?email=${user}`);
+        setGivesBooks(response.data); // Assuming the response is an array of books
+      } catch (error) {
+        console.error('Error fetching books:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    // POST request to the server
-    axios.post("https://bookify-server-lilac.vercel.app/give-book", {
-      ...book,
-      requester: user,
-      bookId: book._id,
-    })
-      .then(response => {
-        // Handle success response
-        toast.success("The book has been added to your Give books list!")
-        // router.push('/exchange')
-      })
-      .catch(error => {
-        // Handle error response
-        toast.error("Something went wrong! Please try again.");
-      });
-  };
+    // Call the function when the component mounts or when `user` changes
+    fetchGiveBooks();
+  }, [user]);
 
   useEffect(() => {
     if (giveBooksModal) {
@@ -135,10 +131,41 @@ export default function Page() {
     if (takeBooksModal) {
       fetchAllBooks();
     }
-  }, [takeBooksModal, addToTakeBook]);
+  }, [takeBooksModal, addToTakeBook,]);
 
 
+  const filterTakeBooks = takeBooksMine.map(book => ({
+    _id: book._id,
+    AuthorEmail: book.AuthorEmail,
+    requester: book.requester
+  }));
+  const filterGiveBooks = giveBooks.map(book => ({
+    _id: book._id,
+    AuthorEmail: book.AuthorEmail,
+    requester: book.requester
+  }));
+  const postData = {take:[...filterTakeBooks], give:[...filterGiveBooks] }
 
+
+  // POST request to BOOK EXCHANGE
+const exchangeBook = () => {
+console.log(postData);
+  // POST request to the server
+  axios.post("https://bookify-server-lilac.vercel.app/exchange", {
+    postData
+  })
+    .then(response => {
+      // Handle success response
+      toast.success("The book has been exchange ")
+      // router.push('/exchange')
+    })
+    .catch(error => {
+      // Handle error response
+      toast.error("Something went wrong! Please try again.");
+    });
+};
+  
+  
 
 
   return (
@@ -148,7 +175,7 @@ export default function Page() {
       </h1>
 
       {/* Mine div */}
-      <div className="flex lg:gap-6 flex-col md:flex-row px-4">
+      <div className="flex lg:gap-6 flex-col md:flex-row gap-6 px-4">
 
         {/* Take Books */}
         <div className="lg:w-[50%] md:h-[500px] w-full bg-[#EFEEE9] rounded-lg md:p-6">
@@ -257,8 +284,8 @@ export default function Page() {
 
       {/* Exchange Button */}
       <div className="flex justify-center items-center my-8">
-        <button type="button" className="btn_1 flex items-center">
-          <div>
+        <button onClick={exchangeBook} type="button" className="btn_1 flex items-center">
+          <div className="flex justify-center items-center gap-2">
             <TbExchange /> Exchange
           </div>
         </button>
