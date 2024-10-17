@@ -24,7 +24,7 @@ export default function Home() {
       {/* <BookReviews /> */}
       <AudioBook/>
       {/* <AboutSection /> */}
-      {/* <FaqSection /> */}
+      <FaqSection />
       {/* don't touch the commented part */}
       {/* <OfferSection></OfferSection> */}
       {/* <HeroSection></HeroSection> */}

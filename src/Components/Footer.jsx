@@ -136,16 +136,14 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="text-center text-sm">
+          <div className="text-start text-sm">
             {/* Copyright Section */}
-            <p>© Copyright The Readers. All rights reserved.</p>
-            <p>
-              Site by{" "}
-              <a className="font-bold" href="#">
+            <p>© Copyright The Readers. All rights reserved Site by</p>
+              <span className="font-bold" href="#">
                 Bookify
-              </a>
+              </span>
               .
-            </p>
+            
           </div>
         </div>
 
