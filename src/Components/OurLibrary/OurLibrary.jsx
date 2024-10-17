@@ -63,9 +63,12 @@ const OurLibrary = () => {
 
   return (
     <div className="max-w-7xl mx-auto py-16">
-      <h1 className="md:text-4xl text-xl font-bold text-center md:p-4 p-2 md:w-[500px] w-[270px] mx-auto rounded-tl-2xl rounded-br-2xl mb-8 border border-black text-black">
-        Explore Our Library
-      </h1>
+
+      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[385px] h-12 mx-auto'>
+        <h1 className='text-2xl uppercase font-bold text-center'>
+          Explore users Collection
+        </h1>
+      </div>
 
       {/* Dynamic Category Selector */}
       <div className="py-4 px-5 md:pl-20 lg:pl-0">
