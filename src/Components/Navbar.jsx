@@ -165,7 +165,7 @@ const Navbar = () => {
                   <Link href={link?.path} className={`flex items-center ${pathName === link?.path ? 'font-black' : ''}`}>
                     {links?.slice(3, 4).map(link => <p>{link?.title}</p>)}
                     <Badge
-                      // badgeContent={data?.length || '0'}
+                      badgeContent={data?.length || '0'}
                       color="primary"
                       anchorOrigin={{
                         vertical: 'top',
