@@ -36,7 +36,7 @@ export default function ImgDetails({ Book = {} }) {
             return;
         }
 
-        // POST request to the server using Axios
+        // POST request to the server
         axios.post("https://bookify-server-lilac.vercel.app/take-book", {
             ...Book,
             requester: session?.data?.user?.email,
