@@ -19,7 +19,7 @@ import {
   HiOutlineShoppingBag,
 } from "react-icons/hi";
 import { LiaShippingFastSolid } from "react-icons/lia";
-const FAQSection = () => {
+const FaqSection = () => {
   const [showMore, setShowMore] = useState(false);
 
   const faqItems = [
@@ -210,4 +210,4 @@ const FAQSection = () => {
   );
 };
 
-export default FAQSection;
+export default FaqSection;
