@@ -1,14 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { TbExchange } from "react-icons/tb";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function ImgDetails({ Book = {} }) {
+  
+  const router = useRouter()
+
   const {
     title,
     author,
@@ -29,12 +33,12 @@ export default function ImgDetails({ Book = {} }) {
 
   const session = useSession()
 
-    const addToTakeBook = () => {
-        // Check if the user is trying to exchange their own book
-        if (AuthorEmail === session?.data?.user?.email) {
-            toast.error("You cannot exchange your own book!");
-            return;
-        }
+  const addToTakeBook = () => {
+    // Check if the user is trying to exchange their own book
+    if (AuthorEmail === session?.data?.user?.email) {
+      toast.error("You cannot exchange your own book!");
+      return;
+    }
 
         // POST request to the server
         axios.post("https://bookify-server-lilac.vercel.app/take-book", {
@@ -44,7 +48,7 @@ export default function ImgDetails({ Book = {} }) {
         })
             .then(response => {
                 // Handle success response
-                toast.success("The book has been added to your exchange list!")
+                toast.success("Added in exchange list")
                 // router.push('/exchange')
             })
             .catch(error => {
@@ -54,7 +58,7 @@ export default function ImgDetails({ Book = {} }) {
     };
 
   return (
-    <div className="flex flex-col md:flex-row gap-x-5 max-w-6xl mx-auto pt-1 pb-5 px-7">
+    <div className="flex flex-col md:flex-row gap-3 md:gap-8 max-w-6xl mx-auto pt-1 pb-5 px-7">
       <figure className="md:w-[40%] bg-[#EFEEE9] px-7 py-[18px] flex items-center justify-center border border-black rounded-md">
         <img
           src={coverImage}
@@ -70,9 +74,8 @@ export default function ImgDetails({ Book = {} }) {
           {[...Array(5)].map((_, index) => (
             <svg
               key={index}
-              className={`w-4 h-4 ms-1 ${
-                rating > index ? "text-yellow-300" : "text-gray-300"
-              }`}
+              className={`w-4 h-4 ms-1 ${rating > index ? "text-yellow-300" : "text-gray-300"
+                }`}
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -126,17 +129,20 @@ export default function ImgDetails({ Book = {} }) {
             Exchange
           </button>
 
-          <Link href={`/update/${_id}`}>
-            <button className="btn_2 flex items-center">
+          <>
+            <button className="btn_2 flex items-center" onClick={()=>{
+              if(AuthorEmail !== session?.data?.user?.email)return toast.error(`Only owner can edit`)
+                router.push(`/update/${_id}`)
+            }}>
               <FaEdit className="-mt-[0.5px]" /> Edit
             </button>
-          </Link>
+          </>
         </div>
 
         {isLoading && (
           <p className="text-blue-600 mt-4">Updating book data...</p>
         )}
       </div>
-    </div>
-  );
+    </div>
+  );
 }

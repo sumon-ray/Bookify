@@ -165,7 +165,9 @@ export default function Page() {
       {/* Exchange Button */}
       <div className="flex justify-center items-center my-8">
         <button type="button" className="btn_1 flex items-center">
-          <TbExchange /> Exchange
+          <div>
+            <TbExchange /> Exchange
+          </div>
         </button>
       </div>
 
