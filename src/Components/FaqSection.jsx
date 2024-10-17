@@ -146,13 +146,12 @@ const FaqSection = () => {
   const visibleFAQs = showMore ? faqItems : faqItems.slice(0, 6);
 
   return (
-    <div className="px-8 p-6 lg:px-28 mx-auto">
-      <div className="text-center mb-14">
-        <h1 className="md:text-4xl text-xl font-bold md:w-[600px] w-[290px] mx-auto md:p-4 p-2 rounded-tl-2xl rounded-br-2xl mb-8 border border-black text-black">
-          Frequently Asked Questions
+    <div className="px-8 p-6 lg:px-28 mx-auto space-y-10">
+      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[410px] h-12 mx-auto'>
+        <h1 className='text-2xl uppercase font-bold text-center'>
+        Frequently Asked Questions
         </h1>
       </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {visibleFAQs.map((item, index) => (
           <div key={index} className="flex items-start space-x-4">
@@ -210,4 +209,4 @@ const FaqSection = () => {
   );
 };
 
-export default FaqSection;
+export default FaqSection;
