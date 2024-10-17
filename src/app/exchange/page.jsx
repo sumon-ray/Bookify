@@ -23,7 +23,7 @@ export default function Page() {
   //Choose (give and take books states) 
   const [giveBooks, setGivesBooks] = useState([])
   const [takeBooks, setTakeBooks] = useState([])
-  console.log(allBooks);
+  console.log(books);
 
   // fuction of set current book to state
   const hanleChooseBtn = (book) => {
@@ -58,14 +58,23 @@ export default function Page() {
   // Fetch (Take BOOKS) 
   const fetchTakeBooks = async () => {
     try {
-      const response = await axios.get(`https://bookify-server-lilac.vercel.app/take-book?email=nuhash3218@gmail.com`);
+      const response = await axios.get(`https://bookify-server-lilac.vercel.app/take-book?email=${user}`);
       setTakeBooksMine(response.data); // Assuming the response is an array of books
     } catch (error) {
       console.error('Error fetching books:', error);
     }
   };
+  // Fetch (give BOOKS) 
+  const fetchGiveBooks = async () => {
+    try {
+      const response = await axios.get(`https://bookify-server-lilac.vercel.app/give-book?email=${user}`);
+      setGivesBooks(response.data); // Assuming the response is an array of books
+    } catch (error) {
+      console.error('Error fetching books:', error);
+    }
+  };
 
-  // Post to Exchange Collection
+  // Post to Exchange Collection (take)
   const addToTakeBook = (book) => {
 
     // POST request to the server
@@ -84,6 +93,25 @@ export default function Page() {
         toast.error("Something went wrong! Please try again.");
       });
   };
+  // Post to Exchange Collection (give)
+  const addToGiveBook = (book) => {
+
+    // POST request to the server
+    axios.post("https://bookify-server-lilac.vercel.app/give-book", {
+      ...book,
+      requester: user,
+      bookId: book._id,
+    })
+      .then(response => {
+        // Handle success response
+        toast.success("The book has been added to your Give books list!")
+        // router.push('/exchange')
+      })
+      .catch(error => {
+        // Handle error response
+        toast.error("Something went wrong! Please try again.");
+      });
+  };
 
   useEffect(() => {
     if (giveBooksModal) {
@@ -93,7 +121,8 @@ export default function Page() {
 
   useEffect(() => {
     fetchTakeBooks();
-  }, [takeBooksModal]);
+    fetchGiveBooks()
+  }, [takeBooksModal, giveBooksModal]);
 
   useEffect(() => {
     if (takeBooksModal) {
@@ -214,7 +243,7 @@ export default function Page() {
                               aria-hidden
                               className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                             ></span>
-                            <button onClick={() => hanleChooseBtn(book)} className="relative">choose</button>
+                            <button onClick={() => addToGiveBook(book)} className="relative">choose</button>
                           </button>
                         </td>
                       </tr>
