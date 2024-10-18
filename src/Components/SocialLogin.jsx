@@ -1,14 +1,19 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 
 const SocialLogin = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const path = searchParams.get("redirect");
   const { data: session, status } = useSession(); // Use session hook correctly
 
   const handleSocialLogin = async (provider) => {
-    const resp = await signIn(provider, { redirect: false });
+    const resp = await signIn(provider, {
+      redirect: true,
+      callbackUrl: path ? path : "/",
+    });
 
     // If the sign-in was successful, check if the session is authenticated and then redirect
     if (resp && !resp.error) {

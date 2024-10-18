@@ -1,92 +1,158 @@
 "use client";
-import { Button } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
-import './style.css';
-import img from '../../assets/images/About/Purple Watercolor Notebook Book Cover.png';
-import Image from 'next/image';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import Link from 'next/link';
+import React, { useEffect, useState } from "react";
+import "./style.css";
+import img from "../../assets/images/About/ourLibreby.jpg";
+import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import Link from "next/link";
 
 const OurLibrary = () => {
-  const [category, setCategory] = useState('Classic');
+  const [category, setCategory] = useState("All"); // Default is 'All' to show all books
+  const [categories, setCategories] = useState([]); // To store unique categories
+  const [currentPage, setCurrentPage] = useState(1); // State to track the current page
+  const booksPerPage = 12; // Number of books per page
 
-  const { data } = useQuery({
-    queryKey: ['our library', category],
+  // Fetch all books and extract unique categories
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await axios.get(
+          "https://bookify-server-lilac.vercel.app/books"
+        );
+        const books = res.data;
+        // Extract unique genres from books, add 'All' at the beginning
+        const uniqueCategories = ["All", ...new Set(books.map((book) => book.genre))];
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  // Fetch books based on selected category
+  const { data: books } = useQuery({
+    queryKey: ["our library", category],
     queryFn: async () => {
       const res = await axios.get(
-        `https://bookify-server-lilac.vercel.app/books?genre=${category}`
+        category === "All"
+          ? "https://bookify-server-lilac.vercel.app/books" // Fetch all books if 'All' is selected
+          : `https://bookify-server-lilac.vercel.app/books?genre=${category}` // Fetch books by genre
       );
-      const data = res.data;
-      return data;
+      return res.data;
     },
   });
 
+  // Calculate the total number of pages
+  const totalPages = books ? Math.ceil(books.length / booksPerPage) : 0;
+
+  // Get books for the current page
+  const displayedBooks = books
+    ? books.slice((currentPage - 1) * booksPerPage, currentPage * booksPerPage)
+    : [];
+
+  // Handle pagination navigation
+  const handlePrevPage = () => {
+    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
+  };
+
   return (
     <div className="max-w-7xl mx-auto py-16">
-      <h1 className="md:text-4xl text-2xl font-bold text-center pb-9">Explore Our Library</h1>
 
-      {/* Tab Buttons */}
-      <div className="space-x-3 py-4">
-        <button
-          className={`p-3 px-4 rounded-md font-bold ${category === 'Classic' ? 'bg-[#364957] text-white' : 'bg-white'}`}
-          onClick={() => setCategory('Classic')}
+      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[385px] h-12 mx-auto'>
+        <h1 className='text-2xl uppercase font-bold text-center'>
+          Explore users Collection
+        </h1>
+      </div>
+
+      {/* Dynamic Category Selector */}
+      <div className="py-4 px-5 md:pl-20 lg:pl-0">
+        <select
+          className="lg:w-[27%] md:w-[90%] w-full p-3 px-4  rounded-md font-bold bg-white border-none border-gray-300"
+          value={category}
+          onChange={(e) => {
+            setCategory(e.target.value);
+            setCurrentPage(1); // Reset to first page when category changes
+          }}
         >
-          Classic
-        </button>
-        <button
-          className={`p-3 px-4 rounded-md font-bold ${category === 'Historical Fiction' ? 'bg-[#364957] text-white' : 'bg-white'}`}
-          onClick={() => setCategory('Historical Fiction')}
-        >
-          Historical Fiction
-        </button>
-        <button
-          className={`p-3 px-4 rounded-md font-bold ${category === 'Dystopian' ? 'bg-[#364957] text-white' : 'bg-white'}`}
-          onClick={() => setCategory('Dystopian')}
-        >
-          Dystopian
-        </button>
+          {categories.length > 0 ? (
+            categories.map((cat, index) => (
+              <option key={index} value={cat}>
+                {cat}
+              </option>
+            ))
+          ) : (
+            <option>Loading categories...</option>
+          )}
+        </select>
       </div>
 
       {/* Book Display */}
-      <div className="flex lg:flex-row flex-col items-start  gap-12 pt-2">
+      <div className="flex lg:flex-row flex-col items-start xl:gap-8 gap-4 pt-2">
         {/* Static Image */}
-        <figure className="lg:w-[30%] w-full ">
+        <figure className="lg:w-[30%] md:w-[90%] w-full px-5 md:pl-20 lg:pl-0 ">
           <Image
             src={img}
             width={400}
             height={100}
-            className="lg:w-[400px] w-full lg:h-auto h-[300px] rounded-2xl bg-cover"
+            className="lg:w-[400px] w-full lg:h-[910px] h-[300px] rounded-xl bg-cover"
             alt="Library Feature Image"
           />
         </figure>
 
         {/* Dynamic Book Grid */}
-        <div className="md:grid flex flex-col md:grid-cols-4 gap-8 lg:w-[70%] md:w-[750px] w-full items-center justify-center">
-          {data?.slice(0, 12).map((book, i) => (
+        <div className="grid  lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:pl-20 lg:pl-0  lg:gap-8 gap-4 gap-y-4 lg:w-[70%] md:w-[700px] w-full items-center justify-center p-3">
+          {displayedBooks.map((book, idx) => (
             <Link
               href={`/details/${book?._id}`}
-              key={i}
-              className="w-48 h-[284px] bg-[#EFEEE9] flex flex-col justify-center items-center rounded-lg p-4"
+              key={idx}
+              className="w-auto h-auto bg-[#EFEEE9] rounded-md"
             >
               <div className="space-y-3">
                 <Image
                   src={book?.coverImage}
-                  className="w-40 h-44 rounded-lg"
+                  className="w-full h-[210px] rounded-t-md"
                   height={150}
                   width={200}
-                  alt={book?.title || 'Book Cover'}
+                  alt={book?.title || "Book Cover"}
                 />
-                <div className="text-left pl-1">
+                <div className="text-left pl-2 pb-2">
                   <h1 className="font-bold md:uppercase" title={book?.title}>
-                    {book?.title.slice(0, 13)}...
+                    {book?.title?.slice(0, 13)}...
                   </h1>
-                  <h1 className="font-medium">{book?.owner}</h1>
+                  <h1 className="font-medium">{book?.author}</h1>
                 </div>
               </div>
             </Link>
           ))}
         </div>
+
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="flex md:justify-end justify-center items-center pt-8">
+        <button
+          className="p-2 mx-2 bg-[#EFEEE9] text-[#000000] rounded-md"
+          onClick={handlePrevPage}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span className="p-2 font-semibold">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          className="p-2 mx-2 bg-[#EFEEE9] text-[#000000] rounded-md"
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
