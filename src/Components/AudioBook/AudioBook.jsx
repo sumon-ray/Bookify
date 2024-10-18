@@ -16,10 +16,10 @@ const AudioBook = () => {
   //  Audio Book Data fatching from backend
 
   const { data, isLoading, isError, error, refetch } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["audioBooks"],
     queryFn: async () => {
       const res = await axios.get(
-        "https://bookify-server-lilac.vercel.app/audiobook"
+        "https://bookify-server-lilac.vercel.app/audioBook"
       );
       return res.data;
     },
