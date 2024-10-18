@@ -3,7 +3,7 @@ import SocialLogin from "@/Components/SocialLogin";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import img from "../../assets/images/About/logo (1).png";
 import Image from "next/image";
 import axios from "axios";
@@ -207,4 +207,11 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+const WrappedSignUp = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <SignUp />
+  </Suspense>
+);
+
+export default WrappedSignUp;
+
