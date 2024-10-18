@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import ReactPaginate from "react-paginate";
 import Swal from "sweetalert2";
 
-const page = () => {
+const Page = () => {
   // Fetch users on component mount
   const session = useSession();
   const [currentPage, setCurrentPage] = useState(0);
@@ -382,4 +382,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
