@@ -247,41 +247,39 @@ export default function DashboardNavbar() {
                 <div>
                   {session?.status === "authenticated" && (
                     <>
-                      <div className="relative  text-left hidden md:block">
-                        <button
-                          type="button"
-                          className="flex text-sm "
-                          onClick={() => setToggle(!toggle)}
-                        >
-                          {session?.data?.user.image ? (
-                            <>
-                              <Image
-                                src={session?.data?.user?.image}
-                                width={35.5}
-                                height={35.5}
-                                className="rounded-full hover:border-2"
-                                alt="profile-image"
-                              ></Image>
-                            </>
-                          ) : (
-                            <>
-                              <CgProfile className="text-black font-black text-3xl" />
-                            </>
-                          )}
-                        </button>
-                      </div>
+                     <div className="relative text-left hidden md:block ">
+                <button
+                  type="button"
+                  className="flex items-center text-sm"
+                  onClick={() => setToggle(!toggle)}
+                  onChange={() => setToggle(!toggle)}
+                >
+                  {session?.data?.user.image ? (
+                    <Image
+                      src={session?.data?.user?.image}
+                      width={32}
+                      height={32}
+                      className="rounded-full hover:border-2"
+                      alt="profile-image"
+                    />
+                  ) : (
+                    <CgProfile className="text-black font-black text-3xl" />
+                  )}
+                  <div className="ml-2 text-left ">
+                    <p className="block text-sm font-normal space-x-6">
+                      {session?.data?.user?.name}
+                    </p>
+                    <p className="block text-[12px] text-gray-500 truncate">
+                      {session?.data?.user?.email}
+                    </p>
+                  </div>
+                </button>
+                </div>
 
                       {toggle ? (
                         <>
                           <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
-                            <div className="px-4 py-2">
-                              <span className="block text-sm   ">
-                                {session?.data?.user?.name}
-                              </span>
-                              <span className="block text-sm  text-gray-500 truncate">
-                                {session?.data?.user?.email}
-                              </span>
-                            </div>
+                         
                             <ul className="pt-1" aria-labelledby="user-menu-button">
                               <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center ">
                                 <FaUserEdit className="mr-1" />
