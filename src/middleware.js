@@ -14,6 +14,6 @@
 //   return NextResponse.next();
 // };
 
-export const config = {
+// export const config = {
   // matcher: ["/dashboard/:path*", '/details/:path*'],
-};
+// };
