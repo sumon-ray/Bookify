@@ -2,11 +2,12 @@
 import SocialLogin from "@/Components/SocialLogin";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { useState, Suspense } from "react";
 import img from "../../../src/assets/images/About/logo (1).png";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import { useSearchParams } from "next/navigation"; 
 
 const LoginForm = ({ redirect }) => {
   const router = useRouter();
@@ -63,7 +64,6 @@ const LoginForm = ({ redirect }) => {
         />
       </div>
 
-      {/* Error message */}
       {error && <div className="text-red-500">{error}</div>}
 
       <div className="mt-6">
@@ -79,10 +79,14 @@ const LoginForm = ({ redirect }) => {
   );
 };
 
-const Page = () => {
+const SearchParamsProvider = () => {
   const searchParams = useSearchParams();
-  const path = searchParams.get("redirect"); // Move searchParams call here
+  const path = searchParams.get("redirect");
 
+  return <Page redirect={path} />;
+};
+
+const Page = ({ redirect }) => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="flex justify-center max-w-7xl flex-row-reverse w-full mx-auto overflow-hidden rounded-lg my-16">
@@ -120,7 +124,7 @@ const Page = () => {
             <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
           </div>
 
-          <LoginForm redirect={path} /> {/* Pass the redirect parameter here */}
+          <LoginForm redirect={redirect} /> {/* Pass the redirect parameter here */}
 
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
@@ -138,4 +142,12 @@ const Page = () => {
   );
 };
 
-export default Page;
+const App = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchParamsProvider />
+    </Suspense>
+  );
+};
+
+export default App;
