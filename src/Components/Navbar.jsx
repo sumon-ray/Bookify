@@ -83,7 +83,7 @@ const Navbar = () => {
 
   return (
     <div className="overflow-hidden">
-      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7 || md:fixed z-50 w-full top-0 md:rounded-br-ful md:rounded-bl-ful">
+      <nav className="md:flex items-center justify-center md:justify-between bg-[white] py-1.5 md:px-10 px-7 || md:fixed z-50 w-full top-0 md:rounded-br-ful md:rounded-bl-ful">
         {/* bookify logo */}
         <div>
           <Image
@@ -255,4 +255,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar; 

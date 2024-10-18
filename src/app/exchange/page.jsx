@@ -146,7 +146,7 @@ export default function Page() {
     requester: book.requester
   }));
   const postData = {take:[...filterTakeBooks], give:[...filterGiveBooks] }
-
+console.log(postData);
 
   // POST request to BOOK EXCHANGE
 const exchangeBook = () => {

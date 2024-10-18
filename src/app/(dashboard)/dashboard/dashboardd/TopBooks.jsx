@@ -52,7 +52,7 @@ const chartConfig = {
 };
 
 
-const TopBooks = () => {
+const TopBooks = ({overview}) => {
     const totalVisitors = useMemo(() => {
         return chartData.reduce((acc, curr) => acc + curr.visitors, 0);
       }, []);
