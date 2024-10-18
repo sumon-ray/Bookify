@@ -147,6 +147,7 @@ export default function Page() {
   }));
   const postData = {take:[...filterTakeBooks], give:[...filterGiveBooks] }
 
+  
 
   // POST request to BOOK EXCHANGE
 const exchangeBook = () => {
@@ -213,7 +214,7 @@ console.log(postData);
                   className="w-36 h-40 bg-[#364957] rounded-md flex justify-center items-center">
                   <FiPlusCircle className="text-6xl text-white" />
                 </div>
-                
+
                 {
   takeBooksMine.map(takeBook => (
     <div key={takeBook.id}> {/* Replace 'id' with a unique identifier from your data */}
