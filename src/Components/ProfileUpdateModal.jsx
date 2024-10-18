@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { FaCross, FaWindowClose } from "react-icons/fa";
 
 const ProfileUpdateModal = () => {
   const [loading, setLoading] = useState(false);
@@ -87,8 +88,14 @@ const ProfileUpdateModal = () => {
       {/* Modal */}
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-            <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
+          <button
+              className="text-3xl text-red-500 hover:text-red-700 absolute right-0 -top-1"
+              onClick={() => setIsOpen(false)}
+            >
+             <FaWindowClose />
+            </button>
+            <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>  
             <Image
               src={user?.image}
               alt={user?.name}
@@ -175,12 +182,7 @@ const ProfileUpdateModal = () => {
                 )}
               </button>
             </form>
-            <button
-              className="mt-4 text-gray-500 hover:text-gray-700"
-              onClick={() => setIsOpen(false)}
-            >
-              Close
-            </button>
+           
           </div>
         </div>
       )}
