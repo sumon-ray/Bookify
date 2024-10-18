@@ -21,7 +21,7 @@ const Footer = () => {
   if (
     route.includes("dashboard") ||
     route.includes("/login") ||
-    route.includes("/signup") // Fixed typo from "/sighup" to "/signup"
+    route.includes("/signup") 
   ) {
     return <div></div>;
   }
