@@ -76,6 +76,7 @@ const Navbar = () => {
     //   title: "Dashboard",
     //   path: "/dashboard",
     // },
+    
     {
       title: "About",
       path: "/about",
@@ -104,6 +105,7 @@ const Navbar = () => {
             className="h-14 md:h-[68px] w-28  md:w-36"
             height={20}
             width={200}
+            alt="Logo"
           />
         </div>
 
@@ -122,7 +124,7 @@ const Navbar = () => {
               open ? "top-16" : "top-[-490px]"
             }`}
           >
-            {links.slice(0, 1).map((link) => (
+            {links.slice(0, 1).map((link,inde) => (
               <li
                 key={link.path}
                 className={`${
@@ -150,41 +152,38 @@ const Navbar = () => {
                     "aria-labelledby": "basic-button",
                   }}
                 >
-                  {links?.slice(1, 3).map((link) => (
-                    <MenuItem
-                      onClick={handleClose}
-                      style={{ fontWeight: "", fontSize: "15px" }}
-                    >
-                      <Link
-                        className={`${
-                          pathName === link?.path ? "font-black" : ""
-                        }`}
-                        href={link?.path}
-                      >
-                        {link?.title}
-                      </Link>
-                    </MenuItem>
-                  ))}
+             {links?.slice(1, 3).map((link, index) => (
+  <MenuItem key={index} onClick={handleClose} style={{ fontWeight: '', fontSize: '15px' }}>
+    <Link className={`${pathName === link?.path ? 'font-black' : ''}`} href={link?.path}>
+      {link?.title}
+    </Link>
+  </MenuItem>
+))}
+
+
                 </Menu>
               </div>
             </li>
 
             <li className="md:ml-4 lg:text-[16px] md:my-0 my-7 font-normal">
-              {
-                links?.slice(3, 4).map(link =>
-                  <Link href={link?.path} className={`flex items-center ${pathName === link?.path ? 'font-black' : ''}`}>
-                    {links?.slice(3, 4).map(link => <p>{link?.title}</p>)}
-                    <Badge
-                      badgeContent={data?.length || '0'}
-                      color="primary"
-                      anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                      }}>
-                      <TbExchange className="text-xl -mb-1" />
-                    </Badge>
-                  </Link>)
-              }
+            {
+  links?.slice(3, 4).map((link, index) => (
+    <Link key={index} href={link?.path} className={`flex items-center ${pathName === link?.path ? 'font-black' : ''}`}>
+      <p>{link?.title}</p>
+      <Badge
+        badgeContent={data?.length || '0'}
+        color="primary"
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <TbExchange className="text-xl -mb-1" />
+      </Badge>
+    </Link>
+  ))
+}
+
 
             </li>
 
