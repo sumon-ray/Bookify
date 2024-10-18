@@ -175,7 +175,7 @@ const FaqSection = () => {
           >
             <span className="flex items-center justify-center gap-1 ">
               {" "}
-              Read more <HiOutlineArrowNarrowRight className="mt-1" />
+              Read more. <HiOutlineArrowNarrowRight className="mt-1" />
             </span>
           </button>
         )}
@@ -184,12 +184,12 @@ const FaqSection = () => {
       <div className="border flex flex-col lg:flex-row justify-between items-center mt-12 bg-gray-100 p-6 rounded-lg space-y-4 lg:space-y-0 lg:space-x-4">
         <div className="text-center lg:text-left">
           <h4 className="font-bold flex justify-center lg:justify-start items-center space-x-1 mb-2 lg:mb-0">
-            <span>Still have questions</span> <FaQuestion />
+            <span>Still have questions?</span> <FaQuestion />
           </h4>
           <p>
             Can’t find the answer you’re looking for? Please{" "}
             <a href="/contact" className="text-blue-500">
-              chat to our friendly team
+              chat to our friendly team.
             </a>
             .
           </p>
@@ -198,7 +198,7 @@ const FaqSection = () => {
         <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
           <button className="px-6 py-2 border border-gray-700 flex items-center justify-center rounded-lg">
             <FaDochub className="" />
-            ocumentation <FiExternalLink className="ml-1" />
+            documentation <FiExternalLink className="ml-1" />
           </button>
           <button className="px-6 py-2 bg-gray-700 text-white rounded-lg">
             <a href="/contact">Get in touch</a>
