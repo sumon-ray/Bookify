@@ -213,19 +213,20 @@ console.log(postData);
                   className="w-36 h-40 bg-[#364957] rounded-md flex justify-center items-center">
                   <FiPlusCircle className="text-6xl text-white" />
                 </div>
+                
                 {
-                  takeBooksMine.map(takeBook =>
-                    <div>
-                      <Image
-                        src={takeBook?.coverImage}
-                        className="w-36 h-40 rounded-md"
-                        height={150}
-                        width={200}
-                        alt={takeBook?.title || 'Book Cover'}
-                      />
-                    </div>
-                  )
-                }
+  takeBooksMine.map(takeBook => (
+    <div key={takeBook.id}> {/* Replace 'id' with a unique identifier from your data */}
+      <Image
+        src={takeBook?.coverImage}
+        className="w-36 h-40 rounded-md"
+        height={150}
+        width={200}
+        alt={takeBook?.title || 'Book Cover'}
+      />
+    </div>
+  ))
+}
               </div>
           }
 
@@ -268,18 +269,18 @@ console.log(postData);
                 </div>
 
                 {
-                  giveBooks.map(giveBook =>
-                    <div>
-                      <Image
-                        src={giveBook?.coverImage}
-                        className="w-36 h-40 rounded-md"
-                        height={150}
-                        width={200}
-                        alt={giveBook?.title || 'Book Cover'}
-                      />
-                    </div>
-                  )
-                }
+  giveBooks.map(giveBook => (
+    <div key={giveBook.id}> {/* Replace 'id' with a unique identifier from your data */}
+      <Image
+        src={giveBook?.coverImage}
+        className="w-36 h-40 rounded-md"
+        height={150}
+        width={200}
+        alt={giveBook?.title || 'Book Cover'}
+      />
+    </div>
+  ))
+}
 
               </div>
 

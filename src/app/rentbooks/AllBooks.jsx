@@ -143,16 +143,31 @@ export default function AllBooks() {
                                     </div>
 
                                     <div>
-                                        {
-                                            uniqueGenre?.slice(6, 12).map(book => <li className="w-full">
-                                                <div className="flex items-center ps-3">
-                                                    <input type="checkbox" name='checkbox' value={book} className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
-                                                    <label className="w-full py-2 ms-2 text-sm font-medium ">
-                                                        {book.split(' ').slice(0, 1)}
-                                                    </label>
-                                                </div>
-                                            </li>)
-                                        }
+                                    {
+    uniqueGenre?.slice(0, 6).map((book, i) => (
+        <li key={i} className="w-full">
+            <div className="flex items-center ps-3">
+                <input type="checkbox" value={book} name='checkbox' className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                <label className="w-full py-2 ms-2 text-sm font-medium">
+                    {book.split(' ').slice(0, 1)}
+                </label>
+            </div>
+        </li>
+    ))
+}
+{
+    uniqueGenre?.slice(6, 12).map((book, i) => (
+        <li key={i} className="w-full">
+            <div className="flex items-center ps-3">
+                <input type="checkbox" value={book} name='checkbox' className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                <label className="w-full py-2 ms-2 text-sm font-medium">
+                    {book.split(' ').slice(0, 1)}
+                </label>
+            </div>
+        </li>
+    ))
+}
+
                                     </div>
                                 </div>
                             </ul>
