@@ -15,6 +15,8 @@ import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
 import { Menu, MenuItem } from "@mui/material";  // Import Menu and MenuItem from Material UI
 import { TbExchange } from "react-icons/tb";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Navbar = () => {
   const session = useSession();
@@ -37,6 +39,17 @@ const Navbar = () => {
     setAnchorEl(null);
     setDown(false);
   };
+
+
+  const { data } = useQuery({
+    queryKey: ['exchange value'],
+    queryFn: async () => {
+      const res = await axios(`https://bookify-server-lilac.vercel.app/take-book?email=${session?.data?.user?.email}`)
+      const data = await res.data
+      return data
+    }
+  })
+
 
   const links = [
     {
@@ -151,7 +164,9 @@ const Navbar = () => {
                 links?.slice(3, 4).map(link =>
                   <Link href={link?.path} className={`flex items-center ${pathName === link?.path ? 'font-black' : ''}`}>
                     {links?.slice(3, 4).map(link => <p>{link?.title}</p>)}
-                    <Badge badgeContent={4} color="primary"
+                    <Badge
+                      badgeContent={data?.length || '0'}
+                      color="primary"
                       anchorOrigin={{
                         vertical: 'top',
                         horizontal: 'right',

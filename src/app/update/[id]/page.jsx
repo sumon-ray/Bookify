@@ -116,7 +116,7 @@ const UpdateBook = ({ params }) => {
   }
 
   return (
-    <section className="space-y-6 px-8 lg:px-20 pb-12">
+    <section className="space-y-6 px-8 lg:px-20 pb-12 pt-20">
       <div className="bg-[#EFEEE9] rounded-md p-6">
         <h1 className="text-3xl font-black uppercase text-center">Edit Book</h1>
       </div>
@@ -229,7 +229,8 @@ const UpdateBook = ({ params }) => {
             </select>
           </div>
 
-          <div className="col-span-full lg:col-span-3 sm:col-span-3">
+          <div className="flex col-span-6 justify-center items-center w-full gap-5 flex-col lg:flex-row ">
+          <div className="col-span-full lg:col-span-3 sm:col-span-3 w-full">
             <label className="text-sm uppercase">Description</label>
             <textarea
               name="description"
@@ -239,17 +240,18 @@ const UpdateBook = ({ params }) => {
             />
           </div>
 
-          <div className="  col-span-full  lg:col-span-3 sm:col-span-3 md:relative">
+          <div className=" md:relative w-full lg:w-1/2 pt-10">
             <label className="hidden  text-sm uppercase">Description</label>
 
             <button
               type="submit"
-              className="flex items-center justify-between gap-x-1 text-white text-sm font-bold bg-[#364957] rounded-lg w-full md:h-[65.5%] md:absolute px-4 p-4 md:bottom-0 focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]"
+              className="flex items-center justify-between gap-x-1 text-white text-sm font-bold bg-[#364957] rounded-lg mx-auto md:h-[65.5%] md:absolute lg:h-4 p-4 md:bottom-0 focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff] mt-5 w-full md:w-full lg:w-1/3"
             >
               <span>Update Book</span>
               <GrSend className="text-xl" />
             </button>
           </div>
+            </div>
         </div>
       </form>
     </section>

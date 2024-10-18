@@ -268,7 +268,7 @@ export default function AllBooks() {
                 {/* Books */}
                 <div className='w-full lg:w-[80%] space-y-3 flex flex-col items-center lg:items-start px-4 lg:px-0'>
                     <h3 className='text-xl md:text-lg font-bold'>Books</h3>
-                    <div className='grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-5 md:gap-3 lg:gap-6'>
+                    <div className='grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-5 md:gap-3 lg:gap-6 lg:gap-y-7'>
                         {
                             data?.result?.slice(0, limit).map((book, idx) =>
                                 <Link
@@ -280,12 +280,12 @@ export default function AllBooks() {
                                     <div className="">
                                         <Image
                                             src={book?.coverImage}
-                                            className="w-full h-[205px] rounded-t-md"
+                                            className="w-full h-[220px] rounded-t-md"
                                             height={150}
                                             width={220}
                                             alt={book?.Title || 'Book Cover'}
                                         />
-                                        <div className="text-left pl-2 pb-1.5 pt-[4.5px] relative">
+                                        <div className="text-left pl-2 pb-[5.5px] pt-[4.5px] relative">
                                             <div className='flex items-center justify-between pr-2'>
                                                 <h1 className="font-medium">{book?.Price}$</h1>
                                                 <span className='bg-[#364957] rounded-tl-2xl rounded-bl-2xl rounded-br-md text-white p-2 absolute right-0 bottom-0'><FaCartPlus className='text-lg' /></span>
