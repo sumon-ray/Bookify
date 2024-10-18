@@ -2,11 +2,12 @@
 import SocialLogin from "@/Components/SocialLogin";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { useState, Suspense } from "react";
 import img from "../../../src/assets/images/About/logo (1).png";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import { useSearchParams } from "next/navigation"; // Ensure this is imported here
 
 const LoginForm = ({ redirect }) => {
   const router = useRouter();
@@ -63,7 +64,6 @@ const LoginForm = ({ redirect }) => {
         />
       </div>
 
-      {/* Error message */}
       {error && <div className="text-red-500">{error}</div>}
 
       <div className="mt-6">
@@ -80,8 +80,9 @@ const LoginForm = ({ redirect }) => {
 };
 
 const Page = () => {
+  // Use useSearchParams within the component
   const searchParams = useSearchParams();
-  const path = searchParams.get("redirect"); // Move searchParams call here
+  const path = searchParams.get("redirect");
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
