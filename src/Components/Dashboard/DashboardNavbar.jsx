@@ -149,7 +149,7 @@ export default function DashboardNavbar() {
                           animationData={lottieImage}
                           aria-label="Lottie animation"
                           loop
-                          className="w-[40px] h-[24px]"
+                          className="w-full h-[24px]"
                           autoplay
                         />
                       ) : (

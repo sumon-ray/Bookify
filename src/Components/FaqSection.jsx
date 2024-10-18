@@ -1,81 +1,210 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-
+import React, { useState } from "react";
+import { FaDochub, FaGoogleWallet, FaQuestion, FaWallet } from "react-icons/fa";
+import {
+  FiBook,
+  FiShoppingCart,
+  FiSend,
+  FiMessageCircle,
+  FiHelpCircle,
+  FiDollarSign,
+  FiRepeat,
+  FiUserCheck,
+  FiExternalLink,
+} from "react-icons/fi";
+import { GiCardExchange } from "react-icons/gi";
+import {
+  HiOutlineArrowNarrowRight,
+  HiOutlineShoppingBag,
+} from "react-icons/hi";
+import { LiaShippingFastSolid } from "react-icons/lia";
 const FaqSection = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [showMore, setShowMore] = useState(false);
 
-  const toggleAccordion = (index) => {
-    setActiveIndex(index === activeIndex ? null : index);
-  };
-
-  const faqs = [
+  const faqItems = [
     {
-      question: 'How can I track my book order?',
-      answer: 'Once your order is confirmed, you will receive an email with a tracking link. Use this link to monitor your delivery status.',
+      icon: (
+        <GiCardExchange
+          size={32}
+          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-blue-600"
+        />
+      ),
+      question: "How does the book exchange work?",
+      answer:
+        "Our platform allows users to exchange books with others. List your book, find a book you want, and arrange the exchange through our system.",
     },
     {
-      question: 'Do you offer international shipping for books?',
-      answer: 'Yes, we offer international shipping options. Shipping costs will vary depending on your location.',
+      icon: (
+        <FiShoppingCart
+          size={32}
+          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-green-600"
+        />
+      ),
+      question: "Is there a fee to exchange books?",
+      answer:
+        "No, exchanging books is free. However, shipping fees may apply depending on the shipping method you choose.",
     },
     {
-      question: 'How long does the delivery take?',
-      answer: 'Delivery typically takes 3-7 business days for local orders, and 10-14 business days for international orders.',
+      icon: (
+        <FiSend
+          size={32}
+          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-purple-600"
+        />
+      ),
+      question: "How do I ship my books?",
+      answer:
+        "After an exchange is arranged, you’ll be provided with shipping options. You can use our integrated shipping services or choose your own.",
     },
     {
-      question: 'Can I return or exchange books?',
-      answer: 'Yes, you can return or exchange books within 14 days of delivery, as long as the book is in its original condition.',
+      icon: (
+        <FiRepeat
+          size={32}
+          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-yellow-600"
+        />
+      ),
+      question: "Can I exchange multiple books at once?",
+      answer:
+        "Yes, you can exchange as many books as you like, as long as both parties agree to the terms of the exchange.",
     },
     {
-      question: 'What payment methods do you accept?',
-      answer: 'We accept all major credit cards, PayPal, and Bookify gift cards as payment methods.',
+      icon: (
+        <FiDollarSign
+          size={32}
+          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-pink-600"
+        />
+      ),
+      question: "Are there any hidden costs?",
+      answer:
+        "No hidden costs. The only cost you might incur is for shipping, if you choose to ship the book.",
     },
     {
-      question: 'How do I cancel my book order?',
-      answer: 'To cancel your order, please contact our customer support within 24 hours of placing the order. Once the order is processed, cancellation may not be possible.',
+      icon: (
+        <FiUserCheck
+          size={32}
+          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-indigo-600"
+        />
+      ),
+      question: "How do I know the book I want is available?",
+      answer:
+        "Our platform will show the current availability of books listed by other users. You can also request to be notified if the book becomes available.",
     },
     {
-      question: 'What should I do if I receive a damaged book?',
-      answer: 'If you receive a damaged book, contact our customer support team within 7 days of receiving your order. We will assist you in arranging a replacement or refund.',
+      icon: (
+        <FiHelpCircle
+          size={32}
+          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-red-600"
+        />
+      ),
+      question: "What if my book doesn’t arrive?",
+      answer:
+        "We provide customer support for these situations. If your book doesn’t arrive within the agreed time, contact our support team for assistance.",
+    },
+    {
+      icon: (
+        <FiMessageCircle
+          size={32}
+          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-gray-600"
+        />
+      ),
+      question: "Can I communicate with the other user before exchanging?",
+      answer:
+        "Yes, our messaging system allows you to communicate with other users to finalize the details of the exchange.",
+    },
+    {
+      icon: (
+        <LiaShippingFastSolid
+          size={32}
+          className="text-[#4b5563] p-[2px] rounded-[5px] "
+        />
+      ),
+      question: "How do I track my shipment?",
+      answer:
+        "After the book is shipped, you can track it directly through our platform using the tracking number provided.",
+    },
+    {
+      icon: (
+        <HiOutlineShoppingBag
+          size={32}
+          className="text-[#4b5563] p-[2px] rounded-[5px] "
+        />
+      ),
+      question: "Is there a limit to the number of books I can list?",
+      answer:
+        "No, you can list as many books as you’d like. However, make sure to keep your listings updated to avoid confusion.",
     },
   ];
 
+  const visibleFAQs = showMore ? faqItems : faqItems.slice(0, 6);
+
   return (
-    <div className=" flex mt-8  flex-col lg:flex-row justify-between items-center px-8  space-y-8 lg:space-y-0 rounded-lg lg:px-28 pb-6  mx-auto">
-
-      {/* Image Section */}
-      <div className="w-full lg:w-1/2 flex justify-center">
-        <img
-          src="https://i.postimg.cc/Lshjjt8d/Book-FAQ.png"
-          alt="Glasses and Book"
-          className="object-cover w-[250px] sm:w-[300px] md:w-[350px] lg:w-[400px] mx-auto"
-        />
-      </div>
-
-      {/* FAQ Section */}
-      <div className="bg-white text-black p-12 rounded-lg w-full lg:w-1/2 mb-10 space-y-6">
-        <h1 className='text-2xl font-semibold mb-2'>
-          People also ask-
+    <div className="px-8 p-6 lg:px-28 mx-auto space-y-10">
+      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[410px] h-12 mx-auto'>
+        <h1 className='text-2xl uppercase font-bold text-center'>
+        Frequently Asked Questions
         </h1>
-        {/* FAQ Accordion mapping */}
-        {faqs.map((faq, index) => (
-          <div key={index} className="mb-2 border-b ">
-            <div
-              onClick={() => toggleAccordion(index)}
-              className="cursor-pointer text-base sm:text-lg md:text-xl font-semibold flex justify-between items-center"
-            >
-              <span>{faq.question}</span>
-              <span>{activeIndex === index ? '-' : '+'}</span>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {visibleFAQs.map((item, index) => (
+          <div key={index} className="flex items-start space-x-4">
+            <span className="text-white" color="white">
+              {" "}
+              {item.icon}
+            </span>
+            <div>
+              <h3 className="font-bold">{item.question}</h3>
+              <p className="text-gray-600">{item.answer}</p>
             </div>
-            {activeIndex === index && (
-              <div className="mt-2 text-black text-sm">
-                <p>{faq.answer}</p>
-              </div>
-            )}
           </div>
         ))}
       </div>
 
+      <div className="text-center mt-6">
+        {!showMore && (
+          <button
+            className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
+            onClick={() => setShowMore(true)}
+          >
+            <span className="flex items-center justify-center gap-1 ">
+              {" "}
+              Read more <HiOutlineArrowNarrowRight className="mt-1" />
+            </span>
+          </button>
+        )}
+      </div>
+
+      <div className="border flex flex-col lg:flex-row justify-between items-center mt-12 bg-gray-100 p-6 rounded-lg space-y-4 lg:space-y-0 lg:space-x-4">
+        <div className="text-center lg:text-left">
+          <h4 className="font-bold flex justify-center lg:justify-start items-center space-x-1 mb-2 lg:mb-0">
+            <span>Still have questions</span> <FaQuestion />
+          </h4>
+          <p>
+            Can’t find the answer you’re looking for? Please{" "}
+            <a href="/contact" className="text-blue-500">
+              chat to our friendly team
+            </a>
+            .
+          </p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+          <button className="px-6 py-2 border border-gray-700 flex items-center justify-center rounded-lg">
+            <FaDochub className="" />
+            ocumentation <FiExternalLink className="ml-1" />
+          </button>
+          <button className="px-6 py-2 bg-gray-700 text-white rounded-lg">
+            <a href="/contact">Get in touch</a>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

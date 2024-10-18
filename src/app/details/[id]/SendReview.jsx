@@ -61,17 +61,17 @@ function SendReview({ refetch, openStar, setOpenStar , value}) {
                                     <h2 className="text-xl font-bold text-center">What is your rate?</h2>
                                     <div className="flex flex-col items-center space-y-2 pb-2">
                                         <Rating className="pt-2" defaultValue={value} value={rating || value} onChange={handleRating} size="large" />
-                                        <span className="text-base text-center font-medium">Please share your opinion
+                                        <span className="text-base text-center font-medium text-balance">Please share your <br /> opinion
                                             about the book</span>
                                     </div>
 
                                     <div>
-                                        <textarea rows="3" cols={'31'} name='review' placeholder="Your review..." className="p-4 rounded-md resize-none border-0 focus:outline-none focus:ring focus:ring-[#EFEEE9]" required></textarea>
+                                        <textarea rows="3" cols={'31'} name='review' placeholder="Your review..." className="p-4 w-[303px] md:w-[275px] rounded-md resize-none border-0 focus:outline-none focus:ring focus:ring-[#EFEEE9]" required></textarea>
                                     </div>
 
                                 </div>
 
-                                <div className="mt-3 sm:flex sm:items-center sm:-mx-2">
+                                <div className="mt-2 md:mt-3 sm:flex sm:items-center sm:-mx-2">
                                     <button
                                         type="button"
                                         onClick={() => {

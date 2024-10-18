@@ -15,6 +15,8 @@ import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 import { Menu, MenuItem } from "@mui/material"; // Import Menu and MenuItem from Material UI
 import { TbExchange } from "react-icons/tb";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Navbar = () => {
   const session = useSession();
@@ -38,6 +40,17 @@ const Navbar = () => {
     setDown(false);
   };
 
+
+  const { data } = useQuery({
+    queryKey: ['exchange value'],
+    queryFn: async () => {
+      const res = await axios(`https://bookify-server-lilac.vercel.app/take-book?email=${session?.data?.user?.email}`)
+      const data = await res.data
+      return data
+    }
+  })
+
+
   const links = [
     {
       title: "Home",
@@ -59,10 +72,10 @@ const Navbar = () => {
       title: "Contact",
       path: "/contact",
     },
-    {
-      title: "Dashboard",
-      path: "/dashboard",
-    },
+    // {
+    //   title: "Dashboard",
+    //   path: "/dashboard",
+    // },
     {
       title: "About",
       path: "/about",
@@ -124,19 +137,8 @@ const Navbar = () => {
 
             {/* our store */}
             <li className="md:ml-8 lg:text-[16px] md:my-0 my-7 font-normal">
-              <button
-                className={`flex items-center ${
-                  (pathName === "/rentbooks" || pathName === "/audiobooks") &&
-                  "font-black "
-                }`}
-                onClick={handleClick}
-              >
-                Our store{" "}
-                {down ? (
-                  <IoIosArrowDown className="-mb-1" />
-                ) : (
-                  <IoIosArrowForward className="-mb-1" />
-                )}
+              <button className={`flex items-center ${(pathName === '/rentbooks' || pathName.includes('/audiobooks')) && 'font-black '}`} onClick={handleClick}>
+                Our store {down ? <IoIosArrowDown className="-mb-1" /> : <IoIosArrowForward className="-mb-1" />}
               </button>
               <div>
                 <Menu
@@ -168,28 +170,22 @@ const Navbar = () => {
             </li>
 
             <li className="md:ml-4 lg:text-[16px] md:my-0 my-7 font-normal">
-              {links?.slice(3, 4).map((link) => (
-                <Link
-                  href={link?.path}
-                  className={`flex items-center ${
-                    pathName === link?.path ? "font-black" : ""
-                  }`}
-                >
-                  {links?.slice(3, 4).map((link) => (
-                    <p>{link?.title}</p>
-                  ))}
-                  <Badge
-                    badgeContent={4}
-                    color="primary"
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                  >
-                    <TbExchange className="text-xl -mb-1" />
-                  </Badge>
-                </Link>
-              ))}
+              {
+                links?.slice(3, 4).map(link =>
+                  <Link href={link?.path} className={`flex items-center ${pathName === link?.path ? 'font-black' : ''}`}>
+                    {links?.slice(3, 4).map(link => <p>{link?.title}</p>)}
+                    <Badge
+                      badgeContent={data?.length || '0'}
+                      color="primary"
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}>
+                      <TbExchange className="text-xl -mb-1" />
+                    </Badge>
+                  </Link>)
+              }
+
             </li>
 
             {/* Contact and remaining links */}

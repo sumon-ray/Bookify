@@ -2,13 +2,17 @@ import React from 'react';
 
 const OurCollection = () => {
     return (
-        <div className="max-w-7xl mx-auto  lg:pt-[100px]  py-6 mb-10"
-        >
-            <h1 className='md:text-4xl text-xl font-bold text-center md:p-4 p-2 md:w-[500px] w-[270px] mx-auto rounded-tl-2xl rounded-br-2xl md:mb-12 mb-8 border border-black text-black'> Explore Our Collection</h1>
+        <div className="max-w-7xl mx-auto  mt-[100px] mb-14  space-y-6">
 
-            <div className=' lg:flex flex flex-wrap w-full   justify-center items-center gap-10 md:pl-0  '> 
-                  {/*  */}
-                 <div className="border-2  border-[#EFEEE9]  md:w-[218px] w-[200px] md:h-[180px] h-[150px]  rounded-2xl bg-[#EFEEE9] md:px-6 px-[15px] mt-36 ">
+            <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto'>
+                <h1 className='text-2xl uppercase font-bold text-center'>
+                    Explore Rent Collection
+                </h1>
+            </div>
+
+            <div className=' lg:flex flex flex-wrap w-full   justify-center items-center gap-10 md:pl-0  '>
+                {/*  */}
+                <div className="border-2  border-[#EFEEE9]  md:w-[218px] w-[200px] md:h-[180px] h-[150px]  rounded-2xl bg-[#EFEEE9] md:px-6 px-[15px] mt-36 ">
                     <div
                         className="w-[168px] md:h-[226px] h-[200px]   mt-[-130px] hover:mt-[-150px]  rounded-xl bg-cover bg-center"
                         style={{

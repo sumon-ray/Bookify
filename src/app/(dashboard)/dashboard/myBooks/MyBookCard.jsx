@@ -138,7 +138,7 @@ const MyBookCard = () => {
             autoplay
           />
           <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            No books found
+            No books found 
           </h2>
           <p className="text-gray-500">
             We couldn't find any books that match this genre or your search
@@ -153,13 +153,13 @@ const MyBookCard = () => {
 
               // card
               key={index}
-              className=" flex flex-col justify-center items-center h-auto bg-[#EFEEE9]  rounded-md "
+              className="w-fit mx-auto flex flex-col justify-center items-center h-auto bg-[#EFEEE9]  rounded-md "
             >
-              <div className="space-y-3">
+              <div className="space-y-3 flex flex-col justify-center">
                 <Image
                   src={book?.coverImage}
-                  className="w-[210px] h-[210px] pt-2 rounded-t-md"
-                  height={150}
+                  className="w-[200px] mx-auto  h-[210px] rounded-t-md"
+                  height={210}
                   width={150}
                   alt={book?.Title || "Book Cover"}
                 />
@@ -180,10 +180,10 @@ const MyBookCard = () => {
             <li>
               <a
                 onClick={() => handlePageChange(currentPage - 1)}
-                className={`flex items-center justify-center px-4 h-10 leading-tight ${
+                className={`cursor-pointer flex items-center  justify-center px-4 h-10 leading-tight ${
                   currentPage === 1
-                    ? "text-gray-400 cursor-not-allowed"
-                    : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    ? "text-gray-400 "
+                    : " hover:bg-gray-100 hover:text-gray-700"
                 }`}
                 disabled={currentPage === 1}
               >
@@ -196,7 +196,7 @@ const MyBookCard = () => {
                   onClick={() => handlePageChange(index + 1)}
                   className={`flex items-center justify-center px-4 h-10 leading-tight ${
                     currentPage === index + 1
-                      ? "text-blue-600 bg-blue-50"
+                      ? "text-white bg-[#364957] rounded-md"
                       : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                   }`}
                 >
@@ -207,10 +207,10 @@ const MyBookCard = () => {
             <li>
               <a
                 onClick={() => handlePageChange(currentPage + 1)}
-                className={`flex items-center justify-center px-4 h-10 leading-tight ${
+                className={`flex items-center justify-center cursor-pointer px-4 h-10 leading-tight ${
                   currentPage === totalPages
-                    ? "text-gray-400 cursor-not-allowed"
-                    : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    ? "text-gray-400 "
+                    : " hover:bg-gray-100 hover:text-gray-700"
                 }`}
                 disabled={currentPage === totalPages}
               >
