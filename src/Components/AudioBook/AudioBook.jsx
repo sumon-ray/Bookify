@@ -2,6 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
@@ -91,8 +92,10 @@ const AudioBook = () => {
             className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg hover:shadow-sm-light"
           >
             <div className="">
-              <img
+              <Image
                 className="h-full w-[250px] rounded-tl rounded-bl   hidden md:block"
+                width={250}
+                height={250}
                 src={b?.audioBookCover}
                 alt="Album Pic"
               />
