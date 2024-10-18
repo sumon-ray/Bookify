@@ -303,7 +303,7 @@ export default function MyBooks() {
           ))
         ) : (
           <p className="text-center col-span-full">
-            No books available. Please add some!
+            No books available. Wish to add some!
           </p>
         )}
       </div>
