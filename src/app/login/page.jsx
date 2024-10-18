@@ -7,10 +7,12 @@ import React, { useState } from "react";
 import img from "../../../src/assets/images/About/logo (1).png";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import { Suspense } from 'react';
 
 const page = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const paramValue = searchParams ? searchParams.get('param') : null;
   const path = searchParams.get("redirect");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -35,7 +37,7 @@ const page = () => {
     setLoading(false);
   };
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <div className="flex justify-center max-w-7xl flex-row-reverse w-full  mx-auto overflow-hidden rounded-lg my-16">
         <div
           className="hidden bg-center bg-no-repeat lg:block w-1/2 mx-6 my-8"
@@ -170,7 +172,7 @@ const page = () => {
           </div>
         </div>
       </div>
-    </>
+      </Suspense>
   );
 };
 
