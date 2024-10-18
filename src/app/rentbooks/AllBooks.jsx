@@ -131,7 +131,7 @@ export default function AllBooks() {
                                 <div className='flex'>
                                     <div>
                                         {
-                                            uniqueGenre?.slice(0, 6).map(book => <li className="w-full">
+                                            uniqueGenre?.slice(0, 6).map((book,i)=> <li className="w-full" key={i}>
                                                 <div className="flex items-center ps-3">
                                                     <input type="checkbox" value={book} name='checkbox' className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">
@@ -144,7 +144,7 @@ export default function AllBooks() {
 
                                     <div>
                                         {
-                                            uniqueGenre?.slice(6, 12).map(book => <li className="w-full">
+                                            uniqueGenre?.slice(6, 12).map(book => <li className="w-full" key={book?._id}>
                                                 <div className="flex items-center ps-3">
                                                     <input type="checkbox" name='checkbox' value={book} className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">
@@ -216,7 +216,7 @@ export default function AllBooks() {
                                 <div className='flex gap-x-2'>
                                     <div>
                                         {
-                                            uniqueGenre?.slice(0, 6).map(book => <li className="w-full">
+                                            uniqueGenre?.slice(0, 6).map(book => <li className="w-full" key={book?.id}>
                                                 <div className="flex items-center ps-3">
                                                     <input type="checkbox" value={book} name='checkbox' className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">
@@ -229,7 +229,7 @@ export default function AllBooks() {
 
                                     <div>
                                         {
-                                            uniqueGenre?.slice(6, 12).map(book => <li className="w-full">
+                                            uniqueGenre?.slice(6, 12).map(book => <li className="w-full" key={book?._id} >
                                                 <div className="flex items-center ps-3">
                                                     <input type="checkbox" name='checkbox' value={book} className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">

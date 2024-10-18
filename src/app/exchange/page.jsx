@@ -135,38 +135,32 @@ export default function Page() {
   }, [takeBooksModal, addToTakeBook,]);
 
 
-  const filterTakeBooks = takeBooksMine.map(book => ({
-    _id: book._id,
-    AuthorEmail: book.AuthorEmail,
-    requester: book.requester
-  }));
-  const filterGiveBooks = giveBooks.map(book => ({
-    _id: book._id,
-    AuthorEmail: book.AuthorEmail,
-    requester: book.requester
-  }));
-  const postData = {take:[...filterTakeBooks], give:[...filterGiveBooks] }
+  const postData = {
+    takeBooksId: takeBooksMine.map(book => (book._id)),
+    giveBookId: giveBooks.map(book => (book._id)),
+    giveEmail: user,
+    takeEmail: []
+  }
 
 
   // POST request to BOOK EXCHANGE
-const exchangeBook = () => {
-console.log(postData);
-  // POST request to the server
-  axios.post("https://bookify-server-lilac.vercel.app/exchange", {
-    postData
-  })
-    .then(response => {
-      // Handle success response
-      toast.success("The book has been exchange ")
-      // router.push('/exchange')
+  const exchangeBook = () => {
+    // POST request to the server
+    axios.put("https://bookify-server-lilac.vercel.app/exchange", {
+      postData
     })
-    .catch(error => {
-      // Handle error response
-      toast.error("Something went wrong! Please try again.");
-    });
-};
-  
-  
+      .then(response => {
+        // Handle success response
+        toast.success("The book has been exchange ")
+        // router.push('/exchange')
+      })
+      .catch(error => {
+        // Handle error response
+        toast.error("Something went wrong! Please try again.");
+      });
+  };
+
+
 
 
   return (
@@ -294,7 +288,7 @@ console.log(postData);
       {/* Exchange Button */}
       <div className="flex justify-center items-center my-8">
         <button onClick={exchangeBook} type="button" className="btn_1 flex items-center">
-          <div className="flex justify-center items-center gap-2">
+          <div className="flex justify-center items-center gap-0.5">
             <TbExchange /> Exchange
           </div>
         </button>
