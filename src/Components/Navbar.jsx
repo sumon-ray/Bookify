@@ -76,6 +76,7 @@ const Navbar = () => {
     //   title: "Dashboard",
     //   path: "/dashboard",
     // },
+    
     {
       title: "About",
       path: "/about",
