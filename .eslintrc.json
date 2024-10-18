@@ -1,7 +1,3 @@
-{
-    "extends": ["next", "plugin:testing-library/react", "plugin:jest-dom/recommended"],
-    "rules": {
-      "react/react-in-jsx-scope": "off"
-    }
-  }
-  
+// {
+//   "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"]
+// }
