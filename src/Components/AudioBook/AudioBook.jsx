@@ -100,6 +100,8 @@ const AudioBook = () => {
                       height={250}
                       src={b?.audioBookCover}
                       alt="Album Pic"
+                      unoptimized
+                      quality={100}
                     />
                   </div>
                   <div className="w-full md:p-8 p-4 relative">
