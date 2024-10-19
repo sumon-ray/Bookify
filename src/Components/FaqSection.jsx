@@ -181,7 +181,7 @@ const FaqSection = () => {
         )}
       </div>
 
-      <div className="border flex flex-col lg:flex-row justify-between items-center mt-12 bg-gray-100 p-6 rounded-lg space-y-4 lg:space-y-0 lg:space-x-4">
+      <div className="flex flex-col lg:flex-row justify-between items-center mt-12 bg-white p-6 rounded-md space-y-4 lg:space-y-0 lg:space-x-4">
         <div className="text-center lg:text-left">
           <h4 className="font-bold flex justify-center lg:justify-start items-center space-x-1 mb-2 lg:mb-0">
             <span>Still have questions?</span> <FaQuestion />
@@ -196,11 +196,11 @@ const FaqSection = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-          <button className="px-6 py-2 border border-gray-700 flex items-center justify-center rounded-lg">
+          <button className="px-6 py-2 flex items-center justify-center rounded-lg">
             <FaDochub className="" />
             documentation <FiExternalLink className="ml-1" />
           </button>
-          <button className="px-6 py-2 bg-gray-700 text-white rounded-lg">
+          <button className="px-6 py-2 bg-[#364957] text-white rounded-lg">
             <a href="/contact">Get in touch</a>
           </button>
         </div>
