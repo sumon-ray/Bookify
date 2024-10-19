@@ -1,8 +1,8 @@
-Sure! Below is the same FAQ component but using Tailwind CSS for styling instead of raw CSS.
+// Sure! Below is the same FAQ component but using Tailwind CSS for styling instead of raw CSS.
 
-### JSX Component (FAQ.js) with Tailwind CSS
+// ### JSX Component (FAQ.js) with Tailwind CSS
 
-jsx
+// jsx
 import React from 'react';
 
 const FAQs = [

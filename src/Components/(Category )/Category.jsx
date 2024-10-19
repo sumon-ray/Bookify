@@ -103,7 +103,7 @@ const Category = () => {
                                     No books found
                                 </h2>
                                 <p className="text-gray-500">
-                                    We couldn't find any books that match this genre or your search query.
+                                    We couldn&apos;t find any books that match this genre or your search query.
                                 </p>
                             </div>
                         )}
