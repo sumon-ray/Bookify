@@ -23,7 +23,7 @@ export default function NotFound() {
           href="/"
           className="bg-[#364957] text-white px-4 py-2 rounded-md hover:bg-gray-200 hover:text-black transition-colors duration-300"
         >
-          Go back to Home
+          Please go back to Home.
         </Link>
       </div>
     </div>
