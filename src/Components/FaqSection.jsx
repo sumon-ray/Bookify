@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
 import { FaDochub, FaGoogleWallet, FaQuestion, FaWallet } from "react-icons/fa";
 import {
@@ -191,17 +192,20 @@ const FaqSection = () => {
             <a href="/contact" className="text-blue-500">
               chat to our friendly team
             </a>
-            .
+            . Or try our AI-powered assistant for instant help.
           </p>
         </div>
 
         <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
           <button className="px-6 py-2 border border-gray-700 flex items-center justify-center rounded-lg">
             <FaDochub className="" />
-            ocumentation <FiExternalLink className="ml-1" />
+            Documentation <FiExternalLink className="ml-1" />
           </button>
           <button className="px-6 py-2 bg-gray-700 text-white rounded-lg">
-            <a href="/contact">Get in touch</a>
+            <Link href="/ai-chat">
+            <p>  Ask our AI Assistant</p>
+    
+            </Link>
           </button>
         </div>
       </div>
