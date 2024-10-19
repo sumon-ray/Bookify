@@ -40,7 +40,7 @@ const FAQ = () => {
   return (
     <div className="p-6 max-w-3xl mx-auto text-left">
       <h2 className="text-3xl font-bold">FAQ</h2>
-      <p className="mt-2 text-gray-700">Here are some of the Roomsy frequently asked questions</p>
+      <p className="mt-2 text-gray-700">Here are some of the Roomsy frequently asked questions.</p>
       <div className="mt-6 space-y-6">
         {FAQs.map((faq, index) => (
           <div className="bg-gray-100 border border-gray-300 p-4 rounded-lg" key={index}>
