@@ -8,9 +8,10 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function ImgDetails({ Book = {} }) {
-  
+
   const router = useRouter()
 
   const {
@@ -40,30 +41,33 @@ export default function ImgDetails({ Book = {} }) {
       return;
     }
 
-        // POST request to the server
-        axios.post("https://bookify-server-lilac.vercel.app/take-book", {
-            ...Book,
-            requester: session?.data?.user?.email,
-            bookId: _id,
-        })
-            .then(response => {
-                // Handle success response
-                toast.success("Added in exchange list")
-                // router.push('/exchange')
-            })
-            .catch(error => {
-                // Handle error response
-                toast.error("Something went wrong! Please try again.");
-            });
-    };
+    // POST request to the server
+    axios.post("https://bookify-server-lilac.vercel.app/take-book", {
+      ...Book,
+      requester: session?.data?.user?.email,
+      bookId: _id,
+    })
+      .then(response => {
+        // Handle success response
+        toast.success("Added in exchange list")
+        // router.push('/exchange')
+      })
+      .catch(error => {
+        // Handle error response
+        toast.error("Something went wrong! Please try again.");
+      });
+  };
 
   return (
     <div className="flex flex-col md:flex-row gap-3 md:gap-8 max-w-6xl mx-auto pt-1 pb-5 px-7">
-      <figure className="md:w-[40%] bg-[#EFEEE9] px-7 py-[18px] flex items-center justify-center border border-black rounded-md">
-        <img
+      <figure className="md:w-[40%] bg-[#EFEEE9] px-6 py-[18px] flex items-center justify-center border border-black rounded-md">
+        <Image
+          height={100}
+          width={100}
           src={coverImage}
           alt={title}
           className="w-full h-[370px] rounded-md"
+          unoptimized
         />
       </figure>
 
@@ -130,9 +134,9 @@ export default function ImgDetails({ Book = {} }) {
           </button>
 
           <>
-            <button className="btn_2 flex items-center" onClick={()=>{
-              if(AuthorEmail !== session?.data?.user?.email)return toast.error(`Only owner can edit`)
-                router.push(`/update/${_id}`)
+            <button className="btn_2 flex items-center" onClick={() => {
+              if (AuthorEmail !== session?.data?.user?.email) return toast.error(`Only owner can edit`)
+              router.push(`/update/${_id}`)
             }}>
               <FaEdit className="-mt-[0.5px]" /> Edit
             </button>

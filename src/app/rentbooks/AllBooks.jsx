@@ -287,6 +287,8 @@ export default function AllBooks() {
                                             height={150}
                                             width={220}
                                             alt={book?.Title || 'Book Cover'}
+                                            quality={100}
+                                            unoptimized
                                         />
                                         <div className="text-left pl-2 pb-[5.5px] pt-[4.5px] relative">
                                             <div className='flex items-center justify-between pr-2'>
