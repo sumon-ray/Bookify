@@ -9,11 +9,11 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
 
 export default function ImgDetails({ Book = {} }) {
 
   const router = useRouter()
-
   const {
     title,
     author,
@@ -29,10 +29,18 @@ export default function ImgDetails({ Book = {} }) {
     _id,
     AuthorEmail
   } = Book;
+  const session = useSession();
 
-  const [isLoading, setLoading] = useState(false);
+  const {data}=useQuery({
+    queryKey:['take book'],
+    queryFn:async()=>{
+      const res= await axios(`https://bookify-server-lilac.vercel.app/take-book?email=${session?.data?.user?.email}`)
+      const data= await res.data
+      return data
+    }
+  })
 
-  const session = useSession()
+
 
   const addToTakeBook = () => {
     // Check if the user is trying to exchange their own book
@@ -41,20 +49,22 @@ export default function ImgDetails({ Book = {} }) {
       return;
     }
 
+
     // POST request to the server
-    axios.post("https://bookify-server-lilac.vercel.app/take-book", {
+    axios.post(`http://localhost:4000/take-book?email=${session?.data?.user?.email}&AuthorEmail=${AuthorEmail}&id=${_id}`, {
       ...Book,
       requester: session?.data?.user?.email,
       bookId: _id,
     })
       .then(response => {
         // Handle success response
-        toast.success("Added in exchange list")
+        toast.success(response.data.message)
+        console.log(response)
         // router.push('/exchange')
       })
       .catch(error => {
         // Handle error response
-        toast.error("Something went wrong! Please try again.");
+        toast.error(error.message);
       });
   };
 
@@ -68,6 +78,7 @@ export default function ImgDetails({ Book = {} }) {
           alt={title}
           className="w-full h-[370px] rounded-md"
           unoptimized
+          // quality={100}
         />
       </figure>
 
@@ -128,24 +139,16 @@ export default function ImgDetails({ Book = {} }) {
         </p>
 
         <div className="pt-1 flex items-center">
-          <button onClick={addToTakeBook} type="button" className="btn_1 flex items-center">
+          <button onClick={addToTakeBook} type="button" className={`btn_1 ${AuthorEmail === session?.data?.user?.email ? 'hidden' : 'flex items-center'}`}>
             <TbExchange />
             Exchange
           </button>
-
-          <>
-            <button className="btn_2 flex items-center" onClick={() => {
-              if (AuthorEmail !== session?.data?.user?.email) return toast.error(`Only owner can edit`)
-              router.push(`/update/${_id}`)
-            }}>
-              <FaEdit className="-mt-[0.5px]" /> Edit
-            </button>
-          </>
+          <button className={`btn_2 flex items-center ${AuthorEmail !== session?.data?.user?.email && 'hidden'}`} onClick={() => {
+            if (AuthorEmail === session?.data?.user?.email) router.push(`/update/${_id}`)
+          }}>
+            <FaEdit className="-mt-[0.5px]" /> Edit
+          </button>
         </div>
-
-        {isLoading && (
-          <p className="text-blue-600 mt-4">Updating book data...</p>
-        )}
       </div>
     </div>
   );
