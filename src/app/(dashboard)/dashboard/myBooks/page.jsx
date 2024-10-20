@@ -64,7 +64,7 @@ export default function MyBooks() {
 
   const session= useSession()
 
-  // Fetch books without sorting parameters
+  // Fetch books 
   const { data, isLoading, error } = useQuery({
     queryKey: ["myBooks"],
     queryFn: async () => {
@@ -180,15 +180,13 @@ export default function MyBooks() {
         </figure>
       </div>
 
-      {/* className=" border border-[#a1a5a8b1]  focus:border-[#a1a5a8b1] !hover:text-white outline-none" */}
-
       {/* Sorting Dropdown */}
       <div className="flex items-center justify-between pt-4 pb-5">
         <h1 className="text-xl font-bold">My Books</h1>
         <div className="bg-gray-100 rounded-md p-2">
           <FormControl sx={{ width: 200 }} size="small">
             <Select
-              className=" " // Ensure the background doesn't change
+              className=" " 
               displayEmpty
               value={sortOrder}
               onChange={handleSortChange}
@@ -214,18 +212,18 @@ export default function MyBooks() {
               inputProps={{ "aria-label": "Sort by Total Pages" }}
               sx={{
                 "& .MuiSelect-select": {
-                  border: "#a1a5a8b1", // Remove border
-                  outline: "#a1a5a8b1", // Remove outline
+                  border: "#a1a5a8b1",
+                  outline: "#a1a5a8b1", 
                   "&:focus": {
-                    border: "#a1a5a8b1", // Remove focus border
-                    outline: "#a1a5a8b1", // Remove focus outline
+                    border: "#a1a5a8b1", 
+                    outline: "#a1a5a8b1", 
                   },
                 },
                 "& .MuiSelect-icon": {
-                  color: "#a1a5a8b1", // Set your desired icon color
+                  color: "#a1a5a8b1", 
                 },
                 "& .MuiOutlinedInput-notchedOutline": {
-                  border: "none", // Remove the default outline
+                  border: "none", 
                 },
               }}
             >
@@ -286,7 +284,7 @@ export default function MyBooks() {
               <Tooltip title="Delete">
                 <button
                   onClick={(e) => {
-                    e.preventDefault(); // Prevent link navigation
+                    e.preventDefault(); 
                     if (confirm("Are you sure you want to delete this book?")) {
                       deleteBookMutation.mutate(book._id);
                     }
@@ -305,7 +303,7 @@ export default function MyBooks() {
           ))
         ) : (
           <p className="text-center col-span-full">
-            No books available. Please add some!
+            No books available. Wish to add some!
           </p>
         )}
       </div>

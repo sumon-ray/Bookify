@@ -66,14 +66,14 @@ const OurLibrary = () => {
 
       <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[385px] h-12 mx-auto'>
         <h1 className='text-2xl uppercase font-bold text-center'>
-          Explore users Collection
+          Explore Exchange Library
         </h1>
       </div>
 
       {/* Dynamic Category Selector */}
       <div className="py-4 px-5 md:pl-20 lg:pl-0">
         <select
-          className="lg:w-[27%] md:w-[90%] w-full p-3 px-4  rounded-md font-bold bg-white border-none border-gray-300"
+          className="lg:w-[28%] md:w-[90%] w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] shadow-sm border-none focus:ring-[#EFEEE9] focus:outline-none focus:ring"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
@@ -93,14 +93,14 @@ const OurLibrary = () => {
       </div>
 
       {/* Book Display */}
-      <div className="flex lg:flex-row flex-col items-start xl:gap-8 gap-4 pt-2">
+      <div className="flex lg:flex-row flex-col items-start xl:gap-8 gap-4 pt-">
         {/* Static Image */}
         <figure className="lg:w-[30%] md:w-[90%] w-full px-5 md:pl-20 lg:pl-0 ">
           <Image
             src={img}
             width={400}
             height={100}
-            className="lg:w-[400px] w-full lg:h-[910px] h-[300px] rounded-xl bg-cover"
+            className="lg:w-[400px] w-full lg:h-[910px] h-[300px] rounded-md bg-cover"
             alt="Library Feature Image"
           />
         </figure>
