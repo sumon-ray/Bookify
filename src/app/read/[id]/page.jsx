@@ -74,12 +74,10 @@ export default Page;
 
 
 
-
-
 [
     {
       "page": 1,
-      "description": "<p> The novel begins with Scout Finch, the narrator, introducing herself and providing some background information. She mentions her full name, Jean Louise Finch, and explains how she got her nickname, Scout. <br /><br /> She reflects on her childhood and describes the town of Maycomb, Alabama, where she grew up. Scout paints a picture of Maycomb as a small, sleepy town that is somewhat stuck in time, characterized by its old buildings and the slow pace of life. Scout introduces her family, particularly her father, Atticus Finch, a lawyer, and her brother, Jem Finch. She hints at events that would unfold in the future but emphasizes her childhood experiences, including her interactions with her neighbors and classmates. <br /> As the story progresses, the narrative delves into the Finch family dynamics, showcasing the strong moral compass of Atticus Finch. He is dedicated to teaching Scout and Jem the importance of empathy and understanding others. One pivotal lesson comes when Atticus tells Scout that you never really understand a person until. </p>"
+      "description": "<p> The novel begins with Scout Finch, the narrator, introducing herself and providing some background information. She mentions her full name, Jean Louise Finch, and explains how she got her nickname, Scout. <br /> She reflects on her childhood and describes the town of Maycomb, Alabama, where she grew up. Scout paints a picture of Maycomb as a small, sleepy town that is somewhat stuck in time, characterized by its old buildings and the slow pace of life. Scout introduces her family, particularly her father, Atticus Finch, a lawyer, and her brother, Jem Finch. She hints at events that would unfold in the future but emphasizes her childhood experiences, including her interactions with her neighbors and classmates. her story is just began to start. <br /> As the story progresses, the narrative delves into the Finch family dynamics, showcasing the strong moral compass of Atticus Finch. He is dedicated to teaching Scout and Jem the importance of empathy and understanding others. One pivotal lesson comes when Atticus tells Scout that you never really understand a person until </p>"
     },
 
     {
