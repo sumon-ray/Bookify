@@ -1,15 +1,14 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { TbExchange } from "react-icons/tb";
-import Link from "next/link";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
+
 
 export default function ImgDetails({ Book = {} }) {
 
@@ -31,41 +30,44 @@ export default function ImgDetails({ Book = {} }) {
   } = Book;
   const session = useSession();
 
-  const {data}=useQuery({
-    queryKey:['take book'],
-    queryFn:async()=>{
-      const res= await axios(`https://bookify-server-lilac.vercel.app/take-book?email=${session?.data?.user?.email}`)
-      const data= await res.data
-      return data
-    }
-  })
-
-
-
-  const addToTakeBook = () => {
-    // Check if the user is trying to exchange their own book
+  const addBook = () => {
     if (AuthorEmail === session?.data?.user?.email) {
-      toast.error("You cannot exchange your own book!");
-      return;
+      axios.post(`http://localhost:4000/give-book?id=${_id}`,
+        {
+          ...Book,
+          requester: session?.data?.user?.email,
+          bookId: _id, })
+        .then(res => console.log(res))
+        .catch(error => console.log(error.message))
     }
-
-
-    // POST request to the server
-    axios.post(`http://localhost:4000/take-book?email=${session?.data?.user?.email}&AuthorEmail=${AuthorEmail}&id=${_id}`, {
-      ...Book,
-      requester: session?.data?.user?.email,
-      bookId: _id,
-    })
-      .then(response => {
-        // Handle success response
-        toast.success(response.data.message)
-        console.log(response)
-        // router.push('/exchange')
-      })
-      .catch(error => {
-        // Handle error response
-        toast.error(error.message);
+    else {
+      Swal.fire({
+        title: "Are you sure?",
+        text: `In this book exchange, all books must belong to the ${owner} of the first book you select.
+       The other books will be exchanged with that ${owner}.`,
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#364957",
+        cancelButtonColor: "#364957CC",
+        confirmButtonText: "Confirm"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.post(`http://localhost:4000/take-book?email=${session?.data?.user?.email}&AuthorEmail=${AuthorEmail}&id=${_id}`, {
+            ...Book,
+            requester: session?.data?.user?.email,
+            bookId: _id,
+          }).then(response => {
+            toast.success(response.data.message)
+          }).catch(error => {
+          });
+          Swal.fire({
+            title: "Exchange Confirmed!",
+            text: `successfully completed the exchange with the ${owner}, including all other books.`,
+            icon: "success"
+          });
+        }
       });
+    }
   };
 
   return (
@@ -78,7 +80,7 @@ export default function ImgDetails({ Book = {} }) {
           alt={title}
           className="w-full h-[370px] rounded-md"
           unoptimized
-          // quality={100}
+        // quality={100}
         />
       </figure>
 
@@ -139,11 +141,11 @@ export default function ImgDetails({ Book = {} }) {
         </p>
 
         <div className="pt-1 flex items-center">
-          <button onClick={addToTakeBook} type="button" className={`btn_1 ${AuthorEmail === session?.data?.user?.email ? 'hidden' : 'flex items-center'}`}>
+          <button onClick={addBook} type="button" className={`btn_1 flex items-center`}>
             <TbExchange />
             Exchange
           </button>
-          <button className={`btn_2 flex items-center ${AuthorEmail !== session?.data?.user?.email && 'hidden'}`} onClick={() => {
+          <button className={`btn_2 flex items-center`} onClick={() => {
             if (AuthorEmail === session?.data?.user?.email) router.push(`/update/${_id}`)
           }}>
             <FaEdit className="-mt-[0.5px]" /> Edit
