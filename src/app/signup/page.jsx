@@ -67,6 +67,7 @@ const SignUp = () => {
         <Link href={"/"}>
           <div className="flex items-center justify-center text-[#B7B7B7]">
             <Image
+            alt="sign-up-image"
               src={img}
               className="h-[68px] w-36"
               height={20}

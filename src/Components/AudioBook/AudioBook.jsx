@@ -1,5 +1,4 @@
 "use client";
-
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
@@ -7,13 +6,10 @@ import Link from "next/link";
 import React, { useRef, useState } from "react";
 import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
 
-
 const AudioBook = () => {
-  const [currentAudio, setCurrentAudio] = useState(null); // Track the current audio ID
-  const [isPlaying, setIsPlaying] = useState(false); // Track play/pause state
-  const audioRef = useRef(null); // Reference to the audio element
-
-  //  Audio Book Data fatching from backend
+  const [currentAudio, setCurrentAudio] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
 
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["audioBooks"],
@@ -79,8 +75,8 @@ const AudioBook = () => {
   };
   return (
     <div className="max-w-7xl mx-auto  py-8 space-y-10">
-      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto'>
-        <h1 className='text-2xl uppercase font-bold text-center'>
+      <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto">
+        <h1 className="text-2xl uppercase font-bold text-center">
           Explore Audio Collection
         </h1>
       </div>
@@ -117,7 +113,9 @@ const AudioBook = () => {
                   </h2>
                   <h2 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate ">
                     Publisher:
-                    <span className="underline cursor-pointer ml-1">Bookify</span>
+                    <span className="underline cursor-pointer ml-1">
+                      Bookify
+                    </span>
                   </h2>
                 </div>
                 <div>
