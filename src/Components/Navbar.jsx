@@ -72,11 +72,10 @@ const Navbar = () => {
       title: "Contact",
       path: "/contact",
     },
-    {
-      title: "Dashboard",
-      path: "/dashboard",
-    },
-
+    // {
+    //   title: "Dashboard",
+    //   path: "/dashboard",
+    // },
     {
       title: "About",
       path: "/about",
@@ -97,7 +96,7 @@ const Navbar = () => {
 
   return (
     <div className="overflow-hidden">
-      <nav className="md:flex items-center justify-center lg:justify-between bg-[white] py-1.5 md:px-10 px-7 || md:fixed z-50 w-full top-0 md:rounded-br-ful md:rounded-bl-ful">
+      <nav className="md:flex items-center md:justify-between bg-[white] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
         {/* bookify logo */}
         <div>
           <Image
@@ -120,16 +119,14 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div>
           <ul
-            className={`md:flex font-normal md:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-              open ? "top-16" : "top-[-490px]"
-            }`}
+            className={`md:flex font-normal lg:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-16" : "top-[-490px]"
+              }`}
           >
-            {links.slice(0, 1).map((link,inde) => (
+            {links.slice(0, 1).map((link, inde) => (
               <li
                 key={link.path}
-                className={`${
-                  pathName === link.path && "font-black"
-                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${pathName === link.path && "font-black"
+                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
                 <Link href={link.path} className="text-[black] duration-500">
                   {link.title}
@@ -152,13 +149,13 @@ const Navbar = () => {
                     "aria-labelledby": "basic-button",
                   }}
                 >
-             {links?.slice(1, 3).map((link, index) => (
-  <MenuItem key={index} onClick={handleClose} style={{ fontWeight: '', fontSize: '15px' }}>
-    <Link className={`${pathName === link?.path ? 'font-black' : ''}`} href={link?.path}>
-      {link?.title}
-    </Link>
-  </MenuItem>
-))}
+                  {links?.slice(1, 3).map((link, index) => (
+                    <MenuItem key={index} onClick={handleClose} style={{ fontWeight: '', fontSize: '15px' }}>
+                      <Link className={`${pathName === link?.path ? 'font-black' : ''}`} href={link?.path}>
+                        {link?.title}
+                      </Link>
+                    </MenuItem>
+                  ))}
 
 
                 </Menu>
@@ -166,23 +163,23 @@ const Navbar = () => {
             </li>
 
             <li className="md:ml-4 lg:text-[16px] md:my-0 my-7 font-normal">
-            {
-  links?.slice(3, 4).map((link, index) => (
-    <Link key={index} href={link?.path} className={`flex items-center ${pathName === link?.path ? 'font-black' : ''}`}>
-      <p>{link?.title}</p>
-      <Badge
-        badgeContent={data?.length || '0'}
-        color="primary"
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-      >
-        <TbExchange className="text-xl -mb-1" />
-      </Badge>
-    </Link>
-  ))
-}
+              {
+                links?.slice(3, 4).map((link, index) => (
+                  <Link key={index} href={link?.path} className={`flex items-center ${pathName === link?.path ? 'font-black' : ''}`}>
+                    <p>{link?.title}</p>
+                    <Badge
+                      badgeContent={data?.length || '0'}
+                      color="primary"
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                    >
+                      <TbExchange className="text-xl -mb-1" />
+                    </Badge>
+                  </Link>
+                ))
+              }
 
 
             </li>
@@ -191,9 +188,8 @@ const Navbar = () => {
             {links.slice(4).map((link) => (
               <li
                 key={link.path}
-                className={`${
-                  pathName === link.path && " font-black"
-                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${pathName === link.path && " font-black"
+                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
                 <Link href={link.path} className="text-[black] duration-500">
                   {link.title}
@@ -214,7 +210,7 @@ const Navbar = () => {
 
           {session?.status === "authenticated" && (
             <>
-              <div className="relative text-left hidden md:block ">
+              <div className="relative text-left hidden lg:block ">
                 <button
                   type="button"
                   className="flex items-center text-sm"

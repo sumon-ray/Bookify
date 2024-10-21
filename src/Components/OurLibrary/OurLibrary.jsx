@@ -120,6 +120,8 @@ const OurLibrary = () => {
                   height={150}
                   width={200}
                   alt={book?.title || "Book Cover"}
+                  unoptimized
+                  quality={100}
                 />
                 <div className="text-left pl-2 pb-2">
                   <h1 className="font-bold md:uppercase" title={book?.title}>

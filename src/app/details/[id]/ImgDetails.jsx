@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { TbExchange } from "react-icons/tb";
@@ -9,10 +8,14 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Swal from "sweetalert2";
+
 
 export default function ImgDetails({ Book = {} }) {
   const router = useRouter();
 
+  const router = useRouter()
   const {
     title,
     author,
@@ -28,14 +31,20 @@ export default function ImgDetails({ Book = {} }) {
     _id,
     AuthorEmail,
   } = Book;
+  const session = useSession();
 
   const [isLoading, setLoading] = useState(false);
   const session = useSession();
 
   const addToTakeBook = () => {
     if (AuthorEmail === session?.data?.user?.email) {
-      toast.error("You cannot exchange your own book!");
-      return;
+      axios.post(`http://localhost:4000/give-book?id=${_id}`,
+        {
+          ...Book,
+          requester: session?.data?.user?.email,
+          bookId: _id, })
+        .then(res => console.log(res))
+        .catch(error => console.log(error.message))
     }
 
     axios
@@ -129,6 +138,17 @@ export default function ImgDetails({ Book = {} }) {
         </div>
 
         {isLoading && <p className="text-blue-600 mt-4">Updating book data...</p>}
+        <div className="pt-1 flex items-center">
+          <button onClick={addBook} type="button" className={`btn_1 flex items-center`}>
+            <TbExchange />
+            Exchange
+          </button>
+          <button className={`btn_2 flex items-center`} onClick={() => {
+            if (AuthorEmail === session?.data?.user?.email) router.push(`/update/${_id}`)
+          }}>
+            <FaEdit className="-mt-[0.5px]" /> Edit
+          </button>
+        </div>
       </div>
     </div>
   );
