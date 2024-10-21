@@ -7,7 +7,7 @@ import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
+    CardFooter,  
     CardHeader,
     CardTitle,
 } from "@/Components/ui/Card";
@@ -52,7 +52,7 @@ const CustomerSatisfaction = () => {
             <CardContent>
                 <ChartContainer config={chartConfig}
                     className="max-h-[250px]"
-                >
+                >          
                     <AreaChart
                         accessibilityLayer
                         data={chartData}
