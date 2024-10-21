@@ -11,23 +11,23 @@ import { GrSend } from "react-icons/gr";
 
 
 export default function Page() {
-  // current user 
+  // current user hjk
   const session = useSession()
-  const user = session?.data?.user?.email || ''
+  const user = session?.data?.user?.email
   // molas State
   const [giveBooksModal, setGiveBooksModal] = useState(false);
   const [takeBooksModal, setTakeBooksModal] = useState(false);
 
-  const { data: takeBooks, isLoading: takeBooksLoading } = useQuery({
-    queryKey: ['take data'],
+  const { data: takeBooks, isLoading: takeBooksLoading, refetch: takeBooksRefetch } = useQuery({
+    queryKey: ['take data', takeBookExchange],
     queryFn: async () => {
-      const res = await axios(`http://localhost:4000/take-book?email=${user}`)
+      const res = await axios(`https://bookify-server-lilac.vercel.app/take-book?email=${session?.data?.user?.email}`)
       const data = await res.data
       return data
     }
   })
 
-  const { data: giveBooks, isLoading: giveBooksLoading } = useQuery({
+  const { data: giveBooks, isLoading: giveBooksLoading, refetch: giveBooksRefetch } = useQuery({
     queryKey: ['give books'],
     queryFn: async () => {
       const res = await axios(`http://localhost:4000/give-book?email=${user}`)
@@ -39,10 +39,9 @@ export default function Page() {
   const { data: usersBooks, isLoading: usersBooksLoading } = useQuery({
     queryKey: ['users books'],
     queryFn: async () => {
-      const res = await axios(`http://localhost:4000/books`)
+      const res = await axios(`http://localhost:4000/books?excludeEmail=${session?.data?.user?.email}`)
       const data = res.data
-      const allBooks = data.filter(book => book?.AuthorEmail !== user)
-      return allBooks
+      return data;
     }
   })
 
@@ -56,6 +55,33 @@ export default function Page() {
   })
 
 
+  function takeBookExchange(book) {
+    axios.post(`http://localhost:4000/take-book?email=${session?.data?.user?.email}&AuthorEmail=${book?.AuthorEmail}&id=${book?._id}`, {
+      ...book,
+      requester: session?.data?.user?.email,
+      bookId: book?._id,
+    }).then(response => {
+      toast.success(response.data.message)
+      takeBooksRefetch()
+    }).catch(error => {
+      toast.error(error.message)
+    });
+  }
+
+  function giveBooksExchange(book) {
+    axios.post(`http://localhost:4000/give-book?id=${book?._id}`,
+      {
+        ...book,
+        requester: session?.data?.user?.email,
+        bookId: book?._id
+      })
+      .then(res => {
+        toast.success(res.data.message)
+        giveBooksRefetch()
+      })
+      .catch(error => toast.error(error.message))
+  }
+
   // const postData = {
   //   takeBooksId: takeBooksMine.map(book => (book._id)),
   //   giveBookId: giveBooks.map(book => (book._id)),
@@ -63,25 +89,6 @@ export default function Page() {
   //   takeEmail: []
   // }
 
-  const filterTakeBooks = takeBooksMine.map(book => ({
-    _id: book._id,
-    AuthorEmail: book.AuthorEmail,
-    requester: book.requester
-  }));
-  const filterGiveBooks = giveBooks.map(book => ({
-    _id: book._id,
-    AuthorEmail: book.AuthorEmail,
-    requester: book.requester
-  }));
-  
-  const postData = {take:[...filterTakeBooks], give:[...filterGiveBooks] }
-console.log(postData);
-  const postData = {
-    takeBooksId: takeBooksMine.map(book => (book._id)),
-    giveBookId: giveBooks.map(book => (book._id)),
-    giveEmail: user,
-    takeEmail: []
-  }
 
 
   // POST request to BOOK EXCHANGE
@@ -155,6 +162,7 @@ console.log(postData);
                         height={150}
                         width={200}
                         alt={takeBook?.title || 'Book Cover'}
+                        unoptimized
                       />
                     </div>
                   ))
@@ -193,7 +201,6 @@ console.log(postData);
               </div>
               :
               <div className="grid lg:grid-cols-3 grid-cols-2 gap-5 px-3 h-[360px] mt-6 overflow-y-scroll">
-
                 <div onClick={() => setGiveBooksModal(true)}
                   className="w-36 h-40 bg-[#364957] rounded-md flex justify-center items-center">
                   <FiPlusCircle className="text-6xl text-[#ffffff]" />
@@ -201,13 +208,14 @@ console.log(postData);
 
                 {
                   giveBooks?.map(giveBook => (
-                    <div key={giveBook?.id}> {/* Replace 'id' with a unique identifier from your data */}
+                    <div key={giveBook?.id}>
                       <Image
                         src={giveBook?.coverImage}
                         className="w-36 h-40 rounded-md"
                         height={150}
                         width={200}
                         alt={giveBook?.title || 'Book Cover'}
+                        unoptimized
                       />
                     </div>
                   ))
@@ -294,16 +302,7 @@ console.log(postData);
                               <p className="text-gray-900 whitespace-no-wrap">{book?.owner}</p>
                             </td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                              <button
-                                onClick={() => {/* setCurrentAudio(book); Uncomment if needed */ }}
-                                className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                              >
-                                <span
-                                  aria-hidden
-                                  className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                                ></span>
-                                <button onClick={''} className="relative">choose</button>
-                              </button>
+                              <button onClick={() => giveBooksExchange(book)} className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">Exchange</button>
                             </td>
                           </tr>
                         ))}
@@ -315,7 +314,7 @@ console.log(postData);
                     className="h-40 w-40" unoptimized />
                   <h1 className="text-base font-black">You have not added any books</h1>
                   <button className="flex items-center justify-between gap-x-4 mt-2 text-white text-sm font-bold  bg-[#364957] rounded-lg p-2 focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]">
-                      Add Book
+                    Add Book
                     <span>
                       <GrSend className="text-xl" />
                     </span>
@@ -398,16 +397,9 @@ console.log(postData);
                             <p className="text-gray-900 whitespace-no-wrap">{book?.owner}</p>
                           </td>
                           <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <button
-                              onClick={() => {/* setCurrentAudio(book); Uncomment if needed */ }}
-                              className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                            >
-                              <span
-                                aria-hidden
-                                className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                              ></span>
-                              <button onClick={() => ''} className="relative">Exchange</button>
-                            </button>
+                            <div>
+                              <button onClick={() => takeBookExchange(book)} className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">Exchange</button>
+                            </div>
                           </td>
                         </tr>
                       ))}
@@ -416,18 +408,17 @@ console.log(postData);
                   </table>
                 </div>
             }
-
             <button
-              onClick={() => setTakeBooksModal(false)}
-              className="mt-4 text-black bg-[#EFEEE9] px-4 py-2 rounded"
-            >
+              onClick={() => {
+                setTakeBooksModal(false)
+              }}
+              className="mt-4 text-black bg-[#EFEEE9] px-4 py-2 rounded">
               Close
             </button>
 
           </div>
         </div>
       }
-
 
     </div >
   );
