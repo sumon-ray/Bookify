@@ -20,17 +20,8 @@ export default function Home() {
       <Slider />
       <OurCollection />
       <OurLibrary />
-      {/* <BookReviews /> */}
       <AudioBook />
-
-      {/* <AboutSection /> */}
       <FaqSection />
-      {/* don't touch the commented part */}
-      {/* <OfferSection></OfferSection> */}
-      {/* <HeroSection></HeroSection> */}
-      {/* <TopAuthor/> */}
-      {/* <Category/> */}
-      {/* <NewsletterSection/> */}
     </div>
   );
 }

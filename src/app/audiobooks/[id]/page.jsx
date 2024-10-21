@@ -1,13 +1,17 @@
 "use client";
-import Player from "@/Components/Player";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark, FaPauseCircle, FaPlayCircle } from "react-icons/fa";
 import Image from "next/image";
+import { useRef, useState } from "react";
 
 export default function Page({ params }) {
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const [currentAudio, setCurrentAudio] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["audioBooks"],
     queryFn: async () => {
       const res = await axios.get(
@@ -50,7 +54,27 @@ export default function Page({ params }) {
     return <div>Error: {error.message}</div>;
   }
 
-  const currentAudio = data.find((book) => book._id === params.id);
+  const currentAudioBook = data.find((book) => book._id === params.id);
+
+  // Function to handle playing a new audio
+  const handlePlay = (audioURL, id) => {
+    if (currentAudio === id) {
+      // If the same audio is clicked, toggle play/pause
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    } else {
+      // If a new audio is clicked, set it as the current and play it
+      setCurrentAudio(id);
+      audioRef.current.src = audioURL;
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  };
 
   return (
     <div className="min-h-screen max-w-7xl mx-auto">
@@ -58,13 +82,13 @@ export default function Page({ params }) {
         <div className="mt-14 sm:mt-10 pt-14 relative z-10 rounded-xl ">
           {/* Cover Image */}
           <div className="bg-white border-slate-100 transition-all duration-500 dark:bg-slate-800 dark:border-slate-500 border-b rounded-t-xl p-4 pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8 ">
-            {currentAudio && (
+            {currentAudioBook && (
               <div className="flex space-x-4 flex-col lg:flex-row">
                 <Image
-                  src={currentAudio.audioBookCover}
+                  src={currentAudioBook.audioBookCover}
                   loading="lazy"
                   decoding="async"
-                  alt={currentAudio.title}
+                  alt={currentAudioBook.title}
                   className="flex-none w-full lg:m-0 m-2 rounded-lg bg-slate-100 lg:w-[400px] lg:h-[400px]"
                   width={88}
                   height={88}
@@ -72,7 +96,7 @@ export default function Page({ params }) {
                 <div className="min-w-0 flex-auto space-y-1 font-semibold">
                   <div className="flex justify-between">
                     <p className="text-[#000000] dark:text-[#000000] text-3xl font-semibold leading-6">
-                      {currentAudio.title}
+                      {currentAudioBook.title}
                     </p>
                     <button className="text-2xl text-[#364957]">
                       <FaBookmark></FaBookmark>
@@ -81,7 +105,7 @@ export default function Page({ params }) {
                   <h2 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate ">
                     By:
                     <span className="underline cursor-pointer ml-1">
-                      {currentAudio.author}
+                      {currentAudioBook.author}
                     </span>
                   </h2>
                   <h2 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate ">
@@ -140,25 +164,31 @@ export default function Page({ params }) {
                   </div>
                   <div>
                     <h3 className="strong underline">Description:</h3>
-                    <h2>{currentAudio?.description}</h2>
+                    <h2>{currentAudioBook?.description}</h2>
                   </div>
                 </div>
               </div>
             )}
           </div>
           {/* audio player */}
-          <div className="bg-slate-50 text-slate-500 dark:bg-slate-600 dark:text-slate-200 rounded-b-xl flex items-center">
-            {currentAudio && <Player audioUrl={currentAudio.audioURL}></Player>}
+          <div className="bg-white px-4">
+            <audio
+              controls
+              volume
+              ref={audioRef}
+              onEnded={() => setIsPlaying(false)}
+              className="w-full custom-audio"
+            />
           </div>
         </div>
 
         {/* Audio Books List Div */}
 
-        <div className="inline-block w-full overflow-x-scroll">
+        <div className="inline-block w-full overflow-x-scroll ">
           <table className="w-full leading-normal">
-            <tbody>
-              {currentAudio?.chapters?.map((book) => (
-                <tr key={book._id}>
+            <tbody >
+              {currentAudioBook?.chapters?.map((b) => (
+                <tr key={b.id}>
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                     <div className="flex items-center">
                       <div className="flex-shrink-0 w-16 h-16">
@@ -166,40 +196,39 @@ export default function Page({ params }) {
                           className="w-full h-full rounded-xl"
                           width={64}
                           height={64}
-                          src={currentAudio?.audioBookCover}
-                          alt={book?.title}
+                          src={currentAudioBook.audioBookCover}
+                          alt={b?.title}
                         />
                       </div>
                       <div className="ml-3">
                         <p className="text-gray-900 whitespace-no-wrap">
-                          {book?.chapter}
+                          {b?.chapter}
                         </p>
                       </div>
                     </div>
-                  </td>
+                  </td>              
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">
-                      {book?.narrator}
+                    <p className="text-gray-900 whitespace-no-wrap md:block hidden">
+                      {b?.duration}
                     </p>
                   </td>
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">
-                      {book?.duration}
+                    <p className="text-gray-900 whitespace-no-wrap md:block hidden">
+                      {b?.releaseDate}
                     </p>
                   </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">
-                      {book?.releaseDate}
-                    </p>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <button className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                      <span
-                        aria-hidden
-                        className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                      ></span>
-                      <Link href={"#Main"} className="relative">
-                        Play
+                  <td className="px-5 py-5 border-b text-3xl text-[#364957] border-gray-200 bg-white">
+                    <button
+                      type="button"
+                      onClick={() => handlePlay(b.audioURL, b?.id)}
+                      className="px-8 py-3 font-semibold rounded-full dark:bg-gray-800 dark:text-gray-100"
+                    >
+                      <Link href="#Main">
+                        {isPlaying && currentAudio === b?.id ? (
+                          <FaPauseCircle />
+                        ) : (
+                          <FaPlayCircle />
+                        )}
                       </Link>
                     </button>
                   </td>
