@@ -88,6 +88,7 @@ export default Page;
     description:
       "<p>you consider things from his point of view. This lesson becomes central to the children's development and the unfolding events in Maycomb. The town of Maycomb is also shown to be steeped in racial prejudice, a major theme of the novel. This reality is brought to the forefront when Tom Robinson, a black man, is falsely accused of raping a white woman, Mayella Ewell. Atticus is appointed to defend Tom, and this decision brings a wave of hostility towards the Finch family. Scout and Jem face bullying and prejudice at school, which deeply impacts their childhood innocence.<br /> The trial of Tom Robinson serves as a critical turning point in the story, illustrating the deep-rooted racism in society. Atticus presents compelling evidence proving Tom's innocence, yet the jury's decision reflects the ingrained biases of the time. This moment is a harsh awakening for Scout and Jem, who grapple with the injustice and moral complexities of the adult world. Through the trial, the story explores themes of morality, justice, and the loss of innocence.<br/> In the end, Scout reflects on the lessons learned throughout her childhood. She realizes that people are often misunderstood. then, she become more concious about trusting people and she never do the same mistakes again and again.  </p>",
   },
+  
 
   {
     page: 3,
@@ -116,3 +117,5 @@ export default Page;
       "<p> The seasons continued to change in Maycomb, marking the passage of time. With each passing year, Scout grew more aware of the complexities of human nature. The people she had once viewed as simple and predictable were now far more complicated in her eyes. She realized that everyone had their own battles to fight, their own fears and insecurities to face. <br /> Scout often thought back to her childhood games with Jem and Dill, their carefree days spent imagining stories and adventures. But now, those memories seemed distant, overshadowed by the events that had shaped her understanding of the world. Despite the challenges she had faced, Scout remained hopeful. Her father’s unwavering belief in justice and equality had left a lasting impression on her. <br /> As she walked through the familiar streets of Maycomb, Scout reflected on the lessons she had learned. She knew that the fight for justice was far from over, but she also knew that she was better prepared to face it. Her childhood had been filled with lessons of empathy, courage, and the importance of standing up for what was right. And though the road ahead was uncertain, Scout was determined to carry those lessons with her for the rest of her life. </p>",
   },
 ];
+
+
