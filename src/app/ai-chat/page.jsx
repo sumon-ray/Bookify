@@ -115,7 +115,7 @@ const AiChat = () => {
             <li>Always meet in a public place for safety.</li>
             <li>Consider writing a short review for books you exchange.</li>
             <li>
-              Utilize our platform's features to find the best matches for your
+              Utilize our platform &apos s features to find the best matches for your
               books.
             </li>
           </ul>
