@@ -11,11 +11,10 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Swal from "sweetalert2";
 
-
 export default function ImgDetails({ Book = {} }) {
   const router = useRouter();
+  const { data: session } = useSession();
 
-  const router = useRouter()
   const {
     title,
     author,
@@ -31,55 +30,84 @@ export default function ImgDetails({ Book = {} }) {
     _id,
     AuthorEmail,
   } = Book;
-  const session = useSession();
 
   const [isLoading, setLoading] = useState(false);
-  const session = useSession();
 
-  const addToTakeBook = () => {
-    if (AuthorEmail === session?.data?.user?.email) {
-      axios.post(`http://localhost:4000/give-book?id=${_id}`,
-        {
-          ...Book,
-          requester: session?.data?.user?.email,
-          bookId: _id, })
-        .then(res => console.log(res))
-        .catch(error => console.log(error.message))
+  const addToTakeBook = async () => {
+    try {
+      if (AuthorEmail === session?.user?.email) {
+        setLoading(true);
+        const res = await axios.post(
+          `https://bookify-server-lilac.vercel.app/give-book?id=${_id}`,
+          {
+            ...Book,
+            requester: session?.user?.email,
+            bookId: _id,
+          }
+        );
+        toast.success(res.data.message);
+      } else {
+        Swal.fire({
+          title: "Are you sure?",
+          text: `In this book exchange, all books must belong to ${owner}.`,
+          icon: "info",
+          showCancelButton: true,
+          confirmButtonColor: "#364957",
+          cancelButtonColor: "#364957CC",
+          confirmButtonText: "Confirm",
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            setLoading(true);
+            const res = await axios.post(
+              `https://bookify-server-lilac.vercel.app/take-book?email=${session?.user?.email}&AuthorEmail=${AuthorEmail}&id=${_id}`,
+              {
+                ...Book,
+                requester: session?.user?.email,
+                bookId: _id,
+              }
+            );
+            toast.success(res.data.message);
+            Swal.fire({
+              title: "Exchange Confirmed!",
+              text: `Successfully completed the exchange with ${owner}.`,
+              icon: "success",
+            });
+          }
+        });
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+      console.error(error.message);
+    } finally {
+      setLoading(false);
     }
-
-    axios
-      .post("https://bookify-server-lilac.vercel.app/take-book", {
-        ...Book,
-        requester: session?.data?.user?.email,
-        bookId: _id,
-      })
-      .then((response) => {
-        toast.success("Added to exchange list");
-      })
-      .catch((error) => {
-        toast.error("Something went wrong! Please try again.");
-      });
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 max-w-6xl mx-auto pt-5 pb-8 px-5  ">
-      <figure className="md:w-[40%] bg-[#EFEEE9] p-5 flex items-center justify-center border border-gray-300 rounded-md">
-        <img
+    <div className="flex flex-col md:flex-row gap-3 md:gap-8 max-w-6xl mx-auto pt-1 pb-5 px-7">
+      <figure className="md:w-[40%] bg-[#EFEEE9] px-6 py-[18px] flex items-center justify-center border border-black rounded-md">
+        <Image
+          height={100}
+          width={100}
           src={coverImage}
           alt={title}
-          className="w-full h-[400px] object-cover rounded-md shadow-sm"
+          className="w-full h-[370px] rounded-md"
+          unoptimized
         />
       </figure>
 
       <div className="md:w-[60%] py-3 space-y-4">
-        <h1 className="font-bold text-2xl md:text-3xl capitalize text-gray-800">{title}</h1>
+        <h1 className="font-bold text-2xl md:text-3xl capitalize text-gray-800">
+          {title}
+        </h1>
 
         <div className="flex items-center mb-4">
           {[...Array(5)].map((_, index) => (
             <svg
               key={index}
-              className={`w-5 h-5 ${rating > index ? "text-yellow-400" : "text-gray-300"
-                }`}
+              className={`w-5 h-5 ${
+                rating > index ? "text-yellow-400" : "text-gray-300"
+              }`}
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -91,15 +119,33 @@ export default function ImgDetails({ Book = {} }) {
         </div>
 
         <div className="space-y-1 text-gray-700">
-          <p><span className="font-semibold">Author:</span> {author}</p>
-          <p><span className="font-semibold">Owner:</span> {owner}</p>
-          <p><span className="font-semibold">Category:</span> {genre}</p>
-          <p><span className="font-semibold">Condition:</span> {condition}</p>
-          <p><span className="font-semibold">Exchange:</span> {exchangeStatus}</p>
-          <p><span className="font-semibold">Published:</span> {publishYear}</p>
-          <p><span className="font-semibold">Total Pages:</span> {totalPage}</p>
-          <p><span className="font-semibold">Location:</span> {location}</p>
-          <p><span className="font-semibold">Rating:</span> {rating}/5</p>
+          <p>
+            <span className="font-semibold">Author:</span> {author}
+          </p>
+          <p>
+            <span className="font-semibold">Owner:</span> {owner}
+          </p>
+          <p>
+            <span className="font-semibold">Category:</span> {genre}
+          </p>
+          <p>
+            <span className="font-semibold">Condition:</span> {condition}
+          </p>
+          <p>
+            <span className="font-semibold">Exchange:</span> {exchangeStatus}
+          </p>
+          <p>
+            <span className="font-semibold">Published:</span> {publishYear}
+          </p>
+          <p>
+            <span className="font-semibold">Total Pages:</span> {totalPage}
+          </p>
+          <p>
+            <span className="font-semibold">Location:</span> {location}
+          </p>
+          <p>
+            <span className="font-semibold">Rating:</span> {rating}/5
+          </p>
         </div>
 
         {/* Action Buttons */}
@@ -108,7 +154,7 @@ export default function ImgDetails({ Book = {} }) {
           <button
             onClick={addToTakeBook}
             type="button"
-            className="flex items-center btn_1 gap-2 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
+            className="flex items-center btn_1 gap-2 px-4 py-2  text-white rounded-md ransition"
           >
             <TbExchange className="w-5 h-5" />
             Exchange
@@ -117,11 +163,11 @@ export default function ImgDetails({ Book = {} }) {
           {/* Edit Button */}
           <button
             onClick={() => {
-              if (AuthorEmail !== session?.data?.user?.email)
+              if (AuthorEmail !== session?.user?.email)
                 return toast.error(`Only owner can edit`);
               router.push(`/update/${_id}`);
             }}
-            className="flex items-center btn_2 gap-2 px-4 py-2  text-white rounded-md  transition"
+            className="flex items-center btn_2 gap-2 px-4 py-2 text-white rounded-md transition"
           >
             <FaEdit className="w-5 h-5" />
             Edit
@@ -130,7 +176,7 @@ export default function ImgDetails({ Book = {} }) {
           {/* Read Button */}
           <button
             onClick={() => router.push(`/read/${_id}`)}
-            className="flex items-center btn_2 gap-2 px-4 py-2  text-white rounded-md transition"
+            className="flex items-center btn_2 gap-2 px-4 py-2 text-white rounded-md transition"
           >
             <AiOutlineRead className="w-5 h-5" />
             Read
@@ -138,17 +184,6 @@ export default function ImgDetails({ Book = {} }) {
         </div>
 
         {isLoading && <p className="text-blue-600 mt-4">Updating book data...</p>}
-        <div className="pt-1 flex items-center">
-          <button onClick={addBook} type="button" className={`btn_1 flex items-center`}>
-            <TbExchange />
-            Exchange
-          </button>
-          <button className={`btn_2 flex items-center`} onClick={() => {
-            if (AuthorEmail === session?.data?.user?.email) router.push(`/update/${_id}`)
-          }}>
-            <FaEdit className="-mt-[0.5px]" /> Edit
-          </button>
-        </div>
       </div>
     </div>
   );
