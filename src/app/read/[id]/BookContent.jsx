@@ -11,22 +11,31 @@ const BookContent = ({ book, currentPage }) => {
   return (
     <div className="flex flex-col md:flex-row justify-between space-x-0 md:space-x-4">
       <motion.div
-        key={`left-${currentPage}`} // Key to track left page changes
-        initial={{ opacity: 0, x: -100 }} // Start off-screen
-        animate={{ opacity: 1, x: 0 }} // Move to original position
-        exit={{ opacity: 0, x: 100 }} // Exit off-screen
-        transition={{ duration: 0.5 }} // Animation duration
+        key={`left-${currentPage}`}
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 100 }}
+        transition={{ duration: 0.5 }}
       >
-        <BookPage bookData={book} pageNumber={currentPage + 1} content={getLeftPage()} isLeft={true} />
+        <BookPage
+          bookData={book}
+          pageNumber={currentPage + 1}
+          content={getLeftPage()}
+          isLeft={true}
+        />
       </motion.div>
       <motion.div
-        key={`right-${currentPage + 1}`} // Key to track right page changes
-        initial={{ opacity: 0, x: 100 }} // Start off-screen
-        animate={{ opacity: 1, x: 0 }} // Move to original position
-        exit={{ opacity: 0, x: -100 }} // Exit off-screen
-        transition={{ duration: 0.5 }} // Animation duration
+        key={`right-${currentPage + 1}`}
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -100 }}
+        transition={{ duration: 0.5 }}
       >
-        <BookPage pageNumber={currentPage + 2} content={getRightPage()} isLeft={false} />
+        <BookPage
+          pageNumber={currentPage + 2}
+          content={getRightPage()}
+          isLeft={false}
+        />
       </motion.div>
     </div>
   );

@@ -1,7 +1,12 @@
 import React from "react";
 import Image from "next/image";
 
-const NavigationButtons = ({ currentPage, totalPages, handleNext, handlePrevious }) => {
+const NavigationButtons = ({
+  currentPage,
+  totalPages,
+  handleNext,
+  handlePrevious,
+}) => {
   return (
     <div className="mt-4 flex justify-between">
       <Image
@@ -16,7 +21,9 @@ const NavigationButtons = ({ currentPage, totalPages, handleNext, handlePrevious
         src="/next.svg"
         width={50}
         height={50}
-        className={`cursor-pointer ${currentPage >= totalPages - 2 ? "opacity-50" : ""}`}
+        className={`cursor-pointer ${
+          currentPage >= totalPages - 2 ? "opacity-50" : ""
+        }`}
         onClick={handleNext}
         alt="Next Page"
       />
