@@ -52,6 +52,11 @@
 // };
 
 
+const TopBooks = ({overview}) => {
+    const totalVisitors = useMemo(() => {
+        return chartData.reduce((acc, curr) => acc + curr.visitors, 0);
+      }, []);
+  
 // const TopBooks = () => {
 //     const totalVisitors = useMemo(() => {
 //         return chartData.reduce((acc, curr) => acc + curr.visitors, 0);
