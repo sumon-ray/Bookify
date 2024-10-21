@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import BookContent from "./BookContent";
 import NavigationButtons from "./NavigationButtons";
-
+import './style.css'
 const Page = ({ params }) => {
   const { id } = params;
   const [book, setBook] = useState(null);
