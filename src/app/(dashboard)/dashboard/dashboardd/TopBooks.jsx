@@ -10,7 +10,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card"; // Adjust the path if necessary
+} from "@/Components/ui/Card"; // Adjust the path if necessary
 import {
   ChartContainer,
   ChartTooltip,
