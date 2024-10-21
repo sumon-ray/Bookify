@@ -1,18 +1,18 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { TbExchange } from "react-icons/tb";
-import Link from "next/link";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Swal from "sweetalert2";
+
 
 export default function ImgDetails({ Book = {} }) {
-  
-  const router = useRouter()
 
+  const router = useRouter()
   const {
     title,
     author,
@@ -28,42 +28,59 @@ export default function ImgDetails({ Book = {} }) {
     _id,
     AuthorEmail
   } = Book;
+  const session = useSession();
 
-  const [isLoading, setLoading] = useState(false);
-
-  const session = useSession()
-
-  const addToTakeBook = () => {
-    // Check if the user is trying to exchange their own book
+  const addBook = () => {
     if (AuthorEmail === session?.data?.user?.email) {
-      toast.error("You cannot exchange your own book!");
-      return;
+      axios.post(`http://localhost:4000/give-book?id=${_id}`,
+        {
+          ...Book,
+          requester: session?.data?.user?.email,
+          bookId: _id, })
+        .then(res => console.log(res))
+        .catch(error => console.log(error.message))
     }
-
-        // POST request to the server
-        axios.post("https://bookify-server-lilac.vercel.app/take-book", {
+    else {
+      Swal.fire({
+        title: "Are you sure?",
+        text: `In this book exchange, all books must belong to the ${owner} of the first book you select.
+       The other books will be exchanged with that ${owner}.`,
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#364957",
+        cancelButtonColor: "#364957CC",
+        confirmButtonText: "Confirm"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.post(`http://localhost:4000/take-book?email=${session?.data?.user?.email}&AuthorEmail=${AuthorEmail}&id=${_id}`, {
             ...Book,
             requester: session?.data?.user?.email,
             bookId: _id,
-        })
-            .then(response => {
-                // Handle success response
-                toast.success("Added in exchange list")
-                // router.push('/exchange')
-            })
-            .catch(error => {
-                // Handle error response
-                toast.error("Something went wrong! Please try again.");
-            });
-    };
+          }).then(response => {
+            toast.success(response.data.message)
+          }).catch(error => {
+          });
+          Swal.fire({
+            title: "Exchange Confirmed!",
+            text: `successfully completed the exchange with the ${owner}, including all other books.`,
+            icon: "success"
+          });
+        }
+      });
+    }
+  };
 
   return (
     <div className="flex flex-col md:flex-row gap-3 md:gap-8 max-w-6xl mx-auto pt-1 pb-5 px-7">
-      <figure className="md:w-[40%] bg-[#EFEEE9] px-7 py-[18px] flex items-center justify-center border border-black rounded-md">
-        <img
+      <figure className="md:w-[40%] bg-[#EFEEE9] px-6 py-[18px] flex items-center justify-center border border-black rounded-md">
+        <Image
+          height={100}
+          width={100}
           src={coverImage}
           alt={title}
           className="w-full h-[370px] rounded-md"
+          unoptimized
+        // quality={100}
         />
       </figure>
 
@@ -124,24 +141,16 @@ export default function ImgDetails({ Book = {} }) {
         </p>
 
         <div className="pt-1 flex items-center">
-          <button onClick={addToTakeBook} type="button" className="btn_1 flex items-center">
+          <button onClick={addBook} type="button" className={`btn_1 flex items-center`}>
             <TbExchange />
             Exchange
           </button>
-
-          <>
-            <button className="btn_2 flex items-center" onClick={()=>{
-              if(AuthorEmail !== session?.data?.user?.email)return toast.error(`Only owner can edit`)
-                router.push(`/update/${_id}`)
-            }}>
-              <FaEdit className="-mt-[0.5px]" /> Edit
-            </button>
-          </>
+          <button className={`btn_2 flex items-center`} onClick={() => {
+            if (AuthorEmail === session?.data?.user?.email) router.push(`/update/${_id}`)
+          }}>
+            <FaEdit className="-mt-[0.5px]" /> Edit
+          </button>
         </div>
-
-        {isLoading && (
-          <p className="text-blue-600 mt-4">Updating book data...</p>
-        )}
       </div>
     </div>
   );

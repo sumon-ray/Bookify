@@ -11,7 +11,7 @@ export default function DetailsTab({ Book }) {
     const [open, setOpen] = useState(1);
     const { title, author, genre, condition, exchangeStatus, totalPage, location, description , _id} = Book || {}
 
-    const { data , refetch } = useQuery({
+    const { data , refetch , isLoading} = useQuery({
         queryKey: ['review'],
         queryFn: async () => {
             const res = await axios(`https://bookify-server-lilac.vercel.app/reviews?bookId=${_id}`)
@@ -129,7 +129,7 @@ export default function DetailsTab({ Book }) {
                     <>
 
                         {
-                            data?.map((review, i) => <PeopleReview key={i} data={review}  />)
+                            data?.map((review, i) => <PeopleReview key={i} data={review}  isLoading={isLoading}/>)
                         }
 
                     </>
