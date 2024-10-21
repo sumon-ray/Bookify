@@ -10,7 +10,7 @@ import Reviews from './Reviews';
 import CustomerSatisfaction from './CustomerSatisfaction';
 import axios from 'axios';
 
-const page = () => {
+const Page = () => {
     const [overview, setOverview] = useState([])
     const {exchangeBooks, rentBooks, audioBooks, totalUsers} = overview
     // fetch data 
@@ -93,4 +93,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;
