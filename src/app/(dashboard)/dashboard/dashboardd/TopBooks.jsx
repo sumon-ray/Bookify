@@ -10,12 +10,12 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"; // Adjust the path if necessary
+} from "@/Components/ui/Card"; // Adjust the path if necessary
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"; // Adjust the path if necessary
+} from "@/Components/ui/Chart"; // Adjust the path if necessary
 
 const chartData = [
   { browser: "To Kill a Mockingbird", visitors: 275, fill: "var(--color-chrome)" },
