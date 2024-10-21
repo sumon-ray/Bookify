@@ -201,16 +201,11 @@ const FaqSection = () => {
             <FaDochub className="" />
             documentation <FiExternalLink className="ml-1" />
           </button>
-<<<<<<< HEAD
           <button className="px-6 py-2 bg-gray-700 text-white rounded-lg">
             <Link href="/ai-chat">
             <p>  Ask our AI Assistant</p>
     
             </Link>
-=======
-          <button className="px-6 py-2 bg-[#364957] text-white rounded-lg">
-            <a href="/contact">Get in touch</a>
->>>>>>> ff4298079e12169bc176e4eb036e53e154ee6f46
           </button>
         </div>
       </div>
