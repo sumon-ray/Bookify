@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
+} from "@/Components/ui/Card";
 import {
   ChartContainer,
   ChartTooltip,
