@@ -25,7 +25,7 @@ const AiChat = () => {
     setResponse("");
     try {
       const res = await axios.post(
-        "http://localhost:4000//ask-ai",
+        "http://localhost:4000/ask-ai",
         { query }
       );
       setResponse(res.data.answer);
