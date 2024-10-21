@@ -31,7 +31,7 @@ export default function Details({ params }) {
             <DetailsTab Book={data} />
 
             {/* related book title */}
-            <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-72 mx-auto'>
+            <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[265px] h-12 mx-auto'>
                 <h1 className='flex items-center justify-center text-2xl uppercase font-bold '>
                     <FaBook className='text-xl -mb-0.5' /> Related Books
                 </h1>

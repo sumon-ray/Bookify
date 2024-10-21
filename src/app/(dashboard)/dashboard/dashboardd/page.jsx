@@ -33,6 +33,7 @@ const page = () => {
             <div className='rounded-xl  bg-white pt-3 pb-4 px-4 lg:col-span-8 col-span-12 h-[310px]'>
                 <div className='my-2 mb-4'>
                 <h1 className='text-2xl font-bold '>Website Overview</h1>
+                <h1 className='text-2xl font-bold '>Today&apos;s Update</h1>
                 <p>Update Summery</p>
                 </div>
                 <div className='lg:flex md:flex grid grid-cols-2 lg:gap-3 gap-2  '>

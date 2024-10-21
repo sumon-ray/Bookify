@@ -131,7 +131,7 @@ export default function AllBooks() {
                                 <div className='flex'>
                                     <div>
                                         {
-                                            uniqueGenre?.slice(0, 6).map(book => <li className="w-full">
+                                            uniqueGenre?.slice(0, 6).map((book,i)=> <li className="w-full" key={i}>
                                                 <div className="flex items-center ps-3">
                                                     <input type="checkbox" value={book} name='checkbox' className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">
@@ -143,16 +143,31 @@ export default function AllBooks() {
                                     </div>
 
                                     <div>
-                                        {
-                                            uniqueGenre?.slice(6, 12).map(book => <li className="w-full">
-                                                <div className="flex items-center ps-3">
-                                                    <input type="checkbox" name='checkbox' value={book} className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
-                                                    <label className="w-full py-2 ms-2 text-sm font-medium ">
-                                                        {book.split(' ').slice(0, 1)}
-                                                    </label>
-                                                </div>
-                                            </li>)
-                                        }
+                                    {
+    uniqueGenre?.slice(0, 6).map((book, i) => (
+        <li key={i} className="w-full">
+            <div className="flex items-center ps-3">
+                <input type="checkbox" value={book} name='checkbox' className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                <label className="w-full py-2 ms-2 text-sm font-medium">
+                    {book.split(' ').slice(0, 1)}
+                </label>
+            </div>
+        </li>
+    ))
+}
+{
+    uniqueGenre?.slice(6, 12).map((book, i) => (
+        <li key={i} className="w-full">
+            <div className="flex items-center ps-3">
+                <input type="checkbox" value={book} name='checkbox' className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
+                <label className="w-full py-2 ms-2 text-sm font-medium">
+                    {book.split(' ').slice(0, 1)}
+                </label>
+            </div>
+        </li>
+    ))
+}
+
                                     </div>
                                 </div>
                             </ul>
@@ -216,7 +231,7 @@ export default function AllBooks() {
                                 <div className='flex gap-x-2'>
                                     <div>
                                         {
-                                            uniqueGenre?.slice(0, 6).map(book => <li className="w-full">
+                                            uniqueGenre?.slice(0, 6).map(book => <li className="w-full" key={book?.id}>
                                                 <div className="flex items-center ps-3">
                                                     <input type="checkbox" value={book} name='checkbox' className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">
@@ -229,7 +244,7 @@ export default function AllBooks() {
 
                                     <div>
                                         {
-                                            uniqueGenre?.slice(6, 12).map(book => <li className="w-full">
+                                            uniqueGenre?.slice(6, 12).map(book => <li className="w-full" key={book?._id} >
                                                 <div className="flex items-center ps-3">
                                                     <input type="checkbox" name='checkbox' value={book} className="w-4 h-4 text-[#364957] bg-white rounded focus:ring-[#364957]" />
                                                     <label className="w-full py-2 ms-2 text-sm font-medium ">
@@ -268,7 +283,7 @@ export default function AllBooks() {
                 {/* Books */}
                 <div className='w-full lg:w-[80%] space-y-3 flex flex-col items-center lg:items-start px-4 lg:px-0'>
                     <h3 className='text-xl md:text-lg font-bold'>Books</h3>
-                    <div className='grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-5 md:gap-3 lg:gap-6'>
+                    <div className='grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-5 md:gap-3 lg:gap-6 lg:gap-y-7'>
                         {
                             data?.result?.slice(0, limit).map((book, idx) =>
                                 <Link
@@ -280,12 +295,12 @@ export default function AllBooks() {
                                     <div className="">
                                         <Image
                                             src={book?.coverImage}
-                                            className="w-full h-[205px] rounded-t-md"
+                                            className="w-full h-[220px] rounded-t-md"
                                             height={150}
                                             width={220}
                                             alt={book?.Title || 'Book Cover'}
                                         />
-                                        <div className="text-left pl-2 pb-1.5 pt-[4.5px] relative">
+                                        <div className="text-left pl-2 pb-[5.5px] pt-[4.5px] relative">
                                             <div className='flex items-center justify-between pr-2'>
                                                 <h1 className="font-medium">{book?.Price}$</h1>
                                                 <span className='bg-[#364957] rounded-tl-2xl rounded-bl-2xl rounded-br-md text-white p-2 absolute right-0 bottom-0'><FaCartPlus className='text-lg' /></span>
