@@ -11,7 +11,7 @@ import { GrSend } from "react-icons/gr";
 
 
 export default function Page() {
-  // current user 
+  // current user hjk
   const session = useSession()
   const user = session?.data?.user?.email || ''
   // molas State
