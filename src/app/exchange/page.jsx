@@ -63,6 +63,25 @@ export default function Page() {
   //   takeEmail: []
   // }
 
+  const filterTakeBooks = takeBooksMine.map(book => ({
+    _id: book._id,
+    AuthorEmail: book.AuthorEmail,
+    requester: book.requester
+  }));
+  const filterGiveBooks = giveBooks.map(book => ({
+    _id: book._id,
+    AuthorEmail: book.AuthorEmail,
+    requester: book.requester
+  }));
+  
+  const postData = {take:[...filterTakeBooks], give:[...filterGiveBooks] }
+console.log(postData);
+  const postData = {
+    takeBooksId: takeBooksMine.map(book => (book._id)),
+    giveBookId: giveBooks.map(book => (book._id)),
+    giveEmail: user,
+    takeEmail: []
+  }
 
 
   // POST request to BOOK EXCHANGE
