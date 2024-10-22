@@ -107,6 +107,7 @@ const CustomerSatisfaction = () => {
                 </div>
             </CardFooter>
         </Card>
+        
     );
 };
 
