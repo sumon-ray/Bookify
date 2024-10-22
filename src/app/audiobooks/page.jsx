@@ -55,7 +55,7 @@ export default function Page() {
   }
 
   const currentAudioBook = data.find(
-    (book) => book._id === "6714ab8deed67dc4e8b1f098"
+    (book) => book._id === "6717747dd293858e8c781d17"
   );
 
   // Function to handle playing a new audio
@@ -94,6 +94,7 @@ export default function Page() {
                   className="flex-none w-full lg:m-0 m-2 rounded-lg bg-slate-100 lg:w-[400px] lg:h-[400px]"
                   width={88}
                   height={88}
+                  unoptimized
                 />
                 <div className="min-w-0 flex-auto space-y-1 font-semibold">
                   <div className="flex justify-between">
@@ -200,6 +201,7 @@ export default function Page() {
                           height={64}
                           src={currentAudioBook.audioBookCover}
                           alt={b?.title}
+                          quality={80}
                         />
                       </div>
                       <div className="ml-3">
