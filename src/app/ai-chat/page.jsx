@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Button, Textarea } from "flowbite-react";
-import { AiOutlineMessage, AiOutlineUser, AiOutlineBook } from "react-icons/ai"; // Icons
+import { AiOutlineMessage, AiOutlineUser, AiOutlineBook } from "react-icons/ai";
 import { MdHelp } from "react-icons/md";
 import { FaExchangeAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -25,7 +25,7 @@ const AiChat = () => {
     setResponse("");
     try {
       const res = await axios.post(
-        "http://localhost:4000//ask-ai",
+        "https://bookify-server-lilac.vercel.app/ask-ai",
         { query }
       );
       setResponse(res.data.answer);
@@ -38,7 +38,6 @@ const AiChat = () => {
 
   return (
     <div className="my-28 flex px-8 lg:px-20 flex-col md:flex-row justify-center">
-      {/* Left Side Content */}
       <motion.div
         className="w-full md:w-1/3 p-6 bg-gray-100 rounded-lg mr-6 shadow-lg transition-transform duration-200 transform hover:scale-105"
         initial={{ opacity: 0, x: -50 }}
@@ -94,7 +93,7 @@ const AiChat = () => {
         >
           {loading ? "Asking..." : "Ask AI"}
         </Button>
-        {loading && <BookSpinner />} {/* Display the custom spinner */}
+        {loading && <BookSpinner />} 
         {response && (
           <motion.div
             className="response mt-4 p-4 bg-blue-50 border border-blue-200 rounded-md shadow-md"
@@ -115,7 +114,7 @@ const AiChat = () => {
             <li>Always meet in a public place for safety.</li>
             <li>Consider writing a short review for books you exchange.</li>
             <li>
-              Utilize our platform's features to find the best matches for your
+              Utilize our platform &apos s features to find the best matches for your
               books.
             </li>
           </ul>

@@ -7,10 +7,10 @@ import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
+    CardFooter,  
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
+} from "@/Components/ui/Card";
 import {
     ChartConfig,
     ChartContainer,
@@ -18,7 +18,8 @@ import {
     ChartLegendContent,
     ChartTooltip,
     ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/Components/ui/Chart";
+
 
 export const description = "An area chart with a legend";
 
@@ -52,7 +53,7 @@ const CustomerSatisfaction = () => {
             <CardContent>
                 <ChartContainer config={chartConfig}
                     className="max-h-[250px]"
-                >
+                >          
                     <AreaChart
                         accessibilityLayer
                         data={chartData}
@@ -106,6 +107,7 @@ const CustomerSatisfaction = () => {
                 </div>
             </CardFooter>
         </Card>
+        
     );
 };
 

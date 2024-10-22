@@ -10,7 +10,6 @@ import { Pagination, Stack } from '@mui/material';
 import Link from 'next/link';
 import { FaCartPlus } from 'react-icons/fa6';
 import './pagination.css'
-import Loading from '@/Components/loading';
 
 function valuetext(value) {
     return `${value}°C`;
