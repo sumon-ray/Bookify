@@ -1,7 +1,8 @@
 const flowbite = require("flowbite-react/tailwind");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: ["class"],
+    // darkMode: 'class',
+	darkMode: 'class',
     content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,6 +17,7 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
+			
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -61,9 +63,10 @@ module.exports = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
   	}
   },
+  
   plugins: [
     flowbite.plugin(),
       require("tailwindcss-animate")

@@ -7,6 +7,7 @@ import QueryProvider from "./QueryProvider";
 import { Toaster } from "react-hot-toast";
 // import { SearchProvider } from "./(dashboard)/dashboard/SearchProvider";
 import { SearchProvider } from "./(dashboard)/dashboard/myBooks/SearchProvider";
+import { ThemeProvider } from "next-themes";
 // import { Toaster } from 'react-hot-toast';
 
 const geistSans = localFont({
@@ -28,7 +29,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <SearchProvider>
+
+
+
+<ThemeProvider attribute="class">
+<SearchProvider>
         <QueryProvider>
           <AuthProvider>
             <body
@@ -43,6 +48,9 @@ export default function RootLayout({ children }) {
           </AuthProvider>
         </QueryProvider>
       </SearchProvider>
+      </ThemeProvider>
+
+      
     </html>
   );
 }
