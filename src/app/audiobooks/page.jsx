@@ -6,7 +6,7 @@ import { FaBookmark, FaPauseCircle, FaPlayCircle } from "react-icons/fa";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
-export default function Page({ params }) {
+export default function Page() {
   const [currentAudio, setCurrentAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
@@ -54,7 +54,9 @@ export default function Page({ params }) {
     return <div>Error: {error.message}</div>;
   }
 
-  const currentAudioBook = data.find((book) => book._id === params.id);
+  const currentAudioBook = data.find(
+    (book) => book._id === "6717747dd293858e8c781d17"
+  );
 
   // Function to handle playing a new audio
   const handlePlay = (audioURL, id) => {
@@ -85,13 +87,14 @@ export default function Page({ params }) {
             {currentAudioBook && (
               <div className="flex space-x-4 flex-col lg:flex-row">
                 <Image
-                  src={currentAudioBook?.audioBookCover}
-                  alt={currentAudioBook?.title || "Audiobook Cover"}
-                  className="w-full lg:w-[400px] h-auto rounded-lg bg-slate-100"
-                  width={400}
-                  height={400}
-                  priority
-                  quality={80}
+                  src={currentAudioBook.audioBookCover}
+                  loading="lazy"
+                  decoding="async"
+                  alt={currentAudioBook.title}
+                  className="flex-none w-full lg:m-0 m-2 rounded-lg bg-slate-100 lg:w-[400px] lg:h-[400px]"
+                  width={88}
+                  height={88}
+                  unoptimized
                 />
                 <div className="min-w-0 flex-auto space-y-1 font-semibold">
                   <div className="flex justify-between">
@@ -198,6 +201,7 @@ export default function Page({ params }) {
                           height={64}
                           src={currentAudioBook.audioBookCover}
                           alt={b?.title}
+                          quality={80}
                         />
                       </div>
                       <div className="ml-3">
