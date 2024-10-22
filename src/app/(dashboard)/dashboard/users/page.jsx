@@ -1,11 +1,9 @@
 "use client";
-
-import { useQuery } from "@tanstack/react-query";
+import useUsers from "@/hooks/useUsers";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
-
 import toast from "react-hot-toast";
 import ReactPaginate from "react-paginate";
 import Swal from "sweetalert2";
@@ -14,17 +12,8 @@ const Page = () => {
   // Fetch users on component mount
   const session = useSession();
   const [currentPage, setCurrentPage] = useState(0);
-  const { data, isLoading, isError, error, refetch } = useQuery({
-    queryKey: ["users"],
-    queryFn: async () => {
-      const res = await axios.get(
-        "https://bookify-server-lilac.vercel.app/users"
-      );
-      return res.data;
-    },
-  });
+  const { data, isLoading, isError, error, refetch } = useUsers();
 
-  // Check if data is still loading or there's an error
   if (isLoading) {
     return (
       <div className="flex items-center text-7xl justify-center min-h-screen">
@@ -56,8 +45,6 @@ const Page = () => {
   if (isError) {
     return <div>Error: {error.message}</div>;
   }
-
-  // console.log(data)
 
   // state for pagination
   const usersPerPage = 5;
