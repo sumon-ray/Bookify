@@ -17,6 +17,7 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
+			black: '#000000',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

@@ -1,4 +1,3 @@
-// components/Toggle.jsx
 import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 
@@ -18,7 +17,7 @@ const Toggle = () => {
       aria-label="Toggle Dark Mode"
       type="button"
       className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg p-2 transition-colors duration-500"
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      onClick={() => setTheme(theme === 'light' ? 'black' : 'light')}
     >
       {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
     </button>

@@ -166,9 +166,6 @@ export default function DashboardNavbar() {
               {/* all menu */}
               <div className="hidden md:flex items-center gap-x-6 ">
 
-                {/* <button className="bg-[#36495733] text-black rounded-full p-2">
-                  <MdOutlineWbSunny className="text-xl" />
-                </button> */}
 
                 {/* Toggle Button for Theme */}
                   <div className="flex items-center gap-4">
