@@ -20,6 +20,7 @@ import {
     ChartTooltipContent,
 } from "@/Components/ui/Chart";
 
+
 export const description = "An area chart with a legend";
 
 const chartData = [
@@ -106,6 +107,7 @@ const CustomerSatisfaction = () => {
                 </div>
             </CardFooter>
         </Card>
+        
     );
 };
 
