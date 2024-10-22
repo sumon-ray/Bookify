@@ -92,7 +92,8 @@ const AudioBook = () => {
                   height={250}
                   src={b?.audioBookCover}
                   alt={b?.title}
-                  quality={100}
+                  quality={80}
+              
                 />
               </div>
               <div className="w-full md:p-8 p-4 relative">

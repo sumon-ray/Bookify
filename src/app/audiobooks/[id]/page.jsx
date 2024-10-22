@@ -85,13 +85,13 @@ export default function Page({ params }) {
             {currentAudioBook && (
               <div className="flex space-x-4 flex-col lg:flex-row">
                 <Image
-                  src={currentAudioBook.audioBookCover}
-                  loading="lazy"
-                  decoding="async"
-                  alt={currentAudioBook.title}
-                  className="flex-none w-full lg:m-0 m-2 rounded-lg bg-slate-100 lg:w-[400px] lg:h-[400px]"
-                  width={88}
-                  height={88}
+                  src={currentAudioBook?.audioBookCover}
+                  alt={currentAudioBook?.title || "Audiobook Cover"}
+                  className="w-full lg:w-[400px] h-auto rounded-lg bg-slate-100"
+                  width={400}
+                  height={400}
+                  priority
+                  quality={80}
                 />
                 <div className="min-w-0 flex-auto space-y-1 font-semibold">
                   <div className="flex justify-between">
@@ -186,7 +186,7 @@ export default function Page({ params }) {
 
         <div className="inline-block w-full overflow-x-scroll ">
           <table className="w-full leading-normal">
-            <tbody >
+            <tbody>
               {currentAudioBook?.chapters?.map((b) => (
                 <tr key={b.id}>
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -206,7 +206,7 @@ export default function Page({ params }) {
                         </p>
                       </div>
                     </div>
-                  </td>              
+                  </td>
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                     <p className="text-gray-900 whitespace-no-wrap md:block hidden">
                       {b?.duration}
@@ -328,7 +328,6 @@ export default function Page({ params }) {
               ))}
             </div>
           </div>
-          
         </div>
       </div>
     </div>
