@@ -17,6 +17,7 @@ import { Menu, MenuItem } from "@mui/material"; // Import Menu and MenuItem from
 import { TbExchange } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+// import Toggle from './Toggle/Toggle';
 
 const Navbar = () => {
   const session = useSession();
@@ -199,7 +200,8 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex lg:justify-center   items-center gap-2">
+
+             <div className="flex lg:justify-center   items-center gap-2">
           {session?.status === "unauthenticated" && (
             <Link href="/login">
               <button className="btn text-[16px] lg:block hidden font-semibold bg-[#364957]  text-white p-3 px-4 rounded-lg">
@@ -266,7 +268,12 @@ const Navbar = () => {
               ) : null}
             </>
           )}
-        </div>
+         </div>
+       
+        
+
+        
+       
       </nav>
     </div>
   );
