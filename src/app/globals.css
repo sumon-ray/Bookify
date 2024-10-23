@@ -13,7 +13,9 @@
 /* Hide scrollbar while allowing content to scroll */
 /* Hide scrollbar for Chrome, Safari, and Opera */
 
-
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 body {
   /* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ; */
@@ -76,7 +78,7 @@ body {
   /* Rounded corners */
   font-size: 0.875rem;
   /* Small text */
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 0.7rem;
   /* Padding: 0.5rem top-bottom, 1.25rem left-right */
   margin-right: 0.5rem;
   /* Margin-end */
@@ -101,7 +103,7 @@ body {
   /* Rounded corners */
   font-size: 0.875rem;
   /* Small text */
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 0.8rem;
   /* Padding: 0.5rem top-bottom, 1.25rem left-right */
   margin-right: 0.5rem;
   /* Margin-end */
@@ -145,8 +147,12 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
-    --background: 0 0% 3.9%;
+    --bg-color: #000000; /* Black background for dark mode */
+  }
+  /* .dark {
+    --background: 0 0% 100%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -170,7 +176,9 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-  }
+  } */
+
+  
 }
 
 @layer base {

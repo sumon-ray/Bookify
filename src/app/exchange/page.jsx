@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import { GrSend } from "react-icons/gr";
+import Swal from "sweetalert2";
+import { MdOutlineDeleteOutline } from "react-icons/md";
 
 
 export default function Page() {
@@ -56,16 +58,54 @@ export default function Page() {
 
 
   function takeBookExchange(book) {
-    axios.post(`http://localhost:4000/take-book?email=${session?.data?.user?.email}&AuthorEmail=${book?.AuthorEmail}&id=${book?._id}`, {
-      ...book,
-      requester: session?.data?.user?.email,
-      bookId: book?._id,
-    }).then(response => {
-      toast.success(response.data.message)
-      takeBooksRefetch()
-    }).catch(error => {
-      toast.error(error.message)
-    });
+
+    if (takeBooks?.length === 0) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: `In this exchange, all books must belong to ${book?.owner}`,
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#364957",
+        cancelButtonColor: "#364957CC",
+        confirmButtonText: "Confirm",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          axios.post(`https://bookify-server-lilac.vercel.app/take-book?email=${user}&AuthorEmail=${book?.AuthorEmail}&id=${book?._id}`,
+            { ...book, requester: user, bookId: book?._id, })
+            .then(res => {
+              if (res.data.message) {
+                Swal.fire({
+                  title: `${res?.data?.message}`,
+                  text: `Successfully completed the exchange with ${book?.owner}.`,
+                  icon: "success",
+                });
+                takeBooksRefetch()
+              }
+            }).catch(error => toast.error(error.message))
+        }
+      }).catch(error => toast.error(error.message))
+    } else {
+      axios.post(`http://localhost:4000/take-book?email=${session?.data?.user?.email}&AuthorEmail=${book?.AuthorEmail}&id=${book?._id}`, {
+        ...book,
+        requester: session?.data?.user?.email,
+        bookId: book?._id,
+      }).then(response => {
+        toast.success(response.data.message)
+        takeBooksRefetch()
+      }).catch(error => {
+        toast.error(error.message)
+      });
+    }
+
+  }
+  function takeBookDelete(id) {
+    axios.delete(`http://localhost:4000/take-book/${id}`)
+      .then(res => {
+        if (res.data.deletedCount) {
+          toast.success('Delete successful!')
+          takeBooksRefetch()
+        }
+      }).catch(error => toast.error(error.message))
   }
 
   function giveBooksExchange(book) {
@@ -80,6 +120,15 @@ export default function Page() {
         giveBooksRefetch()
       })
       .catch(error => toast.error(error.message))
+  }
+  function giveBookDelete(id){
+    axios.delete(`http://localhost:4000/give-book/${id}`)
+      .then(res => {
+        if (res.data.deletedCount) {
+          toast.success('Delete successful!')
+          giveBooksRefetch()
+        }
+      }).catch(error => toast.error(error.message))
   }
 
   // const postData = {
@@ -147,23 +196,27 @@ export default function Page() {
                 />
               </svg></div>
               :
-              <div className="grid lg:grid-cols-3 grid-cols-2 gap-5 px-3 h-[360px] mt-6 overflow-y-scroll">
+              <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-8 px-6 h-[360px] mt-6 overflow-y-hidden">
 
                 <div onClick={() => setTakeBooksModal(true)}
-                  className="w-36 h-40 bg-[#364957] rounded-md flex justify-center items-center">
+                  className="w-full h-40 bg-[#364957] rounded-md flex justify-center items-center">
                   <FiPlusCircle className="text-6xl text-white" />
                 </div>
                 {
                   takeBooks?.map(takeBook => (
-                    <div key={takeBook?.id}>
+                    <div key={takeBook?._id} className="relative h-40">
                       <Image
                         src={takeBook?.coverImage}
-                        className="w-36 h-40 rounded-md"
+                        className="w-full h-40 rounded-md"
                         height={150}
                         width={200}
                         alt={takeBook?.title || 'Book Cover'}
                         unoptimized
                       />
+                      <button>
+                        <MdOutlineDeleteOutline onClick={() => takeBookDelete(takeBook?._id)}
+                          className="text-white p-[2.5px] rounded-tr-md rounded-bl-md bg-black text-2xl font-bold absolute top-0 right-0 cursor-pointer" />
+                      </button>
                     </div>
                   ))
                 }
@@ -200,23 +253,27 @@ export default function Page() {
               </svg>
               </div>
               :
-              <div className="grid lg:grid-cols-3 grid-cols-2 gap-5 px-3 h-[360px] mt-6 overflow-y-scroll">
+              <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-8 px-6 h-[360px] mt-6 overflow-y-hidden">
                 <div onClick={() => setGiveBooksModal(true)}
-                  className="w-36 h-40 bg-[#364957] rounded-md flex justify-center items-center">
+                  className="w-full h-40 bg-[#364957] rounded-md flex justify-center items-center">
                   <FiPlusCircle className="text-6xl text-[#ffffff]" />
                 </div>
 
                 {
                   giveBooks?.map(giveBook => (
-                    <div key={giveBook?.id}>
+                    <div key={giveBook?._id} className="relative h-40">
                       <Image
                         src={giveBook?.coverImage}
-                        className="w-36 h-40 rounded-md"
+                        className="w-full h-40 rounded-md"
                         height={150}
                         width={200}
                         alt={giveBook?.title || 'Book Cover'}
                         unoptimized
                       />
+                      <button>
+                        <MdOutlineDeleteOutline onClick={() => giveBookDelete(giveBook?._id)}
+                          className="text-white p-[2.5px] rounded-tr-md rounded-bl-md bg-black text-2xl font-bold absolute top-0 right-0 cursor-pointer" />
+                      </button>
                     </div>
                   ))
                 }
