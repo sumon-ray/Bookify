@@ -4,7 +4,6 @@ import axios from 'axios';
 import ImgDetails from './ImgDetails';
 import DetailsTab from './DetailsTab';
 import DetailsCard from './DetailsCard';
-import { ImBooks } from "react-icons/im";
 import { FaBook } from 'react-icons/fa';
 
 export default function Details({ params }) {
