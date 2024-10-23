@@ -79,13 +79,13 @@ const AudioBook = () => {
           </div>
         </div>
       ) : (
-        <div className="px-6 p-4 grid lg:grid-cols-2 grid-cols-1 gap-4 mb-5">
+        <div className="px-6 p-4 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mb-5 transition-all duration-500">
           {data?.slice(0, 4).map((b) => (
             <div
               key={b.id}
-              className="lg:h-[250px] flex border bg-white shadow-lg rounded-lg hover:shadow-sm-light"
+              className="md:h-[250px] min-h-50 flex border bg-white shadow-lg rounded-lg hover:shadow-sm-light"
             >
-              <div className="min-w-[250]">
+              <Link href={`/audiobooks/${b?._id}`} className="">
                 <Image
                   className="h-full rounded-tl rounded-bl "
                   width={250}
@@ -93,30 +93,25 @@ const AudioBook = () => {
                   src={b?.audioBookCover}
                   alt={b?.title}
                   quality={80}
-              
                 />
-              </div>
+              </Link>
               <div className="w-full md:p-8 p-4 relative">
-                <div className="flex justify-between gap-2">
+                <Link
+                  href={`/audiobooks/${b?._id}`}
+                  className="flex justify-between gap-2"
+                >
                   <div>
-                    <Link
-                      href={`/audiobooks/${b?._id}`}
-                      className="text-2xl text-grey-darkest font-medium hover:underline"
-                    >
-                      <p className="md:block hidden">{b?.title}</p>
-                      <p className="md:hidden block">{b?.title.slice(0,20)}</p>
-                    </Link>
+                    <div className="md:text-2xl text-lg text-grey-darkest font-medium hover:underline">
+                      <p className=" ">{b?.title}</p>
+                      <p className="md:hidden block">{b?.title.slice(0, 20)}</p>
+                    </div>
                     <h2 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate ">
                       By:
-                      <span className="underline cursor-pointer ml-1">
-                        {b.author}
-                      </span>
+                      <span className="cursor-pointer ml-1">{b.author}</span>
                     </h2>
                     <h2 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate ">
                       Publisher:
-                      <span className="underline cursor-pointer ml-1">
-                        Bookify
-                      </span>
+                      <span className="cursor-pointer ml-1">Bookify</span>
                     </h2>
                   </div>
                   <div>
@@ -129,7 +124,7 @@ const AudioBook = () => {
                       <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" />
                     </svg>
                   </div>
-                </div>
+                </Link>
 
                 {/* ratting section */}
 
