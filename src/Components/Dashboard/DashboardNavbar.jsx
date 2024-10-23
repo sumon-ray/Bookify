@@ -123,7 +123,6 @@ export default function DashboardNavbar() {
 
             </div>
 
-            {/* search , profile , notification */}
             <div className="flex items-center justify-between w-[86%]">
 
               {/* search */}
@@ -142,7 +141,7 @@ export default function DashboardNavbar() {
                       onClick={handleSearchClick}
                     />
                     <div
-                      className={`bg-[#364957]  p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer ${isListening ? "" : ""
+                      className={`bg-[#364957]   p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer ${isListening ? "" : ""
                         }`}
                       onClick={handleVoiceInput}
                     >
@@ -155,7 +154,7 @@ export default function DashboardNavbar() {
                           autoplay
                         />
                       ) : (
-                        <MdOutlineKeyboardVoice className="text-2xl text-white" />
+                        <MdOutlineKeyboardVoice className="text-2xl text-white hover:text-green-500" />
                       )}
                     </div>
                   </div>
