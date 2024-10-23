@@ -32,7 +32,7 @@ const UpdateBook = ({ params }) => {
           setBook(null);
         } else {
           const data = await response.json();
-          setBook(data); // Set the book details in the state
+          setBook(data); 
         }
         setLoading(false);
       } catch (error) {
