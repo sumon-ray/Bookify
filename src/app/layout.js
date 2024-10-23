@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
         <QueryProvider>
           <AuthProvider>
             <body
-              className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99]`}
+              className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99] dark:bg-[#272727CC]`}
             >
               <Toaster />
               <Navbar />

@@ -16,10 +16,10 @@ const Toggle = () => {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg p-2 transition-colors duration-500"
+      className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full p-2 transition-colors duration-500"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
     >
-      {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+      {theme === 'light' ? '🌙' : '☀️'}
     </button>
   );
 };

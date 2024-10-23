@@ -27,7 +27,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-white text-black py-6 px-4 lg:py-12 lg:px-8 dark:bg-black dark:text-black">
+    <footer className="bg-white text-black py-6 px-4 lg:py-12 lg:px-8 dark:bg-[#0A0A0C] dark:text-black">
       <div className="w-full flex flex-col lg:flex-row gap-8 mx-auto">
         <div className="w-full lg:w-2/3 border-2 p-4 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full p-2 text-center">
@@ -148,7 +148,7 @@ const Footer = () => {
         {/* Newsletter and Payment Section */}
         <div className="w-full lg:w-1/3 flex flex-col space-y-6">
           <div className="border-2 p-4 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-3 h-1/2">
-            <h2 className="text-2xl font-bold text-center">Subscribe to our newsletter!!!!</h2>
+            <h2 className="text-2xl font-bold text-center">Subscribe to our newsletter!</h2>
             <form className="flex gap-2 w-full">
               <input
                 type="email"

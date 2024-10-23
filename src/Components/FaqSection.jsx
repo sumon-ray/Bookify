@@ -147,7 +147,7 @@ const FaqSection = () => {
   const visibleFAQs = showMore ? faqItems : faqItems.slice(0, 6);
 
   return (
-    <div className="px-8 p-6 lg:px-28 mx-auto space-y-10 dark:bg-black dark:text-white">
+    <div className="px-8 p-6 lg:px-28 mx-auto space-y-10 dark:bg-[#0A0A0C] dark:text-white">
       <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[410px] h-12 mx-auto'>
         <h1 className='text-2xl uppercase font-bold text-center'>
         Frequently Asked Questions
@@ -171,7 +171,7 @@ const FaqSection = () => {
       <div className="text-center mt-6">
         {!showMore && (
           <button
-            className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
+            className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600" 
             onClick={() => setShowMore(true)}
           >
             <span className="flex items-center justify-center gap-1 ">
