@@ -156,7 +156,7 @@ const FaqSection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
         {visibleFAQs.map((item, index) => (
           <div key={index} className="flex items-start space-x-4 dark:bg-[#0A0A0C] dark:text-white">
-            <span className="text-white" color="white">
+            <span className="text-white " color="white">
               {" "}
               {item.icon}
             </span>
