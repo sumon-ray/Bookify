@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 
-
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 body {
   /* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ; */
@@ -135,32 +137,34 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
+  /* Dark mode colors */
+  
+    
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
+    --background: 0 0% 0%; /* Black background */
+    --foreground: 0 0% 100%; /* White text */
+    --card: 0 0% 10%; /* Darker cards */
+    --card-foreground: 0 0% 98%; /* White text for cards */
+    --popover: 0 0% 10%; /* Darker popovers */
+    --popover-foreground: 0 0% 98%; /* White text for popovers */
+    --primary: 0 0% 98%; /* White for primary elements */
+    --primary-foreground: 0 0% 9%; /* Black text for primary elements */
+    --secondary: 0 0% 14.9%; /* Darker background for secondary elements */
+    --secondary-foreground: 0 0% 98%; /* White text for secondary elements */
+    --muted: 0 0% 14.9%; /* Dark muted background */
+    --muted-foreground: 0 0% 63.9%; /* Light muted text */
+    --accent: 0 0% 14.9%; /* Darker accent */
+    --accent-foreground: 0 0% 98%; /* White text for accent */
+    --destructive: 0 62.8% 30.6%; /* Darker destructive elements */
+    --destructive-foreground: 0 0% 98%; /* White text for destructive elements */
+    --border: 0 0% 20%; /* Darker borders */
+    --input: 0 0% 14.9%; /* Darker input fields */
+    --ring: 0 0% 98%; /* Lighter ring */
+}
+
+
+  
 }
 
 @layer base {
@@ -188,4 +192,10 @@ body {
   .custom-audio::-webkit-media-controls-timeline {
     background-color: none;
   }
+
+  .timeline-component, .timeline-item {
+    background-color: var(--card); /* Darker background */
+    color: var(--card-foreground); /* White text */
+  }
+  
 }

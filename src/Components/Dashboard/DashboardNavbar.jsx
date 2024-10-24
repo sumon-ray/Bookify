@@ -23,6 +23,8 @@ import { IoMoonOutline } from "react-icons/io5";
 import { RiMessage2Line } from "react-icons/ri";
 import { TbFocusCentered } from "react-icons/tb";
 import { FiSettings } from "react-icons/fi";
+import Toggle from './../Toggle/Toggle';
+
 
 
 
@@ -121,7 +123,6 @@ export default function DashboardNavbar() {
 
             </div>
 
-            {/* search , profile , notification */}
             <div className="flex items-center justify-between w-[86%]">
 
               {/* search */}
@@ -140,7 +141,7 @@ export default function DashboardNavbar() {
                       onClick={handleSearchClick}
                     />
                     <div
-                      className={`bg-[#364957]  p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer ${isListening ? "" : ""
+                      className={`bg-[#364957]   p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer ${isListening ? "" : ""
                         }`}
                       onClick={handleVoiceInput}
                     >
@@ -153,7 +154,7 @@ export default function DashboardNavbar() {
                           autoplay
                         />
                       ) : (
-                        <MdOutlineKeyboardVoice className="text-2xl text-white" />
+                        <MdOutlineKeyboardVoice className="text-2xl text-white hover:text-green-500" />
                       )}
                     </div>
                   </div>
@@ -164,9 +165,11 @@ export default function DashboardNavbar() {
               {/* all menu */}
               <div className="hidden md:flex items-center gap-x-6 ">
 
-                <button className="bg-[#36495733] text-black rounded-full p-2">
-                  <MdOutlineWbSunny className="text-xl" />
-                </button>
+
+                {/* Toggle Button for Theme */}
+                  <div className="flex items-center gap-4">
+                    <Toggle />
+                </div>
 
                 <div>
                   <button className="bg-[#36495733] text-black rounded-full p-2"

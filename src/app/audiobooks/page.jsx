@@ -5,6 +5,8 @@ import axios from "axios";
 import { FaBookmark, FaPauseCircle, FaPlayCircle } from "react-icons/fa";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { FaShareFromSquare } from "react-icons/fa6";
+import SocialSharingButtons from "@/Components/AudioBook/SocialSharingButtons";
 
 export default function Page() {
   const [currentAudio, setCurrentAudio] = useState(null);
@@ -55,7 +57,7 @@ export default function Page() {
   }
 
   const currentAudioBook = data.find(
-    (book) => book._id === "6717747dd293858e8c781d17"
+    (book) => book._id === "671780add293858e8c9a57f9"
   );
 
   // Function to handle playing a new audio
@@ -79,7 +81,7 @@ export default function Page() {
   };
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto">
+    <div className="min-h-screen max-w-7xl mx-auto ">
       <div id="Main">
         <div className="mt-14 sm:mt-10 pt-14 relative z-10 rounded-xl ">
           {/* Cover Image */}
@@ -87,14 +89,13 @@ export default function Page() {
             {currentAudioBook && (
               <div className="flex space-x-4 flex-col lg:flex-row">
                 <Image
-                  src={currentAudioBook.audioBookCover}
-                  loading="lazy"
-                  decoding="async"
-                  alt={currentAudioBook.title}
-                  className="flex-none w-full lg:m-0 m-2 rounded-lg bg-slate-100 lg:w-[400px] lg:h-[400px]"
-                  width={88}
-                  height={88}
-                  unoptimized
+                  src={currentAudioBook?.audioBookCover}
+                  alt={currentAudioBook?.title || "Audiobook Cover"}
+                  className="w-full lg:w-[400px] h-auto rounded-lg bg-slate-100"
+                  width={400}
+                  height={400}
+                  priority
+                  quality={80}
                 />
                 <div className="min-w-0 flex-auto space-y-1 font-semibold">
                   <div className="flex justify-between">
@@ -169,12 +170,19 @@ export default function Page() {
                     <h3 className="strong underline">Description:</h3>
                     <h2>{currentAudioBook?.description}</h2>
                   </div>
+                  <div className="text-[#364957] flex gap-1 items-center">
+                    <FaShareFromSquare className="text-2xl  " />
+                    <h2 className="hover:underline cursor-pointer">Share</h2>
+                    <SocialSharingButtons
+                      currentAudioBook={currentAudioBook}
+                    ></SocialSharingButtons>
+                  </div>
                 </div>
               </div>
             )}
           </div>
           {/* audio player */}
-          <div className="bg-white px-4">
+          <div className="w-full mx-auto px-6  bg-white transition-all duration-500">
             <audio
               controls
               volume
@@ -185,10 +193,9 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Audio Books List Div */}
-
-        <div className="inline-block w-full overflow-x-scroll ">
-          <table className="w-full leading-normal">
+        {/* Audio Books chapter List Div */}
+        <div className="inline-block w-full mx-auto p-4 pb-8 bg-white transition-all duration-500 rounded-b-xl ">
+          <table className="w-full leading-normal p-10">
             <tbody>
               {currentAudioBook?.chapters?.map((b) => (
                 <tr key={b.id}>
@@ -221,7 +228,7 @@ export default function Page() {
                       {b?.releaseDate}
                     </p>
                   </td>
-                  <td className="px-5 py-5 border-b text-3xl text-[#364957] border-gray-200 bg-white">
+                  <td className="px-5 py-5 border-b text-3xl text-[#364957] text-right border-gray-200 bg-white">
                     <button
                       type="button"
                       onClick={() => handlePlay(b.audioURL, b?.id)}
@@ -243,7 +250,7 @@ export default function Page() {
         </div>
 
         {/* All Audio Books section */}
-        <div className="container">
+        <div className="container ">
           <h1 className="md:text-4xl text-xl font-bold text-center md:p-4 p-2 md:w-[500px] w-[270px] mx-auto rounded-tl-2xl rounded-br-2xl md:mb-12 my-8 border border-black text-black">
             All Audio Books
           </h1>

@@ -16,6 +16,10 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { useSession } from "next-auth/react";
+import Swal from "sweetalert2";
+import lottieImage from "../../../..//../public/image/404.json";
+import Lottie from "lottie-react";
+import LoadingSpinner from "./LoadingSpinner";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -29,8 +33,8 @@ const MenuProps = {
 };
 
 const sortingOptions = [
-  { label: "Total Pages: Low to High", value: "totalPage_asc" },
-  { label: "Total Pages: High to Low", value: "totalPage_desc" },
+  { label: " Low to High Page", value: "totalPage_asc" },
+  { label: " High to Low Page", value: "totalPage_desc" },
 ];
 
 function getStyles(option, selectedOption, theme) {
@@ -62,9 +66,9 @@ export default function MyBooks() {
     setSortOrder(value);
   };
 
-  const session= useSession()
+  const session = useSession();
 
-  // Fetch books 
+  // Fetch books
   const { data, isLoading, error } = useQuery({
     queryKey: ["myBooks"],
     queryFn: async () => {
@@ -102,7 +106,10 @@ export default function MyBooks() {
   });
 
   const sortedBooks = React.useMemo(() => {
-    if (!data) return [];
+    if (!data){
+      return [];
+     
+    }
 
     console.log("Books data:", data);
 
@@ -121,9 +128,7 @@ export default function MyBooks() {
 
   if (isLoading)
     return (
-      <div className="flex justify-center items-center h-screen">
-        <CircularProgress />
-      </div>
+<LoadingSpinner />
     );
   if (error)
     return (
@@ -151,7 +156,7 @@ export default function MyBooks() {
       </Snackbar>
 
       {/* Header Section */}
-      <div className="bg-[#EFEEE9] rounded-md p-5 md:p-2 flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20">
+      <div className="bg-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white rounded-md p-5 md:p-2 flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20">
         <div className="space-y-3 pt-5 md:pt-0">
           <h3 className="text-xl md:text-5xl font-bold">
             Falling in love <br />
@@ -182,11 +187,11 @@ export default function MyBooks() {
 
       {/* Sorting Dropdown */}
       <div className="flex items-center justify-between pt-4 pb-5">
-        <h1 className="text-xl font-bold">My Books</h1>
-        <div className="bg-gray-100 rounded-md p-2">
+        <h1 className="text-xl font-bold text-[18.61px] text-[#000000]">My Books</h1>
+        <div className=" outline-2 outline outline-[#a1a5a8b1] rounded-md ">
           <FormControl sx={{ width: 200 }} size="small">
             <Select
-              className=" " 
+              className=" "
               displayEmpty
               value={sortOrder}
               onChange={handleSortChange}
@@ -198,9 +203,9 @@ export default function MyBooks() {
               renderValue={(selected) => {
                 if (selected === "") {
                   return (
-                    <em className="flex items-center font-medium gap-x-1">
+                    <p className="flex items-center font-medium gap-x-1">
                       Sort by Total Pages
-                    </em>
+                    </p>
                   );
                 }
                 const selectedLabel = sortingOptions.find(
@@ -212,23 +217,23 @@ export default function MyBooks() {
               inputProps={{ "aria-label": "Sort by Total Pages" }}
               sx={{
                 "& .MuiSelect-select": {
-                  border: "#a1a5a8b1",
-                  outline: "#a1a5a8b1", 
+                  border: "black",
+                  outline: "",
                   "&:focus": {
-                    border: "#a1a5a8b1", 
-                    outline: "#a1a5a8b1", 
+                    border: "black",
+                    outline: "#a1a5a8b1",
                   },
                 },
                 "& .MuiSelect-icon": {
-                  color: "#a1a5a8b1", 
+                  color: "#a1a5a8b1",
                 },
                 "& .MuiOutlinedInput-notchedOutline": {
-                  border: "none", 
+                  border: "none",
                 },
               }}
             >
-              <MenuItem disabled value="">
-                <em>Select Sorting</em>
+              <MenuItem  value="">
+                <p>Select Sorting</p>
               </MenuItem>
               {sortingOptions.map((option) => (
                 <MenuItem
@@ -245,7 +250,7 @@ export default function MyBooks() {
       </div>
 
       {/* Books Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
+      <div className="grid grid-cols-2  md:grid-cols-5 gap-10">
         {sortedBooks.length > 0 ? (
           sortedBooks.map((book) => (
             <div
@@ -284,16 +289,33 @@ export default function MyBooks() {
               <Tooltip title="Delete">
                 <button
                   onClick={(e) => {
-                    e.preventDefault(); 
-                    if (confirm("Are you sure you want to delete this book?")) {
-                      deleteBookMutation.mutate(book._id);
-                    }
+                    e.preventDefault();
+                    Swal.fire({
+                      title: "Are you sure?",
+                      text: "You won't be able to revert this!",
+                      icon: "warning",
+                      showCancelButton: true,
+                      confirmButtonColor: "#3085d6",
+                      cancelButtonColor: "#d33",
+                      confirmButtonText: "Yes, delete it!",
+                      cancelButtonText: "No, cancel!",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        deleteBookMutation.mutate(book._id);
+                        Swal.fire(
+                          "Deleted!",
+                          "Your book has been deleted.",
+                          "success"
+                        );
+                      }
+                    });
                   }}
-                  className="absolute bottom-1 right-2 text-[#364957] hover:text-red-700 bg-white rounded-full p-1 shadow-md"
+                  className="absolute bottom-1 text-[#364957] hover:text-red-700 bg-white rounded-full p-1 shadow-md"
                   aria-label="Delete Book"
                 >
                   {deleteBookMutation.isLoading ? (
-                    <CircularProgress size={20} />
+               <LoadingSpinner />
+          
                   ) : (
                     <MdDelete className="text-xl" />
                   )}
@@ -302,9 +324,19 @@ export default function MyBooks() {
             </div>
           ))
         ) : (
-          <p className="text-center col-span-full">
-            No books available. Wish to add some!
-          </p>
+          <div className="col-span-full flex flex-col items-center justify-center">
+            <Lottie
+              animationData={lottieImage}
+              aria-label="Lottie animation"
+              loop
+              className="w-48 h-48"
+              autoplay
+            />
+            <h2 className="text-xl font-semibold text-gray-700 mb-2">
+              No books found
+            </h2>
+            <p className="text-gray-500">Wish to add some!</p>
+          </div>
         )}
       </div>
     </section>
