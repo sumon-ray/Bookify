@@ -147,15 +147,15 @@ const FaqSection = () => {
   const visibleFAQs = showMore ? faqItems : faqItems.slice(0, 6);
 
   return (
-    <div className="px-8 p-6 lg:px-28 mx-auto space-y-10 dark:bg-[#0A0A0C] dark:text-white">
+    <div className="px-8 p-6 lg:px-28 mx-auto space-y-10 ">
       <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[410px] h-12 mx-auto'>
-        <h1 className='text-2xl uppercase font-bold text-center'>
+        <h1 className='text-2xl uppercase font-bold text-center dark:bg-[#0A0A0C] dark:text-white'>
         Frequently Asked Questions
         </h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
         {visibleFAQs.map((item, index) => (
-          <div key={index} className="flex items-start space-x-4">
+          <div key={index} className="flex items-start space-x-4 dark:bg-[#0A0A0C] dark:text-white">
             <span className="text-white" color="white">
               {" "}
               {item.icon}
@@ -182,8 +182,8 @@ const FaqSection = () => {
         )}
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-between items-center mt-12 bg-white p-6 rounded-md space-y-4 lg:space-y-0 lg:space-x-4 dark:text-black">
-        <div className="text-center lg:text-left">
+      <div className="flex flex-col lg:flex-row justify-between items-center mt-12 bg-white p-6 rounded-md space-y-4 lg:space-y-0 lg:space-x-4 dark:bg-[#0A0A0C] dark:text-white">
+        <div className="text-center lg:text-left ">
           <h4 className="font-bold flex justify-center lg:justify-start items-center space-x-1 mb-2 lg:mb-0">
             <span>Still have questions?</span> <FaQuestion />
           </h4>
