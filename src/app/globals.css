@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Keep your custom styles for larger screens */
-
-/* ::before,
-::after {
-  box-sizing: border-box; 
-  border-width: 0; 
-
-} */
-/* Hide scrollbar while allowing content to scroll */
-/* Hide scrollbar for Chrome, Safari, and Opera */
 
 html {
   transition: background-color 0.3s ease, color 0.3s ease;

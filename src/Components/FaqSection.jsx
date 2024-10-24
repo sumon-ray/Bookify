@@ -29,7 +29,7 @@ const FaqSection = () => {
         <GiCardExchange
           size={32}
           style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-blue-600"
+          className="text-blue-600 border-2 border-[#e1dddd] border-e-chart-3 "
         />
       ),
       question: "How does the book exchange work?",
@@ -41,7 +41,7 @@ const FaqSection = () => {
         <FiShoppingCart
           size={32}
           style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-green-600"
+          className="text-green-600  border-[#e1dddd] border-2 border-e-chart-3  "
         />
       ),
       question: "Is there a fee to exchange books?",
@@ -53,7 +53,7 @@ const FaqSection = () => {
         <FiSend
           size={32}
           style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-purple-600"
+          className="text-purple-600 border-[#e1dddd] border-2 border-e-chart-3"
         />
       ),
       question: "How do I ship my books?",
@@ -65,7 +65,7 @@ const FaqSection = () => {
         <FiRepeat
           size={32}
           style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-yellow-600"
+          className="text-yellow-600 border-[#e1dddd] border-2 border-e-chart-3 "
         />
       ),
       question: "Can I exchange multiple books at once?",
@@ -77,7 +77,7 @@ const FaqSection = () => {
         <FiDollarSign
           size={32}
           style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-pink-600"
+          className="text-pink-600 border-[#e1dddd] border-2 border-e-chart-3 "
         />
       ),
       question: "Are there any hidden costs?",
@@ -89,7 +89,7 @@ const FaqSection = () => {
         <FiUserCheck
           size={32}
           style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-indigo-600"
+          className="text-indigo-600 border-[#e1dddd] border-2 border-e-chart-3  "
         />
       ),
       question: "How do I know the book I want is available?",
@@ -101,7 +101,7 @@ const FaqSection = () => {
         <FiHelpCircle
           size={32}
           style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-red-600"
+          className="text-red-600 border-[#e1dddd] border-2 border-e-chart-3 "
         />
       ),
       question: "What if my book doesn’t arrive?",
@@ -113,7 +113,7 @@ const FaqSection = () => {
         <FiMessageCircle
           size={32}
           style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-gray-600"
+          className="text-gray-600 border-[#e1dddd] border-2 border-e-chart-3 "
         />
       ),
       question: "Can I communicate with the other user before exchanging?",
@@ -124,7 +124,7 @@ const FaqSection = () => {
       icon: (
         <LiaShippingFastSolid
           size={32}
-          className="text-[#4b5563] p-[2px] rounded-[5px] "
+          className="text-[#4b5563] p-[2px] rounded-[5px] border-2 border-e-chart-3 "
         />
       ),
       question: "How do I track my shipment?",
@@ -135,7 +135,7 @@ const FaqSection = () => {
       icon: (
         <HiOutlineShoppingBag
           size={32}
-          className="text-[#4b5563] p-[2px] rounded-[5px] "
+          className="text-[#4b5563] p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 "
         />
       ),
       question: "Is there a limit to the number of books I can list?",

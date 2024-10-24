@@ -6,10 +6,12 @@ import { motion } from "framer-motion";
 import { IoHomeOutline } from "react-icons/io5";
 import { PiBooks } from "react-icons/pi";
 import { MdOutlineAddCircleOutline, MdOutlineMessage } from "react-icons/md";
-import { TbUserShield } from "react-icons/tb";
+import { RxDashboard } from "react-icons/rx";
+import { TbExchange, TbUserShield } from "react-icons/tb";
 import PremiumBoard from "./PremiumBoard";
 import useUsers from "@/hooks/useUsers";
 import { useSession } from "next-auth/react";
+import { HiUsers } from "react-icons/hi";
 
 export default function Aside() {
   const pathname = usePathname();
@@ -60,7 +62,7 @@ export default function Aside() {
                   "/dashboard/dashboardd"
                 )}`}
               >
-                <IoHomeOutline />
+                <RxDashboard />
                 <span className="font-bold">Dashboard</span>
               </Link>
             </motion.li>
@@ -124,13 +126,13 @@ export default function Aside() {
             variants={hoverEffect}
           >
             <Link
-              href="/dashboard/messages"
+              href="/dashboard/exchange-request"
               className={`flex items-center gap-2 p-2 ${checkActive(
-                "/dashboard/messages"
+                "/dashboard/exchange-request"
               )}`}
             >
-              <MdOutlineMessage className="text-xl" />
-              <span className="font-bold">Message</span>
+              <TbExchange className="text-xl" />
+              <span className="font-bold">Request</span>
             </Link>
           </motion.li>
 
@@ -147,7 +149,7 @@ export default function Aside() {
                   "/dashboard/users"
                 )}`}
               >
-                <TbUserShield className="text-xl" />
+                <HiUsers className="text-xl"/>
                 <span className="font-bold">Users</span>
               </Link>
             </motion.li>
