@@ -10,6 +10,8 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
+import { Summarize } from "@mui/icons-material";
+import BookSummaryModal from "./BookSummaryModal";
 
 export default function ImgDetails({ Book = {} }) {
   const router = useRouter();
@@ -18,7 +20,9 @@ export default function ImgDetails({ Book = {} }) {
   console.log(session.user.email)
 
   const { title, author, genre, condition, owner, coverImage, exchangeStatus, publishYear, totalPage, location, rating, _id, AuthorEmail } = Book;
+  const [isModalOpen, setModalOpen] = useState(false);
   const [isLoading, setLoading] = useState(false);
+
 
   const { data } = useQuery({
     queryKey: ['take books'],
@@ -157,10 +161,18 @@ export default function ImgDetails({ Book = {} }) {
             <AiOutlineRead className="text-xl" />
             Read
           </button>
+
+
+          <button onClick={() => setModalOpen(true)} className="flex items-center btn_2 gap-1 px-2 py-2 text-white rounded-md transition">
+            <Summarize className="text-xl" />
+            Summary
+          </button>
         </div>
 
         {isLoading && <p className="text-blue-600 mt-4">Updating book data...</p>}
+
       </div>
+      <BookSummaryModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} book={Book} />
     </div>
   );
 }
