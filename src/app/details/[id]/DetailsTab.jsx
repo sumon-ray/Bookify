@@ -56,8 +56,8 @@ export default function DetailsTab({ Book }) {
                 {/*Specification */}
                 <div className={open === 2 ? 'block max-w-6x' : 'hidden'}>
 
-                    <div className="relative overflow-x-auto">
-                        <table className="w-full text-sm text-left rtl:text-right">
+                    <div className="relative overflow-x-auto ">
+                        <table className="w-full text-sm text-left rtl:text-right ">
                             <tbody>
 
                                 <tr className='text-black border-t border-[#B7B7B7] dark:border-white dark:text-white '>

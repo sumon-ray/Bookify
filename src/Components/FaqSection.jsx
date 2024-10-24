@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import { FaDochub, FaGoogleWallet, FaQuestion, FaWallet } from "react-icons/fa";
+import { FaDochub, FaGoogleWallet, FaQuestion, FaRobot, FaWallet } from "react-icons/fa";
 import {
   FiBook,
   FiShoppingCart,
@@ -28,8 +28,9 @@ const FaqSection = () => {
       icon: (
         <GiCardExchange
           size={32}
-          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-blue-600"
+          // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
+
         />
       ),
       question: "How does the book exchange work?",
@@ -40,8 +41,9 @@ const FaqSection = () => {
       icon: (
         <FiShoppingCart
           size={32}
-          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-green-600"
+          // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
+
         />
       ),
       question: "Is there a fee to exchange books?",
@@ -52,8 +54,9 @@ const FaqSection = () => {
       icon: (
         <FiSend
           size={32}
-          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-purple-600"
+          // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
+
         />
       ),
       question: "How do I ship my books?",
@@ -64,8 +67,10 @@ const FaqSection = () => {
       icon: (
         <FiRepeat
           size={32}
-          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-yellow-600"
+          // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
+
+
         />
       ),
       question: "Can I exchange multiple books at once?",
@@ -76,8 +81,9 @@ const FaqSection = () => {
       icon: (
         <FiDollarSign
           size={32}
-          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-pink-600"
+          // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
+
         />
       ),
       question: "Are there any hidden costs?",
@@ -88,8 +94,9 @@ const FaqSection = () => {
       icon: (
         <FiUserCheck
           size={32}
-          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-indigo-600"
+          // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
+
         />
       ),
       question: "How do I know the book I want is available?",
@@ -100,8 +107,9 @@ const FaqSection = () => {
       icon: (
         <FiHelpCircle
           size={32}
-          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-red-600"
+          // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
+
         />
       ),
       question: "What if my book doesn’t arrive?",
@@ -112,8 +120,9 @@ const FaqSection = () => {
       icon: (
         <FiMessageCircle
           size={32}
-          style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
-          className="text-gray-600"
+          // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
+          className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
+
         />
       ),
       question: "Can I communicate with the other user before exchanging?",
@@ -124,7 +133,7 @@ const FaqSection = () => {
       icon: (
         <LiaShippingFastSolid
           size={32}
-          className="text-[#4b5563] p-[2px] rounded-[5px] "
+          className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px] border-[#e1dddd]   border-2 border-e-chart-3  dark:border-e-chart-2 "
         />
       ),
       question: "How do I track my shipment?",
@@ -135,7 +144,7 @@ const FaqSection = () => {
       icon: (
         <HiOutlineShoppingBag
           size={32}
-          className="text-[#4b5563] p-[2px] rounded-[5px] "
+          className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
         />
       ),
       question: "Is there a limit to the number of books I can list?",
@@ -147,22 +156,22 @@ const FaqSection = () => {
   const visibleFAQs = showMore ? faqItems : faqItems.slice(0, 6);
 
   return (
-    <div className="px-8 p-6 lg:px-28 mx-auto space-y-10">
-      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[410px] h-12 mx-auto'>
-        <h1 className='text-2xl uppercase font-bold text-center'>
+    <div className="px-8 p-6 lg:px-28 mx-auto space-y-10 ">
+      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[410px] h-12 mx-auto'>
+        <h1 className='text-2xl uppercase font-bold text-center  dark:text-white'>
         Frequently Asked Questions
         </h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1  sm:grid-cols-2 gap-6 ">
         {visibleFAQs.map((item, index) => (
-          <div key={index} className="flex items-start space-x-4">
-            <span className="text-white" color="white">
+          <div key={index} className="flex items-start space-x-4  dark:text-white">
+            <span className="text-white " color="white">
               {" "}
               {item.icon}
             </span>
             <div>
               <h3 className="font-bold">{item.question}</h3>
-              <p className="text-gray-600">{item.answer}</p>
+              <p className="dark:text-gray-400">{item.answer}</p>
             </div>
           </div>
         ))}
@@ -171,7 +180,7 @@ const FaqSection = () => {
       <div className="text-center mt-6">
         {!showMore && (
           <button
-            className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
+            className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600" 
             onClick={() => setShowMore(true)}
           >
             <span className="flex items-center justify-center gap-1 ">
@@ -182,8 +191,8 @@ const FaqSection = () => {
         )}
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-between items-center mt-12 bg-white p-6 rounded-md space-y-4 lg:space-y-0 lg:space-x-4">
-        <div className="text-center lg:text-left">
+      <div className="flex flex-col lg:flex-row justify-between items-center mt-12 bg-white p-6 rounded-md space-y-4 lg:space-y-0 lg:space-x-4 dark:bg-[#0A0A0C] dark:text-white">
+        <div className="text-center lg:text-left ">
           <h4 className="font-bold flex justify-center lg:justify-start items-center space-x-1 mb-2 lg:mb-0">
             <span>Still have questions?</span> <FaQuestion />
           </h4>
@@ -197,13 +206,15 @@ const FaqSection = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-          <button className="px-6 py-2 flex items-center justify-center rounded-lg">
+          {/* <button className="px-6 py-2 flex items-center justify-center rounded-lg">
             <FaDochub className="" />
             documentation <FiExternalLink className="ml-1" />
-          </button>
+          </button> */}
           <button className="px-6 py-2 bg-gray-700 text-white rounded-lg">
             <Link href="/ai-chat">
-            <p>  Ask our AI Assistant</p>
+            <p className="flex items-center gap-2">
+Ask our AI Assistant   <FaRobot className="text-xl" /> 
+</p>
     
             </Link>
           </button>

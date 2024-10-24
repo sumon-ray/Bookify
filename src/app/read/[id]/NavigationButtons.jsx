@@ -13,15 +13,15 @@ const NavigationButtons = ({
         src="/previous.svg"
         width={40}
         height={40}
-        className={`cursor-pointer ${currentPage === 0 ? "opacity-50" : ""}`}
+        className={`cursor-pointer  dark:bg-slate-400 dark:rounded-md dark:px-1 ${currentPage === 0 ? "opacity-50" : ""}`}
         onClick={handlePrevious}
         alt="Previous Page"
       />
       <Image
         src="/next.svg"
-        width={50}
-        height={50}
-        className={`cursor-pointer ${
+        width={40}
+        height={40}
+        className={`cursor-pointer dark:bg-slate-400 dark:rounded-md dark:px-1 ${
           currentPage >= totalPages - 2 ? "opacity-50" : ""
         }`}
         onClick={handleNext}

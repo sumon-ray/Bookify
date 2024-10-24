@@ -12,21 +12,21 @@ const milestones = [
     title: "The Idea Was Born",
     description:
       "The concept of Bookify emerged as a response to the need for a sustainable platform for book lovers to swap and share their favorite reads.",
-    icon: <FaRocket className="text-5xl text-[#364957]" />, // Updated icon size
+    icon: <FaRocket className="text-5xl text-[#364957] dark:text-gray-400" />, // Updated icon size
   },
   {
     year: "2023",
     title: "First 1000 Books Exchanged",
     description:
       "We hit a major milestone, with over 1000 books being exchanged on our platform in the first year!",
-    icon: <FaBookReader className="text-5xl text-[#364957]" />, // Updated icon size
+    icon: <FaBookReader className="text-5xl text-[#364957] dark:text-gray-400" />, // Updated icon size
   },
   {
     year: "2024",
     title: "Growing Community",
     description:
       "Bookify's user base expanded globally, connecting book lovers from all corners of the world.",
-    icon: <FaPeopleCarry className="text-5xl text-[#364957]" />, // Updated icon size
+    icon: <FaPeopleCarry className="text-5xl text-[#364957] dark:text-gray-400" />, // Updated icon size
   },
 ];
 
@@ -60,7 +60,7 @@ const OurJourney = () => {
               <h3 className="text-2xl font-semibold mb-2">{milestone.year}</h3>
               <p className="text-lg font-semibold mb-2">{milestone.title}</p>{" "}
               {/* Bold title */}
-              <p className="max-w-md mx-auto text-lg text-gray-600">{milestone.description}</p>
+              <p className="max-w-md mx-auto text-lg text-gray-600 dark:text-gray-300">{milestone.description}</p>
             </motion.div>
           ))}
         </div>
