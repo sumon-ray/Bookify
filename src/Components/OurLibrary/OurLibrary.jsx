@@ -64,7 +64,7 @@ const OurLibrary = () => {
   return (
     <div className="max-w-7xl mx-auto py-16">
 
-      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[385px] h-12 mx-auto'>
+      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[385px] h-12 mx-auto'>
         <h1 className='text-2xl uppercase font-bold text-center'>
           Explore Exchange Library
         </h1>
@@ -111,7 +111,7 @@ const OurLibrary = () => {
             <Link
               href={`/details/${book?._id}`}
               key={idx}
-              className="w-auto h-auto bg-[#EFEEE9] rounded-md"
+              className="w-auto h-auto bg-[#EFEEE9] dark:bg-[#272727CC] rounded-md"
             >
               <div className="space-y-3">
                 <Image

@@ -39,7 +39,7 @@ const HowItWorks = () => {
     <section className="py-6">
       <div className="container mx-auto px-6 lg:px-16">
         <h2 className="text-4xl font-bold mb-12 text-center">How It Works</h2>
-        <p className="text-xl text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+        <p className="text-xl text-gray-600 dark:text-gray-300 text-center mb-12 max-w-2xl mx-auto">
       Discover how Bookify makes book swapping easy and fun. Follow these simple steps to start sharing and receiving amazing reads from fellow book lovers in your community!
     </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
@@ -56,10 +56,10 @@ const HowItWorks = () => {
               }}
             >
               <div className="mb-6">{step.icon}</div>
-              <h3 className="text-2xl font-semibold text-[#364957] mb-4">
+              <h3 className="text-2xl font-semibold text-[#364957] dark:text-gray-300 mb-4">
                 {step.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {step.description}
               </p>
             </motion.div>

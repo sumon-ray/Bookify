@@ -97,21 +97,21 @@ const MyBookCard = () => {
   };
 
   return (
-    <div className="container mx-auto px-8 md:px-0 pb-8">
+    <div className="container dark:text-gray-300 mx-auto px-8 md:px-0 pb-8">
       <div className="py-2 flex items-center justify-between">
-        <h1 className="text-[#000000] font-semibold text-[18.61px]">Best Popular</h1>
+        <h1 className="text-[#000000] dark:text-gray-300 font-semibold text-[18.61px]">Best Popular</h1>
         <div className="flex items-center justify-center gap-4 px-2 py-1 relative">
-          <FaFilter className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-[#364957] text-sm sm:text-lg" />
+          <FaFilter className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-[#364957] dark:text-gray-300 text-sm sm:text-lg" />
           <select
   value={selectedGenre}
   onChange={handleGenreChange}
-  className="pr-4 py-2 w-auto custom-select text-right  text-xs sm:text-sm md:text-base text-black outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1] focus:border-[#a1a5a8b1] rounded-lg bg-transparent"
+  className="pr-4 py-2 w-auto custom-select text-right  text-xs sm:text-sm md:text-base text-black dark:text-gray-300 outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1] focus:border-[#a1a5a8b1] rounded-lg bg-transparent"
 >
   {genres.map((genre) => (
     <option
       key={genre}
       value={genre}
-      className="hover:bg-[#364957] border pr-10 border-[#a1a5a8b1] focus:border-[#a1a5a8b1] !hover:text-white outline-none"
+      className="hover:bg-[#364957] dark:bg-[#272727CC] border pr-10 border-[#a1a5a8b1] focus:border-[#a1a5a8b1] !hover:text-white outline-none"
     >
       {genre}
     </option>
@@ -132,7 +132,6 @@ const MyBookCard = () => {
         </div>
       </div>
       
-
       {error ? (
         <div className="text-center py-8">
           <p className="text-lg font-semibold text-red-600">{error}</p>
@@ -146,8 +145,8 @@ const MyBookCard = () => {
             className="w-48 h-48"
             autoplay
           />
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">No books found</h2>
-          <p className="text-gray-500">
+          <h2 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">No books found</h2>
+          <p className="text-gray-500 dark:text-gray-300">
             We couldn&apos;t find any books that match this genre or your search query.
           </p>
         </div>
@@ -157,7 +156,7 @@ const MyBookCard = () => {
             <Link
               href={`/details/${book?._id}`}
               key={book._id} 
-              className="w-fit mx-auto flex flex-col justify-center items-center h-auto bg-[#EFEEE9] rounded-md"
+              className="w-fit mx-auto flex flex-col justify-center items-center h-auto bg-[#EFEEE9] dark:bg-[#272727CC] rounded-md"
             >
               <div className="space-y-3 flex flex-col justify-center">
                 <Image
@@ -187,7 +186,7 @@ const MyBookCard = () => {
                 onClick={() => handlePageChange(currentPage - 1)}
                 className={`cursor-pointer flex items-center justify-center px-4 h-10 leading-tight ${
                   currentPage === 1
-                    ? "text-gray-400"
+                    ? "text-gray-400 dark:text-gray-300"
                     : "hover:bg-gray-100 hover:text-gray-700"
                 }`}
                 disabled={currentPage === 1}
@@ -202,7 +201,7 @@ const MyBookCard = () => {
                   className={`flex items-center justify-center px-4 h-10 leading-tight ${
                     currentPage === index + 1
                       ? "text-white bg-[#364957] rounded-md"
-                      : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      : "text-gray-500 dark:text-gray-300 hover:bg-gray-100 hover:text-gray-700"
                   }`}
                 >
                   {index + 1}
@@ -214,7 +213,7 @@ const MyBookCard = () => {
                 onClick={() => handlePageChange(currentPage + 1)}
                 className={`flex items-center justify-center cursor-pointer px-4 h-10 leading-tight ${
                   currentPage === totalPages
-                    ? "text-gray-400"
+                    ? "text-gray-400 dark:text-gray-300"
                     : "hover:bg-gray-100 hover:text-gray-700"
                 }`}
                 disabled={currentPage === totalPages}
