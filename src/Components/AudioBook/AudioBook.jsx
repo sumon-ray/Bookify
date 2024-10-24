@@ -45,14 +45,14 @@ const AudioBook = () => {
     }
   };
   return (
-    <div className="max-w-7xl mx-auto  py-8 space-y-10">
+    <div className="max-w-7xl mx-auto  py-8 space-y-10 dark:bg-[#0A0A0C] dark:text-white ">
       <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto">
         <h1 className="text-2xl uppercase font-bold text-center">
           Explore Audio Collection
         </h1>
       </div>
       {isLoading ? (
-        <div className="flex justify-center items-center pt-1">
+        <div className="flex justify-center items-center pt-1 dark:bg-[#0A0A0C] dark:text-white">
           <div className="flex flex-col justify-center items-center gap-y-1">
             <svg
               class="animate-spin [animation-duration:1.5s]"
@@ -79,11 +79,11 @@ const AudioBook = () => {
           </div>
         </div>
       ) : (
-        <div className="px-6 p-4 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mb-5 transition-all duration-500">
+        <div className="px-6 p-4 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mb-5 transition-all duration-500 dark:bg-[#0A0A0C] dark:text-white">
           {data?.slice(0, 4).map((b) => (
             <div
               key={b.id}
-              className="flex border bg-white shadow-lg rounded-lg hover:shadow-sm-light"
+              className="flex border bg-white shadow-lg rounded-lg hover:shadow-sm-light dark:bg-[#0A0A0C] dark:text-white"
             >
               <Link
                 href={`/audiobooks/${b?._id}`}
