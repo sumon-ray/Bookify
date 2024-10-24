@@ -29,7 +29,7 @@ export default function Review({ refetch, Data }) {
                             size="large"
                         />
                     </Box>
-                    <SendReview refetch={refetch} openStar={openStar} setOpenStar={setOpenStar} value={value}/>
+                    <SendReview refetch={refetch} openStar={openStar} setOpenStar={setOpenStar} value={value} />
                 </div>
 
                 {/* total review */}
