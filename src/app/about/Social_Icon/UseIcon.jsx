@@ -13,7 +13,7 @@ const useIcon = () => {
                 text="Twitter"
                 color=""
               >
-                <a className='size-12 flex items-center justify-center bg-gray-300   rounded-full' >
+                <a className='size-12 flex items-center justify-center bg-gray-300 dark:bg-[#364957]   rounded-full' >
                   <FaTwitter />
                 </a>
               </IconButton>
@@ -22,7 +22,7 @@ const useIcon = () => {
                 text="Instagram"
                 color=""
               >
-                <a className='size-12 flex items-center justify-center bg-gray-300  rounded-full' >
+                <a className='size-12 flex items-center justify-center bg-gray-300 dark:bg-[#364957]  rounded-full' >
                   <FaInstagram />
                 </a>
               </IconButton>
@@ -32,7 +32,7 @@ const useIcon = () => {
                 color=""
               
               >
-                <a className='size-12 flex items-center justify-center  bg-gray-300  rounded-full' >
+                <a className='size-12 flex items-center justify-center  bg-gray-300 dark:bg-[#364957]  rounded-full' >
 
                 <FaDiscord />
                 </a>
@@ -41,7 +41,7 @@ const useIcon = () => {
                 text="Facebook"
                 color=""
               >
-                <a className='size-12 flex items-center justify-center bg-gray-300   rounded-full' >
+                <a className='size-12 flex items-center justify-center bg-gray-300 dark:bg-[#364957] rounded-full' >
                   <FaFacebook />
                 </a>
               </IconButton>

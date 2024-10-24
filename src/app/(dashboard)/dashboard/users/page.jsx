@@ -139,7 +139,7 @@ const Page = () => {
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800 ">Total members</h2>
 
-        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">
+        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-[#0A0A0C] dark:text-white">
           {data.length > 0 ? data.length : "0"}
         </span>
       </div>
@@ -242,7 +242,7 @@ const Page = () => {
                         <div className="inline-flex items-center gap-x-3">
                           <input
                             type="checkbox"
-                            className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                            className="text-blue-500 border-gray-300 rounded dark:bg-[#0A0A0C] dark:text-white"
                           />
 
                           <div className="flex items-center gap-x-2">
@@ -261,7 +261,7 @@ const Page = () => {
                               <h2 className="font-medium text-gray-800  ">
                                 {user?.name}
                               </h2>
-                              <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
+                              <p className="text-sm font-normal text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
                                 {user?.email}
                               </p>
                             </div>
@@ -271,7 +271,7 @@ const Page = () => {
                       <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                         {session?.status === "authenticated" &&
                         session?.data?.user?.name == user?.name ? (
-                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-[#0A0A0C] dark:text-white">
                             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
                             <h2 className="text-sm font-normal text-emerald-500">
@@ -279,7 +279,7 @@ const Page = () => {
                             </h2>
                           </div>
                         ) : (
-                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-[#0A0A0C] dark:text-white">
                             <span className="h-1.5 w-1.5 rounded-full bg-red-500"></span>
 
                             <h2 className="text-sm font-normal text-red-500">
@@ -288,10 +288,10 @@ const Page = () => {
                           </div>
                         )}
                       </td>
-                      <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                      <td className="px-4 py-4 text-sm text-gray-500 dark:bg-[#0A0A0C] dark:text-white whitespace-nowrap">
                         {user?.role}
                       </td>
-                      <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                      <td className="px-4 py-4 text-sm text-gray-500 dark:bg-[#0A0A0C] dark:text-white whitespace-nowrap">
                         {user?.email}
                       </td>
 
@@ -299,7 +299,7 @@ const Page = () => {
                         <div className="flex items-center gap-x-6">
                           <button
                             onClick={() => handleDelete(user?._id)}
-                            className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none"
+                            className="text-gray-500 transition-colors duration-200 dark:bg-[#0A0A0C] dark:text-white hover:text-red-500 focus:outline-none"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -321,7 +321,7 @@ const Page = () => {
                             onClick={() =>
                               handleToggleRole(user._id, user.role)
                             }
-                            className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500  dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
+                            className="text-gray-500 transition-colors duration-200 dark:bg-[#0A0A0C] dark:text-white hover:text-yellow-500 focus:outline-none"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -337,9 +337,6 @@ const Page = () => {
                                 d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
                               />
                             </svg>
-                            {/* {user?.role === "admin"
-                              ? "Revoke Admin"
-                              : "Make Admin"} */}
                           </button>
                         </div>
                       </td>
@@ -358,10 +355,10 @@ const Page = () => {
           pageCount={pageCount}
           onPageChange={handlePageClick}
           containerClassName="flex items-center justify-between space-x-4"
-          previousLinkClassName="px-3 py-1 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
-          nextLinkClassName="px-3 py-1 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
-          pageLinkClassName="px-3 py-1 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
-          activeLinkClassName="bg-blue-300 text-white"
+          previousLinkClassName="px-3 py-1 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100 dark:bg-[#0A0A0C] dark:text-white dark:border-gray-700 dark:hover:bg-gray-800"
+          nextLinkClassName="px-3 py-1 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100 dark:bg-[#0A0A0C] dark:text-white dark:border-gray-700 dark:hover:bg-gray-800"
+          pageLinkClassName="px-3 py-1 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100 dark:bg-[#0A0A0C] dark:text-white dark:border-gray-700 dark:hover:bg-gray-800"
+          activeLinkClassName="bg-red-300 dark:bg-[#0A0A0C] text-white"
           disabledClassName="opacity-50 cursor-not-allowed"
         />
       </div>

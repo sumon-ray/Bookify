@@ -55,7 +55,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center w-full max-w-7xl mx-auto overflow-hidden rounded-lg my-4">
+    <div className="flex justify-center w-full max-w-7xl mx-auto overflow-hidden rounded-lg my-4 dark:bg-[#0A0A0C] dark:text-white">
       <div
         className="hidden bg-center bg-no-repeat lg:block w-1/2 mx-6 my-8"
         style={{
@@ -65,9 +65,9 @@ const SignUp = () => {
 
       <div className="w-full mx-6 my-8 lg:px-16 md:px-8 lg:w-1/2">
         <Link href={"/"}>
-          <div className="flex items-center justify-center text-[#B7B7B7]">
+          <div className="flex items-center justify-center text-[#B7B7B7] dark:bg-[#0A0A0C] dark:text-white">
             <Image
-            alt="sign-up-image"
+              alt="sign-up-image"
               src={img}
               className="h-[68px] w-36"
               height={20}
@@ -76,14 +76,14 @@ const SignUp = () => {
           </div>
         </Link>
 
-        <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
+        <p className="mt-3 text-xl text-center text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
           Welcome back!
         </p>
 
         <SocialLogin></SocialLogin>
         <form onSubmit={handleSignUp}>
           <div className="flex items-center justify-between mt-4">
-            <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
+            <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white lg:w-1/4"></span>
 
             <p className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">
               or register
@@ -93,11 +93,11 @@ const SignUp = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
+            <label className="block mb-2 text-sm font-medium text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
               Name
             </label>
             <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
               type="text"
               name="name"
               id="name"
@@ -105,11 +105,11 @@ const SignUp = () => {
             />
           </div>
           <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
+            <label className="block mb-2 text-sm font-medium text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
               Email Address
             </label>
             <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
               type="email"
               name="email"
               id="email"
@@ -118,12 +118,12 @@ const SignUp = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
+            <label className="block mb-2 text-sm font-medium text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
               Password
             </label>
 
             <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
               type="password"
               name="password"
               id="password"
@@ -132,7 +132,7 @@ const SignUp = () => {
           </div>
           <div className="mt-4">
             <div className="flex justify-between">
-              <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
+              <label className="block mb-2 text-sm font-medium text-gray-600 dark:bg-[#0A0A0C] dark:text-white ">
                 Profile Photo
               </label>
             </div>
@@ -146,7 +146,7 @@ const SignUp = () => {
           </div>
 
           {/* Error handle */}
-          <div className="flex w-full max-w-sm overflow-hidden  dark:bg-gray-800">
+          <div className="flex w-full max-w-sm overflow-hidden dark:bg-[#0A0A0C] dark:text-white">
             <div className="px-4 py-2 -mx-3">
               <div className="mx-3">
                 <span className="font-semibold text-red-500 dark:text-red-400"></span>
@@ -192,7 +192,7 @@ const SignUp = () => {
         </form>
 
         <div className="flex items-center justify-between mt-4">
-          <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+          <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white md:w-1/4"></span>
 
           <Link
             href="/login"
@@ -201,7 +201,7 @@ const SignUp = () => {
             or sign in
           </Link>
 
-          <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+          <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white md:w-1/4"></span>
         </div>
       </div>
     </div>
@@ -215,4 +215,3 @@ const WrappedSignUp = () => (
 );
 
 export default WrappedSignUp;
-

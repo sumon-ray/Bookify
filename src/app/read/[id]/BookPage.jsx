@@ -29,7 +29,7 @@ const BookPage = ({ pageNumber, bookData, content, isLeft }) => {
       )}
 
       <div className="h-full overflow-y-auto no-scrollbar text-gray-800 text-sm leading-relaxed whitespace-pre-line">
-        {content ? (
+        {content ? 
           <motion.div
             key={content.page}
             dangerouslySetInnerHTML={{ __html: content.description }}
@@ -38,7 +38,7 @@ const BookPage = ({ pageNumber, bookData, content, isLeft }) => {
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.5 }}
           />
-        ) : (
+        : (
           <p>No additional pages available.</p>
         )}
       </div>
