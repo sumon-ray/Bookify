@@ -97,7 +97,7 @@ export default function Page() {
                   priority
                   quality={80}
                 />
-                <div className="min-w-0 flex-auto space-y-1 font-semibold">
+                <div className="min-w-0 flex-auto space-y-1 font-semibold mt-2">
                   <div className="flex justify-between">
                     <p className="text-[#000000] dark:text-[#000000] text-3xl font-semibold leading-6">
                       {currentAudioBook.title}

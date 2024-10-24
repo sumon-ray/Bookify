@@ -11,7 +11,7 @@ const AudioBook = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["audioBooks"],
     queryFn: async () => {
       const res = await axios.get(
@@ -83,11 +83,14 @@ const AudioBook = () => {
           {data?.slice(0, 4).map((b) => (
             <div
               key={b.id}
-              className="md:h-[250px] min-h-50 flex border bg-white shadow-lg rounded-lg hover:shadow-sm-light"
+              className="flex border bg-white shadow-lg rounded-lg hover:shadow-sm-light"
             >
-              <Link href={`/audiobooks/${b?._id}`} className="">
+              <Link
+                href={`/audiobooks/${b?._id}`}
+                className="h-64 w-full md:w-60"
+              >
                 <Image
-                  className="h-full rounded-tl rounded-bl "
+                  className="rounded-tl rounded-bl h-full"
                   width={250}
                   height={250}
                   src={b?.audioBookCover}
@@ -101,9 +104,8 @@ const AudioBook = () => {
                   className="flex justify-between gap-2"
                 >
                   <div>
-                    <div className="md:text-2xl text-lg text-grey-darkest font-medium hover:underline">
-                      <p className=" ">{b?.title}</p>
-                      <p className="md:hidden block">{b?.title.slice(0, 20)}</p>
+                    <div className="lg:text-xl md:text-sm text-grey-darkest font-medium hover:underline">
+                      <p className="">{b?.title}</p>
                     </div>
                     <h2 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate ">
                       By:
@@ -180,12 +182,12 @@ const AudioBook = () => {
                   <button
                     type="button"
                     onClick={() => handlePlay(b.audioURL, b?._id)}
-                    className="px-8 py-3 font-semibold rounded-full dark:bg-gray-800 dark:text-gray-100"
+                    className="px-8 py-3 font-semibold rounded-full text-[#364957]"
                   >
                     {isPlaying && currentAudio === b?._id ? (
-                      <FaPauseCircle className="text-[#364957]" />
+                      <FaPauseCircle />
                     ) : (
-                      <FaPlayCircle className="text-[#364957]" />
+                      <FaPlayCircle />
                     )}
                   </button>
                 </div>
