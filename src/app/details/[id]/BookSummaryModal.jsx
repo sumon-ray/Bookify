@@ -61,7 +61,7 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
   }, [isOpen, book]);
 
   const fetchAIResponse = async (book) => {
-    const query = `Summary for "${book.title}" by ${book.author}: `;
+    const query = `Summary for "${book.title}" by ${book.author}`;
     setLoading(true);
     setResponse("");
     try {
@@ -115,7 +115,7 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
       onRequestClose={handleClose}
       style={customStyles}
       contentLabel="Book Summary Modal"
-      className={`overflow-auto ${isOpen ? "backdrop-blur-lg" : ""}`}
+      className={`overflow-auto ${isOpen ? "!backdrop-blur-lg    " : ""}`}
     >
       <div className="relative">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
@@ -140,7 +140,7 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
             <FaCopy
               onClick={copyToClipboard}
               size={24}
-              className="cursor-pointer"
+              className="cursor-pointer dark:text-black"
               title="Copy to clipboard"
             />
           </div>

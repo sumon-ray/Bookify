@@ -3,7 +3,6 @@ import * as React from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
-import { IoAdd } from "react-icons/io5";
 import Link from "next/link";
 import { useTheme } from "@mui/material/styles";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -20,6 +19,7 @@ import Swal from "sweetalert2";
 import lottieImage from "../../../..//../public/image/404.json";
 import Lottie from "lottie-react";
 import LoadingSpinner from "./LoadingSpinner";
+import Header from "./Header";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -154,98 +154,85 @@ export default function MyBooks() {
           {snackbar.message}
         </Alert>
       </Snackbar>
-
-      {/* Header Section */}
-      <div className="bg-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white rounded-md p-5 md:p-2 flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20">
-        <div className="space-y-3 pt-5 md:pt-0">
-          <h3 className="text-xl md:text-5xl font-bold">
-            Falling in love <br />
-            one page at a time.
-          </h3>
-          <p className="text-balance">
-            Lost in the pages, where every book is a new adventure <br /> and
-            love for stories grows deeper with each turn.
-          </p>
-          <Link href="/dashboard/addBook" className="inline-block">
-            <button className="flex items-center justify-center gap-0.5 bg-[#364957] text-white font-medium px-4 py-1.5 rounded-lg hover:bg-[#2c3e50] transition">
-              <IoAdd className="text-white text-lg" />
-              Add Book
-            </button>
-          </Link>
-        </div>
-
-        <figure>
-          <Image
-            src="https://i.postimg.cc/zvnbzvs0/Mybookimg.gif"
-            alt="MyBook Banner"
-            width={520}
-            height={270}
-            className="h-[270px] w-[520px] object-cover rounded-md"
-          />
-        </figure>
-      </div>
+      {/* Header */}
+      <Header />
 
       {/* Sorting Dropdown */}
       <div className="flex items-center justify-between pt-4 pb-5">
-        <h1 className="text-xl font-bold text-[18.61px] text-[#000000]">My Books</h1>
-        <div className=" outline-2 outline outline-[#a1a5a8b1] rounded-md ">
-          <FormControl sx={{ width: 200 }} size="small">
-            <Select
-              className=" "
-              displayEmpty
-              value={sortOrder}
-              onChange={handleSortChange}
-              input={
-                <OutlinedInput
-                  sx={{ border: "#a1a5a8b1", outline: "#a1a5a8b1" }}
-                />
-              }
-              renderValue={(selected) => {
-                if (selected === "") {
-                  return (
-                    <p className="flex items-center font-medium gap-x-1">
-                      Sort by Total Pages
-                    </p>
-                  );
-                }
-                const selectedLabel = sortingOptions.find(
-                  (option) => option.value === selected
-                )?.label;
-                return selectedLabel || "Sort by Total Pages";
-              }}
-              MenuProps={MenuProps}
-              inputProps={{ "aria-label": "Sort by Total Pages" }}
-              sx={{
-                "& .MuiSelect-select": {
-                  border: "black",
-                  outline: "",
-                  "&:focus": {
-                    border: "black",
-                    outline: "#a1a5a8b1",
-                  },
-                },
-                "& .MuiSelect-icon": {
-                  color: "#a1a5a8b1",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  border: "none",
-                },
-              }}
-            >
-              <MenuItem  value="">
-                <p>Select Sorting</p>
-              </MenuItem>
-              {sortingOptions.map((option) => (
-                <MenuItem
-                  key={option.value}
-                  value={option.value}
-                  style={getStyles(option, sortOrder, theme)}
-                >
-                  {option.label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+        <h1 className="text-xl font-bold text-[18.61px] text-[#000000] dark:text-gray-300">My Books</h1>
+        <div className=" outline-2 outline-[#a1a5a8b1] border rounded-md ">
+
+        <FormControl className="dark:bg-[#272727CC] text-black"  sx={{ width: 200 }} size="small">
+  <Select
+    className=" dark:bg-[#272727CC] text-black dark:text-white"
+    displayEmpty
+    value={sortOrder}
+    onChange={handleSortChange}
+    input={
+      <OutlinedInput
+        sx={{ border: "", outline: "#a1a5a8b1" }}
+      />
+    }
+    renderValue={(selected) => {
+      if (selected === "") {
+        return (
+          <p className="flex dark:text-gray-300 items-center font-medium gap-x-1">
+            Sort by Total Pages
+          </p>
+        );
+      }
+      const selectedLabel = sortingOptions.find(
+        (option) => option.value === selected
+      )?.label;
+      return selectedLabel || "Sort by Total Pages";
+    }}
+    MenuProps={{
+      PaperProps: {
+        className: "dark:bg-[#272727CC] text-black dark:text-white ", // Tailwind dark mode background
+        sx: {
+          color: "white", // Keep this for the text color inside the menu
+          "& .MuiMenuItem-root": {
+            // padding: "10px",
+            "&:hover": {
+              backgroundColor: "gray", // Hover background
+            },
+          },
+        },
+      },
+    }}
+    inputProps={{ "aria-label": "Sort by Total Pages" }}
+    sx={{
+      "& .MuiSelect-select": {
+        border: "black",
+        outline: "#a1a5a8b1",
+        "&:focus": {
+          border: "black",
+          outline: "#a1a5a8b1",
+        },
+      },
+      "& .MuiSelect-icon": {
+        color: "#a1a5a8b1",
+      },
+      "& .MuiOutlinedInput-notchedOutline": {
+        border: "none",
+      },
+    }}
+  >
+    <MenuItem value="">
+      <p>Select Sorting</p>
+    </MenuItem>
+    {sortingOptions.map((option) => (
+      <MenuItem
+        key={option.value}
+        value={option.value}
+        style={getStyles(option, sortOrder, theme)}
+      >
+        {option.label}
+      </MenuItem>
+    ))}
+  </Select>
+</FormControl>
+
         </div>
       </div>
 
@@ -255,7 +242,7 @@ export default function MyBooks() {
           sortedBooks.map((book) => (
             <div
               key={book._id}
-              className="w-auto h-auto bg-[#EFEEE9] rounded-md shadow-md hover:shadow-lg transition relative"
+              className="w-auto h-auto bg-[#EFEEE9] dark:bg-[#272727CC] rounded-md shadow-md hover:shadow-lg transition relative"
             >
               <Link
                 href={`/details/${book._id}`}
@@ -277,10 +264,10 @@ export default function MyBooks() {
                           : book.title
                         : ""}
                     </h1>
-                    <p className="text-gray-600 text-sm">
+                    {/* <p className="text-gray-600 text-sm">
                       {book?.author || "Unknown Author"}
-                    </p>
-                    <p className="text-gray-600 text-sm">
+                    </p> */}
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
                       Total Pages: {book?.totalPage || "N/A"}
                     </p>
                   </div>
@@ -310,7 +297,7 @@ export default function MyBooks() {
                       }
                     });
                   }}
-                  className="absolute bottom-1 text-[#364957] hover:text-red-700 bg-white rounded-full p-1 shadow-md"
+                  className="absolute bottom-1 text-[#364957] right-2  hover:text-red-700 bg-white rounded-full p-1 shadow-md"
                   aria-label="Delete Book"
                 >
                   {deleteBookMutation.isLoading ? (
