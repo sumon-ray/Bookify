@@ -19,6 +19,8 @@ export default function Page() {
   const router = useRouter()
   const { data: session, status } = useSession();
   const user = session?.user?.email
+  const date = new Date()
+
 
   // molas State
   const [giveBooksModal, setGiveBooksModal] = useState(false);
@@ -129,7 +131,7 @@ export default function Page() {
         }
       }).catch(error => toast.error(error.message))
   }
-  
+
 
   // const postData = {
   //   takeBooksId: takeBooksMine.map(book => (book._id)),
@@ -138,17 +140,29 @@ export default function Page() {
   //   takeEmail: []
   // }
 
-  const request_data = { takeBooks, giveBooks , takeEmail: takeBooks?.length ? takeBooks[0]?.AuthorEmail : '', giveEmail: user }
+  const request_data = {
+    ownerBooks: takeBooks, 
+    ownerEmail: takeBooks?.length ? takeBooks[0]?.AuthorEmail : '',
+    ownerName: takeBooks?.length ? takeBooks[0]?.owner : '',
+    OwnerProfile: takeBooks?.length ? takeBooks[0]?.AuthorProfile : '',
+    
+    requesterBooks: giveBooks,
+    requesterEmail: user,
+    RequesterName: session?.user?.name,
+    requesterProfile: session?.user?.image,
+    date,
+    status: 'pending'
+  }
   const exchangeBook = () => {
 
-    if(!takeBooks?.length && !giveBooks?.length ){
-       return toast("No book selected for exchange.",{
-        icon:<TiWarning className="text-orange-400 text-lg" />
-       })
+    if (!takeBooks?.length && !giveBooks?.length) {
+      return toast("No book selected for exchange.", {
+        icon: <TiWarning className="text-orange-400 text-lg" />
+      })
     }
-    if(takeBooks?.length !== giveBooks?.length ){
-      return toast('Books given and taken must equal.',{
-        icon:<TiWarning className="text-orange-400 text-lg" />
+    if (takeBooks?.length !== giveBooks?.length) {
+      return toast('Books given and taken must equal.', {
+        icon: <TiWarning className="text-orange-400 text-lg" />
       })
     }
     Swal.fire({
@@ -161,13 +175,13 @@ export default function Page() {
       confirmButtonText: "Yes, request exchange!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.post(`http://localhost:4000/exchange-request`, request_data)
+        axios.post(`https://bookify-server-lilac.vercel.app/exchange-request`, request_data)
           .then(res => {
             if (res?.data?.insertedId) {
-              axios.delete(`http://localhost:4000/take-books?email=${user}`)
+              axios.delete(`https://bookify-server-lilac.vercel.app/take-books?email=${user}`)
                 .then(res => {
                   if (res?.data?.deletedCount) {
-                    axios.delete(`http://localhost:4000/give-books?email=${user}`)
+                    axios.delete(`https://bookify-server-lilac.vercel.app/give-books?email=${user}`)
                       .then(res => {
                         if (res?.data?.deletedCount) {
                           takeBooksRefetch()

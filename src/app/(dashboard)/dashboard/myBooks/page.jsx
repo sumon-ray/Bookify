@@ -80,6 +80,8 @@ export default function MyBooks() {
     staleTime: 5 * 60 * 1000,
   });
 
+  console.log(data)
+
   const deleteBookMutation = useMutation({
     mutationFn: async (bookId) => {
       const response = await axios.delete(
