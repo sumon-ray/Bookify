@@ -156,7 +156,7 @@ export default function MyBooks() {
       </Snackbar>
 
       {/* Header Section */}
-      <div className="bg-[#EFEEE9] rounded-md p-5 md:p-2 flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20">
+      <div className="bg-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white rounded-md p-5 md:p-2 flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20">
         <div className="space-y-3 pt-5 md:pt-0">
           <h3 className="text-xl md:text-5xl font-bold">
             Falling in love <br />
