@@ -32,7 +32,7 @@ const Slider = () => {
                         <p className="font-bold text-[#000000]">Customers</p>
                     </div>
                 </div>
-                <button className="flex items-center gap-x-1 font-bold p-3 bg-white dark:text-black rounded-md ">
+                <button className="flex items-center gap-x-1 font-bold p-3 bg-[white] rounded-md text-black border-4 border-[#000000]">
                     Go to collection <HiOutlineArrowNarrowRight className="text-xl mt-1" />
                 </button>
             </div>
