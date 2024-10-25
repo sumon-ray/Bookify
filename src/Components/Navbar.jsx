@@ -73,10 +73,6 @@ const Navbar = () => {
       title: "Contact",
       path: "/contact",
     },
-    // {
-    //   title: "Dashboard",
-    //   path: "/dashboard",
-    // },
     {
       title: "About",
       path: "/about",
@@ -97,7 +93,7 @@ const Navbar = () => {
 
   return (
     <div className="overflow-hidden">
-      <nav className="md:flex items-center md:justify-between bg-[white] dark:bg-[#272727] dark:text-white py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
+      <nav className="md:flex items-center md:justify-between bg-[#ffffffD9] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
         {/* bookify logo */}
         <div>
           <Image
@@ -105,6 +101,7 @@ const Navbar = () => {
             className="h-14 md:h-[68px] w-28  md:w-36"
             height={20}
             width={200}
+            unoptimized
             alt="Logo"
           />
         </div>
@@ -120,7 +117,7 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div>
           <ul
-            className={`md:flex font-normal lg:items-center md:pb-0 pb-12 absolute md:static  md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            className={`md:flex font-normal lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
               open ? "top-16" : "top-[-490px]"
             }`}
           >
@@ -195,7 +192,8 @@ const Navbar = () => {
                 >
                   <p>{link?.title}</p>
                   <Badge
-                    badgeContent={data?.length || "0"}
+                    // sx={{backgroundImage:'#364957'}}
+                    // badgeContent={data?.length || "0"}
                     color="primary"
                     anchorOrigin={{
                       vertical: "top",
@@ -264,7 +262,7 @@ const Navbar = () => {
         </div>
 
 
-             <div className="flex lg:justify-center   items-center gap-2">
+        <div className="flex lg:justify-center   items-center gap-2">
           {session?.status === "unauthenticated" && (
             <Link href="/login">
               <button className="btn text-[16px] md:block hidden font-semibold bg-[#364957]  text-white p-3 px-4 rounded-lg">
@@ -332,10 +330,6 @@ const Navbar = () => {
             </>
           )}
          </div>
-       
-        
-
-        
        
       </nav>
     </div>

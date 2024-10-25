@@ -102,7 +102,7 @@ export default function Get() {
 
     const { data: session, status } = useSession()
     const { data = [], isLoading } = useQuery({
-        queryKey: ['exchange-request-get'],
+        queryKey: ['exchange-request-get', session?.user?.email],
         queryFn: async () => {
             const res = await axios(`https://bookify-server-lilac.vercel.app/exchange-request?ownerEmail=${session?.user?.email}`)
             const data = await res.data
@@ -143,7 +143,7 @@ export default function Get() {
     return (
         <div>
             {
-                data?.length
+                !data?.length
                     ? <div div className='min-h-[71vh] flex items-center justify-center'>
                         <figure>
                             <Image unoptimized src={`https://res.cloudinary.com/dz1fy2tof/image/upload/v1729762552/book_3_vm307x.png`} height={100} width={100} className='size-96' />

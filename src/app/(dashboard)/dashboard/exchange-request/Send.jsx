@@ -73,7 +73,7 @@ export default function Send() {
     const router = useRouter()
     const { data: session, status } = useSession()
     const { data = [], isLoading } = useQuery({
-        queryKey: ['exchange-request-send'],
+        queryKey: ['exchange-request-send', session?.user?.email],
         queryFn: async () => {
             const res = await axios(`https://bookify-server-lilac.vercel.app/exchange-request?requesterEmail=${session?.user?.email}`)
             const data = await res.data

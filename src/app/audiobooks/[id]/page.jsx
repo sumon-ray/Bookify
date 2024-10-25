@@ -79,7 +79,7 @@ export default function Page({ params }) {
   };
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto ">
+    <div className="min-h-screen max-w-7xl mx-auto">
       <div id="Main">
         <div className="mt-14 sm:mt-10 pt-14 relative z-10 rounded-xl ">
           {/* Cover Image */}
@@ -165,12 +165,14 @@ export default function Page({ params }) {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="strong underline">Description:</h3>
+                    <h3 className="strong">Description:</h3>
                     <h2>{currentAudioBook?.description}</h2>
                   </div>
-                  <div className="text-[#364957] flex gap-1 items-center  dark:text-white dark:border-[#0A0A0C]">
-                    <FaShareFromSquare className="text-2xl  " />
-                    <h2 className="hover:underline cursor-pointer">Share</h2>
+                  <div className="text-[#364957] flex gap-1 items-center justify-between dark:text-white dark:border-[#0A0A0C]">
+                    <div className="flex">
+                      <FaShareFromSquare className="text-2xl  " />
+                      <h2>Share</h2>
+                    </div>
                     <SocialSharingButtons
                       currentAudioBook={currentAudioBook}
                     ></SocialSharingButtons>
