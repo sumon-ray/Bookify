@@ -71,9 +71,9 @@ const OurLibrary = () => {
       </div>
 
       {/* Dynamic Category Selector */}
-      <div className="py-4 px-5 md:pl-20 lg:pl-0">
+      <div className="py-4 lg:mt-2 px-5 md:pl-20 lg:pl-0 ">
         <select
-          className="lg:w-[28%] md:w-[90%] w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] shadow-sm border-none focus:ring-[#EFEEE9] focus:outline-none focus:ring"
+          className="lg:w-[28%] md:w-[90%] border border-[#a1a5a8b1] focus:border-[#a1a5a8b1]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] shadow-sm  focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
@@ -93,20 +93,20 @@ const OurLibrary = () => {
       </div>
 
       {/* Book Display */}
-      <div className="flex lg:flex-row flex-col items-start xl:gap-8 gap-4 pt-">
+      <div className="flex lg:flex-row flex-col items-start xl:gap-5 gap-4 mt-5">
         {/* Static Image */}
         <figure className="lg:w-[30%] md:w-[90%] w-full px-5 md:pl-20 lg:pl-0 ">
           <Image
             src={img}
             width={400}
             height={100}
-            className="lg:w-[400px] w-full lg:h-[910px] h-[300px] rounded-md bg-cover"
+            className="lg:w-[400px] w-full lg:h-[896px] h-[300px] rounded-md bg-cover"
             alt="Library Feature Image"
           />
         </figure>
 
         {/* Dynamic Book Grid */}
-        <div className="grid  lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:pl-20 lg:pl-0  lg:gap-8 gap-4 gap-y-4 lg:w-[70%] md:w-[700px] w-full items-center justify-center p-3">
+        <div className="grid -translate-y-3 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:pl-20 lg:pl-0  lg:gap-8 gap-4 gap-y-4 lg:w-[70%] md:w-[700px] w-full items-center justify-center p-3">
           {displayedBooks.map((book, idx) => (
             <Link
               href={`/details/${book?._id}`}

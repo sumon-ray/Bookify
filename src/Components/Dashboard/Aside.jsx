@@ -46,7 +46,7 @@ export default function Aside() {
   }
 
   return (
-    <aside className="fixed top-1 left-0 z-40 w-[184px] h-screen pt-[78px] transition-transform -translate-x-full bg-white md:translate-x-0">
+    <aside className="fixed top-1 left-0 z-40 w-[184px] h-screen pt-[78px] transition-transform -translate-x-full bg-white dark:bg-[#272727CC] dark:text-gray-300  md:translate-x-0">
       <div className="h-full pl-3 pr-2 overflow-y-auto relative">
         <ul className="space-y-1 font-medium">
           {loggedInUser?.role === "admin" && (
@@ -62,8 +62,8 @@ export default function Aside() {
                   "/dashboard/dashboardd"
                 )}`}
               >
-                <RxDashboard />
-                <span className="font-bold">Dashboard</span>
+                <RxDashboard className="dark:text-white" />
+                <span className="font-bold dark:text-white">Dashboard</span>
               </Link>
             </motion.li>
           )}
@@ -80,8 +80,8 @@ export default function Aside() {
                 "/dashboard"
               )}`}
             >
-              <IoHomeOutline />
-              <span className="font-bold">Home</span>
+              <IoHomeOutline  className="dark:text-white" />
+              <span className="font-bold dark:text-white">Home</span>
             </Link>
           </motion.li>
 
@@ -97,8 +97,8 @@ export default function Aside() {
                 "/dashboard/myBooks"
               )}`}
             >
-              <PiBooks />
-              <span className="font-bold">My Books</span>
+              <PiBooks className="dark:text-white" />
+              <span className="font-bold dark:text-white">My Books</span>
             </Link>
           </motion.li>
 
@@ -114,8 +114,8 @@ export default function Aside() {
                 "/dashboard/addBook"
               )}`}
             >
-              <MdOutlineAddCircleOutline className="text-xl" />
-              <span className="font-bold">Add Book</span>
+              <MdOutlineAddCircleOutline className="text-xl dark:text-white" />
+              <span className="font-bold dark:text-white">Add Book</span>
             </Link>
           </motion.li>
 
@@ -131,8 +131,8 @@ export default function Aside() {
                 "/dashboard/exchange-request"
               )}`}
             >
-              <TbExchange className="text-xl" />
-              <span className="font-bold">Request</span>
+              <TbExchange className="text-xl dark:text-white" />
+              <span className="font-bold dark:text-white">Request</span>
             </Link>
           </motion.li>
 
@@ -149,8 +149,8 @@ export default function Aside() {
                   "/dashboard/users"
                 )}`}
               >
-                <HiUsers className="text-xl"/>
-                <span className="font-bold">Users</span>
+                <HiUsers className="text-xl dark:text-white"/>
+                <span className="font-bold dark:text-white">Users</span>
               </Link>
             </motion.li>
           )}

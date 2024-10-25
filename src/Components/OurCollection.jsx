@@ -64,7 +64,7 @@ const OurCollection = () => {
                         </div>
                         :
                         data?.slice(0, 5)?.map(book =>
-                            <div key={book?._id} className="w-[210px] md:w-[225px] h-[203px] rounded-2xl bg-[#EFEEE9] mt-36 flex flex-col items-center">
+                            <div key={book?._id} className="w-[210px] md:w-[225px] h-[203px] rounded-2xl bg-[#EFEEE9] mt-40 flex flex-col items-center">
                                 <div className="w-[175px] h-[260px] mt-[-130px] hover:mt-[-150px] hover:duration-700  rounded-xl bg-cover bg-center"
                                     style={{
                                         backgroundImage: `url('${book?.coverImage}')`

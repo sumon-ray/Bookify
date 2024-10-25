@@ -128,7 +128,7 @@ const Navbar = () => {
                   pathName === link.path && "font-black"
                 } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
-                <Link href={link.path} className="text-[black] duration-500">
+                <Link href={link.path} className="text-[black] dark:text-green-500 duration-500">
                   {link.title}
                 </Link>
               </li>
@@ -214,7 +214,7 @@ const Navbar = () => {
                   pathName === link.path && " font-black"
                 } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
-                <Link href={link.path} className="text-[black] duration-500">
+                <Link href={link.path} className="text-[black] dark:text-white duration-500">
                   {link.title}
                 </Link>
               </li>

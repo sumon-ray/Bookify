@@ -15,7 +15,7 @@ const Slider = () => {
 
             <div className="md:w-1/2 space-y-4 pl-10 md:pl-0">
                 <h1 className="text-2xl lg:text-6xl font-bold text-[#000000]">Swap Books<br /> Share Knowledge</h1>
-                <p className="text-lg text-balance">Join Bookify today,
+                <p className="text-lg text-balance dark:text-black">Join Bookify today,
                     where you can easily exchange books with fellow readers,
                     and embark on exciting literary adventures together</p>
                 <div className='flex items-center gap-x-10 pt-1.5 pb-0.5'>
