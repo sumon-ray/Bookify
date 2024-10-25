@@ -195,7 +195,7 @@ export default function MyBooks() {
                     "& .MuiMenuItem-root": {
                       // padding: "10px",
                       "&:hover": {
-                        backgroundColor: "gray", // Hover background
+                        backgroundColor: "", // Hover background
                       },
                     },
                   },
