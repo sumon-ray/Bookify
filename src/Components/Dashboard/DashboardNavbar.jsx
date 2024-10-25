@@ -105,7 +105,7 @@ export default function DashboardNavbar() {
 
   return (
     <div>
-      <nav className="fixed top-0 z-50 w-full bg-white">
+      <nav className="fixed top-0 z-50 w-full bg-white dark:bg-[#272727fb] dark:shadow-md dark:shadow-[#2f2c2cfb]">
         <div className="py-1 pr-3.5">
 
           <div className="flex items-center justify-between">
@@ -118,7 +118,7 @@ export default function DashboardNavbar() {
               </div>
 
               <Link href={"/"} className="hidden md:flex">
-                <Image src={img} className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+                <Image src={img} className="h-[60px] md:max-w-[100px] lg:max-w-[150px] -mr-6" height={20} width={200} alt="image" />
               </Link>
 
             </div>
@@ -127,9 +127,9 @@ export default function DashboardNavbar() {
 
               {/* search */}
               <div className="hidden md:flex items-center justify-center ">
-                <div className=" relative w-40 lg:w-72 md:w-52 ">
+                <div className=" relative w-40 lg:w-72 md:w-48 md:mr-4">
                   <input
-                    className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
+                    className="bg-[#EFEEE9]  w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
                     type="text"
                     placeholder="Search..."
                     onChange={handleSearch}
@@ -137,7 +137,7 @@ export default function DashboardNavbar() {
                   />
                   <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
                     <IoIosSearch
-                      className="text-xl cursor-pointer"
+                      className="text-xl cursor-pointer dark:text-black"
                       onClick={handleSearchClick}
                     />
                     <div
@@ -172,7 +172,7 @@ export default function DashboardNavbar() {
                 </div>
 
                 <div>
-                  <button className="bg-[#36495733] text-black rounded-full p-2"
+                  <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
                     id="basic-button"
                     aria-controls={open ? 'basic-menu' : undefined}
                     aria-haspopup="true"
@@ -197,14 +197,14 @@ export default function DashboardNavbar() {
                 </div>
 
                 <div>
-                  <button className="bg-[#36495733] text-black rounded-full p-2"
+                  <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
                     id="basic-button"
                     aria-controls={open ? 'basic-menu' : undefined}
                     aria-haspopup="true"
                     size="small"
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}>
-                    <MdOutlineMessage className="text-xl" />
+                    <MdOutlineMessage className="text-xl " />
                   </button>
                   <Menu
                     id="basic-menu"
@@ -222,7 +222,7 @@ export default function DashboardNavbar() {
                 </div>
 
                 <div>
-                  <button className="bg-[#36495733] text-black rounded-full p-2"
+                  <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
                     id="basic-button"
                     aria-controls={open ? 'basic-menu' : undefined}
                     aria-haspopup="true"
