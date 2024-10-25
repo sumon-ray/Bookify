@@ -22,13 +22,37 @@ import { useSession } from 'next-auth/react';
 import { AiFillMessage } from 'react-icons/ai';
 import { Button } from '@nextui-org/react';
 import Image from 'next/image';
-import { GrSend } from 'react-icons/gr';
-import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 
 function Row(props) {
     const { row } = props || {}
     const [open, setOpen] = React.useState(false);
+    const exchangeUpdateData = {
+        requesterName: row?.RequesterName,
+        requesterEmail: row?.requesterEmail,
+        requesterProfile: row?.requesterProfile,
+
+        ownerName: row?.ownerName,
+        ownerEmail: row?.ownerEmail,
+        ownerProfile: row?.OwnerProfile,
+
+        ownerBooksIds: row?.ownerBooks?.map(book => book?._id),
+        requesterBooksIds: row?.requesterBooks?.map(book => book?._id),
+        id: row?._id,
+        status: row?.status
+    }
+
+    const approve = async function () {
+        try {
+            const res = await axios.put(`https://bookify-server-lilac.vercel.app/exchange`, exchangeUpdateData)
+            const data = await res.data
+            toast.success(data?.message)
+
+        } catch (error) {
+            toast.error(error?.message)
+        }
+    }
 
     return (
         <React.Fragment>
@@ -44,12 +68,12 @@ function Row(props) {
                     </IconButton>
                 </TableCell>
                 <TableCell>
-                    {row.ownerName}
+                    {row.RequesterName}
                 </TableCell>
                 <TableCell align='right' className='relative'>
                     <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' />
                 </TableCell>
-                <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.ownerBooks?.length}</span></TableCell>
+                <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.requesterBooks?.length}</span></TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[3px] top-6'>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
                 <TableCell align='left' className='relative'>
                     <Button className='absolute left-[3px] top-3 bg-[#F5A52433] text-[#F5A524] rounded-full capitalize font-medium'>
@@ -57,9 +81,14 @@ function Row(props) {
                     </Button>
                 </TableCell>
                 <TableCell align='left' className='relative'>
-                    <Button className='bg-[#00000099] absolute left-[3px] top-3 text-[#ffffff] rounded-full capitalize font-medium'>
-                        Cancel
-                    </Button>
+                    <div className='flex items-center gap-x-2 absolute left-[6px] top-3'>
+                        <Button className='bg-[#ffffff] text-red-500 border rounded-full capitalize font-medium'>
+                            X
+                        </Button>
+                        <Button onClick={approve} className='bg-green-400  text-[#ffffff] rounded-full capitalize font-medium'>
+                            Approve
+                        </Button>
+                    </div>
                 </TableCell>
             </TableRow>
 
@@ -69,13 +98,13 @@ function Row(props) {
 
 
 
-export default function Send() {
-    const router = useRouter()
+export default function Get() {
+
     const { data: session, status } = useSession()
     const { data = [], isLoading } = useQuery({
-        queryKey: ['exchange-request-send'],
+        queryKey: ['exchange-request-get'],
         queryFn: async () => {
-            const res = await axios(`https://bookify-server-lilac.vercel.app/exchange-request?requesterEmail=${session?.user?.email}`)
+            const res = await axios(`https://bookify-server-lilac.vercel.app/exchange-request?ownerEmail=${session?.user?.email}`)
             const data = await res.data
             return data
         },
@@ -114,12 +143,11 @@ export default function Send() {
     return (
         <div>
             {
-                !data?.length ?
-                    <div div className='min-h-[71vh] flex items-center justify-center '>
-                        <figure className='flex flex-col justify-center items-center '>
-                            <Image unoptimized src={`https://res.cloudinary.com/dz1fy2tof/image/upload/v1729765964/book_5_vp9xfh.png`} height={100} width={100} className='size-96' />
-                            <figcaption className='text-2xl font-black text-center'>You haven&apos;t sent any <br /> requests yet.</figcaption>
-                            <button onClick={() => { router.push('/exchange') }} className='btn_1 flex items-center  gap-x-2 mt-3'>Send Request <GrSend className='text-lg' /></button>
+                data?.length
+                    ? <div div className='min-h-[71vh] flex items-center justify-center'>
+                        <figure>
+                            <Image unoptimized src={`https://res.cloudinary.com/dz1fy2tof/image/upload/v1729762552/book_3_vm307x.png`} height={100} width={100} className='size-96' />
+                            <figcaption className='text-2xl font-black text-center'>You haven&apos;t received book  <br />exchange requests.</figcaption>
                         </figure>
                     </div>
 
@@ -138,12 +166,12 @@ export default function Send() {
                             </TableHead>
                             <TableBody>
                                 {data?.map((row) => (
-                                    <Row key={row.name} row={row} />
+                                    <Row key={row.name} row={row} exchangeData={data} />
                                 ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
             }
-        </div >
+        </div>
     );
 }
