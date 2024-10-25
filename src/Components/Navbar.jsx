@@ -97,7 +97,7 @@ const Navbar = () => {
 
   return (
     <div className="overflow-hidden">
-      <nav className="md:flex items-center md:justify-between bg-[white] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
+      <nav className="md:flex items-center md:justify-between bg-[white] dark:bg-[#272727] dark:text-white py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
         {/* bookify logo */}
         <div>
           <Image
@@ -120,7 +120,7 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div>
           <ul
-            className={`md:flex font-normal lg:items-center md:pb-0 pb-12 absolute md:static bg-[#ffffff] md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            className={`md:flex font-normal lg:items-center md:pb-0 pb-12 absolute md:static  md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
               open ? "top-16" : "top-[-490px]"
             }`}
           >
@@ -131,7 +131,7 @@ const Navbar = () => {
                   pathName === link.path && "font-black"
                 } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
-                <Link href={link.path} className="text-[black] duration-500">
+                <Link href={link.path} className="text-[black] dark:text-green-500 duration-500">
                   {link.title}
                 </Link>
               </li>
@@ -216,7 +216,7 @@ const Navbar = () => {
                   pathName === link.path && " font-black"
                 } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
-                <Link href={link.path} className="text-[black] duration-500">
+                <Link href={link.path} className="text-[black] dark:text-white duration-500">
                   {link.title}
                 </Link>
               </li>

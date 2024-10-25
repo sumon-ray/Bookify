@@ -162,7 +162,7 @@ const FaqSection = () => {
         Frequently Asked Questions
         </h1>
       </div>
-      <div className="grid grid-cols-1  sm:grid-cols-2 gap-6 ">
+      <div className="grid grid-cols-1 lg:pt-8 sm:grid-cols-2 gap-6 ">
         {visibleFAQs.map((item, index) => (
           <div key={index} className="flex items-start space-x-4  dark:text-white">
             <span className="text-white " color="white">
@@ -194,7 +194,7 @@ const FaqSection = () => {
       <div className="flex flex-col lg:flex-row justify-between items-center mt-12 bg-white p-6 rounded-md space-y-4 lg:space-y-0 lg:space-x-4 dark:bg-[#0A0A0C] dark:text-white">
         <div className="text-center lg:text-left ">
           <h4 className="font-bold flex justify-center lg:justify-start items-center space-x-1 mb-2 lg:mb-0">
-            <span>Still have questions?</span> <FaQuestion />
+            <span>Still have questions</span> <FaQuestion />
           </h4>
           <p>
             Can’t find the answer you’re looking for? Please{" "}
