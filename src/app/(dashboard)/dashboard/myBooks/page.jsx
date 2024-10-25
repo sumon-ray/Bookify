@@ -191,7 +191,7 @@ export default function MyBooks() {
                 PaperProps: {
                   className: "dark:bg-[#272727CC] text-black dark:text-white ", // Tailwind dark mode background
                   sx: {
-                    color: "white", // Keep this for the text color inside the menu
+                    color: "black", // Keep this for the text color inside the menu
                     "& .MuiMenuItem-root": {
                       // padding: "10px",
                       "&:hover": {
