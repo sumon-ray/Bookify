@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Send from './Send';
+import Get from './Get';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -45,14 +46,15 @@ export default function BasicTabs() {
         <Box>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Get request" />
-                    <Tab label="Send request" />
+                    <Tab label="Send request" sx={{ color: 'black' }} />
+                    <Tab label="Get request" sx={{ color: 'black' }} />
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
                 <Send />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
+                <Get />
             </CustomTabPanel>
 
         </Box>

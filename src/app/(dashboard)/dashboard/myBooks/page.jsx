@@ -80,6 +80,8 @@ export default function MyBooks() {
     staleTime: 5 * 60 * 1000,
   });
 
+  console.log(data)
+
   const deleteBookMutation = useMutation({
     mutationFn: async (bookId) => {
       const response = await axios.delete(
@@ -106,9 +108,8 @@ export default function MyBooks() {
   });
 
   const sortedBooks = React.useMemo(() => {
-    if (!data){
+    if (!data) {
       return [];
-     
     }
 
     console.log("Books data:", data);
@@ -126,10 +127,7 @@ export default function MyBooks() {
     return booksCopy;
   }, [data, sortOrder]);
 
-  if (isLoading)
-    return (
-<LoadingSpinner />
-    );
+  if (isLoading) return <LoadingSpinner />;
   if (error)
     return (
       <div className="flex justify-center items-center h-screen">
@@ -159,80 +157,82 @@ export default function MyBooks() {
 
       {/* Sorting Dropdown */}
       <div className="flex items-center justify-between pt-4 pb-5">
-        <h1 className="text-xl font-bold text-[18.61px] text-[#000000] dark:text-gray-300">My Books</h1>
+        <h1 className="text-xl font-bold text-[18.61px] text-[#000000] dark:text-gray-300">
+          My Books
+        </h1>
         <div className=" outline-2 outline-[#a1a5a8b1] border rounded-md ">
-
-        <FormControl className="dark:bg-[#272727CC] text-black"  sx={{ width: 200 }} size="small">
-  <Select
-    className=" dark:bg-[#272727CC] text-black dark:text-white"
-    displayEmpty
-    value={sortOrder}
-    onChange={handleSortChange}
-    input={
-      <OutlinedInput
-        sx={{ border: "", outline: "#a1a5a8b1" }}
-      />
-    }
-    renderValue={(selected) => {
-      if (selected === "") {
-        return (
-          <p className="flex dark:text-gray-300 items-center font-medium gap-x-1">
-            Sort by Total Pages
-          </p>
-        );
-      }
-      const selectedLabel = sortingOptions.find(
-        (option) => option.value === selected
-      )?.label;
-      return selectedLabel || "Sort by Total Pages";
-    }}
-    MenuProps={{
-      PaperProps: {
-        className: "dark:bg-[#272727CC] text-black dark:text-white ", // Tailwind dark mode background
-        sx: {
-          color: "white", // Keep this for the text color inside the menu
-          "& .MuiMenuItem-root": {
-            // padding: "10px",
-            "&:hover": {
-              backgroundColor: "gray", // Hover background
-            },
-          },
-        },
-      },
-    }}
-    inputProps={{ "aria-label": "Sort by Total Pages" }}
-    sx={{
-      "& .MuiSelect-select": {
-        border: "black",
-        outline: "#a1a5a8b1",
-        "&:focus": {
-          border: "black",
-          outline: "#a1a5a8b1",
-        },
-      },
-      "& .MuiSelect-icon": {
-        color: "#a1a5a8b1",
-      },
-      "& .MuiOutlinedInput-notchedOutline": {
-        border: "none",
-      },
-    }}
-  >
-    <MenuItem value="">
-      <p>Select Sorting</p>
-    </MenuItem>
-    {sortingOptions.map((option) => (
-      <MenuItem
-        key={option.value}
-        value={option.value}
-        style={getStyles(option, sortOrder, theme)}
-      >
-        {option.label}
-      </MenuItem>
-    ))}
-  </Select>
-</FormControl>
-
+          <FormControl
+            className="dark:bg-[#272727CC] text-black"
+            sx={{ width: 200 }}
+            size="small"
+          >
+            <Select
+              className=" dark:bg-[#272727CC] text-black dark:text-white"
+              displayEmpty
+              value={sortOrder}
+              onChange={handleSortChange}
+              input={
+                <OutlinedInput sx={{ border: "", outline: "#a1a5a8b1" }} />
+              }
+              renderValue={(selected) => {
+                if (selected === "") {
+                  return (
+                    <p className="flex dark:text-gray-300 items-center font-medium gap-x-1">
+                      Sort by Total Pages
+                    </p>
+                  );
+                }
+                const selectedLabel = sortingOptions.find(
+                  (option) => option.value === selected
+                )?.label;
+                return selectedLabel || "Sort by Total Pages";
+              }}
+              MenuProps={{
+                PaperProps: {
+                  className: "dark:bg-[#272727CC] text-black dark:text-white ", // Tailwind dark mode background
+                  sx: {
+                    color: "white", // Keep this for the text color inside the menu
+                    "& .MuiMenuItem-root": {
+                      // padding: "10px",
+                      "&:hover": {
+                        backgroundColor: "gray", // Hover background
+                      },
+                    },
+                  },
+                },
+              }}
+              inputProps={{ "aria-label": "Sort by Total Pages" }}
+              sx={{
+                "& .MuiSelect-select": {
+                  border: "black",
+                  outline: "#a1a5a8b1",
+                  "&:focus": {
+                    border: "black",
+                    outline: "#a1a5a8b1",
+                  },
+                },
+                "& .MuiSelect-icon": {
+                  color: "#a1a5a8b1",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  border: "none",
+                },
+              }}
+            >
+              <MenuItem value="">
+                <p>Select Sorting</p>
+              </MenuItem>
+              {sortingOptions.map((option) => (
+                <MenuItem
+                  key={option.value}
+                  value={option.value}
+                  style={getStyles(option, sortOrder, theme)}
+                >
+                  {option.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
       </div>
 
@@ -301,8 +301,7 @@ export default function MyBooks() {
                   aria-label="Delete Book"
                 >
                   {deleteBookMutation.isLoading ? (
-               <LoadingSpinner />
-          
+                    <LoadingSpinner />
                   ) : (
                     <MdDelete className="text-xl" />
                   )}

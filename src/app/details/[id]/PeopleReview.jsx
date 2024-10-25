@@ -35,7 +35,7 @@ export default function PeopleReview({ data, isLoading }) {
                     : <div className="p-6 space-y-2.5">
                         <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row items-center">
                             <Image
-                                // unoptimized
+                                unoptimized
                                 src={data?.profile}
                                 height={10} width={10} alt="profile"
                                 className="w-11 h-11 rounded-full object-fill -mb-1" />
