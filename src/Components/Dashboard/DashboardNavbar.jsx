@@ -118,7 +118,7 @@ export default function DashboardNavbar() {
               </div>
 
               <Link href={"/"} className="hidden md:flex">
-                <Image src={img} className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+                <Image src={img} unoptimized className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
               </Link>
 
             </div>
@@ -311,7 +311,7 @@ export default function DashboardNavbar() {
             </div>
 
             <Link href={"/"} className="flex md:hidden mr-2">
-              <Image src={img} className="h-[52px] max-w-[135px] -mr-6" height={20} width={200} />
+              <Image unoptimized src={img} className="h-[52px] max-w-[135px] -mr-6" height={20} width={200} />
             </Link>
 
           </div>
