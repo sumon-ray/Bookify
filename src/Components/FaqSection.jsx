@@ -304,7 +304,7 @@ const FaqSection = () => {
             <span>Still have questions</span><FaQuestion className="text-black" /> 
           </h4>
           <p className="text-lg text-gray-700 dark:text-gray-300">
-            Can&quot;t find the answer you're looking for? Please{" "}
+            Can&apos;t find the answer you&apos;re looking for? Please{" "}
             <a href="/contact" className="text-blue-500 hover:underline">
               chat with our friendly team
             </a>

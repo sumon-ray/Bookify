@@ -24,10 +24,6 @@ const AudioBook = () => {
     },
   });
 
-  if (isError) {
-    return <div>Error: {error.message}</div>;
-  }
-
   const handlePlay = (audioURL, id) => {
     if (currentAudio === id) {
       if (isPlaying) {
@@ -80,6 +76,10 @@ const AudioBook = () => {
       return newFavorites;
     });
   }, [debouncedShowNotification]);
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <div className="max-w-7xl mx-auto py-8 space-y-10 dark:text-white">
