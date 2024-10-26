@@ -90,12 +90,12 @@ const Page = ({ redirect }) => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="flex justify-center max-w-7xl flex-row-reverse w-full mx-auto overflow-hidden rounded-lg my-16 dark:bg-[#0A0A0C] dark:text-white">
-        <div
-          className="hidden bg-center bg-no-repeat lg:block w-1/2 mx-6 my-8"
-          style={{
-            backgroundImage: "url('https://i.ibb.co/3d0DvB0/signin.png')",
-          }}
-        ></div>
+      <div
+        className="hidden bg-center bg-contain bg-no-repeat lg:block w-1/2 mx-6 my-8"
+        style={{
+          backgroundImage: "url('https://i.ibb.co/rxGD6T6/signin.png')",
+        }}
+      ></div>
 
         <div className="w-full mx-6 my-8 lg:px-16 md:px-8 lg:w-1/2">
           <Link href={"/"}>
@@ -110,7 +110,7 @@ const Page = ({ redirect }) => {
             </div>
           </Link>
 
-          <p className="mt-3 text-xl text-center text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
+          <p className="mt-1 text-xl text-center text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
             Welcome back!
           </p>
 

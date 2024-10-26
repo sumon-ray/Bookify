@@ -45,7 +45,7 @@ const AudioBook = () => {
     }
   };
   return (
-    <div className="max-w-7xl mx-auto  py-8 space-y-8 dark:bg-[#0A0A0C] dark:text-white ">
+    <div className="max-w-7xl mx-auto  py-8 space-y-8 ">
       <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto">
         <h1 className="text-2xl uppercase font-bold text-center">
           Explore Audio Collection
@@ -117,7 +117,7 @@ const AudioBook = () => {
                       <span className="cursor-pointer ml-1">Bookify</span>
                     </h2>
                   </div>
-                  <div>
+                  {/* <div>
                     <svg
                       className="w-5 h-5 text-[#364957] md:text-3xl text-xl hover:text-red-400 cursor-pointer"
                       fill="currentColor"
@@ -126,7 +126,7 @@ const AudioBook = () => {
                     >
                       <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" />
                     </svg>
-                  </div>
+                  </div> */}
                 </Link>
 
                 {/* ratting section */}
