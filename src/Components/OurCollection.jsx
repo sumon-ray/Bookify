@@ -26,12 +26,12 @@ const OurCollection = () => {
         <div className="max-w-7xl mx-auto mt-[100px] mb-14 space-y-6 px-4 sm:px-6 lg:px-8">
 
             <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-white max-w-[408px] h-12 mx-auto'>
-                <h1 className='text-2xl uppercase font-bold text-center'>
+                <h1 className='md:text-2xl uppercase font-bold text-center'>
                     Explore Rentable Collection
                 </h1>
             </div>
 
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8'>
+            <div className='grid grid-cols-1 flex flex-col items-center justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8'>
                 {
                     isLoading
                         ? <div className="col-span-full flex justify-center items-center pt-4">
@@ -62,7 +62,7 @@ const OurCollection = () => {
                         </div>
                         :
                         data?.slice(0, 5)?.map(book =>
-                            <div key={book?._id} className="w-[210px] md:w-[225px] h-[203px] rounded-2xl bg-[#EFEEE9] dark:bg-[#0A0A0C] mt-40 flex flex-col items-center">
+                            <div key={book?._id} className="w-full sm:w-[210px] md:w-[225px] h-[203px] rounded-2xl bg-[#EFEEE9] dark:bg-[#0A0A0C] mt-40 flex flex-col items-center">
                                 <div className="w-[175px] h-[260px] mt-[-130px] hover:mt-[-150px] hover:duration-700  rounded-xl bg-cover bg-center"
                                     style={{
                                         backgroundImage: `url('${book?.coverImage}')`
