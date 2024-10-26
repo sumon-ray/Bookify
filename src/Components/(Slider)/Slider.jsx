@@ -47,7 +47,7 @@ const Slider = () => {
                 </button>
             </div>
 
-            <div className="w-[200px] md:w-[400px] py-7">
+            <div className="hidden md:block md:w-[400px] py-7">
                 <div>
                     <Swiper
                         effect={'cards'}
@@ -156,7 +156,7 @@ const Slider = () => {
                 </div>
             </div>
 
-            {/* <div className="md:w-[400px] py-7 block md:hidden">
+            <div className="md:w-[400px] py-7 block md:hidden">
                 <div>
                     <Swiper
                         effect={'cards'}
@@ -259,7 +259,7 @@ const Slider = () => {
 
                     </Swiper>
                 </div>
-            </div> */}
+            </div>
 
         </div>
     );
