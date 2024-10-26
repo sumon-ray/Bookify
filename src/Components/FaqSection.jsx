@@ -179,7 +179,7 @@ const FaqSection = () => {
   }, [searchTerm]);
 
   return (
-    <div className="px-8 py-16 lg:px-28 mx-auto space-y-12 bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="px-8 py-16 lg:px-28 mx-auto space-y-12  dark:from-gray-900 dark:to-gray-800">
       <motion.div
         ref={ref}
         animate={controls}
