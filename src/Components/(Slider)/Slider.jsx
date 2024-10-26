@@ -33,17 +33,19 @@ const Slider = () => {
                 <div className='flex items-center gap-x-7 pt-1.5 pb-0.5'>
                     <div>
                         <p className="font-bold text-[#000000] dark:text-white text-xl flex justify-start items-center gap-1">
-                            <SiGitbook className="text-3xl" /><span>{data?.exchangeBooks+data?.rentBooks+data?.audioBooks-1}+</span>
+                            <SiGitbook className="text-3xl" /><span>{data?.exchangeBooks+data?.rentBooks+data?.audioBooks-1 || ''}+</span>
                         </p>
                     </div>
                     <div>
                         <p className="font-bold text-[#000000] text-xl flex justify-start items-center gap-1 dark:text-white">
-                            <IoIosPeople className="text-3xl" /><span>{data?.totalUsers-1}</span>
+                            <IoIosPeople className="text-3xl" /><span>{data?.totalUsers-1 || ''}</span>
                         </p>
                     </div>
                 </div>
-                <button className="flex items-center gap-x-1 font-bold p-3 bg-[white] dark:bg-[#0A0A0C] rounded-md text-black dark:text-white border-4 border-[#000000] dark:border-white">
-                    Go to collection <HiOutlineArrowNarrowRight className="text-xl mt-1" />
+                <button onClick={()=>{
+                    scrollBy(0,1300)
+                }} className="flex items-center gap-x-1 font-bold p-3 bg-[white] dark:bg-[#0A0A0C] rounded-md text-black dark:text-white border-4 border-[#000000] dark:border-white">
+                    Go to Library <HiOutlineArrowNarrowRight className="text-xl mt-1" />
                 </button>
             </div>
 
