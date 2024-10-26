@@ -31,7 +31,7 @@ export default function DetailsTab({ Book }) {
                     <li className="me-2" onClick={() => {
                         setOpen(1)
                     }}>
-                        <p className={`inline-block p-4 ${open === 1 ? 'border-b-2 border-black dark:border-white rounded-t-lg' : ''}`}>Summary</p>
+                        <p className={`inline-block p-4 ${open === 1 ? 'border-b-2 border-black dark:border-white rounded-t-lg' : ''}`}>Description </p>
                     </li>
                     <li className="me-2" onClick={() => {
                         setOpen(2)

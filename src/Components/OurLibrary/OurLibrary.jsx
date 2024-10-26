@@ -73,7 +73,7 @@ const OurLibrary = () => {
       {/* Dynamic Category Selector */}
       <div className="py-3 lg:mt-2 px-5 md:pl-20 lg:pl-0 ">
         <select
-          className="lg:w-[28%] md:w-[90%]  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff]  focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
+          className="lg:w-[28%] md:w-[90%]  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
@@ -149,7 +149,7 @@ const OurLibrary = () => {
                   <h1 className="font-bold md:uppercase" title={book?.title}>
                     {book?.title?.split(' ').slice(0,2).join(' ')}
                   </h1>
-                  <h1 className="font-medium">{book?.author?.split(' ').slice(0,2).join(' ')}</h1>
+                  <h1 className="font-medium">{book?.owner?.split(' ').slice(0,2).join(' ')}</h1>
                 </div>
               </div>
             </Link>
