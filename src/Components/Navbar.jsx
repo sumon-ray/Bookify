@@ -93,7 +93,7 @@ const Navbar = () => {
 
   return (
     <div className="overflow-hidden">
-      <nav className="md:flex items-center md:justify-between bg-[#ffffffD9] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
+      <nav className="md:flex items-center md:justify-between bg-[#F3F2ED] dark:bg-[#0A0A0CCC] dark:border-b border-white py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
         {/* bookify logo */}
         <div>
           <Image
@@ -128,7 +128,7 @@ const Navbar = () => {
                   pathName === link.path && "font-black"
                 } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
-                <Link href={link.path} className="text-[black] dark:text-green-500 duration-500">
+                <Link href={link.path} className="text-[black] dark:text-white duration-500">
                   {link.title}
                 </Link>
               </li>

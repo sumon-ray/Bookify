@@ -45,7 +45,7 @@ const AudioBook = () => {
     }
   };
   return (
-    <div className="max-w-7xl mx-auto  py-8 space-y-10 dark:bg-[#0A0A0C] dark:text-white ">
+    <div className="max-w-7xl mx-auto  py-8 space-y-8 dark:bg-[#0A0A0C] dark:text-white ">
       <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto">
         <h1 className="text-2xl uppercase font-bold text-center">
           Explore Audio Collection
@@ -79,26 +79,27 @@ const AudioBook = () => {
           </div>
         </div>
       ) : (
-        <div className="px-6 p-4 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mb-5 transition-all duration-500 dark:bg-[#0A0A0C] dark:text-white">
+        <div className="px-6 p-4 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-9 mb-5 transition-all duration-500">
           {data?.slice(0, 4).map((b) => (
             <div
               key={b.id}
-              className="flex border bg-white shadow-lg rounded-lg hover:shadow-sm-light dark:bg-[#0A0A0C] dark:text-white"
+              className="flex bg-white shadow-lg rounded-lg hover:shadow-sm-light dark:bg-[#0A0A0C] dark:text-white"
             >
               <Link
                 href={`/audiobooks/${b?._id}`}
-                className="h-64 w-full md:w-60"
+                className="h-[280px] w-full md:w-80"
               >
                 <Image
-                  className="rounded-tl rounded-bl h-full"
+                  className="rounded-tl rounded-bl h-full object-fill"
                   width={250}
                   height={250}
                   src={b?.audioBookCover}
                   alt={b?.title}
                   quality={80}
+                  unoptimized
                 />
               </Link>
-              <div className="w-full md:p-8 p-4 relative">
+              <div className="w-full md:py-5 p-4 relative">
                 <Link
                   href={`/audiobooks/${b?._id}`}
                   className="flex justify-between gap-2"

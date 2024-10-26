@@ -25,9 +25,9 @@ const OurCollection = () => {
     return (
         <div className="max-w-7xl mx-auto  mt-[100px] mb-14  space-y-6">
 
-            <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto'>
+            <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[408px] h-12 mx-auto'>
                 <h1 className='text-2xl uppercase font-bold text-center'>
-                    Explore Rent Collection
+                    Explore Rentable Collection
                 </h1>
             </div>
 
