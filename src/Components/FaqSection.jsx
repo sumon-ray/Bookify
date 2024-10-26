@@ -266,7 +266,7 @@ const FaqSection = () => {
               className="col-span-2 text-center py-8"
             >
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
-                No results found for "{searchTerm}".
+                No results found for &ldquo;{searchTerm}&rdquo;.
               </p>
               <p className="text-lg text-gray-500 dark:text-gray-400">
                 Try different keywords or{" "}
