@@ -106,12 +106,12 @@ export default function Page() {
                 />
                 <div className="min-w-0 flex-auto space-y-1 font-semibold mt-2">
                   <div className="flex justify-between">
-                    <p className="text-[#000000] dark:text-[#000000] text-3xl font-semibold leading-6">
+                    <p className="text-[#000000] dark:text-[#ffffff] text-3xl font-semibold leading-6">
                       {currentAudioBook.title}
                     </p>
-                    <button className="text-2xl text-[#364957]">
+                   {/*  <button className="text-2xl text-[#364957]">
                       <FaBookmark></FaBookmark>
-                    </button>
+                    </button> */}
                   </div>
                   <h2 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate ">
                     By:
@@ -177,7 +177,7 @@ export default function Page() {
                     <h3 className="strong ">Description:</h3>
                     <h2>{currentAudioBook?.description}</h2>
                   </div>
-                  <div className="text-[#364957] flex gap-1 justify-between items-center">
+                  <div className="text-[#364957] mt-2 flex gap-1 justify-between items-center">
                     <div className="flex">
                       <FaShareFromSquare className="text-2xl  " />
                       <h2>Share:</h2>

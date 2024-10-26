@@ -47,7 +47,7 @@ const Slider = () => {
                 </button>
             </div>
 
-            <div className="md:w-[400px] py-7 hidden md:block">
+            <div className="w-[200px] md:w-[400px] py-7">
                 <div>
                     <Swiper
                         effect={'cards'}
@@ -58,7 +58,11 @@ const Slider = () => {
                             delay: 2500,
                             disableOnInteraction: false,
                         }}
-                        style={{ width: '250px', height: '370px' }}
+                        style={{
+                            width: '100%',
+                            height: '370px',
+                            maxWidth: '250px',
+                        }}
                     >
                         <SwiperSlide>
                             <div
