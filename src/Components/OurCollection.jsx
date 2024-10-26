@@ -23,20 +23,18 @@ const OurCollection = () => {
 
 
     return (
-        <div className="max-w-7xl mx-auto  mt-[100px] mb-14  space-y-6">
+        <div className="max-w-7xl mx-auto mt-[100px] mb-14 space-y-6 px-4 sm:px-6 lg:px-8">
 
             <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto'>
-                <h1 className='text-2xl uppercase font-bold text-center'>
+                <h1 className=' md:text-2xl uppercase font-bold text-center'>
                     Explore Rent Collection
                 </h1>
             </div>
 
-            <div className=' lg:flex flex flex-wrap w-full   justify-center items-center gap-8  '>
-
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8'>
                 {
                     isLoading
-                        ?
-                        <div className="flex justify-center items-center pt-4">
+                        ? <div className="col-span-full flex justify-center items-center pt-4">
                             <div className='flex flex-col justify-center items-center gap-y-1'>
                                 <svg
                                     class="animate-spin [animation-duration:1.5s]"
@@ -62,19 +60,23 @@ const OurCollection = () => {
                                 <h1 className='text-lg font-medium'>Loading...</h1>
                             </div>
                         </div>
-                        :
-                        data?.slice(0, 5)?.map(book =>
-                            <div key={book?._id} className="w-[210px] md:w-[225px] h-[203px] rounded-2xl bg-[#EFEEE9] mt-40 flex flex-col items-center">
-                                <div className="w-[175px] h-[260px] mt-[-130px] hover:mt-[-150px] hover:duration-700  rounded-xl bg-cover bg-center"
-                                    style={{
-                                        backgroundImage: `url('${book?.coverImage}')`
-                                    }}>
+                        : data?.slice(0, 5)?.map(book =>
+                            <div key={book?._id} className="w-full sm:max-w-[225px] h-auto sm:h-[203px] rounded-2xl bg-[#EFEEE9] mt-40 flex flex-col items-center transform transition-all duration-300 hover:scale-105">
+                                <div className="w-[175px] h-[260px] sm:w-[175px] sm:h-[260px] mt-[-130px] hover:mt-[-150px] transition-all duration-700 rounded-xl overflow-hidden">
+                                    <img 
+                                        src={book?.coverImage} 
+                                        alt={book?.Genre}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
-                                <div className='text-center p-3'>
-                                    <h3 className='text-xl font-bold text-[#000000]'>{book?.Genre.split(' ')[0]}</h3>
-                                    <Link href={'/rentbooks'} className='flex items-center justify-center'>More <IoIosArrowRoundForward className='-mb-1 text-2xl' /></Link>
+                                <div className='text-center p-3 w-full'>
+                                    <h3 className='text-xl font-bold text-[#000000] truncate'>{book?.Genre.split(' ')[0]}</h3>
+                                    <Link href={'/rentbooks'} className='flex items-center justify-center hover:text-blue-600 transition-colors duration-300'>
+                                        More <IoIosArrowRoundForward className='-mb-1 text-2xl' />
+                                    </Link>
                                 </div>
-                            </div>)
+                            </div>
+                        )
                 }
             </div>
         </div>

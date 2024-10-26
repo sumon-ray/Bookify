@@ -66,7 +66,7 @@ const OurLibrary = () => {
   return (
     <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[385px] h-12 mx-auto'>
-        <h1 className='md:text-2xl uppercase font-bold text-center'>
+        <h1 className='text-2xl uppercase font-bold text-center'>
           Explore Exchange Library
         </h1>
       </div>
