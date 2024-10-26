@@ -45,14 +45,14 @@ const AudioBook = () => {
     }
   };
   return (
-    <div className="max-w-7xl mx-auto  py-8 space-y-10 dark:bg-[#0A0A0C] dark:text-white ">
-      <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto">
+    <div className="max-w-7xl mx-auto  py-8 space-y-10  dark:text-white ">
+      <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[380px] h-12 mx-auto">
         <h1 className="text-2xl uppercase font-bold text-center">
           Explore Audio Collection
         </h1>
       </div>
       {isLoading ? (
-        <div className="flex justify-center items-center pt-1 dark:bg-[#0A0A0C] dark:text-white">
+        <div className="flex justify-center items-center pt-1   dark:text-white">
           <div className="flex flex-col justify-center items-center gap-y-1">
             <svg
               class="animate-spin [animation-duration:1.5s]"
