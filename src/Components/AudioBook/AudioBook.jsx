@@ -3,12 +3,15 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AudioBook = () => {
   const [currentAudio, setCurrentAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [favorites, setFavorites] = useState({});
   const audioRef = useRef(null);
 
   const { data, isLoading, isError, error } = useQuery({
@@ -44,15 +47,50 @@ const AudioBook = () => {
       setIsPlaying(true);
     }
   };
+
+  const debounce = (func, wait) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func(...args), wait);
+    };
+  };
+
+  const showNotification = useCallback(
+    debounce((message, type) => {
+      toast[type](message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }, 300),
+    []
+  );
+
+  const handleFavorite = useCallback((id) => {
+    setFavorites(prev => {
+      const newFavorites = { ...prev, [id]: !prev[id] };
+      if (newFavorites[id]) {
+        showNotification('Added to favorites!', 'success');
+      } else {
+        showNotification('Removed from favorites', 'info');
+      }
+      return newFavorites;
+    });
+  }, [showNotification]);
+
   return (
-    <div className="max-w-7xl mx-auto  py-8 space-y-10 dark:bg-[#0A0A0C] dark:text-white ">
-      <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[380px] h-12 mx-auto">
-        <h1 className="text-2xl uppercase font-bold text-center">
+    <div className="max-w-7xl mx-auto py-8 space-y-10 dark:text-white">
+      <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[380px] h-12 mx-auto">
+        <h1 className="md:text-2xl uppercase font-bold text-center">
           Explore Audio Collection
         </h1>
       </div>
       {isLoading ? (
-        <div className="flex justify-center items-center pt-1 dark:bg-[#0A0A0C] dark:text-white">
+        <div className="flex justify-center items-center pt-1   dark:text-white">
           <div className="flex flex-col justify-center items-center gap-y-1">
             <svg
               class="animate-spin [animation-duration:1.5s]"
@@ -79,116 +117,84 @@ const AudioBook = () => {
           </div>
         </div>
       ) : (
-        <div className="px-6 p-4 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mb-5 transition-all duration-500 dark:bg-[#0A0A0C] dark:text-white">
+        <div className="px-6 p-4 grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-6 mb-5 transition-all duration-500 dark:bg-[#0A0A0C] dark:text-white">
           {data?.slice(0, 4).map((b) => (
             <div
               key={b.id}
-              className="flex border bg-white shadow-lg rounded-lg hover:shadow-sm-light dark:bg-[#0A0A0C] dark:text-white"
+              className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 dark:bg-[#0A0A0C] dark:text-white"
             >
-              <Link
-                href={`/audiobooks/${b?._id}`}
-                className="h-64 w-full md:w-60"
-              >
+              <div className="md:w-1/3 w-full relative">
                 <Image
-                  className="rounded-tl rounded-bl h-full"
+                  className="h-64 md:h-full w-full object-cover"
                   width={250}
                   height={250}
                   src={b?.audioBookCover}
                   alt={b?.title}
-                  quality={80}
+                  quality={90}
                 />
-              </Link>
-              <div className="w-full md:p-8 p-4 relative">
-                <Link
-                  href={`/audiobooks/${b?._id}`}
-                  className="flex justify-between gap-2"
-                >
-                  <div>
-                    <div className="lg:text-xl md:text-sm text-grey-darkest font-medium hover:underline">
-                      <p className="">{b?.title}</p>
-                    </div>
-                    <h2 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate ">
-                      By:
-                      <span className="cursor-pointer ml-1">{b.author}</span>
-                    </h2>
-                    <h2 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate ">
-                      Publisher:
-                      <span className="cursor-pointer ml-1">Bookify</span>
-                    </h2>
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                  <Link
+                    href={`/audiobooks/${b?._id}`}
+                    className="text-white text-sm font-semibold bg-[#364957] px-3 py-2 rounded-full hover:bg-opacity-90 transition-colors duration-300"
+                  >
+                    View Details
+                  </Link>
+                </div>
+              </div>
+              <div className="md:w-2/3 w-full p-6 flex flex-col justify-between">
+                <div>
+                  <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-2 hover:text-[#364957] transition-colors duration-300">
+                    {b?.title}
+                  </h2>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-2">
+                    By: <span className="font-medium">{b.author}</span>
+                  </p>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">
+                    Publisher: <span className="font-medium">Bookify</span>
+                  </p>
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className={`w-4 h-4 ${
+                          i < 4 ? "text-yellow-300" : "text-gray-300 dark:text-gray-600"
+                        } mr-1`}
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 22 20"
+                      >
+                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                      </svg>
+                    ))}
+                    <span className="text-slate-500 dark:text-slate-400 text-sm ml-2">4.0 (42 reviews)</span>
                   </div>
-                  <div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <button
+                    onClick={() => handlePlay(b.audioURL, b?._id)}
+                    className="flex items-center justify-center text-[#364957] hover:text-opacity-80 transition-colors duration-300"
+                  >
+                    {isPlaying && currentAudio === b?._id ? (
+                      <FaPauseCircle className="text-3xl" />
+                    ) : (
+                      <FaPlayCircle className="text-3xl" />
+                    )}
+                  </button>
+                  <button 
+                    onClick={() => handleFavorite(b?._id)}
+                    className={`transition-colors duration-300 ${
+                      favorites[b?._id] ? 'text-red-500' : 'text-[#364957]'
+                    } hover:text-opacity-80`}
+                  >
                     <svg
-                      className="w-5 h-5 text-[#364957] md:text-3xl text-xl hover:text-red-400 cursor-pointer"
+                      className="w-5 h-5"
                       fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" />
                     </svg>
-                  </div>
-                </Link>
-
-                {/* ratting section */}
-
-                <div className="flex cursor-pointer mt-2">
-                  <svg
-                    className="w-4 h-4 text-yellow-300 ms-1 "
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 22 20"
-                  >
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
-                  <svg
-                    className="w-4 h-4 text-yellow-300 ms-1"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 22 20"
-                  >
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
-                  <svg
-                    className="w-4 h-4 text-yellow-300 ms-1"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 22 20"
-                  >
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
-                  <svg
-                    className="w-4 h-4 text-yellow-300 ms-1"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 22 20"
-                  >
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
-                  <svg
-                    className="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 22 20"
-                  >
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
-                </div>
-
-                <div className="md:text-3xl text-xl absolute bottom-0  md:-right-1 -right-4">
-                  <button
-                    type="button"
-                    onClick={() => handlePlay(b.audioURL, b?._id)}
-                    className="px-8 py-3 font-semibold rounded-full text-[#364957]"
-                  >
-                    {isPlaying && currentAudio === b?._id ? (
-                      <FaPauseCircle />
-                    ) : (
-                      <FaPlayCircle />
-                    )}
                   </button>
                 </div>
               </div>
@@ -197,6 +203,7 @@ const AudioBook = () => {
         </div>
       )}
       <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
+      <ToastContainer />
     </div>
   );
 };

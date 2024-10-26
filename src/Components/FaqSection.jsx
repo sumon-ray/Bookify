@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
-import { FaDochub, FaGoogleWallet, FaQuestion, FaRobot, FaWallet } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { FaQuestion, FaRobot } from "react-icons/fa";
 import {
-  FiBook,
   FiShoppingCart,
   FiSend,
   FiMessageCircle,
@@ -12,16 +11,30 @@ import {
   FiDollarSign,
   FiRepeat,
   FiUserCheck,
-  FiExternalLink,
 } from "react-icons/fi";
 import { GiCardExchange } from "react-icons/gi";
-import {
-  HiOutlineArrowNarrowRight,
-  HiOutlineShoppingBag,
-} from "react-icons/hi";
+import { HiOutlineArrowNarrowRight, HiOutlineShoppingBag } from "react-icons/hi";
 import { LiaShippingFastSolid } from "react-icons/lia";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { IoIosArrowDown } from "react-icons/io";
+import { RiSearchLine } from "react-icons/ri";
+
 const FaqSection = () => {
   const [showMore, setShowMore] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [expandedItems, setExpandedItems] = useState({});
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
 
   const faqItems = [
     {
@@ -153,73 +166,161 @@ const FaqSection = () => {
     },
   ];
 
-  const visibleFAQs = showMore ? faqItems : faqItems.slice(0, 6);
+  const filteredFAQs = faqItems.filter(
+    (item) =>
+      item.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.answer.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const visibleFAQs = showMore ? filteredFAQs : filteredFAQs.slice(0, 6);
+
+  useEffect(() => {
+    setExpandedItems({});
+  }, [searchTerm]);
 
   return (
-    <div className="px-8 p-6 lg:px-28 mx-auto space-y-10 ">
-      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[410px] h-12 mx-auto'>
-        <h1 className='text-2xl uppercase font-bold text-center  dark:text-white'>
+    <div className="px-8 py-16 lg:px-28 mx-auto space-y-12 bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <motion.div
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 50 }
+        }}
+        transition={{ duration: 0.5 }}
+        className="text-center space-y-4"
+      >
+        <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[385px] h-12 mx-auto'>
+        <h1 className=' md:text-xl lg:text-2xl  uppercase font-bold text-center'>
         Frequently Asked Questions
         </h1>
       </div>
-      <div className="grid grid-cols-1 lg:pt-8 sm:grid-cols-2 gap-6 ">
-        {visibleFAQs.map((item, index) => (
-          <div key={index} className="flex items-start space-x-4  dark:text-white">
-            <span className="text-white " color="white">
-              {" "}
-              {item.icon}
-            </span>
-            <div>
-              <h3 className="font-bold">{item.question}</h3>
-              <p className="dark:text-gray-400">{item.answer}</p>
-            </div>
-          </div>
-        ))}
+        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Find answers to common questions about our book exchange platform.
+        </p>
+      </motion.div>
+
+      <div className="max-w-md mx-auto relative">
+        <RiSearchLine className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+        <input
+          type="text"
+          placeholder="Search FAQs..."
+          className="w-full px-10 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white shadow-sm"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
 
+      <motion.div 
+        layout 
+        className="grid grid-cols-1 lg:pt-8 lg:grid-cols-2 gap-8"
+      >
+        <AnimatePresence>
+          {visibleFAQs.length > 0 ? (
+            visibleFAQs.map((item, index) => (
+              <motion.div
+                key={index}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
+              >
+                <div 
+                  className="flex items-start space-x-4 cursor-pointer"
+                  onClick={() => setExpandedItems(prev => ({ ...prev, [index]: !prev[index] }))}
+                >
+                  <span className="text-blue-500 dark:text-blue-400 mt-1 flex-shrink-0">{item.icon}</span>
+                  <div className="flex-grow">
+                    <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-200">{item.question}</h3>
+                    <AnimatePresence>
+                      {expandedItems[index] && (
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="text-gray-600 dark:text-gray-400 mt-2 text-sm"
+                        >
+                          {item.answer}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                  <IoIosArrowDown
+                    className={`text-blue-500 transition-transform duration-300 ${
+                      expandedItems[index] ? 'transform rotate-180' : ''
+                    }`}
+                  />
+                </div>
+              </motion.div>
+            ))
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="col-span-2 text-center py-8"
+            >
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
+                No results found for "{searchTerm}".
+              </p>
+              <p className="text-lg text-gray-500 dark:text-gray-400">
+                Try different keywords or{" "}
+                <Link href="/ai-chat" className="text-blue-500 hover:underline">
+                  ask our AI assistant
+                </Link>{" "}
+                for more specific help.
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+
       <div className="text-center mt-6">
-        {!showMore && (
+        {!showMore && filteredFAQs.length > 6 && (
           <button
-            className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600" 
+            className="px-6 py-2 border border-black text-black rounded-lg hover:bg-blue-700 transition-colors duration-300"
             onClick={() => setShowMore(true)}
           >
-            <span className="flex items-center justify-center gap-1 ">
-              {" "}
-              Read more. <HiOutlineArrowNarrowRight className="mt-1" />
+            <span className="flex items-center justify-center gap-1">
+              Show more <HiOutlineArrowNarrowRight className="mt-1" />
             </span>
           </button>
         )}
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-between items-center mt-12 bg-white p-6 rounded-md space-y-4 lg:space-y-0 lg:space-x-4 dark:bg-[#0A0A0C] dark:text-white">
-        <div className="text-center lg:text-left ">
-          <h4 className="font-bold flex justify-center lg:justify-start items-center space-x-1 mb-2 lg:mb-0">
-            <span>Still have questions</span> <FaQuestion />
+        <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-blue-50 dark:bg-gray-900 p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-xl"
+      >
+        <div className="text-center lg:text-left max-w-2xl">
+          <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center mb-4">
+            <span>Still have questions</span><FaQuestion className="text-black" /> 
           </h4>
-          <p>
-            Can’t find the answer you’re looking for? Please{" "}
-            <a href="/contact" className="text-blue-500">
-              chat to our friendly team.
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            Can't find the answer you're looking for? Please{" "}
+            <a href="/contact" className="text-blue-500 hover:underline">
+              chat with our friendly team
             </a>
-            . Or try our AI-powered assistant for instant help.
+            , or try our AI-powered assistant for instant help.
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-          {/* <button className="px-6 py-2 flex items-center justify-center rounded-lg">
-            <FaDochub className="" />
-            documentation <FiExternalLink className="ml-1" />
-          </button> */}
-          <button className="px-6 py-2 bg-gray-700 text-white rounded-lg">
-            <Link href="/ai-chat">
-            <p className="flex items-center gap-2">
-Ask our AI Assistant   <FaRobot className="text-xl" /> 
-</p>
-    
-            </Link>
-          </button>
+        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+          <Link href="/contact" className="px-8 py-3  text-black border border-black rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
+            Contact Support <FiMessageCircle className="text-xl" />
+          </Link>
+          <Link href="/ai-chat" className="px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
+            Ask AI Assistant <FaRobot className="text-xl" />
+          </Link>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

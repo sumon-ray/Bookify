@@ -100,9 +100,9 @@ export default function Page({ params }) {
                     <p className="dark:bg-[#0A0A0C] dark:text-white dark:border-[#0A0A0C] text-3xl font-semibold leading-6">
                       {currentAudioBook.title}
                     </p>
-                    <button className="text-2xl text-[#364957]">
+                   {/*  <button className="text-2xl text-[#364957]">
                       <FaBookmark></FaBookmark>
-                    </button>
+                    </button> */}
                   </div>
                   <h2 className="text-slate-500  dark:text-white dark:border-[#0A0A0C] text-sm leading-6 truncate ">
                     By:
@@ -168,7 +168,7 @@ export default function Page({ params }) {
                     <h3 className="strong">Description:</h3>
                     <h2>{currentAudioBook?.description}</h2>
                   </div>
-                  <div className="text-[#364957] flex gap-1 items-center justify-between dark:text-white dark:border-[#0A0A0C]">
+                  <div className="text-[#364957] mt-2 flex gap-1 items-center justify-between dark:text-white dark:border-[#0A0A0C]">
                     <div className="flex">
                       <FaShareFromSquare className="text-2xl  " />
                       <h2>Share</h2>
