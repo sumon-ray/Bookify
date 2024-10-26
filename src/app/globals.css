@@ -66,13 +66,13 @@ body {
   font-weight: 500;
   border-radius: 0.5rem;
   /* Rounded corners */
-  font-size: 0.875rem;
+  /* font-size: 0.875rem; */
   /* Small text */
-  padding: 0.5rem 0.7rem;
+  padding: 0.5rem 0.6rem;
   /* Padding: 0.5rem top-bottom, 1.25rem left-right */
-  margin-right: 0.5rem;
+  /* margin-right: 0.5rem; */
   /* Margin-end */
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
   /* Margin-bottom */
 
   outline: none;
@@ -93,11 +93,11 @@ body {
   /* Rounded corners */
   font-size: 0.875rem;
   /* Small text */
-  padding: 0.5rem 0.8rem;
+  padding: 0.5rem 0.6rem;
   /* Padding: 0.5rem top-bottom, 1.25rem left-right */
-  margin-right: 0.5rem;
+  /* margin-right: 0.5rem; */
   /* Margin-end */
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
   /* Margin-bottom */
 
   outline: none;

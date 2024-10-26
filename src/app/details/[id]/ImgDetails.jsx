@@ -98,28 +98,30 @@ export default function ImgDetails({ Book = {} }) {
   }
 
   return (
-    <div className="flex flex-col md:flex-row gap-3 md:gap-8 max-w-6xl mx-auto pt-1 pb-5 px-7">
-      <figure className="md:w-[40%] bg-[#EFEEE9] dark:bg-[#0A0A0CCC] px-6 py-[10px] flex items-center justify-center border border-black dark:border-white dark:border-2 rounded-md">
+    <div className="flex flex-col md:flex-row gap-3 md:gap-8 max-w-6xl mx-auto pb-5 pt-1 px-7">
+
+      <figure className="md:w-[43%] bg-[#EFEEE9] dark:bg-[#0A0A0CCC] px-6 py-6 flex items-center justify-center border border-black dark:border-white dark:border-2 rounded-md">
         <Image
           height={100}
           width={100}
           src={coverImage}
           alt={title}
-          className="w-full h-[390px] rounded-md"
+          className="w-full md:h-[453px] rounded-md object-fill"
           unoptimized
         />
       </figure>
 
-      <div className="md:w-[60%] py-2 space-y-3 dark:text-white">
+      <div className="md:w-[57%] space-y-[18px] dark:text-white">
+
         <h1 className="font-bold text-2xl md:text-3xl capitalize">
           {title}
         </h1>
 
-        <div className="flex items-center">
-          {[...Array(5)].map((_, index) => (
+        <div className="flex items-center gap-x-2">
+          {[1, 2, 3, 4, 5].map((value, index) => (
             <svg
               key={index}
-              className={`w-5 h-5 ${rating > index ? "text-yellow-400 dark:text-yellow-300" : "text-gray-300"
+              className={`w-8 h-[30px] ${rating + 0.5 > value ? "text-[#FAAF00] dark:text-yellow-300" : "text-gray-300"
                 }`}
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
@@ -131,12 +133,15 @@ export default function ImgDetails({ Book = {} }) {
           ))}
         </div>
 
-        <div className="space-y-2 text-gray-700 dark:text-white">
+        <div className="space-y-[11px] text-gray-700 dark:text-white ">
           <p>
-            <span className="font-semibold">Author:</span> {author}
+            <span className="font-semibold">Email:</span> {AuthorEmail}
           </p>
           <p>
             <span className="font-semibold">Owner:</span> {owner}
+          </p>
+          <p>
+            <span className="font-semibold">Writer:</span> {author}
           </p>
           <p>
             <span className="font-semibold">Category:</span> {genre}
@@ -162,14 +167,27 @@ export default function ImgDetails({ Book = {} }) {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-2 pt-1">
+        <div className="flex items-center gap-x-2 md:gap-x-3 ">
           {/* Exchange Button */}
           <button
             onClick={addToBook}
             type="button"
-            className="flex items-center btn_1 gap-1 py-2  text-white rounded-md transition dark:bg-[#0A0A0C]">
-            <TbExchange className="text-xl" />
+            className="flex items-center btn_1 gap-0.5 py-2 text-xs md:text-base  text-white rounded-md transition dark:bg-[#0A0A0C]">
+            <TbExchange className="hidden md:block text-xl" />
             Exchange
+          </button>
+
+          <button onClick={() => setModalOpen(true)} className="flex items-center btn_2 text-xs md:text-base  gap-0.5 px-2 py-1.5 text-white rounded-md transition">
+            <Summarize className="hidden md:block text-xl" />
+            Summary
+          </button>
+
+          {/* Read Button */}
+          <button
+            onClick={() => router.push(`/read/${_id}`)}
+            className="flex items-center btn_2 gap-1 px-2 py-2 text-white text-xs md:text-base rounded-md transition dark:bg-[white] dark:text-black">
+            <AiOutlineRead className="hidden md:block text-xl" />
+            Read
           </button>
 
           {/* Edit Button */}
@@ -178,29 +196,18 @@ export default function ImgDetails({ Book = {} }) {
               if (AuthorEmail !== session?.user?.email) return toast.error(`Only owner can edit`);
               router.push(`/update/${_id}`)
             }}
-            className="flex items-center btn_2 gap-1 px-2 py-2 text-white rounded-md transition dark:bg-[#0A0A0C] dark:text-white dark:border-white dark:border-4">
-            <FaEdit className="text-xl" />
+            className={AuthorEmail === session?.user?.email ? 'flex items-center btn_2 gap-1 px-2 py-2 text-xs md:text-base text-white rounded-md transition dark:bg-white dark:text-black ' : 'hidden'}>
+            <FaEdit className="hidden md:block text-xl" />
             Edit
           </button>
 
-          {/* Read Button */}
-          <button
-            onClick={() => router.push(`/read/${_id}`)}
-            className="flex items-center btn_2 gap-1 px-2 py-2 text-white rounded-md transition dark:bg-[#0A0A0C] dark:text-white dark:border-white dark:border-4">
-            <AiOutlineRead className="text-xl" />
-            Read
-          </button>
-
-
-          <button onClick={() => setModalOpen(true)} className="flex items-center btn_2 gap-1 px-2 py-2 text-white rounded-md transition">
-            <Summarize className="text-xl" />
-            Summary
-          </button>
         </div>
+
 
         {isLoading && <p className="text-blue-600 mt-4">Updating book data...</p>}
 
       </div>
+
       <BookSummaryModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} book={Book} />
     </div>
   );

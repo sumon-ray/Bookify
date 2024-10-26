@@ -52,12 +52,12 @@ export default function DetailsCard({ genre, title }) {
     <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-0">
 
       {
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-10">
+        <div className="flex flex-col items-center  md:grid  md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-10">
           {
             relatedBook?.map((book, i) => <Link
               href={`/details/${book?._id}`}
               key={i}
-              className="w-auto h-auto bg-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white  rounded-md "
+              className="w-60 md:w-auto h-auto bg-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white  rounded-md "
             >
               <div className="space-y-3">
                 <Image
@@ -69,11 +69,11 @@ export default function DetailsCard({ genre, title }) {
                 />
                 <div className="text-left pl-2 pb-2 ">
                   <h1 className="font-bold md:uppercase" title={book?.title}>
-                    {book?.title.slice(0, 13)}...
+                    {book?.title?.split(' ').slice(0,2).join(' ')}
                   </h1>
 
                   <div className='flex items-center justify-between'>
-                    <h1 className="font-medium">{book?.owner}</h1>
+                    <h1 className="font-medium">{book?.owner?.split(' ').slice(0,2).join(' ')}</h1>
                   </div>
 
                 </div>
