@@ -191,7 +191,7 @@ const FaqSection = () => {
         transition={{ duration: 0.5 }}
         className="text-center space-y-4"
       >
-        <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[385px] h-12 mx-auto'>
+        <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[400px] h-12 mx-auto'>
         <h1 className=' md:text-xl lg:text-2xl  uppercase font-bold text-center'>
         Frequently Asked Questions
         </h1>
@@ -226,7 +226,7 @@ const FaqSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
+                className=" p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 dark:border-gray-700"
               >
                 <div 
                   className="flex items-start space-x-4 cursor-pointer"
@@ -283,7 +283,7 @@ const FaqSection = () => {
       <div className="text-center mt-6">
         {!showMore && filteredFAQs.length > 6 && (
           <button
-            className="px-6 py-2 border border-black text-black rounded-lg hover:bg-blue-700 transition-colors duration-300"
+            className="px-6 py-2 border border-black text-black rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300"
             onClick={() => setShowMore(true)}
           >
             <span className="flex items-center justify-center gap-1">
@@ -297,14 +297,14 @@ const FaqSection = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-blue-50 dark:bg-gray-900 p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-xl"
+        className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-blue-50 dark:bg-gray-900 p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-sm"
       >
         <div className="text-center lg:text-left max-w-2xl">
           <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center mb-4">
             <span>Still have questions</span><FaQuestion className="text-black" /> 
           </h4>
           <p className="text-lg text-gray-700 dark:text-gray-300">
-            Can't find the answer you're looking for? Please{" "}
+            Can&quot;t find the answer you're looking for? Please{" "}
             <a href="/contact" className="text-blue-500 hover:underline">
               chat with our friendly team
             </a>
@@ -313,7 +313,7 @@ const FaqSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <Link href="/contact" className="px-8 py-3  text-black border border-black rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
+          <Link href="/contact" className="px-8 py-3  text-black border border-black rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
             Contact Support <FiMessageCircle className="text-xl" />
           </Link>
           <Link href="/ai-chat" className="px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
