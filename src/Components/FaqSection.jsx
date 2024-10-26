@@ -192,7 +192,7 @@ const FaqSection = () => {
         className="text-center space-y-4"
       >
         <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[385px] h-12 mx-auto'>
-        <h1 className='md:text-2xl uppercase font-bold text-center'>
+        <h1 className=' md:text-xl lg:text-2xl  uppercase font-bold text-center'>
         Frequently Asked Questions
         </h1>
       </div>
@@ -301,7 +301,7 @@ const FaqSection = () => {
       >
         <div className="text-center lg:text-left max-w-2xl">
           <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center mb-4">
-            <span>Still have questions</span><FaQuestion className="text-blue-500" />
+            <span>Still have questions</span><FaQuestion className="text-black" /> 
           </h4>
           <p className="text-lg text-gray-700 dark:text-gray-300">
             Can't find the answer you're looking for? Please{" "}

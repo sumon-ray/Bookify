@@ -6,8 +6,6 @@ import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { FiBookOpen, FiUser, FiTag } from "react-icons/fi";
 
 const OurLibrary = () => {
   const [category, setCategory] = useState("All"); // Default is 'All' to show all books
@@ -64,7 +62,8 @@ const OurLibrary = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto py-16">
+
       <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[385px] h-12 mx-auto'>
         <h1 className='text-2xl uppercase font-bold text-center'>
           Explore Exchange Library
@@ -94,75 +93,47 @@ const OurLibrary = () => {
       </div>
 
       {/* Book Display */}
-      <div className="flex flex-col lg:flex-row items-start xl:gap-5 gap-4 mt-5">
+      <div className="flex lg:flex-row flex-col items-start xl:gap-5 gap-4 mt-5">
         {/* Static Image */}
-        <figure className="lg:w-1/4 w-full mb-6 lg:mb-0">
+        <figure className="lg:w-[30%] md:w-[90%] w-full px-5 md:pl-20 lg:pl-0 ">
           <Image
             src={img}
             width={400}
-            height={896}
-            className="w-full h-auto lg:h-[975px] rounded-md object-cover"
+            height={100}
+            className="lg:w-[400px] w-full lg:h-[896px] h-[300px] rounded-md bg-cover"
             alt="Library Feature Image"
           />
         </figure>
 
         {/* Dynamic Book Grid */}
-        <div className="lg:w-3/4 w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid -translate-y-3 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:pl-20 lg:pl-0  lg:gap-8 gap-4 gap-y-4 lg:w-[70%] md:w-[700px] w-full items-center justify-center p-3">
           {displayedBooks.map((book, idx) => (
-            <motion.div
+            <Link
+              href={`/details/${book?._id}`}
               key={idx}
-              whileHover={{ y: -5 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: idx * 0.1 }}
-              className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl"
+              className="w-auto h-auto bg-[#EFEEE9] dark:bg-[#272727CC] rounded-md"
             >
-              <Link href={`/details/${book?._id}`} className="block h-full">
-                <div className="relative aspect-[2/3] overflow-hidden group">
-                  <Image
-                    src={book?.coverImage}
-                    layout="fill"
-                    objectFit="cover"
-                    alt={book?.title || "Book Cover"}
-                    className="transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <h2 className="font-bold text-lg mb-1 line-clamp-1" title={book?.title}>
-                      {book?.title}
-                    </h2>
-                    <p className="text-sm opacity-90">{book?.author}</p>
-                  </div>
+              <div className="space-y-3">
+                <Image
+                  src={book?.coverImage}
+                  className="w-full h-[210px] rounded-t-md"
+                  height={150}
+                  width={200}
+                  alt={book?.title || "Book Cover"}
+                  unoptimized
+                  quality={100}
+                />
+                <div className="text-left pl-2 pb-2">
+                  <h1 className="font-bold md:uppercase" title={book?.title}>
+                    {book?.title?.slice(0, 13)}...
+                  </h1>
+                  <h1 className="font-medium">{book?.author}</h1>
                 </div>
-                {/* <div className="p-4">
-                  <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 mb-2">
-                    <FiBookOpen className="w-4 h-4 flex-shrink-0" />
-                    <span className="text-sm truncate">{book?.pageCount || 'N/A'} pages</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 mb-2">
-                    <FiUser className="w-4 h-4 flex-shrink-0" />
-                    <span className="text-sm truncate">{book?.author}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-                    <FiTag className="w-4 h-4 flex-shrink-0" />
-                    <span className="text-xs font-semibold py-1 px-2 rounded-full text-blue-600 bg-blue-100 dark:bg-blue-900 dark:text-blue-200 truncate">
-                      {book?.genre}
-                    </span>
-                  </div>
-                </div> */}
-                {/* <div className="px-4 pb-4">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200"
-                  >
-                    View Details
-                  </motion.button>
-                </div> */}
-              </Link>
-            </motion.div>
+              </div>
+            </Link>
           ))}
         </div>
+
       </div>
 
       {/* Pagination Controls */}

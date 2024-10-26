@@ -76,7 +76,7 @@ const SignUp = () => {
           </div>
         </Link>
 
-        <p className="mt-3 text-xl text-center text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
+        <p className="mt-1 text-xl text-center text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
           Welcome back!
         </p>
 
@@ -138,7 +138,7 @@ const SignUp = () => {
             </div>
 
             <input
-              className="block w-full px-4 py-2 text-gray-700  focus:border-[#364957] focus:ring-opacity-0 focus:outline-none "
+              className="block w-full px-4  text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
               type="file"
               name="file"
               id="file"
