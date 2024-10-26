@@ -90,7 +90,7 @@ const CommunityHighlights = () => {
         
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <FaBookOpen className="text-blue-500 mr-2" />
+            <FaBookOpen className="text-yellow-400 mr-2" />
             <span className="text-lg font-semibold text-gray-700">{user.booksExchanged}</span>
             <span className="text-xs text-gray-500 ml-1">books</span>
           </div>
@@ -105,7 +105,7 @@ const CommunityHighlights = () => {
         </button> */}
         
         <div className="absolute top-2 right-2">
-          <div className="text-xs font-semibold bg-yellow-400 text-gray-800 px-2 py-1 rounded-full shadow-sm">
+          <div className="text-xs font-semibold bg-[#364957] text-white  px-2 py-1 rounded-full shadow-sm">
             #{index + 1}
           </div>
         </div>
@@ -115,12 +115,15 @@ const CommunityHighlights = () => {
 
   return (
     <div className="py-12 px-6 lg:px-32 overflow-hidden">
-      <h2 className="text-2xl lg:text-3xl font-semibold text-center text-gray-800 mb-8">
-        <FaCrown className="inline-block text-yellow-500 mr-2" /> Community Highlights
-      </h2>
+      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[385px] h-12 mx-auto'>
+        <h1 className='md:text-2xl uppercase font-bold text-center'>
+        Community Highlights
+        </h1>
+      </div>
 
-      {/* Left-to-Right Marquee */}
-      <Marquee gradient={false} speed={40} pauseOnHover={true}>
+<div className="mt-20">
+        {/* Left-to-Right Marquee */}
+        <Marquee gradient={false} speed={40} pauseOnHover={true}>
         {topUsers.map((user, index) => renderUserCard(user, index))}
       </Marquee>
 
@@ -128,6 +131,7 @@ const CommunityHighlights = () => {
       <Marquee gradient={false} speed={40} pauseOnHover={true} direction="right" className="mt-8">
         {topUsers.map((user, index) => renderUserCard(user, index))}
       </Marquee>
+</div>
     </div>
   );
 };

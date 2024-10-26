@@ -191,9 +191,11 @@ const FaqSection = () => {
         transition={{ duration: 0.5 }}
         className="text-center space-y-4"
       >
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
-          Frequently Asked Questions
+        <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[385px] h-12 mx-auto'>
+        <h1 className='md:text-2xl uppercase font-bold text-center'>
+        Frequently Asked Questions
         </h1>
+      </div>
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Find answers to common questions about our book exchange platform.
         </p>
@@ -281,7 +283,7 @@ const FaqSection = () => {
       <div className="text-center mt-6">
         {!showMore && filteredFAQs.length > 6 && (
           <button
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
+            className="px-6 py-2 border border-black text-black rounded-lg hover:bg-blue-700 transition-colors duration-300"
             onClick={() => setShowMore(true)}
           >
             <span className="flex items-center justify-center gap-1">
@@ -291,15 +293,15 @@ const FaqSection = () => {
         )}
       </div>
 
-      <motion.div 
+        <motion.div 
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-blue-50 dark:bg-gray-900 p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-xl"
       >
         <div className="text-center lg:text-left max-w-2xl">
-          <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center space-x-2 mb-4">
-            <span>Still have questions?</span> <FaQuestion className="text-blue-500" />
+          <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center mb-4">
+            <span>Still have questions</span><FaQuestion className="text-blue-500" />
           </h4>
           <p className="text-lg text-gray-700 dark:text-gray-300">
             Can't find the answer you're looking for? Please{" "}
@@ -311,7 +313,7 @@ const FaqSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <Link href="/contact" className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
+          <Link href="/contact" className="px-8 py-3  text-black border border-black rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
             Contact Support <FiMessageCircle className="text-xl" />
           </Link>
           <Link href="/ai-chat" className="px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
