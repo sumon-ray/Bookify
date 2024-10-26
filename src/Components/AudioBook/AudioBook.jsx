@@ -28,10 +28,8 @@ const AudioBook = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  // Function to handle playing a new audio
   const handlePlay = (audioURL, id) => {
     if (currentAudio === id) {
-      // If the same audio is clicked, toggle play/pause
       if (isPlaying) {
         audioRef.current.pause();
         setIsPlaying(false);
@@ -40,7 +38,6 @@ const AudioBook = () => {
         setIsPlaying(true);
       }
     } else {
-      // If a new audio is clicked, set it as the current and play it
       setCurrentAudio(id);
       audioRef.current.src = audioURL;
       audioRef.current.play();
@@ -56,31 +53,33 @@ const AudioBook = () => {
     };
   };
 
-  const showNotification = useCallback(
-    debounce((message, type) => {
-      toast[type](message, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    }, 300),
-    []
+  const showNotification = useCallback((message, type) => {
+    toast[type](message, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  }, []);
+
+  const debouncedShowNotification = useCallback(
+    debounce(showNotification, 300),
+    [showNotification]
   );
 
   const handleFavorite = useCallback((id) => {
     setFavorites(prev => {
       const newFavorites = { ...prev, [id]: !prev[id] };
       if (newFavorites[id]) {
-        showNotification('Added to favorites!', 'success');
+        debouncedShowNotification('Added to favorites!', 'success');
       } else {
-        showNotification('Removed from favorites', 'info');
+        debouncedShowNotification('Removed from favorites', 'info');
       }
       return newFavorites;
     });
-  }, [showNotification]);
+  }, [debouncedShowNotification]);
 
   return (
     <div className="max-w-7xl mx-auto py-8 space-y-10 dark:text-white">

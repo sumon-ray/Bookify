@@ -53,13 +53,13 @@ const OurLibrary = () => {
     : [];
 
   // Handle pagination navigation
-  const handlePrevPage = () => {
+  const handlePrevPage = React.useCallback(() => {
     if (currentPage > 1) setCurrentPage((prev) => prev - 1);
-  };
+  }, [currentPage]);
 
-  const handleNextPage = () => {
+  const handleNextPage = React.useCallback(() => {
     if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
-  };
+  }, [currentPage, totalPages]);
 
   return (
     <div className="max-w-7xl mx-auto py-16">
