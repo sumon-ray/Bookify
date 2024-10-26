@@ -5,9 +5,9 @@ import Writers from "./Writers";
 
 export default function page() {
     return (
-        <div className="space-y-6 pb-14">
-            <OurBooksBanner />
-            <Writers />
+        <div className="space-y-12 pb-14">
+            {/* <OurBooksBanner /> */}
+            {/* <Writers /> */}
             <Categories />
             <AllBooks />
         </div>
