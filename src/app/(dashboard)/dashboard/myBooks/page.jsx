@@ -237,40 +237,37 @@ export default function MyBooks() {
       </div>
 
       {/* Books Grid */}
-      <div className="grid grid-cols-2  md:grid-cols-5 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {sortedBooks.length > 0 ? (
           sortedBooks.map((book) => (
             <div
               key={book._id}
-              className="w-auto h-auto bg-[#EFEEE9] dark:bg-[#272727CC] rounded-md shadow-md hover:shadow-lg transition relative"
+              className="bg-white dark:bg-[#272727CC] rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 relative"
             >
               <Link
                 href={`/details/${book._id}`}
-                className="w-auto h-auto bg-[#EFEEE9] rounded-md "
+                className="block rounded-lg overflow-hidden"
               >
-                <div className="space-y-3">
+                <div className="relative w-full h-[250px]">
                   <Image
                     src={book?.coverImage}
-                    className="w-full h-[210px] rounded-t-md"
-                    height={210}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    height={250}
                     width={150}
                     alt={book?.title || "Book Cover"}
                   />
-                  <div className="text-left pl-2 pb-2">
-                    <h1 className="font-bold md:uppercase" title={book?.title}>
-                      {book?.title
-                        ? book.title.length > 13
-                          ? `${book.title.slice(0, 13)}...`
-                          : book.title
-                        : ""}
-                    </h1>
-                    {/* <p className="text-gray-600 text-sm">
-                      {book?.author || "Unknown Author"}
-                    </p> */}
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Total Pages: {book?.totalPage || "N/A"}
-                    </p>
-                  </div>
+                </div>
+                <div className="p-4">
+                  <h1 className="font-bold text-lg md:uppercase" title={book?.title}>
+                    {book?.title
+                      ? book.title.length > 20
+                        ? `${book.title.slice(0, 20)}...`
+                        : book.title
+                      : ""}
+                  </h1>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Total Pages: {book?.totalPage || "N/A"}
+                  </p>
                 </div>
               </Link>
               <Tooltip title="Delete">
@@ -297,7 +294,7 @@ export default function MyBooks() {
                       }
                     });
                   }}
-                  className="absolute bottom-1 text-[#364957] right-2  hover:text-red-700 bg-white rounded-full p-1 shadow-md"
+                  className="absolute bottom-2 right-2 text-[#364957] hover:text-red-700 bg-white rounded-full p-1 shadow-md"
                   aria-label="Delete Book"
                 >
                   {deleteBookMutation.isLoading ? (

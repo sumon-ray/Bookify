@@ -204,3 +204,6 @@ body {
   background: #364957;
 }
 
+.css-1nd3ur8-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: #364957 !important;
+}

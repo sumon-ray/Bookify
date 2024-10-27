@@ -63,16 +63,17 @@ const OurLibrary = () => {
 
   return (
     <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[385px] h-12 mx-auto'>
+      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[200px] md:max-w-[385px] h-12 mx-auto'>
         <h1 className='md:text-2xl uppercase font-bold text-center'>
-          Explore Exchange Library
+          <span className='hidden md:block'>Explore Exchange Library</span> 
+          <span className='block md:hidden'>Exchange Library</span> 
         </h1>
       </div>
 
       {/* Dynamic Category Selector */}
-      <div className="py-3 lg:mt-2 px-5 md:pl-20 lg:pl-0 ">
+      <div className="py-3 lg:mt-2  px-5 md:pl-20 lg:pl-0 ">
         <select
-          className="lg:w-[28%] md:w-[90%]  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
+          className="lg:w-[25.4%] md:w-[90%]  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);

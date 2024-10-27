@@ -1,10 +1,11 @@
 "use client"
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import ImgDetails from './ImgDetails';
 import DetailsTab from './DetailsTab';
 import DetailsCard from './DetailsCard';
 import { FaBook } from 'react-icons/fa';
+import { useQuery } from '@tanstack/react-query';
 
 export default function Details({ params }) {
 

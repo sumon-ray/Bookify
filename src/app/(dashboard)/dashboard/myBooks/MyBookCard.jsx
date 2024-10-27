@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import lottieImage from "../../../..//../public/image/404.json";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const MyBookCard = () => {
   const [allBooks, setAllBooks] = useState([]);
@@ -96,9 +97,33 @@ const MyBookCard = () => {
     fetchBooksByGenre(selectedGenre, page);
   };
 
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    const startPage = Math.max(1, currentPage - 2);
+    const endPage = Math.min(totalPages, currentPage + 2);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(
+        <li key={i}>
+          <a
+            onClick={() => handlePageChange(i)}
+            className={`flex items-center justify-center px-4 h-10 leading-tight ${
+              currentPage === i
+                ? "text-white bg-[#364957] rounded-md"
+                : "text-gray-500 dark:text-gray-300 hover:bg-gray-100 hover:text-gray-700"
+            }`}
+          >
+            {i}
+          </a>
+        </li>
+      );
+    }
+    return pageNumbers;
+  };
+
   return (
     <div className="container dark:text-gray-300 mx-auto px-8 md:px-0 pb-8">
-      <div className="py-2 flex items-center justify-between">
+      <div className="py-2 flex items-center my-6  justify-between">
         <h1 className="text-[#000000] dark:text-gray-300 font-semibold text-[18.61px]">Best Popular</h1>
         <div className="flex items-center justify-center gap-4 px-2 py-1 relative">
           <FaFilter className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-[#364957] dark:text-gray-300 text-sm sm:text-lg" />
@@ -152,77 +177,72 @@ const MyBookCard = () => {
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {filteredBooks.map((book) => (
-            <Link
-              href={`/details/${book?._id}`}
-              key={book._id} 
-              className="w-fit mx-auto flex flex-col justify-center items-center h-auto bg-[#EFEEE9] dark:bg-[#272727CC] rounded-md"
+          {filteredBooks.map((book, idx) => (
+            <motion.div
+              key={book._id}
+              whileHover={{ y: -5 }} 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: idx * 0.1 }}
+              className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl" // Updated styles
             >
-              <div className="space-y-3 flex flex-col justify-center">
-                <Image
-                  src={book?.coverImage}
-                  className="w-[200px] mx-auto h-[210px] rounded-t-md"
-                  height={210}
-                  width={150}
-                  alt={book?.title || "Book Cover"}
-                />
-                <div className="text-left pl-2 pb-2">
-                  <h1 className="font-bold md:uppercase" title={book?.title}>
-                    {book?.title.slice(0, 13)}...
-                  </h1>
-                  <h1 className="font-medium">{book?.owner}</h1>
+              <Link href={`/details/${book?._id}`} className="block h-full">
+                <div className="relative aspect-[2/3] overflow-hidden group">
+                  <Image
+                    src={book?.coverImage}
+                    layout="fill"
+                    objectFit="cover"
+                    alt={book?.title || "Book Cover"}
+                    className="transition-transform duration-300 group-hover:scale-110" // Image scaling on hover
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <h2 className="font-bold text-lg mb-1 line-clamp-1" title={book?.title}>
+                      {book?.title}
+                    </h2>
+                    <p className="text-sm opacity-90">{book?.owner}</p> {/* Changed author to owner */}
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
       )}
 
       <div className="flex justify-center mt-4">
-        <nav aria-label="Page navigation example">
-          <ul className="inline-flex -space-x-px text-base h-10">
-            <li>
-              <a
-                onClick={() => handlePageChange(currentPage - 1)}
-                className={`cursor-pointer flex items-center justify-center px-4 h-10 leading-tight ${
-                  currentPage === 1
-                    ? "text-gray-400 dark:text-gray-300"
-                    : "hover:bg-gray-100 hover:text-gray-700"
-                }`}
-                disabled={currentPage === 1}
-              >
-                Previous
-              </a>
-            </li>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <li key={index}>
+        <div className="overflow-auto sm:overflow-visible"> {/* Added wrapper for overflow control */}
+          <nav aria-label="Page navigation example">
+            <ul className="inline-flex -space-x-px text-base h-10">
+              <li>
                 <a
-                  onClick={() => handlePageChange(index + 1)}
-                  className={`flex items-center justify-center px-4 h-10 leading-tight ${
-                    currentPage === index + 1
-                      ? "text-white bg-[#364957] rounded-md"
-                      : "text-gray-500 dark:text-gray-300 hover:bg-gray-100 hover:text-gray-700"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  className={`cursor-pointer flex items-center justify-center px-4 h-10 leading-tight ${
+                    currentPage === 1
+                      ? "text-gray-400 dark:text-gray-300"
+                      : "hover:bg-gray-100 hover:text-gray-700"
                   }`}
+                  disabled={currentPage === 1}
                 >
-                  {index + 1}
+                  Previous
                 </a>
               </li>
-            ))}
-            <li>
-              <a
-                onClick={() => handlePageChange(currentPage + 1)}
-                className={`flex items-center justify-center cursor-pointer px-4 h-10 leading-tight ${
-                  currentPage === totalPages
-                    ? "text-gray-400 dark:text-gray-300"
-                    : "hover:bg-gray-100 hover:text-gray-700"
-                }`}
-                disabled={currentPage === totalPages}
-              >
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav>
+              {renderPageNumbers()}
+              <li>
+                <a
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  className={`flex items-center justify-center cursor-pointer px-4 h-10 leading-tight ${
+                    currentPage === totalPages
+                      ? "text-gray-400 dark:text-gray-300"
+                      : "hover:bg-gray-100 hover:text-gray-700"
+                  }`}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   );
