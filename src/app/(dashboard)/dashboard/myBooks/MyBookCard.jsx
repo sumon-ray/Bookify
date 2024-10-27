@@ -184,10 +184,10 @@ const MyBookCard = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: idx * 0.1 }}
-              className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl" // Updated styles
+              className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl" // Updated styles
             >
               <Link href={`/details/${book?._id}`} className="block h-full">
-                <div className="relative aspect-[2/3] overflow-hidden group">
+                <div className="relative aspect-[2/3] group">
                   <Image
                     src={book?.coverImage}
                     layout="fill"
