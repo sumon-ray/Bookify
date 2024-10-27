@@ -17,6 +17,7 @@ import { Menu, MenuItem } from "@mui/material"; // Import Menu and MenuItem from
 import { TbExchange } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import NavbarDrawer from "./Navbar/NavbarDrawer";
 // import Toggle from './Toggle/Toggle';
 
 const Navbar = () => {
@@ -94,39 +95,35 @@ const Navbar = () => {
   return (
     <div className="overflow-hidden">
       <nav className="md:flex items-center md:justify-between bg-[#F3F2ED] dark:bg-[#272727E6] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
-        {/* bookify logo */}
-        <div>
-          <Image
-            src={img}
-            className="h-14 md:h-[68px] w-28  md:w-36"
-            height={20}
-            width={200}
-            unoptimized
-            alt="Logo"
-          />
-        </div>
 
-        {/* Hamburger icon for mobile */}
-        <div
-          onClick={() => setOpen(!open)}
-          className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
-        >
-          <GiHamburgerMenu />
+        {/* bookify logo */}
+        <div className="flex md:flex-none items-center justify-between">
+          <div>
+            <Image
+              src={img}
+              className="h-14 md:h-[68px] w-28  md:w-36"
+              height={20}
+              width={200}
+              unoptimized
+              alt="Logo"
+            />
+          </div>
+          
+          {/* Hamburger icon for mobile */}
+          <div className="text-3xl cursor-pointer md:hidden">
+            <NavbarDrawer />
+          </div>
         </div>
 
         {/* Navigation Links */}
         <div>
           <ul
-            className={`md:flex font-normal lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-              open ? "top-16" : "top-[-490px]"
-            }`}
-          >
-            {links.slice(0, 1).map((link, inde) => (
+            className={`hidden md:flex font-normal md:bg-none lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-1/2 md:w-auto md:pl-0 pl-9 transition-all duration-200 ease-in`}>
+            {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
-                className={`${
-                  pathName === link.path && "font-black"
-                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${pathName === link.path && "font-black"
+                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
                 <Link href={link.path} className="text-[black] dark:text-white duration-500">
                   {link.title}
@@ -137,11 +134,10 @@ const Navbar = () => {
             {/* our store */}
             <li className="md:ml-8 lg:text-[16px] md:my-0 my-7 font-normal">
               <button
-                className={`flex items-center ${
-                  (pathName === "/rentbooks" ||
+                className={`flex items-center ${(pathName === "/rentbooks" ||
                     pathName.includes("/audiobooks")) &&
                   "font-black "
-                }`}
+                  }`}
                 onClick={handleClick}
               >
                 Our store{" "}
@@ -168,9 +164,8 @@ const Navbar = () => {
                       style={{ fontWeight: "", fontSize: "15px" }}
                     >
                       <Link
-                        className={`${
-                          pathName === link?.path ? "font-black" : ""
-                        }`}
+                        className={`${pathName === link?.path ? "font-black" : ""
+                          }`}
                         href={link?.path}
                       >
                         {link?.title}
@@ -186,9 +181,8 @@ const Navbar = () => {
                 <Link
                   key={index}
                   href={link?.path}
-                  className={`flex items-center ${
-                    pathName === link?.path ? "font-black" : ""
-                  }`}
+                  className={`flex items-center ${pathName === link?.path ? "font-black" : ""
+                    }`}
                 >
                   <p>{link?.title}</p>
                   <Badge
@@ -210,23 +204,24 @@ const Navbar = () => {
             {links.slice(4).map((link) => (
               <li
                 key={link.path}
-                className={`${
-                  pathName === link.path && " font-black"
-                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${pathName === link.path && " font-black"
+                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
                 <Link href={link.path} className="text-[black] dark:text-white duration-500">
                   {link.title}
                 </Link>
               </li>
             ))}
+
             <li className="text-[black] duration-500 md:hidden">
               {session?.status === "unauthenticated" && (
                 <Link href="/login">Sign In</Link>
               )}
-            
+
             </li>
+
             <li>
-            {session?.status === "authenticated" && (
+              {session?.status === "authenticated" && (
                 <ul className="pt-1 md:hidden" aria-labelledby="user-menu-button">
                   <li className="ml-2 text-left ">
                     <p className="block text-sm font-normal space-x-6">
@@ -258,6 +253,8 @@ const Navbar = () => {
                 </ul>
               )}
             </li>
+
+
           </ul>
         </div>
 
@@ -329,8 +326,8 @@ const Navbar = () => {
               ) : null}
             </>
           )}
-         </div>
-       
+        </div>
+
       </nav>
     </div>
   );

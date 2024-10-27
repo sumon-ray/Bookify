@@ -6,7 +6,7 @@ export default function layout({ children }) {
         <>
             <DashboardNavbar />
             <Aside />
-            <div className="pt-20 md:pt-[88px]  md:px-0 md:ml-52 md:mr-11">
+            <div className="pt-11 md:pt-[88px]  md:px-0 md:ml-52 md:mr-11">
                 {children}
             </div>
         </>

@@ -39,7 +39,7 @@ export default function Page() {
   // molas State
   const [giveBooksModal, setGiveBooksModal] = useState(false);
   const [takeBooksModal, setTakeBooksModal] = useState(false);
-  const [selectedOwner, setSelectedOwner] = useState('')
+  const [selectedOwner, setSelectedOwner] = useState(' ')
 
   const { data: takeBooks, isLoading: takeBooksLoading, refetch: takeBooksRefetch } = useQuery({
     queryKey: ['take data', takeBookExchange],
@@ -93,7 +93,7 @@ export default function Page() {
   })
 
   const uniqueOwner = [...new Set(owner?.map(book => book?.owner))]
-  const uniqueMyBooksOwners = [...new Set(mybooks?.map(book => book?.owner))]
+  const uniqueMyBooksOwners = [...new Set(mybooks?.map(book => book?.owner === session?.user?.name || book?.owner ))]
 
 
   async function takeBookExchange(book) {
