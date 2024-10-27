@@ -20,12 +20,12 @@ export default function page() {
 
     return (
         <section className="my-7 pt-20">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-20">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-20 dark:text-white">
 
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
 
-                    <div className="bg-[#EFEEE9CC] p-8 rounded-2xl">
-                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
+                    <div className="bg-[#EFEEE9CC] dark:bg-[#0A0A0C] p-8 rounded-2xl">
+                        <span className="inline-block p-3 text-[#000000] dark:text-white rounded-full bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -42,23 +42,23 @@ export default function page() {
                             </svg>
                         </span>
 
-                        <h2 className="mt-2.5 font-black text-black">
+                        <h2 className="mt-2.5 font-black text-black dark:text-white">
                             Email
                         </h2>
                         <p className="mt-2 text-sm">
                             Our friendly team is here to help.
                         </p>
-                        <p className="mt-2 text-sm text-black">
+                        <p className="mt-2 text-sm text-black dark:text-white">
                             bookify@gmail.com
                         </p>
                     </div>
 
-                    <div className="bg-[#EFEEE9CC] p-8 rounded-2xl">
-                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
+                    <div className="bg-[#EFEEE9CC] dark:bg-[#0A0A0C] p-8 rounded-2xl  dark:text-white">
+                        <span className="inline-block p-3 text-[#000000] dark:text-white rounded-full bg-[#36495740] ">
                             <BsChatLeftText className="text-xl"/>
                         </span>
 
-                        <h2 className="mt-2.5 font-black">
+                        <h2 className="mt-2.5 font-black  ">
                             Live chat
                         </h2>
                         <p className="mt-2 text-sm">

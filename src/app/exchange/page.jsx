@@ -25,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/Components/ui/Select"
+import Lottie from "lottie-react";
 
 
 
@@ -38,6 +39,7 @@ export default function Page() {
   // molas State
   const [giveBooksModal, setGiveBooksModal] = useState(false);
   const [takeBooksModal, setTakeBooksModal] = useState(false);
+  const [selectedOwner, setSelectedOwner] = useState('')
 
   const { data: takeBooks, isLoading: takeBooksLoading, refetch: takeBooksRefetch } = useQuery({
     queryKey: ['take data', takeBookExchange],
@@ -59,10 +61,10 @@ export default function Page() {
     enabled: !!user
   })
 
-  const { data: usersBooks, isLoading: usersBooksLoading } = useQuery({
-    queryKey: ['users books'],
+  const { data: usersBooks, isLoading: usersBooksLoading, refetch: usersDataRefetch } = useQuery({
+    queryKey: ['users books', selectedOwner, session?.user?.email],
     queryFn: async () => {
-      const res = await axios(`https://bookify-server-lilac.vercel.app/books?excludeEmail=${session?.user?.email}`)
+      const res = await axios(`http://localhost:4000/books?excludeEmail=${session?.user?.email}&owner=${selectedOwner}`)
       const data = res.data
       return data;
     },
@@ -79,7 +81,18 @@ export default function Page() {
     enabled: !!user
   })
 
-  const uniqueOwner = [...new Set(usersBooks?.map(book => book?.owner))]
+
+  const { data: owner, isLoading: ownerLoading, } = useQuery({
+    queryKey: ['users books', session?.user?.email],
+    queryFn: async () => {
+      const res = await axios(`http://localhost:4000/books?excludeEmail=${session?.user?.email}`)
+      const data = res.data
+      return data;
+    },
+    enabled: !!user
+  })
+
+  const uniqueOwner = [...new Set(owner?.map(book => book?.owner))]
   const uniqueMyBooksOwners = [...new Set(mybooks?.map(book => book?.owner))]
 
 
@@ -379,7 +392,7 @@ export default function Page() {
       <div className="flex justify-center items-center my-8">
         <button onClick={exchangeBook} type="button" className="btn_1 flex items-center">
           <div className="flex justify-center items-center gap-0.5 text-base font-medium">
-            <TbExchange className="text-lg"/> Exchange
+            <TbExchange className="text-lg" /> Exchange
           </div>
         </button>
       </div>
@@ -412,8 +425,7 @@ export default function Page() {
                   </div>
                   :
                   <>
-
-                    {/* <div className="flex items-center justify-between pb-8 pt-2">
+                    <div className="flex items-center justify-between pb-8 pt-2">
                       <div>
                         <div className=" relative w-40 lg:w-72 md:w-52 ">
                           <input
@@ -448,21 +460,23 @@ export default function Page() {
                           </div>
                         </div>
                       </div>
-                      <Select>
+                      <Select onValueChange={(value) => {
+                        setSelectedOwner(value);
+                        usersDataRefetch()
+                      }}>
                         <SelectTrigger className="w-[180px]">
                           <SelectValue placeholder="Select owner" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectGroup>
-                            <SelectLabel>owner</SelectLabel>
+                            <SelectLabel>Owner</SelectLabel>
                             {
-                              uniqueMyBooksOwners?.map(owner => <SelectItem value={owner}>{owner}</SelectItem>)
+                              uniqueMyBooksOwners?.map(owner => <SelectItem key={owner} value={owner}>{owner}</SelectItem>)
                             }
                           </SelectGroup>
                         </SelectContent>
                       </Select>
-                    </div> */}
-
+                    </div>
                     {
                       myBooksLoading
                         ? <div className="flex justify-center w-full items-center min-h-56">
@@ -563,7 +577,7 @@ export default function Page() {
 
             <div className="p-6">
 
-              {/* <div className="flex items-center justify-between pb-8 pt-2">
+              <div className="flex items-center justify-between pb-8 pt-2">
                 <div>
                   <div className=" relative w-40 lg:w-72 md:w-52 ">
                     <input
@@ -598,20 +612,23 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
-                <Select>
+                <Select onValueChange={(value) => {
+                  setSelectedOwner(value);
+                  usersDataRefetch()
+                }}>
                   <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Select owner" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
-                      <SelectLabel>Fruits</SelectLabel>
+                      <SelectLabel>Owner</SelectLabel>
                       {
-                        uniqueOwner?.map(owner => <SelectItem value={owner}>{owner}</SelectItem>)
+                        uniqueOwner?.map(owner => <SelectItem key={owner} value={owner}>{owner}</SelectItem>)
                       }
                     </SelectGroup>
                   </SelectContent>
                 </Select>
-              </div> */}
+              </div>
 
               {
                 usersBooksLoading
@@ -699,7 +716,6 @@ export default function Page() {
       }
 
 
-
-    </div >
+    </div>
   );
 }
