@@ -110,7 +110,7 @@ const Navbar = () => {
           </div>
           
           {/* Hamburger icon for mobile */}
-          <div className="text-3xl cursor-pointer mdhidden">
+          <div className="text-3xl cursor-pointer md:hidden">
             <NavbarDrawer />
           </div>
         </div>
