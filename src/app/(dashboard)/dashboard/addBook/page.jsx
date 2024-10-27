@@ -75,11 +75,11 @@ const AddBook = () => {
     <section className="space-y-6 pb-12">
 
       <div className="bg-[#EFEEE9] dark:bg-[#0A0A0C] rounded-md p-6">
-        <h1 className="text-3xl font-black uppercase text-center dark:text-white">Add your book</h1>
+        <h1 className="text-xl md:text-3xl font-black uppercase text-center dark:text-white">Add your book</h1>
       </div>
 
       <form onSubmit={addBook}>
-        <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 *:space-y-0.5">
+        <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 *:space-y-0.5 px-6 md:px-0">
 
           <div className="col-span-full  sm:col-span-2 ">
             <label className="text-sm uppercase dark:text-white">Title</label>
@@ -108,7 +108,7 @@ const AddBook = () => {
                 <input required id="rating" type="number" min={'1'} max={'5'} placeholder="Rating" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0" />
               </div>
               <div className="w-1/2">
-                <label className="text-sm dark:text-white">published Year</label>
+                <label className="text-sm dark:text-white">published</label>
                 <input required id="publishedYear" type="month" placeholder="published Year" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0" />
               </div>
             </div>
