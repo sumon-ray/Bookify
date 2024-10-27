@@ -188,32 +188,32 @@ export default function AllBooks() {
                     <h3 className='text-lg font-bold text-center'>Filter Option</h3>
                     <div className='space-y-2.5 flex flex-col lg:flex-none items-center lg:items-start'>
 
-                        <select required onChange={handleAuthor} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handleAuthor} className='w-[330px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Author</option>
                             <option value="">All</option>
                             {uniqueAuthor?.map((author, i) => <option key={i} value={author}>{author}</option>)}
                         </select>
 
-                        <select required onChange={handlePublisher} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handlePublisher} className='w-[330px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Publisher</option>
                             <option value="">All</option>
                             {uniquePublisher?.map((publisher, i) => <option key={i} value={publisher}>{publisher}</option>)}
                         </select>
 
-                        <select required onChange={handlePublishYear} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handlePublishYear} className='w-[330px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Publish Year</option>
                             <option value="">All</option>
                             {uniqueYear?.map((Year, i) => <option key={i} value={Year}>{Year}</option>)}
                         </select>
 
-                        <select required onChange={handleLanguage} className='w-[270px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
+                        <select required onChange={handleLanguage} className='w-[330px] bg-[#EFEEE9] border-0 rounded-md focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]'>
                             <option value="volvo" selected disabled>Language</option>
                             {uniqueLanguage?.map((Language, i) => <option key={i} value={Language}>{Language}</option>)}
                         </select>
 
                         {/* check box */}
                         <div>
-                            <ul className="text-sm font-medium rounded-md bg-[#EFEEE9] w-[271px] pl-3 pb-1.5">
+                            <ul className="text-sm font-medium rounded-md bg-[#EFEEE9] w-[330px] pl-3 pb-1.5">
                                 <h3 className="ps-3 pt-2 pb-1">Category</h3>
                                 {/* checkbox */}
                                 <div className='flex gap-x-2'>
@@ -250,7 +250,7 @@ export default function AllBooks() {
                         <div className='bg-[#EFEEE9] rounded-md p-6 py-2 space-y-1'>
                             <h3 className='font-medium'>Price Range</h3>
                             <div className='flex justify-center text-[#364957]'>
-                                <Box sx={{ width: 225 }} >
+                                <Box sx={{ width: 285 }} >
                                     <Slider
                                         getAriaLabel={() => 'Range'}
                                         value={value}
@@ -306,13 +306,13 @@ export default function AllBooks() {
                                         <Link
                                             href={''}
                                             key={idx}
-                                            className="w-[189px] md:w-auto lg:w-[185px] h-auto bg-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white rounded-md "
+                                            className="md:w-auto lg:w-[185px] h-auto bg-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white rounded-md "
                                             title={book?.Title}
                                         >
                                             <div className="">
                                                 <Image
                                                     src={book?.coverImage}
-                                                    className="w-full h-[220px] rounded-t-md"
+                                                    className="w-full h-[220px] rounded-t-md object-fill"
                                                     height={150}
                                                     width={220}
                                                     alt={book?.Title || 'Book Cover'}
@@ -330,14 +330,15 @@ export default function AllBooks() {
                                         </Link>
                                     )
                                 }
-                            </div>}
+                            </div>
+                    }
                 </div>
 
             </div>
 
-            <div className='flex flex-col md:flex-row items-center justify-center md:justify-between  pt-3.5 md:pt-3 gap-y-2 px-0 md:px-4 lg:px-0'>
+            <div className='flex items-center justify-center md:justify-between  pt-3.5 md:pt-3 gap-y-2 gap-x-8 md:gap-x-0 px-0 md:px-4 lg:px-0'>
 
-                <button type='submit' className='bg-[#364957] text-white w-[270px] md:w-[21%] py-2 rounded-md flex items-center justify-between px-3 gap-x-1'>
+                <button type='submit' className='bg-[#364957] text-white w-28 md:w-[21%] py-2 rounded-md flex items-center justify-between px-3 gap-x-1'>
                     <span>Search</span>
                     <span><IoSearchSharp /></span>
                 </button>

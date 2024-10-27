@@ -85,7 +85,8 @@ const AudioBook = () => {
     <div className="max-w-7xl mx-auto py-8 space-y-10 dark:text-white">
       <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[380px] h-12 mx-auto">
         <h1 className="md:text-2xl uppercase font-bold text-center">
-          Explore Audio Collection
+          <span className='hidden md:block'> Explore Audio Collection</span> 
+          <span className='block md:hidden'> Audio Collection</span> 
         </h1>
       </div>
       {isLoading ? (

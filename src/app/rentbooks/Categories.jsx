@@ -14,17 +14,14 @@ import axios from "axios";
 
 export default function Categories() {
 
-    const { data } = useQuery({
+    const { data, isLoading } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            const res = await axios('https://bookify-server-lilac.vercel.app/books')
-            const data = await res.data
+            const res = await axios('https://bookify-server-lilac.vercel.app/rent')
+            const data = await res.data.result
             return data
         }
     })
-
-    // const uniqueCategories = [...new Set(data?.map(book => book?.genre))];
-
 
 
     return (

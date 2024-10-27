@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
+import { motion } from "framer-motion";
+
 
 export default function DetailsCard({ genre, title }) {
 
@@ -20,7 +22,7 @@ export default function DetailsCard({ genre, title }) {
 
 
 
-  if (isLoading || isFetching || isPending) {
+  if (isLoading || isPending) {
     return <div className="flex justify-center w-full items-center pt-4">
       <div className='flex flex-col justify-center items-center gap-y-1'>
         <svg
@@ -52,33 +54,38 @@ export default function DetailsCard({ genre, title }) {
     <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-0">
 
       {
-        <div className="flex flex-col items-center  md:grid  md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-10">
+        <div className="grid grid-cols-2  md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-7">
           {
-            relatedBook?.map((book, i) => <Link
-              href={`/details/${book?._id}`}
-              key={i}
-              className="w-60 md:w-auto h-auto bg-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white  rounded-md "
-            >
-              <div className="space-y-3">
-                <Image
-                  src={book?.coverImage}
-                  className="w-full h-[210px] rounded-t-md"
-                  height={150}
-                  width={200}
-                  alt={book?.title || 'Book Cover'}
-                />
-                <div className="text-left pl-2 pb-2 ">
-                  <h1 className="font-bold md:uppercase" title={book?.title}>
-                    {book?.title?.split(' ').slice(0,2).join(' ')}
-                  </h1>
-
-                  <div className='flex items-center justify-between'>
-                    <h1 className="font-medium">{book?.owner?.split(' ').slice(0,2).join(' ')}</h1>
+            relatedBook?.map((book, idx) =>
+              <motion.div
+                key={idx}
+                whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: idx * 0.1 }}
+                className="w-full bg-white dark:bg-gray-800 rounded-md shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl"
+              >
+                <Link href={`/details/${book?._id}`} className="block h-full">
+                  <div className="relative aspect-[2/3] overflow-hidden group">
+                    <Image
+                      src={book?.coverImage}
+                      layout="fill"
+                      objectFit="cover"
+                      alt={book?.title || "Book Cover"}
+                      className="transition-transform duration-300 object-fill group-hover:scale-110"
+                      unoptimized
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <h2 className="font-bold text-lg mb-1 line-clamp-1" title={book?.title}>
+                        {book?.title}
+                      </h2>
+                      <p className="text-sm opacity-90">{book?.author}</p>
+                    </div>
                   </div>
-
-                </div>
-              </div>
-            </Link>)
+                </Link>
+              </motion.div>
+            )
           }
         </div>
       }
