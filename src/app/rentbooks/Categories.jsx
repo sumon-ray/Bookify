@@ -34,18 +34,22 @@ export default function Categories() {
                 <h1 className="text-xl font-bold">Top Categories</h1>
                 <div className=" hidden lg:flex items-center justify-between w-3/4">
                     <div className="w-full border border-[#EFEEE9] dark:border-[#0A0A0C] -mr-5"></div>
-                    <Image src={img} height={50} width={100} className="w-24 h-[75px] -mt-5" />
+                    <Image src={img} height={50} width={100} className="w-24 h-[75px] -mt-5" alt="Read" />
                 </div>
             </div>
 
             {/* categories grid */}
             <div className="grid grid-cols-3 lg:grid-cols-6 gap-12">
-                <CategoryCard img={img2} genre={'Learn'}/>
-                <CategoryCard img={img3} genre={'Motivation'}/>
-                <CategoryCard img={img4} genre={'Family'}/>
-                <CategoryCard img={img5} genre={'programming'}/>
-                <CategoryCard img={img1} genre={'Idea'}/>
-                <CategoryCard img={img6} genre={'Cartoon'}/>
+                {[
+                    { img: img2, genre: 'Learn' },
+                    { img: img3, genre: 'Motivation' },
+                    { img: img4, genre: 'Family' },
+                    { img: img5, genre: 'programming' },
+                    { img: img1, genre: 'Idea' },
+                    { img: img6, genre: 'Cartoon' }
+                ].map((category, index) =>
+                    <CategoryCard img={category.img} genre={category.genre} key={index} />
+                )}
             </div>
 
         </div>
