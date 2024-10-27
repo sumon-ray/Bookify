@@ -187,7 +187,7 @@ const MyBookCard = () => {
               className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl" // Updated styles
             >
               <Link href={`/details/${book?._id}`} className="block h-full">
-                <div className="relative aspect-[2/3] overflow-hidden group">
+                <div className="relative rounded-lg aspect-[2/3] overflow-hidden group">
                   <Image
                     src={book?.coverImage}
                     layout="fill"
