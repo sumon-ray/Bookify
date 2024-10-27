@@ -246,7 +246,7 @@ export default function MyBooks() {
             >
               <Link
                 href={`/details/${book._id}`}
-                className="block rounded-lg overflow-hidden"
+                className="block rounded-lg "
               >
                 <div className="relative w-full h-[250px]">
                   <Image
