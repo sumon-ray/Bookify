@@ -1,12 +1,6 @@
 'use client'
 import Image from "next/image";
 import img from '../../assets/images/Our-books/read.png'
-import img1 from "../../assets/images/Our-books/s.png"
-import img2 from "../../assets/images/Our-books/R.png"
-import img3 from "../../assets/images/Our-books/a.png"
-import img4 from "../../assets/images/Our-books/D.png"
-import img5 from "../../assets/images/Our-books/j.jpg"
-import img6 from "../../assets/images/Our-books/T.png"
 import { useQuery } from "@tanstack/react-query";
 import CategoryCard from "./CategoryCard";
 import axios from "axios";
@@ -25,7 +19,7 @@ export default function Categories() {
 
 
     return (
-        <div className="max-w-7xl mx-auto space-y-12 px-6">
+        <div className="max-w-7xl mx-auto space-y-12 px-6 pt-4 md:pt-28">
             {/* view all categories */}
             <div className="flex items-center justify-center lg:justify-between dark:text-white">
                 <h1 className="text-xl font-bold">Top Categories</h1>
@@ -36,19 +30,13 @@ export default function Categories() {
             </div>
 
             {/* categories grid */}
-            <div className="grid grid-cols-3 lg:grid-cols-6 gap-12">
-                {[
-                    { img: img2, genre: 'Learn' },
-                    { img: img3, genre: 'Motivation' },
-                    { img: img4, genre: 'Family' },
-                    { img: img5, genre: 'programming' },
-                    { img: img1, genre: 'Idea' },
-                    { img: img6, genre: 'Cartoon' }
-                ].map((category, index) =>
-                    <CategoryCard img={category.img} genre={category.genre} key={index} />
-                )}
-            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 ">
+                {
 
+                data?.slice(0, 6)?.map(book => <CategoryCard key={book?._id} img={book?.coverImage} genre={book?.Genre} />)
+
+                }
+            </div>
         </div>
     )
 }
