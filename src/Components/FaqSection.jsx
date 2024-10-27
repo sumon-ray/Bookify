@@ -206,7 +206,9 @@ const FaqSection = () => {
         <input
           type="text"
           placeholder="Search FAQs..."
-          className="w-full px-10 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white shadow-sm"
+          // className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
+
+          className="w-full px-10 py-3 rounded-lg border-0 border-gray-300  focus:ring-[#EFEEE9] focus:outline-none focus:ring dark:bg-gray-700 dark:text-white shadow-sm"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -250,7 +252,7 @@ const FaqSection = () => {
                     </AnimatePresence>
                   </div>
                   <IoIosArrowDown
-                    className={`text-blue-500 transition-transform duration-300 ${
+                    className={`text-slate-800 transition-transform duration-300 ${
                       expandedItems[index] ? 'transform rotate-180' : ''
                     }`}
                   />
@@ -297,7 +299,7 @@ const FaqSection = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-blue-50 dark:bg-gray-900 p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-sm"
+        className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-gray-50  shadow-md dark:bg-gray-900 p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-sm"
       >
         <div className="text-center lg:text-left max-w-2xl">
           <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center mb-4">
