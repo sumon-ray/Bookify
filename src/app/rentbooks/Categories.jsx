@@ -67,7 +67,7 @@ export default function Categories() {
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12">
                             {
 
-                                data?.slice(0, 6)?.map(book => <CategoryCard img={book?.coverImage} genre={book?.Genre} />)
+                                data?.slice(0, 6)?.map(book => <CategoryCard key={book?._id} img={book?.coverImage} genre={book?.Genre} />)
 
                             }
 
