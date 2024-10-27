@@ -25,8 +25,8 @@ import Image from 'next/image';
 import toast from 'react-hot-toast';
 
 
-function Row(props) {
-    const { row } = props || {}
+function Row({ row, refetch }) {
+
     const [open, setOpen] = React.useState(false);
     const exchangeUpdateData = {
         requesterName: row?.RequesterName,
@@ -48,10 +48,21 @@ function Row(props) {
             const res = await axios.put(`https://bookify-server-lilac.vercel.app/exchange`, exchangeUpdateData)
             const data = await res.data
             toast.success(data?.message)
+            refetch()
 
         } catch (error) {
             toast.error(error?.message)
         }
+    }
+
+    const DeleteApprove = () => {
+        axios.patch(`http://localhost:4000/get-request-cancel?id=${row?._id}`)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    toast.success('Exchange canceled')
+                    refetch()
+                }
+            })
     }
 
     return (
@@ -76,23 +87,24 @@ function Row(props) {
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.requesterBooks?.length}</span></TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[3px] top-6'>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
                 <TableCell align='left' className='relative'>
-                    <Button className='absolute left-[3px] top-3 bg-[#F5A52433] text-[#F5A524] rounded-full capitalize font-medium'>
+                    <Button className={`absolute left-[3px] top-3 ${row?.status === 'pending' ? 'bg-[#F5A52433] text-[#F5A524]' : 'bg-[#31C48D4D]  text-green-500 '}   rounded-full capitalize font-medium`}>
                         {row?.status}
                     </Button>
                 </TableCell>
                 <TableCell align='left' className='relative'>
-                    <div className='flex items-center gap-x-2 absolute left-[6px] top-3'>
-                        <Button className='bg-[#ffffff] text-red-500 border rounded-full capitalize font-medium'>
+                    <div className={`flex items-center gap-x-2 absolute ${row?.status === 'pending' ? 'left-[6px]' : 'left-[16px]'} top-3`}>
+                        <Button onClick={DeleteApprove} className='bg-[#ffffff] text-red-500 border rounded-full capitalize font-medium'>
                             X
                         </Button>
-                        <Button onClick={approve} className='bg-green-400  text-[#ffffff] rounded-full capitalize font-medium'>
+                        {row?.status === 'pending' && <Button onClick={approve} className='bg-green-400  text-[#ffffff] rounded-full capitalize font-medium'>
                             Approve
                         </Button>
+                        }
                     </div>
                 </TableCell>
             </TableRow>
 
-        </React.Fragment>
+        </React.Fragment >
     );
 }
 
@@ -101,7 +113,7 @@ function Row(props) {
 export default function Get() {
 
     const { data: session, status } = useSession()
-    const { data = [], isLoading } = useQuery({
+    const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['exchange-request-get', session?.user?.email],
         queryFn: async () => {
             const res = await axios(`https://bookify-server-lilac.vercel.app/exchange-request?ownerEmail=${session?.user?.email}`)
@@ -146,7 +158,7 @@ export default function Get() {
                 !data?.length
                     ? <div div className='min-h-[71vh] flex items-center justify-center'>
                         <figure>
-                            <Image unoptimized src={`https://res.cloudinary.com/dz1fy2tof/image/upload/v1729762552/book_3_vm307x.png`} height={100} width={100} className='size-96' />
+                            <Image unoptimized src={`https://res.cloudinary.com/dz1fy2tof/image/upload/v1729762552/book_3_vm307x.png`} height={100} width={100} className='size-80 md:size-96' />
                             <figcaption className='text-2xl font-black text-center'>You haven&apos;t received book  <br />exchange requests.</figcaption>
                         </figure>
                     </div>
@@ -166,7 +178,7 @@ export default function Get() {
                             </TableHead>
                             <TableBody>
                                 {data?.map((row) => (
-                                    <Row key={row.name} row={row} exchangeData={data} />
+                                    <Row key={row.name} row={row} refetch={refetch} />
                                 ))}
                             </TableBody>
                         </Table>
