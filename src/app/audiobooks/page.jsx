@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { FaBookmark, FaPauseCircle, FaPlayCircle } from "react-icons/fa";
+import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { FaShareFromSquare } from "react-icons/fa6";
@@ -64,7 +64,7 @@ export default function Page() {
   }
 
   const currentAudioBook = data.find(
-    (book) => book._id === "671780add293858e8c9a57f9"
+    (book) => book._id === "671e8aa0cc79bac9d2cf741e"
   );
 
   // Function to handle playing a new audio
@@ -92,6 +92,7 @@ export default function Page() {
       <div id="Main">
         <div className="mt-14 sm:mt-10 pt-14 relative z-10 rounded-xl ">
           {/* Cover Image */}
+          {/* Cover Image */}
           <div className="bg-white border-slate-100 transition-all duration-500  border-b rounded-t-xl p-4 pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8  dark:bg-[#0A0A0C] dark:text-white dark:border-[#0A0A0C]">
             {currentAudioBook && (
               <div className="flex space-x-4 flex-col lg:flex-row dark:bg-[#0A0A0C] dark:text-white">
@@ -109,7 +110,7 @@ export default function Page() {
                     <p className="text-[#000000] dark:text-[#ffffff] text-3xl font-semibold leading-6">
                       {currentAudioBook.title}
                     </p>
-                   {/*  <button className="text-2xl text-[#364957]">
+                    {/*  <button className="text-2xl text-[#364957]">
                       <FaBookmark></FaBookmark>
                     </button> */}
                   </div>
