@@ -89,13 +89,13 @@ const ProfileUpdateModal = () => {
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
-          <button
+            <button
               className="text-3xl text-red-500 hover:text-red-700 absolute right-0 -top-1"
               onClick={() => setIsOpen(false)}
             >
-             <FaWindowClose />
+              <FaWindowClose />
             </button>
-            <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>  
+            <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>
             <Image
               src={user?.image}
               alt={user?.name}
@@ -109,7 +109,7 @@ const ProfileUpdateModal = () => {
                   Name
                 </label>
                 <input
-                  className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:outline-none focus:ring focus:ring-blue-300"
+                  className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
                   type="text"
                   name="name"
                   id="name"
@@ -122,7 +122,7 @@ const ProfileUpdateModal = () => {
                   Email Address
                 </label>
                 <input
-                  className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:outline-none focus:ring focus:ring-blue-300"
+                  className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
                   type="email"
                   name="email"
                   id="email"
@@ -135,7 +135,7 @@ const ProfileUpdateModal = () => {
                   Password
                 </label>
                 <input
-                  className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:outline-none focus:ring focus:ring-blue-300"
+                  className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
                   type="password"
                   name="password"
                   id="password"
@@ -147,7 +147,7 @@ const ProfileUpdateModal = () => {
                   Profile Photo
                 </label>
                 <input
-                  className="block w-full px-4 py-2 text-gray-700 bg-white rounded-lg"
+                  className="block w-full px-4  text-gray-700 bg-white border rounded-lg  focus:outline-none"
                   type="file"
                   name="file"
                   id="file"
@@ -182,7 +182,6 @@ const ProfileUpdateModal = () => {
                 )}
               </button>
             </form>
-           
           </div>
         </div>
       )}
