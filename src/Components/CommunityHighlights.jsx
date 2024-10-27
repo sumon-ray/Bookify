@@ -62,8 +62,8 @@ const CommunityHighlights = () => {
   const renderUserCard = (user, index) => {
     return (
       <div key={uuidv4()} className="rounded-lg shadow-lg p-6 w-64 sm:w-72 md:w-80 lg:w-96 bg-white text-gray-800 mx-4 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-24 h-24 bg-gray-100 opacity-50 rounded-full -mr-12 -mt-12"></div>
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-gray-100 opacity-50 rounded-full -ml-12 -mb-12"></div>
+        {/* <div className="absolute top-0 right-0 w-24 h-24 bg-gray-100 opacity-50 rounded-full -mr-12 -mt-4"></div>
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-gray-100 opacity-50 rounded-full -ml-12 -mb-4"></div> */}
         
         <div className="flex items-center mb-4">
           <div className="relative">
@@ -114,14 +114,14 @@ const CommunityHighlights = () => {
   };
 
   return (
-    <div className="py-12 px-6 lg:px-32 overflow-hidden">
+    <div className="  px-6 lg:px-32 overflow-hidden">
       <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[385px] h-12 mx-auto'>
         <h1 className='md:text-2xl uppercase font-bold text-center'>
         Community Highlights
         </h1>
       </div>
 
-<div className="mt-20">
+<div className="mt-14">
         {/* Left-to-Right Marquee */}
         <Marquee gradient={false} speed={40} pauseOnHover={true}>
         {topUsers.map((user, index) => renderUserCard(user, index))}

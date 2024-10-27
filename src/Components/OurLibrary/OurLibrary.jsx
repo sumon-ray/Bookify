@@ -70,9 +70,9 @@ const OurLibrary = () => {
       </div>
 
       {/* Dynamic Category Selector */}
-      <div className="py-3 lg:mt-2 px-5 md:pl-20 lg:pl-0 ">
+      <div className="py-3 lg:mt-2  px-5 md:pl-20 lg:pl-0 ">
         <select
-          className="lg:w-[28%] md:w-[90%]  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
+          className="lg:w-[25.4%] md:w-[90%]  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
