@@ -156,7 +156,7 @@ export default function MyBooks() {
       <Header />
 
       {/* Sorting Dropdown */}
-      <div className="flex items-center justify-between pt-4 pb-5">
+      <div className="flex items-center justify-between my-4 pt-4 pb-5">
         <h1 className="text-xl font-bold text-[18.61px] text-[#000000] dark:text-gray-300">
           My Books
         </h1>
@@ -237,73 +237,75 @@ export default function MyBooks() {
       </div>
 
       {/* Books Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {sortedBooks.length > 0 ? (
           sortedBooks.map((book) => (
             <div
               key={book._id}
-              className="bg-white dark:bg-[#272727CC] rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 relative"
+              className="bg-white dark:bg-[#272727CC] rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 relative overflow-hidden"
             >
               <Link
                 href={`/details/${book._id}`}
-                className="block rounded-lg overflow-hidden"
+                className="block rounded-lg "
               >
-                <div className="relative w-full h-[250px]">
+                <div className="relative w-full h-[250px] md:h-[250px] lg:h-[350px]">
                   <Image
                     src={book?.coverImage}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
                     height={250}
                     width={150}
                     alt={book?.title || "Book Cover"}
                   />
                 </div>
-                <div className="p-4">
-                  <h1 className="font-bold text-lg md:uppercase" title={book?.title}>
+                <div className="p-4 opacity-0 transition-opacity duration-300 hover:opacity-100 absolute inset-0 flex flex-col justify-end bg-black bg-opacity-50">
+                  <h1 className="font-bold text-lg md:uppercase text-white" title={book?.title}>
                     {book?.title
                       ? book.title.length > 20
                         ? `${book.title.slice(0, 20)}...`
                         : book.title
                       : ""}
                   </h1>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  <p className="text-gray-300 text-sm">
                     Total Pages: {book?.totalPage || "N/A"}
                   </p>
+                  <div className="flex items-center mt-2">
+                    <Tooltip title="Delete">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          Swal.fire({
+                            title: "Are you sure?",
+                            text: "You won't be able to revert this!",
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "Yes, delete it!",
+                            cancelButtonText: "No, cancel!",
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                              deleteBookMutation.mutate(book._id);
+                              Swal.fire(
+                                "Deleted!",
+                                "Your book has been deleted.",
+                                "success"
+                              );
+                            }
+                          });
+                        }}
+                        className="text-[#364957] hover:text-red-700 bg-white rounded-full p-1 shadow-md"
+                        aria-label="Delete Book"
+                      >
+                        {deleteBookMutation.isLoading ? (
+                          <LoadingSpinner />
+                        ) : (
+                          <MdDelete className="text-xl" />
+                        )}
+                      </button>
+                    </Tooltip>
+                  </div>
                 </div>
               </Link>
-              <Tooltip title="Delete">
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    Swal.fire({
-                      title: "Are you sure?",
-                      text: "You won't be able to revert this!",
-                      icon: "warning",
-                      showCancelButton: true,
-                      confirmButtonColor: "#3085d6",
-                      cancelButtonColor: "#d33",
-                      confirmButtonText: "Yes, delete it!",
-                      cancelButtonText: "No, cancel!",
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        deleteBookMutation.mutate(book._id);
-                        Swal.fire(
-                          "Deleted!",
-                          "Your book has been deleted.",
-                          "success"
-                        );
-                      }
-                    });
-                  }}
-                  className="absolute bottom-2 right-2 text-[#364957] hover:text-red-700 bg-white rounded-full p-1 shadow-md"
-                  aria-label="Delete Book"
-                >
-                  {deleteBookMutation.isLoading ? (
-                    <LoadingSpinner />
-                  ) : (
-                    <MdDelete className="text-xl" />
-                  )}
-                </button>
-              </Tooltip>
             </div>
           ))
         ) : (
