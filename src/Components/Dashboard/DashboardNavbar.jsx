@@ -24,6 +24,7 @@ import { RiMessage2Line } from "react-icons/ri";
 import { TbFocusCentered } from "react-icons/tb";
 import { FiSettings } from "react-icons/fi";
 import Toggle from './../Toggle/Toggle';
+import axios from "axios";
 
 
 
@@ -31,6 +32,7 @@ import Toggle from './../Toggle/Toggle';
 
 export default function DashboardNavbar() {
   const session = useSession();
+  const [notification, setNotification] = useState([])
   const [isListening, setIsListening] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
@@ -103,6 +105,24 @@ export default function DashboardNavbar() {
     }
   }, [recognition]);
 
+  useEffect(() => {
+    // Function to fetch notifications data
+    const fetchNotifications = () => {
+      // Get notifications data
+      axios.get('https://bookify-server-lilac.vercel.app/notifications')
+        .then(response => {
+          const notificationsData = response.data;
+          setNotification(notificationsData); // Set notifications state
+          console.log('Notifications:', notification); // Log fetched notifications
+        })
+        .catch(error => {
+          console.error('Error fetching notifications:', error); // Log any errors
+        });
+    };
+
+    fetchNotifications(); // Call the fetch function
+  }, [notification]);
+
   return (
     <div>
       <nav className="fixed top-0 z-50 w-full bg-white dark:bg-[#272727fb] dark:shadow-md dark:shadow-[#2f2c2cfb]">
@@ -122,7 +142,7 @@ export default function DashboardNavbar() {
               </Link>
 
             </div>
-  
+
             <div className="flex items-center justify-between w-full md:w-[86%]">
 
               {/* all menu */}
@@ -171,15 +191,19 @@ export default function DashboardNavbar() {
 
                   {/* Notification Button */}
                   <div className="relative">
-                    <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
-                      id="notification-button"
-                      aria-controls={open ? 'notification-menu' : undefined}
-                      aria-haspopup="true"
-                      size="small"
-                      aria-expanded={open ? 'true' : undefined}
-                      onClick={handleClick}>
-                      <IoMdNotificationsOutline className="text-xl" />
-                    </button>
+                    <div>
+                      <button className="relative bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
+                        id="notification-button"
+                        aria-controls={open ? 'notification-menu' : undefined}
+                        aria-haspopup="true"
+                        size="small"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}>
+                        <IoMdNotificationsOutline className="text-xl" />
+                        
+                      </button>
+                      <p className="absolute top-0 -mt-1 right-0 bg-red-500 rounded-full text-sm  px-[5px]">{notification.length}</p>
+                    </div>
                     <Menu
                       id="notification-menu"
                       anchorEl={anchorEl}
@@ -189,9 +213,11 @@ export default function DashboardNavbar() {
                         'aria-labelledby': 'notification-button',
                       }}
                     >
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
-                      <MenuItem onClick={handleClose}>Logout</MenuItem>
+                      {notification.map((notification, index) => (
+                        <MenuItem key={notification.id} onClick={handleClose}>
+                          {`${index + 1}. ${notification.RequesterName} requested to exchange book `} {/* Display index */}
+                        </MenuItem>
+                      ))}
                     </Menu>
                   </div>
 
@@ -206,7 +232,7 @@ export default function DashboardNavbar() {
                       onClick={handleClick}>
                       <MdOutlineMessage className="text-xl " />
                     </button>
-                    <Menu
+                    {/* <Menu
                       id="message-menu"
                       anchorEl={anchorEl}
                       open={open}
@@ -218,10 +244,10 @@ export default function DashboardNavbar() {
                       <MenuItem onClick={handleClose}>Profile</MenuItem>
                       <MenuItem onClick={handleClose}>My account</MenuItem>
                       <MenuItem onClick={handleClose}>Logout</MenuItem>
-                    </Menu>
+                    </Menu> */}
                   </div>
 
-            
+
 
                   {/* Profile Button */}
                   <div className="relative">
@@ -271,8 +297,8 @@ export default function DashboardNavbar() {
                     )}
                   </div>
 
-                        {/* Settings Icon */}
-                        <div className="border-l border-black pl-4 hidden md:block"> {/* Hide settings icon on small screens */}
+                  {/* Settings Icon */}
+                  <div className="border-l border-black pl-4 hidden md:block"> {/* Hide settings icon on small screens */}
                     <FiSettings className="text-2xl animate-spin [animation-duration:2s]" />
                   </div>
                 </div>
