@@ -124,11 +124,11 @@ const AudioBook = () => {
           {data?.slice(0, 4).map((b) => (
             <div
               key={b.id}
-              className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 dark:bg-[#0A0A0C] dark:text-white"
+              className="flex flex-col md:gap-2 gap-12 md:flex-row bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 dark:bg-[#0A0A0C] dark:text-white"
             >
               <div className="md:w-1/3 h-64 w-full relative">
                 <Image
-                  className=" md:h-full w-full object-cover"
+                  className=" md:h-full w-full object-fill"
                   width={250}
                   height={250}
                   src={b?.audioBookCover}
