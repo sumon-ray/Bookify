@@ -7,20 +7,19 @@ html {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body {
-  /* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ; */
-}
-
 .timeline-component {
-  box-sizing: border-box; /* 1 */
+  box-sizing: border-box;
+  /* 1 */
   border-width: 0;
 }
+
 .css-zza0ns-MuiBadge-badge {
   background-color: #364957;
 }
 
 .timeline-item {
-  border: none; /* Remove any border */
+  border: none;
+  /* Remove any border */
 }
 
 .swiper-button-prev {
@@ -56,32 +55,17 @@ body {
   box-shadow: 0 0 0 0.2px #737373;
 }
 
-/*About Section Style  */
-
-/* button className */
-
 .btn_1 {
   color: #ffffff;
   background-color: #364957;
   font-weight: 500;
   border-radius: 0.5rem;
-  /* Rounded corners */
-  /* font-size: 0.875rem; */
-  /* Small text */
   padding: 0.5rem 0.6rem;
-  /* Padding: 0.5rem top-bottom, 1.25rem left-right */
-  /* margin-right: 0.5rem; */
-  /* Margin-end */
-  /* margin-bottom: 0.5rem; */
-  /* Margin-bottom */
-
   outline: none;
-  /* Remove outline on focus */
 }
 
 .btn_1:focus {
   box-shadow: 0 0 0 4px #b7b7b7;
-  /* Focus ring */
 }
 
 .btn_2 {
@@ -94,19 +78,11 @@ body {
   font-size: 0.875rem;
   /* Small text */
   padding: 0.5rem 0.6rem;
-  /* Padding: 0.5rem top-bottom, 1.25rem left-right */
-  /* margin-right: 0.5rem; */
-  /* Margin-end */
-  /* margin-bottom: 0.5rem; */
-  /* Margin-bottom */
-
   outline: none;
-  /* Remove outline on focus */
 }
 
 .btn_2:focus {
   box-shadow: 0 0 0 4px #b7b7b7;
-  /* Focus ring */
 }
 
 @layer base {
@@ -139,52 +115,77 @@ body {
   }
 
   /* Dark mode colors */
-  
-    
+
+
   .dark {
-    --background: 0 0% 0%; /* Black background */
-    --foreground: 0 0% 100%; /* White text */
-    --card: 0 0% 10%; /* Darker cards */
-    --card-foreground: 0 0% 98%; /* White text for cards */
-    --popover: 0 0% 10%; /* Darker popovers */
-    --popover-foreground: 0 0% 98%; /* White text for popovers */
-    --primary: 0 0% 98%; /* White for primary elements */
-    --primary-foreground: 0 0% 9%; /* Black text for primary elements */
-    --secondary: 0 0% 14.9%; /* Darker background for secondary elements */
-    --secondary-foreground: 0 0% 98%; /* White text for secondary elements */
-    --muted: 0 0% 14.9%; /* Dark muted background */
-    --muted-foreground: 0 0% 63.9%; /* Light muted text */
-    --accent: 0 0% 14.9%; /* Darker accent */
-    --accent-foreground: 0 0% 98%; /* White text for accent */
-    --destructive: 0 62.8% 30.6%; /* Darker destructive elements */
-    --destructive-foreground: 0 0% 98%; /* White text for destructive elements */
-    --border: 0 0% 20%; /* Darker borders */
-    --input: 0 0% 14.9%; /* Darker input fields */
-    --ring: 0 0% 98%; /* Lighter ring */
-}
+    --background: 0 0% 0%;
+    /* Black background */
+    --foreground: 0 0% 100%;
+    /* White text */
+    --card: 0 0% 10%;
+    /* Darker cards */
+    --card-foreground: 0 0% 98%;
+    /* White text for cards */
+    --popover: 0 0% 10%;
+    /* Darker popovers */
+    --popover-foreground: 0 0% 98%;
+    /* White text for popovers */
+    --primary: 0 0% 98%;
+    /* White for primary elements */
+    --primary-foreground: 0 0% 9%;
+    /* Black text for primary elements */
+    --secondary: 0 0% 14.9%;
+    /* Darker background for secondary elements */
+    --secondary-foreground: 0 0% 98%;
+    /* White text for secondary elements */
+    --muted: 0 0% 14.9%;
+    /* Dark muted background */
+    --muted-foreground: 0 0% 63.9%;
+    /* Light muted text */
+    --accent: 0 0% 14.9%;
+    /* Darker accent */
+    --accent-foreground: 0 0% 98%;
+    /* White text for accent */
+    --destructive: 0 62.8% 30.6%;
+    /* Darker destructive elements */
+    --destructive-foreground: 0 0% 98%;
+    /* White text for destructive elements */
+    --border: 0 0% 20%;
+    /* Darker borders */
+    --input: 0 0% 14.9%;
+    /* Darker input fields */
+    --ring: 0 0% 98%;
+    /* Lighter ring */
+  }
 
 
-  
+
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
 @layer utilities {
+
   .custom-audio::-webkit-media-controls-play-button,
   .custom-audio::-webkit-media-controls-pause-button {
-    background-color: #fff; /* Tailwind's bg-emerald-500 */
-    border-radius: 50%; /* Makes the button circular */
+    background-color: #fff;
+    /* Tailwind's bg-emerald-500 */
+    border-radius: 50%;
+    /* Makes the button circular */
     width: 30px;
     height: 30px;
-    filter: invert(1); /* Inverts colors for better contrast */
+    filter: invert(1);
+    /* Inverts colors for better contrast */
   }
+
   .custom-audio::-webkit-media-controls-panel {
     background-color: #ffffff;
   }
@@ -193,17 +194,30 @@ body {
     background-color: none;
   }
 
-  .timeline-component, .timeline-item {
-    background-color: var(--card); /* Darker background */
-    color: var(--card-foreground); /* White text */
+  .timeline-component,
+  .timeline-item {
+    background-color: var(--card);
+    /* Darker background */
+    color: var(--card-foreground);
+    /* White text */
   }
-  
+
 }
 
 .css-ihowzd-MuiBadge-badge {
-  background: #364957;
+  background: #364957 !important;
 }
 
 .css-1nd3ur8-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
   background-color: #364957 !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+  background-color: #364957 !important;
+  color: #fff !important;
+}
+
+div:where(.swal2-container) div:where(.swal2-popup) {
+  background: #F3F2ED !important;
+  color: black !important;
 }
