@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import { Summarize } from "@mui/icons-material";
 import BookSummaryModal from "./BookSummaryModal";
+import "./buttonCustom.css"
 
 export default function ImgDetails({ Book = {} }) {
   const router = useRouter();
@@ -45,7 +46,7 @@ export default function ImgDetails({ Book = {} }) {
         icon: "info",
         showCancelButton: true,
         confirmButtonColor: "#364957",
-        cancelButtonColor: "#364957CC",
+        cancelButtonColor: "#364957B3",
         confirmButtonText: "Confirm",
       }).then(async (result) => {
         if (result.isConfirmed) {
