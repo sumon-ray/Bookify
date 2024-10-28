@@ -123,14 +123,14 @@ const AudioBook = () => {
               key={b.id}
               className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 dark:bg-[#0A0A0C] dark:text-white"
             >
-              <div className="md:w-1/3 w-full relative">
+              <div className="md:w-1/3 h-64 w-full relative">
                 <Image
-                  className="h-64 md:h-full w-full object-cover"
+                  className=" md:h-full w-full object-cover"
                   width={250}
                   height={250}
                   src={b?.audioBookCover}
                   alt={b?.title}
-                  quality={90}
+                  quality={80}
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <Link
