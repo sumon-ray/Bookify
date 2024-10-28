@@ -64,7 +64,7 @@ export default function Page() {
   const { data: usersBooks, isLoading: usersBooksLoading, refetch: usersDataRefetch } = useQuery({
     queryKey: ['users books', selectedOwner, session?.user?.email],
     queryFn: async () => {
-      const res = await axios(`http://localhost:4000/books?excludeEmail=${session?.user?.email}&owner=${selectedOwner}`)
+      const res = await axios(`https://bookify-server-lilac.vercel.app/books?excludeEmail=${session?.user?.email}&owner=${selectedOwner}`)
       const data = res.data
       return data;
     },
@@ -85,7 +85,7 @@ export default function Page() {
   const { data: owner, isLoading: ownerLoading, } = useQuery({
     queryKey: ['users books', session?.user?.email],
     queryFn: async () => {
-      const res = await axios(`http://localhost:4000/books?excludeEmail=${session?.user?.email}`)
+      const res = await axios(`https://bookify-server-lilac.vercel.app/books?excludeEmail=${session?.user?.email}`)
       const data = res.data
       return data;
     },
