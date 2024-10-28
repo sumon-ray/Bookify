@@ -12,7 +12,6 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import { Summarize } from "@mui/icons-material";
 import BookSummaryModal from "./BookSummaryModal";
-import "./buttonCustom.css"
 
 export default function ImgDetails({ Book = {} }) {
   const router = useRouter();
