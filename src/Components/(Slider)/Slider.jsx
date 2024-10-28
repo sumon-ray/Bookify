@@ -2,10 +2,11 @@
 import { SiGitbook } from "react-icons/si";
 import { IoIosPeople } from "react-icons/io";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, EffectCards } from 'swiper/modules';
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/effect-cards';
 import 'swiper/css/pagination';
 import './slider.css'; // Ensure this is correctly pointing to your CSS
 
@@ -38,7 +39,7 @@ const Slider = () => {
 
             <div className="md:w-1/2">
                 <div>
-                    <Swiper
+                    {/* <Swiper
                         className='w-full h-full'
                         modules={[Navigation, Pagination, Autoplay]}
                         spaceBetween={0}
@@ -51,7 +52,7 @@ const Slider = () => {
                             768: { slidesPerView: 1, spaceBetween: 80 },
                         }}
                     >
-                        {/* Example Slides */}
+                        
                         <SwiperSlide style={{ width: 150 }}>
                             <div>
                                 <img className="h-80 md:w-[225px] w-full rounded-xl" src={`https://i.postimg.cc/g2KRL9zP/download.jpg`} />
@@ -72,6 +73,22 @@ const Slider = () => {
                                 <img className="h-80 md:w-[225px] w-full rounded-xl" src="https://i.ibb.co/gtxLxvr/book6.jpg" />
                             </div>
                         </SwiperSlide>
+                    </Swiper> */}
+                    <Swiper
+                        effect={'cards'}
+                        grabCursor={true}
+                        modules={[EffectCards]}
+                        className="mySwiper"
+                    >
+                        <SwiperSlide className="w-[300px] h-[300px] border-2 bg-slate-500 ">Slide 1</SwiperSlide>
+                        <SwiperSlide>Slide 2</SwiperSlide>
+                        <SwiperSlide>Slide 3</SwiperSlide>
+                        <SwiperSlide>Slide 4</SwiperSlide>
+                        <SwiperSlide>Slide 5</SwiperSlide>
+                        <SwiperSlide>Slide 6</SwiperSlide>
+                        <SwiperSlide>Slide 7</SwiperSlide>
+                        <SwiperSlide>Slide 8</SwiperSlide>
+                        <SwiperSlide>Slide 9</SwiperSlide>
                     </Swiper>
                 </div>
             </div>
