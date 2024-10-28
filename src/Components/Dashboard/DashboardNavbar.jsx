@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
+
 import { GiBookmarklet } from "react-icons/gi";
 import TemporaryDrawer from "./Drawer";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { IoIosSearch, IoMdNotificationsOutline } from "react-icons/io";
 import { MdOutlineKeyboardVoice, MdOutlineMessage, MdOutlineWbSunny } from "react-icons/md";
 import { useSearchContext } from "@/app/(dashboard)/dashboard/myBooks/SearchProvider";
@@ -24,6 +25,9 @@ import { RiMessage2Line } from "react-icons/ri";
 import { TbFocusCentered } from "react-icons/tb";
 import { FiSettings } from "react-icons/fi";
 import Toggle from './../Toggle/Toggle';
+import axios from "axios";
+
+// import {useRouter } from 'next/router';
 
 
 
@@ -31,17 +35,22 @@ import Toggle from './../Toggle/Toggle';
 
 export default function DashboardNavbar() {
   const session = useSession();
+  const [notification, setNotification] = useState([])
+  const [notificationSeen, setNotificationSeen] = useState(true)
+
   const [isListening, setIsListening] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const router = useRouter();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setNotificationSeen(false)
   }
 
   const { setSearchQuery: updateSearchContext } = useSearchContext();
@@ -103,6 +112,30 @@ export default function DashboardNavbar() {
     }
   }, [recognition]);
 
+  useEffect(() => {
+    // Function to fetch notifications data
+    const fetchNotifications = () => {
+      // Get notifications data
+      axios.get(`https://bookify-server-lilac.vercel.app/notifications?owner=${session?.data?.user?.email}`)
+        .then(response => {
+          const notificationsData = response.data;
+          setNotification(notificationsData); // Set notifications state
+          console.log('Notifications:', notification); // Log fetched notifications
+        })
+        .catch(error => {
+          console.error('Error fetching notifications:', error); // Log any errors
+        });
+    };
+
+    fetchNotifications(); // Call the fetch function
+  }, [notification]);
+
+  // route to request page 
+  const routeToRequestPage = () => {
+    router.push('/dashboard/exchange-request')
+    handleClose()
+  }
+
   return (
     <div>
       <nav className="fixed top-0 z-50 w-full bg-white dark:bg-[#272727fb] dark:shadow-md dark:shadow-[#2f2c2cfb]">
@@ -122,15 +155,15 @@ export default function DashboardNavbar() {
               </Link>
 
             </div>
-  
+
             <div className="flex items-center justify-between w-full md:w-[86%]">
 
               {/* all menu */}
               <div className="flex items-center justify-between w-full"> {/* Adjusted to take full width */}
-                <div className="flex items-center gap-x-6 md:gap-x-4"> {/* Adjusted gap for smaller screens */}
+                <div className="flex items-center  lg:-translate-x-7 gap-x-6 md:gap-x-2"> {/* Adjusted gap for smaller screens */}
 
                   {/* Search Input */}
-                  <div className="relative w-40 lg:w-72 md:w-48 md:mr-4">
+                  <div className="relative translate-x-4 w-40 sm:w-72 md:w-48 lg:w-72 md:translate-x-14   lg:translate-x-0  md:mr-4 lg:mr-0 ">
                     <input
                       className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
                       type="text"
@@ -166,20 +199,24 @@ export default function DashboardNavbar() {
                 </div>
 
                 {/* Icons moved to the right side */}
-                <div className="flex mr-6 items-center gap-4"> {/* Adjusted gap for smaller screens */}
+                <div className="flex items-center gap-2 md:gap-4"> {/* Adjusted gap for smaller screens */}
                   <Toggle />
 
                   {/* Notification Button */}
                   <div className="relative">
-                    <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
-                      id="notification-button"
-                      aria-controls={open ? 'notification-menu' : undefined}
-                      aria-haspopup="true"
-                      size="small"
-                      aria-expanded={open ? 'true' : undefined}
-                      onClick={handleClick}>
-                      <IoMdNotificationsOutline className="text-xl" />
-                    </button>
+                    <div>
+                      <button className="relative bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
+                        id="notification-button"
+                        aria-controls={open ? 'notification-menu' : undefined}
+                        aria-haspopup="true"
+                        size="small"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}>
+                        <IoMdNotificationsOutline className="text-xl" />
+                        
+                      </button>
+                      <p className="absolute top-0 -mt-1 right-0 bg-[#364957] text-white rounded-full text-sm  px-[5px]">{notificationSeen && notification.length}</p>
+                    </div>
                     <Menu
                       id="notification-menu"
                       anchorEl={anchorEl}
@@ -189,14 +226,16 @@ export default function DashboardNavbar() {
                         'aria-labelledby': 'notification-button',
                       }}
                     >
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
-                      <MenuItem onClick={handleClose}>Logout</MenuItem>
+                      {notification.length > 0 ? notification.map((notification, index) => (
+                        <MenuItem key={notification.id} onClick={routeToRequestPage}>
+                          <p className="p-2">{`${index + 1}. ${notification.RequesterName} requested to exchange book `} {/* Display index */}</p>
+                        </MenuItem>
+
+                      )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}
                     </Menu>
                   </div>
 
-                  {/* Message Button */}
-                  <div className="relative">
+                  <div className="relative hidden md:flex">
                     <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
                       id="message-button"
                       aria-controls={open ? 'message-menu' : undefined}
@@ -206,7 +245,7 @@ export default function DashboardNavbar() {
                       onClick={handleClick}>
                       <MdOutlineMessage className="text-xl " />
                     </button>
-                    <Menu
+                    {/* <Menu
                       id="message-menu"
                       anchorEl={anchorEl}
                       open={open}
@@ -218,10 +257,8 @@ export default function DashboardNavbar() {
                       <MenuItem onClick={handleClose}>Profile</MenuItem>
                       <MenuItem onClick={handleClose}>My account</MenuItem>
                       <MenuItem onClick={handleClose}>Logout</MenuItem>
-                    </Menu>
+                    </Menu> */}
                   </div>
-
-            
 
                   {/* Profile Button */}
                   <div className="relative">
@@ -270,6 +307,35 @@ export default function DashboardNavbar() {
                       </>
                     )}
                   </div>
+
+                  {/* Message Button */}
+                  <div className="relative hidden ">
+                    <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
+                      id="message-button"
+                      aria-controls={open ? 'message-menu' : undefined}
+                      aria-haspopup="true"
+                      size="small"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}>
+                      <MdOutlineMessage className="text-xl " />
+                    </button>
+                    {/* <Menu
+                      id="message-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        'aria-labelledby': 'message-button',
+                      }}
+                    >
+                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                      <MenuItem onClick={handleClose}>My account</MenuItem>
+                      <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    </Menu> */}
+                  </div>
+
+            
+
 
                         {/* Settings Icon */}
                         <div className="border-l border-black pl-4 hidden md:block"> {/* Hide settings icon on small screens */}
