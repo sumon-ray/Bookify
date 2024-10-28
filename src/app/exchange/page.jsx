@@ -229,6 +229,7 @@ export default function Page() {
                           // Sample data to post
                           const data = {
                             requesterEmail: user,
+                            requesterImg: session?.user?.image,
                             RequesterName: session?.user?.name,
                             ownerEmail: takeBooks?.length ? takeBooks[0]?.AuthorEmail : '',
                             ownerName: takeBooks?.length ? takeBooks[0]?.owner : '',

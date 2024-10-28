@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
+
 import { GiBookmarklet } from "react-icons/gi";
 import TemporaryDrawer from "./Drawer";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { IoIosSearch, IoMdNotificationsOutline } from "react-icons/io";
 import { MdOutlineKeyboardVoice, MdOutlineMessage, MdOutlineWbSunny } from "react-icons/md";
 import { useSearchContext } from "@/app/(dashboard)/dashboard/myBooks/SearchProvider";
@@ -26,6 +27,8 @@ import { FiSettings } from "react-icons/fi";
 import Toggle from './../Toggle/Toggle';
 import axios from "axios";
 
+// import {useRouter } from 'next/router';
+
 
 
 
@@ -33,17 +36,21 @@ import axios from "axios";
 export default function DashboardNavbar() {
   const session = useSession();
   const [notification, setNotification] = useState([])
+  const [notificationSeen, setNotificationSeen] = useState(true)
+
   const [isListening, setIsListening] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const router = useRouter();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setNotificationSeen(false)
   }
 
   const { setSearchQuery: updateSearchContext } = useSearchContext();
@@ -109,7 +116,7 @@ export default function DashboardNavbar() {
     // Function to fetch notifications data
     const fetchNotifications = () => {
       // Get notifications data
-      axios.get('https://bookify-server-lilac.vercel.app/notifications')
+      axios.get(`https://bookify-server-lilac.vercel.app/notifications?owner=${session?.data?.user?.email}`)
         .then(response => {
           const notificationsData = response.data;
           setNotification(notificationsData); // Set notifications state
@@ -122,6 +129,12 @@ export default function DashboardNavbar() {
 
     fetchNotifications(); // Call the fetch function
   }, [notification]);
+
+  // route to request page 
+  const routeToRequestPage = () => {
+    router.push('/dashboard/exchange-request')
+    handleClose()
+  }
 
   return (
     <div>
@@ -202,7 +215,7 @@ export default function DashboardNavbar() {
                         <IoMdNotificationsOutline className="text-xl" />
                         
                       </button>
-                      <p className="absolute top-0 -mt-1 right-0 bg-red-500 rounded-full text-sm  px-[5px]">{notification.length}</p>
+                      <p className="absolute top-0 -mt-1 right-0 bg-[#364957] text-white rounded-full text-sm  px-[5px]">{notificationSeen && notification.length}</p>
                     </div>
                     <Menu
                       id="notification-menu"
@@ -214,9 +227,10 @@ export default function DashboardNavbar() {
                       }}
                     >
                       {notification.map((notification, index) => (
-                        <MenuItem key={notification.id} onClick={handleClose}>
-                          {`${index + 1}. ${notification.RequesterName} requested to exchange book `} {/* Display index */}
+                        <MenuItem key={notification.id} onClick={routeToRequestPage}>
+                          <p className="p-2">{`${index + 1}. ${notification.RequesterName} requested to exchange book `} {/* Display index */}</p>
                         </MenuItem>
+
                       ))}
                     </Menu>
                   </div>
