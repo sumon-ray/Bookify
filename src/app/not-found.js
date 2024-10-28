@@ -17,13 +17,13 @@ export default function NotFound() {
       <div className="lg:w-1/2 text-center lg:text-left pl-8 mt-16">
         <h2 className="text-4xl font-semibold mb-4 drop-shadow-lg">Oops! Page Not Found</h2>
         <p className="text-xl mb-6 max-w-md drop-shadow-md">
-          Sorry, the page you're looking for doesn't exist.
+          {/* Sorry, the page you're looking for doesn&apos;t exist. */}
         </p>
         <Link
           href="/"
           className="bg-[#364957] text-white px-4 py-2 rounded-md hover:bg-gray-200 hover:text-black transition-colors duration-300"
         >
-          Go back to Home
+          Please go back to Home.
         </Link>
       </div>
     </div>

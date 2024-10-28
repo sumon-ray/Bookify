@@ -69,27 +69,27 @@ const OurMission = () => {
         }}
       >
         <motion.div className="flex flex-col items-center text-center" variants={fadeInUpVariants}>
-          <FaRecycle className="text-5xl text-[#364957] mb-4" />
+          <FaRecycle className="text-5xl text-[#364957] dark:text-gray-400 mb-4" />
           <h3 className="text-2xl font-semibold mb-2">Sustainability</h3>
-          <p className="text-lg text-gray-600 max-w-md mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-md mx-auto">
             We promote sustainability by encouraging the reuse and sharing of
             books, reducing waste, and minimizing our ecological footprint.
           </p>
         </motion.div>
 
         <motion.div className="flex flex-col items-center text-center" variants={fadeInUpVariants}>
-          <FaPeopleArrows className="text-5xl text-[#364957] mb-4" />
+          <FaPeopleArrows className="text-5xl text-[#364957] dark:text-gray-400 mb-4" />
           <h3 className="text-2xl font-semibold mb-2">Community</h3>
-          <p className="text-lg max-w-md mx-auto text-gray-600">
+          <p className="text-lg max-w-md mx-auto text-gray-600 dark:text-gray-300"> 
             Our platform connects readers from around the world, fostering a
             community where everyone can share their love for literature.
           </p>
         </motion.div>
 
         <motion.div className="flex flex-col items-center text-center" variants={fadeInUpVariants}>
-          <FaBookOpen className="text-5xl text-[#364957] mb-4" />
+          <FaBookOpen className="text-5xl text-[#364957] dark:text-gray-400 mb-4" />
           <h3 className="text-2xl font-semibold mb-2">Knowledge Sharing</h3>
-          <p className="text-lg max-w-md mx-auto text-gray-600">
+          <p className="text-lg max-w-md mx-auto text-gray-600 dark:text-gray-300">
             We believe in the power of stories. Our mission is to create a
             platform where knowledge is shared and stories are celebrated.
           </p>

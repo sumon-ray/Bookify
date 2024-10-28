@@ -7,6 +7,8 @@ import QueryProvider from "./QueryProvider";
 import { Toaster } from "react-hot-toast";
 // import { SearchProvider } from "./(dashboard)/dashboard/SearchProvider";
 import { SearchProvider } from "./(dashboard)/dashboard/myBooks/SearchProvider";
+import { NextUIProvider } from "@nextui-org/react";
+import { ThemeProvider } from "next-themes";
 // import { Toaster } from 'react-hot-toast';
 
 const geistSans = localFont({
@@ -32,13 +34,21 @@ export default function RootLayout({ children }) {
         <QueryProvider>
           <AuthProvider>
             <body
-              className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99]`}
-            >
-              <Toaster />
-              <Navbar />
-              {children}
-
-              <Footer />
+              className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99] dark:bg-[#272727A6] overflow-x-hidden`}>
+              <ThemeProvider attribute="class">
+                <NextUIProvider>
+                  <Navbar />
+                  <Toaster toastOptions={{
+                    className: '',
+                    style: {
+                      background: '#364957',
+                      color: '#ffffff',
+                    },
+                  }} />
+                  {children}
+                  <Footer />
+                </NextUIProvider>
+              </ThemeProvider>
             </body>
           </AuthProvider>
         </QueryProvider>

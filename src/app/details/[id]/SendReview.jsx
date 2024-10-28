@@ -41,7 +41,7 @@ function SendReview({ refetch, openStar, setOpenStar , value}) {
 
     return (
         <div className="relative">
-            <Button onClick={() => setIsOpen(true)} variant="contained" className="bg-[#364957]" size="small">write review</Button>
+            <Button onClick={() => setIsOpen(true)} variant="contained" className="bg-[#364957] dark:bg-[#0A0A0C]" size="small">write review</Button>
             {isOpen && (
                 <div
                     className="fixed inset-0 z-10 overflow-y-auto"
@@ -54,7 +54,7 @@ function SendReview({ refetch, openStar, setOpenStar , value}) {
                             &#8203;
                         </span>
 
-                        <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-[#EFEEE9] rounded-md shadow-xl sm:my-8 sm:w-full sm:max-w-sm sm:p-4 sm:align-middle">
+                        <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-[#EFEEE9] dark:bg-[#0A0A0C] rounded-md shadow-xl sm:my-8 sm:w-full sm:max-w-sm sm:p-4 sm:align-middle">
                             <form onSubmit={handleSubmit} className="flex flex-col max-w-xl p-8 rounded-xl lg:p-10 ">
 
                                 <div className="flex flex-col items-center w-full ">
@@ -66,7 +66,7 @@ function SendReview({ refetch, openStar, setOpenStar , value}) {
                                     </div>
 
                                     <div>
-                                        <textarea rows="3" cols={'31'} name='review' placeholder="Your review..." className="p-4 w-[303px] md:w-[275px] rounded-md resize-none border-0 focus:outline-none focus:ring focus:ring-[#EFEEE9]" required></textarea>
+                                        <textarea rows="3" cols={'31'} name='review' placeholder="Your review..." className="p-4 w-[303px] md:w-[275px] rounded-md resize-none border-0 focus:outline-none focus:ring focus:ring-[#EFEEE9] dark:ring-0 dark:text-black" required></textarea>
                                     </div>
 
                                 </div>
@@ -78,7 +78,7 @@ function SendReview({ refetch, openStar, setOpenStar , value}) {
                                             setIsOpen(false)
                                             setOpenStar(false)
                                         }}
-                                        className="w-full px-4 py-2 text-sm font-medium tracking-wide text-black capitalize transition-colors duration-300 transform border border-[#364957] rounded-md sm:w-1/2 sm:mx-2 focus:outline-none focus:ring focus:ring-[#364957] "
+                                        className="w-full px-4 py-2 text-sm font-medium tracking-wide text-black dark:text-white capitalize transition-colors duration-300 transform border border-[#364957] dark:border-[#ffffff] rounded-md sm:w-1/2 sm:mx-2 focus:outline-none focus:ring focus:ring-[#364957] "
                                     >
                                         Cancel
                                     </button>

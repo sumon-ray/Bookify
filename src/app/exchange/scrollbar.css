@@ -1,0 +1,43 @@
+/* Customize the scrollbar */
+.overflow-y-scroll::-webkit-scrollbar {
+  margin-top: 5px;
+  width: 8px;
+  /* width of the scrollbar */
+}
+
+/* Track */
+.overflow-y-scroll::-webkit-scrollbar-track {
+  background: #364957 !important;
+  /* background of the track */
+  border-radius: 10px !important
+    /* optional rounded corners */
+}
+
+/* Handle */
+.overflow-y-scroll::-webkit-scrollbar-thumb {
+  background: #000000 !important;
+  /* color of the scrollbar handle */
+  border-radius: 10px !important
+    /* optional rounded corners */
+}
+
+/* Handle on hover */
+.overflow-y-scroll::-webkit-scrollbar-thumb:hover {
+  background: #364957 !important;
+  /* color when hovered */
+}
+
+.overflow-y-scroll {
+  scrollbar-color: #ffffff #364957CC !important;
+  /* (handle color) (track color) */
+  scrollbar-width: thin;
+  /* width of the scrollbar (auto, thin, none) */
+}
+
+
+.border {
+  border-width: 2px;
+}
+.border-input {
+  border-color: #364957;
+}

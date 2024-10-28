@@ -29,12 +29,12 @@ export default function Review({ refetch, Data }) {
                             size="large"
                         />
                     </Box>
-                    <SendReview refetch={refetch} openStar={openStar} setOpenStar={setOpenStar} value={value}/>
+                    <SendReview refetch={refetch} openStar={openStar} setOpenStar={setOpenStar} value={value} />
                 </div>
 
                 {/* total review */}
                 <div>
-                    <div className=" w-full">
+                    <div className="hidden md:block w-full">
                         <div>
                             <h2 className="text-3xl fon-bold">{averageRating}.00</h2>
                             <Rating name="read-only" className="pt-2" value={averageRating} size="medium" readOnly />

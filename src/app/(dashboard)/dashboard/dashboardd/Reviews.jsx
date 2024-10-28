@@ -10,12 +10,12 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/Components/ui/Card";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/Components/ui/Chart";
 
 export const description = "A multiple bar chart";
 
@@ -80,18 +80,3 @@ const Reviews = () => {
 };
 
 export default Reviews;
-
-
-
-
-// import React from 'react';
-
-// const Reviews = () => {
-//   return (
-//     <div>
-      
-//     </div>
-//   );
-// };
-
-// export default Reviews;

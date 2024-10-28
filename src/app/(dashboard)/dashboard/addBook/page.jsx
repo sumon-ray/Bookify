@@ -23,9 +23,10 @@ const AddBook = () => {
   const uniqueCity = [...new Set(data?.map(book => book?.location))];
   const [Genre, setGenre] = useState('');
   const [location, setLocation] = useState('')
+  const [loading, setLoading] = useState(true)
 
   async function addBook(e) {
-
+    setLoading(true)
     e.preventDefault();
     const title = e.target.title.value;
     const AuthorEmail = e.target.email.value;
@@ -59,29 +60,12 @@ const AddBook = () => {
       AuthorProfile: session?.data?.user?.image || '',
     }).then(data => {
       if (data.data.insertedId) {
-        toast.custom((t) => (
-          <div
-            className={`${t.visible ? 'animate-enter' : 'animate-leave'
-              } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}>
-            <div className="flex-1 w-0 p-4">
-              ✅ Book added done
-            </div>
-
-            <div className="flex border-l border-gray-200">
-              <button
-                onClick={() => toast.dismiss(t.id)}
-                className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-black hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        ))
-        // e.target.reset()
-
+        toast.success('Book added done')
+        e.target.reset()
+        setLoading(false)
       }
     })
-
+      .catch(error => toast.error(error.message))
   }
 
 
@@ -90,65 +74,65 @@ const AddBook = () => {
   return (
     <section className="space-y-6 pb-12">
 
-      <div className="bg-[#EFEEE9] rounded-md p-6">
-        <h1 className="text-3xl font-black uppercase text-center">Add your book</h1>
+      <div className="bg-[#EFEEE9] dark:bg-[#0A0A0C] rounded-md p-6">
+        <h1 className="text-xl md:text-3xl font-black uppercase text-center dark:text-white">Add your book</h1>
       </div>
 
       <form onSubmit={addBook}>
-        <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 *:space-y-0.5">
+        <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 *:space-y-0.5 px-6 md:px-0">
 
           <div className="col-span-full  sm:col-span-2 ">
-            <label className="text-sm uppercase">Title</label>
-            <input required id="title" type="text" placeholder="Title" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
+            <label className="text-sm uppercase dark:text-white">Title</label>
+            <input required id="title" type="text" placeholder="Title" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0" />
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">email</label>
-            <input required type="email" name="email" placeholder="Email" value={session?.data?.user?.email} className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
+            <label className="text-sm uppercase dark:text-white">email</label>
+            <input required type="email" name="email" placeholder="Email" value={session?.data?.user?.email} className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0" />
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">description</label>
-            <input required id="description" type="text" placeholder="Description" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
+            <label className="text-sm uppercase dark:text-white">description</label>
+            <input required id="description" type="text" placeholder="Description" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0" />
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">Writer</label>
-            <input required id="Writer" type="text" placeholder="Writer" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
+            <label className="text-sm uppercase dark:text-white">Writer</label>
+            <input required id="Writer" type="text" placeholder="Writer" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0" />
           </div>
 
           <div className="col-span-full sm:col-span-2 uppercase">
             <div className="flex items-center gap-3">
               <div className="w-1/2">
-                <label className="text-sm">Rating</label>
-                <input required id="rating" type="number" min={'1'} max={'5'} placeholder="Rating" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
+                <label className="text-sm dark:text-white">Rating</label>
+                <input required id="rating" type="number" min={'1'} max={'5'} placeholder="Rating" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0" />
               </div>
               <div className="w-1/2">
-                <label className="text-sm">published Year</label>
-                <input required id="publishedYear" type="month" placeholder="published Year" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
+                <label className="text-sm dark:text-white">published</label>
+                <input required id="publishedYear" type="month" placeholder="published Year" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0" />
               </div>
             </div>
           </div>
 
           {/* condition */}
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">Condition</label>
-            <select required className="border border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]">
-              <option value={'Good'}>Good</option>
+            <label className="text-sm uppercase dark:text-white">Condition</label>
+            <select required className="border border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0">
+              <option value={'Good'}>Good</option> dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-white
             </select>
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">exchange Status</label>
-            <select required className="border border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]">
+            <label className="text-sm uppercase dark:text-white">exchange Status</label>
+            <select required className="border border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0">
               <option value={'Available'}>Available</option>
             </select>
           </div>
 
           {/* genre */}
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">Genre</label>
-            <select required onChange={(e) => setGenre(e.target.value)} className="border border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]">
+            <label className="text-sm uppercase dark:text-white">Genre</label>
+            <select required onChange={(e) => setGenre(e.target.value)} className="border border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0">
               {
                 uniqueGenre?.map((book, idx) => <option value={book} key={idx}>{book}</option>)
               }
@@ -156,20 +140,20 @@ const AddBook = () => {
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">total Page</label>
-            <input required id="totalPage" type="number" placeholder="Total Page" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5" />
+            <label className="text-sm uppercase dark:text-white">total Page</label>
+            <input required id="totalPage" type="number" placeholder="Total Page" className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0" />
           </div>
 
           {/* photo */}
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase block pb-0.5">Photo url</label>
-            <input required type="file" id="file" className="block bg-white w-full text-sm border border-gray-300 text-gray-700 rounded-lg focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]" />
+            <label className="text-sm uppercase block pb-0.5 dark:text-white">Photo url</label>
+            <input required type="file" id="file" className="block bg-white w-full text-sm border border-gray-300 text-gray-700 rounded-lg focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0" />
           </div>
 
           {/* location */}
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">location</label>
-            <select required onChange={(e) => setLocation(e.target?.value)} className="border border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]">
+            <label className="text-sm uppercase dark:text-white">location</label>
+            <select required onChange={(e) => setLocation(e.target?.value)} className="border border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0">
               {
                 uniqueCity?.map((book, idx) => <option key={idx} value={book}>{book}</option>)
               }
@@ -177,7 +161,7 @@ const AddBook = () => {
           </div>
 
           <div className="col-span-full sm:col-span-2 md:relative">
-            <button type="submit" className="flex items-center justify-between gap-x-1 text-white text-sm font-bold  bg-[#364957] rounded-lg  w-full md:h-[65.5%] md:absolute px-4 p-4  md:bottom-0 focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff]">
+            <button type="submit" className="flex items-center justify-between gap-x-1 text-white text-sm font-bold  bg-[#364957] rounded-lg  w-full md:h-[65.5%] md:absolute px-4 p-4  md:bottom-0 focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff] dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0">
               <span>
                 Add Book
               </span>

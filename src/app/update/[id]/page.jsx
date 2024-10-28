@@ -32,7 +32,7 @@ const UpdateBook = ({ params }) => {
           setBook(null);
         } else {
           const data = await response.json();
-          setBook(data); // Set the book details in the state
+          setBook(data); 
         }
         setLoading(false);
       } catch (error) {
@@ -116,7 +116,7 @@ const UpdateBook = ({ params }) => {
   }
 
   return (
-    <section className="space-y-6 px-8 lg:px-20 pb-12">
+    <section className="space-y-6 px-8 lg:px-20 pb-12 pt-20">
       <div className="bg-[#EFEEE9] rounded-md p-6">
         <h1 className="text-3xl font-black uppercase text-center">Edit Book</h1>
       </div>

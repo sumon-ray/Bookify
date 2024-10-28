@@ -23,6 +23,8 @@ import { IoMoonOutline } from "react-icons/io5";
 import { RiMessage2Line } from "react-icons/ri";
 import { TbFocusCentered } from "react-icons/tb";
 import { FiSettings } from "react-icons/fi";
+import Toggle from './../Toggle/Toggle';
+
 
 
 
@@ -103,7 +105,7 @@ export default function DashboardNavbar() {
 
   return (
     <div>
-      <nav className="fixed top-0 z-50 w-full bg-white">
+      <nav className="fixed top-0 z-50 w-full bg-white dark:bg-[#272727fb] dark:shadow-md dark:shadow-[#2f2c2cfb]">
         <div className="py-1 pr-3.5">
 
           <div className="flex items-center justify-between">
@@ -116,19 +118,175 @@ export default function DashboardNavbar() {
               </div>
 
               <Link href={"/"} className="hidden md:flex">
-                <Image src={img} className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+                <Image src={img} unoptimized className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
               </Link>
 
             </div>
+  
+            <div className="flex items-center justify-between w-full md:w-[86%]">
 
-            {/* search , profile , notification */}
-            <div className="flex items-center justify-between w-[86%]">
+              {/* all menu */}
+              <div className="flex items-center justify-between w-full"> {/* Adjusted to take full width */}
+                <div className="flex items-center gap-x-6 md:gap-x-4"> {/* Adjusted gap for smaller screens */}
 
-              {/* search */}
+                  {/* Search Input */}
+                  <div className="relative w-40 lg:w-72 md:w-48 md:mr-4">
+                    <input
+                      className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
+                      type="text"
+                      placeholder="Search..."
+                      onChange={handleSearch}
+                      value={searchQuery}
+                    />
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
+                      <IoIosSearch
+                        className="text-xl cursor-pointer dark:text-black"
+                        onClick={handleSearchClick}
+                      />
+                      <div
+                        className={`bg-[#364957] p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer ${isListening ? "" : ""
+                          }`}
+                        onClick={handleVoiceInput}
+                      >
+                        {isListening ? (
+                          <Lottie
+                            animationData={lottieImage}
+                            aria-label="Lottie animation"
+                            loop
+                            className="w-full h-[24px]"
+                            autoplay
+                          />
+                        ) : (
+                          <MdOutlineKeyboardVoice className="text-2xl text-white hover:text-green-500" />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Icons moved to the right side */}
+                <div className="flex mr-6 items-center gap-4"> {/* Adjusted gap for smaller screens */}
+                  <Toggle />
+
+                  {/* Notification Button */}
+                  <div className="relative">
+                    <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
+                      id="notification-button"
+                      aria-controls={open ? 'notification-menu' : undefined}
+                      aria-haspopup="true"
+                      size="small"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}>
+                      <IoMdNotificationsOutline className="text-xl" />
+                    </button>
+                    <Menu
+                      id="notification-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        'aria-labelledby': 'notification-button',
+                      }}
+                    >
+                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                      <MenuItem onClick={handleClose}>My account</MenuItem>
+                      <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    </Menu>
+                  </div>
+
+                  {/* Message Button */}
+                  <div className="relative">
+                    <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
+                      id="message-button"
+                      aria-controls={open ? 'message-menu' : undefined}
+                      aria-haspopup="true"
+                      size="small"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}>
+                      <MdOutlineMessage className="text-xl " />
+                    </button>
+                    <Menu
+                      id="message-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        'aria-labelledby': 'message-button',
+                      }}
+                    >
+                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                      <MenuItem onClick={handleClose}>My account</MenuItem>
+                      <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    </Menu>
+                  </div>
+
+            
+
+                  {/* Profile Button */}
+                  <div className="relative">
+                    {session?.status === "authenticated" && (
+                      <>
+                        <button
+                          type="button"
+                          className="flex items-center text-sm"
+                          onClick={() => setToggle(!toggle)}
+                        >
+                          {session?.data?.user.image ? (
+                            <Image
+                              src={session?.data?.user?.image}
+                              width={32}
+                              height={32}
+                              className="rounded-full hover:border-2"
+                              alt="profile-image"
+                            />
+                          ) : (
+                            <CgProfile className="text-black font-black text-3xl" />
+                          )}
+                          <div className="ml-2 text-left hidden md:block"> {/* Hide name on small screens */}
+                            <p className="block text-sm font-normal space-x-6">
+                              {session?.data?.user?.name}
+                            </p>
+                            <p className="block text-[12px] text-gray-500 truncate">
+                              {session?.data?.user?.email}
+                            </p>
+                          </div>
+                        </button>
+
+                        {toggle && (
+                          <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
+                            <ul className="pt-1" aria-labelledby="user-menu-button">
+                              <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center ">
+                                <FaUserEdit className="mr-1" />
+                                <ProfileUpdateModal />
+                              </li>
+                              <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
+                                <FaSignOutAlt className="mr-1" />
+                                <button onClick={() => signOut()}>Sign out</button>
+                              </li>
+                            </ul>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+
+                        {/* Settings Icon */}
+                        <div className="border-l border-black pl-4 hidden md:block"> {/* Hide settings icon on small screens */}
+                    <FiSettings className="text-2xl animate-spin [animation-duration:2s]" />
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <Link href={"/"} className="flex md:hidden mr-2">
+              {/* <Image unoptimized src={img} className="h-[52px] max-w-[135px] -mr-6" height={20} width={200} /> */}
               <div className="hidden md:flex items-center justify-center ">
-                <div className=" relative w-40 lg:w-72 md:w-52 ">
+                <div className=" relative w-40 lg:w-72 md:w-48 md:mr-4">
                   <input
-                    className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
+                    className="bg-[#EFEEE9]  w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
                     type="text"
                     placeholder="Search..."
                     onChange={handleSearch}
@@ -136,11 +294,11 @@ export default function DashboardNavbar() {
                   />
                   <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
                     <IoIosSearch
-                      className="text-xl cursor-pointer"
+                      className="text-xl cursor-pointer dark:text-black"
                       onClick={handleSearchClick}
                     />
                     <div
-                      className={`bg-[#364957]  p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer ${isListening ? "" : ""
+                      className={`bg-[#364957]   p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer ${isListening ? "" : ""
                         }`}
                       onClick={handleVoiceInput}
                     >
@@ -153,164 +311,12 @@ export default function DashboardNavbar() {
                           autoplay
                         />
                       ) : (
-                        <MdOutlineKeyboardVoice className="text-2xl text-white" />
+                        <MdOutlineKeyboardVoice className="text-2xl text-white hover:text-green-500" />
                       )}
                     </div>
                   </div>
                 </div>
               </div>
-
-
-              {/* all menu */}
-              <div className="hidden md:flex items-center gap-x-6 ">
-
-                <button className="bg-[#36495733] text-black rounded-full p-2">
-                  <MdOutlineWbSunny className="text-xl" />
-                </button>
-
-                <div>
-                  <button className="bg-[#36495733] text-black rounded-full p-2"
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    size="small"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}>
-                    <IoMdNotificationsOutline className="text-xl" />
-                  </button>
-                  <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                      'aria-labelledby': 'basic-button',
-                    }}
-                  >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
-                  </Menu>
-                </div>
-
-                <div>
-                  <button className="bg-[#36495733] text-black rounded-full p-2"
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    size="small"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}>
-                    <MdOutlineMessage className="text-xl" />
-                  </button>
-                  <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                      'aria-labelledby': 'basic-button',
-                    }}
-                  >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
-                  </Menu>
-                </div>
-
-                <div>
-                  <button className="bg-[#36495733] text-black rounded-full p-2"
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    size="small"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}>
-                    <TbFocusCentered className="text-xl" />
-                  </button>
-                  <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                      'aria-labelledby': 'basic-button',
-                    }}
-                  >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
-                  </Menu>
-                </div>
-
-                {/* profile */}
-                <div>
-                  {session?.status === "authenticated" && (
-                    <>
-                      <div className="relative  text-left hidden md:block">
-                        <button
-                          type="button"
-                          className="flex text-sm "
-                          onClick={() => setToggle(!toggle)}
-                        >
-                          {session?.data?.user.image ? (
-                            <>
-                              <Image
-                                src={session?.data?.user?.image}
-                                width={35.5}
-                                height={35.5}
-                                className="rounded-full hover:border-2"
-                                alt="profile-image"
-                              ></Image>
-                            </>
-                          ) : (
-                            <>
-                              <CgProfile className="text-black font-black text-3xl" />
-                            </>
-                          )}
-                        </button>
-                      </div>
-
-                      {toggle ? (
-                        <>
-                          <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
-                            <div className="px-4 py-2">
-                              <span className="block text-sm   ">
-                                {session?.data?.user?.name}
-                              </span>
-                              <span className="block text-sm  text-gray-500 truncate">
-                                {session?.data?.user?.email}
-                              </span>
-                            </div>
-                            <ul className="pt-1" aria-labelledby="user-menu-button">
-                              <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center ">
-                                <FaUserEdit className="mr-1" />
-                                <ProfileUpdateModal></ProfileUpdateModal>
-                              </li>
-                              <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
-                                <FaSignOutAlt className="mr-1" />
-                                <button onClick={() => signOut()}>Sign out</button>
-                              </li>
-                            </ul>
-                          </div>
-                        </>
-                      ) : (
-                        <></>
-                      )}
-                    </>
-                  )}
-                </div>
-
-                <div className="border-l border-black pl-4">
-                  <FiSettings className="text-2xl animate-spin [animation-duration:2s]" />
-                </div>
-
-              </div>
-
-            </div>
-
-            <Link href={"/"} className="flex md:hidden mr-2">
-              <Image src={img} className="h-[52px] max-w-[135px] -mr-6" height={20} width={200} />
             </Link>
 
           </div>

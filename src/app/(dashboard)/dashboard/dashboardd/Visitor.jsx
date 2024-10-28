@@ -9,12 +9,12 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/Components/ui/Card";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/Components/ui/Chart";
 
 export const description = "A line chart";
 
@@ -90,14 +90,3 @@ const Visitor = () => {
 };
 
 export default Visitor;
-// import React from 'react';
-
-// const Visitor = () => {
-//   return (
-//     <div>
-      
-//     </div>
-//   );
-// };
-
-// export default Visitor;

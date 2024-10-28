@@ -10,12 +10,12 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"; // Adjust the path if necessary
+} from "@/Components/ui/Card"; // Adjust the path if necessary
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"; // Adjust the path if necessary
+} from "@/Components/ui/Chart"; // Adjust the path if necessary
 
 const chartData = [
   { browser: "To Kill a Mockingbird", visitors: 275, fill: "var(--color-chrome)" },
@@ -50,15 +50,15 @@ const chartConfig = {
     color: "hsl(var(--chart-5))",
   },
 };
-
-
-const TopBooks = ({overview}) => {
+  
+const TopBooks = () => {
     const totalVisitors = useMemo(() => {
         return chartData.reduce((acc, curr) => acc + curr.visitors, 0);
       }, []);
     
       return (
         <div>
+         
           <Card className="flex flex-col shadow-none border-none">
             <CardHeader className="items-start pb-0 font-bold ">
               <CardTitle className="font-bold">Top Books</CardTitle>
@@ -120,16 +120,3 @@ const TopBooks = ({overview}) => {
 };
 
 export default TopBooks;
-
-
-// import React from 'react';
-
-// const TopBooks = () => {
-//   return (
-//     <div>
-      
-//     </div>
-//   );
-// };
-
-// export default TopBooks;
