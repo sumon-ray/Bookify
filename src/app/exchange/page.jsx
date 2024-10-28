@@ -93,7 +93,7 @@ export default function Page() {
   })
 
   const uniqueOwner = [...new Set(owner?.map(book => book?.owner))]
-  const uniqueMyBooksOwners = [...new Set(mybooks?.map(book => book?.owner === session?.user?.name || book?.owner ))]
+  const uniqueMyBooksOwners = [...new Set(mybooks?.map(book => book?.owner === session?.user?.name || book?.owner))]
 
 
   async function takeBookExchange(book) {
@@ -225,6 +225,24 @@ export default function Page() {
                             }
                           });
                           router.push('/dashboard/exchange-request')
+                          // post to not(requesterEmail, requesterName, takeBooks?.length )
+                          // Sample data to post
+                          const data = {
+                            requesterEmail: user,
+                            RequesterName: session?.user?.name,
+                            ownerEmail: takeBooks?.length ? takeBooks[0]?.AuthorEmail : '',
+                            ownerName: takeBooks?.length ? takeBooks[0]?.owner : '',
+                            books: takeBooks?.length,
+
+                          };
+                           console.log("data for post ", data);
+                          axios.post('https://bookify-server-lilac.vercel.app/notification', data)
+                            .then(response => {
+                              console.log('Response:', response.data);
+                            })
+                            .catch(error => {
+                              console.error('Error:', error);
+                            });
                         }
                       }).catch(error => toast.error(error.message))
                   }
@@ -235,7 +253,6 @@ export default function Page() {
     });
 
   };
-
 
   if (status === "loading") {
     return <div className="flex justify-center w-full items-center pt-20 min-h-[68vh]">
