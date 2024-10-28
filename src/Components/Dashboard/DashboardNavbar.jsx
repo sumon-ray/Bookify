@@ -226,12 +226,12 @@ export default function DashboardNavbar() {
                         'aria-labelledby': 'notification-button',
                       }}
                     >
-                      {notification.map((notification, index) => (
+                      {notification.length > 0 ? notification.map((notification, index) => (
                         <MenuItem key={notification.id} onClick={routeToRequestPage}>
                           <p className="p-2">{`${index + 1}. ${notification.RequesterName} requested to exchange book `} {/* Display index */}</p>
                         </MenuItem>
 
-                      ))}
+                      )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}
                     </Menu>
                   </div>
 
