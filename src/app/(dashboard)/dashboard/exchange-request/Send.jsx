@@ -24,15 +24,25 @@ import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import { GrSend } from 'react-icons/gr';
 import { useRouter } from 'next/navigation';
+import { Api } from '@mui/icons-material';
+import toast from 'react-hot-toast';
 
 
-function Row(props) {
-    const { row } = props || {}
+function Row({ row, refetch }) {
     const [open, setOpen] = React.useState(false);
+
+    function deleteRequest(message) {
+        axios.delete(`https://bookify-server-lilac.vercel.app/send-request-delete?id=${row?._id}`)
+            .then(res => {
+                if (res.data.deletedCount) {
+                    toast.success(message)
+                    refetch()
+                }
+            })
+    }
 
     return (
         <React.Fragment>
-
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
                 <TableCell>
                     <IconButton
@@ -50,16 +60,23 @@ function Row(props) {
                     <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' />
                 </TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.ownerBooks?.length}</span></TableCell>
-                <TableCell align='left' className='relative'><span className='absolute left-[3px] top-6'>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
-                <TableCell align='left' className='relative'>
-                    <Button className='absolute left-[3px] top-3 bg-[#F5A52433] text-[#F5A524] rounded-full capitalize font-medium'>
+                <TableCell align='left' className='relative hidden md:inline-block'><span className='absolute left-[3px] top-6 '>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
+                <TableCell align='left' className='md:relative'>
+                    <Button className={`md:absolute md:left-[3px] ${row?.status === 'pending' ? 'bg-[#F5A52433] text-[#F5A524]' : row?.status === 'canceled' ? 'bg-[#0000004D] text-black' : 'bg-[#31C48D4D] text-green-500'} top-3  rounded-full capitalize font-medium`}>
                         {row?.status}
                     </Button>
                 </TableCell>
-                <TableCell align='left' className='relative'>
-                    <Button className='bg-[#00000099] absolute left-[3px] top-3 text-[#ffffff] rounded-full capitalize font-medium'>
-                        Cancel
-                    </Button>
+                <TableCell align='left' className='md:relative'>
+                    {
+                        row?.status === 'pending'
+                            ? <Button onClick={() => deleteRequest('Successfully canceled')} className='bg-[#00000099] md:absolute md:left-[3px] top-3 text-[#ffffff] rounded-full capitalize font-medium'>
+                                Cancel
+                            </Button>
+                            :
+                            <Button onClick={() => deleteRequest('Successfully deleted')} className='bg-[#F95454CC] md:absolute md:left-[3px] top-3 text-white border rounded-full capitalize font-medium'>
+                                Delete
+                            </Button>
+                    }
                 </TableCell>
             </TableRow>
 
@@ -71,8 +88,8 @@ function Row(props) {
 
 export default function Send() {
     const router = useRouter()
-    const { data: session, status } = useSession()
-    const { data = [], isLoading } = useQuery({
+    const { data: session, status } = useSession();
+    const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['exchange-request-send', session?.user?.email],
         queryFn: async () => {
             const res = await axios(`https://bookify-server-lilac.vercel.app/exchange-request?requesterEmail=${session?.user?.email}`)
@@ -117,7 +134,7 @@ export default function Send() {
                 !data?.length ?
                     <div div className='min-h-[71vh] flex items-center justify-center '>
                         <figure className='flex flex-col justify-center items-center '>
-                            <Image unoptimized src={`https://res.cloudinary.com/dz1fy2tof/image/upload/v1729765964/book_5_vp9xfh.png`} height={100} width={100} className='size-96' />
+                            <Image unoptimized src={`https://res.cloudinary.com/dz1fy2tof/image/upload/v1729765964/book_5_vp9xfh.png`} height={100} width={100} className='size-80 md:size-96' />
                             <figcaption className='text-2xl font-black text-center'>You haven&apos;t sent any <br /> requests yet.</figcaption>
                             <button onClick={() => { router.push('/exchange') }} className='btn_1 flex items-center  gap-x-2 mt-3'>Send Request <GrSend className='text-lg' /></button>
                         </figure>
@@ -131,14 +148,14 @@ export default function Send() {
                                     <TableCell className='font-bold'>Name</TableCell>
                                     <TableCell className='font-bold'>Message</TableCell>
                                     <TableCell className='font-bold'>Books</TableCell>
-                                    <TableCell className='font-bold'>Date</TableCell>
+                                    <TableCell className='font-bold hidden md:inline-block'>Date</TableCell>
                                     <TableCell className='font-bold'>Status</TableCell>
                                     <TableCell className='font-bold'>Action</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {data?.map((row) => (
-                                    <Row key={row.name} row={row} />
+                                    <Row key={row.name} row={row} refetch={refetch} />
                                 ))}
                             </TableBody>
                         </Table>

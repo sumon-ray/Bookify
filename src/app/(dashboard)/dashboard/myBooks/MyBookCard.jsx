@@ -123,37 +123,35 @@ const MyBookCard = () => {
 
   return (
     <div className="container dark:text-gray-300 mx-auto px-8 md:px-0 pb-8">
-      <div className="py-2 flex items-center my-6  justify-between">
-        <h1 className="text-[#000000] dark:text-gray-300 font-semibold text-[18.61px]">Best Popular</h1>
-        <div className="flex items-center justify-center gap-4 px-2 py-1 relative">
+      <div className="py-2 flex flex-col sm:flex-row items-center my-6 justify-between">
+        <h1 className="text-[#000000] dark:text-gray-300 font-semibold text-[18.61px] mb-2 sm:mb-0">Best Popular</h1>
+        <div className="flex items-center justify-center gap-4 px-2 py-1 relative w-full sm:w-auto">
           <FaFilter className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-[#364957] dark:text-gray-300 text-sm sm:text-lg" />
           <select
-  value={selectedGenre}
-  onChange={handleGenreChange}
-  className="pr-4 py-2 w-auto custom-select text-right  text-xs sm:text-sm md:text-base text-black dark:text-gray-300 outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1] focus:border-[#a1a5a8b1] rounded-lg bg-transparent"
->
-  {genres.map((genre) => (
-    <option
-      key={genre}
-      value={genre}
-      className="hover:bg-[#364957] dark:bg-[#272727CC] border pr-10 border-[#a1a5a8b1] focus:border-[#a1a5a8b1] !hover:text-white outline-none"
-    >
-      {genre}
-    </option>
-  ))}
-</select>
+            value={selectedGenre}
+            onChange={handleGenreChange}
+            className="pr-4 py-2 w-full md:w-auto custom-select text-right text-xs sm:text-sm md:text-base text-black dark:text-gray-300 outline-none focus:outline-none focus:ring-0 border border-[#a1a5a8b1] focus:border-[#a1a5a8b1] rounded-lg bg-transparent"
+          >
+            {genres.map((genre) => (
+              <option
+                key={genre}
+                value={genre}
+                className="hover:bg-[#364957] dark:bg-[#272727CC] border pr-10 border-[#a1a5a8b1] focus:border-[#a1a5a8b1] !hover:text-white outline-none"
+              >
+                {genre}
+              </option>
+            ))}
+          </select>
 
-<style jsx>{`
-  .custom-select {
-    -webkit-appearance: none; 
-    -moz-appearance: none; 
-    appearance: none;
-    background-image: none; 
-    background-color: transparent; 
-  }
-`}</style>
-
-
+          <style jsx>{`
+            .custom-select {
+              -webkit-appearance: none; 
+              -moz-appearance: none; 
+              appearance: none;
+              background-image: none; 
+              background-color: transparent; 
+            }
+          `}</style>
         </div>
       </div>
       

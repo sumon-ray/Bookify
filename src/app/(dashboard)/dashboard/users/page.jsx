@@ -47,7 +47,7 @@ const Page = () => {
   }
 
   // state for pagination
-  const usersPerPage = 5;
+  const usersPerPage = 6;
   const pageCount = Math.ceil(data.length / usersPerPage);
 
   const handleDelete = async (id) => {
@@ -135,7 +135,7 @@ const Page = () => {
   const currentUsers = data.slice(startOffset, startOffset + usersPerPage);
 
   return (
-    <section className="container px-4 mx-auto min-h-screen">
+    <section className="container px-4 mx-auto">
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800 ">Total members</h2>
 
@@ -156,11 +156,7 @@ const Page = () => {
                       className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                     >
                       <div className="flex items-center gap-x-3">
-                        <input
-                          type="checkbox"
-                          className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
-                        />
-                        <span>Name</span>
+                        <span>Profile</span>
                       </div>
                     </th>
 
@@ -240,11 +236,6 @@ const Page = () => {
                     <tr key={user.email}>
                       <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                         <div className="inline-flex items-center gap-x-3">
-                          <input
-                            type="checkbox"
-                            className="text-blue-500 border-gray-300 rounded dark:bg-[#0A0A0C] dark:text-white"
-                          />
-
                           <div className="flex items-center gap-x-2">
                             <Image
                               className="object-cover w-10 h-10 rounded-full"
@@ -348,17 +339,17 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center  mt-6  w-full">
+      <div className="flex items-center justify-center w-full mt-4">
         <ReactPaginate
           previousLabel="Previous"
           nextLabel="Next"
           pageCount={pageCount}
           onPageChange={handlePageClick}
           containerClassName="flex items-center justify-between space-x-4"
-          previousLinkClassName="px-3 py-1 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100 dark:bg-[#0A0A0C] dark:text-white dark:border-gray-700 dark:hover:bg-gray-800"
-          nextLinkClassName="px-3 py-1 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100 dark:bg-[#0A0A0C] dark:text-white dark:border-gray-700 dark:hover:bg-gray-800"
-          pageLinkClassName="px-3 py-1 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100 dark:bg-[#0A0A0C] dark:text-white dark:border-gray-700 dark:hover:bg-gray-800"
-          activeLinkClassName="bg-red-300 dark:bg-[#0A0A0C] text-white"
+          previousLinkClassName="px-3 py-1 text-sm text-white bg-[#364957] border rounded-md  dark:bg-[#0A0A0C] dark:text-white"
+          nextLinkClassName="px-3 py-1 text-sm text-white bg-[#364957] border rounded-md  dark:bg-[#0A0A0C] dark:text-white"
+          pageLinkClassName="px-3 py-1 text-sm text-gray-700  border rounded-md dark:text-white"
+          activeLinkClassName="bg-[#364957] text-white"
           disabledClassName="opacity-50 cursor-not-allowed"
         />
       </div>

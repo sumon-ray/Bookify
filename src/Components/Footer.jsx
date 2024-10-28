@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import React from "react";
+import Swal from "sweetalert2"; // Import sweetalert2
 import {
   FaFacebook,
   FaInstagram,
@@ -25,6 +26,20 @@ const Footer = () => {
   ) {
     return <div></div>;
   }
+
+  // Newsletter submit handler
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    
+    // Trigger the SweetAlert
+    Swal.fire({
+      title: 'Subscribed!',
+      text: 'Thank you for subscribing to our newsletter!',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+      confirmButtonColor: '#364957',
+    });
+  };
 
   return (
     <footer className="bg-white text-black py-6 px-4 lg:py-12 lg:px-8 dark:bg-[#272727CC] dark:text-black">
@@ -149,7 +164,7 @@ const Footer = () => {
         <div className="w-full lg:w-1/3 flex flex-col space-y-6 ">
           <div className="border-2 p-4 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-3 h-1/2 dark:bg-[#0A0A0C] dark:text-white">
             <h2 className="text-2xl font-bold text-center">Subscribe to our newsletter!</h2>
-            <form className="flex gap-2 w-full">
+            <form onSubmit={handleNewsletterSubmit} className="flex gap-2 w-full">
               <input
                 type="email"
                 placeholder="Enter your email"
