@@ -127,10 +127,10 @@ export default function DashboardNavbar() {
 
               {/* all menu */}
               <div className="flex items-center justify-between w-full"> {/* Adjusted to take full width */}
-                <div className="flex items-center gap-x-6 md:gap-x-4"> {/* Adjusted gap for smaller screens */}
+                <div className="flex items-center  lg:-translate-x-7 gap-x-6 md:gap-x-2"> {/* Adjusted gap for smaller screens */}
 
                   {/* Search Input */}
-                  <div className="relative w-40 lg:w-72 md:w-48 md:mr-4">
+                  <div className="relative translate-x-4 w-40 sm:w-72 md:w-48 lg:w-72 md:translate-x-14   lg:translate-x-0  md:mr-4 lg:mr-0 ">
                     <input
                       className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
                       type="text"
@@ -166,7 +166,7 @@ export default function DashboardNavbar() {
                 </div>
 
                 {/* Icons moved to the right side */}
-                <div className="flex mr-6 items-center gap-4"> {/* Adjusted gap for smaller screens */}
+                <div className="flex items-center gap-2 md:gap-4"> {/* Adjusted gap for smaller screens */}
                   <Toggle />
 
                   {/* Notification Button */}
@@ -195,8 +195,7 @@ export default function DashboardNavbar() {
                     </Menu>
                   </div>
 
-                  {/* Message Button */}
-                  <div className="relative">
+                  <div className="relative hidden md:flex">
                     <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
                       id="message-button"
                       aria-controls={open ? 'message-menu' : undefined}
@@ -220,9 +219,7 @@ export default function DashboardNavbar() {
                       <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </Menu>
                   </div>
-
-            
-
+                  
                   {/* Profile Button */}
                   <div className="relative">
                     {session?.status === "authenticated" && (
@@ -270,6 +267,35 @@ export default function DashboardNavbar() {
                       </>
                     )}
                   </div>
+
+                  {/* Message Button */}
+                  <div className="relative hidden ">
+                    <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
+                      id="message-button"
+                      aria-controls={open ? 'message-menu' : undefined}
+                      aria-haspopup="true"
+                      size="small"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}>
+                      <MdOutlineMessage className="text-xl " />
+                    </button>
+                    <Menu
+                      id="message-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        'aria-labelledby': 'message-button',
+                      }}
+                    >
+                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                      <MenuItem onClick={handleClose}>My account</MenuItem>
+                      <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    </Menu>
+                  </div>
+
+            
+
 
                         {/* Settings Icon */}
                         <div className="border-l border-black pl-4 hidden md:block"> {/* Hide settings icon on small screens */}
