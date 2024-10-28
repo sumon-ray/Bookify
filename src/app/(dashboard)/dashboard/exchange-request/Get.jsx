@@ -56,7 +56,7 @@ function Row({ row, refetch }) {
     }
 
     const DeleteApprove = () => {
-        axios.patch(`http://localhost:4000/get-request-cancel?id=${row?._id}`)
+        axios.patch(`https://bookify-server-lilac.vercel.app/get-request-cancel?id=${row?._id}`)
             .then(res => {
                 if (res.data.modifiedCount) {
                     toast.success('Exchange canceled')

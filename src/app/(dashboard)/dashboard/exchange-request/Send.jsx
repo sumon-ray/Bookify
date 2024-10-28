@@ -32,7 +32,7 @@ function Row({ row, refetch }) {
     const [open, setOpen] = React.useState(false);
 
     function deleteRequest(message) {
-        axios.delete(`http://localhost:4000/send-request-delete?id=${row?._id}`)
+        axios.delete(`https://bookify-server-lilac.vercel.app/send-request-delete?id=${row?._id}`)
             .then(res => {
                 if (res.data.deletedCount) {
                     toast.success(message)
