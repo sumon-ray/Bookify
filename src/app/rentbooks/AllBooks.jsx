@@ -10,6 +10,8 @@ import { Pagination, Stack } from '@mui/material';
 import Link from 'next/link';
 import { FaCartPlus } from 'react-icons/fa6';
 import './pagination.css'
+import { useSession } from 'next-auth/react';
+import toast from 'react-hot-toast';
 
 function valuetext(value) {
     return `${value}°C`;
@@ -18,6 +20,22 @@ function valuetext(value) {
 
 
 export default function AllBooks() {
+
+    const { data: session, status } = useSession()
+    const handleCart = (book) => {
+
+        axios.post(`https://bookify-server-lilac.vercel.app/cart?id=${book?._id}`, { ...book, cartOwner: session?.user.email })
+            .then(res => {
+                if (res.data && !res.data.message) {
+                    toast.success('Successfully added to cart')
+                } else if (res.data.message) {
+                    toast.success(res.data.message)
+                }
+            }).catch(error => toast.error(error.message))
+    }
+
+
+
     const [currentPage, setCurrentPage] = React.useState(1)
     const [value, setValue] = React.useState([1, 500]);
     const [mainData, setMainData] = React.useState([])
@@ -88,7 +106,7 @@ export default function AllBooks() {
         refetch()
     }
 
-
+   
 
     return (
         <form onSubmit={handleSubmit} className='pt-7 max-w-7xl mx-auto dark:text-white'>
@@ -303,13 +321,12 @@ export default function AllBooks() {
                             <div className='grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-5 md:gap-3 lg:gap-6 lg:gap-y-7'>
                                 {
                                     data?.result?.slice(0, limit).map((book, idx) =>
-                                        <Link
-                                            href={''}
+                                        <div
                                             key={idx}
                                             className="md:w-auto lg:w-[185px] h-auto bg-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white rounded-md "
                                             title={book?.Title}
                                         >
-                                            <div className="">
+                                            <div>
                                                 <Image
                                                     src={book?.coverImage}
                                                     className="w-full h-[220px] rounded-t-md object-fill"
@@ -322,12 +339,12 @@ export default function AllBooks() {
                                                 <div className="text-left pl-2 pb-[5.5px] pt-[4.5px] relative">
                                                     <div className='flex items-center justify-between pr-2'>
                                                         <h1 className="font-medium">{book?.Price}$</h1>
-                                                        <span className='bg-[#364957] rounded-tl-2xl rounded-bl-2xl rounded-br-md text-white p-2 absolute right-0 bottom-0'><FaCartPlus className='text-lg' /></span>
+                                                        <span onClick={() => handleCart(book)} title='Add to Cart' className='bg-[#364957] rounded-tl-2xl rounded-bl-2xl rounded-br-md text-white p-2 absolute right-0 bottom-0'><FaCartPlus className='text-lg' /></span>
                                                     </div>
 
                                                 </div>
                                             </div>
-                                        </Link>
+                                        </div>
                                     )
                                 }
                             </div>
