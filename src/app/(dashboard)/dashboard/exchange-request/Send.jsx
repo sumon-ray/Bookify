@@ -59,7 +59,7 @@ function Row({ row, refetch }) {
                 </TableCell>
                 <TableCell align='right' className='relative'>
                     {/* <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' /> */}
-                    <Modal/>
+                    <Modal receiver={row.ownerEmail}/>
                 </TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.ownerBooks?.length}</span></TableCell>
                 <TableCell align='left' className='relative hidden md:inline-block'><span className='absolute left-[3px] top-6 '>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
