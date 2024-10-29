@@ -24,6 +24,7 @@ import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
 import Modal from './(message)/Modal';
+import Swal from 'sweetalert2';
 
 
 function Row({ row, refetch }) {
@@ -46,10 +47,29 @@ function Row({ row, refetch }) {
 
     const approve = async function () {
         try {
-            const res = await axios.put(`https://bookify-server-lilac.vercel.app/exchange`, exchangeUpdateData)
-            const data = await res.data
-            toast.success(data?.message)
-            refetch()
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#364957",
+                cancelButtonColor: "#364957CC",
+                confirmButtonText: "Approve"
+            }).then(result => {
+                if (result?.isConfirmed) {
+                    axios.put(`https://bookify-server-lilac.vercel.app/exchange`, exchangeUpdateData)
+                        .then(res => {
+                            if (res?.data?.message) {
+                                Swal.fire({
+                                    title: "Approved!",
+                                    text: "The exchange request is approved.",
+                                    icon: "success",
+                                });
+                                refetch()
+                            }
+                        })
+                }
+            })
             // post to not(requesterEmail, requesterName, takeBooks?.length    )
             // Sample data to post
             const dataApprove = {
@@ -67,20 +87,35 @@ function Row({ row, refetch }) {
                 .catch(error => {
                     console.error('Error:', error);
                 });
-
         } catch (error) {
             toast.error(error?.message)
         }
     }
 
     const DeleteApprove = () => {
-        axios.patch(`https://bookify-server-lilac.vercel.app/get-request-cancel?id=${row?._id}`)
-            .then(res => {
-                if (res.data.modifiedCount) {
-                    toast.success('Exchange canceled')
-                    refetch()
-                }
-            })
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#364957",
+            cancelButtonColor: "#364957CC",
+            confirmButtonText: "Yes"
+        }).then(result => {
+            if (result?.isConfirmed) {
+                axios.patch(`https://bookify-server-lilac.vercel.app/get-request-cancel?id=${row?._id}`)
+                .then(res => {
+                        if (res.data.modifiedCount) {
+                            Swal.fire({
+                                title: "canceled!",
+                                text: "The exchange request is canceled.",
+                                icon: "success",
+                            });
+                            refetch()
+                        }
+                    })
+            }
+        })
     }
 
     return (
@@ -100,8 +135,8 @@ function Row({ row, refetch }) {
                     {row.RequesterName}
                 </TableCell>
                 <TableCell align='right' className='relative'>
-                    <AiFillMessage  className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' />
-                   
+                    <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' />
+
                 </TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.requesterBooks?.length}</span></TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[3px] top-6'>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
