@@ -64,13 +64,13 @@ export default function page() {
                         <p className="mt-2 text-sm">
                             Our friendly team is here to help.
                         </p>
-                        <p className="mt-2 text-sm text-black">
+                        <p className="mt-2 text-sm text-black dark:text-white">
                             Start new chat
                         </p>
                     </div>
 
-                    <div className="bg-[#EFEEE9CC] p-8 rounded-2xl">
-                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
+                    <div className="bg-[#EFEEE9CC] dark:bg-[#0A0A0C] dark:text-white p-8 rounded-2xl">
+                        <span className="inline-block p-3 text-[#000000] dark:text-white rounded-full bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -98,13 +98,13 @@ export default function page() {
                         <p className="mt-2 text-sm">
                             Come say hello at our office HQ.
                         </p>
-                        <p className="mt-2 text-sm text-black">
+                        <p className="mt-2 text-sm ">
                             Dhaka,Bangladesh
                         </p>
                     </div>
 
-                    <div className="bg-[#EFEEE9CC] p-8 rounded-2xl">
-                        <span className="inline-block p-3 text-[#000000] rounded-full bg-[#36495740] ">
+                    <div className="bg-[#EFEEE9CC] p-8 rounded-2xl dark:bg-[#0A0A0C] dark:text-white">
+                        <span className="inline-block p-3 text-[#000000] rounded-full dark:text-white bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -127,7 +127,7 @@ export default function page() {
                         <p className="mt-2 text-sm">
                             Mon-Fri from 8am to 5pm.
                         </p>
-                        <p className="mt-2 text-sm text-black">
+                        <p className="mt-2 text-sm">
                             +1 (555) 000-0000
                         </p>
                     </div>
@@ -144,7 +144,7 @@ export default function page() {
                                 <input
                                     type="text"
                                     placeholder="Enter your first name"
-                                    className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
+                                    className="block w-full px-5 py-2.5 mt-2 text-gray-700 dark:text-black placeholder-gray-400   bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
                                     required />
                             </div>
 
@@ -155,7 +155,7 @@ export default function page() {
                                 <input
                                     type="text"
                                     placeholder="Enter your last name"
-                                    className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
+                                    className="block w-full px-5 py-2.5 mt-2 text-gray-700 dark:text-black placeholder-gray-400  bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
                                     required />
                             </div>
                         </div>
@@ -167,7 +167,7 @@ export default function page() {
                             <input
                                 type="email"
                                 placeholder="Enter your email address"
-                                className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
+                                className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400  dark:text-black bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] focus:outline-none focus:ring"
                                 required />
                         </div>
 
@@ -182,7 +182,7 @@ export default function page() {
                             ></textarea>
                         </div>
 
-                        <button className="flex items-center justify-between w-full px-6 py-3 mt-4 text-white text-sm font-bold bg-[#364957] rounded-md">
+                        <button className="flex items-center justify-between w-full px-6 py-3 mt-4 text-white text-sm font-bold bg-[#364957] dark:bg-[#0A0A0C] dark:text-white rounded-md">
                             <span>Send Message </span>
                             <GrSend className="text-xl" />
                         </button>
