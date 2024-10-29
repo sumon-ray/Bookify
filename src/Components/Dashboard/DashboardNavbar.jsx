@@ -36,6 +36,7 @@ import axios from "axios";
 export default function DashboardNavbar() {
   const session = useSession();
   const [notification, setNotification] = useState([])
+  const [notificationApprove, setNotificationApprove] = useState([])
   const [notificationSeen, setNotificationSeen] = useState(true)
 
   const [isListening, setIsListening] = useState(false);
@@ -128,7 +129,25 @@ export default function DashboardNavbar() {
     };
 
     fetchNotifications(); // Call the fetch function
-  }, [notification]);
+  }, [notification, session?.data?.user?.email]);
+
+  useEffect(() => {
+    // Function to fetch notifications data
+    const fetchNotifications = () => {
+      // Get notifications data
+      axios.get(`https://bookify-server-lilac.vercel.app/notifications?approved=${session?.data?.user?.email}`)
+        .then(response => {
+          const notificationsData = response.data;
+          setNotificationApprove(notificationsData); // Set notifications state
+          console.log('Notifications:', notification); // Log fetched notifications
+        })
+        .catch(error => {
+          console.error('Error fetching notifications:', error); // Log any errors
+        });
+    };
+
+    fetchNotifications(); // Call the fetch function
+  }, [notificationApprove, notification, session?.data?.user?.email]);
 
   // route to request page 
   const routeToRequestPage = () => {
@@ -213,9 +232,9 @@ export default function DashboardNavbar() {
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}>
                         <IoMdNotificationsOutline className="text-xl" />
-                        
+
                       </button>
-                      <p className="absolute top-0 -mt-1 right-0 bg-[#364957] text-white rounded-full text-sm  px-[5px]">{notificationSeen && notification.length}</p>
+                      <p className="absolute top-0 -mt-1 right-0 bg-[#364957] text-white rounded-full text-sm  px-[5px]">{notificationSeen ? notification.length > 0 || notificationApprove.length > 0 && notification.length + notificationApprove.length : <></>}</p>
                     </div>
                     <Menu
                       id="notification-menu"
@@ -226,9 +245,18 @@ export default function DashboardNavbar() {
                         'aria-labelledby': 'notification-button',
                       }}
                     >
-                      {notification.length > 0 ? notification.map((notification, index) => (
+                      {/* request Notification */}
+                      {notification.length > 0 || notificationApprove.length > 0 ? notification.map((notification, index) => (
                         <MenuItem key={notification.id} onClick={routeToRequestPage}>
-                          <p className="p-2">{`${index + 1}. ${notification.RequesterName} requested to exchange book `} {/* Display index */}</p>
+                          <p className="p-2">{`${index + 1}. ${notification?.RequesterName} requested to exchange book `} {/* Display index */}</p>
+                        </MenuItem>
+
+                      )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}
+                      
+                      {/* Approve Notification */}
+                      {notificationApprove.length > 0 || notification.length > 0? notificationApprove.map((notification, index) => (
+                        <MenuItem key={notification.id} onClick={routeToRequestPage}>
+                          <p className="p-2">{`${index + 1}. ${notification?.approverEmail} approve your exchange reques`} {/* Display index */}</p>
                         </MenuItem>
 
                       )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}
@@ -334,11 +362,11 @@ export default function DashboardNavbar() {
                     </Menu> */}
                   </div>
 
-            
 
 
-                        {/* Settings Icon */}
-                        <div className="border-l border-black pl-4 hidden md:block"> {/* Hide settings icon on small screens */}
+
+                  {/* Settings Icon */}
+                  <div className="border-l border-black pl-4 hidden md:block"> {/* Hide settings icon on small screens */}
                     <FiSettings className="text-2xl animate-spin [animation-duration:2s]" />
                   </div>
                 </div>
