@@ -49,6 +49,23 @@ function Row({ row, refetch }) {
             const data = await res.data
             toast.success(data?.message)
             refetch()
+            // post to not(requesterEmail, requesterName, takeBooks?.length    )
+            // Sample data to post
+            const dataApprove = {
+                approverEmail: row?.ownerEmail,
+                approverName: row?.ownerName,
+                approvedEmail: row?.requesterEmail,
+                approvedName: row?.RequesterName
+
+            };
+            console.log("data for post ", dataApprove);
+            axios.post('https://bookify-server-lilac.vercel.app/notification', dataApprove)
+                .then(response => {
+                    console.log('Response:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
 
         } catch (error) {
             toast.error(error?.message)
