@@ -26,6 +26,7 @@ import { GrSend } from 'react-icons/gr';
 import { useRouter } from 'next/navigation';
 import { Api } from '@mui/icons-material';
 import toast from 'react-hot-toast';
+import Modal from './(message)/Modal';
 
 
 function Row({ row, refetch }) {
@@ -57,7 +58,8 @@ function Row({ row, refetch }) {
                     {row.ownerName}
                 </TableCell>
                 <TableCell align='right' className='relative'>
-                    <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' />
+                    {/* <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' /> */}
+                    <Modal/>
                 </TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.ownerBooks?.length}</span></TableCell>
                 <TableCell align='left' className='relative hidden md:inline-block'><span className='absolute left-[3px] top-6 '>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
