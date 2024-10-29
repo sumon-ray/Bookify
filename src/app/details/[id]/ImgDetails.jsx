@@ -45,7 +45,7 @@ export default function ImgDetails({ Book = {} }) {
         icon: "info",
         showCancelButton: true,
         confirmButtonColor: "#364957",
-        cancelButtonColor: "#364957CC",
+        cancelButtonColor: "#364957B3",
         confirmButtonText: "Confirm",
       }).then(async (result) => {
         if (result.isConfirmed) {

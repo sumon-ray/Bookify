@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AudioBook = () => {
   const [currentAudio, setCurrentAudio] = useState(null);
@@ -65,17 +65,20 @@ const AudioBook = () => {
     [showNotification]
   );
 
-  const handleFavorite = useCallback((id) => {
-    setFavorites(prev => {
-      const newFavorites = { ...prev, [id]: !prev[id] };
-      if (newFavorites[id]) {
-        debouncedShowNotification('Added to favorites!', 'success');
-      } else {
-        debouncedShowNotification('Removed from favorites', 'info');
-      }
-      return newFavorites;
-    });
-  }, [debouncedShowNotification]);
+  const handleFavorite = useCallback(
+    (id) => {
+      setFavorites((prev) => {
+        const newFavorites = { ...prev, [id]: !prev[id] };
+        if (newFavorites[id]) {
+          debouncedShowNotification("Added to favorites!", "success");
+        } else {
+          debouncedShowNotification("Removed from favorites", "info");
+        }
+        return newFavorites;
+      });
+    },
+    [debouncedShowNotification]
+  );
 
   if (isError) {
     return <div>Error: {error.message}</div>;
@@ -85,8 +88,8 @@ const AudioBook = () => {
     <div className="max-w-7xl mx-auto py-8 space-y-10 dark:text-white">
       <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[380px] h-12 mx-auto">
         <h1 className="md:text-2xl uppercase font-bold text-center">
-          <span className='hidden md:block'> Explore Audio Collection</span> 
-          <span className='block md:hidden'> Audio Collection</span> 
+          <span className="hidden md:block"> Explore Audio Collection</span>
+          <span className="block md:hidden"> Audio Collection</span>
         </h1>
       </div>
       {isLoading ? (
@@ -121,16 +124,16 @@ const AudioBook = () => {
           {data?.slice(0, 4).map((b) => (
             <div
               key={b.id}
-              className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 dark:bg-[#0A0A0C] dark:text-white"
+              className="flex flex-col md:gap-2 gap-12 md:flex-row bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 dark:bg-[#0A0A0C] dark:text-white"
             >
-              <div className="md:w-1/3 w-full relative">
+              <div className="md:w-1/3 h-64 w-full relative">
                 <Image
-                  className="h-64 md:h-full w-full object-cover"
+                  className=" md:h-full w-full object-fill"
                   width={250}
                   height={250}
                   src={b?.audioBookCover}
                   alt={b?.title}
-                  quality={90}
+                  quality={80}
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <Link
@@ -157,7 +160,9 @@ const AudioBook = () => {
                       <svg
                         key={i}
                         className={`w-4 h-4 ${
-                          i < 4 ? "text-yellow-300" : "text-gray-300 dark:text-gray-600"
+                          i < 4
+                            ? "text-yellow-300"
+                            : "text-gray-300 dark:text-gray-600"
                         } mr-1`}
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +172,9 @@ const AudioBook = () => {
                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                       </svg>
                     ))}
-                    <span className="text-slate-500 dark:text-slate-400 text-sm ml-2">4.0 (42 reviews)</span>
+                    <span className="text-slate-500 dark:text-slate-400 text-sm ml-2">
+                      4.0 (42 reviews)
+                    </span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
@@ -181,10 +188,10 @@ const AudioBook = () => {
                       <FaPlayCircle className="text-3xl" />
                     )}
                   </button>
-                  <button 
+                  <button
                     onClick={() => handleFavorite(b?._id)}
                     className={`transition-colors duration-300 ${
-                      favorites[b?._id] ? 'text-red-500' : 'text-[#364957]'
+                      favorites[b?._id] ? "text-red-500" : "text-[#364957]"
                     } hover:text-opacity-80`}
                   >
                     <svg

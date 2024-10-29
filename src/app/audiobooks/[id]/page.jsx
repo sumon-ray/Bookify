@@ -83,9 +83,9 @@ export default function Page({ params }) {
       <div id="Main">
         <div className="mt-14 sm:mt-10 pt-14 relative z-10 rounded-xl ">
           {/* Cover Image */}
-          <div className="bg-white border-slate-100 transition-all duration-50 border-b rounded-t-xl p-4 pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8 dark:bg-[#0A0A0C] dark:text-white dark:border-[#0A0A0C] ">
+          <div className="bg-white border-slate-100 transition-all duration-500  border-b rounded-t-xl p-4 pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8  dark:bg-[#0A0A0C] dark:text-white dark:border-[#0A0A0C]">
             {currentAudioBook && (
-              <div className="flex space-x-4 flex-col lg:flex-row">
+              <div className="flex space-x-4 flex-col lg:flex-row relative">
                 <Image
                   src={currentAudioBook?.audioBookCover}
                   alt={currentAudioBook?.title || "Audiobook Cover"}
@@ -100,7 +100,7 @@ export default function Page({ params }) {
                     <p className="dark:bg-[#0A0A0C] dark:text-white dark:border-[#0A0A0C] text-3xl font-semibold leading-6">
                       {currentAudioBook.title}
                     </p>
-                   {/*  <button className="text-2xl text-[#364957]">
+                    {/*  <button className="text-2xl text-[#364957]">
                       <FaBookmark></FaBookmark>
                     </button> */}
                   </div>
@@ -251,9 +251,11 @@ export default function Page({ params }) {
 
         {/* All Audio Books section */}
         <div className="container ">
-          <h1 className="md:text-4xl text-xl font-bold text-center md:p-4 p-2 md:w-[500px] w-[270px] mx-auto rounded-tl-2xl rounded-br-2xl md:mb-12 my-8 border border-black text-black  dark:bg-[#0A0A0C] dark:text-white">
-            All Audio Books
-          </h1>
+          <div className="p-2 mt-4 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[400px] h-12 mx-auto">
+            <h1 className=" md:text-xl lg:text-2xl  uppercase font-bold text-center">
+              All Audio Books
+            </h1>
+          </div>
 
           <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
             <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
