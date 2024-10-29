@@ -5,7 +5,7 @@ import { FaCircleXmark } from "react-icons/fa6";
 const page = () => {
   return (
     <div className="md:mt-40 mt-20 mb-20 max-w-6xl mx-auto">
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto my-20 px-4 container bg-white dark:bg-[#0A0A0C] dark:text-white">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg  my-20 px-4 container bg-white dark:bg-[#0A0A0C] dark:text-white mx-2">
         <table className="w-full text-sm text-left">
           <thead className="text-xs uppercase border-b">
             <tr className="">
@@ -32,12 +32,12 @@ const page = () => {
                 </button>
               </td>
               <td className="p-4 flex items-center gap-2">
-                <div className="h-24">
+                <div className="h-24 flex items-center">
                   <Image
                     width={64}
                     height={64}
                     src="https://i.postimg.cc/h42k2rpf/The-Night-Circus.jpg"
-                    className="rounded-sm object-contain"
+                    className="rounded-sm object-cover"
                     alt="Apple Watch"
                   />
                 </div>
@@ -52,7 +52,7 @@ const page = () => {
           </tbody>
         </table>
       </div>
-      <div className="flex flex-col gap-4 md:flex-row md:justify-between justify-center container">
+      <div className="w-full flex flex-col lg:flex-row gap-8 mx-auto md:justify-between justify-center items-center">
         <div className="w-80">
           <input
             type="text"
