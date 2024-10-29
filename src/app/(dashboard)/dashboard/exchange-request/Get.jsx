@@ -23,6 +23,7 @@ import { AiFillMessage } from 'react-icons/ai';
 import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
+import Modal from './(message)/Modal';
 
 
 function Row({ row, refetch }) {
@@ -99,7 +100,8 @@ function Row({ row, refetch }) {
                     {row.RequesterName}
                 </TableCell>
                 <TableCell align='right' className='relative'>
-                    <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' />
+                    <AiFillMessage  className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' />
+                   
                 </TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.requesterBooks?.length}</span></TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[3px] top-6'>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
