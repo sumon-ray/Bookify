@@ -9,8 +9,6 @@ import { Toaster } from "react-hot-toast";
 import { SearchProvider } from "./(dashboard)/dashboard/myBooks/SearchProvider";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider } from "next-themes";
-// import { Toaster } from 'react-hot-toast';
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
