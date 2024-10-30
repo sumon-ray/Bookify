@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import AllBooks from "./AllBooks";
 import Categories from "./Categories";
 
-export default function page() {
+export default function Page() {
     const { data: session, status } = useSession()
     return (
         <div className="">

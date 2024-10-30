@@ -11,8 +11,8 @@ import { useQuery } from "@tanstack/react-query";
 import { GrSend } from "react-icons/gr";
 import Swal from "sweetalert2";
 import { MdOutlineDeleteOutline, MdOutlineKeyboardVoice } from "react-icons/md";
-import "./CustomButton.css"
-import "./scrollbar.css"
+// import "./CustomButton.css"
+// import "./scrollbar.css"
 import { useRouter } from "next/navigation";
 import { TiWarning } from "react-icons/ti";
 import { IoIosSearch } from "react-icons/io";

@@ -273,3 +273,7 @@ div:where(.swal2-container) div:where(.swal2-popup) {
 .css-19kzrtu {
   padding: 3px !important;
 }
+input[type=file]::file-selector-button {
+  background-color: #364957;
+  color: white;
+}

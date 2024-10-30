@@ -6,9 +6,10 @@ import DetailsTab from './DetailsTab';
 import DetailsCard from './DetailsCard';
 import { FaBook } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'next/navigation';
 
-export default function Details({ params }) {
-
+export default function Details() {
+    const params = useParams();
     const { data, isLoading } = useQuery({
         queryKey: ['details of book'],
         queryFn: async () => {
