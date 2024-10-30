@@ -4,6 +4,7 @@ import { AiFillMessage } from 'react-icons/ai';
 import { useSession } from "next-auth/react";
 import { ImCross } from "react-icons/im";
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Modal = ({ receiver }) => {
     const { data: session } = useSession();
@@ -11,6 +12,11 @@ const Modal = ({ receiver }) => {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
     const senderEmail = session?.user?.email;
+
+    if (!receiver?.ownerEmail && msgModal) {
+        toast.error("You can't send a message because the request was canceled");
+        setMsgModal(false);
+    }
 
     // Fetch messages whenever the modal opens or the sender/receiver changes
     useEffect(() => {
@@ -31,6 +37,7 @@ const Modal = ({ receiver }) => {
     }, [msgModal, senderEmail, receiver]);
 
     const handleSendMessage = async () => {
+       
         if (message.trim()) {
             const messageInfo = {
                 senderEmail: senderEmail,
