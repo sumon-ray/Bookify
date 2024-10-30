@@ -234,7 +234,7 @@ export default function DashboardNavbar() {
                         <IoMdNotificationsOutline className="text-xl" />
 
                       </button>
-                      <p className="absolute top-0 -mt-1 right-0 bg-[#364957] text-white rounded-full text-sm  px-[5px]">{notificationSeen ? notification.length > 0 || notificationApprove.length > 0 && notification.length + notificationApprove.length : <></>}</p>
+                      {notificationSeen && <p className="absolute top-0 -mt-1 right-0 bg-[#364957] text-white rounded-full text-sm  px-[5px]">{ notification.length > 0 || notificationApprove.length > 0 ? notification.length + notificationApprove.length : <></>}</p>}
                     </div>
                     <Menu
                       id="notification-menu"
