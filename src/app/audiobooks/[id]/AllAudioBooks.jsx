@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const AllAudioBooks = ({ data }) => {
   return (
@@ -10,40 +11,36 @@ const AllAudioBooks = ({ data }) => {
         </h1>
       </div>
 
-      <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-        <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="container px-6 md:px-0 my-10 mx-auto space-y-6 sm:space-y-12">
+        <div className="grid justify-center grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
           {data?.map((book) => (
-            <Link
-              href={`/audiobooks/${book._id}`}
+            <motion.div
               key={book._id}
-              className="w-auto h-auto bg-[#EFEEE9] rounded-md shadow-lg hover:shadow-sm-light dark:bg-[#0A0A0C] dark:text-white"
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl"
             >
-              <div className="space-y-3">
-                <Image
-                  src={book?.audioBookCover}
-                  className="w-full rounded-t-md"
-                  height={150}
-                  width={200}
-                  alt={book?.title || "Book Cover"}
-                />
-                <div className="flex justify-between p-1 m-1">
-                  <div className="text-left pl-2 pb-2">
-                    <h1 className="font-bold md:uppercase" title={book?.title}>
-                      {book?.title?.slice(0, 20)}...
-                    </h1>
-                    <h1 className="font-medium">
-                      <span className="mr-1">By:</span>
-                      {book?.author}
-                    </h1>
-                  </div>
-
-                  {/* rating section */}
-                  <div className="flex cursor-pointer mt-2">
-                    {/* Rating SVGs here */}
+              <Link href={`/audiobooks/${book._id}`} className="block h-full">
+                <div className="relative aspect-[2/3] overflow-hidden group">
+                  <Image
+                    src={book?.audioBookCover}
+                    layout="fill"
+                    objectFit=""
+                    alt={book?.title || "Book Cover"}
+                    className="transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <h2 className="font-bold text-lg mb-1 line-clamp-1" title={book?.title}>
+                      {book?.title}
+                    </h2>
+                    <p className="text-sm opacity-90">{book?.author}</p>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

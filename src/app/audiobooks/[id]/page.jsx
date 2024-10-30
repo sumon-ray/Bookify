@@ -59,41 +59,41 @@ export default function Page({ params }) {
   };
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto">
+    <div className="min-h-screen px-6 md:px-0  max-w-7xl mx-auto">
       <div id="Main">
-        <div className="mt-14 sm:mt-10 pt-14 relative z-10 rounded-xl ">
+        <div className="mt-5 md:mt-24 lg:mt-20 md:mt-14 relative z-10  ">
           {/* Cover Image */}
-          <div className="bg-white border-slate-100 transition-all duration-500  border-b rounded-t-xl p-4 pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8  dark:bg-[#0A0A0C] dark:text-white dark:border-[#0A0A0C]">
+          <div className="bg-white border-slate-100 transition-all duration-500  border-b   pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8  dark:bg-[#0A0A0C] dark:text-white dark:border-[#0A0A0C]">
             {currentAudioBook && (
-              <div className="flex flex-col lg:flex-row items-start space-x-6 relative">
-                <div className="flex-shrink-0 w-full lg:w-[300px] h-[400px] overflow-hidden rounded-lg shadow-lg bg-slate-100">
+              <div className="flex flex-col lg:flex-row items-start space-x-2 md:space-x-6 relative">
+                <div className="flex-shrink-0 sm:w-full w-full h-[400px] md:w-[700px] mx-auto md:h-[700px] lg:w-[300px] lg:h-[400px] overflow-hidden rounded-lg bg-slate-100">
                   <Image
                     src={currentAudioBook?.audioBookCover}
                     alt={currentAudioBook?.title || "Audiobook Cover"}
-                    className="object-cover w-full h-full"
+                    className="  w-full h-full"
                     width={300}
                     height={400}
                     priority
                     quality={80}
                   />
                 </div>
-                <div className="min-w-0 flex-auto space-y-2 font-semibold mt-2 h-[400px] flex flex-col justify-between">
-                  <div>
-                    <div className="flex justify-between">
-                      <p className="text-3xl font-semibold leading-6 text-gray-900 dark:text-white">
+                <div className=" lg:-translate-y-2  mt-4 md:mt-0 min-w-0 flex-auto font-semibold h-auto flex flex-col justify-between">
+                  <div className="space-y-3 "> 
+                    <div className="flex flex-col md:flex-row justify-between">
+                      <p className="text-3xl font-semibold text-gray-900 dark:text-white">
                         {currentAudioBook.title}
                       </p>
                       {/*  <button className="text-2xl text-[#364957]">
                         <FaBookmark></FaBookmark>
                       </button> */}
                     </div>
-                    <h2 className="text-slate-500 dark:text-gray-400 text-sm leading-6 truncate">
+                    <h2 className="text-slate-500 dark:text-gray-400 text-sm  truncate">
                       By:
                       <span className="underline cursor-pointer ml-1">
                         {currentAudioBook.author}
                       </span>
                     </h2>
-                    <h2 className="text-slate-500 dark:text-gray-400 text-sm leading-6 truncate">
+                    <h2 className="text-slate-500 dark:text-gray-400 text-sm  truncate">
                       Publisher:
                       <span className="underline cursor-pointer ml-1">
                         Bookify
@@ -154,7 +154,7 @@ export default function Page({ params }) {
                       </p>
                     </div>
                   </div>
-                  <div className="text-[#364957] mt-2 flex gap-1 items-center justify-between dark:text-white dark:border-[#0A0A0C]">
+                  <div className="text-[#364957] mt-4 flex gap-1 items-center justify-between dark:text-white dark:border-[#0A0A0C]">
                     <div className="flex items-center">
                       <FaShareFromSquare className="text-2xl" />
                       <h2 className="ml-2">Share</h2>
@@ -167,8 +167,9 @@ export default function Page({ params }) {
               </div>
             )}
           </div>
-          {/* audio player */}
-          <div className="w-full mx-auto px-6 bg-white transition-all duration-500 dark:text-white dark:border-[#0A0A0C]">
+       
+                     {/* audio player */}
+          <div className="w-full  mx-auto px-4 sm:px-6 dark:bg-[#0A0A0C] transition-all duration-500 dark:text-white dark:border-[#0A0A0C]">
             <ReactAudioPlayer
               src={currentAudioBook?.audioURL} 
               autoPlay={false} 
@@ -180,7 +181,7 @@ export default function Page({ params }) {
         </div>
 
         {/* Audio Books chapter List Div */}
-<ChapterList 
+<ChapterList className=''
         chapters={currentAudioBook?.chapters} 
         currentAudio={currentAudio} 
         handlePlay={handlePlay} 
