@@ -10,11 +10,9 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-
 import "./tab.css"
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -24,22 +22,38 @@ import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import { GrSend } from 'react-icons/gr';
 import { useRouter } from 'next/navigation';
-import { Api } from '@mui/icons-material';
-import toast from 'react-hot-toast';
 import Modal from './(message)/Modal';
+import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
 
 
 function Row({ row, refetch }) {
     const [open, setOpen] = React.useState(false);
 
     function deleteRequest(message) {
-        axios.delete(`https://bookify-server-lilac.vercel.app/send-request-delete?id=${row?._id}`)
-            .then(res => {
-                if (res.data.deletedCount) {
-                    toast.success(message)
-                    refetch()
-                }
-            })
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#364957",
+            cancelButtonColor: "#364957CC",
+            confirmButtonText: "Yes"
+        }).then((result) => {
+            if (result?.isConfirmed) {
+                axios.delete(`https://bookify-server-lilac.vercel.app/send-request-delete?id=${row?._id}`)
+                    .then(res => {
+                        if (res.data.deletedCount) {
+                            Swal.fire({
+                                title: `${message.split(' ')[1]}`,
+                                text: `${message}.`,
+                                icon: "success",
+                            });
+                            refetch()
+                        }
+                    }).catch(error => toast.error(error?.message))
+            }
+        })
     }
 
     return (
@@ -59,7 +73,7 @@ function Row({ row, refetch }) {
                 </TableCell>
                 <TableCell align='right' className='relative'>
                     {/* <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' /> */}
-                    <Modal receiver={row.ownerEmail}/>
+                    <Modal receiver={row.ownerEmail} />
                 </TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.ownerBooks?.length}</span></TableCell>
                 <TableCell align='left' className='relative hidden md:inline-block'><span className='absolute left-[3px] top-6 '>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
@@ -81,7 +95,6 @@ function Row({ row, refetch }) {
                     }
                 </TableCell>
             </TableRow>
-
         </React.Fragment>
     );
 }
@@ -156,8 +169,8 @@ export default function Send() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {data?.map((row) => (
-                                    <Row key={row.name} row={row} refetch={refetch} />
+                                {data?.map((row, i) => (
+                                    <Row key={i} row={row} refetch={refetch} />
                                 ))}
                             </TableBody>
                         </Table>

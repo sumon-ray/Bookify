@@ -59,8 +59,9 @@ html {
   color: #ffffff;
   background-color: #364957;
   font-weight: 500;
+  font-size: 1rem;
   border-radius: 0.5rem;
-  padding: 0.5rem 0.6rem;
+  padding: 0.55rem 0.6rem;
   outline: none;
 }
 
@@ -220,4 +221,55 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
 div:where(.swal2-container) div:where(.swal2-popup) {
   background: #F3F2ED !important;
   color: black !important;
+}
+
+.custom-confirm-button {
+  background-color: #364957 !important; 
+  color: white !important;
+  border: none !important;
+}
+/* Customize the scrollbar */
+.overflow-y-scroll::-webkit-scrollbar {
+  margin-top: 5px;
+  width: 8px;
+  /* width of the scrollbar */
+}
+
+/* Track */
+.overflow-y-scroll::-webkit-scrollbar-track {
+  background: #364957 !important;
+  /* background of the track */
+  border-radius: 10px !important
+    /* optional rounded corners */
+}
+
+/* Handle */
+.overflow-y-scroll::-webkit-scrollbar-thumb {
+  background: #000000 !important;
+  border-radius: 10px !important
+}
+
+.overflow-y-scroll::-webkit-scrollbar-thumb:hover {
+  background: #364957 !important;
+}
+.overflow-y-scroll {
+  scrollbar-color: #ffffff #364957CC !important;
+  scrollbar-width: thin;
+}
+.border {
+  border-width: 2px;
+}
+.border-input {
+  border-color: #364957;
+}
+.css-1ejouah-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: black !important;
+}
+
+.css-1qltlow-MuiTabs-indicator {
+  background-color: black !important;
+}
+
+.css-19kzrtu {
+  padding: 3px !important;
 }

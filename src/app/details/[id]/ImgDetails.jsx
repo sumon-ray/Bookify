@@ -172,7 +172,7 @@ export default function ImgDetails({ Book = {} }) {
           <button
             onClick={addToBook}
             type="button"
-            className="flex items-center btn_1 gap-0.5 py-2 text-xs md:text-base  text-white rounded-md transition dark:bg-[#0A0A0C]">
+            className="flex items-center btn_1 text-xs md:text-base  gap-0.5 px-2 py-1.5 text-white rounded-md transition dark:bg-[#0A0A0C]">
             <TbExchange className="hidden md:block text-xl" />
             Exchange
           </button>
