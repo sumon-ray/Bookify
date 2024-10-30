@@ -121,7 +121,7 @@ export default function DashboardNavbar() {
         .then(response => {
           const notificationsData = response.data;
           setNotification(notificationsData); // Set notifications state
-          console.log('Notifications:', notification); // Log fetched notifications
+          // console.log('Notifications:', notification); // Log fetched notifications
         })
         .catch(error => {
           console.error('Error fetching notifications:', error); // Log any errors
@@ -139,7 +139,7 @@ export default function DashboardNavbar() {
         .then(response => {
           const notificationsData = response.data;
           setNotificationApprove(notificationsData); // Set notifications state
-          console.log('Notifications:', notification); // Log fetched notifications
+          // console.log('Notifications:', notification); // Log fetched notifications
         })
         .catch(error => {
           console.error('Error fetching notifications:', error); // Log any errors
@@ -256,7 +256,7 @@ export default function DashboardNavbar() {
                       {/* Approve Notification */}
                       {notificationApprove.length > 0 || notification.length > 0? notificationApprove.map((notification, index) => (
                         <MenuItem key={notification.id} onClick={routeToRequestPage}>
-                          <p className="p-2">{`${index + 1}. ${notification?.approverEmail} approve your exchange reques`} {/* Display index */}</p>
+                          <p className="p-2">{`${index + 1}. ${notification?.approverName} approve your exchange reques`} {/* Display index */}</p>
                         </MenuItem>
 
                       )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}

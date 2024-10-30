@@ -416,7 +416,7 @@ export default function Page() {
         </div>
 
       </div>
-
+      
       {/* Exchange Button */}
       <div className="flex justify-center items-center my-8">
         <button onClick={exchangeBook} type="button" className="btn_1 hover:bg-[#364957E6] hover:animate-  flex items-center">
