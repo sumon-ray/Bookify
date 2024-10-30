@@ -5,21 +5,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { CgProfile } from "react-icons/cg";
-import { GiHamburgerMenu } from "react-icons/gi";
 import img from "../../src/assets/images/About/logo (1).png";
+import img2 from "../../src/assets/images/About/bookdark.png";
 import { FaChalkboardTeacher, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import ProfileUpdateModal from "./ProfileUpdateModal";
 import toast from "react-hot-toast";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import Badge from "@mui/material/Badge";
-import MailIcon from "@mui/icons-material/Mail";
-import { Menu, MenuItem } from "@mui/material"; // Import Menu and MenuItem from Material UI
+import { Menu, MenuItem } from "@mui/material"; 
 import { TbExchange } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import NavbarDrawer from "./Navbar/NavbarDrawer";
 import Cart from "./cart/Cart";
-// import Toggle from './Toggle/Toggle';
 
 const Navbar = () => {
   const session = useSession();
@@ -98,16 +96,29 @@ const Navbar = () => {
       <nav className="md:flex items-center md:justify-between bg-[#F3F2ED] dark:bg-[#272727E6] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
         {/* bookify logo */}
         <div className="flex md:flex-none items-center justify-between">
-          <div>
-            <Image
-              src={img}
-              className="h-14 md:h-[68px] w-28  md:w-36"
-              height={20}
-              width={200}
-              unoptimized
-              alt="Logo"
-            />
-          </div>
+          <>
+            <div className="dark:hidden">
+              <Image
+                src={img}
+                className="h-14 md:h-[68px] w-28  md:w-36"
+                height={20}
+                width={200}
+                unoptimized
+                alt="Logo"
+              />
+            </div>
+
+            <div className="hidden dark:block">
+              <Image
+                src={img2}
+                className="h-14 md:h-[68px] w-28  md:w-36"
+                height={20}
+                width={200}
+                unoptimized
+                alt="Logo"
+              />
+            </div>
+          </>
 
           {/* Hamburger icon for mobile */}
           <div className="flex items-center">
@@ -128,9 +139,8 @@ const Navbar = () => {
             {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
-                className={`${
-                  pathName === link.path && "font-black"
-                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${pathName === link.path && "font-black"
+                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}
@@ -144,11 +154,10 @@ const Navbar = () => {
             {/* our store */}
             <li className="md:ml-8 lg:text-[16px] md:my-0 my-7 font-normal">
               <button
-                className={`flex items-center ${
-                  (pathName === "/rentbooks" ||
+                className={`flex items-center ${(pathName === "/rentbooks" ||
                     pathName.includes("/audiobooks")) &&
                   "font-black "
-                }`}
+                  }`}
                 onClick={handleClick}
               >
                 Our store{" "}
@@ -175,9 +184,8 @@ const Navbar = () => {
                       style={{ fontWeight: "", fontSize: "15px" }}
                     >
                       <Link
-                        className={`${
-                          pathName === link?.path ? "font-black" : ""
-                        }`}
+                        className={`${pathName === link?.path ? "font-black" : ""
+                          }`}
                         href={link?.path}
                       >
                         {link?.title}
@@ -193,9 +201,8 @@ const Navbar = () => {
                 <Link
                   key={index}
                   href={link?.path}
-                  className={`flex items-center ${
-                    pathName === link?.path ? "font-black" : ""
-                  }`}
+                  className={`flex items-center ${pathName === link?.path ? "font-black" : ""
+                    }`}
                 >
                   <p>{link?.title}</p>
                   <Badge
@@ -217,9 +224,8 @@ const Navbar = () => {
             {links.slice(4).map((link) => (
               <li
                 key={link.path}
-                className={`${
-                  pathName === link.path && " font-black"
-                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${pathName === link.path && " font-black"
+                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}

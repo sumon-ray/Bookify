@@ -124,7 +124,7 @@ export default function DashboardNavbar() {
           // console.log('Notifications:', notification); // Log fetched notifications
         })
         .catch(error => {
-          console.error('Error fetching notifications:', error); // Log any errors
+          // console.error('Error fetching notifications:', error); // Log any errors
         });
     };
 
