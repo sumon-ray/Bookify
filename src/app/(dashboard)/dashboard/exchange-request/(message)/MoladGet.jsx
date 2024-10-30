@@ -5,7 +5,8 @@ import { useSession } from "next-auth/react";
 import { ImCross } from "react-icons/im";
 import axios from 'axios';
 
-const Modal = ({ receiver }) => {
+const MoladGet = ({receiver}) => {
+    console.log(receiver?.requesterEmail, "NOoooooooooooooooo 9" );
     const { data: session } = useSession();
     const [msgModal, setMsgModal] = useState(false);
     const [message, setMessage] = useState("");
@@ -13,11 +14,12 @@ const Modal = ({ receiver }) => {
     const senderEmail = session?.user?.email;
 
     // Fetch messages whenever the modal opens or the sender/receiver changes
+    // console.log(receiver?.ownerBooks[0]?.AuthorEmail, senderEmail);
     useEffect(() => {
         const fetchMessages = async () => {
             if (senderEmail && receiver) {
                 try {
-                    const response = await axios.get(`https://bookify-server-lilac.vercel.app/message?senderEmail=${senderEmail}&receiverEmail=${receiver?.ownerEmail}`);
+                    const response = await axios.get(`https://bookify-server-lilac.vercel.app/message?senderEmail=${receiver?.requesterEmail}&receiverEmail=${senderEmail}`);
                     setMessages(response.data);
                 } catch (err) {
                     console.error("Error loading messages:", err);
@@ -34,7 +36,7 @@ const Modal = ({ receiver }) => {
         if (message.trim()) {
             const messageInfo = {
                 senderEmail: senderEmail,
-                receiverEmail: receiver?.ownerEmail,
+                receiverEmail: receiver?.RequesterEmail,
                 messageText: message,
                 timestamp: new Date(),
             };
@@ -49,7 +51,6 @@ const Modal = ({ receiver }) => {
             }
         }
     };
-
     return (
         <div>
             <button onClick={() => setMsgModal(!msgModal)}>
@@ -71,7 +72,7 @@ const Modal = ({ receiver }) => {
                                     </g>
                                 </svg>
                             </button>
-                            <span className='text-2xl'>{receiver?.ownerName}</span>
+                            <span className='text-2xl'>{receiver?.RequesterName}</span>
                             <div className="relative inline-block text-left">
                                 <button onClick={() => setMsgModal(false)} id="setting" className=" rounded-md p-1">
                                     <ImCross />
@@ -134,4 +135,4 @@ const Modal = ({ receiver }) => {
     );
 };
 
-export default Modal;
+export default MoladGet;

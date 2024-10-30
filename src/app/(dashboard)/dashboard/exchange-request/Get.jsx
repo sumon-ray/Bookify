@@ -25,6 +25,7 @@ import Image from 'next/image';
 import toast from 'react-hot-toast';
 import Modal from './(message)/Modal';
 import Swal from 'sweetalert2';
+import MoladGet from './(message)/MoladGet';
 
 
 function Row({ row, refetch }) {
@@ -135,7 +136,7 @@ function Row({ row, refetch }) {
                     {row.RequesterName}
                 </TableCell>
                 <TableCell align='right' className='relative'>
-                    <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' />
+                   <MoladGet receiver={row} />
 
                 </TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.requesterBooks?.length}</span></TableCell>
