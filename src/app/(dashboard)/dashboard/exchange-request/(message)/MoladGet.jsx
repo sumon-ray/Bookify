@@ -19,7 +19,7 @@ const MoladGet = ({receiver}) => {
         const fetchMessages = async () => {
             if (senderEmail && receiver) {
                 try {
-                    const response = await axios.get(`https://bookify-server-lilac.vercel.app/message?senderEmail=${receiver?.requesterEmail}&receiverEmail=${senderEmail}`);
+                    const response = await axios.get(`https://bookify-server-lilac.vercel.app/message?senderEmail=${senderEmail}&receiverEmail=${receiver?.requesterEmail}`);
                     setMessages(response.data);
                 } catch (err) {
                     console.error("Error loading messages:", err);
