@@ -18,6 +18,7 @@ import { TbExchange } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import NavbarDrawer from "./Navbar/NavbarDrawer";
+import Cart from "./cart/Cart";
 // import Toggle from './Toggle/Toggle';
 
 const Navbar = () => {
@@ -95,7 +96,6 @@ const Navbar = () => {
   return (
     <div className="overflow-hidden">
       <nav className="md:flex items-center md:justify-between bg-[#F3F2ED] dark:bg-[#272727E6] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
-
         {/* bookify logo */}
         <div className="flex md:flex-none items-center justify-between">
           <div>
@@ -108,24 +108,34 @@ const Navbar = () => {
               alt="Logo"
             />
           </div>
-          
+
           {/* Hamburger icon for mobile */}
-          <div className="text-3xl cursor-pointer md:hidden">
-            <NavbarDrawer />
+          <div className="flex items-center">
+            <Link href={"/cart"} className="md:hidden mr-0">
+              <Cart />
+            </Link>
+            <div className="text-3xl cursor-pointer md:hidden">
+              <NavbarDrawer />
+            </div>
           </div>
         </div>
 
         {/* Navigation Links */}
         <div>
           <ul
-            className={`hidden md:flex font-normal md:bg-none lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-1/2 md:w-auto md:pl-0 pl-9 transition-all duration-200 ease-in`}>
+            className={`hidden md:flex font-normal md:bg-none lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-1/2 md:w-auto md:pl-0 pl-9 transition-all duration-200 ease-in`}
+          >
             {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path && "font-black"
-                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${
+                  pathName === link.path && "font-black"
+                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
-                <Link href={link.path} className="text-[black] dark:text-white duration-500">
+                <Link
+                  href={link.path}
+                  className="text-[black] dark:text-white duration-500"
+                >
                   {link.title}
                 </Link>
               </li>
@@ -134,10 +144,11 @@ const Navbar = () => {
             {/* our store */}
             <li className="md:ml-8 lg:text-[16px] md:my-0 my-7 font-normal">
               <button
-                className={`flex items-center ${(pathName === "/rentbooks" ||
+                className={`flex items-center ${
+                  (pathName === "/rentbooks" ||
                     pathName.includes("/audiobooks")) &&
                   "font-black "
-                  }`}
+                }`}
                 onClick={handleClick}
               >
                 Our store{" "}
@@ -164,8 +175,9 @@ const Navbar = () => {
                       style={{ fontWeight: "", fontSize: "15px" }}
                     >
                       <Link
-                        className={`${pathName === link?.path ? "font-black" : ""
-                          }`}
+                        className={`${
+                          pathName === link?.path ? "font-black" : ""
+                        }`}
                         href={link?.path}
                       >
                         {link?.title}
@@ -181,8 +193,9 @@ const Navbar = () => {
                 <Link
                   key={index}
                   href={link?.path}
-                  className={`flex items-center ${pathName === link?.path ? "font-black" : ""
-                    }`}
+                  className={`flex items-center ${
+                    pathName === link?.path ? "font-black" : ""
+                  }`}
                 >
                   <p>{link?.title}</p>
                   <Badge
@@ -204,10 +217,14 @@ const Navbar = () => {
             {links.slice(4).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path && " font-black"
-                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                className={`${
+                  pathName === link.path && " font-black"
+                } md:ml-8 lg:text-[16px] md:my-0 my-7`}
               >
-                <Link href={link.path} className="text-[black] dark:text-white duration-500">
+                <Link
+                  href={link.path}
+                  className="text-[black] dark:text-white duration-500"
+                >
                   {link.title}
                 </Link>
               </li>
@@ -217,12 +234,14 @@ const Navbar = () => {
               {session?.status === "unauthenticated" && (
                 <Link href="/login">Sign In</Link>
               )}
-
             </li>
 
             <li>
               {session?.status === "authenticated" && (
-                <ul className="pt-1 md:hidden" aria-labelledby="user-menu-button">
+                <ul
+                  className="pt-1 md:hidden"
+                  aria-labelledby="user-menu-button"
+                >
                   <li className="ml-2 text-left ">
                     <p className="block text-sm font-normal space-x-6">
                       {session?.data?.user?.name}
@@ -253,13 +272,13 @@ const Navbar = () => {
                 </ul>
               )}
             </li>
-
-
           </ul>
         </div>
 
-
         <div className="flex lg:justify-center   items-center gap-2">
+          <Link href={"/cart"} className="mr-2 hidden md:block">
+            <Cart />
+          </Link>
           {session?.status === "unauthenticated" && (
             <Link href="/login">
               <button className="btn text-[16px] md:block hidden font-semibold bg-[#364957]  text-white p-3 px-4 rounded-lg">
@@ -327,7 +346,6 @@ const Navbar = () => {
             </>
           )}
         </div>
-
       </nav>
     </div>
   );
