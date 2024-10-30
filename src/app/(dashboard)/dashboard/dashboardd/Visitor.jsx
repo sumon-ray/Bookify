@@ -1,5 +1,4 @@
 "use client";
-
 import { TrendingUp } from "lucide-react";
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 import {
@@ -36,7 +35,7 @@ const chartConfig = {
 
 const Visitor = () => {
   return (
-    <div className="">
+    <div className="text-black">
       <Card className="shadow-none border-none rounded-xl">
         <CardHeader className="items-start pb-0 font-bold ">
           <CardTitle className="font-bold">New User</CardTitle>

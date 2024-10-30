@@ -1,5 +1,5 @@
 "use client";
-import Visitor from '@/app/(dashboard)/dashboard/dashboardd/Visitor';
+import Visitor from './Visitor';
 import React, { useEffect, useState } from 'react';
 import { GiCardExchange } from "react-icons/gi";
 import { IoIosBookmarks } from "react-icons/io";
@@ -73,7 +73,7 @@ const Page = () => {
             </div>
 
             {/* 2 */}<div className='lg:col-span-4 h-[310px] col-span-12'>
-                <TopBooks overview={overview} />
+                <TopBooks/>
             </div>
             
             {/* 3 */}<div className='bg-white lg:col-span-4 lg:h-[310px] col-span-12 md:mb-4'>
