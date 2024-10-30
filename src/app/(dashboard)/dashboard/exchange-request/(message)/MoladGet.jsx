@@ -15,10 +15,10 @@ const MoladGet = ({receiver}) => {
     const senderEmail = session?.user?.email;
 
     // Fetch messages whenever the modal opens or the sender/receiver changes
-    // console.log(receiver?.ownerBooks[0]?.AuthorEmail, senderEmail);
+    
     
     if (!receiver?.requesterEmail && msgModal) {
-        toast.error("You can't send a message because the request was canceled");
+        toast.error("You can't send a message because the request was canceled")   ;
         setMsgModal(false);
     }
     useEffect(() => {
