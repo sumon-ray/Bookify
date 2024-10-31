@@ -13,12 +13,16 @@ import {
   FiUserCheck,
 } from "react-icons/fi";
 import { GiCardExchange } from "react-icons/gi";
-import { HiOutlineArrowNarrowRight, HiOutlineShoppingBag } from "react-icons/hi";
+import {
+  HiOutlineArrowNarrowRight,
+  HiOutlineShoppingBag,
+} from "react-icons/hi";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { IoIosArrowDown } from "react-icons/io";
 import { RiSearchLine } from "react-icons/ri";
+import Heading from "./Heading/Heading";
 
 const FaqSection = () => {
   const [showMore, setShowMore] = useState(false);
@@ -43,7 +47,6 @@ const FaqSection = () => {
           size={32}
           // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
           className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
-
         />
       ),
       question: "How does the book exchange work?",
@@ -56,7 +59,6 @@ const FaqSection = () => {
           size={32}
           // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
           className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
-
         />
       ),
       question: "Is there a fee to exchange books?",
@@ -69,7 +71,6 @@ const FaqSection = () => {
           size={32}
           // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
           className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
-
         />
       ),
       question: "How do I ship my books?",
@@ -82,8 +83,6 @@ const FaqSection = () => {
           size={32}
           // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
           className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
-
-
         />
       ),
       question: "Can I exchange multiple books at once?",
@@ -96,7 +95,6 @@ const FaqSection = () => {
           size={32}
           // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
           className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
-
         />
       ),
       question: "Are there any hidden costs?",
@@ -109,7 +107,6 @@ const FaqSection = () => {
           size={32}
           // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
           className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
-
         />
       ),
       question: "How do I know the book I want is available?",
@@ -122,7 +119,6 @@ const FaqSection = () => {
           size={32}
           // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
           className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
-
         />
       ),
       question: "What if my book doesn’t arrive?",
@@ -135,7 +131,6 @@ const FaqSection = () => {
           size={32}
           // style={{ color: "#4b5563", padding: "2px", borderRadius: "5px" }}
           className="text-[#4b5563] dark:text-gray-300 p-[2px] rounded-[5px]   border-[#e1dddd] border-2 border-e-chart-3 dark:border-e-chart-2  "
-
         />
       ),
       question: "Can I communicate with the other user before exchanging?",
@@ -179,23 +174,19 @@ const FaqSection = () => {
   }, [searchTerm]);
 
   return (
-    <div className="px-8 py-16 lg:px-28 mx-auto space-y-12  dark:from-gray-900 dark:to-gray-800">
+    <div className="px-8 py-16 lg:px-28 mx-auto dark:from-gray-900 dark:to-gray-800">
       <motion.div
         ref={ref}
         animate={controls}
         initial="hidden"
         variants={{
           visible: { opacity: 1, y: 0 },
-          hidden: { opacity: 0, y: 50 }
+          hidden: { opacity: 0, y: 50 },
         }}
         transition={{ duration: 0.5 }}
         className="text-center space-y-4"
       >
-        <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[400px] h-12 mx-auto'>
-        <h1 className=' md:text-xl lg:text-2xl  uppercase font-bold text-center'>
-        Frequently Asked Questions
-        </h1>
-      </div>
+        <Heading heading="Frequently Asked Questions"></Heading>
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Find answers to common questions about our book exchange platform.
         </p>
@@ -214,8 +205,8 @@ const FaqSection = () => {
         />
       </div>
 
-      <motion.div 
-        layout 
+      <motion.div
+        layout
         className="grid grid-cols-1 lg:pt-8 lg:grid-cols-2 gap-8"
       >
         <AnimatePresence>
@@ -230,13 +221,22 @@ const FaqSection = () => {
                 transition={{ duration: 0.3 }}
                 className=" p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 dark:border-gray-700"
               >
-                <div 
+                <div
                   className="flex items-start space-x-4 cursor-pointer"
-                  onClick={() => setExpandedItems(prev => ({ ...prev, [index]: !prev[index] }))}
+                  onClick={() =>
+                    setExpandedItems((prev) => ({
+                      ...prev,
+                      [index]: !prev[index],
+                    }))
+                  }
                 >
-                  <span className="text-blue-500 dark:text-blue-400 mt-1 flex-shrink-0">{item.icon}</span>
+                  <span className="text-blue-500 dark:text-blue-400 mt-1 flex-shrink-0">
+                    {item.icon}
+                  </span>
                   <div className="flex-grow">
-                    <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-200">{item.question}</h3>
+                    <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-200">
+                      {item.question}
+                    </h3>
                     <AnimatePresence>
                       {expandedItems[index] && (
                         <motion.p
@@ -253,7 +253,7 @@ const FaqSection = () => {
                   </div>
                   <IoIosArrowDown
                     className={`text-slate-800 transition-transform duration-300 ${
-                      expandedItems[index] ? 'transform rotate-180' : ''
+                      expandedItems[index] ? "transform rotate-180" : ""
                     }`}
                   />
                 </div>
@@ -295,7 +295,7 @@ const FaqSection = () => {
         )}
       </div>
 
-        <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -303,7 +303,8 @@ const FaqSection = () => {
       >
         <div className="text-center lg:text-left max-w-2xl">
           <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center mb-4">
-            <span>Still have questions</span><FaQuestion className="text-black" /> 
+            <span>Still have questions</span>
+            <FaQuestion className="text-black" />
           </h4>
           <p className="text-lg text-gray-700 dark:text-gray-300">
             Can&apos;t find the answer you&apos;re looking for? Please{" "}
@@ -315,10 +316,16 @@ const FaqSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <Link href="/contact" className="px-8 py-3  text-black dark:text-white border dark:border-white border-black rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
+          <Link
+            href="/contact"
+            className="px-8 py-3  text-black dark:text-white border dark:border-white border-black rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2"
+          >
             Contact Support <FiMessageCircle className="text-xl" />
           </Link>
-          <Link href="/ai-chat" className="px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
+          <Link
+            href="/ai-chat"
+            className="px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2"
+          >
             Ask AI Assistant <FaRobot className="text-xl" />
           </Link>
         </div>

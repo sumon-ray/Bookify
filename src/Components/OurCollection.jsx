@@ -6,6 +6,7 @@ import React from 'react';
 import { BsArrowBarRight } from 'react-icons/bs';
 import { FaArrowRight } from 'react-icons/fa';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import Heading from './Heading/Heading';
 
 const OurCollection = () => {
 
@@ -23,14 +24,8 @@ const OurCollection = () => {
 
 
     return (
-        <div className="max-w-7xl mx-auto mt-[100px] mb-14 space-y-6 px-4 sm:px-6 lg:px-8">
-
-            <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-white max-w-[200px]  md:max-w-[408px] h-12 mx-auto'>
-                <h1 className='md:text-2xl uppercase font-bold text-center'>
-                    <span className='hidden md:block'>Explore Rentable Collection</span> 
-                    <span className='block md:hidden'>Rentable Collection</span> 
-                </h1>
-            </div>
+        <div className="max-w-7xl mx-auto mt-[100px]  px-4 sm:px-6 lg:px-8">        
+            <Heading heading='Explore Rentable Collection'></Heading>
 
             {
                 isLoading

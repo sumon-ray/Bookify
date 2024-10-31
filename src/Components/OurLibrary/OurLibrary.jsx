@@ -8,6 +8,7 @@ import axios from "axios";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiBookOpen, FiUser, FiTag } from "react-icons/fi";
+import Heading from "../Heading/Heading";
 
 const OurLibrary = () => {
   const [category, setCategory] = useState("All");
@@ -62,13 +63,9 @@ const OurLibrary = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[200px] md:max-w-[385px] h-12 mx-auto'>
-        <h1 className='md:text-2xl uppercase font-bold text-center'>
-          <span className='hidden md:block'>Explore Exchange Library</span> 
-          <span className='block md:hidden'>Exchange Library</span> 
-        </h1>
-      </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+      <Heading heading='Explore Exchange Library'></Heading>
 
       {/* Dynamic Category Selector */}
       <div className="py-3 mt-8 lg:mt-2  lg:px-5 md:pl-20 lg:pl-0 ">
