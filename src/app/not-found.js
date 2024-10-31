@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen bg-gray-100 p-6">
+    <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen bg-gray-100 p-6 dark:bg-[#272727CC] text-black">
       {/* Left Side - GIF */}
       <div className="lg:w-1/2 flex justify-center lg:justify-end mb-8 lg:mb-0">
         <img
