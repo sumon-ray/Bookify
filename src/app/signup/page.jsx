@@ -55,15 +55,16 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center w-full max-w-7xl mx-auto overflow-hidden rounded-lg my-4 dark:bg-[#0A0A0C] dark:text-white">
-      <div
-        className="hidden bg-center bg-no-repeat lg:block w-1/2 mx-6 my-8"
-        style={{
-          backgroundImage: "url('https://i.ibb.co/rxGD6T6/signup.png')",
-        }}
-      ></div>
+    <div className="flex lg:flex-row-reverse justify-center w-full h-screen mx-auto overflow-hidden rounded-lg  dark:bg-[#0A0A0C] dark:text-white">
+      <Image
+        width={500}
+        height={500}
+        src="https://i.ibb.co/rxGD6T6/signup.png"
+        alt="sign up"
+        className="hidden bg-center bg-contain bg-no-repeat lg:block w-1/2 mx-6 my-8"
+      ></Image>
 
-      <div className="w-full mx-6 my-8 lg:px-16 md:px-8 lg:w-1/2">
+      <div className="w-full mx-6 mb-8 lg:px-16 md:px-8 lg:w-1/2 flex flex-col justify-center my-4">
         <Link href={"/"}>
           <div className="flex items-center justify-center text-[#B7B7B7] dark:bg-[#0A0A0C] dark:text-white">
             <Image
@@ -76,7 +77,7 @@ const SignUp = () => {
           </div>
         </Link>
 
-        <p className="mt-1 text-xl text-center text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
+        <p className="mt-1 text-xl text-center  dark:bg-[#0A0A0C] dark:text-white">
           Welcome back!
         </p>
 
@@ -93,11 +94,11 @@ const SignUp = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
+            <label className="block mb-2 text-sm font-medium  dark:bg-[#0A0A0C] dark:text-white">
               Name
             </label>
             <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
+              className="block w-full px-4 py-2 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
               type="text"
               name="name"
               id="name"
@@ -105,11 +106,11 @@ const SignUp = () => {
             />
           </div>
           <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
+            <label className="block mb-2 text-sm font-medium  dark:bg-[#0A0A0C] dark:text-white">
               Email Address
             </label>
             <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
+              className="block w-full px-4 py-2 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
               type="email"
               name="email"
               id="email"
@@ -118,12 +119,12 @@ const SignUp = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
+            <label className="block mb-2 text-sm font-medium  dark:bg-[#0A0A0C] dark:text-white">
               Password
             </label>
 
             <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
+              className="block w-full px-4 py-2 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
               type="password"
               name="password"
               id="password"
@@ -132,13 +133,13 @@ const SignUp = () => {
           </div>
           <div className="mt-4">
             <div className="flex justify-between">
-              <label className="block mb-2 text-sm font-medium text-gray-600 dark:bg-[#0A0A0C] dark:text-white ">
+              <label className="block mb-2 text-sm font-medium  dark:bg-[#0A0A0C] dark:text-white ">
                 Profile Photo
               </label>
             </div>
 
             <input
-              className="block w-full px-4  text-gray-700 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
+              className="block w-full px-4  bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
               type="file"
               name="file"
               id="file"

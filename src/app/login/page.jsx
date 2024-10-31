@@ -7,7 +7,7 @@ import React, { useState, Suspense } from "react";
 import img from "../../../src/assets/images/About/logo (1).png";
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { useSearchParams } from "next/navigation"; 
+import { useSearchParams } from "next/navigation";
 
 const LoginForm = ({ redirect }) => {
   const router = useRouter();
@@ -39,7 +39,7 @@ const LoginForm = ({ redirect }) => {
   return (
     <form onSubmit={handleLogin}>
       <div className="mt-4 dark:bg-[#0A0A0C] dark:text-white">
-        <label className="block mb-2 text-sm font-medium text-gray-600 file:dark:bg-[#0A0A0C] dark:text-white">
+        <label className="block mb-2 text-sm font-medium  file:dark:bg-[#0A0A0C] dark:text-white">
           Email Address
         </label>
         <input
@@ -52,7 +52,7 @@ const LoginForm = ({ redirect }) => {
       </div>
 
       <div className="mt-4">
-        <label className="block mb-2 text-sm font-medium text-gray-600  dark:bg-[#0A0A0C] dark:text-white">
+        <label className="block mb-2 text-sm font-medium   dark:bg-[#0A0A0C] dark:text-white">
           Password
         </label>
         <input
@@ -69,7 +69,7 @@ const LoginForm = ({ redirect }) => {
       <div className="mt-6 ">
         <button
           type="submit"
-          className="w-full px-6 py-3 text-sm font-medium tracking-wide bg-[#364957] text-[#ffffff] capitalize transition-colors duration-300 transform rounded-lg"
+          className="w-full px-6 py-3 text-sm font-medium tracking-wide bg-[#364957] text-[#ffffff]  capitalize transition-colors duration-300 transform rounded-lg "
           disabled={loading}
         >
           {loading ? "Loading..." : "Login"}
@@ -89,15 +89,16 @@ const SearchParamsProvider = () => {
 const Page = ({ redirect }) => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className="flex justify-center max-w-7xl flex-row-reverse w-full mx-auto overflow-hidden rounded-lg my-16 dark:bg-[#0A0A0C] dark:text-white">
-      <div
-        className="hidden bg-center bg-contain bg-no-repeat lg:block w-1/2 mx-6 my-8"
-        style={{
-          backgroundImage: "url('https://i.ibb.co/rxGD6T6/signin.png')",
-        }}
-      ></div>
+      <div className="flex justify-center w-full h-screen mx-auto overflow-hidden rounded-lg  dark:bg-[#0A0A0C] dark:text-white">
+        <Image
+          width={500}
+          height={500}
+          src="https://i.ibb.co/rxGD6T6/signin.png"
+          alt="login"
+          className="hidden bg-center bg-contain bg-no-repeat lg:block w-1/2 mx-6 my-8"
+        ></Image>
 
-        <div className="w-full mx-6 my-8 lg:px-16 md:px-8 lg:w-1/2">
+        <div className="w-full mx-6 lg:px-16 md:px-8 lg:w-1/2 flex flex-col justify-center my-4">
           <Link href={"/"}>
             <div className="flex items-center justify-center text-[#B7B7B7] dark:bg-[#0A0A0C] dark:text-white">
               <Image
@@ -109,13 +110,10 @@ const Page = ({ redirect }) => {
               />
             </div>
           </Link>
-
-          <p className="mt-1 text-xl text-center text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
+          <p className="mt-1 text-xl text-center  dark:bg-[#0A0A0C] dark:text-white">
             Welcome back!
           </p>
-
           <SocialLogin />
-
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white lg:w-1/4"></span>
             <p className="text-xs text-center text-gray-500 uppercase dark:bg-[#0A0A0C] dark:text-white hover:underline">
@@ -123,9 +121,8 @@ const Page = ({ redirect }) => {
             </p>
             <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white lg:w-1/4"></span>
           </div>
-
-          <LoginForm redirect={redirect} /> {/* Pass the redirect parameter here */}
-
+          <LoginForm redirect={redirect} />{" "}
+          {/* Pass the redirect parameter here */}
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white md:w-1/4"></span>
             <Link
