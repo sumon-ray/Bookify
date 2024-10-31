@@ -52,7 +52,23 @@ const MoladGet = ({receiver}) => {
                 setMessage(""); // Clear message input
                 setMsgModal(true); // Keep modal open to see the sent message
                 setMessages(prev => [...prev, { ...messageInfo, isSender: true }]); 
-                
+                const data = {
+                    MsgReceiverName: receiver?.RequesterName,
+                    MsgSenderName: session?.user?.name,
+                    MsgSenderEmail: senderEmail,
+                    MsgReceiverEmail: receiver?.RequesterEmail,
+                    MgsNotification: "Send you a Message",
+
+                  };
+                  console.log("data for post ", data);
+                  axios.post('https://bookify-server-lilac.vercel.app/notification', data)
+                    .then(response => {
+                      console.log('Response:', response.data);
+                    })
+                    .catch(error => {
+                      console.error('Error:', error);
+                    });
+
             } catch (error) {
                 console.error("Error sending message:", error);
             }
