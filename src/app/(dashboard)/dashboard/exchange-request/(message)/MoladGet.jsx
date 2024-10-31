@@ -87,7 +87,7 @@ const MoladGet = ({receiver}) => {
                         </div>
 
                         {/* Message contents */}
-                        <div className="flex flex-col flex-grow h-0 p-4 overflow-auto">
+                        <div className="flex flex-col flex-grow h-0 p-4 overflow-auto dark:bg-[#272727]">
                             {messages.map((msg, index) => (
                                 <div key={index} className={`flex w-full mt-2 space-x-3 max-w-xs ${msg.senderEmail === senderEmail ? 'ml-auto justify-end' : ''}`}>
                                     {msg.senderEmail !== senderEmail && <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>}
@@ -99,7 +99,6 @@ const MoladGet = ({receiver}) => {
                             ))}
                         </div>
 
-                        {/* Message input */}
                         {/* Message send input  */}
                         <div className="bg-gray-300 p-2">
                             {/* <input
