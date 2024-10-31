@@ -241,31 +241,6 @@ console.log(notification);
                     </Menu>
                   </div>
 
-                  <div className="relative hidden md:flex">
-                    <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
-                      id="message-button"
-                      aria-controls={open ? 'message-menu' : undefined}
-                      aria-haspopup="true"
-                      size="small"
-                      aria-expanded={open ? 'true' : undefined}
-                      // onClick={handleClick}
-                      >
-                      <MdOutlineMessage className="text-xl " />
-                    </button>
-                    {/* <Menu
-                      id="message-menu"
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
-                      MenuListProps={{
-                        'aria-labelledby': 'message-button',
-                      }}
-                    >
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
-                      <MenuItem onClick={handleClose}>Logout</MenuItem>
-                    </Menu> */}
-                  </div>
 
                   {/* Profile Button */}
                   <div className="relative">

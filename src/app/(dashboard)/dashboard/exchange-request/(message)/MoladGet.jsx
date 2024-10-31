@@ -62,6 +62,7 @@ const MoladGet = ({ receiver }) => {
 
                 };
                 console.log("data for post ", data);
+               
                 //  if Modal is opne then sent the notification
                 if (!msgModal) {
                     axios.post('https://bookify-server-lilac.vercel.app/notification', data)
