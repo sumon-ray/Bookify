@@ -27,8 +27,8 @@ export default function TemporaryDrawer() {
 
   const checkActive = (route) => {
     return pathname === route
-      ? "bg-[#364957] hover:bg-[#364957] rounded-md border-l-4 border-l-[#FFD700] text-[#FFFFFF] shadow-lg" // Unique style for active route
-      : "text-black";
+      ? "bg-[#364957] hover:bg-[#364957]   rounded-md border-l-4 border-l-[#FFD700] text-[#FFFFFF] " 
+      : "text-black ";
   };
 
   const handleLinkClick = () => {
@@ -40,19 +40,19 @@ export default function TemporaryDrawer() {
     hover: {
       scale: 1.05,
       opacity: 1,
-      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+      // boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
       transition: { type: "spring", stiffness: 300 },
     },
   };
 
   const iconActive = (route) => {
-    return pathname === route ? "text-white text-2xl" : "text-black text-xl";
+    return pathname === route ? "text-white text-2xl " : "text-black text-xl";
   };
 
   const DrawerList = (
     <Box sx={{ 
       width: 250, 
-      background: '#FFFFFF', 
+      // background: '#FFFFFF', 
       borderRadius: '12px', 
       padding: '20px', 
       boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
@@ -61,16 +61,16 @@ export default function TemporaryDrawer() {
         width: '8px',
       },
       '&::-webkit-scrollbar-thumb': {
-        background: '#BDC3C7',
+        // background: '#BDC3C7',
         borderRadius: '10px',
       },
       '&::-webkit-scrollbar-track': {
-        background: '#F0F0F0',
+        // background: '#F0F0F0',
       },
     }} role="presentation">
       <div className="flex justify-between items-center mb-4"> 
         <Link href={"/"} className="w-full mx-auto"> 
-          <Image src={img} unoptimized className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+          <Image  alt="Logo" src={img} unoptimized className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
         </Link>
         <motion.button 
           onClick={() => setOpen(false)} 
