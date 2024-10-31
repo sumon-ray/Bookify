@@ -5,9 +5,10 @@ import { useSession } from "next-auth/react";
 import { ImCross } from "react-icons/im";
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 
-const MoladGet = ({receiver}) => {
-    console.log(receiver?.requesterEmail, "NOoooooooooooooooo 9" );
+const MoladGet = ({ receiver }) => {
+    console.log(receiver?.requesterEmail, "NOoooooooooooooooo 9");
     const { data: session } = useSession();
     const [msgModal, setMsgModal] = useState(false);
     const [message, setMessage] = useState("");
@@ -15,10 +16,10 @@ const MoladGet = ({receiver}) => {
     const senderEmail = session?.user?.email;
 
     // Fetch messages whenever the modal opens or the sender/receiver changes
-    
-    
+
+
     if (!receiver?.requesterEmail && msgModal) {
-        toast.error("You can't send a message because the request was canceled")   ;
+        toast.error("You can't send a message because the request was canceled");
         setMsgModal(false);
     }
     useEffect(() => {
@@ -42,21 +43,44 @@ const MoladGet = ({receiver}) => {
         if (message.trim()) {
             const messageInfo = {
                 senderEmail: senderEmail,
-                receiverEmail: receiver?.RequesterEmail,
+                receiverEmail: receiver?.requesterEmail,
                 messageText: message,
                 timestamp: new Date(),
             };
-
+            console.log(messageInfo);
             try {
                 await axios.post('https://bookify-server-lilac.vercel.app/message', messageInfo);
                 setMessage(""); // Clear message input
                 setMsgModal(true); // Keep modal open to see the sent message
-                setMessages(prev => [...prev, { ...messageInfo, isSender: true }]); // Add new message to the chat view
+                setMessages(prev => [...prev, { ...messageInfo, isSender: true }]);
+                const data = {
+                    MsgReceiverName: receiver?.RequesterName,
+                    MsgSenderName: session?.user?.name,
+                    MsgSenderEmail: senderEmail,
+                    MsgReceiverEmail: receiver?.RequesterEmail,
+                    MgsNotification: "Send you a Message",
+
+                };
+                console.log("data for post ", data);
+               
+                //  if Modal is opne then sent the notification
+                if (!msgModal) {
+                    axios.post('https://bookify-server-lilac.vercel.app/notification', data)
+                        .then(response => {
+                            console.log('Response:', response.data);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+
             } catch (error) {
                 console.error("Error sending message:", error);
             }
         }
     };
+    console.log(receiver.requesterProfile
+    );
     return (
         <div>
             <button onClick={() => setMsgModal(!msgModal)}>
@@ -69,14 +93,13 @@ const MoladGet = ({receiver}) => {
                         {/* Message Head */}
                         <div className="bg-[#364957] p-4 text-white flex justify-between items-center">
                             <button id="login" className=" rounded-md p-1">
-                                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <circle cx="12" cy="6" r="4" stroke="#ffffff" strokeWidth="1.5"></circle>
-                                        <path d="M15 20.6151C14.0907 20.8619 13.0736 21 12 21C8.13401 21 5 19.2091 5 17C5 14.7909 8.13401 13 12 13C15.866 13 19 14.7909 19 17C19 17.3453 18.9234 17.6804 18.7795 18" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"></path>
-                                    </g>
-                                </svg>
+                                <Image
+                                    src={receiver.requesterProfile} // Replace with the actual path to your image
+                                    alt="User Avatar"
+                                    width={25}
+                                    height={25}
+                                    className="rounded-full w-[40px] h-[40px]" // Adds rounded styling for avatar appearance
+                                />
                             </button>
                             <span className='text-2xl'>{receiver?.RequesterName}</span>
                             <div className="relative inline-block text-left">
@@ -87,7 +110,7 @@ const MoladGet = ({receiver}) => {
                         </div>
 
                         {/* Message contents */}
-                        <div className="flex flex-col flex-grow h-0 p-4 overflow-auto">
+                        <div className="flex flex-col flex-grow h-0 p-4 overflow-auto dark:bg-[#272727]">
                             {messages.map((msg, index) => (
                                 <div key={index} className={`flex w-full mt-2 space-x-3 max-w-xs ${msg.senderEmail === senderEmail ? 'ml-auto justify-end' : ''}`}>
                                     {msg.senderEmail !== senderEmail && <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>}
@@ -99,7 +122,6 @@ const MoladGet = ({receiver}) => {
                             ))}
                         </div>
 
-                        {/* Message input */}
                         {/* Message send input  */}
                         <div className="bg-gray-300 p-2">
                             {/* <input
