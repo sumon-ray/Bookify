@@ -221,6 +221,7 @@ console.log(notification);
                     </div>
                     <Menu
                       id="notification-menu"
+                      className=""
                       anchorEl={anchorEl}
                       open={open}
                       onClose={handleClose}
@@ -230,20 +231,13 @@ console.log(notification);
                     >
                       {/* request Notification */}
                       {notification.length > 0 || notificationApprove.length > 0 ? notification.map((notification, index) => (
-                        <MenuItem key={notification.id} onClick={routeToRequestPage}>
+                        <MenuItem className="dark:bg-[#272727] dark:text-white" key={notification.id} onClick={routeToRequestPage}>
                           {notification?.RequesterName ?<p className="p-2">{`${index + 1}. ${notification?.RequesterName} requested to exchange book `} {/* Display index */}</p>
                           : <p className="p-2">{`${index + 1}. ${notification?.approverName} approve your exchange reques`} </p> }
                         </MenuItem>
 
                       )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}
                       
-                      {/* Approve Notification */}
-                      {/* {notificationApprove.length > 0 || notification.length > 0? notificationApprove.map((notification, index) => (
-                        <MenuItem key={notification.id} onClick={routeToRequestPage}>
-                          <p className="p-2">{`${index + 1}. ${notification?.approverName} approve your exchange reques`} </p>
-                        </MenuItem>
-
-                      )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>} */}
                     </Menu>
                   </div>
 
@@ -254,7 +248,8 @@ console.log(notification);
                       aria-haspopup="true"
                       size="small"
                       aria-expanded={open ? 'true' : undefined}
-                      onClick={handleClick}>
+                      // onClick={handleClick}
+                      >
                       <MdOutlineMessage className="text-xl " />
                     </button>
                     {/* <Menu
