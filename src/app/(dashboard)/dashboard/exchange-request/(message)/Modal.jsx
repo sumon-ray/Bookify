@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { ImCross } from "react-icons/im";
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 
 const Modal = ({ receiver }) => {
     const { data: session } = useSession();
@@ -12,7 +13,6 @@ const Modal = ({ receiver }) => {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
     const senderEmail = session?.user?.email;
-
     if (!receiver?.ownerEmail && msgModal) {
         toast.error("You can't send a message because the request was canceled");
         setMsgModal(false);
@@ -37,7 +37,7 @@ const Modal = ({ receiver }) => {
     }, [msgModal, senderEmail, receiver]);
 
     const handleSendMessage = async () => {
-       
+
         if (message.trim()) {
             const messageInfo = {
                 senderEmail: senderEmail,
@@ -58,15 +58,17 @@ const Modal = ({ receiver }) => {
                     MsgReceiverEmail: receiver?.ownerEmail,
                     MgsNotification: "Send you a Message",
 
-                  };
-                  console.log("data for post ", data);
-                  axios.post('https://bookify-server-lilac.vercel.app/notification', data)
-                    .then(response => {
-                      console.log('Response:', response.data);
-                    })
-                    .catch(error => {
-                      console.error('Error:', error);
-                    });
+                };
+                console.log("data for post ", data);
+                if (!msgModal) {
+                    axios.post('https://bookify-server-lilac.vercel.app/notification', data)
+                        .then(response => {
+                            console.log('Response:', response.data);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
 
             } catch (error) {
                 console.error("Error sending message:", error);
@@ -74,7 +76,7 @@ const Modal = ({ receiver }) => {
 
         }
     };
-
+    console.log(receiver.ownerBooks[0].coverImage);
     return (
         <div>
             <button onClick={() => setMsgModal(!msgModal)}>
@@ -86,19 +88,28 @@ const Modal = ({ receiver }) => {
                     <div className="flex flex-col flex-grow w-full max-w-[350px] md:min-h-[500px] min-h-[400px] bg-white shadow-xl rounded-lg overflow-hidden">
                         {/* Message Head */}
                         <div className="bg-[#364957] p-4 text-white flex justify-between items-center">
-                            <button id="login" className=" rounded-md p-1">
-                                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <circle cx="12" cy="6" r="4" stroke="#ffffff" strokeWidth="1.5"></circle>
-                                        <path d="M15 20.6151C14.0907 20.8619 13.0736 21 12 21C8.13401 21 5 19.2091 5 17C5 14.7909 8.13401 13 12 13C15.866 13 19 14.7909 19 17C19 17.3453 18.9234 17.6804 18.7795 18" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"></path>
-                                    </g>
-                                </svg>
-                            </button>
-                            <span className='text-2xl'>{receiver?.ownerName}</span>
+                            {/* Button with Tooltip */}
+                            <div className="relative">
+                                <button
+                                    id="login"
+                                    className="rounded-md p-1"
+                                    onClick={() => setShowTooltip(!showTooltip)}
+                                >
+                                    <Image
+                                        src={receiver.ownerBooks[0].coverImage } // Replace with the actual path to your image
+                                        alt="User Avatar"
+                                        width={25}
+                                        height={25}
+                                        className="rounded-full w-[40px] h-[40px]" // Adds rounded styling for avatar appearance
+                                    />
+                                </button>
+
+                            </div>
+
+                            <span className="text-2xl">{receiver?.ownerName}</span>
+
                             <div className="relative inline-block text-left">
-                                <button onClick={() => setMsgModal(false)} id="setting" className=" rounded-md p-1">
+                                <button onClick={() => setMsgModal(false)} id="setting" className="rounded-md p-1">
                                     <ImCross />
                                 </button>
                             </div>
