@@ -51,7 +51,8 @@ const MoladGet = ({receiver}) => {
                 await axios.post('https://bookify-server-lilac.vercel.app/message', messageInfo);
                 setMessage(""); // Clear message input
                 setMsgModal(true); // Keep modal open to see the sent message
-                setMessages(prev => [...prev, { ...messageInfo, isSender: true }]); // Add new message to the chat view
+                setMessages(prev => [...prev, { ...messageInfo, isSender: true }]); 
+                
             } catch (error) {
                 console.error("Error sending message:", error);
             }
