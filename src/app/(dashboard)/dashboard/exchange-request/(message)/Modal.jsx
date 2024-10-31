@@ -76,7 +76,7 @@ const Modal = ({ receiver }) => {
 
         }
     };
-    console.log(receiver.ownerBooks[0].coverImage);
+    // console.log(receiver.ownerBooks[0].AuthorProfile);
     return (
         <div>
             <button onClick={() => setMsgModal(!msgModal)}>
@@ -96,7 +96,7 @@ const Modal = ({ receiver }) => {
                                     onClick={() => setShowTooltip(!showTooltip)}
                                 >
                                     <Image
-                                        src={receiver.ownerBooks[0].coverImage } // Replace with the actual path to your image
+                                        src={receiver.ownerBooks[0].AuthorProfile } // Replace with the actual path to your image
                                         alt="User Avatar"
                                         width={25}
                                         height={25}
