@@ -1,6 +1,5 @@
 "use client"
 import axios from "axios";
-import './file.css';
 import { IoSend } from "react-icons/io5";
 import { GrSend } from "react-icons/gr";
 import { useQuery } from "@tanstack/react-query";
@@ -67,9 +66,6 @@ const AddBook = () => {
     })
       .catch(error => toast.error(error.message))
   }
-
-
-
 
   return (
     <section className="space-y-6 pb-12">

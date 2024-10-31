@@ -7,23 +7,26 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import Image from 'next/image';
 
-const Modal = ({ receiver }) => {
+const MoladGet = ({ receiver }) => {
+    console.log(receiver?.requesterEmail, "NOoooooooooooooooo 9");
     const { data: session } = useSession();
     const [msgModal, setMsgModal] = useState(false);
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
     const senderEmail = session?.user?.email;
-    if (!receiver?.ownerEmail && msgModal) {
+
+    // Fetch messages whenever the modal opens or the sender/receiver changes
+
+
+    if (!receiver?.requesterEmail && msgModal) {
         toast.error("You can't send a message because the request was canceled");
         setMsgModal(false);
     }
-
-    // Fetch messages whenever the modal opens or the sender/receiver changes
     useEffect(() => {
         const fetchMessages = async () => {
             if (senderEmail && receiver) {
                 try {
-                    const response = await axios.get(`https://bookify-server-lilac.vercel.app/message?senderEmail=${senderEmail}&receiverEmail=${receiver?.ownerEmail}`);
+                    const response = await axios.get(`https://bookify-server-lilac.vercel.app/message?senderEmail=${senderEmail}&receiverEmail=${receiver?.requesterEmail}`);
                     setMessages(response.data);
                 } catch (err) {
                     console.error("Error loading messages:", err);
@@ -37,29 +40,30 @@ const Modal = ({ receiver }) => {
     }, [msgModal, senderEmail, receiver]);
 
     const handleSendMessage = async () => {
-
         if (message.trim()) {
             const messageInfo = {
                 senderEmail: senderEmail,
-                receiverEmail: receiver?.ownerEmail,
+                receiverEmail: receiver?.requesterEmail,
                 messageText: message,
                 timestamp: new Date(),
             };
-
+            console.log(messageInfo);
             try {
                 await axios.post('https://bookify-server-lilac.vercel.app/message', messageInfo);
                 setMessage(""); // Clear message input
                 setMsgModal(true); // Keep modal open to see the sent message
-                setMessages(prev => [...prev, { ...messageInfo, isSender: true }]); // Add new message to the chat view
+                setMessages(prev => [...prev, { ...messageInfo, isSender: true }]);
                 const data = {
-                    MsgReceiverName: receiver?.ownerName,
+                    MsgReceiverName: receiver?.RequesterName,
                     MsgSenderName: session?.user?.name,
                     MsgSenderEmail: senderEmail,
-                    MsgReceiverEmail: receiver?.ownerEmail,
+                    MsgReceiverEmail: receiver?.RequesterEmail,
                     MgsNotification: "Send you a Message",
 
                 };
                 console.log("data for post ", data);
+               
+                //  if Modal is opne then sent the notification
                 if (!msgModal) {
                     axios.post('https://bookify-server-lilac.vercel.app/notification', data)
                         .then(response => {
@@ -73,10 +77,10 @@ const Modal = ({ receiver }) => {
             } catch (error) {
                 console.error("Error sending message:", error);
             }
-
         }
     };
-    // console.log(receiver.ownerBooks[0].AuthorProfile);
+    console.log(receiver.requesterProfile
+    );
     return (
         <div>
             <button onClick={() => setMsgModal(!msgModal)}>
@@ -88,28 +92,18 @@ const Modal = ({ receiver }) => {
                     <div className="flex flex-col flex-grow w-full max-w-[350px] md:min-h-[500px] min-h-[400px] bg-white shadow-xl rounded-lg overflow-hidden">
                         {/* Message Head */}
                         <div className="bg-[#364957] p-4 text-white flex justify-between items-center">
-                            {/* Button with Tooltip */}
-                            <div className="relative">
-                                <button
-                                    id="login"
-                                    className="rounded-md p-1"
-                                    onClick={() => setShowTooltip(!showTooltip)}
-                                >
-                                    <Image
-                                        src={receiver.ownerBooks[0].AuthorProfile } // Replace with the actual path to your image
-                                        alt="User Avatar"
-                                        width={25}
-                                        height={25}
-                                        className="rounded-full w-[40px] h-[40px]" // Adds rounded styling for avatar appearance
-                                    />
-                                </button>
-
-                            </div>
-
-                            <span className="text-2xl">{receiver?.ownerName}</span>
-
+                            <button id="login" className=" rounded-md p-1">
+                                <Image
+                                    src={receiver.requesterProfile} // Replace with the actual path to your image
+                                    alt="User Avatar"
+                                    width={25}
+                                    height={25}
+                                    className="rounded-full w-[40px] h-[40px]" // Adds rounded styling for avatar appearance
+                                />
+                            </button>
+                            <span className='text-2xl'>{receiver?.RequesterName}</span>
                             <div className="relative inline-block text-left">
-                                <button onClick={() => setMsgModal(false)} id="setting" className="rounded-md p-1">
+                                <button onClick={() => setMsgModal(false)} id="setting" className=" rounded-md p-1">
                                     <ImCross />
                                 </button>
                             </div>
@@ -169,4 +163,4 @@ const Modal = ({ receiver }) => {
     );
 };
 
-export default Modal;
+export default MoladGet;

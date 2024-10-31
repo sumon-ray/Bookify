@@ -35,10 +35,10 @@ import axios from "axios";
 
 export default function DashboardNavbar() {
   const session = useSession();
-  const [notification, setNotification] = useState([])
   const [notificationApprove, setNotificationApprove] = useState([])
+  const [notification, setNotification] = useState([])
   const [notificationSeen, setNotificationSeen] = useState(true)
-
+console.log(notification);
   const [isListening, setIsListening] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
@@ -114,40 +114,23 @@ export default function DashboardNavbar() {
   }, [recognition]);
 
   useEffect(() => {
-    // Function to fetch notifications data
-    const fetchNotifications = () => {
-      // Get notifications data
-      axios.get(`https://bookify-server-lilac.vercel.app/notifications?owner=${session?.data?.user?.email}`)
-        .then(response => {
-          const notificationsData = response.data;
-          setNotification(notificationsData); // Set notifications state
-          // console.log('Notifications:', notification); // Log fetched notifications
-        })
-        .catch(error => {
-          console.error('Error fetching notifications:', error); // Log any errors
-        });
+    const fetchNotifications = async () => {
+      try {
+        const [response1, response2] = await Promise.all([
+          axios.get(`https://bookify-server-lilac.vercel.app/notifications?owner=${session?.data?.user?.email}`),
+          axios.get(`https://bookify-server-lilac.vercel.app/notifications?approved=${session?.data?.user?.email}`)
+        ]);
+
+        
+        setNotification([...response1.data, ...response2.data]);
+        
+      } catch (error) {
+        console.error('Error fetching notifications:', error);
+      }
     };
 
-    fetchNotifications(); // Call the fetch function
-  }, [notification, session?.data?.user?.email]);
-
-  useEffect(() => {
-    // Function to fetch notifications data
-    const fetchNotifications = () => {
-      // Get notifications data
-      axios.get(`https://bookify-server-lilac.vercel.app/notifications?approved=${session?.data?.user?.email}`)
-        .then(response => {
-          const notificationsData = response.data;
-          setNotificationApprove(notificationsData); // Set notifications state
-          // console.log('Notifications:', notification); // Log fetched notifications
-        })
-        .catch(error => {
-          console.error('Error fetching notifications:', error); // Log any errors
-        });
-    };
-
-    fetchNotifications(); // Call the fetch function
-  }, [notificationApprove, notification, session?.data?.user?.email]);
+    fetchNotifications();
+  }, [session?.data?.user?.email]);
 
   // route to request page 
   const routeToRequestPage = () => {
@@ -234,10 +217,11 @@ export default function DashboardNavbar() {
                         <IoMdNotificationsOutline className="text-xl" />
 
                       </button>
-                      <p className="absolute top-0 -mt-1 right-0 bg-[#364957] text-white rounded-full text-sm  px-[5px]">{notificationSeen ? notification.length > 0 || notificationApprove.length > 0 && notification.length + notificationApprove.length : <></>}</p>
+                      {notificationSeen && <p className="absolute top-0 -mt-1 right-0 bg-[#364957] text-white rounded-full text-sm  px-[5px]">{ notification.length > 0  ? notification.length : <></>}</p>}
                     </div>
                     <Menu
                       id="notification-menu"
+                      className=""
                       anchorEl={anchorEl}
                       open={open}
                       onClose={handleClose}
@@ -247,46 +231,16 @@ export default function DashboardNavbar() {
                     >
                       {/* request Notification */}
                       {notification.length > 0 || notificationApprove.length > 0 ? notification.map((notification, index) => (
-                        <MenuItem key={notification.id} onClick={routeToRequestPage}>
-                          <p className="p-2">{`${index + 1}. ${notification?.RequesterName} requested to exchange book `} {/* Display index */}</p>
+                        <MenuItem className="dark:bg-[#272727] dark:text-white" key={notification.id} onClick={routeToRequestPage}>
+                          {notification?.RequesterName ?<p className="p-2">{`${index + 1}. ${notification?.RequesterName} requested to exchange book `} {/* Display index */}</p>
+                          : <p className="p-2">{`${index + 1}. ${notification?.approverName} approve your exchange reques`} </p> }
                         </MenuItem>
 
                       )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}
                       
-                      {/* Approve Notification */}
-                      {notificationApprove.length > 0 || notification.length > 0? notificationApprove.map((notification, index) => (
-                        <MenuItem key={notification.id} onClick={routeToRequestPage}>
-                          <p className="p-2">{`${index + 1}. ${notification?.approverName} approve your exchange reques`} {/* Display index */}</p>
-                        </MenuItem>
-
-                      )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}
                     </Menu>
                   </div>
 
-                  <div className="relative hidden md:flex">
-                    <button className="bg-[#36495733] dark:bg-gray-700 dark:text-white text-black rounded-full p-2"
-                      id="message-button"
-                      aria-controls={open ? 'message-menu' : undefined}
-                      aria-haspopup="true"
-                      size="small"
-                      aria-expanded={open ? 'true' : undefined}
-                      onClick={handleClick}>
-                      <MdOutlineMessage className="text-xl " />
-                    </button>
-                    {/* <Menu
-                      id="message-menu"
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
-                      MenuListProps={{
-                        'aria-labelledby': 'message-button',
-                      }}
-                    >
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
-                      <MenuItem onClick={handleClose}>Logout</MenuItem>
-                    </Menu> */}
-                  </div>
 
                   {/* Profile Button */}
                   <div className="relative">
