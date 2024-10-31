@@ -231,7 +231,8 @@ console.log(notification);
                       {/* request Notification */}
                       {notification.length > 0 || notificationApprove.length > 0 ? notification.map((notification, index) => (
                         <MenuItem key={notification.id} onClick={routeToRequestPage}>
-                          <p className="p-2">{`${index + 1}. ${notification?.RequesterName} requested to exchange book `} {/* Display index */}</p>
+                          {notification?.RequesterName ?<p className="p-2">{`${index + 1}. ${notification?.RequesterName} requested to exchange book `} {/* Display index */}</p>
+                          : <p className="p-2">{`${index + 1}. ${notification?.approverName} approve your exchange reques`} </p> }
                         </MenuItem>
 
                       )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}
