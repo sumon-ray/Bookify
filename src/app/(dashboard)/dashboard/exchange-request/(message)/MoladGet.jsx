@@ -6,8 +6,8 @@ import { ImCross } from "react-icons/im";
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const MoladGet = ({receiver}) => {
-    console.log(receiver?.requesterEmail, "NOoooooooooooooooo 9" );
+const MoladGet = ({ receiver }) => {
+    console.log(receiver?.requesterEmail, "NOoooooooooooooooo 9");
     const { data: session } = useSession();
     const [msgModal, setMsgModal] = useState(false);
     const [message, setMessage] = useState("");
@@ -15,10 +15,10 @@ const MoladGet = ({receiver}) => {
     const senderEmail = session?.user?.email;
 
     // Fetch messages whenever the modal opens or the sender/receiver changes
-    
-    
+
+
     if (!receiver?.requesterEmail && msgModal) {
-        toast.error("You can't send a message because the request was canceled")   ;
+        toast.error("You can't send a message because the request was canceled");
         setMsgModal(false);
     }
     useEffect(() => {
@@ -42,16 +42,16 @@ const MoladGet = ({receiver}) => {
         if (message.trim()) {
             const messageInfo = {
                 senderEmail: senderEmail,
-                receiverEmail: receiver?.RequesterEmail,
+                receiverEmail: receiver?.requesterEmail,
                 messageText: message,
                 timestamp: new Date(),
             };
-
+            console.log(messageInfo);
             try {
                 await axios.post('https://bookify-server-lilac.vercel.app/message', messageInfo);
                 setMessage(""); // Clear message input
                 setMsgModal(true); // Keep modal open to see the sent message
-                setMessages(prev => [...prev, { ...messageInfo, isSender: true }]); 
+                setMessages(prev => [...prev, { ...messageInfo, isSender: true }]);
                 const data = {
                     MsgReceiverName: receiver?.RequesterName,
                     MsgSenderName: session?.user?.name,
@@ -59,15 +59,18 @@ const MoladGet = ({receiver}) => {
                     MsgReceiverEmail: receiver?.RequesterEmail,
                     MgsNotification: "Send you a Message",
 
-                  };
-                  console.log("data for post ", data);
-                  axios.post('https://bookify-server-lilac.vercel.app/notification', data)
-                    .then(response => {
-                      console.log('Response:', response.data);
-                    })
-                    .catch(error => {
-                      console.error('Error:', error);
-                    });
+                };
+                console.log("data for post ", data);
+                //  if Modal is opne then sent the notification
+                if (!msgModal) {
+                    axios.post('https://bookify-server-lilac.vercel.app/notification', data)
+                        .then(response => {
+                            console.log('Response:', response.data);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
 
             } catch (error) {
                 console.error("Error sending message:", error);
