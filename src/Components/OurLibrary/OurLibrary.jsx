@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { FiBookOpen, FiUser, FiTag } from "react-icons/fi";
 
 const OurLibrary = () => {
@@ -193,17 +194,17 @@ const OurLibrary = () => {
           onClick={handlePrevPage}
           disabled={currentPage === 1}
         >
-          Previous
+          <GrLinkPrevious/>
         </button>
-        <span className="p-2 font-bold">
+        <span className="p-2 mx-2 font-bold">
           Page {currentPage} of {totalPages}
         </span>
         <button
-          className="p-2 mx-2 bg-[#364957] text-[white] rounded-md"
+          className="p-2 bg-[#364957] text-[white] rounded-md"
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
         >
-          Next
+          <GrLinkNext/>
         </button>
       </div>
     </div>
