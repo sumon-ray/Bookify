@@ -273,3 +273,12 @@ input[type="file"]::file-selector-button {
   background-color: #364957;
   color: white;
 }
+
+.menu-container {
+    display: flex; /* Ensure the icons are in a row */
+    align-items: center; /* Align items vertically centered */
+}
+
+.profile-icon, .theme-icon {
+    margin-left: 10px; /* Add space between menu and icons */
+}
