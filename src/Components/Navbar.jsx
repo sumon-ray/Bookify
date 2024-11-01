@@ -118,7 +118,7 @@ const Navbar = () => {
           </>
 
           {/* Hamburger icon for mobile */}
-          <div className="flex items-center">
+          <div className="flex dark:text-white items-center">
             {/* Adjusted the positioning of the NavbarDrawer */}
             <div className=" cursor-pointer md:hidden flex items-center justify-center">
 <div className="">
@@ -127,7 +127,7 @@ const Navbar = () => {
 
 </div>
               
-              <NavbarDrawer />
+              <NavbarDrawer className='' />
             </div>
           </div>
         </div>
@@ -137,7 +137,7 @@ const Navbar = () => {
           <ul
             className={`hidden md:flex font-normal gap-x-6 md:bg-none lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-1/2 md:w-auto md:pl-0 pl-9 transition-all duration-200 ease-in`}
           >
-            {links.slice(0,1).map((link) => (
+            {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
                 className={`${pathName === link.path && "font-black"
@@ -152,7 +152,6 @@ const Navbar = () => {
               </li>
             ))}
 
-
             <li className="lg:text-[16px] md:my-0 my-7 font-normal">
               {links?.slice(1, 2).map((link, index) => (
                 <Link
@@ -163,8 +162,6 @@ const Navbar = () => {
                 >
                   <p>{link?.title}</p>
                   <Badge
-                    // sx={{backgroundImage:'#364957'}}
-                    // badgeContent={data?.length || "0"}
                     color="primary"
                     anchorOrigin={{
                       vertical: "top",
@@ -177,7 +174,7 @@ const Navbar = () => {
               ))}
             </li>
 
-            {/* Contact and remaining links */}
+            {/* Contact and remaining links without TbExchange icon */}
             {links.slice(2).map((link) => (
               <li
                 key={link.path}
@@ -188,9 +185,6 @@ const Navbar = () => {
                   href={link.path}
                   className="text-[black] dark:text-white duration-500 flex items-center"
                 >
-                  <span className="mr-2">
-                    <TbExchange className="text-xl" />
-                  </span>
                   {link.title}
                 </Link>
               </li>
