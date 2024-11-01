@@ -26,7 +26,7 @@ export default function NavbarDrawer() {
     const [open, setOpen] = React.useState(false);
     const checkActive = (route) => {
         return pathname === route
-            ? "font-black border-b border-black"
+            ? "font-black dark:font-white border-b border-black"
             : "";
     };
     const { data: session, status } = useSession()
@@ -133,7 +133,7 @@ export default function NavbarDrawer() {
 
     return (
         <div>
-            <Button onClick={toggleDrawer(true)}><GiHamburgerMenu className='text-2xl text-black' /></Button>
+            <Button onClick={toggleDrawer(true)}><GiHamburgerMenu className='text-2xl text-black dark:text-white' /></Button>
             <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
                 {DrawerList}
             </Drawer>
