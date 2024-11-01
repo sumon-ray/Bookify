@@ -42,10 +42,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-white text-black pt-6 px-4 lg:pt-12 lg:px-8 dark:bg-[#272727CC] dark:text-black">
-      <div className="w-full flex flex-col lg:flex-row gap-8 mx-auto">
-        <div className="w-full lg:w-2/3 border-2 p-4 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-6 dark:bg-[#0A0A0C] dark:text-white">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full p-2 text-center ">
+    <footer className="bg-white text-black dark:bg-[#272727CC] dark:text-black">
+      <div className="w-full flex flex-col lg:flex-row gap-2 mx-auto">
+        <div className="w-full lg:w-2/3 border-2 p-4 bg-gray-100 flex flex-col justify-center items-center space-y-6 dark:bg-[#0A0A0C] dark:text-white">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 w-full p-2 text-center ">
             {/* Contact Section */}
             <div className="space-y-4">
               <h2 className="text-lg font-bold">Contact Us</h2>
@@ -161,26 +161,26 @@ const Footer = () => {
         </div>
 
         {/* Newsletter and Payment Section */}
-        <div className="w-full lg:w-1/3 flex flex-col space-y-6 ">
-          <div className="border-2 p-4 bg-gray-100 rounded-xl flex flex-col justify-center items-center space-y-3 h-1/2 dark:bg-[#0A0A0C] dark:text-white">
+        <div className="w-full lg:w-1/3 flex flex-col space-y-2 ">
+          <div className="border-2 p-4 bg-gray-100 flex flex-col justify-center items-center space-y-3 h-1/2 dark:bg-[#0A0A0C] dark:text-white">
             <h2 className="text-2xl font-bold text-center">Subscribe to our newsletter!</h2>
             <form onSubmit={handleNewsletterSubmit} className="flex gap-2 w-full">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="p-2 rounded-md w-full text-gray-800"
+                className="p-2  w-full text-gray-800"
                 required
               />
               <button
                 type="submit"
-                className="bg-[#364957] text-white px-4 py-2 rounded-md hover:bg-gray-200 hover:text-black transition-colors duration-300"
+                className="bg-[#364957] text-white px-4 py-2  hover:bg-gray-200 hover:text-black transition-colors duration-300"
               >
                 Submit
               </button>
             </form>
           </div>
 
-          <div className="flex justify-center items-center space-x-4 text-3xl p-4 border-2 rounded-xl bg-gray-100 h-1/2 dark:bg-[#0A0A0C] dark:text-white">
+          <div className="flex justify-center items-center space-x-4 text-3xl p-4 border-2  bg-gray-100 h-1/2 dark:bg-[#0A0A0C] dark:text-white">
             <FaApplePay />
             <FaCcVisa />
             <FaCcMastercard />
