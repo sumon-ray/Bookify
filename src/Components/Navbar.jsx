@@ -18,6 +18,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import NavbarDrawer from "./Navbar/NavbarDrawer";
 import Cart from "./cart/Cart";
+import Toggle from "./Toggle/Toggle";
 
 const Navbar = () => {
   const session = useSession();
@@ -118,9 +119,10 @@ const Navbar = () => {
 
           {/* Hamburger icon for mobile */}
           <div className="flex items-center">
-            <Link href={"/cart"} className="md:hidden mr-0">
+            {/* <Link href={"/cart"} className="md:hidden mr-0">
               <Cart />
-            </Link>
+
+            </Link> */}
             <div className="text-3xl cursor-pointer md:hidden">
               <NavbarDrawer />
             </div>
@@ -187,8 +189,9 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-
+  
             <li className="text-[black] duration-500 md:hidden">
+              
               {session?.status === "unauthenticated" && (
                 <Link href="/login">Sign In</Link>
               )}
@@ -227,13 +230,18 @@ const Navbar = () => {
                       Sign out
                     </button>
                   </li>
+              
                 </ul>
               )}
             </li>
           </ul>
         </div>
+    
 
-        <div className="flex lg:justify-center   items-center gap-2">
+<div className="flex gap-2">
+                  <Toggle />
+
+<div className="flex lg:justify-center   items-center gap-2">
           {session?.status === "unauthenticated" && (
             <Link href="/login">
               <button className="btn text-[16px] md:block hidden font-semibold bg-[#364957]  text-white p-3 px-4 rounded-lg">
@@ -244,6 +252,7 @@ const Navbar = () => {
 
           {session?.status === "authenticated" && (
             <>
+
               <div className="relative text-left hidden md:block ">
                 <button
                   type="button"
@@ -302,6 +311,7 @@ const Navbar = () => {
           )}
         </div>
 
+</div>
       </nav>
     </div>
   );
