@@ -196,7 +196,7 @@ const FaqSection = () => {
         Frequently Asked Questions
         </h1>
       </div>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Find answers to common questions about our book exchange platform.
         </p>
       </motion.div>
@@ -318,7 +318,7 @@ const FaqSection = () => {
           <Link href="/contact" className="px-8 py-3  text-black dark:text-white border dark:border-white border-black rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
             Contact Support <FiMessageCircle className="text-xl" />
           </Link>
-          <Link href="/ai-chat" className="px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
+          <Link href="/ai-chat" className="px-8 py-3 bg-[#364957] text-white rounded-lg hover:text-black border  hover:bg-gray-200 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
             Ask AI Assistant <FaRobot className="text-xl" />
           </Link>
         </div>
@@ -328,3 +328,6 @@ const FaqSection = () => {
 };
 
 export default FaqSection;
+
+
+
