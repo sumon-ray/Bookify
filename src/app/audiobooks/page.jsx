@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { FaShareFromSquare } from "react-icons/fa6";
 import SocialSharingButtons from "@/Components/AudioBook/SocialSharingButtons";
+import Heading from "@/Components/Heading/Heading";
 
 export default function Page() {
   const [currentAudio, setCurrentAudio] = useState(null);
@@ -261,11 +262,7 @@ export default function Page() {
 
         {/* All Audio Books section */}
         <div className="container ">
-          <div className="p-2 mt-4 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[400px] h-12 mx-auto">
-            <h1 className=" md:text-xl lg:text-2xl  uppercase font-bold text-center">
-              All Audio Books
-            </h1>
-          </div>
+          <Heading heading="All Audio Books"></Heading>
 
           <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
             <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

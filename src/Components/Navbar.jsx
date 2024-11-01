@@ -121,12 +121,10 @@ const Navbar = () => {
           <div className="flex items-center">
             {/* Adjusted the positioning of the NavbarDrawer */}
             <div className=" cursor-pointer md:hidden flex items-center justify-center">
-<div className="">
-<Toggle className='p-4' />
+              <div className="">
+                <Toggle className="p-4" />
+              </div>
 
-
-</div>
-              
               <NavbarDrawer />
             </div>
           </div>
@@ -137,11 +135,12 @@ const Navbar = () => {
           <ul
             className={`hidden md:flex font-normal gap-x-6 md:bg-none lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-1/2 md:w-auto md:pl-0 pl-9 transition-all duration-200 ease-in`}
           >
-            {links.slice(0,1).map((link) => (
+            {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path && "font-black"
-                  } lg:text-[16px] md:my-0 my-7`}
+                className={`${
+                  pathName === link.path && "font-black"
+                } lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}
@@ -152,14 +151,14 @@ const Navbar = () => {
               </li>
             ))}
 
-
             <li className="lg:text-[16px] md:my-0 my-7 font-normal">
               {links?.slice(1, 2).map((link, index) => (
                 <Link
                   key={index}
                   href={link?.path}
-                  className={`flex items-center ${pathName === link?.path ? "font-black" : ""
-                    }`}
+                  className={`flex items-center ${
+                    pathName === link?.path ? "font-black" : ""
+                  }`}
                 >
                   <p>{link?.title}</p>
                   <Badge
@@ -181,16 +180,17 @@ const Navbar = () => {
             {links.slice(2).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path && " font-black"
-                  } lg:text-[16px] md:my-0 my-7 flex items-center`}
+                className={`${
+                  pathName === link.path && " font-black"
+                } lg:text-[16px] md:my-0 my-7 flex items-center`}
               >
                 <Link
                   href={link.path}
                   className="text-[black] dark:text-white duration-500 flex items-center"
                 >
-                  <span className="mr-2">
+                  {/* <span className="mr-2">
                     <TbExchange className="text-xl" />
-                  </span>
+                  </span> */}
                   {link.title}
                 </Link>
               </li>
@@ -245,7 +245,7 @@ const Navbar = () => {
           <Toggle />
           <div className="flex items-center gap-2">
             {session?.status === "unauthenticated" && (
-              <Link href="/login"> 
+              <Link href="/login">
                 <button className="btn text-[16px] md:block hidden font-semibold bg-primary text-white p-3 px-4 rounded-lg">
                   Sign In
                 </button>
@@ -310,11 +310,8 @@ const Navbar = () => {
             )}
           </div>
         </div>
-
       </nav>
-      </div>
-     
-    
+    </div>
   );
 };
 
