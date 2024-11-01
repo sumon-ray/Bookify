@@ -119,10 +119,14 @@ const Navbar = () => {
 
           {/* Hamburger icon for mobile */}
           <div className="flex items-center">
-            <Toggle className='md:hidden mr-0' />
+            {/* Adjusted the positioning of the NavbarDrawer */}
+            <div className=" cursor-pointer md:hidden flex items-center justify-center">
+<div className="">
+<Toggle className='p-4' />
 
-            
-            <div className="text-3xl cursor-pointer md:hidden">
+
+</div>
+              
               <NavbarDrawer />
             </div>
           </div>
@@ -178,12 +182,15 @@ const Navbar = () => {
               <li
                 key={link.path}
                 className={`${pathName === link.path && " font-black"
-                  } lg:text-[16px] md:my-0 my-7`}
+                  } lg:text-[16px] md:my-0 my-7 flex items-center`}
               >
                 <Link
                   href={link.path}
-                  className="text-[black] dark:text-white duration-500"
+                  className="text-[black] dark:text-white duration-500 flex items-center"
                 >
+                  <span className="mr-2">
+                    <TbExchange className="text-xl" />
+                  </span>
                   {link.title}
                 </Link>
               </li>
@@ -234,77 +241,75 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex hidden md:block gap-2">
-                  <Toggle />
-<div className="flex lg:justify-center   items-center gap-2">
-          {session?.status === "unauthenticated" && (
-            <Link href="/login"> 
-              <button className="btn text-[16px] md:block hidden font-semibold bg-[#364957]  text-white p-3 px-4 rounded-lg">
-                Sign In
-              </button>
-            </Link>
-          )}
-          {session?.status === "authenticated" && (
-            <>
-              <div className="relative text-left hidden md:block ">
-                <button
-                  type="button"
-                  className="flex items-center text-sm"
-                  onClick={() => setToggle(!toggle)}
-                  onChange={() => setToggle(!toggle)}
-                >
-                  {session?.data?.user.image ? (
-                    <Image
-                      src={session?.data?.user?.image}
-                      width={32}
-                      height={32}
-                      className="rounded-full hover:border-2"
-                      alt="profile-image"
-                    />
-                  ) : (
-                    <CgProfile className="text-black font-black text-3xl" />
-                  )}
+        <div className="flex  hidden gap-2 md:flex md:justify-center items-center">
+          <Toggle />
+          <div className="flex items-center gap-2">
+            {session?.status === "unauthenticated" && (
+              <Link href="/login"> 
+                <button className="btn text-[16px] md:block hidden font-semibold bg-primary text-white p-3 px-4 rounded-lg">
+                  Sign In
                 </button>
-              </div>
-
-              {toggle ? (
-                <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
-                  <ul className="pt-1" aria-labelledby="user-menu-button">
-                    <li className="ml-2 text-left ">
-                      <p className="block text-sm font-normal space-x-6">
-                        {session?.data?.user?.name}
-                      </p>
-                      <p className="block text-[12px] text-gray-500 truncate">
-                        {session?.data?.user?.email}
-                      </p>
-                    </li>
-                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                      <FaChalkboardTeacher className="mr-1" />
-                      <Link href="/dashboard">Dashboard</Link>
-                    </li>
-                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                      <FaUserEdit className="mr-1" />
-                      <ProfileUpdateModal />
-                    </li>
-                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
-                      <FaSignOutAlt className="mr-1" />
-                      <button
-                        onClick={() => {
-                          signOut();
-                          toast.success("Signed out successfully!");
-                        }}
-                      >
-                        Sign out
-                      </button>
-                    </li>
-                  </ul>
+              </Link>
+            )}
+            {session?.status === "authenticated" && (
+              <>
+                <div className="relative text-left md:block">
+                  <button
+                    type="button"
+                    className="flex items-center text-sm"
+                    onClick={() => setToggle(!toggle)}
+                  >
+                    {session?.data?.user.image ? (
+                      <Image
+                        src={session?.data?.user?.image}
+                        width={32}
+                        height={32}
+                        className="rounded-full hover:border-2"
+                        alt="profile-image"
+                      />
+                    ) : (
+                      <CgProfile className="text-black font-black text-3xl" />
+                    )}
+                  </button>
                 </div>
-              ) : null}
-            </>
-          )}
-        </div>
 
-</div>
+                {toggle ? (
+                  <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
+                    <ul className="pt-1" aria-labelledby="user-menu-button">
+                      <li className="ml-2 text-left flex items-center">
+                        <span className="mr-2">
+                          <CgProfile className="text-black font-black text-3xl" />
+                        </span>
+                        <p className="block text-sm font-normal space-x-6">
+                          {session?.data?.user?.name}
+                        </p>
+                      </li>
+                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                        <FaChalkboardTeacher className="mr-1" />
+                        <Link href="/dashboard">Dashboard</Link>
+                      </li>
+                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                        <FaUserEdit className="mr-1" />
+                        <ProfileUpdateModal />
+                      </li>
+                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
+                        <FaSignOutAlt className="mr-1" />
+                        <button
+                          onClick={() => {
+                            signOut();
+                            toast.success("Signed out successfully!");
+                          }}
+                        >
+                          Sign out
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                ) : null}
+              </>
+            )}
+          </div>
+        </div>
 
       </nav>
     </div>
