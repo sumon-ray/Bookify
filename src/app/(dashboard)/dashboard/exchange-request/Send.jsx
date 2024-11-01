@@ -29,7 +29,7 @@ import toast from 'react-hot-toast';
 
 function Row({ row, refetch }) {
     const [open, setOpen] = React.useState(false);
-
+    console.log(row, "Row data");
     function deleteRequest(message) {
         Swal.fire({
             title: "Are you sure?",
@@ -55,7 +55,7 @@ function Row({ row, refetch }) {
             }
         })
     }
-
+    
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -73,7 +73,7 @@ function Row({ row, refetch }) {
                 </TableCell>
                 <TableCell align='right' className='relative'>
                     {/* <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' /> */}
-                    <Modal receiver={row.ownerEmail} />
+                    <Modal receiver={row} />
                 </TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6'>{row?.ownerBooks?.length}</span></TableCell>
                 <TableCell align='left' className='relative hidden md:inline-block'><span className='absolute left-[3px] top-6 '>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>

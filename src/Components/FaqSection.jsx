@@ -196,7 +196,7 @@ const FaqSection = () => {
         Frequently Asked Questions
         </h1>
       </div>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Find answers to common questions about our book exchange platform.
         </p>
       </motion.div>
@@ -208,7 +208,7 @@ const FaqSection = () => {
           placeholder="Search FAQs..."
           // className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
 
-          className="w-full px-10 py-3 rounded-lg border-0 border-gray-300  focus:ring-[#EFEEE9] focus:outline-none focus:ring dark:bg-gray-700 dark:text-white shadow-sm"
+          className="w-full px-10 py-3 rounded-lg border-0 border-gray-300  focus:ring-[#EFEEE9] focus:outline-none focus:ring dark:bg-[#0A0A0C] dark:text-white shadow-sm"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -285,10 +285,10 @@ const FaqSection = () => {
       <div className="text-center mt-6">
         {!showMore && filteredFAQs.length > 6 && (
           <button
-            className="px-6 py-2 border border-black text-black rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300"
+            className="px-6 py-2 border border-black dark:border-white text-black dark:text-white rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300"
             onClick={() => setShowMore(true)}
           >
-            <span className="flex items-center justify-center gap-1">
+            <span className="flex items-center justify-center  gap-1">
               Show more <HiOutlineArrowNarrowRight className="mt-1" />
             </span>
           </button>
@@ -299,7 +299,7 @@ const FaqSection = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-gray-50  shadow-md dark:bg-gray-900 p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-sm"
+        className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-white  shadow-md dark:bg-[#0A0A0C] p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-sm"
       >
         <div className="text-center lg:text-left max-w-2xl">
           <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center mb-4">
@@ -315,10 +315,10 @@ const FaqSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <Link href="/contact" className="px-8 py-3  text-black border border-black rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
+          <Link href="/contact" className="px-8 py-3  text-black dark:text-white border dark:border-white border-black rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
             Contact Support <FiMessageCircle className="text-xl" />
           </Link>
-          <Link href="/ai-chat" className="px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
+          <Link href="/ai-chat" className="px-8 py-3 bg-[#364957] text-white rounded-lg hover:text-black border  hover:bg-gray-200 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
             Ask AI Assistant <FaRobot className="text-xl" />
           </Link>
         </div>

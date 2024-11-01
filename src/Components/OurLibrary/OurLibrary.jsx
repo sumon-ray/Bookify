@@ -2,18 +2,23 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import img from "../../assets/images/About/ourLibreby.jpg";
+import previous from "../../../public/image/previous.svg";
+import next from "../../../public/image/next.svg";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { FiBookOpen, FiUser, FiTag } from "react-icons/fi";
+import { MdOutlineNavigateNext } from "react-icons/md";
+import { GrFormPrevious } from "react-icons/gr";
 
 const OurLibrary = () => {
   const [category, setCategory] = useState("All");
-  const [categories, setCategories] = useState([]); 
-  const [currentPage, setCurrentPage] = useState(1); 
-  const booksPerPage = 12; 
+  const [categories, setCategories] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const booksPerPage = 12;
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -37,8 +42,8 @@ const OurLibrary = () => {
     queryFn: async () => {
       const res = await axios.get(
         category === "All"
-          ? "https://bookify-server-lilac.vercel.app/books" 
-          : `https://bookify-server-lilac.vercel.app/books?genre=${category}` 
+          ? "https://bookify-server-lilac.vercel.app/books"
+          : `https://bookify-server-lilac.vercel.app/books?genre=${category}`
       );
       return res.data;
     },
@@ -65,19 +70,19 @@ const OurLibrary = () => {
     <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[200px] md:max-w-[385px] h-12 mx-auto'>
         <h1 className='md:text-2xl uppercase font-bold text-center'>
-          <span className='hidden md:block'>Explore Exchange Library</span> 
-          <span className='block md:hidden'>Exchange Library</span> 
+          <span className='hidden md:block'>Explore Exchange Library</span>
+          <span className='block md:hidden'>Exchange Library</span>
         </h1>
       </div>
 
       {/* Dynamic Category Selector */}
-      <div className="py-3 lg:mt-2  px-5 md:pl-20 lg:pl-0 ">
+      <div className="py-3 mt-8 lg:mt-2  lg:px-5 md:pl-20 lg:pl-0 ">
         <select
-          className="lg:w-[25.4%] md:w-[90%]  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
+          className="lg:w-[25%] md:w-full sm:w-full  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
-            setCurrentPage(1); 
+            setCurrentPage(1);
           }}
         >
           {categories.length > 0 ? (
@@ -189,21 +194,23 @@ const OurLibrary = () => {
       {/* Pagination Controls */}
       <div className="flex md:justify-end justify-center items-center pt-8">
         <button
-          className="p-2 mx-2 bg-[#364957] text-[white] rounded-md"
+          className="  text-black rounded-md"
           onClick={handlePrevPage}
           disabled={currentPage === 1}
         >
-          Previous
+          {/* <GrLinkPrevious/> */}
+   <GrFormPrevious size={40} className="text-[#272727A6] dark:text-white " />
         </button>
-        <span className="p-2 font-bold">
+        <span className="p-2 mx-2 font-bold">
           Page {currentPage} of {totalPages}
         </span>
         <button
-          className="p-2 mx-2 bg-[#364957] text-[white] rounded-md"
+          className="  text-black rounded-md"
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
         >
-          Next
+          {/* <GrLinkNext/> */}
+ <MdOutlineNavigateNext size={40} className="text-[#272727A6] dark:text-white " />
         </button>
       </div>
     </div>

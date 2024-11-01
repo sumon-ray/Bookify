@@ -224,7 +224,7 @@ export default function Page() {
                             books: takeBooks?.length,
 
                           };
-                           console.log("data for post ", data);
+                          console.log("data for post ", data);
                           axios.post('https://bookify-server-lilac.vercel.app/notification', data)
                             .then(response => {
                               console.log('Response:', response.data);
@@ -414,7 +414,7 @@ export default function Page() {
         </div>
 
       </div>
-      
+
       {/* Exchange Button */}
       <div className="flex justify-center items-center my-8">
         <button onClick={exchangeBook} type="button" className="btn_1 hover:bg-[#364957E6] dark:bg-[#272727E6] dark:border-white dark:border-2 dark:text-white flex items-center">
@@ -595,10 +595,10 @@ export default function Page() {
                     }
                   </>
               }
-              <button onClick={() => { 
+              <button onClick={() => {
                 setGiveBooksModal(false)
                 SetGiveSearch('')
-               }}
+              }}
                 className="mt-4 text-white bg-[#364957] dark:bg-[#0A0A0C] px-4 py-2 rounded absolute bottom-4">
                 Close
               </button>
@@ -746,7 +746,7 @@ export default function Page() {
                     </table>
                   </div>
               }
-              <button  onClick={() => {
+              <button onClick={() => {
                 setTakeBooksModal(false)
                 setSearch('')
                 setSelectedOwner('')
