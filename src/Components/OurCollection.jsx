@@ -32,7 +32,7 @@ const OurCollection = () => {
 
     return (
         <div className="max-w-7xl mx-auto mt-[100px]  px-4 sm:px-6 lg:px-8">        
-            <Heading heading='Explore Rentable Collection'></Heading>
+            <Heading heading='Top Books Collection'></Heading>
 
             {
                 isLoading
