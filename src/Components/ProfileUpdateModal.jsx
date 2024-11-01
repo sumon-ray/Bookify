@@ -155,7 +155,7 @@ const ProfileUpdateModal = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#364957] text-white py-2 px-4 rounded"
+                className="w-full bg-[#364957] text-white px-4 py-2 rounded"
                 disabled={loading}
               >
                 {loading ? (

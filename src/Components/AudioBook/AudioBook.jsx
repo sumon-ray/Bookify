@@ -3,10 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useRef, useState, useCallback, useEffect } from "react";
+import React, { useRef, useState, useCallback} from "react";
 import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Heading from "../Heading/Heading";
 
 const AudioBook = () => {
   const [currentAudio, setCurrentAudio] = useState(null);
@@ -41,57 +40,23 @@ const AudioBook = () => {
     }
   };
 
-  const debounce = (func, wait) => {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func(...args), wait);
-    };
-  };
+  const handleFavorite = useCallback((id) => {
+    setFavorites((prev) => {
+      const newFavorites = { ...prev, [id]: !prev[id] };
 
-  const showNotification = useCallback((message, type) => {
-    toast[type](message, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
+      return newFavorites;
     });
   }, []);
-
-  const debouncedShowNotification = useCallback(
-    debounce(showNotification, 300),
-    [showNotification]
-  );
-
-  const handleFavorite = useCallback(
-    (id) => {
-      setFavorites((prev) => {
-        const newFavorites = { ...prev, [id]: !prev[id] };
-        if (newFavorites[id]) {
-          debouncedShowNotification("Added to favorites!", "success");
-        } else {
-          debouncedShowNotification("Removed from favorites", "info");
-        }
-        return newFavorites;
-      });
-    },
-    [debouncedShowNotification]
-  );
 
   if (isError) {
     return <div>Error: {error.message}</div>;
   }
 
   return (
-    <div className="max-w-7xl mx-auto py-8 space-y-10 dark:text-white">
-      <div className="p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[380px] h-12 mx-auto">
-        <h1 className="md:text-2xl uppercase font-bold text-center">
-          <span className="hidden md:block"> Explore Audio Collection</span>
-          <span className="block md:hidden"> Audio Collection</span>
-        </h1>
-      </div>
+    <div className="max-w-7xl mx-auto  dark:text-white">
+     
+        <Heading heading='Explore Audio Collection'></Heading>
+   
       {isLoading ? (
         <div className="flex justify-center items-center pt-1   dark:text-white">
           <div className="flex flex-col justify-center items-center gap-y-1">
@@ -210,7 +175,6 @@ const AudioBook = () => {
         </div>
       )}
       <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
-      <ToastContainer />
     </div>
   );
 };
