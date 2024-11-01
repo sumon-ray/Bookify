@@ -126,7 +126,7 @@ export default function DashboardNavbar() {
 
   return (
     <div>
-      <nav className="fixed top-0 z-50 w-full py-1 bg-white dark:bg-[#272727fb] dark:shadow-md dark:shadow-[#2f2c2cfb]">
+      <nav className="fixed top-0 z-50 w-full py-1 bg-white dark:bg-[#272727E6] dark:shadow-md dark:shadow-[#2f2c2cfb]">
         <div className="py-1 pr-3.5">
 
           <div className="flex items-center justify-between">

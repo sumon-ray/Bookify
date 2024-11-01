@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
         <QueryProvider>
           <AuthProvider>
             <body
-              className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99] dark:bg-[#272727A6] overflow-x-hidden`}>
+              className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99] dark:bg-[#27272780] overflow-x-hidden`}>
               <ThemeProvider attribute="class">
                 <NextUIProvider>
                   <Navbar />
