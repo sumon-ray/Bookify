@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
 
-import { GiBookmarklet } from "react-icons/gi";
 import TemporaryDrawer from "./Drawer";
 import { usePathname, useRouter } from "next/navigation";
 import { IoIosSearch, IoMdNotificationsOutline } from "react-icons/io";
@@ -10,27 +9,16 @@ import { MdOutlineKeyboardVoice, MdOutlineMessage, MdOutlineWbSunny } from "reac
 import { useSearchContext } from "@/app/(dashboard)/dashboard/myBooks/SearchProvider";
 import Link from "next/link";
 import img from "../../assets/images/About/logo (1).png";
+import img2 from "../../assets/images/About/bookdark.png";
 import Image from "next/image";
 import Lottie from "lottie-react";
 import lottieImage from "../../../public/voice3.json";
 import { signOut, useSession } from "next-auth/react";
 import { FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import ProfileUpdateModal from "../ProfileUpdateModal";
-let recognition; // Declare the recognition variable outside of the component
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { IoMoonOutline } from "react-icons/io5";
-import { RiMessage2Line } from "react-icons/ri";
-import { TbFocusCentered } from "react-icons/tb";
-import { FiSettings } from "react-icons/fi";
-import Toggle from './../Toggle/Toggle';
 import axios from "axios";
-
-// import {useRouter } from 'next/router';
-
-
-
 
 
 export default function DashboardNavbar() {
@@ -38,7 +26,6 @@ export default function DashboardNavbar() {
   const [notificationApprove, setNotificationApprove] = useState([])
   const [notification, setNotification] = useState([])
   const [notificationSeen, setNotificationSeen] = useState(true)
-console.log(notification);
   const [isListening, setIsListening] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
@@ -61,7 +48,6 @@ console.log(notification);
 
   const [recognition, setRecognition] = useState(null);
 
-  // Set up speech recognition in useEffect to avoid SSR issues
   useEffect(() => {
     if (typeof window !== "undefined") {
       const SpeechRecognition =
@@ -121,9 +107,9 @@ console.log(notification);
           axios.get(`https://bookify-server-lilac.vercel.app/notifications?approved=${session?.data?.user?.email}`)
         ]);
 
-        
+
         setNotification([...response1.data, ...response2.data]);
-        
+
       } catch (error) {
         console.error('Error fetching notifications:', error);
       }
@@ -153,7 +139,8 @@ console.log(notification);
               </div>
 
               <Link href={"/"} className="hidden md:flex">
-                <Image src={img} unoptimized className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+                <Image src={img} unoptimized className="dark:hidden h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+                <Image src={img2} unoptimized className="hidden dark:block h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
               </Link>
 
             </div>
@@ -202,7 +189,7 @@ console.log(notification);
 
                 {/* Icons moved to the right side */}
                 <div className="flex items-center gap-2 md:gap-4"> {/* Adjusted gap for smaller screens */}
-                  
+
 
                   {/* Notification Button */}
                   <div className="relative">
@@ -217,7 +204,7 @@ console.log(notification);
                         <IoMdNotificationsOutline className="text-xl" />
 
                       </button>
-                      {notificationSeen && <p className="absolute top-0 -mt-1 right-0 bg-[#364957] text-white rounded-full text-sm  px-[5px]">{ notification.length > 0  ? notification.length : <></>}</p>}
+                      {notificationSeen && <p className="absolute top-0 -mt-1 right-0 bg-[#364957] text-white rounded-full text-sm  px-[5px]">{notification.length > 0 ? notification.length : <></>}</p>}
                     </div>
                     <Menu
                       id="notification-menu"
@@ -232,12 +219,12 @@ console.log(notification);
                       {/* request Notification */}
                       {notification.length > 0 || notificationApprove.length > 0 ? notification.map((notification, index) => (
                         <MenuItem className="dark:bg-[#272727] dark:text-white" key={notification.id} onClick={routeToRequestPage}>
-                          {notification?.RequesterName ?<p className="p-2">{`${index + 1}. ${notification?.RequesterName} requested to exchange book `} {/* Display index */}</p>
-                          : <p className="p-2">{`${index + 1}. ${notification?.approverName} approve your exchange reques`} </p> }
+                          {notification?.RequesterName ? <p className="p-2">{`${index + 1}. ${notification?.RequesterName} requested to exchange book `} {/* Display index */}</p>
+                            : <p className="p-2">{`${index + 1}. ${notification?.approverName} approve your exchange reques`} </p>}
                         </MenuItem>
 
                       )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}
-                      
+
                     </Menu>
                   </div>
 
@@ -326,8 +313,7 @@ console.log(notification);
 
             </div>
 
-            <Link href={"/"} className="flex md:hidden mr-2">
-              {/* <Image unoptimized src={img} className="h-[52px] max-w-[135px] -mr-6" height={20} width={200} /> */}
+            <div className="flex md:hidden mr-2">
               <div className="hidden md:flex items-center justify-center ">
                 <div className=" relative w-40 lg:w-72 md:w-48 md:mr-4">
                   <input
@@ -362,7 +348,7 @@ console.log(notification);
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
           </div>
 
