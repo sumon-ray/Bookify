@@ -208,7 +208,7 @@ export default function DashboardNavbar() {
                     </div>
                     <Menu
                       id="notification-menu"
-                      className=""
+                      className="py-0"
                       anchorEl={anchorEl}
                       open={open}
                       onClose={handleClose}
@@ -218,9 +218,9 @@ export default function DashboardNavbar() {
                     >
                       {/* request Notification */}
                       {notification.length > 0 || notificationApprove.length > 0 ? notification.map((notification, index) => (
-                        <MenuItem className="dark:bg-[#272727] dark:text-white" key={notification.id} onClick={routeToRequestPage}>
-                          {notification?.RequesterName ? <p className="p-2">{`${index + 1}. ${notification?.RequesterName} requested to exchange book `} {/* Display index */}</p>
-                            : <p className="p-2">{`${index + 1}. ${notification?.approverName} approve your exchange reques`} </p>}
+                        <MenuItem className="border-2 border-red-600 dark:bg-[#272727] dark:hover:bg-[#364957] dark:text-white -my-2.5  " key={notification.id} onClick={routeToRequestPage}>
+                          {notification?.RequesterName ?<p className="p-2 my-2 rounded-lg pb-3">{`${index + 1}. ${notification?.RequesterName} requested to exchange book `} {/* Display index */}</p>
+                          : <p className="p-2 my-2 pb-3 rounded-lg ">{`${index + 1}. ${notification?.approverName} approve your exchange reques`} </p> }
                         </MenuItem>
 
                       )) : <MenuItem onClick={handleClose}>No Notifications !!!!</MenuItem>}
