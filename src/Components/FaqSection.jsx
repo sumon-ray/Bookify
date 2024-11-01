@@ -187,7 +187,7 @@ const FaqSection = () => {
         className="text-center space-y-4"
       >
         <Heading heading="Frequently Asked Questions"></Heading>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Find answers to common questions about our book exchange platform.
         </p>
       </motion.div>
@@ -299,7 +299,7 @@ const FaqSection = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-white  shadow-md dark:bg-[#0A0A0C] p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-sm"
+        className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-white  dark:bg-[#0A0A0C] p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-sm"
       >
         <div className="text-center lg:text-left max-w-2xl">
           <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center mb-4">
@@ -322,10 +322,7 @@ const FaqSection = () => {
           >
             Contact Support <FiMessageCircle className="text-xl" />
           </Link>
-          <Link
-            href="/ai-chat"
-            className="px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2"
-          >
+          <Link href="/ai-chat" className="px-8 py-3 bg-[#364957] text-white rounded-lg hover:text-black border  hover:bg-gray-200 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
             Ask AI Assistant <FaRobot className="text-xl" />
           </Link>
         </div>

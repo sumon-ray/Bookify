@@ -2,25 +2,32 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Link from 'next/link';
-import React from 'react';
-import { BsArrowBarRight } from 'react-icons/bs';
-import { FaArrowRight } from 'react-icons/fa';
+import React, { useState } from 'react';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import Heading from './Heading/Heading';
 
 const OurCollection = () => {
 
+    const [topBooks, setTopBooks] = useState([])
 
     const { data, isLoading } = useQuery({
         queryKey: ['home rent books'],
         queryFn: async () => {
-            const res = await axios('https://bookify-server-lilac.vercel.app/rent')
-            const data = await res.data.result
+            const res = await axios("https://bookify-server-lilac.vercel.app/books")
+            const data = await res.data
+            // const unickBooks = [...Set(data.map(book => book.title))]
+            // const filteredBooks = data?.filter(book => book.rating > 4.9 && book.title === "    " );
+            const filteredBooks = data
+                ?.filter(book => book.rating === 4.7)
+                .filter((book, index, self) =>
+                    index === self.findIndex((b) => b.title === book.title)
+                );
+            setTopBooks(filteredBooks)
             return data
         }
     })
 
-
+    console.log(topBooks, 'topbooks');
 
 
     return (
@@ -57,7 +64,7 @@ const OurCollection = () => {
                     </div>
                     : <div className='flex flex-col items-center sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8'>
                         {
-                            data?.slice(0, 5)?.map(book =>
+                            topBooks?.slice(0, 5)?.map(book =>
                                 <div key={book?._id} className="w-[310px] md:w-[225px] md:h-[203px] rounded-2xl bg-[#EFEEE9] dark:bg-[#0A0A0C] mt-40 flex flex-col items-center">
                                     <div className="w-[250px] md:w-[175px] h-[400px] md:h-[260px] mt-[-130px] hover:mt-[-150px] hover:duration-700  rounded-xl bg-cover bg-center"
                                         style={{
@@ -65,8 +72,8 @@ const OurCollection = () => {
                                         }}>
                                     </div>
                                     <div className='text-center p-3'>
-                                        <h3 className='text-xl font-bold text-[#000000] dark:text-white'>{book?.Genre.split(' ')[0]}</h3>
-                                        <Link href={'/rentbooks'} className='flex items-center justify-center'>More <IoIosArrowRoundForward className='-mb-1 text-2xl' /></Link>
+                                        <h3 className='text-xl font-bold text-[#000000] dark:text-white'>{book?.genre?.split(' ')[0]}</h3>
+                                        <Link  href={`/details/${book?._id}`} className='flex items-center justify-center'>More <IoIosArrowRoundForward className='-mb-1 text-2xl' /></Link>
                                     </div>
                                 </div>)
                         }
