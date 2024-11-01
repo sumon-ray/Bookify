@@ -140,7 +140,7 @@ console.log(notification);
 
   return (
     <div>
-      <nav className="fixed top-0 z-50 w-full bg-white dark:bg-[#272727fb] dark:shadow-md dark:shadow-[#2f2c2cfb]">
+      <nav className="fixed top-0 z-50 w-full py-1 bg-white dark:bg-[#272727fb] dark:shadow-md dark:shadow-[#2f2c2cfb]">
         <div className="py-1 pr-3.5">
 
           <div className="flex items-center justify-between">
@@ -317,9 +317,9 @@ console.log(notification);
                   </div>
 
                   {/* Settings Icon */}
-                  <div className="border-l border-black pl-4 hidden md:block"> {/* Hide settings icon on small screens */}
+                  {/* <div className="border-l border-black pl-4 hidden md:block"> 
                     <FiSettings className="text-2xl animate-spin [animation-duration:2s]" />
-                  </div>
+                  </div> */}
                 </div>
 
               </div>
