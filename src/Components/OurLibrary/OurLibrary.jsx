@@ -7,13 +7,14 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { FiBookOpen, FiUser, FiTag } from "react-icons/fi";
 
 const OurLibrary = () => {
   const [category, setCategory] = useState("All");
-  const [categories, setCategories] = useState([]); 
-  const [currentPage, setCurrentPage] = useState(1); 
-  const booksPerPage = 12; 
+  const [categories, setCategories] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const booksPerPage = 12;
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -37,8 +38,8 @@ const OurLibrary = () => {
     queryFn: async () => {
       const res = await axios.get(
         category === "All"
-          ? "https://bookify-server-lilac.vercel.app/books" 
-          : `https://bookify-server-lilac.vercel.app/books?genre=${category}` 
+          ? "https://bookify-server-lilac.vercel.app/books"
+          : `https://bookify-server-lilac.vercel.app/books?genre=${category}`
       );
       return res.data;
     },
@@ -65,8 +66,8 @@ const OurLibrary = () => {
     <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[200px] md:max-w-[385px] h-12 mx-auto'>
         <h1 className='md:text-2xl uppercase font-bold text-center'>
-          <span className='hidden md:block'>Explore Exchange Library</span> 
-          <span className='block md:hidden'>Exchange Library</span> 
+          <span className='hidden md:block'>Explore Exchange Library</span>
+          <span className='block md:hidden'>Exchange Library</span>
         </h1>
       </div>
 
@@ -77,7 +78,7 @@ const OurLibrary = () => {
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
-            setCurrentPage(1); 
+            setCurrentPage(1);
           }}
         >
           {categories.length > 0 ? (
@@ -193,17 +194,17 @@ const OurLibrary = () => {
           onClick={handlePrevPage}
           disabled={currentPage === 1}
         >
-          Previous
+          <GrLinkPrevious/>
         </button>
-        <span className="p-2 font-bold">
+        <span className="p-2 mx-2 font-bold">
           Page {currentPage} of {totalPages}
         </span>
         <button
-          className="p-2 mx-2 bg-[#364957] text-[white] rounded-md"
+          className="p-2 bg-[#364957] text-[white] rounded-md"
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
         >
-          Next
+          <GrLinkNext/>
         </button>
       </div>
     </div>

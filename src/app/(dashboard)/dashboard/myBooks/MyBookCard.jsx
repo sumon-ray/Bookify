@@ -8,6 +8,7 @@ import lottieImage from "../../../..//../public/image/404.json";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 
 const MyBookCard = () => {
   const [allBooks, setAllBooks] = useState([]);
@@ -109,7 +110,7 @@ const MyBookCard = () => {
             onClick={() => handlePageChange(i)}
             className={`flex items-center justify-center px-4 h-10 leading-tight ${
               currentPage === i
-                ? "text-white bg-[#364957] rounded-md"
+                ? "text-white bg-[#364957CC] rounded-md"
                 : "text-gray-500 dark:text-gray-300 hover:bg-gray-100 hover:text-gray-700"
             }`}
           >
@@ -214,28 +215,29 @@ const MyBookCard = () => {
               <li>
                 <a
                   onClick={() => handlePageChange(currentPage - 1)}
-                  className={`cursor-pointer flex items-center justify-center px-4 h-10 leading-tight ${
+                  className={`cursor-pointer flex items-center justify-center px-3 mx-2 text-white rounded-lg h-10 leading-tight bg-[#364957] ${
                     currentPage === 1
                       ? "text-gray-400 dark:text-gray-300"
                       : "hover:bg-gray-100 hover:text-gray-700"
                   }`}
                   disabled={currentPage === 1}
                 >
-                  Previous
+                 <GrLinkPrevious className=""/>
                 </a>
               </li>
               {renderPageNumbers()}
               <li>
                 <a
                   onClick={() => handlePageChange(currentPage + 1)}
-                  className={`flex items-center justify-center cursor-pointer px-4 h-10 leading-tight ${
+                  className={`flex items-center justify-center cursor-pointer px-3 mx-2 rounded-lg h-10 leading-tight bg-[#364957] text-white
+                    ${
                     currentPage === totalPages
                       ? "text-gray-400 dark:text-gray-300"
                       : "hover:bg-gray-100 hover:text-gray-700"
                   }`}
                   disabled={currentPage === totalPages}
                 >
-                  Next
+                  <GrLinkNext/>
                 </a>
               </li>
             </ul>
