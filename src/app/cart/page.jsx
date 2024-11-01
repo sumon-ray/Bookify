@@ -7,7 +7,7 @@ import Image from "next/image";
 import React from "react";
 import { FaCircleXmark } from "react-icons/fa6";
 
-const page = () => {
+const Page = () => {
 
   const { data: session, status } = useSession()
 
@@ -229,4 +229,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
