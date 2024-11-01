@@ -199,7 +199,7 @@ const OurLibrary = () => {
           disabled={currentPage === 1}
         >
           {/* <GrLinkPrevious/> */}
-   <GrFormPrevious size={40} />
+   <GrFormPrevious size={40} className="text-[#272727A6] dark:text-white " />
         </button>
         <span className="p-2 mx-2 font-bold">
           Page {currentPage} of {totalPages}
@@ -210,7 +210,7 @@ const OurLibrary = () => {
           disabled={currentPage === totalPages}
         >
           {/* <GrLinkNext/> */}
- <MdOutlineNavigateNext size={40} />
+ <MdOutlineNavigateNext size={40} className="text-[#272727A6] dark:text-white " />
         </button>
       </div>
     </div>
