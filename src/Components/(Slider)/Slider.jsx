@@ -23,7 +23,7 @@ const Slider = () => {
     })
 
     return (
-        <div className="bg-[#EFEEE9] dark:bg-[#0A0A0C] md:min-h-screen flex flex-col-reverse md:flex-row items-center justify-center gap-x-10 pb-10 md:pb-0 pt-0 md:pt-4 ">
+        <div className="bg-[#EFEEE9]  dark:bg-[#0A0A0C] md:min-h-screen flex flex-col-reverse md:flex-row items-center justify-center gap-x-10 pb-10 md:pb-0 pt-0 md:pt-4 ">
 
             <div className="md:w-1/2 space-y-4 pl-10 md:pl-0">
                 <h1 className="text-2xl lg:text-6xl font-bold text-[#000000] dark:text-white">Swap Books<br /> Share Knowledge</h1>

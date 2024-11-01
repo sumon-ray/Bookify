@@ -12,7 +12,7 @@ import ProfileUpdateModal from "./ProfileUpdateModal";
 import toast from "react-hot-toast";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import Badge from "@mui/material/Badge";
-import { Menu, MenuItem } from "@mui/material"; 
+import { Menu, MenuItem } from "@mui/material";
 import { TbExchange } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -58,16 +58,12 @@ const Navbar = () => {
       path: "/",
     },
     {
-      title: "Rent Books",
-      path: "/rentbooks",
+      title: "Exchange",
+      path: "/exchange",
     },
     {
       title: "Audio Books",
       path: "/audiobooks",
-    },
-    {
-      title: "Exchange",
-      path: "/exchange",
     },
     {
       title: "Contact",
@@ -134,13 +130,13 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div>
           <ul
-            className={`hidden md:flex font-normal md:bg-none lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-1/2 md:w-auto md:pl-0 pl-9 transition-all duration-200 ease-in`}
+            className={`hidden md:flex font-normal gap-x-6 md:bg-none lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-1/2 md:w-auto md:pl-0 pl-9 transition-all duration-200 ease-in`}
           >
-            {links.slice(0, 1).map((link) => (
+            {links.slice(0,1).map((link) => (
               <li
                 key={link.path}
                 className={`${pathName === link.path && "font-black"
-                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                  } lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}
@@ -151,53 +147,9 @@ const Navbar = () => {
               </li>
             ))}
 
-            {/* our store */}
-            <li className="md:ml-8 lg:text-[16px] md:my-0 my-7 font-normal">
-              <button
-                className={`flex items-center ${(pathName === "/rentbooks" ||
-                    pathName.includes("/audiobooks")) &&
-                  "font-black "
-                  }`}
-                onClick={handleClick}
-              >
-                Our store{" "}
-                {down ? (
-                  <IoIosArrowDown className="-mb-1" />
-                ) : (
-                  <IoIosArrowForward className="-mb-1" />
-                )}
-              </button>
-              <div>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={openMenu}
-                  onClose={handleClose}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
-                >
-                  {links?.slice(1, 3).map((link, index) => (
-                    <MenuItem
-                      key={index}
-                      onClick={handleClose}
-                      style={{ fontWeight: "", fontSize: "15px" }}
-                    >
-                      <Link
-                        className={`${pathName === link?.path ? "font-black" : ""
-                          }`}
-                        href={link?.path}
-                      >
-                        {link?.title}
-                      </Link>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </div>
-            </li>
 
-            <li className="md:ml-4 lg:text-[16px] md:my-0 my-7 font-normal">
-              {links?.slice(3, 4).map((link, index) => (
+            <li className="lg:text-[16px] md:my-0 my-7 font-normal">
+              {links?.slice(1, 2).map((link, index) => (
                 <Link
                   key={index}
                   href={link?.path}
@@ -221,11 +173,11 @@ const Navbar = () => {
             </li>
 
             {/* Contact and remaining links */}
-            {links.slice(4).map((link) => (
+            {links.slice(2).map((link) => (
               <li
                 key={link.path}
                 className={`${pathName === link.path && " font-black"
-                  } md:ml-8 lg:text-[16px] md:my-0 my-7`}
+                  } lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}
@@ -282,9 +234,6 @@ const Navbar = () => {
         </div>
 
         <div className="flex lg:justify-center   items-center gap-2">
-          <Link href={"/cart"} className="mr-2 hidden md:block">
-            <Cart />
-          </Link>
           {session?.status === "unauthenticated" && (
             <Link href="/login">
               <button className="btn text-[16px] md:block hidden font-semibold bg-[#364957]  text-white p-3 px-4 rounded-lg">
@@ -352,6 +301,7 @@ const Navbar = () => {
             </>
           )}
         </div>
+
       </nav>
     </div>
   );
