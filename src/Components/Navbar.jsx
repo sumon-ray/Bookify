@@ -18,6 +18,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import NavbarDrawer from "./Navbar/NavbarDrawer";
 import Cart from "./cart/Cart";
+import Toggle from "./Toggle/Toggle";
 
 const Navbar = () => {
   const session = useSession();
@@ -187,6 +188,8 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+
+          <Toggle />
 
             <li className="text-[black] duration-500 md:hidden">
               {session?.status === "unauthenticated" && (
