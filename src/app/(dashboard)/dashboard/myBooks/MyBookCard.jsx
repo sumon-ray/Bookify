@@ -127,7 +127,7 @@ const MyBookCard = () => {
   return (
     <div className="container dark:text-gray-300 mx-auto px-8 md:px-0 pb-8">
       <div className="py-2 flex flex-col sm:flex-row items-center my-6 justify-between">
-        <h1 className="text-[#000000] dark:text-gray-300 font-semibold text-[18.61px] mb-2 sm:mb-0">Best Popular</h1>
+        <h1 className="text-[#000000] dark:text-gray-300 font-semibold text-[23px]  md:text-[18.61px] mb-5 md:mb-2 sm:mb-0">Best Popular</h1>
         <div className="flex items-center justify-center gap-4  py-1 relative w-full sm:w-auto">
           <FaFilter className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-[#364957] dark:text-gray-300 text-sm sm:text-lg" />
           <select
