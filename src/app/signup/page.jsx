@@ -57,8 +57,8 @@ const SignUp = () => {
   return (
     <div className="flex lg:flex-row-reverse justify-center w-full h-screen mx-auto overflow-hidden rounded-lg  dark:bg-[#0A0A0C] dark:text-white">
       <Image
-        width={300}
-        height={300}
+        width={791}
+        height={572}
         src="https://i.ibb.co/wMzqwPJ/sign-up.png"
         alt="sign up"
         className="hidden bg-center object-cover lg:block w-1/2"
