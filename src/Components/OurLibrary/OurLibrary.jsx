@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import img from "../../assets/images/About/ourLibreby.jpg";
+import previous from "../../../public/image/previous.svg";
+import next from "../../../public/image/next.svg";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -9,6 +11,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { FiBookOpen, FiUser, FiTag } from "react-icons/fi";
+import { MdOutlineNavigateNext } from "react-icons/md";
+import { GrFormPrevious } from "react-icons/gr";
 import Heading from "../Heading/Heading";
 
 const OurLibrary = () => {
@@ -187,21 +191,23 @@ const OurLibrary = () => {
       {/* Pagination Controls */}
       <div className="flex md:justify-end justify-center items-center pt-8">
         <button
-          className="p-2 mx-2 bg-[#364957] text-[white] rounded-md"
+          className="  text-black rounded-md"
           onClick={handlePrevPage}
           disabled={currentPage === 1}
         >
-          <GrLinkPrevious/>
+          {/* <GrLinkPrevious/> */}
+   <GrFormPrevious size={40} className="text-[#272727A6] dark:text-white " />
         </button>
         <span className="p-2 mx-2 font-bold">
           Page {currentPage} of {totalPages}
         </span>
         <button
-          className="p-2 bg-[#364957] text-[white] rounded-md"
+          className="  text-black rounded-md"
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
         >
-          <GrLinkNext/>
+          {/* <GrLinkNext/> */}
+ <MdOutlineNavigateNext size={40} className="text-[#272727A6] dark:text-white " />
         </button>
       </div>
     </div>

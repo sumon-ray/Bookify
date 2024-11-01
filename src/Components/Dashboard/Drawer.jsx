@@ -27,8 +27,8 @@ export default function TemporaryDrawer() {
 
   const checkActive = (route) => {
     return pathname === route
-      ? "bg-[#364957] hover:bg-[#364957] rounded-md border-l-4 border-l-[#FFD700] text-[#FFFFFF] shadow-lg" // Unique style for active route
-      : "text-black";
+      ? "bg-[#364957] dark:text-white hover:bg-[#364957]   rounded-md border-l-4 border-l-[#FFD700] text-[#FFFFFF] " 
+      : "text-black dark:text-white";
   };
 
   const handleLinkClick = () => {
@@ -40,20 +40,20 @@ export default function TemporaryDrawer() {
     hover: {
       scale: 1.05,
       opacity: 1,
-      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+      // boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
       transition: { type: "spring", stiffness: 300 },
     },
   };
 
   const iconActive = (route) => {
-    return pathname === route ? "text-white text-2xl" : "text-black text-xl";
+    return pathname === route ? "text-white text-2xl " : "text-black text-xl";
   };
 
   const DrawerList = (
-    <Box sx={{ 
+    <Box className='dark:bg-[#272727] h-full bg-white  ' sx={{ 
       width: 250, 
-      background: '#FFFFFF', 
-      borderRadius: '12px', 
+      // background: '', 
+      // borderRadius: '12px', 
       padding: '20px', 
       boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
       overflowY: 'auto', 
@@ -61,16 +61,16 @@ export default function TemporaryDrawer() {
         width: '8px',
       },
       '&::-webkit-scrollbar-thumb': {
-        background: '#BDC3C7',
+        // background: '#BDC3C7',
         borderRadius: '10px',
       },
       '&::-webkit-scrollbar-track': {
-        background: '#F0F0F0',
+        // background: '#F0F0F0',
       },
     }} role="presentation">
       <div className="flex justify-between items-center mb-4"> 
         <Link href={"/"} className="w-full mx-auto"> 
-          <Image src={img} unoptimized className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+          <Image  alt="Logo" src={img} unoptimized className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
         </Link>
         <motion.button 
           onClick={() => setOpen(false)} 
@@ -78,7 +78,7 @@ export default function TemporaryDrawer() {
           whileHover={{ scale: 1.2, rotate: 15 }} 
           whileTap={{ scale: 0.9, rotate: -15 }} 
         >
-          <AiOutlineClose className="text-2xl" />
+          <AiOutlineClose className="text-2xl dark:text-white" />
         </motion.button>
       </div>
 
@@ -128,7 +128,7 @@ export default function TemporaryDrawer() {
             >
               <ListItemIcon className={iconActive("/dashboard/myBooks")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
-                  <PiBooks />
+                  <PiBooks className="dark:text-white" />
                   {/* Removed Notification badge */}
                   {/* <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">3</span> */}
                 </motion.div>
@@ -157,7 +157,7 @@ export default function TemporaryDrawer() {
             >
               <ListItemIcon className={iconActive("/dashboard/addBook")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
-                  <MdOutlineAddCircleOutline />
+                  <MdOutlineAddCircleOutline className="dark:text-white" />
                 </motion.div>
               </ListItemIcon>
               <ListItemText primary="Add Book" sx={{ fontWeight: pathname === "/dashboard/addBook" ? 'bold' : 'normal' }} />
@@ -184,7 +184,7 @@ export default function TemporaryDrawer() {
             >
               <ListItemIcon className={iconActive("/dashboard/exchange")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
-                  <TbExchange />
+                  <TbExchange className="dark:text-white" />
                 </motion.div>
               </ListItemIcon>
               <ListItemText primary="Exchange" sx={{ fontWeight: pathname === "/dashboard/exchange" ? 'bold' : 'normal' }} />
@@ -211,7 +211,7 @@ export default function TemporaryDrawer() {
             >
               <ListItemIcon className={iconActive("/dashboard/messages")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
-                  <MdOutlineMessage />
+                  <MdOutlineMessage className="dark:text-white" />
                   {/* Removed Notification badge */}
                   {/* <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">5</span> */}
                 </motion.div>
@@ -240,7 +240,7 @@ export default function TemporaryDrawer() {
             >
               <ListItemIcon className={iconActive("/dashboard/users")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
-                  <TbUserShield />
+                  <TbUserShield className="dark:text-white" />
                 </motion.div>
               </ListItemIcon>
               <ListItemText primary="Users" sx={{ fontWeight: pathname === "/dashboard/users" ? 'bold' : 'normal' }} />
@@ -253,8 +253,8 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      <button onClick={() => setOpen(true)}>
-        <HiMenuAlt2 className="text-[#364957] text-3xl -mb-2 ml-2" />
+      <button className="dark:text-white" onClick={() => setOpen(true)}>
+        <HiMenuAlt2 className="text-[#364957] dark:text-white text-3xl -mb-2 ml-2" />
       </button>
       <Drawer open={open} onClose={() => setOpen(false)}>
         {DrawerList}
