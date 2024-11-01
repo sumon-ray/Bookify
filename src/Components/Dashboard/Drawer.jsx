@@ -46,7 +46,7 @@ export default function TemporaryDrawer() {
   };
 
   const iconActive = (route) => {
-    return pathname === route ? "text-white text-2xl " : "text-black text-xl";
+    return pathname === route ? "text-white text-2xl " : "dark:text-white text-black text-xl";
   };
 
   const DrawerList = (
