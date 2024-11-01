@@ -10,14 +10,10 @@ import img2 from "../../src/assets/images/About/bookdark.png";
 import { FaChalkboardTeacher, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import ProfileUpdateModal from "./ProfileUpdateModal";
 import toast from "react-hot-toast";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
-import Badge from "@mui/material/Badge";
-import { Menu, MenuItem } from "@mui/material";
 import { TbExchange } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import NavbarDrawer from "./Navbar/NavbarDrawer";
-import Cart from "./cart/Cart";
 import Toggle from "./Toggle/Toggle";
 
 const Navbar = () => {
@@ -61,10 +57,6 @@ const Navbar = () => {
     {
       title: "Exchange",
       path: "/exchange",
-    },
-    {
-      title: "Audio Books",
-      path: "/audiobooks",
     },
     {
       title: "Contact",
@@ -118,14 +110,16 @@ const Navbar = () => {
           </>
 
           {/* Hamburger icon for mobile */}
-          <div className="flex items-center">
+          <div className="flex dark:text-white items-center">
             {/* Adjusted the positioning of the NavbarDrawer */}
             <div className=" cursor-pointer md:hidden flex items-center justify-center">
-              <div className="">
-                <Toggle className="p-4" />
-              </div>
+<div className="">
+<Toggle className='p-4' />
 
-              <NavbarDrawer />
+
+</div>
+              
+              <NavbarDrawer className='' />
             </div>
           </div>
         </div>
@@ -138,9 +132,8 @@ const Navbar = () => {
             {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
-                className={`${
-                  pathName === link.path && "font-black"
-                } lg:text-[16px] md:my-0 my-7`}
+                className={`${pathName === link.path && "font-black"
+                  } lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}
@@ -156,41 +149,34 @@ const Navbar = () => {
                 <Link
                   key={index}
                   href={link?.path}
-                  className={`flex items-center ${
-                    pathName === link?.path ? "font-black" : ""
-                  }`}
+                  className={`flex items-center ${pathName === link?.path ? "font-black" : ""
+                    }`}
                 >
                   <p>{link?.title}</p>
-                  <Badge
-                    // sx={{backgroundImage:'#364957'}}
-                    // badgeContent={data?.length || "0"}
+                  {/* <Badge
                     color="primary"
                     anchorOrigin={{
                       vertical: "top",
                       horizontal: "right",
                     }}
-                  >
+                  > */}
                     <TbExchange className="text-xl -mb-1" />
-                  </Badge>
+                  {/* </Badge> */}
                 </Link>
               ))}
             </li>
 
-            {/* Contact and remaining links */}
+            {/* Contact and remaining links without TbExchange icon */}
             {links.slice(2).map((link) => (
               <li
                 key={link.path}
-                className={`${
-                  pathName === link.path && " font-black"
-                } lg:text-[16px] md:my-0 my-7 flex items-center`}
+                className={`${pathName === link.path && " font-black"
+                  } lg:text-[16px] md:my-0 my-7 flex items-center`}
               >
                 <Link
                   href={link.path}
                   className="text-[black] dark:text-white duration-500 flex items-center"
                 >
-                  {/* <span className="mr-2">
-                    <TbExchange className="text-xl" />
-                  </span> */}
                   {link.title}
                 </Link>
               </li>
@@ -241,11 +227,11 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex  hidden gap-2 md:flex md:justify-center items-center">
+        <div className="hidden md:flex gap-2 md:justify-center items-center">
           <Toggle />
           <div className="flex items-center gap-2">
             {session?.status === "unauthenticated" && (
-              <Link href="/login">
+              <Link href="/login"> 
                 <button className="btn text-[16px] md:block hidden font-semibold bg-primary text-white p-3 px-4 rounded-lg">
                   Sign In
                 </button>
@@ -310,8 +296,11 @@ const Navbar = () => {
             )}
           </div>
         </div>
+
       </nav>
-    </div>
+      </div>
+     
+    
   );
 };
 
