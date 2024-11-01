@@ -119,9 +119,9 @@ const Navbar = () => {
 
           {/* Hamburger icon for mobile */}
           <div className="flex items-center">
-            <Link href={"/cart"} className="md:hidden mr-0">
-              <Cart />
-            </Link>
+            <Toggle className='md:hidden mr-0' />
+
+            
             <div className="text-3xl cursor-pointer md:hidden">
               <NavbarDrawer />
             </div>
@@ -234,7 +234,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex hidden md:block gap-2">
                   <Toggle />
 <div className="flex lg:justify-center   items-center gap-2">
           {session?.status === "unauthenticated" && (
