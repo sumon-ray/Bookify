@@ -91,11 +91,11 @@ const Page = ({ redirect }) => {
     <Suspense fallback={<div>Loading...</div>}>
       <div className="flex justify-center w-full h-screen mx-auto overflow-hidden rounded-lg  dark:bg-[#0A0A0C] dark:text-white">
         <Image
-          width={500}
-          height={500}
-          src="https://i.ibb.co/rxGD6T6/signin.png"
+          width={948}
+          height={716}
+          src="https://i.ibb.co/8r4D2Jb/sign-in.png"
           alt="login"
-          className="hidden bg-center bg-contain bg-no-repeat lg:block w-1/2 mx-6 my-8"
+          className="hidden bg-center bg-contain object-cover lg:block w-1/2 "
         ></Image>
 
         <div className="w-full mx-6 lg:px-16 md:px-8 lg:w-1/2 flex flex-col justify-center my-4">
