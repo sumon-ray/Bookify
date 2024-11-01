@@ -46,7 +46,7 @@ const Navbar = () => {
     queryKey: ["exchange value"],
     queryFn: async () => {
       const res = await axios(
-        https://bookify-server-lilac.vercel.app/take-book?email=${session?.data?.user?.email}
+        `https://bookify-server-lilac.vercel.app/take-book?email=${session?.data?.user?.email}`
       );
       const data = await res.data;
       return data;
@@ -119,10 +119,9 @@ const Navbar = () => {
 
           {/* Hamburger icon for mobile */}
           <div className="flex items-center">
-            {/* <Link href={"/cart"} className="md:hidden mr-0">
+            <Link href={"/cart"} className="md:hidden mr-0">
               <Cart />
-
-            </Link> */}
+            </Link>
             <div className="text-3xl cursor-pointer md:hidden">
               <NavbarDrawer />
             </div>
@@ -132,7 +131,7 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div>
           <ul
-            className={hidden md:flex font-normal gap-x-6 md:bg-none lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-1/2 md:w-auto md:pl-0 pl-9 transition-all duration-200 ease-in}
+            className={`hidden md:flex font-normal gap-x-6 md:bg-none lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-1/2 md:w-auto md:pl-0 pl-9 transition-all duration-200 ease-in`}
           >
             {links.slice(0,1).map((link) => (
               <li
@@ -189,9 +188,8 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-  
+
             <li className="text-[black] duration-500 md:hidden">
-              
               {session?.status === "unauthenticated" && (
                 <Link href="/login">Sign In</Link>
               )}
@@ -230,29 +228,24 @@ const Navbar = () => {
                       Sign out
                     </button>
                   </li>
-              
                 </ul>
               )}
             </li>
           </ul>
         </div>
-    
 
-<div className="flex gap-2">
+        <div className="flex gap-2">
                   <Toggle />
-
 <div className="flex lg:justify-center   items-center gap-2">
           {session?.status === "unauthenticated" && (
-            <Link href="/login">
+            <Link href="/login"> 
               <button className="btn text-[16px] md:block hidden font-semibold bg-[#364957]  text-white p-3 px-4 rounded-lg">
                 Sign In
               </button>
             </Link>
           )}
-
           {session?.status === "authenticated" && (
             <>
-
               <div className="relative text-left hidden md:block ">
                 <button
                   type="button"
@@ -312,6 +305,7 @@ const Navbar = () => {
         </div>
 
 </div>
+
       </nav>
     </div>
   );

@@ -186,7 +186,7 @@ export default function Page({ params }) {
         currentAudio={currentAudio} 
         handlePlay={handlePlay} 
         isPlaying={isPlaying} 
-        audioBookCover={currentAudioBook.audioBookCover} 
+        audioBookCover={currentAudioBook?.audioBookCover} 
       />
 
         {/* All Audio Books section */}

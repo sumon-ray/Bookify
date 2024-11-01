@@ -316,9 +316,6 @@ console.log(notification);
                     </Menu> */}
                   </div>
 
-
-
-
                   {/* Settings Icon */}
                   <div className="border-l border-black pl-4 hidden md:block"> {/* Hide settings icon on small screens */}
                     <FiSettings className="text-2xl animate-spin [animation-duration:2s]" />
