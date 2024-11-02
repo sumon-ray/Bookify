@@ -46,8 +46,8 @@ export default function BasicTabs() {
         <Box>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Send request" sx={{ color: 'black' }} />
-                    <Tab label="Get request" sx={{ color: 'black' }} />
+                    <Tab className='dark:text-white text-black' label="Send request" sx={{ color: 'black' }} />
+                    <Tab className='dark:text-white text-black' label="Get request" sx={{ color: 'black' }} />
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
