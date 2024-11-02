@@ -1,11 +1,9 @@
 "use client";
-import { TrendingUp } from "lucide-react";
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/Components/ui/Card";
@@ -14,37 +12,68 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/Components/ui/Chart";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export const description = "A line chart";
 
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-];
-
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "hsl(var(--chart-1))",
-  },
+  lineColor: "#e76e50", // Setting the color explicitly
 };
 
 const Visitor = () => {
+  const [chartData, setChartData] = useState([]);
+
+  // Fetch data and transform it for the chart
+  useEffect(() => {
+    const dashboardData = async () => {
+      try {
+        const response = await axios.get(
+          "https://bookify-server-lilac.vercel.app/users"
+        );
+        const fetchedUsers = response.data;
+
+        // Create an object to hold user names by month
+        const monthlyUsers = {};
+
+        // Transform fetched data into monthly user data
+        fetchedUsers.forEach((user) => {
+          // Ensure user has name and createdAt properties
+          if (user.name && user.createdAt) {
+            const month = new Date(user.createdAt).toLocaleString('default', { month: 'long' });
+            if (!monthlyUsers[month]) {
+              monthlyUsers[month] = { names: [], count: 0 };
+            }
+            monthlyUsers[month].names.push(user.name); // Store user names
+            monthlyUsers[month].count++; // Count users
+          }
+        });
+
+        // Convert the object to an array for the chart
+        const transformedData = Object.keys(monthlyUsers).map((month) => ({
+          month: month,
+          value: monthlyUsers[month].count,
+          names: monthlyUsers[month].names.join(", "), // Join names into a string for tooltip
+        }));
+
+        setChartData(transformedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    dashboardData();
+  }, []);
+
   return (
-    <div className="text-black">
+    <div className="text-black rounded-b-xl dark:bg-[#272727A6]">
       <Card className="shadow-none border-none rounded-xl">
-        <CardHeader className="items-start pb-0 font-bold ">
-          <CardTitle className="font-bold">New User</CardTitle>
-          <CardDescription>January - June 2024</CardDescription>
+        <CardHeader className="items-start pb-0 font-bold">
+          <CardTitle className="font-bold">New Users</CardTitle>
+          <CardDescription>2024</CardDescription>
         </CardHeader>
         <CardContent>
-          <ChartContainer config={chartConfig}
-            className="max-h-[250px]"
-          >
+          <ChartContainer config={chartConfig} className="max-h-[250px]">
             <LineChart
               data={chartData}
               margin={{
@@ -63,26 +92,21 @@ const Visitor = () => {
               <ChartTooltip
                 cursor={false}
                 content={<ChartTooltipContent hideLabel />}
+                formatter={(value, name, props) => [
+                  `Count: ${value}`, // Show count in tooltip
+                  // `Users: ${props.payload[0].payload.names}`, // Show user names in tooltip
+                ]}
               />
               <Line
-                dataKey="desktop"
+                dataKey="value"
                 type="natural"
-                stroke="var(--color-desktop)"
+                stroke={chartConfig.lineColor}
                 strokeWidth={2}
                 dot={false}
               />
             </LineChart>
           </ChartContainer>
         </CardContent>
-
-        <CardFooter className="flex-col items-start gap-2 text-sm">
-          <div className="flex gap-2 font-medium leading-none">
-            Trending up by 1.2% this month <TrendingUp className="h-4 w-4" />
-          </div>
-          <div className="leading-none text-muted-foreground">
-            Showing total visitors for the last 6 months
-          </div>
-        </CardFooter>
       </Card>
     </div>
   );

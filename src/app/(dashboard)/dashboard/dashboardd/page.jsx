@@ -9,10 +9,11 @@ import Reviews from './Reviews';
 import CustomerSatisfaction from './CustomerSatisfaction';
 import axios from 'axios';
 import TopBooks from './TopBooks';
+import TotalReviews from './TotalReviews';
 
 const Page = () => {
     const [overview, setOverview] = useState([])
-    const {exchangeBooks, rentBooks, audioBooks, totalUsers, topBooks} = overview
+    const {exchangeBooks, rentBooks, audioBooks, totalUsers, topBooks, totalReview} = overview
     // fetch data 
     useEffect(() => {
         const dashboardData = async () => {
@@ -30,7 +31,7 @@ const Page = () => {
         <div className=' grid grid-cols-12 gap-4'>
             
             {/* 1 */}
-            <div className='rounded-xl  bg-white pt-3 pb-4 px-4 lg:col-span-8 col-span-12 h-[310px]'>
+            <div className='rounded-xl dark:bg-[#1a1a1a] bg-white pt-3 pb-4 px-4 lg:col-span-8 col-span-12 h-[310px]'>
                 <div className='my-2 mb-4'>
                 <h1 className='text-2xl font-bold '>Website Overview</h1>
                 <p>Update Summery</p>
@@ -76,15 +77,18 @@ const Page = () => {
                <TopBooks topBooks={topBooks}/>
             </div>
             
-            {/* 3 */}<div className='bg-white lg:col-span-4 lg:h-[310px] col-span-12 md:mb-4'>
+            {/* 3 */}<div className=' rounded-b-xl lg:col-span-4 lg:h-[310px] col-span-12 md:mb-4'>
                 <Visitor/>
             </div>
 
-            {/* 4 */}<div className='bg-white lg:col-span-4 col-span-12 lg:h-[310px]'>
-                <Reviews/>
+            {/* 4<div className='rounded-b-lg lg:col-span-4 col-span-12 lg:h-[310px]]'>
+                <TotalReviews totalReview={totalReview}/>
+            </div> */}
+             <div className='rounded-b-lg lg:col-span-4 col-span-12 lg:h-[310px]'>
+                <Reviews totalReview={totalReview}/>
             </div>
 
-            {/* 6 */}<div className='bg-white lg:col-span-4 col-span-12 lg:h-[310px]'>
+            {/* 6 */}<div className='rounded-b-lg lg:col-span-4 col-span-12 lg:h-[310px]'>
                 <CustomerSatisfaction/>
             </div>
            
