@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
-import { CgProfile } from "react-icons/cg";
 import img from "../../src/assets/images/About/logo (1).png";
 import img2 from "../../src/assets/images/About/bookdark.png";
 import { FaChalkboardTeacher, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
@@ -15,11 +14,11 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import NavbarDrawer from "./Navbar/NavbarDrawer";
 import Toggle from "./Toggle/Toggle";
+import ToggleMenu from "../Components/ToggleMenu/ToggleMenu";
 
 const Navbar = () => {
   const session = useSession();
   const pathName = usePathname();
-  const [toggle, setToggle] = useState(false);
   const [down, setDown] = useState(false);
   // console.log(pathName);
 
@@ -113,13 +112,11 @@ const Navbar = () => {
           <div className="flex dark:text-white items-center">
             {/* Adjusted the positioning of the NavbarDrawer */}
             <div className=" cursor-pointer md:hidden flex items-center justify-center">
-<div className="">
-<Toggle className='p-4' />
+              <div className="">
+                <Toggle className="p-4" />
+              </div>
 
-
-</div>
-              
-              <NavbarDrawer className='' />
+              <NavbarDrawer className="" />
             </div>
           </div>
         </div>
@@ -132,8 +129,9 @@ const Navbar = () => {
             {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path && "font-black"
-                  } lg:text-[16px] md:my-0 my-7`}
+                className={`${
+                  pathName === link.path && "font-black"
+                } lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}
@@ -149,8 +147,9 @@ const Navbar = () => {
                 <Link
                   key={index}
                   href={link?.path}
-                  className={`flex items-center ${pathName === link?.path ? "font-black" : ""
-                    }`}
+                  className={`flex items-center ${
+                    pathName === link?.path ? "font-black" : ""
+                  }`}
                 >
                   <p>{link?.title}</p>
                   {/* <Badge
@@ -160,7 +159,7 @@ const Navbar = () => {
                       horizontal: "right",
                     }}
                   > */}
-                    <TbExchange className="text-xl -mb-1" />
+                  <TbExchange className="text-xl -mb-1" />
                   {/* </Badge> */}
                 </Link>
               ))}
@@ -170,8 +169,9 @@ const Navbar = () => {
             {links.slice(2).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path && " font-black"
-                  } lg:text-[16px] md:my-0 my-7 flex items-center`}
+                className={`${
+                  pathName === link.path && " font-black"
+                } lg:text-[16px] md:my-0 my-7 flex items-center`}
               >
                 <Link
                   href={link.path}
@@ -231,7 +231,7 @@ const Navbar = () => {
           <Toggle />
           <div className="flex items-center gap-2">
             {session?.status === "unauthenticated" && (
-              <Link href="/login"> 
+              <Link href="/login">
                 <button className="btn text-[16px] md:block hidden font-semibold bg-primary text-white p-3 px-4 rounded-lg">
                   Sign In
                 </button>
@@ -239,68 +239,13 @@ const Navbar = () => {
             )}
             {session?.status === "authenticated" && (
               <>
-                <div className="relative text-left md:block">
-                  <button
-                    type="button"
-                    className="flex items-center text-sm"
-                    onClick={() => setToggle(!toggle)}
-                  >
-                    {session?.data?.user.image ? (
-                      <Image
-                        src={session?.data?.user?.image}
-                        width={32}
-                        height={32}
-                        className="rounded-full hover:border-2"
-                        alt="profile-image"
-                      />
-                    ) : (
-                      <CgProfile className="text-black font-black text-3xl" />
-                    )}
-                  </button>
-                </div>
-
-                {toggle ? (
-                  <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
-                    <ul className="pt-1" aria-labelledby="user-menu-button">
-                      <li className="ml-2 text-left flex items-center">
-                        <span className="mr-2">
-                          <CgProfile className="text-black font-black text-3xl" />
-                        </span>
-                        <p className="block text-sm font-normal space-x-6">
-                          {session?.data?.user?.name}
-                        </p>
-                      </li>
-                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                        <FaChalkboardTeacher className="mr-1" />
-                        <Link href="/dashboard">Dashboard</Link>
-                      </li>
-                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                        <FaUserEdit className="mr-1" />
-                        <ProfileUpdateModal />
-                      </li>
-                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
-                        <FaSignOutAlt className="mr-1" />
-                        <button
-                          onClick={() => {
-                            signOut();
-                            toast.success("Signed out successfully!");
-                          }}
-                        >
-                          Sign out
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                ) : null}
+                <ToggleMenu session={session}></ToggleMenu>
               </>
             )}
           </div>
         </div>
-
       </nav>
-      </div>
-     
-    
+    </div>
   );
 };
 

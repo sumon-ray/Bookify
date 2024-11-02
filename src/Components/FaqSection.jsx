@@ -184,10 +184,10 @@ const FaqSection = () => {
           hidden: { opacity: 0, y: 50 },
         }}
         transition={{ duration: 0.5 }}
-        className="text-center space-y-4"
+        className="text-center"
       >
         <Heading heading="Frequently Asked Questions"></Heading>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 mb-8 dark:text-gray-300 max-w-2xl mx-auto">
           Find answers to common questions about our book exchange platform.
         </p>
       </motion.div>
@@ -207,7 +207,7 @@ const FaqSection = () => {
 
       <motion.div
         layout
-        className="grid grid-cols-1 lg:pt-8 lg:grid-cols-2 gap-8"
+        className="grid grid-cols-1 pt-10 lg:pt-8 lg:grid-cols-2 gap-8"
       >
         <AnimatePresence>
           {visibleFAQs.length > 0 ? (
