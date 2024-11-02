@@ -203,6 +203,8 @@ console.log(notification);
                 {/* Icons moved to the right side */}
                 <div className="flex items-center gap-2 md:gap-4"> {/* Adjusted gap for smaller screens */}
                   
+                  {/* Toggle Component */}
+                <Toggle />
 
                   {/* Notification Button */}
                   <div className="relative">
