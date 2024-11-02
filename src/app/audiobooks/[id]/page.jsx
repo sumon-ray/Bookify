@@ -11,6 +11,7 @@ import AllAudioBooks from "./AllAudioBooks";
 import ChapterList from "../ChapterList";
 import LoadingSpiner from "./LoadingSpiner";
 import ReactAudioPlayer from 'react-audio-player'; 
+import { LiaHandPointDown } from "react-icons/lia";
 
 export default function Page({ params }) {
   const [currentAudio, setCurrentAudio] = useState(null);
@@ -63,7 +64,7 @@ export default function Page({ params }) {
       <div id="Main">
         <div className="mt-5 md:mt-24 lg:mt-20 md:mt-14 relative z-10  ">
           {/* Cover Image */}
-          <div className="bg-white border-slate-100 transition-all duration-500  border-b   pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8  dark:bg-[#0A0A0C] dark:text-white dark:border-[#0A0A0C]">
+          <div className=" border-slate-100 transition-all duration-500  border-b   pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8   dark:text-white dark:border-[#0A0A0C]">
             {currentAudioBook && (
               <div className="flex flex-col lg:flex-row items-start space-x-2 md:space-x-6 relative">
                 <div className="flex-shrink-0 sm:w-full w-full h-[400px] md:w-[700px] mx-auto md:h-[700px] lg:w-[300px] lg:h-[400px] overflow-hidden rounded-lg bg-slate-100">
@@ -77,7 +78,7 @@ export default function Page({ params }) {
                     quality={80}
                   />
                 </div>
-                <div className=" lg:-translate-y-2  mt-4 md:mt-0 min-w-0 flex-auto font-semibold h-auto flex flex-col justify-between">
+                <div className=" lg:-translate-y-2  mt-4 md:mt-0 md:pt-3 lg:pt-0 min-w-0 flex-auto font-semibold h-auto flex flex-col justify-between">
                   <div className="space-y-3 "> 
                     <div className="flex flex-col md:flex-row justify-between">
                       <p className="text-3xl font-semibold text-gray-900 dark:text-white">
@@ -87,15 +88,15 @@ export default function Page({ params }) {
                         <FaBookmark></FaBookmark>
                       </button> */}
                     </div>
-                    <h2 className="text-slate-500 dark:text-gray-400 text-sm  truncate">
+                    <h2 className="  text-sm  truncate">
                       By:
-                      <span className="underline cursor-pointer ml-1">
+                      <span className=" cursor-pointer ml-1">
                         {currentAudioBook.author}
                       </span>
                     </h2>
-                    <h2 className="text-slate-500 dark:text-gray-400 text-sm  truncate">
+                    <h2 className="  text-sm  truncate">
                       Publisher:
-                      <span className="underline cursor-pointer ml-1">
+                      <span className=" cursor-pointer ml-1">
                         Bookify
                       </span>
                     </h2>
@@ -150,14 +151,14 @@ export default function Page({ params }) {
                     <div>
                       <h3 className="font-bold">Description:</h3>
                       <p className="text-gray-700 dark:text-gray-300">
-                        {currentAudioBook?.description}
+                        {currentAudioBook?.description.slice(0, 600)}
                       </p>
                     </div>
                   </div>
-                  <div className="text-[#364957] mt-4 flex gap-1 items-center justify-between dark:text-white dark:border-[#0A0A0C]">
+                  <div className="text-[#364957] mt-[31px] flex gap-2 flex-col dark:text-white dark:border-[#0A0A0C]">
                     <div className="flex items-center">
-                      <FaShareFromSquare className="text-2xl" />
-                      <h2 className="ml-2">Share</h2>
+                      {/* <FaShareFromSquare className="text-2xl" /> */}
+                      <h2 className="ml-2 flex  items-center justify-center gap-2">Share on <LiaHandPointDown className="mt-2" /> </h2>
                     </div>
                     <SocialSharingButtons
                       currentAudioBook={currentAudioBook}
@@ -169,7 +170,7 @@ export default function Page({ params }) {
           </div>
        
                      {/* audio player */}
-          <div className="w-full  mx-auto px-4 sm:px-6 dark:bg-[#0A0A0C] transition-all duration-500 dark:text-white dark:border-[#0A0A0C]">
+          <div className="w-full  mx-auto px-4 sm:px-6  transition-all duration-500 dark:text-white dark:border-[#0A0A0C]">
             <ReactAudioPlayer
               src={currentAudioBook?.audioURL} 
               autoPlay={false} 

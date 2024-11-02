@@ -57,14 +57,14 @@ const SignUp = () => {
   return (
     <div className="flex lg:flex-row-reverse justify-center w-full h-screen mx-auto overflow-hidden rounded-lg  dark:bg-[#0A0A0C] dark:text-white">
       <Image
-        width={500}
-        height={500}
-        src="https://i.ibb.co/rxGD6T6/signup.png"
+        width={791}
+        height={572}
+        src="https://i.ibb.co/wMzqwPJ/sign-up.png"
         alt="sign up"
-        className="hidden bg-center bg-contain bg-no-repeat lg:block w-1/2 mx-6 my-8"
+        className="hidden bg-center object-cover lg:block w-1/2"
       ></Image>
 
-      <div className="w-full mx-6 mb-8 lg:px-16 md:px-8 lg:w-1/2 flex flex-col justify-center my-4">
+      <div className="w-full mx-6 mb-8 lg:px-16 md:px-8 lg:w-1/2 flex flex-col justify-center">
         <Link href={"/"}>
           <div className="flex items-center justify-center text-[#B7B7B7] dark:bg-[#0A0A0C] dark:text-white">
             <Image

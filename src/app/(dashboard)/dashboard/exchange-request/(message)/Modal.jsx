@@ -119,11 +119,11 @@ const Modal = ({ receiver }) => {
                         <div className="flex flex-col flex-grow h-0 p-4 overflow-auto dark:bg-[#272727]">
                             {messages.map((msg, index) => (
                                 <div key={index} className={`flex w-full mt-2 space-x-3 max-w-xs ${msg.senderEmail === senderEmail ? 'ml-auto justify-end' : ''}`}>
-                                    {msg.senderEmail !== senderEmail && <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>}
+                                    {/* {msg.senderEmail !== senderEmail && <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>} */}
                                     <div className={`p-2 rounded-lg ${msg.senderEmail === senderEmail ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}>
                                         {msg.messageText}
                                     </div>
-                                    {msg.senderEmail === senderEmail && <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-300"></div>}
+                                    {/* {msg.senderEmail === senderEmail && <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-300"></div>} */}
                                 </div>
                             ))}
                         </div>
@@ -155,7 +155,7 @@ const Modal = ({ receiver }) => {
                                     /> */}
                                     <div
                                         onClick={handleSendMessage}
-                                        className={`bg-[#364957] p-2 px-4 text-white rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer `}>
+                                        className={`bg-[#364957] p-[9.5px] px-4 text-white rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer `}>
                                         send
                                     </div>
                                 </div>

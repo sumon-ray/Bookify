@@ -10,14 +10,10 @@ import img2 from "../../src/assets/images/About/bookdark.png";
 import { FaChalkboardTeacher, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import ProfileUpdateModal from "./ProfileUpdateModal";
 import toast from "react-hot-toast";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
-import Badge from "@mui/material/Badge";
-import { Menu, MenuItem } from "@mui/material";
 import { TbExchange } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import NavbarDrawer from "./Navbar/NavbarDrawer";
-import Cart from "./cart/Cart";
 import Toggle from "./Toggle/Toggle";
 
 const Navbar = () => {
@@ -61,10 +57,6 @@ const Navbar = () => {
     {
       title: "Exchange",
       path: "/exchange",
-    },
-    {
-      title: "Audio Books",
-      path: "/audiobooks",
     },
     {
       title: "Contact",
@@ -161,15 +153,15 @@ const Navbar = () => {
                     }`}
                 >
                   <p>{link?.title}</p>
-                  <Badge
+                  {/* <Badge
                     color="primary"
                     anchorOrigin={{
                       vertical: "top",
                       horizontal: "right",
                     }}
-                  >
+                  > */}
                     <TbExchange className="text-xl -mb-1" />
-                  </Badge>
+                  {/* </Badge> */}
                 </Link>
               ))}
             </li>
@@ -235,7 +227,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex  hidden gap-2 md:flex md:justify-center items-center">
+        <div className="hidden md:flex gap-2 md:justify-center items-center">
           <Toggle />
           <div className="flex items-center gap-2">
             {session?.status === "unauthenticated" && (
@@ -306,7 +298,9 @@ const Navbar = () => {
         </div>
 
       </nav>
-    </div>
+      </div>
+     
+    
   );
 };
 
