@@ -66,18 +66,17 @@ export default function MyBooks() {
     setSortOrder(value);
   };
 
-  const session = useSession();
+  const { data: session, status } = useSession();
 
   // Fetch books
   const { data, isLoading, error } = useQuery({
     queryKey: ["myBooks"],
     queryFn: async () => {
-      const res = await axios.get(
-        `https://bookify-server-lilac.vercel.app/books?email=${session?.data?.user?.email}`
-      );
+      const res = await axios.get(`https://bookify-server-lilac.vercel.app/books?email=${session?.user?.email}`)
       return res.data;
     },
     staleTime: 5 * 60 * 1000,
+    enabled: !!session?.user?.email
   });
 
   console.log(data)
@@ -127,7 +126,7 @@ export default function MyBooks() {
     return booksCopy;
   }, [data, sortOrder]);
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading || status === 'loading') return <LoadingSpinner />;
   if (error)
     return (
       <div className="flex justify-center items-center h-screen">

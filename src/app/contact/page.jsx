@@ -136,7 +136,7 @@ export default function page() {
                 </div>
 
                 <div className="md:p-4 rounded-lg">
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-5">
                         <div className="-mx-2 md:items-center md:flex">
                             <div className="flex-1 px-2">
                                 <label className="block mb-2 text-sm font-bold">
