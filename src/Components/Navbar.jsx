@@ -232,7 +232,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             {session?.status === "unauthenticated" && (
               <Link href="/login">
-                <button className="btn text-[16px] md:block hidden font-semibold bg-primary text-white p-3 px-4 rounded-lg">
+                <button className="btn text-[16px] md:block hidden font-semibold  text-white p-3 px-4 rounded-lg bg-[#374956] dark:bg-[#fefefe]   dark:text-black">
                   Sign In
                 </button>
               </Link>
