@@ -65,7 +65,7 @@ const OurCollection = () => {
                     : <div className='flex flex-col items-center sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8'>
                         {
                             topBooks?.slice(0, 5)?.map(book =>
-                                <div key={book?._id} className="w-[310px] md:w-[225px] md:h-[203px] rounded-2xl bg-[#EFEEE9] dark:bg-[#0A0A0C] mt-40 flex flex-col items-center">
+                                <div key={book?._id} className="w-[310px] md:w-[225px] md:h-[203px] rounded-2xl bg-[#EFEEE9] dark:bg-[#272727A6]  dark:shadow-xl mt-40 flex flex-col items-center">
                                     <div className="w-[250px] md:w-[175px] h-[400px] md:h-[260px] mt-[-130px] hover:mt-[-150px] hover:duration-700  rounded-xl bg-cover bg-center"
                                         style={{
                                             backgroundImage: `url('${book?.coverImage}')`

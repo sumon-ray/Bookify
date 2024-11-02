@@ -65,7 +65,7 @@ const AudioBook = () => {
               width="50"
               height="50"
               viewBox="0 0 30 30"
-              fill="none"
+              fill="#364957"
             >
               <path
                 fillRule="evenodd"
