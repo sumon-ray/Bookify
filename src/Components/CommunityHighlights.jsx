@@ -98,8 +98,8 @@ const CommunityHighlights = () => {
           </div>
         </div>
 
-        <div className="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-200">
-          <p className=" text-gray-700 text-sm">{user.exchangeText}</p>
+        <div className="dark:text-gray-300 rounded-lg p-4 mb-4 border border-gray-200 dark:border-slate-600">
+          <p className="  text-sm">{user.exchangeText}</p>
         </div>
 
         <div className="flex justify-between items-center">
