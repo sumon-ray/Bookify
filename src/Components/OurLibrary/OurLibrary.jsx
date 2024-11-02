@@ -73,7 +73,7 @@ const OurLibrary = () => {
       <Heading heading='Explore Exchange Library'></Heading>
 
       {/* Dynamic Category Selector */}
-      <div className="py-3 mt-8 lg:mt-2  lg:px-5 md:pl-20 lg:pl-0 ">
+      <div className="py-3 mt-8 lg:mt-2  lg:px-5 md:pl-0 lg:pl-0 ">
         <select
           className="lg:w-[24.9%] md:w-full sm:w-full  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
           value={category}
