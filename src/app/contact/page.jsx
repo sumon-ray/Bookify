@@ -25,7 +25,7 @@ export default function page() {
 
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
 
-                    <div className="bg-[#EFEEE9CC] dark:bg-[#0A0A0C] p-4 md:p-8 rounded-2xl">
+                    <div className="bg-[#EFEEE9CC] dark:bg-[#272727] p-4 md:p-8 rounded-2xl">
                         <span className="inline-block p-3 text-[#000000] dark:text-white rounded-full bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ export default function page() {
                         </p>
                     </div>
 
-                    <div className="bg-[#EFEEE9CC] dark:bg-[#0A0A0C] p-4 md:p-8 rounded-2xl  dark:text-white">
+                    <div className="bg-[#EFEEE9CC] dark:bg-[#272727] p-4 md:p-8 rounded-2xl  dark:text-white">
                         <span className="inline-block p-3 text-[#000000] dark:text-white rounded-full bg-[#36495740] ">
                             <BsChatLeftText className="text-xl" />
                         </span>
@@ -70,7 +70,7 @@ export default function page() {
                         </p>
                     </div>
 
-                    <div className="bg-[#EFEEE9CC] dark:bg-[#0A0A0C] p-4 dark:text-white md:p-8 rounded-2xl">
+                    <div className="bg-[#EFEEE9CC] dark:bg-[#272727] p-4 dark:text-white md:p-8 rounded-2xl">
                         <span className="inline-block p-3 text-[#000000] dark:text-white rounded-full bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ export default function page() {
                         </p>
                     </div>
 
-                    <div className="bg-[#EFEEE9CC] md:p-8 rounded-2xl  p-4 dark:bg-[#0A0A0C] dark:text-white">
+                    <div className="bg-[#EFEEE9CC] md:p-8 rounded-2xl  p-4 dark:bg-[#272727] dark:text-white">
                         <span className="inline-block p-3 text-[#000000] rounded-full dark:text-white bg-[#36495740] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@ export default function page() {
                                 <input
                                     type="text"
                                     placeholder="Enter your first name"
-                                    className="block w-full px-5 py-2.5 mt-2 placeholder-gray-400   bg-white rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0"
+                                    className="block w-full px-5 py-2.5 mt-2 placeholder-gray-400   bg-white rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#272727A6] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0"
                                     required />
                             </div>
 
@@ -156,7 +156,7 @@ export default function page() {
                                 <input
                                     type="text"
                                     placeholder="Enter your last name"
-                                    className="block w-full px-5 py-2.5 mt-2  dark:text-black placeholder-gray-400  bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0"
+                                    className="block w-full px-5 py-2.5 mt-2  dark:text-black placeholder-gray-400  bg-white border border-gray-300 rounded-lg  focus:ring-[#EFEEE999] text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#272727A6] dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0"
                                     required />
                             </div>
                         </div>
@@ -168,7 +168,7 @@ export default function page() {
                             <input
                                 type="email"
                                 placeholder="Enter your email address"
-                                className="block w-full px-5 py-2.5 mt-2 placeholder-gray-400 bg-white rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0"
+                                className="block w-full px-5 py-2.5 mt-2 placeholder-gray-400 bg-white rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#272727A6] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0"
                                 required />
                         </div>
 
@@ -177,13 +177,13 @@ export default function page() {
                                 Message
                             </label>
                             <textarea
-                                className="block resize-none w-full h-44 px-5 py-2.5 mt-2 placeholder-gray-400 bg-white rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0"
+                                className="block resize-none w-full h-44 px-5 py-2.5 mt-2 placeholder-gray-400 bg-white rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5 dark:bg-[#272727A6] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0"
                                 placeholder="Message"
                                 required
                             ></textarea>
                         </div>
 
-                        <button className="flex items-center justify-between w-full px-6 py-3 mt-4 text-white text-sm font-bold bg-[#364957] dark:bg-[#0A0A0C] dark:text-white rounded-md">
+                        <button className="flex items-center justify-between w-full px-6 py-3 mt-4 text-white text-sm font-bold bg-[#364957] dark:bg-[#272727A6] dark:text-white rounded-md">
                             <span>Send Message </span>
                             <GrSend className="text-xl" />
                         </button>

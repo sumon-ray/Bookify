@@ -298,16 +298,16 @@ export default function Page() {
 
 
 
-      <div className="min-h-[90vh] flex flex-col justify-center">
+      <div className="md:min-h-[70vh] lg:min-h-[90vh] flex flex-col justify-center">
         <h1 className="text-xl md:text-2xl font-bold text-center uppercase py-6 pt-5">Exchange Your Books</h1>
 
         {/* Main div */}
         <div className="flex gap-10 lg:gap-14 flex-col md:flex-row px-4">
 
           {/* Take Books */}
-          <div className="lg:w-[50%] md:h-[490px] w-full bg-[#EFEEE9] dark:bg-[#0A0A0CCC] dark:text-white rounded-lg md:p-5">
-            <h3 className="text-xl md:text-2xl font-semibold text-center text-[#000000] dark:text-white md:mt-0 mt-3 ">Take Books</h3>
-            <p className="font-semibold text-center text-[#000000] dark:text-white hidden md:block">Add the books you are taking in exchange here</p>
+          <div className="lg:w-[50%] lg:h-[490px] w-full md:pb-3 lg:pb-0 bg-[#EFEEE9] dark:bg-[#272727A6] dark:text-white rounded-lg md:p-1.5 lg:p-5">
+            <h3 className="text-xl md:text-2xl font-semibold text-center text-[#000000] dark:text-white md:mt-1 mt-3 ">Take Books</h3>
+            <p className="font-semibold text-center text-[#000000] dark:text-white hidden lg:block">Add the books you are taking in exchange here</p>
             {
               takeBooksLoading ?
                 <div className="flex justify-center items-center min-h-[370px]"><svg
@@ -333,7 +333,7 @@ export default function Page() {
                 </svg>
                 </div>
                 :
-                <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-6 gap-y-4 px-4 md:px-6 h-[350px] mt-4 md:mt-6 overflow-y-auto">
+                <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-4 md:gap-x-6 gap-y-4 px-4 md:px-6 h-[350px] mt-4 md:mt-6 overflow-y-auto pb-4 md:pb-0">
                   <div onClick={() => setTakeBooksModal(true)}
                     className="w-full h-40 bg-[#364957] dark:bg-[#272727E6]  rounded-md flex justify-center items-center">
                     <FiPlusCircle className="text-6xl text-[#ffffff]" />
@@ -361,9 +361,9 @@ export default function Page() {
           </div>
 
           {/* Give Books */}
-          <div className="lg:w-[50%] md:h-[490px] w-full bg-[#EFEEE9] dark:bg-[#0A0A0CCC] dark:text-white rounded-lg md:p-5">
-            <h3 className="text-xl md:text-2xl font-semibold text-center text-[#000000] dark:text-white md:mt-0 mt-3 ">Give Books</h3>
-            <p className="font-semibold text-center text-[#000000] dark:text-white hidden md:block">Add the books you are giving in exchange here</p>
+          <div className="lg:w-[50%] lg:h-[490px] w-full md:pb-3 lg:pb-0 bg-[#EFEEE9] dark:bg-[#272727A6] dark:text-white rounded-lg md:p-1.5 lg:p-5">
+            <h3 className="text-xl md:text-2xl font-semibold text-center text-[#000000] dark:text-white md:mt-1 mt-3 ">Give Books</h3>
+            <p className="font-semibold text-center text-[#000000] dark:text-white hidden lg:block">Add the books you are giving in exchange here</p>
             {
               giveBooksLoading ?
                 <div className="flex justify-center items-center min-h-[370px]"><svg
@@ -389,7 +389,7 @@ export default function Page() {
                 </svg>
                 </div>
                 :
-                <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-6 gap-y-4 px-4 md:px-6 h-[350px] mt-4 md:mt-6 overflow-y-auto">
+                <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-4 md:gap-x-6 gap-y-4 px-4 md:px-6 h-[350px] mt-4 md:mt-6 overflow-y-auto pb-4 md:pb-0">
                   <div onClick={() => setGiveBooksModal(true)}
                     className="w-full h-40 bg-[#364957] dark:bg-[#272727E6] rounded-md flex justify-center items-center">
                     <FiPlusCircle className="text-6xl text-[#ffffff]" />
@@ -420,7 +420,7 @@ export default function Page() {
 
         {/* Exchange Button */}
         <div className="flex justify-center items-center my-6">
-          <button onClick={exchangeBook} type="button" className="btn_1 hover:bg-[#364957E6] dark:bg-[#272727E6] dark:border-white dark:border-2 dark:text-white flex items-center">
+          <button onClick={exchangeBook} type="button" className="btn_1 hover:bg-[#364957E6] dark:text-white flex items-center">
             <div className="flex justify-center items-center gap-0.5 text-base font-medium w-24">
               {
                 exchangeLoading ? <svg
@@ -498,7 +498,7 @@ export default function Page() {
                             <IoIosSearch onClick={() => {
                               setSearchButton2(!searchButton2)
                               myBooksRefetch()
-                            }} className="text-white dark:text-black text-2xl" />
+                            }} className="text-white dark:text-white text-2xl" />
                           </div>
                         </div>
                       </div>
@@ -563,7 +563,7 @@ export default function Page() {
                             <tbody>
                               {mybooks?.map((book) => (
                                 <tr key={book?._id} className="border-t border-black dark:border-white dark:text-white">
-                                  <td className="px-5 py-5">
+                                  <td className="pl-0 md:pl-1 md:px-5 py-5">
                                     <div>
                                       <Image
                                         unoptimized
@@ -579,12 +579,12 @@ export default function Page() {
                                     <p className=" text-black dark:text-white whitespace-no-wrap">{book?.title}</p>
                                   </td>
                                   <td className="px-5 py-5">
-                                    <p className=" text-black dark:text-white whitespace-no-wrap">{book?.owner?.split(' ').slice(0,2).join(' ')}</p>
+                                    <p className=" text-black dark:text-white whitespace-no-wrap">{book?.owner?.split(' ').slice(0, 2).join(' ')}</p>
                                   </td>
                                   <td className="px-5 py-5">
                                     <div>
                                       <button onClick={() => giveBooksExchange(book)} className="relative inline-block  md:font-medium text-white px-1 md:px-3 py-0.5 md:py-1 bg-[#36495799] dark:bg-[#0A0A0C] rounded-md">
-                                        <span className="flex items-center gap-x-0.5"> <TbExchange className="hidden md:inline-block"/>Exchange </span>
+                                        <span className="flex items-center gap-x-0.5"> <TbExchange className="hidden md:inline-block" />Exchange </span>
                                       </button>
                                     </div>
                                   </td>
@@ -637,7 +637,7 @@ export default function Page() {
                       <IoIosSearch onClick={() => {
                         setSearchButton(!searchButton)
                         usersDataRefetch()
-                      }} className="text-white dark:text-black text-2xl" />
+                      }} className="text-white dark:text-white text-2xl" />
                     </div>
                   </div>
                 </div>
@@ -693,6 +693,7 @@ export default function Page() {
                   </div>
                   : <div className="max-h-[350px] relative overflow-y-scroll">
                     <table className="w-full leading-normal">
+
                       <thead>
                         <tr className="sticky top-0 w-full font-bold bg-[white] dark:bg-[#0A0A0C] dark:text-white">
                           <th className="py-1">Cover</th>
@@ -704,8 +705,8 @@ export default function Page() {
 
                       <tbody>
                         {usersBooks?.map((book) => (
-                          <tr key={book?._id} className="border-t border-black dark:border-white">
-                            <td className="px-5 py-5  text-sm">
+                          <tr key={book?._id} className="border-t border-black dark:border-white dark:text-white">
+                            <td className="pl-1 md:pl-0 md:px-5 py-5">
                               <div>
                                 <Image
                                   unoptimized
@@ -721,12 +722,12 @@ export default function Page() {
                               <p className=" text-black dark:text-white whitespace-no-wrap">{book?.title}</p>
                             </td>
                             <td className="px-5 py-5">
-                              <p className=" text-black dark:text-white whitespace-no-wrap">{book?.owner?.split(' ').slice(0,2).join(' ')}</p>
+                              <p className=" text-black dark:text-white whitespace-no-wrap">{book?.owner?.split(' ').slice(0, 1).join(' ')}</p>
                             </td>
                             <td className="px-5 py-5">
                               <div>
-                                <button onClick={() => takeBookExchange(book)} className="relative inline-block md:font-medium text-white px-1 md:px-3 py-0.5 md:py-1 bg-[#36495799] dark:bg-[#0A0A0C] rounded-md">
-                                  <span className="flex items-center gap-x-0.5"> <TbExchange className="hidden md:block"/>Exchange </span>
+                                <button onClick={() => takeBookExchange(book)} className="relative inline-block  md:font-medium text-white px-1 md:px-3 py-0.5 md:py-1 bg-[#36495799] dark:bg-[#0A0A0C] rounded-md">
+                                  <span className="flex items-center gap-x-0.5"> <TbExchange className="hidden md:inline-block" />Exchange </span>
                                 </button>
                               </div>
                             </td>

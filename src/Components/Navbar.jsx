@@ -58,6 +58,14 @@ const Navbar = () => {
       path: "/exchange",
     },
     {
+      title: "Audio books",
+      path: "/audiobooks",
+    },
+    {
+      title: "All Books",
+      path: "/all-books",
+    },
+    {
       title: "Contact",
       path: "/contact",
     },

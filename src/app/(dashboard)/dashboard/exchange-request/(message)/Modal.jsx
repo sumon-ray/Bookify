@@ -80,7 +80,7 @@ const Modal = ({ receiver }) => {
     return (
         <div>
             <button onClick={() => setMsgModal(!msgModal)}>
-                <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' />
+                <AiFillMessage className='text-xl text-center absolute left-[34px] top-6 dark:text-white'  />
             </button>
 
             {msgModal && (
