@@ -28,7 +28,7 @@ export default function DashboardNavbar() {
   const [notificationApprove, setNotificationApprove] = useState([]);
   const [notification, setNotification] = useState([]);
   const [notificationSeen, setNotificationSeen] = useState(true);
-  console.log(notification);
+  // console.log(notification);
   const [isListening, setIsListening] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
