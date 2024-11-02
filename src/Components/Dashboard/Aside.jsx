@@ -46,7 +46,7 @@ export default function Aside() {
   }
 
   return (
-    <aside className="fixed top-1 left-0 z-40 w-[184px] h-screen pt-[78px] transition-transform -translate-x-full bg-white dark:bg-[#272727CC] dark:text-gray-300  md:translate-x-0">
+    <aside className="fixed top-1 left-0 z-40 w-[184px] h-screen pt-[78px] transition-transform -translate-x-full bg-white dark:bg-[#272727E6] dark:shadow-[#2f2c2cfb] dark:text-gray-300  md:translate-x-0">
       <div className="h-full pl-3 pr-2 overflow-y-auto relative">
         <ul className="space-y-1 font-medium">
           {loggedInUser?.role === "admin" && (
@@ -84,7 +84,6 @@ export default function Aside() {
               <span className="font-bold dark:text-white">Home</span>
             </Link>
           </motion.li>
-
           <motion.li
             initial="rest"
             whileHover="hover"
@@ -92,15 +91,15 @@ export default function Aside() {
             variants={hoverEffect}
           >
             <Link
-              href="/dashboard/myBooks"
+              href="/dashboard"
               className={`flex items-center gap-2 px-2 py-1 ${checkActive(
-                "/dashboard/myBooks"
+                "/dashboard"
               )}`}
             >
-              <PiBooks className="dark:text-white" />
-              <span className="font-bold dark:text-white">My Books</span>
+              <IoHomeOutline  className="dark:text-white" />
+              <span className="font-bold dark:text-white">Home</span>
             </Link>
-          </motion.li>
+          </motion.li>        
 
           <motion.li
             initial="rest"
@@ -133,6 +132,22 @@ export default function Aside() {
             >
               <TbExchange className="text-xl dark:text-white" />
               <span className="font-bold dark:text-white">Request</span>
+            </Link>
+          </motion.li>
+          <motion.li
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            variants={hoverEffect}
+          >
+            <Link
+              href="/dashboard/profile"
+              className={`flex items-center gap-2 px-2 py-1 ${checkActive(
+                "/dashboard/myBooks"
+              )}`}
+            >
+              <PiBooks className="dark:text-white" />
+              <span className="font-bold dark:text-white">Profile</span>
             </Link>
           </motion.li>
 

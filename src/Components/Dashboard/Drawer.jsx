@@ -16,10 +16,10 @@ import { PiBooks } from "react-icons/pi";
 import { TbExchange, TbUserShield } from "react-icons/tb";
 import { motion } from "framer-motion";
 import img from "../../assets/images/About/logo (1).png";
+import img2 from "../../assets/images/About/bookdark.png";
 import Image from "next/image";
 import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
-import { AiOutlineClose } from "react-icons/ai"; // Importing a more eye-catching close icon
+import { AiOutlineClose } from "react-icons/ai";
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
@@ -27,7 +27,7 @@ export default function TemporaryDrawer() {
 
   const checkActive = (route) => {
     return pathname === route
-      ? "bg-[#364957] dark:text-white hover:bg-[#364957]   rounded-md border-l-4 border-l-[#FFD700] text-[#FFFFFF] " 
+      ? "bg-[#364957] dark:text-white hover:bg-[#364957]   rounded-md border-l-4 border-l-[#FFD700] text-[#FFFFFF] "
       : "text-black dark:text-white";
   };
 
@@ -50,13 +50,13 @@ export default function TemporaryDrawer() {
   };
 
   const DrawerList = (
-    <Box className='dark:bg-[#272727] h-full bg-white  ' sx={{ 
-      width: 250, 
+    <Box className='dark:bg-[#272727] h-full bg-white  ' sx={{
+      width: 250,
       // background: '', 
       // borderRadius: '12px', 
-      padding: '20px', 
+      padding: '20px',
       boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-      overflowY: 'auto', 
+      overflowY: 'auto',
       '&::-webkit-scrollbar': {
         width: '8px',
       },
@@ -68,15 +68,16 @@ export default function TemporaryDrawer() {
         // background: '#F0F0F0',
       },
     }} role="presentation">
-      <div className="flex justify-between items-center mb-4"> 
-        <Link href={"/"} className="w-full mx-auto"> 
-          <Image  alt="Logo" src={img} unoptimized className="h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+      <div className="flex justify-between items-center mb-4">
+        <Link href={"/"} className="w-full mx-auto -ml-4">
+          <Image src={img} unoptimized className="dark:hidden h-[60px] max-w-[150px] " height={20} width={200} />
+          <Image src={img2} unoptimized className="hidden dark:block h-[60px] max-w-[150px]" height={20} width={200} />
         </Link>
-        <motion.button 
-          onClick={() => setOpen(false)} 
-          className="text-black" 
-          whileHover={{ scale: 1.2, rotate: 15 }} 
-          whileTap={{ scale: 0.9, rotate: -15 }} 
+        <motion.button
+          onClick={() => setOpen(false)}
+          className="text-black"
+          whileHover={{ scale: 1.2, rotate: 15 }}
+          whileTap={{ scale: 0.9, rotate: -15 }}
         >
           <AiOutlineClose className="text-2xl dark:text-white" />
         </motion.button>
@@ -110,7 +111,7 @@ export default function TemporaryDrawer() {
         </ListItem>
 
         {/* Divider */}
-        <Divider sx={{ my: 1 }} /> 
+        <Divider sx={{ my: 1 }} />
 
         {/* My Books */}
         <ListItem disablePadding>

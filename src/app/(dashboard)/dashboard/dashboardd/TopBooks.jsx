@@ -1,30 +1,21 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { TrendingUp } from "lucide-react";
 import { Label, Pie, PieChart } from "recharts";
+
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
-} from "@/Components/ui/Card"; // Adjust the path if necessary
+} from "@/components/ui/card";
 import {
-  
+  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/Components/ui/Chart"; // Adjust the path if necessary
-
-const chartData = [
-  { browser: "To Kill a Mockingbird", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "The Brothers Karamazov", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "Crime and Punishment", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "War and Peace", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "Les Misérables", visitors: 190, fill: "var(--color-other)" },
-];
+} from "@/components/ui/chart";
 
 const chartConfig = {
   visitors: {
@@ -51,74 +42,81 @@ const chartConfig = {
     color: "hsl(var(--chart-5))",
   },
 };
-  
-const TopBooks = () => {
-    const totalVisitors = useMemo(() => {
-        return chartData.reduce((acc, curr) => acc + curr.visitors, 0);
-      }, []);
-    
-      return (
-        <div>
-         
-          <Card className="flex flex-col shadow-none border-none">
-            <CardHeader className="items-start pb-0 font-bold ">
-              <CardTitle className="font-bold">Top Books</CardTitle>
-              <CardDescription>January - June 2024</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-1 pb-0">
-              <ChartContainer
-                config={chartConfig}
-                className="mx-auto aspect-square max-h-[235px]"
+
+const TopBooks = ({ topBooks }) => {
+  // Transform topBooks into chartData
+  const chartData = useMemo(() => {
+    return topBooks?.map((book, index) => ({
+      bookTitle: book?.title,
+      totalPage: book?.totalPage,
+      genre: book?.genre,
+      fill: `hsl(var(--chart-${(index % 5) + 1}))`,
+    }));
+  }, [topBooks]);
+
+  // Compute total number of books
+  const totalBooks = chartData?.length;
+
+  return (
+    <div>
+      <Card className="flex flex-col shadow-none border-none rounded-xl dark:bg-[#0A0A0CCC]">
+        <CardHeader className="items-center pb-0">
+          <CardTitle>Top Books</CardTitle>
+          <CardDescription>January - November 2024</CardDescription>
+        </CardHeader>
+        <CardContent className="flex-1 pb-0">
+          <ChartContainer
+            config={chartConfig}
+            className="mx-auto aspect-square max-h-[235px]"
+          >
+            <PieChart>
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Pie
+                data={chartData}
+                dataKey="totalPage"
+                nameKey="bookTitle"
+                innerRadius={60}
+                strokeWidth={5}
               >
-                <PieChart>
-                  <ChartTooltip
-                    cursor={false}
-                    content={<ChartTooltipContent hideLabel />}
-                  />
-                  <Pie
-                    data={chartData}
-                    dataKey="visitors"
-                    nameKey="browser"
-                    innerRadius={60}
-                    strokeWidth={5}
-                  >
-                    <Label
-                      content={({ viewBox }) => {
-                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                          return (
-                            <text
-                              x={viewBox.cx}
-                              y={viewBox.cy}
-                              textAnchor="middle"
-                              dominantBaseline="middle"
-                            >
-                              <tspan
-                                x={viewBox.cx}
-                                y={viewBox.cy}
-                                className="fill-foreground text-3xl font-bold"
-                              >
-                                {totalVisitors.toLocaleString()}
-                              </tspan>
-                              <tspan
-                                x={viewBox.cx}
-                                y={(viewBox.cy || 0) + 24}
-                                className="fill-muted-foreground"
-                              >
-                                Top Books
-                              </tspan>
-                            </text>
-                          );
-                        }
-                      }}
-                    />
-                  </Pie>
-                </PieChart>
-              </ChartContainer>
-            </CardContent>
-          </Card>
-          
-        </div>
-      );
+                <Label
+                  content={({ viewBox }) => {
+                    if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                      return (
+                        <text
+                          x={viewBox.cx}
+                          y={viewBox.cy}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                        >
+                          <tspan
+                            x={viewBox.cx}
+                            y={viewBox.cy}
+                            className="fill-foreground text-3xl font-bold"
+                          >
+                            {totalBooks}
+                          </tspan>
+                          <tspan
+                            x={viewBox.cx}
+                            y={(viewBox.cy || 0) + 24}
+                            className="fill-muted-foreground"
+                          >
+                            Total Books
+                          </tspan>
+                        </text>
+                      );
+                    }
+                  }}
+                />
+              </Pie>
+            </PieChart>
+          </ChartContainer>
+        </CardContent>
+      </Card>
+    </div>
+  );
 };
 
 export default TopBooks;
