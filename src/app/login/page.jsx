@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState, Suspense } from "react";
 import img from "../../../src/assets/images/About/logo (1).png";
+import img2 from "../../../src/assets/images/About/bookdark.png";
 import Image from "next/image";
 import toast from "react-hot-toast";
 import { useSearchParams } from "next/navigation";
@@ -38,7 +39,7 @@ const LoginForm = ({ redirect }) => {
 
   return (
     <form onSubmit={handleLogin}>
-      <div className="mt-4 dark:bg-[#0A0A0C] dark:text-white">
+      <div className="mt-4  dark:text-white">
         <label className="block mb-2 text-sm font-medium  file:dark:bg-[#0A0A0C] dark:text-white">
           Email Address
         </label>
@@ -52,7 +53,7 @@ const LoginForm = ({ redirect }) => {
       </div>
 
       <div className="mt-4">
-        <label className="block mb-2 text-sm font-medium   dark:bg-[#0A0A0C] dark:text-white">
+        <label className="block mb-2 text-sm font-medium dark:text-white">
           Password
         </label>
         <input
@@ -89,7 +90,7 @@ const SearchParamsProvider = () => {
 const Page = ({ redirect }) => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className="flex justify-center w-full h-screen mx-auto overflow-hidden rounded-lg  dark:bg-[#0A0A0C] dark:text-white">
+      <div className="flex justify-center w-full h-screen mx-auto overflow-hidden rounded-lg  dark:bg-[#0A0A0C99] dark:text-white">
         <Image
           width={948}
           height={716}
@@ -100,7 +101,7 @@ const Page = ({ redirect }) => {
 
         <div className="w-full mx-6 lg:px-16 md:px-8 lg:w-1/2 flex flex-col justify-center my-4">
           <Link href={"/"}>
-            <div className="flex items-center justify-center text-[#B7B7B7] dark:bg-[#0A0A0C] dark:text-white">
+            <div className="flex dark:hidden items-center justify-center ">
               <Image
                 src={img}
                 className="h-[68px] w-36"
@@ -109,14 +110,23 @@ const Page = ({ redirect }) => {
                 alt="Logo"
               />
             </div>
+            <div className="hidden dark:flex items-center justify-center">
+              <Image
+                src={img2}
+                className="h-[68px] w-36"
+                height={20}
+                width={200}
+                alt="Logo"
+              />
+            </div>
           </Link>
-          <p className="mt-1 text-xl text-center  dark:bg-[#0A0A0C] dark:text-white">
+          <p className="text-xl text-center dark:text-white">
             Welcome back!
           </p>
           <SocialLogin />
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white lg:w-1/4"></span>
-            <p className="text-xs text-center text-gray-500 uppercase dark:bg-[#0A0A0C] dark:text-white hover:underline">
+            <p className="text-xs text-center text-gray-500 uppercase  dark:text-white hover:underline">
               or login with email
             </p>
             <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white lg:w-1/4"></span>
@@ -127,7 +137,7 @@ const Page = ({ redirect }) => {
             <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white md:w-1/4"></span>
             <Link
               href="/signup"
-              className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
+              className="text-xs text-gray-500 uppercase dark:text-white hover:underline"
             >
               or sign up
             </Link>

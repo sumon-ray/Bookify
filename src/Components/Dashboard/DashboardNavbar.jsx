@@ -1,8 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { CgProfile } from "react-icons/cg";
-
-import { GiBookmarklet } from "react-icons/gi";
 import TemporaryDrawer from "./Drawer";
 import { usePathname, useRouter } from "next/navigation";
 import { IoIosSearch, IoMdNotificationsOutline } from "react-icons/io";
@@ -14,31 +11,24 @@ import {
 import { useSearchContext } from "@/app/(dashboard)/dashboard/myBooks/SearchProvider";
 import Link from "next/link";
 import img from "../../assets/images/About/logo (1).png";
+import img2 from "../../assets/images/About/bookdark.png";
 import Image from "next/image";
 import Lottie from "lottie-react";
 import lottieImage from "../../../public/voice3.json";
 import {  useSession } from "next-auth/react";
-
-let recognition; // Declare the recognition variable outside of the component
-
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { IoMoonOutline } from "react-icons/io5";
-import { RiMessage2Line } from "react-icons/ri";
-import { TbFocusCentered } from "react-icons/tb";
-import { FiSettings } from "react-icons/fi";
-import Toggle from "./../Toggle/Toggle";
 import axios from "axios";
 import ToggleMenu from "../ToggleMenu/ToggleMenu";
 
-// import {useRouter } from 'next/router';
+
 
 export default function DashboardNavbar() {
   const session = useSession();
   const [notificationApprove, setNotificationApprove] = useState([]);
   const [notification, setNotification] = useState([]);
   const [notificationSeen, setNotificationSeen] = useState(true);
-  console.log(notification);
+  // console.log(notification);
   const [isListening, setIsListening] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
@@ -61,7 +51,6 @@ export default function DashboardNavbar() {
 
   const [recognition, setRecognition] = useState(null);
 
-  // Set up speech recognition in useEffect to avoid SSR issues
   useEffect(() => {
     if (typeof window !== "undefined") {
       const SpeechRecognition =
@@ -142,7 +131,7 @@ export default function DashboardNavbar() {
 
   return (
     <div>
-      <nav className="fixed top-0 z-50 w-full py-1 bg-white dark:bg-[#272727fb] dark:shadow-md dark:shadow-[#2f2c2cfb]">
+      <nav className="fixed top-0 z-50 w-full py-1 bg-white dark:bg-[#272727E6] dark:shadow-md dark:shadow-[#2f2c2cfb]">
         <div className="py-1 pr-3.5">
           <div className="flex items-center justify-between">
             {/* logo and drawer */}
@@ -152,14 +141,8 @@ export default function DashboardNavbar() {
               </div>
 
               <Link href={"/"} className="hidden md:flex">
-                <Image
-                  src={img}
-                  unoptimized
-                  className="h-[60px] max-w-[150px] -mr-6"
-                  height={20}
-                  width={200}
-                  alt="image"
-                />
+                <Image src={img} unoptimized className="dark:hidden h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+                <Image src={img2} unoptimized className="hidden dark:block h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
               </Link>
             </div>
 
@@ -297,30 +280,12 @@ export default function DashboardNavbar() {
                     >
                       <MdOutlineMessage className="text-xl " />
                     </button>
-                    {/* <Menu
-                      id="message-menu"
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
-                      MenuListProps={{
-                        'aria-labelledby': 'message-button',
-                      }}
-                    >
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
-                      <MenuItem onClick={handleClose}>Logout</MenuItem>
-                    </Menu> */}
                   </div>
-                  {/* Settings Icon */}
-                  {/* <div className="border-l border-black pl-4 hidden md:block"> 
-                    <FiSettings className="text-2xl animate-spin [animation-duration:2s]" />
-                  </div> */}
                 </div>
               </div>
             </div>
 
-            <Link href={"/"} className="flex md:hidden mr-2">
-              {/* <Image unoptimized src={img} className="h-[52px] max-w-[135px] -mr-6" height={20} width={200} /> */}
+            <div className="flex md:hidden mr-2">
               <div className="hidden md:flex items-center justify-center ">
                 <div className=" relative w-40 lg:w-72 md:w-48 md:mr-4">
                   <input
@@ -356,7 +321,8 @@ export default function DashboardNavbar() {
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
+
           </div>
         </div>
       </nav>
