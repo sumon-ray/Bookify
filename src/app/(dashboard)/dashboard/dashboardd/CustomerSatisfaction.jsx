@@ -1,61 +1,66 @@
 "use client";
 
 import React from "react";
-import { TrendingUp } from "lucide-react";
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
+import { Area, AreaChart, CartesianGrid } from "recharts";
 import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,  
     CardHeader,
     CardTitle,
 } from "@/Components/ui/Card";
 import {
-    ChartConfig,
     ChartContainer,
-    ChartLegend,
-    ChartLegendContent,
     ChartTooltip,
     ChartTooltipContent,
+    ChartLegend,
+    ChartLegendContent,
 } from "@/Components/ui/Chart";
 
+const CustomerSatisfaction = ({ totalReviews }) => {
+    console.log(totalReviews);
+    // Function to calculate total good and bad reviews using optional chaining and map
+    const calculateTotals = (reviews) => {
+        let totalGood = 0;
+        let totalBad = 0;
 
-export const description = "An area chart with a legend";
+        reviews?.map((review) => {
+            if (review.rating >= 4) {
+                totalGood += 1; 
+            } else if (review.rating <= 3) {
+                totalBad += 1; 
+            }
+            return null; // return null to satisfy the map function
+        });
+        console.log(reviews, totalGood, totalBad);
+        return [
+            { type: "Good", count: totalGood },
+            { type: "Bad", count: totalBad },
+        ];
+    };
 
-const chartData = [
-    { month: "January", desktop: 186, mobile: 80 },
-    { month: "February", desktop: 305, mobile: 200 },
-    { month: "March", desktop: 237, mobile: 120 },
-    { month: "April", desktop: 73, mobile: 190 },
-    { month: "May", desktop: 209, mobile: 130 },
-    { month: "June", desktop: 214, mobile: 140 },
-];
+    const chartData = calculateTotals(totalReviews);
 
-const chartConfig = {
-    desktop: {
-        label: "Bad",
-        color: "hsl(var(--chart-1))",
-    },
-    mobile: {
-        label: "Good",
-        color: "hsl(var(--chart-2))",
-    },
-};
+    const chartConfig = {
+        good: {
+            label: "Good",
+            color: "hsl(var(--chart-2))",
+        },
+        bad: {
+            label: "Bad",
+            color: "hsl(var(--chart-1))",
+        },
+    };
 
-const CustomerSatisfaction = () => {
     return (
         <Card className="shadow-none border-none rounded-xl">
-            <CardHeader className="items-start pb-0 font-bold ">
+            <CardHeader className="items-start pb-0 font-bold">
                 <CardTitle className="font-bold">Users Satisfaction</CardTitle>
-                <CardDescription>January - June 2024</CardDescription>
+                <CardDescription>Total Reviews</CardDescription>
             </CardHeader>
             <CardContent>
-                <ChartContainer config={chartConfig}
-                    className="max-h-[250px]"
-                >          
+                <ChartContainer config={chartConfig} className="max-h-[250px]">
                     <AreaChart
-                        accessibilityLayer
                         data={chartData}
                         margin={{
                             left: 12,
@@ -63,51 +68,33 @@ const CustomerSatisfaction = () => {
                         }}
                     >
                         <CartesianGrid vertical={false} />
-                        <XAxis
-                            dataKey="month"
-                            tickLine={false}
-                            axisLine={false}
-                            tickMargin={8}
-                            tickFormatter={(value) => value.slice(0, 3)}
-                        />
                         <ChartTooltip
                             cursor={false}
                             content={<ChartTooltipContent indicator="line" />}
                         />
                         <Area
-                            dataKey="mobile"
-                            type="natural"
-                            fill="var(--color-mobile)"
+                            dataKey="count"
+                            name={chartConfig.good.label}
+                            fill={chartConfig.good.color}
                             fillOpacity={0.4}
-                            stroke="var(--color-mobile)"
+                            stroke={chartConfig.good.color}
+                            type="natural"
                             stackId="a"
                         />
                         <Area
-                            dataKey="desktop"
-                            type="natural"
-                            fill="var(--color-desktop)"
+                            dataKey="count"
+                            name={chartConfig.bad.label}
+                            fill={chartConfig.bad.color}
                             fillOpacity={0.4}
-                            stroke="var(--color-desktop)"
+                            stroke={chartConfig.bad.color}
+                            type="natural"
                             stackId="a"
                         />
                         <ChartLegend content={<ChartLegendContent />} />
                     </AreaChart>
                 </ChartContainer>
             </CardContent>
-            {/* <CardFooter>
-                <div className="flex w-full items-start gap-2 text-sm">
-                    <div className="grid gap-2">
-                        <div className="flex items-center gap-2 font-medium leading-none">
-                            Trending up by 4.2% this month <TrendingUp className="h-4 w-4" />
-                        </div>
-                        <div className="leading-none text-muted-foreground">
-                            Showing total visitors for the last 6 months
-                        </div>
-                    </div>
-                </div>
-            </CardFooter> */}
         </Card>
-        
     );
 };
 

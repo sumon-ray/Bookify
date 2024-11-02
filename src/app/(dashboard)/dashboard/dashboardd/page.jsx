@@ -42,7 +42,7 @@ const Page = () => {
                         <div className=' bg-[#fa5a7e] rounded-full lg:w-[50px] w-[30px]  lg:h-[50px] h-[30px] flex justify-center items-center'>
                             <GiCardExchange  className='lg:text-2xl md:text-xl text-white' />
                         </div>
-                        <h1 className='lg:text-2xl  text-xl font-bold'>{exchangeBooks}</h1>
+                        <h1 className='lg:text-2xl  text-xl font-bold dark:text-black'>{exchangeBooks}</h1>
                         <p className='text-gray-500 lg:font-bold md:font-medium'>Exchange Books</p>
                     </div>
 
@@ -50,7 +50,7 @@ const Page = () => {
                         <div className=' bg-[#fe947a] rounded-full lg:w-[50px] w-[30px]  lg:h-[50px] h-[30px] flex justify-center items-center'>
                             <IoIosBookmarks className='lg:text-2xl md:text-xl text-white' />
                         </div>
-                        <h1 className='lg:text-2xl text-xl font-bold'>{rentBooks}</h1>
+                        <h1 className='lg:text-2xl text-xl font-bold dark:text-black'>{rentBooks}</h1>
                         <p className='text-gray-500 lg:font-bold md:font-medium'>Reant Books</p>
                     </div>
 
@@ -58,7 +58,7 @@ const Page = () => {
                         <div className=' bg-[#3cd757] rounded-full lg:w-[50px] w-[30px]  lg:h-[50px] h-[30px] flex justify-center items-center'>
                             <FaFileAudio className='lg:text-2xl md:text-xl text-white' />
                         </div>
-                        <h1 className='lg:text-2xl text-xl font-bold'>{audioBooks}</h1>
+                        <h1 className='lg:text-2xl text-xl font-bold dark:text-black'>{audioBooks}</h1>
                         <p className='text-gray-500 lg:font-bold md:font-medium'>Audio Books</p>
                     </div>
 
@@ -66,7 +66,7 @@ const Page = () => {
                         <div className=' bg-[#bf83ff] rounded-full lg:w-[50px] w-[30px]  lg:h-[50px] h-[30px] flex justify-center items-center'>
                             <FaUserFriends className='lg:text-2xl md:text-xl text-white' />
                         </div>
-                        <h1 className='lg:text-2xl text-xl font-bold'>{totalUsers}</h1>
+                        <h1 className='lg:text-2xl text-xl font-bold dark:text-black'>{totalUsers}</h1>
                         <p className='text-gray-500 lg:font-bold md:font-medium'>Total Users</p>
                     </div>
 
@@ -89,7 +89,7 @@ const Page = () => {
             </div>
 
             {/* 6 */}<div className='rounded-b-lg lg:col-span-4 col-span-12 lg:h-[310px]'>
-                <CustomerSatisfaction/>
+                <CustomerSatisfaction totalReviews={totalReview}/>
             </div>
            
 
