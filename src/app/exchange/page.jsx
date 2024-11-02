@@ -299,15 +299,15 @@ export default function Page() {
 
 
       <div className="min-h-[90vh] flex flex-col justify-center">
-        <h1 className="text-2xl font-bold text-center uppercase py-6 pt-5">Exchange Your Books</h1>
+        <h1 className="text-xl md:text-2xl font-bold text-center uppercase py-6 pt-5">Exchange Your Books</h1>
 
         {/* Main div */}
-        <div className="flex lg:gap-14 flex-col md:flex-row px-4">
+        <div className="flex gap-10 lg:gap-14 flex-col md:flex-row px-4">
 
           {/* Take Books */}
-          <div className="lg:w-[50%] md:h-[480px] w-full bg-[#EFEEE9] dark:bg-[#0A0A0CCC] dark:text-white rounded-lg md:p-5">
-            <h3 className="text-2xl font-semibold text-center text-[#000000] dark:text-white md:mt-0 mt-3 ">Take Books</h3>
-            <p className="font-semibold text-center text-[#000000] dark:text-white">Add the books you are taking in exchange here</p>
+          <div className="lg:w-[50%] md:h-[490px] w-full bg-[#EFEEE9] dark:bg-[#0A0A0CCC] dark:text-white rounded-lg md:p-5">
+            <h3 className="text-xl md:text-2xl font-semibold text-center text-[#000000] dark:text-white md:mt-0 mt-3 ">Take Books</h3>
+            <p className="font-semibold text-center text-[#000000] dark:text-white hidden md:block">Add the books you are taking in exchange here</p>
             {
               takeBooksLoading ?
                 <div className="flex justify-center items-center min-h-[370px]"><svg
@@ -333,7 +333,7 @@ export default function Page() {
                 </svg>
                 </div>
                 :
-                <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-6 gap-y-4 px-6 h-[350px] mt-6 overflow-y-auto">
+                <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-6 gap-y-4 px-4 md:px-6 h-[350px] mt-4 md:mt-6 overflow-y-auto">
                   <div onClick={() => setTakeBooksModal(true)}
                     className="w-full h-40 bg-[#364957] dark:bg-[#272727E6]  rounded-md flex justify-center items-center">
                     <FiPlusCircle className="text-6xl text-[#ffffff]" />
@@ -361,9 +361,9 @@ export default function Page() {
           </div>
 
           {/* Give Books */}
-          <div className="lg:w-[50%] md:h-[480px] w-full bg-[#EFEEE9] dark:bg-[#0A0A0CCC] dark:text-white rounded-lg md:p-5">
-            <h3 className="text-2xl font-semibold text-center text-[#000000] dark:text-white md:mt-0 mt-3 ">Give Books</h3>
-            <p className="font-semibold text-center text-[#000000] dark:text-white ">Add the books you are giving in exchange here</p>
+          <div className="lg:w-[50%] md:h-[490px] w-full bg-[#EFEEE9] dark:bg-[#0A0A0CCC] dark:text-white rounded-lg md:p-5">
+            <h3 className="text-xl md:text-2xl font-semibold text-center text-[#000000] dark:text-white md:mt-0 mt-3 ">Give Books</h3>
+            <p className="font-semibold text-center text-[#000000] dark:text-white hidden md:block">Add the books you are giving in exchange here</p>
             {
               giveBooksLoading ?
                 <div className="flex justify-center items-center min-h-[370px]"><svg
@@ -389,7 +389,7 @@ export default function Page() {
                 </svg>
                 </div>
                 :
-                <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-6 gap-y-4 px-6 h-[350px] mt-6 overflow-y-auto">
+                <div className="grid lg:grid-cols-3 grid-cols-2 gap-x-6 gap-y-4 px-4 md:px-6 h-[350px] mt-4 md:mt-6 overflow-y-auto">
                   <div onClick={() => setGiveBooksModal(true)}
                     className="w-full h-40 bg-[#364957] dark:bg-[#272727E6] rounded-md flex justify-center items-center">
                     <FiPlusCircle className="text-6xl text-[#ffffff]" />
@@ -462,7 +462,7 @@ export default function Page() {
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center p-4 bg-black bg-opacity-50 z-50">
           <div className="bg-[#F3F2ED] dark:bg-[#272727] dark:border-white dark:border dark:text-white  rounded-lg shadow-lg w-full max-w-[800px] min-h-[50vh] relative pb-14">
 
-            <div className="text-xl text-center font-black p-3  dark:bg-[#0A0A0C] rounded-t-lg">
+            <div className="text-lg md:text-xl text-center font-black p-3 bg-white  dark:bg-[#0A0A0C] rounded-t-lg">
               <h1>
                 Books Available for Exchange
               </h1>
@@ -486,40 +486,40 @@ export default function Page() {
                   </div>
                   :
                   <>
-                    <div className="flex items-center justify-between pb-8 pt-2">
-                      <div>
-                        <div className=" relative w-40 lg:w-72 md:w-52 ">
-                          <input
-                            className="bg-[white] dark:bg-[#0A0A0C] w-full border-0 focus:ring-[#EFEEE9] dark:focus:ring-0 focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
-                            type="text"
-                            placeholder="Search by title..."
-                            onChange={handleGiveSearch} />
-                          <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
-                            <div className={`bg-[#364957] dark:bg-white p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer`}>
-                              <IoIosSearch onClick={() => {
-                                setSearchButton2(!searchButton2)
-                                myBooksRefetch()
-                              }} className="text-white dark:text-black text-2xl" />
-                            </div>
+                    <div className="flex items-center md:justify-between pb-6 md:pb-8 md:pt-2">
+                      <div className="relative w-full lg:w-72 md:w-52 ">
+                        <input
+                          className="bg-[white] dark:bg-[#0A0A0C] w-full border-0 focus:ring-[#EFEEE9] dark:focus:ring-0 focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
+                          type="text"
+                          placeholder="Search by title..."
+                          onChange={handleGiveSearch} />
+                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
+                          <div className={`bg-[#364957] dark:bg-white p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer`}>
+                            <IoIosSearch onClick={() => {
+                              setSearchButton2(!searchButton2)
+                              myBooksRefetch()
+                            }} className="text-white dark:text-black text-2xl" />
                           </div>
                         </div>
                       </div>
-                      <Select onValueChange={(value) => {
-                        setSelectedOwner(value);
-                        usersDataRefetch()
-                      }}>
-                        <SelectTrigger className="w-[180px]">
-                          <SelectValue placeholder="Select owner" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectGroup>
-                            <SelectLabel>Owner</SelectLabel>
-                            {
-                              uniqueMyBooksOwners?.map(owner => <SelectItem key={owner} value={owner}>{owner}</SelectItem>)
-                            }
-                          </SelectGroup>
-                        </SelectContent>
-                      </Select>
+                      <div className="hidden md:block">
+                        <Select onValueChange={(value) => {
+                          setSelectedOwner(value);
+                          usersDataRefetch()
+                        }}>
+                          <SelectTrigger className="w-[180px]">
+                            <SelectValue placeholder="Select owner" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectGroup>
+                              <SelectLabel>Owner</SelectLabel>
+                              {
+                                uniqueMyBooksOwners?.map(owner => <SelectItem key={owner} value={owner}>{owner}</SelectItem>)
+                              }
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+                      </div>
                     </div>
                     {
                       myBooksLoading
@@ -554,7 +554,7 @@ export default function Page() {
                             <thead>
                               <tr className="sticky top-0 w-full font-bold bg-[white] dark:bg-[#0A0A0C]">
                                 <th className="py-1">Cover</th>
-                                <th className="py-1">Title</th>
+                                <th className="py-1 hidden md:table-cell">Title</th>
                                 <th className="py-1">owner</th>
                                 <th className="py-1">Action</th>
                               </tr>
@@ -563,11 +563,11 @@ export default function Page() {
                             <tbody>
                               {mybooks?.map((book) => (
                                 <tr key={book?._id} className="border-t border-black dark:border-white dark:text-white">
-                                  <td className="px-5 py-5  text-sm">
+                                  <td className="px-5 py-5">
                                     <div>
                                       <Image
                                         unoptimized
-                                        className="w-[105px] h-[125px] rounded-md object-fill"
+                                        className="md:w-[105px] md:h-[125px] rounded-md object-fill"
                                         src={book?.coverImage}
                                         alt={book?.title}
                                         height={100}
@@ -575,16 +575,16 @@ export default function Page() {
                                       />
                                     </div>
                                   </td>
-                                  <td className="px-5 py-5">
+                                  <td className="px-5 py-5 hidden md:table-cell">
                                     <p className=" text-black dark:text-white whitespace-no-wrap">{book?.title}</p>
                                   </td>
                                   <td className="px-5 py-5">
-                                    <p className=" text-black dark:text-white whitespace-no-wrap">{book?.owner}</p>
+                                    <p className=" text-black dark:text-white whitespace-no-wrap">{book?.owner?.split(' ').slice(0,2).join(' ')}</p>
                                   </td>
                                   <td className="px-5 py-5">
                                     <div>
-                                      <button onClick={() => giveBooksExchange(book)} className="relative inline-block font-medium text-white px-3 py-1 bg-[#36495799] dark:bg-[#0A0A0C] rounded-md">
-                                        <span className="flex items-center gap-x-0.5"> <TbExchange />Exchange </span>
+                                      <button onClick={() => giveBooksExchange(book)} className="relative inline-block  md:font-medium text-white px-1 md:px-3 py-0.5 md:py-1 bg-[#36495799] dark:bg-[#0A0A0C] rounded-md">
+                                        <span className="flex items-center gap-x-0.5"> <TbExchange className="hidden md:inline-block"/>Exchange </span>
                                       </button>
                                     </div>
                                   </td>
@@ -616,7 +616,7 @@ export default function Page() {
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center p-4 bg-black bg-opacity-50 z-50">
           <div className="bg-[#F3F2ED] dark:bg-[#272727] dark:text-white dark:border dark:border-white rounded-lg shadow-lg w-full max-w-[800px] min-h-[50vh] relative pb-14">
 
-            <div className="text-xl text-center font-black p-3 bg-[white] dark:bg-[#0A0A0C] dark:text-white rounded-t-lg">
+            <div className="text-lg md:text-xl text-center font-black p-3 bg-[white] dark:bg-[#0A0A0C] dark:text-white rounded-t-lg">
               <h1>
                 Books Available for Exchange
               </h1>
@@ -624,43 +624,43 @@ export default function Page() {
 
             <div className="p-6">
 
-              <div className="flex items-center justify-between pb-8 pt-2">
-                <div>
-                  <div className="relative w-40 lg:w-72 md:w-52 ">
-                    <input
-                      className="bg-[white] dark:bg-[#0A0A0C] w-full border-0 focus:ring-[#EFEEE9] dark:focus:ring-0 focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
-                      type="text"
-                      placeholder="Search by title..."
-                      onChange={handleSearch}
-                    />
-                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
-                      <div className={`bg-[#364957] dark:bg-white  p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer`}>
-                        <IoIosSearch onClick={() => {
-                          setSearchButton(!searchButton)
-                          usersDataRefetch()
-                        }} className="text-white dark:text-black text-2xl" />
-                      </div>
+              <div className="flex items-center md:justify-between pb-6 md:pb-8 md:pt-2">
+                <div className="relative w-full lg:w-72 md:w-52 ">
+                  <input
+                    className="bg-[white] dark:bg-[#0A0A0C] w-full border-0 focus:ring-[#EFEEE9] dark:focus:ring-0 focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
+                    type="text"
+                    placeholder="Search by title..."
+                    onChange={handleSearch}
+                  />
+                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
+                    <div className={`bg-[#364957] dark:bg-white  p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer`}>
+                      <IoIosSearch onClick={() => {
+                        setSearchButton(!searchButton)
+                        usersDataRefetch()
+                      }} className="text-white dark:text-black text-2xl" />
                     </div>
                   </div>
                 </div>
-                <Select onValueChange={(value) => {
-                  setSelectedOwner(value);
-                  setSearch('')
-                  usersDataRefetch()
-                }}>
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Select owner" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>Owner</SelectLabel>
-                      <SelectItem value={' '}>All</SelectItem>
-                      {
-                        uniqueOwner?.map(owner => <SelectItem key={owner} value={owner}>{owner}</SelectItem>)
-                      }
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
+                <div className="hidden md:block">
+                  <Select onValueChange={(value) => {
+                    setSelectedOwner(value);
+                    setSearch('')
+                    usersDataRefetch()
+                  }}>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Select owner" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Owner</SelectLabel>
+                        <SelectItem value={' '}>All</SelectItem>
+                        {
+                          uniqueOwner?.map(owner => <SelectItem key={owner} value={owner}>{owner}</SelectItem>)
+                        }
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               {
@@ -696,7 +696,7 @@ export default function Page() {
                       <thead>
                         <tr className="sticky top-0 w-full font-bold bg-[white] dark:bg-[#0A0A0C] dark:text-white">
                           <th className="py-1">Cover</th>
-                          <th className="py-1">Title</th>
+                          <th className="py-1 hidden md:table-cell">Title</th>
                           <th className="py-1">owner</th>
                           <th className="py-1">Action</th>
                         </tr>
@@ -709,7 +709,7 @@ export default function Page() {
                               <div>
                                 <Image
                                   unoptimized
-                                  className="w-[105px] h-[125px] rounded-md object-fill"
+                                  className="md:w-[105px] md:h-[125px] rounded-md object-fill"
                                   src={book?.coverImage}
                                   alt={book?.title}
                                   height={100}
@@ -717,16 +717,16 @@ export default function Page() {
                                 />
                               </div>
                             </td>
-                            <td className="px-5 py-5">
+                            <td className="px-5 py-5 hidden md:table-cell">
                               <p className=" text-black dark:text-white whitespace-no-wrap">{book?.title}</p>
                             </td>
                             <td className="px-5 py-5">
-                              <p className=" text-black dark:text-white whitespace-no-wrap">{book?.owner}</p>
+                              <p className=" text-black dark:text-white whitespace-no-wrap">{book?.owner?.split(' ').slice(0,2).join(' ')}</p>
                             </td>
                             <td className="px-5 py-5">
                               <div>
-                                <button onClick={() => takeBookExchange(book)} className="relative inline-block font-medium text-white px-3 py-1 bg-[#36495799] dark:bg-[#0A0A0C] rounded-md">
-                                  <span className="flex items-center gap-x-0.5"> <TbExchange />Exchange </span>
+                                <button onClick={() => takeBookExchange(book)} className="relative inline-block md:font-medium text-white px-1 md:px-3 py-0.5 md:py-1 bg-[#36495799] dark:bg-[#0A0A0C] rounded-md">
+                                  <span className="flex items-center gap-x-0.5"> <TbExchange className="hidden md:block"/>Exchange </span>
                                 </button>
                               </div>
                             </td>
