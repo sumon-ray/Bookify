@@ -88,15 +88,15 @@ export default function Page({ params }) {
                         <FaBookmark></FaBookmark>
                       </button> */}
                     </div>
-                    <h2 className="text-slate-500 dark:text-gray-400 text-sm  truncate">
+                    <h2 className="  text-sm  truncate">
                       By:
-                      <span className="underline cursor-pointer ml-1">
+                      <span className=" cursor-pointer ml-1">
                         {currentAudioBook.author}
                       </span>
                     </h2>
-                    <h2 className="text-slate-500 dark:text-gray-400 text-sm  truncate">
+                    <h2 className="  text-sm  truncate">
                       Publisher:
-                      <span className="underline cursor-pointer ml-1">
+                      <span className=" cursor-pointer ml-1">
                         Bookify
                       </span>
                     </h2>
@@ -155,7 +155,7 @@ export default function Page({ params }) {
                       </p>
                     </div>
                   </div>
-                  <div className="text-[#364957] mt-[40px] flex gap-2 flex-col dark:text-white dark:border-[#0A0A0C]">
+                  <div className="text-[#364957] mt-[31px] flex gap-2 flex-col dark:text-white dark:border-[#0A0A0C]">
                     <div className="flex items-center">
                       {/* <FaShareFromSquare className="text-2xl" /> */}
                       <h2 className="ml-2 flex  items-center justify-center gap-2">Share on <LiaHandPointDown className="mt-2" /> </h2>
