@@ -47,7 +47,7 @@ const CustomerSatisfaction = () => {
     return (
         <Card className="shadow-none border-none rounded-xl">
             <CardHeader className="items-start pb-0 font-bold ">
-                <CardTitle className="font-bold">Customer Satisfaction</CardTitle>
+                <CardTitle className="font-bold">Users Satisfaction</CardTitle>
                 <CardDescription>January - June 2024</CardDescription>
             </CardHeader>
             <CardContent>
@@ -94,7 +94,7 @@ const CustomerSatisfaction = () => {
                     </AreaChart>
                 </ChartContainer>
             </CardContent>
-            <CardFooter>
+            {/* <CardFooter>
                 <div className="flex w-full items-start gap-2 text-sm">
                     <div className="grid gap-2">
                         <div className="flex items-center gap-2 font-medium leading-none">
@@ -105,7 +105,7 @@ const CustomerSatisfaction = () => {
                         </div>
                     </div>
                 </div>
-            </CardFooter>
+            </CardFooter> */}
         </Card>
         
     );
