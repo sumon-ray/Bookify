@@ -282,3 +282,8 @@ input[type="file"]::file-selector-button {
 .profile-icon, .theme-icon {
     margin-left: 10px; /* Add space between menu and icons */
 }
+
+.bg-\[\#364957\] {
+  --tw-bg-opacity: 1;
+  background-color: #364957 !important;
+}

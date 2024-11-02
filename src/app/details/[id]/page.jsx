@@ -7,6 +7,7 @@ import DetailsCard from './DetailsCard';
 import { FaBook } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
+import Heading from '@/Components/Heading/Heading';
 
 export default function Details() {
     const params = useParams();
@@ -60,11 +61,12 @@ export default function Details() {
                         <DetailsTab Book={data} />
 
                         {/* related book title */}
-                        <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[265px] h-12 mx-auto dark:border-white dark:text-white'>
+                        <Heading heading={'Related Books'}/>
+                        {/* <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black max-w-[265px] h-12 mx-auto dark:border-white dark:text-white'>
                             <h1 className='flex items-center justify-center text-2xl uppercase font-bold '>
                                 <FaBook className='text-xl -mb-0.5' /> Related Books
                             </h1>
-                        </div>
+                        </div> */}
 
                         <DetailsCard genre={data?.genre} title={data?.title} />
                     </>
