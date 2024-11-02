@@ -17,9 +17,9 @@ const SocialLogin = () => {
 
     // If the sign-in was successful, check if the session is authenticated and then redirect
     if (resp && !resp.error) {
-      router.push("/"); // Manual redirect if sign-in succeeds
+      router.push("/");
     } else {
-      console.error("Sign-in error", resp.error); // Log the error for debugging
+      console.error("Sign-in error", resp.error);
     }
   };
 
