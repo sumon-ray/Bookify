@@ -5,14 +5,14 @@ import { GiCardExchange } from "react-icons/gi";
 import { IoIosBookmarks } from "react-icons/io";
 import { FaFileAudio } from "react-icons/fa6";
 import { FaUserFriends } from "react-icons/fa";
-import TopBooks from './TopBooks';
 import Reviews from './Reviews';
 import CustomerSatisfaction from './CustomerSatisfaction';
 import axios from 'axios';
+import TopBooks from './TopBooks';
 
 const Page = () => {
     const [overview, setOverview] = useState([])
-    const {exchangeBooks, rentBooks, audioBooks, totalUsers} = overview
+    const {exchangeBooks, rentBooks, audioBooks, totalUsers, topBooks} = overview
     // fetch data 
     useEffect(() => {
         const dashboardData = async () => {
@@ -73,7 +73,7 @@ const Page = () => {
             </div>
 
             {/* 2 */}<div className='lg:col-span-4 h-[310px] col-span-12'>
-                <TopBooks/>
+               <TopBooks topBooks={topBooks}/>
             </div>
             
             {/* 3 */}<div className='bg-white lg:col-span-4 lg:h-[310px] col-span-12 md:mb-4'>
