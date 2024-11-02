@@ -137,9 +137,11 @@ const Page = () => {
   return (
     <section className="container px-4 mx-auto">
       <div className="flex items-center gap-x-3">
-        <h2 className="text-lg font-medium text-gray-800 ">Total members</h2>
+        <h2 className="text-lg font-medium text-gray-800  dark:text-white ">
+          Total members
+        </h2>
 
-        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-[#0A0A0C] dark:text-white">
+        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-[#272727A6] dark:text-white">
           {data.length > 0 ? data.length : "0"}
         </span>
       </div>
@@ -149,21 +151,15 @@ const Page = () => {
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                <thead className="bg-gray-50 dark:bg-gray-800">
+                <thead className="bg-gray-50 dark:bg-[#272727A6] dark:text-white">
                   <tr>
-                    <th
-                      
-                      className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
-                    >
+                    <th className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:bg-[#272727A6] dark:text-white">
                       <div className="flex items-center gap-x-3">
                         <span>Profile</span>
                       </div>
                     </th>
 
-                    <th
-                      
-                      className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
-                    >
+                    <th className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:bg-[#272727A6] dark:text-white">
                       <button className="flex items-center gap-x-2">
                         <span>Status</span>
 
@@ -195,10 +191,7 @@ const Page = () => {
                       </button>
                     </th>
 
-                    <th
-                      
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
-                    >
+                    <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:bg-[#272727A6] dark:text-white">
                       <button className="flex items-center gap-x-2">
                         <span>Role</span>
 
@@ -219,22 +212,19 @@ const Page = () => {
                       </button>
                     </th>
 
-                    <th
-                      
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
-                    >
+                    <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:bg-[#272727A6] dark:text-white">
                       Email address
                     </th>
 
-                    <th  className="relative py-3.5 px-4">
-                      <span className="sr-only">Edit</span>
+                    <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:bg-[#272727A6] dark:text-white">
+                      Action
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-[#272727A6] dark:text-white">
                   {currentUsers?.map((user) => (
                     <tr key={user.email}>
-                      <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                      <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap dark:bg-[#272727A6] dark:text-white">
                         <div className="inline-flex items-center gap-x-3">
                           <div className="flex items-center gap-x-2">
                             <Image
@@ -249,10 +239,10 @@ const Page = () => {
                               alt={user?.name}
                             />
                             <div>
-                              <h2 className="font-medium text-gray-800  ">
+                              <h2 className="font-medium text-gray-800 dark:bg-[#272727A6] dark:text-white ">
                                 {user?.name}
                               </h2>
-                              <p className="text-sm font-normal text-gray-600 dark:bg-[#0A0A0C] dark:text-white">
+                              <p className="text-sm font-normal text-gray-600  dark:bg-[#272727A6] dark:text-white">
                                 {user?.email}
                               </p>
                             </div>
@@ -262,7 +252,7 @@ const Page = () => {
                       <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                         {session?.status === "authenticated" &&
                         session?.data?.user?.name == user?.name ? (
-                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-[#0A0A0C] dark:text-white">
+                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-[#272727A6] dark:text-white">
                             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
                             <h2 className="text-sm font-normal text-emerald-500">
@@ -270,7 +260,7 @@ const Page = () => {
                             </h2>
                           </div>
                         ) : (
-                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-[#0A0A0C] dark:text-white">
+                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-[#272727A6] dark:text-white">
                             <span className="h-1.5 w-1.5 rounded-full bg-red-500"></span>
 
                             <h2 className="text-sm font-normal text-red-500">
@@ -279,10 +269,10 @@ const Page = () => {
                           </div>
                         )}
                       </td>
-                      <td className="px-4 py-4 text-sm text-gray-500 dark:bg-[#0A0A0C] dark:text-white whitespace-nowrap">
+                      <td className="px-4 py-4 text-sm text-gray-500 dark:bg-[#272727A6] dark:text-white whitespace-nowrap">
                         {user?.role}
                       </td>
-                      <td className="px-4 py-4 text-sm text-gray-500 dark:bg-[#0A0A0C] dark:text-white whitespace-nowrap">
+                      <td className="px-4 py-4 text-sm text-gray-500 dark:bg-[#272727A6] dark:text-white whitespace-nowrap">
                         {user?.email}
                       </td>
 
@@ -290,7 +280,7 @@ const Page = () => {
                         <div className="flex items-center gap-x-6">
                           <button
                             onClick={() => handleDelete(user?._id)}
-                            className="text-gray-500 transition-colors duration-200 dark:bg-[#0A0A0C] dark:text-white hover:text-red-500 focus:outline-none"
+                            className="text-gray-500 transition-colors duration-200 dark:bg-[#272727A6] dark:text-white hover:text-red-500 focus:outline-none"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -312,7 +302,7 @@ const Page = () => {
                             onClick={() =>
                               handleToggleRole(user._id, user.role)
                             }
-                            className="text-gray-500 transition-colors duration-200 dark:bg-[#0A0A0C] dark:text-white hover:text-yellow-500 focus:outline-none"
+                            className="text-gray-500 transition-colors duration-200 dark:bg-[#272727A6] dark:text-white hover:text-yellow-500 focus:outline-none"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -346,8 +336,8 @@ const Page = () => {
           pageCount={pageCount}
           onPageChange={handlePageClick}
           containerClassName="flex items-center justify-between space-x-4"
-          previousLinkClassName="px-3 py-1 text-sm text-white bg-[#364957] border rounded-md  dark:bg-[#0A0A0C] dark:text-white"
-          nextLinkClassName="px-3 py-1 text-sm text-white bg-[#364957] border rounded-md  dark:bg-[#0A0A0C] dark:text-white"
+          previousLinkClassName="px-3 py-1 text-sm text-white bg-[#364957] border rounded-md  dark:bg-[#272727A6] dark:text-white"
+          nextLinkClassName="px-3 py-1 text-sm text-white bg-[#364957] border rounded-md  dark:bg-[#272727A6] dark:text-white"
           pageLinkClassName="px-3 py-1 text-sm text-gray-700  border rounded-md dark:text-white"
           activeLinkClassName="bg-[#364957] text-white"
           disabledClassName="opacity-50 cursor-not-allowed"
