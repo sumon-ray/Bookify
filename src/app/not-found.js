@@ -15,7 +15,7 @@ export default function NotFound() {
 
       {/* Right Side - Text */}
       <div className="lg:w-1/2 text-center lg:text-left pl-8 mt-16">
-        <h2 className="text-4xl font-semibold mb-4 drop-shadow-lg">Oops! Page Not Found</h2>
+        <h2 className="text-4xl font-semibold mb-4 drop-shadow-lg dark:text-white">Oops! Page Not Found</h2>
         <p className="text-xl mb-6 max-w-md drop-shadow-md">
           {/* Sorry, the page you're looking for doesn&apos;t exist. */}
         </p>

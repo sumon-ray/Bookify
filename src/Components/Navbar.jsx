@@ -236,7 +236,7 @@ const Navbar = () => {
 
         <div className="flex hidden md:block gap-2">
                   <Toggle />
-<div className="flex lg:justify-center   items-center gap-2">
+ <div className="flex lg:justify-center   items-center gap-2">
           {session?.status === "unauthenticated" && (
             <Link href="/login"> 
               <button className="btn text-[16px] md:block hidden font-semibold bg-[#364957]  text-white p-3 px-4 rounded-lg">
