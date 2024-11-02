@@ -124,7 +124,7 @@ const Page = () => {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 dark:bg-opacity-100 flex justify-center items-center dark:bg-[#272727A6] dark:text-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 dark:bg-opacity-100 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full dark:bg-[#272727A6] dark:text-white">
             <h2 className="text-xl font-semibold mb-4">Update Profile</h2>
             <form onSubmit={handleUpdate}>
