@@ -141,8 +141,8 @@ export default function DashboardNavbar() {
               </div>
 
               <Link href={"/"} className="hidden md:flex">
-                <Image src={img} unoptimized className="dark:hidden h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
-                <Image src={img2} unoptimized className="hidden dark:block h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+                <Image src={img} unoptimized className="dark:hidden h-[60px] max-w-[150px] -mr-6" height={20} width={200} alt="bookify" />
+                <Image src={img2} unoptimized className="hidden dark:block h-[60px] max-w-[150px] -mr-6" height={20} width={200} alt="bookify"/>
               </Link>
             </div>
 
