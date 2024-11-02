@@ -144,7 +144,7 @@ export default function NavbarDrawer() {
             <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}
                 sx={{
                     '& .MuiDrawer-paper': {
-                        backgroundColor: theme === 'dark' ? '#121212' : '#ffffff',
+                        backgroundColor: theme === 'dark' ? '#272727A6' : '#ffffff',
                         color: theme === 'dark' ? '#ffffff' : '#000000',
                     },
                 }}>
