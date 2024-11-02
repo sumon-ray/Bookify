@@ -89,7 +89,7 @@ const Navbar = () => {
 
   return (
     <div className="overflow-hidden">
-      <nav className="md:flex items-center md:justify-between bg-[#F3F2ED] dark:bg-[#272727E6] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
+      <nav className="md:flex items-center md:justify-between bg-[#F3F2ED] border-b border-black  dark:border-white dark:bg-[#272727E6] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
         {/* bookify logo */}
         <div className="flex md:flex-none items-center justify-between">
           <>

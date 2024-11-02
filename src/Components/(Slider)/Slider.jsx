@@ -31,7 +31,7 @@ const Slider = () => {
     })
 
     return (
-        <div className="bg-[#EFEEE9]  dark:bg-gradient-to-r from-[#0A0A0CC4] from-10% via-[#0A0A0CD6] via-30% to-[#0A0A0CF0] to-90%  lg:min-h-screen flex flex-col-reverse md:flex-row items-center justify-center  lg:gap-x-40  md:pt-16 lg:pt-9">
+        <div className="bg-[#EFEEE9] dark:bg-gradient-to-r from-[#0A0A0CC4] from-10% via-[#0A0A0CD6] via-30% to-[#0A0A0CF0] to-90%  lg:min-h-screen flex flex-col-reverse md:flex-row items-center justify-center  lg:gap-x-40  md:pt-16 lg:pt-9">
 
             <div className="w-full md:w-[60%] lg:w-[50%] space-y-1.5 md:space-y-2 lg:space-y-4 p-6 md:p-10 lg:p-0">
                 <h1 className="text-2xl md:text-3xl lg:text-7xl font-bold text-[#000000] dark:text-white">Swap Books<br /> Share Knowledge</h1>
