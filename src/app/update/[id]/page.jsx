@@ -123,8 +123,8 @@ const UpdateBook = ({ params }) => {
 
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 *:space-y-0.5">
-          <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase dark:text-white">Title</label>
+          <div className="col-span-full   sm:col-span-2">
+            <label className="text-sm py-2  uppercase dark:text-white">Title</label>
             <input
               type="text"
               name="title"
