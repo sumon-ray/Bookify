@@ -51,7 +51,7 @@ const Page = () => {
                             <IoIosBookmarks className='lg:text-2xl md:text-xl text-white' />
                         </div>
                         <h1 className='lg:text-2xl text-xl font-bold dark:text-black'>{rentBooks}</h1>
-                        <p className='text-gray-500 lg:font-bold md:font-medium'>Reant Books</p>
+                        <p className='text-gray-500 lg:font-bold md:font-medium'>Trending Books</p>
                     </div>
 
                     <div className=' w-full lg:h-[200px] md:h-[150px] h-[100px] bg-[#dcfce7] lg:p-8 md:p-6 p-2 lg:pl-6  md:pl-4 pl-2 rounded-xl space-y-1'>
