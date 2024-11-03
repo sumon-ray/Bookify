@@ -15,13 +15,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/Components/ui/card";
+} from "@/Components/ui/Card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/Components/ui/chart";
+} from "@/Components/ui/Chart";
 
 // Description of the component
 export const description = "A radial chart with stacked sections";

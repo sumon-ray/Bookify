@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Send from './Send';
 import Get from './Get';
+import { useTheme } from 'next-themes';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -36,6 +37,8 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs() {
+    const theme = useTheme();
+
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -46,8 +49,17 @@ export default function BasicTabs() {
         <Box>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab className='dark:text-white text-black' label="Send request" sx={{ color: 'black' }} />
-                    <Tab className='dark:text-white text-black' label="Get request" sx={{ color: 'black' }} />
+                    <Tab
+                        label="Send request"
+                        sx={{
+                            color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                        }}
+                    />
+                    <Tab
+                        label="Get request"
+                        sx={{
+                            color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                        }} />
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>

@@ -58,7 +58,7 @@ function Row({ row, refetch }) {
     
     return (
         <React.Fragment>
-            <TableRow className='dark:bg-[#272727A6]'  sx={{ '& > *': { borderBottom: 'unset' } }}>
+            <TableRow className='dark:bg-[#272727]'  sx={{ '& > *': { borderBottom: 'unset' } }}>
                 <TableCell>
                     <IconButton
                         aria-label="expand row"
@@ -76,7 +76,7 @@ function Row({ row, refetch }) {
                     <Modal receiver={row} />
                 </TableCell>
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6 dark:text-white'>{row?.ownerBooks?.length}</span></TableCell>
-                {/* <TableCell align='left' className='relative hidden md:inline-block'><span className='absolute left-[3px] top-6 '>{row?.date?.toLocaleString()?.split('T')[0].split('-')}</span></TableCell> */}
+                <TableCell align='left' className='relative hidden md:table-cell'><span className='absolute left-[3px] top-6 dark:text-white'>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
                 <TableCell align='left' className='md:relative'>
                     <Button className={`md:absolute md:left-[3px] ${row?.status === 'pending' ? 'bg-[#F5A52433] text-[#F5A524] dark:text-[#f5e024e3] dark:bg-[#F5A52466]' : row?.status === 'canceled' ? 'bg-[#0000004D] text-black' : 'bg-[#31C48D4D] text-green-500 dark:text-green-900'} top-3  rounded-full capitalize font-medium`}>
                         {row?.status}
@@ -163,7 +163,7 @@ export default function Send() {
                                     <TableCell className='font-bold dark:text-white'>Name</TableCell>
                                     <TableCell className='font-bold dark:text-white'>Message</TableCell>
                                     <TableCell className='font-bold dark:text-white'>Books</TableCell>
-                                    {/* <TableCell className='font-bold hidden md:inline-block'>Date</TableCell> */}
+                                    <TableCell className='font-bold hidden md:table-cell dark:text-white'>Date</TableCell>
                                     <TableCell className='font-bold dark:text-white'>Status</TableCell>
                                     <TableCell className='font-bold dark:text-white'>Action</TableCell>
                                 </TableRow>

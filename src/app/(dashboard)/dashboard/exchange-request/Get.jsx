@@ -122,7 +122,7 @@ function Row({ row, refetch }) {
     return (
         <React.Fragment>
 
-            <TableRow className='dark:bg-[#272727A6]' sx={{ '& > *': { borderBottom: 'unset' } }}>
+            <TableRow className='dark:bg-[#272727]' sx={{ '& > *': { borderBottom: 'unset' } }}>
                 <TableCell>
                     <IconButton
                         aria-label="expand row"
