@@ -38,7 +38,7 @@ const AiChat = () => {
   };
 
   return (
-    <div className="my-28 flex px-8 lg:px-20 flex-col md:flex-row justify-center">
+    <div className="my-4 md:my-28 flex gap-6 md:gap-0  px-8 lg:px-20 flex-col md:flex-row justify-center">
       <motion.div
         className="w-full md:w-1/3 p-6 bg-gray-100 dark:bg-[#27272733] dark:text-white   rounded-lg mr-6 shadow-lg transition-transform duration-200 transform hover:scale-105"
         initial={{ opacity: 0, x: -50 }}
@@ -138,7 +138,7 @@ const AiChat = () => {
       </motion.div>
 
       <motion.div
-        className="w-full md:w-1/3 p-6 bg-gray-100 dark:bg-[#27272733] dark:text-white rounded-lg ml-6 shadow-lg transition-transform duration-200 transform hover:scale-105"
+        className="w-full md:w-1/3 p-6 bg-gray-100 dark:bg-[#27272733] dark:text-white rounded-lg shadow-lg transition-transform duration-200 transform hover:scale-105"
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
