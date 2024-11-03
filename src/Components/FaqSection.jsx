@@ -285,10 +285,10 @@ const FaqSection = () => {
       <div className="text-center mt-6">
         {!showMore && filteredFAQs.length > 6 && (
           <button
-            className="px-6 py-2 border border-black dark:border-white text-black dark:text-white rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300"
+            className="px-6 py-2 border border-black mt-4 dark:border-white text-black dark:text-white rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-300"
             onClick={() => setShowMore(true)}
           >
-            <span className="flex items-center justify-center  gap-1">
+            <span className="flex items-center justify-center   gap-1">
               Show more <HiOutlineArrowNarrowRight className="mt-1" />
             </span>
           </button>
@@ -322,12 +322,12 @@ const FaqSection = () => {
           >
             Contact Support <FiMessageCircle className="text-xl" />
           </Link>
-          <Link href="/ai-chat" className="px-8 py-3 bg-[#364957] text-white rounded-lg hover:text-black border  hover:bg-gray-200 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
+          <Link href="/ai-chat" className="px-8 py-3 bg-[#364957] text-white rounded-lg hover:text-white border  hover:bg-gray-200 transition-colors duration-300 shadow-md hover:shadow-lg text-lg font-semibold flex items-center justify-center gap-2">
             Ask AI Assistant <FaRobot className="text-xl" />
           </Link>
         </div>
       </motion.div>
-    </div>
+    </div>  
   );
 };
 
