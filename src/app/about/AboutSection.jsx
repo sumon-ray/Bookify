@@ -45,13 +45,7 @@ export default function AboutUs() {
             Join us in fostering a global community of passionate readers who
             believe in the power of books to connect people and ideas.
           </p>
-          <Button
-            color="#EFEEE9"
-            size="lg"
-            className="mb-6 text-[#B7B7B7 ] text-white bg-[#364957]"
-          >
-            Get Started
-          </Button>
+          
 
           <div className="flex space-x-6 justify-center md:justify-start">
             <Social />
