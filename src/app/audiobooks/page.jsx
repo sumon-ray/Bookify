@@ -89,7 +89,7 @@ export default function Page() {
   };
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto dark:bg-[#0A0A0C] dark:text-white ">
+    <div className="min-h-screen  max-w-7xl mx-auto  dark:bg-[#0A0A0C] dark:text-white ">
       <div id="Main">
         <div className="mt-14 sm:mt-10 pt-14 relative z-10 rounded-xl ">
           {/* Cover Image */}
