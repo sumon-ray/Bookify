@@ -299,6 +299,19 @@ input[type="file"]::file-selector-button {
   background-color: #364957 !important;
 }
 
+.css-j60oyd.Mui-selected {
+  color: #000000 !important;
+}
+.css-jkmkwa {
+  background-color: #364957 !important;
+}
+.css-th4l46.Mui-selected {
+  color: white I !important;
+}
+.css-j60oyd.Mui-selected {
+  color: white I !important;
+}
+
 /* 
 [data-theme="dark"] .css-j60oyd.Mui-selected {
   color: white !important;
