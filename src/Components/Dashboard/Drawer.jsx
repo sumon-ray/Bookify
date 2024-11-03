@@ -28,12 +28,10 @@ import { MdOutlineSpaceDashboard } from "react-icons/md";
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
   const pathname = usePathname();
-  const { data: users, session, isLoading, isError, error } = useUsers();
-  // console.log("Session Data:", users);
+  const session = useSession();
+  const { data: users, isLoading, isError, error } = useUsers();
   const loggedInEmail = session?.data?.user?.email;
-  console.log(loggedInEmail)
   const loggedInUser = users?.find((user) => user.email === loggedInEmail);
-console.log(loggedInUser)
 
   const isActive = (route) => pathname === route;
 
@@ -81,46 +79,73 @@ console.log(loggedInUser)
         {/* Home */}
         {/* {loggedInUser?.role === "admin" && ( */}
 
-<ListItem disablePadding>
-<motion.div initial="rest" whileHover="hover" animate="rest">
-  <ListItemButton
-    component={Link}
-    href="dashboard/dashboardd"
-    onClick={() => setOpen(false)}
-    className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
-  >
-    <ListItemIcon>
-      <MdOutlineSpaceDashboard className={`text-xl ${isActive("/dashboard/dashboardd") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
-    </ListItemIcon>
-    <div className={`flex-grow ${isActive("/dashboard/dashboardd") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
-      <ListItemText primary="Dashboard" />
-      {isActive("/dashboard/dashboardd") && <div className="border-b-2 border-slate-700 dark:border-white" />}
-    </div>
-  </ListItemButton>
-</motion.div>
-</ListItem>
-        {/* )} */}
-
-
-
         <ListItem disablePadding>
           <motion.div initial="rest" whileHover="hover" animate="rest">
             <ListItemButton
               component={Link}
-              href="/dashboard"
+              href="dashboard/dashboardd"
               onClick={() => setOpen(false)}
               className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
               <ListItemIcon>
-                <IoHomeOutline className={`text-xl ${isActive("/dashboard") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
+                <MdOutlineSpaceDashboard
+                  className={`text-xl ${
+                    isActive("/dashboard/dashboardd")
+                      ? "font-bold text-black dark:text-white"
+                      : "text-black dark:text-white"
+                  }`}
+                />
               </ListItemIcon>
-              <div className={`flex-grow ${isActive("/dashboard") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
-                <ListItemText primary="Home" />
-                {isActive("/dashboard") && <div className="border-b-2 border-slate-700 dark:border-white" />}
+              <div
+                className={`flex-grow ${
+                  isActive("/dashboard/dashboardd")
+                    ? "font-bold text-black dark:text-white"
+                    : "text-black dark:text-white"
+                }`}
+              >
+                <ListItemText primary="Dashboard" />
+                {isActive("/dashboard/dashboardd") && (
+                  <div className="border-b-2 border-slate-700 dark:border-white" />
+                )}
               </div>
             </ListItemButton>
           </motion.div>
         </ListItem>
+        {/* )} */}
+        {loggedInUser && (
+          <ListItem disablePadding>
+            <motion.div initial="rest" whileHover="hover" animate="rest">
+              <ListItemButton
+                component={Link}
+                href="/dashboard"
+                onClick={() => setOpen(false)}
+                className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
+              >
+                <ListItemIcon>
+                  <IoHomeOutline
+                    className={`text-xl ${
+                      isActive("/dashboard")
+                        ? "font-bold text-black dark:text-white"
+                        : "text-black dark:text-white"
+                    }`}
+                  />
+                </ListItemIcon>
+                <div
+                  className={`flex-grow ${
+                    isActive("/dashboard")
+                      ? "font-bold text-black dark:text-white"
+                      : "text-black dark:text-white"
+                  }`}
+                >
+                  <ListItemText primary="Home" />
+                  {isActive("/dashboard") && (
+                    <div className="border-b-2 border-slate-700 dark:border-white" />
+                  )}
+                </div>
+              </ListItemButton>
+            </motion.div>
+          </ListItem>
+        )}
 
         <Divider sx={{ my: 1 }} />
 
@@ -134,11 +159,25 @@ console.log(loggedInUser)
               className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
               <ListItemIcon>
-                <PiBooks className={`text-xl ${isActive("/dashboard/myBooks") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
+                <PiBooks
+                  className={`text-xl ${
+                    isActive("/dashboard/myBooks")
+                      ? "font-bold text-black dark:text-white"
+                      : "text-black dark:text-white"
+                  }`}
+                />
               </ListItemIcon>
-              <div className={`flex-grow ${isActive("/dashboard/myBooks") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+              <div
+                className={`flex-grow ${
+                  isActive("/dashboard/myBooks")
+                    ? "font-bold text-black dark:text-white"
+                    : "text-black dark:text-white"
+                }`}
+              >
                 <ListItemText primary="My Books" />
-                {isActive("/dashboard/myBooks") && <div className="border-b-2 dark:border-white border-black" />}
+                {isActive("/dashboard/myBooks") && (
+                  <div className="border-b-2 dark:border-white border-black" />
+                )}
               </div>
             </ListItemButton>
           </motion.div>
@@ -156,11 +195,25 @@ console.log(loggedInUser)
               className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
               <ListItemIcon>
-                <MdOutlineAddCircleOutline className={`text-xl ${isActive("/dashboard/addBook") ? "font-bold dark:text-white text-black" : "text-black dark:text-white"}`} />
+                <MdOutlineAddCircleOutline
+                  className={`text-xl ${
+                    isActive("/dashboard/addBook")
+                      ? "font-bold dark:text-white text-black"
+                      : "text-black dark:text-white"
+                  }`}
+                />
               </ListItemIcon>
-              <div className={`flex-grow ${isActive("/dashboard/addBook") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+              <div
+                className={`flex-grow ${
+                  isActive("/dashboard/addBook")
+                    ? "font-bold text-black dark:text-white"
+                    : "text-black dark:text-white"
+                }`}
+              >
                 <ListItemText primary="Add Book" />
-                {isActive("/dashboard/addBook") && <div className="border-b-2 border-black dark:border-white dark:text-white" />}
+                {isActive("/dashboard/addBook") && (
+                  <div className="border-b-2 border-black dark:border-white dark:text-white" />
+                )}
               </div>
             </ListItemButton>
           </motion.div>
@@ -180,11 +233,25 @@ console.log(loggedInUser)
               className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
               <ListItemIcon>
-                <MdOutlineMessage className={`text-xl ${isActive("/dashboard/messages") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
+                <MdOutlineMessage
+                  className={`text-xl ${
+                    isActive("/dashboard/messages")
+                      ? "font-bold text-black dark:text-white"
+                      : "text-black dark:text-white"
+                  }`}
+                />
               </ListItemIcon>
-              <div className={`flex-grow ${isActive("/dashboard/messages") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+              <div
+                className={`flex-grow ${
+                  isActive("/dashboard/messages")
+                    ? "font-bold text-black dark:text-white"
+                    : "text-black dark:text-white"
+                }`}
+              >
                 <ListItemText primary="Messages" />
-                {isActive("/dashboard/messages") && <div className="border-b-2 border-black dark:border-white" />}
+                {isActive("/dashboard/messages") && (
+                  <div className="border-b-2 border-black dark:border-white" />
+                )}
               </div>
             </ListItemButton>
           </motion.div>
@@ -193,24 +260,41 @@ console.log(loggedInUser)
         <Divider sx={{ my: 1 }} />
 
         {/* Users */}
-        <ListItem disablePadding>
-          <motion.div initial="rest" whileHover="hover" animate="rest">
-            <ListItemButton
-              component={Link}
-              href="/dashboard/users"
-              onClick={() => setOpen(false)}
-              className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
-            >
-              <ListItemIcon>
-                <TbUserShield className={`text-xl ${isActive("/dashboard/users") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
-              </ListItemIcon>
-              <div className={`flex-grow ${isActive("/dashboard/users") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
-                <ListItemText primary="Users" />
-                {isActive("/dashboard/users") && <div className="border-b-2 border-black dark:border-white" />}
-              </div>
-            </ListItemButton>
-          </motion.div>
-        </ListItem>
+
+        {loggedInUser && (
+          <ListItem disablePadding>
+            <motion.div initial="rest" whileHover="hover" animate="rest">
+              <ListItemButton
+                component={Link}
+                href="/dashboard/users"
+                onClick={() => setOpen(false)}
+                className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
+              >
+                <ListItemIcon>
+                  <TbUserShield
+                    className={`text-xl ${
+                      isActive("/dashboard/users")
+                        ? "font-bold text-black dark:text-white"
+                        : "text-black dark:text-white"
+                    }`}
+                  />
+                </ListItemIcon>
+                <div
+                  className={`flex-grow ${
+                    isActive("/dashboard/users")
+                      ? "font-bold text-black dark:text-white"
+                      : "text-black dark:text-white"
+                  }`}
+                >
+                  <ListItemText primary="Users" />
+                  {isActive("/dashboard/users") && (
+                    <div className="border-b-2 border-black dark:border-white" />
+                  )}
+                </div>
+              </ListItemButton>
+            </motion.div>
+          </ListItem>
+        )}
 
         <Divider sx={{ my: 1 }} />
 
@@ -224,11 +308,25 @@ console.log(loggedInUser)
               className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
               <ListItemIcon>
-                <FaUserCircle className={`text-xl ${isActive("/dashboard/profile") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
+                <FaUserCircle
+                  className={`text-xl ${
+                    isActive("/dashboard/profile")
+                      ? "font-bold text-black dark:text-white"
+                      : "text-black dark:text-white"
+                  }`}
+                />
               </ListItemIcon>
-              <div className={`flex-grow ${isActive("/dashboard/profile") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+              <div
+                className={`flex-grow ${
+                  isActive("/dashboard/profile")
+                    ? "font-bold text-black dark:text-white"
+                    : "text-black dark:text-white"
+                }`}
+              >
                 <ListItemText primary="Profile" />
-                {isActive("/dashboard/profile") && <div className="border-b-2 border-black dark:border-white" />}
+                {isActive("/dashboard/profile") && (
+                  <div className="border-b-2 border-black dark:border-white" />
+                )}
               </div>
             </ListItemButton>
           </motion.div>
