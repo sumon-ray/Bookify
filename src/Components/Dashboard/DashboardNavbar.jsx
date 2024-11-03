@@ -158,7 +158,7 @@ export default function DashboardNavbar() {
                   {/* Search Input */}
                   <div className="relative translate-x-4 w-40 sm:w-72 md:w-48 lg:w-72 md:translate-x-14   lg:translate-x-0  md:mr-4 lg:mr-0 ">
                     <input
-                      className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
+                      className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] dark:text-black focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
                       type="text"
                       placeholder="Search..."
                       onChange={handleSearch}
