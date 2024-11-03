@@ -14,6 +14,8 @@ export default function Page() {
   const [genre, setGenre] = useState('')
   const [search, setSearch] = useState('')
   const [searchIcon, setSearchIcon] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1);
+  const booksPerPage = 18;
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['all books', genre, searchIcon],
@@ -38,12 +40,13 @@ export default function Page() {
 
 
   return (
-    <div className="py-[84px] space-y-10">
+    <div className="md:pt-[84px] pb-10 md:pb-[80px] space-y-10">
 
       <div className="bg-[#EFEEE9] p-6 dark:bg-[#0A0A0C]">
         <h1 className="text-3xl font-black uppercase text-center dark:text-white">all books</h1>
       </div>
-      <div className="max-w-7xl mx-auto space-y-10">
+
+      <div className="max-w-7xl mx-auto space-y-10 px-4  md:px-7">
 
         <div className="flex items-center md:justify-between">
           <div className="relative w-full lg:w-72 md:w-52 ">
@@ -107,9 +110,9 @@ export default function Page() {
                 <h1 className='text-lg font-medium'>Loading...</h1>
               </div>
             </div>
-            : <div className="grid xl:grid-cols-6 gap-8">
+            : <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 lg:gap-8">
               {
-                data?.map((book, idx) => <motion.div
+                data?.slice((currentPage - 1) * booksPerPage, currentPage * booksPerPage).map((book, idx) => <motion.div
                   key={idx}
                   whileHover={{ y: -5 }}
                   initial={{ opacity: 0, y: 20 }}
@@ -140,24 +143,22 @@ export default function Page() {
               }
             </div>
         }
-        <div className="flex justify-center items-center pt-4">
+        <div className="flex justify-center items-center pt-4 gap-3">
           <button
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
             className="  text-black rounded-md"
-          // onClick={handlePrevPage}
-          // disabled={currentPage === 1}
           >
-            {/* <GrLinkPrevious/> */}
             <GrFormPrevious size={40} className="text-[#272727A6] dark:text-white " />
           </button>
-          <span className="p-2 mx-2 font-bold">
-            Page {'1'} of {'2'}
+          <span className="font-semibold">
+            Page {currentPage} of {Math.ceil(data?.length / booksPerPage)}
           </span>
           <button
+            onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(data?.length / booksPerPage)))}
+            disabled={currentPage === Math.ceil(data?.length / booksPerPage)}
             className="  text-black rounded-md"
-          // onClick={handleNextPage}
-          // disabled={currentPage === totalPages}
           >
-            {/* <GrLinkNext/> */}
             <MdOutlineNavigateNext size={40} className="text-[#272727A6] dark:text-white " />
           </button>
         </div>
