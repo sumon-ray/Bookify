@@ -52,13 +52,13 @@ export default function BasicTabs() {
                     <Tab
                         label="Send request"
                         sx={{
-                            color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                            color: theme === 'dark' ? 'white' : 'black',
                         }}
                     />
                     <Tab
                         label="Get request"
                         sx={{
-                            color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                            color: theme === 'dark' ? 'white' : 'black',
                         }} />
                 </Tabs>
             </Box>
