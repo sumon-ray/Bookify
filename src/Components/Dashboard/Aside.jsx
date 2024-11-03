@@ -12,6 +12,7 @@ import PremiumBoard from "./PremiumBoard";
 import useUsers from "@/hooks/useUsers";
 import { useSession } from "next-auth/react";
 import { HiUsers } from "react-icons/hi";
+import { FaUserCircle } from "react-icons/fa";
 
 export default function Aside() {
   const pathname = usePathname();
@@ -80,25 +81,8 @@ export default function Aside() {
                 "/dashboard"
               )}`}
             >
-              <IoHomeOutline  className="dark:text-white" />
+              <IoHomeOutline className="dark:text-white" />
               <span className="font-bold dark:text-white">Home</span>
-            </Link>
-          </motion.li>
-
-          <motion.li
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            variants={hoverEffect}
-          >
-            <Link
-              href="/dashboard/myBooks"
-              className={`flex items-center gap-2 px-2 py-1 ${checkActive(
-                "/dashboard/myBooks"
-              )}`}
-            >
-              <PiBooks className="dark:text-white" />
-              <span className="font-bold dark:text-white">My Books</span>
             </Link>
           </motion.li>
 
@@ -135,7 +119,6 @@ export default function Aside() {
               <span className="font-bold dark:text-white">Request</span>
             </Link>
           </motion.li>
-
           {loggedInUser?.role === "admin" && (
             <motion.li
               initial="rest"
@@ -149,11 +132,27 @@ export default function Aside() {
                   "/dashboard/users"
                 )}`}
               >
-                <HiUsers className="text-xl dark:text-white"/>
+                <HiUsers className="text-xl dark:text-white" />
                 <span className="font-bold dark:text-white">Users</span>
               </Link>
             </motion.li>
           )}
+          <motion.li
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            variants={hoverEffect}
+          >
+            <Link
+              href="/dashboard/profile"
+              className={`flex items-center gap-2 px-2 py-1 ${checkActive(
+                "/dashboard/myBooks"
+              )}`}
+            >
+              <FaUserCircle className="dark:text-white" />
+              <span className="font-bold dark:text-white">Profile</span>
+            </Link>
+          </motion.li>
         </ul>
         <PremiumBoard />
       </div>

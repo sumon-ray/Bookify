@@ -1,13 +1,11 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis, Tooltip } from "recharts";
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/Components/ui/Card";
@@ -17,64 +15,64 @@ import {
   ChartTooltipContent,
 } from "@/Components/ui/Chart";
 
-export const description = "A multiple bar chart";
-
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-];
-
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "hsl(var(--chart-1))",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "hsl(var(--chart-2))",
-  },
-};
-
 // Reviews component
-const Reviews = () => {
+const Reviews = ({ totalReview }) => {
+
+  const getChartData = (reviews) => {
+    const chartData = [
+      { month: "Current", good: 0, bad: 0 }, 
+    ];
+
+   
+    reviews?.forEach((review) => {
+      if (review.rating >= 4) {
+        chartData[0].good += 1; 
+      } else if (review.rating <= 3) {
+        chartData[0].bad += 1; 
+      }
+    });
+
+    return chartData;
+  };
+
+  const chartData = getChartData(totalReview);
+
+  const chartConfig = {
+    good: {
+      label: "Good",
+      color: "hsl(var(--chart-1))",
+    },
+    bad: {
+      label: "Bad",
+      color: "hsl(var(--chart-2))",
+    },
+  };
+
   return (
     <Card className="shadow-none border-none rounded-xl">
       <CardHeader className="items-start pb-0 font-bold">
         <CardTitle className="font-bold">Total Reviews</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardDescription>Current Month</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="max-h-[252px]">
-          <BarChart accessibilityLayer data={chartData}>
+          <BarChart data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) => value.slice(0, 3)}
             />
-            <ChartTooltip
+            <Tooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+            <Bar dataKey="good" fill={chartConfig.good.color} radius={4} />
+            <Bar dataKey="bad" fill={chartConfig.bad.color} radius={4} />
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 0.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total Reviews for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   );
 };

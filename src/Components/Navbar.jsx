@@ -58,6 +58,14 @@ const Navbar = () => {
       path: "/exchange",
     },
     {
+      title: "Audio books",
+      path: "/audiobooks",
+    },
+    {
+      title: "All Books",
+      path: "/all-books",
+    },
+    {
       title: "Contact",
       path: "/contact",
     },
@@ -81,7 +89,7 @@ const Navbar = () => {
 
   return (
     <div className="overflow-hidden">
-      <nav className="md:flex items-center md:justify-between bg-[#F3F2ED] dark:bg-[#272727E6] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
+      <nav className="md:flex items-center md:justify-between bg-[#F3F2ED] border-b border-black  dark:border-white dark:bg-[#272727E6] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
         {/* bookify logo */}
         <div className="flex md:flex-none items-center justify-between">
           <>
@@ -227,13 +235,13 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="hidden md:flex gap-2 md:justify-center items-center">
+        <div className="hidden md:flex gap-1 md:justify-center items-center">
           <Toggle />
           <div className="flex items-center gap-2">
             {session?.status === "unauthenticated" && (
               <Link href="/login">
-                <button className="btn text-[16px] md:block hidden font-semibold bg-primary text-white p-3 px-4 rounded-lg">
-                  Sign In
+                <button className="btn text-[16px] md:block hidden font-semibold  text-white p-3 px-4 rounded-lg bg-[#374956] dark:bg-[#fefefe]   dark:text-black">
+                  Login
                 </button>
               </Link>
             )}
