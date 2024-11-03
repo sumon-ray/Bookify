@@ -1,8 +1,5 @@
 "use client"
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -17,7 +14,6 @@ import "./tab.css"
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
-import { AiFillMessage } from 'react-icons/ai';
 import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import { GrSend } from 'react-icons/gr';
@@ -78,7 +74,7 @@ function Row({ row, refetch }) {
                 <TableCell align='left' className='relative'><span className='absolute left-[34px] top-6 dark:text-white'>{row?.ownerBooks?.length}</span></TableCell>
                 <TableCell align='left' className='relative hidden md:table-cell'><span className='absolute left-[3px] top-6 dark:text-white'>{row?.date?.toLocaleString()?.split('T')[0]}</span></TableCell>
                 <TableCell align='left' className='md:relative'>
-                    <Button className={`md:absolute md:left-[3px] ${row?.status === 'pending' ? 'bg-[#F5A52433] text-[#F5A524] dark:text-[#f5e024e3] dark:bg-[#F5A52466]' : row?.status === 'canceled' ? 'bg-[#0000004D] text-black' : 'bg-[#31C48D4D] text-green-500 dark:text-green-900'} top-3  rounded-full capitalize font-medium`}>
+                    <Button className={`md:absolute md:left-[3px] ${row?.status === 'pending' ? 'bg-[#F5A52433] text-[#F5A524] dark:text-[#ffffff] dark:bg-[#F5A52466]' : row?.status === 'canceled' ? 'bg-[#0000004D] text-black' : 'bg-[#31C48D4D] text-green-500 dark:text-white'} top-3  rounded-full capitalize font-medium`}>
                         {row?.status}
                     </Button>
                 </TableCell>

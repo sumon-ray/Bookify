@@ -30,7 +30,6 @@ export default function AccountMenu({ session }) {
           <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ ml: 1 }}
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
@@ -65,7 +64,7 @@ export default function AccountMenu({ session }) {
               "& .MuiAvatar-root": {
                 width: 32,
                 height: 32,
-                ml: -0.5,
+                ml:0,
                 mr: 1,
               },
               "&::before": {
@@ -74,7 +73,7 @@ export default function AccountMenu({ session }) {
                 position: "absolute",
                 top: 0,
                 right: 14,
-                width: 10,
+                width: 8,
                 height: 10,
                 bgcolor: "background.paper",
                 transform: "translateY(-50%) rotate(45deg)",

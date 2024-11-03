@@ -228,30 +228,16 @@ export default function TemporaryDrawer() {
           <motion.div initial="rest" whileHover="hover" animate="rest">
             <ListItemButton
               component={Link}
-              href="/dashboard/messages"
+              href="/dashboard/exchange-request"
               onClick={() => setOpen(false)}
               className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
               <ListItemIcon>
-                <MdOutlineMessage
-                  className={`text-xl ${
-                    isActive("/dashboard/messages")
-                      ? "font-bold text-black dark:text-white"
-                      : "text-black dark:text-white"
-                  }`}
-                />
+                <TbExchange className={`text-xl ${isActive("/dashboard/exchange-request") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
               </ListItemIcon>
-              <div
-                className={`flex-grow ${
-                  isActive("/dashboard/messages")
-                    ? "font-bold text-black dark:text-white"
-                    : "text-black dark:text-white"
-                }`}
-              >
-                <ListItemText primary="Messages" />
-                {isActive("/dashboard/messages") && (
-                  <div className="border-b-2 border-black dark:border-white" />
-                )}
+              <div className={`flex-grow ${isActive("/dashboard/exchange-request") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+                <ListItemText primary="request" />
+                {isActive("/dashboard/exchange-request") && <div className="border-b-2 border-black dark:border-white" />}
               </div>
             </ListItemButton>
           </motion.div>

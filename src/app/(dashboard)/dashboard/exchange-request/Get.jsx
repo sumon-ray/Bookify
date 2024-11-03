@@ -173,7 +173,8 @@ export default function Get() {
         queryFn: async () => {
             const res = await axios(`https://bookify-server-lilac.vercel.app/exchange-request?ownerEmail=${session?.user?.email}`)
             const data = await res.data
-            return data
+            const filter = data.filter(req=>req.status!=='approved')
+            return filter
         },
         enabled: !!session?.user?.email
     })
