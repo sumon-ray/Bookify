@@ -5,17 +5,11 @@ import Heading from "@/Components/Heading/Heading";
 
 const AllAudioBooks = ({ data }) => {
   return (
-    <div className="container pb-16">
+    <div className="container">
+      <Heading heading="All Audio Books"></Heading>
 
-      {/* <div className="p-2 mt-4 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[400px] h-12 mx-auto">
-        <h1 className="md:text-xl lg:text-2xl uppercase font-bold text-center">
-          All Audio Books
-        </h1>
-      </div> */}
-      <Heading heading={'All Audio Books'} />
-
-      <div className="container px-6 md:px-0 lg:-mt-6 mx-auto space-y-6 sm:space-y-12 flex items-center justify-center">
-        <div className="grid justify-center grid-cols-2 gap-8 md:grid-cols-5">
+      <div className="container space-y-6 lg:-mt-7 sm:space-y-12 pb-20">
+        <div className="grid justify-center grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
           {data?.map((book) => (
             <motion.div
               key={book._id}
@@ -50,7 +44,6 @@ const AllAudioBooks = ({ data }) => {
           ))}
         </div>
       </div>
-
     </div>
   );
 };

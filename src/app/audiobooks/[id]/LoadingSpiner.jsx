@@ -1,7 +1,7 @@
 export default function LoadingSpiner() {
   return (
-    <>
-      <div className="flex justify-center w-full items-center min-h-[80vh]">
+    <div>
+      <div className="flex justify-center w-full items-center min-h-screen">
         <div className='flex flex-col justify-center items-center gap-y-1'>
           <svg
             class="animate-spin [animation-duration:1.5s]"
@@ -27,6 +27,6 @@ export default function LoadingSpiner() {
           <h1 className='text-lg font-medium'>Loading...</h1>
         </div>
       </div>
-    </>
+    </div>
   )
 }
