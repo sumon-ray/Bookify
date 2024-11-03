@@ -235,13 +235,13 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="hidden md:flex gap-2 md:justify-center items-center">
+        <div className="hidden md:flex gap-1 md:justify-center items-center">
           <Toggle />
           <div className="flex items-center gap-2">
             {session?.status === "unauthenticated" && (
               <Link href="/login">
                 <button className="btn text-[16px] md:block hidden font-semibold  text-white p-3 px-4 rounded-lg bg-[#374956] dark:bg-[#fefefe]   dark:text-black">
-                  Sign In
+                  Login
                 </button>
               </Link>
             )}
