@@ -4,7 +4,7 @@ import BasicTabs from "./Tab";
 export default function Page() {
 
   return (
-    <div className="relative">
+    <div className="relative pt-5 md:pt-0">
       <BasicTabs />
     </div>
   );
