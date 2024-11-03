@@ -195,7 +195,7 @@ export default function ImgDetails({ Book = {} }) {
           <button
             onClick={addToBook}
             type="button"
-            className="flex items-center btn_1 text-xs md:text-base  gap-0.5 px-2 py-1.5 w-28 justify-center text-white rounded-md transition dark:bg-[#272727A6]">
+            className="flex items-center btn_1 text-xs md:text-base  gap-0.5 px-2 py-1.5 w-28 justify-center text-white rounded-md transition dark:bg-[#ffffff] dark:text-black">
             {
               loadingExchange ? <svg
                 class="animate-spin [animation-duration:1.3s]"
