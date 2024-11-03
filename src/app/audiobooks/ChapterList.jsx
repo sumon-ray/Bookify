@@ -9,8 +9,8 @@ const ChapterList = ({ chapters, currentAudio, handlePlay, isPlaying, audioBookC
       <table className="w-full leading-normal p-0">
         <tbody>
           {chapters?.map((b) => (
-            <tr key={b.id} className="flex flex-col md:flex-row">
-              <td className="px-2 py-2 border-b border-gray-200 text-sm dark:text-white flex items-center w-full">
+            <tr key={b.id} className="flex flex-col md:flex-row border-gray-200 border-b">
+              <td className="px-2 py-2   text-sm dark:text-white flex items-center w-full">
                 <div className="flex-shrink-0 w-16 h-16">
                   <Image
                     className="w-full h-full rounded-xl"
@@ -27,17 +27,17 @@ const ChapterList = ({ chapters, currentAudio, handlePlay, isPlaying, audioBookC
                   </p>
                 </div>
               </td>
-              <td className="px-2 border-b border-gray-200 text-sm dark:text-white  md:pr-48 lg:pr-[20rem] md:flex flex-col justify-center items-center w-full md:w-auto ">
+              <td className="px-2   text-sm dark:text-white  md:pr-48 lg:pr-[20rem] md:flex flex-col justify-center items-center w-full md:w-auto ">
                 <p className="text-gray-900 dark:text-white md:text-center  whitespace-no-wrap">
                   {b?.duration}
                 </p>
               </td>
-              <td className="px-2 border-b border-gray-200 text-sm dark:text-white  md:pr-28  lg:pr-72 md:flex flex-col justify-center items-center w-full md:w-auto ">
+              <td className="px-2 text-sm dark:text-white  md:pr-28  lg:pr-72 md:flex flex-col justify-center items-center w-full md:w-auto ">
                 <p className="text-gray-900 md:text-center whitespace-no-wrap dark:text-white">
                   {b?.releaseDate}
                 </p>
               </td>
-              <td className="px-2 py-2 border-b text-3xl text-[#364957] text-right border-gray-200 dark:text-white w-full md:w-auto">
+              <td className="px-2 py-2  text-3xl text-[#364957] text-right dark:text-white w-full md:w-auto">
                 <button
                   type="button"
                   onClick={() => handlePlay(b.audioURL, b?.id)}

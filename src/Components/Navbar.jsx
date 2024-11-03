@@ -59,7 +59,7 @@ const Navbar = () => {
     },
     {
       title: "Audio books",
-      path: "/audiobooks",
+      path: "/audiobooks/671e8aa0cc79bac9d2cf7419",
     },
     {
       title: "All Books",
