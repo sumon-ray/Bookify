@@ -565,7 +565,7 @@ export default function Page() {
                               {mybooks?.map((book) => (
                                 <tr key={book?._id} className="border-t border-black dark:border-white dark:text-white">
                                   <td className="pl-0 md:pl-1 md:px-5 py-5">
-                                    <Link href={`/details/${book_id}`}>
+                                    <Link href={`/details/${book?._id}`}>
                                       <Image
                                         unoptimized
                                         className="md:w-[105px] md:h-[125px] rounded-md object-fill"
