@@ -62,7 +62,6 @@ const CommunityHighlights = () => {
       icon: <FaBookOpen className="text-yellow-400" />,
       favoriteGenre: "Horror",
     },
-    // Add more users as needed...
   ];
 
   const renderUserCard = (user, index) => {
