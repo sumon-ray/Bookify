@@ -9,13 +9,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/Components/ui/Card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/Components/ui/Chart";
 
 const chartConfig = {
   visitors: {
@@ -59,10 +59,10 @@ const TopBooks = ({ topBooks }) => {
 
   return (
     <div>
-      <Card className="flex flex-col shadow-none border-none rounded-xl dark:bg-[#0A0A0CCC]">
+      <Card className="flex flex-col shadow-none border-none rounded-xl ">
         <CardHeader className="items-center pb-0">
           <CardTitle>Top Books</CardTitle>
-          <CardDescription>January - November 2024</CardDescription>
+          <CardDescription> 2024</CardDescription>
         </CardHeader>
         <CardContent className="flex-1 pb-0">
           <ChartContainer

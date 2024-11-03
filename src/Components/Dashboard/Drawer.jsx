@@ -20,6 +20,7 @@ import img2 from "../../assets/images/About/bookdark.png";
 import Image from "next/image";
 import Divider from "@mui/material/Divider";
 import { AiOutlineClose } from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
@@ -50,28 +51,46 @@ export default function TemporaryDrawer() {
   };
 
   const DrawerList = (
-    <Box className='dark:bg-[#272727] h-full bg-white  ' sx={{
-      width: 250,
-      // background: '', 
-      // borderRadius: '12px', 
-      padding: '20px',
-      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-      overflowY: 'auto',
-      '&::-webkit-scrollbar': {
-        width: '8px',
-      },
-      '&::-webkit-scrollbar-thumb': {
-        // background: '#BDC3C7',
-        borderRadius: '10px',
-      },
-      '&::-webkit-scrollbar-track': {
-        // background: '#F0F0F0',
-      },
-    }} role="presentation">
+    <Box
+      className="dark:bg-[#272727] h-full bg-white  "
+      sx={{
+        width: 250,
+        // background: '',
+        // borderRadius: '12px',
+        padding: "20px",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+        overflowY: "auto",
+        "&::-webkit-scrollbar": {
+          width: "8px",
+        },
+        "&::-webkit-scrollbar-thumb": {
+          // background: '#BDC3C7',
+          borderRadius: "10px",
+        },
+        "&::-webkit-scrollbar-track": {
+          // background: '#F0F0F0',
+        },
+      }}
+      role="presentation"
+    >
       <div className="flex justify-between items-center mb-4">
         <Link href={"/"} className="w-full mx-auto -ml-4">
-          <Image src={img} unoptimized className="dark:hidden h-[60px] max-w-[150px] " height={20} width={200} />
-          <Image src={img2} unoptimized className="hidden dark:block h-[60px] max-w-[150px]" height={20} width={200} />
+          <Image
+            src={img}
+            unoptimized
+            className="dark:hidden h-[60px] max-w-[150px] "
+            height={20}
+            width={200}
+            alt="image"
+          />
+          <Image
+            src={img2}
+            unoptimized
+            className="hidden dark:block h-[60px] max-w-[150px]"
+            height={20}
+            width={200}
+            alt="image"
+          />
         </Link>
         <motion.button
           onClick={() => setOpen(false)}
@@ -98,14 +117,21 @@ export default function TemporaryDrawer() {
               component={Link}
               href="/dashboard"
               onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard")} transition duration-300 ease-in-out rounded-md p-2`} // Added padding
+              className={`flex items-center -space-x-6 ${checkActive(
+                "/dashboard"
+              )} transition duration-300 ease-in-out rounded-md p-2`} // Added padding
             >
               <ListItemIcon className={iconActive("/dashboard")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
                   <IoHomeOutline className="dark:text-white" />
                 </motion.div>
               </ListItemIcon>
-              <ListItemText primary="Home" sx={{ fontWeight: pathname === "/dashboard" ? 'bold' : 'normal' }} />
+              <ListItemText
+                primary="Home"
+                sx={{
+                  fontWeight: pathname === "/dashboard" ? "bold" : "normal",
+                }}
+              />
             </ListItemButton>
           </motion.div>
         </ListItem>
@@ -125,7 +151,9 @@ export default function TemporaryDrawer() {
               component={Link}
               href="/dashboard/myBooks"
               onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard/myBooks")} transition duration-300 ease-in-out rounded-md p-2`}
+              className={`flex items-center -space-x-6 ${checkActive(
+                "/dashboard/myBooks"
+              )} transition duration-300 ease-in-out rounded-md p-2`}
             >
               <ListItemIcon className={iconActive("/dashboard/myBooks")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
@@ -134,7 +162,13 @@ export default function TemporaryDrawer() {
                   {/* <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">3</span> */}
                 </motion.div>
               </ListItemIcon>
-              <ListItemText primary="My Books" sx={{ fontWeight: pathname === "/dashboard/myBooks" ? 'bold' : 'normal' }} />
+              <ListItemText
+                primary="My Books"
+                sx={{
+                  fontWeight:
+                    pathname === "/dashboard/myBooks" ? "bold" : "normal",
+                }}
+              />
             </ListItemButton>
           </motion.div>
         </ListItem>
@@ -154,14 +188,22 @@ export default function TemporaryDrawer() {
               component={Link}
               href="/dashboard/addBook"
               onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard/addBook")} transition duration-300 ease-in-out rounded-md p-2`}
+              className={`flex items-center -space-x-6 ${checkActive(
+                "/dashboard/addBook"
+              )} transition duration-300 ease-in-out rounded-md p-2`}
             >
               <ListItemIcon className={iconActive("/dashboard/addBook")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
                   <MdOutlineAddCircleOutline className="dark:text-white" />
                 </motion.div>
               </ListItemIcon>
-              <ListItemText primary="Add Book" sx={{ fontWeight: pathname === "/dashboard/addBook" ? 'bold' : 'normal' }} />
+              <ListItemText
+                primary="Add Book"
+                sx={{
+                  fontWeight:
+                    pathname === "/dashboard/addBook" ? "bold" : "normal",
+                }}
+              />
             </ListItemButton>
           </motion.div>
         </ListItem>
@@ -181,14 +223,22 @@ export default function TemporaryDrawer() {
               component={Link}
               href="/dashboard/exchange"
               onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard/exchange")} transition duration-300 ease-in-out rounded-md p-2`}
+              className={`flex items-center -space-x-6 ${checkActive(
+                "/dashboard/exchange"
+              )} transition duration-300 ease-in-out rounded-md p-2`}
             >
               <ListItemIcon className={iconActive("/dashboard/exchange")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
                   <TbExchange className="dark:text-white" />
                 </motion.div>
               </ListItemIcon>
-              <ListItemText primary="Exchange" sx={{ fontWeight: pathname === "/dashboard/exchange" ? 'bold' : 'normal' }} />
+              <ListItemText
+                primary="Exchange"
+                sx={{
+                  fontWeight:
+                    pathname === "/dashboard/exchange" ? "bold" : "normal",
+                }}
+              />
             </ListItemButton>
           </motion.div>
         </ListItem>
@@ -208,7 +258,9 @@ export default function TemporaryDrawer() {
               component={Link}
               href="/dashboard/messages"
               onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard/messages")} transition duration-300 ease-in-out rounded-md p-2`}
+              className={`flex items-center -space-x-6 ${checkActive(
+                "/dashboard/messages"
+              )} transition duration-300 ease-in-out rounded-md p-2`}
             >
               <ListItemIcon className={iconActive("/dashboard/messages")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
@@ -217,7 +269,13 @@ export default function TemporaryDrawer() {
                   {/* <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">5</span> */}
                 </motion.div>
               </ListItemIcon>
-              <ListItemText primary="Messages" sx={{ fontWeight: pathname === "/dashboard/messages" ? 'bold' : 'normal' }} />
+              <ListItemText
+                primary="Messages"
+                sx={{
+                  fontWeight:
+                    pathname === "/dashboard/messages" ? "bold" : "normal",
+                }}
+              />
             </ListItemButton>
           </motion.div>
         </ListItem>
@@ -237,14 +295,56 @@ export default function TemporaryDrawer() {
               component={Link}
               href="/dashboard/users"
               onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard/users")} transition duration-300 ease-in-out rounded-md p-2`}
+              className={`flex items-center -space-x-6 ${checkActive(
+                "/dashboard/users"
+              )} transition duration-300 ease-in-out rounded-md p-2`}
             >
               <ListItemIcon className={iconActive("/dashboard/users")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
                   <TbUserShield className="dark:text-white" />
                 </motion.div>
               </ListItemIcon>
-              <ListItemText primary="Users" sx={{ fontWeight: pathname === "/dashboard/users" ? 'bold' : 'normal' }} />
+              <ListItemText
+                primary="Users"
+                sx={{
+                  fontWeight:
+                    pathname === "/dashboard/users" ? "bold" : "normal",
+                }}
+              />
+            </ListItemButton>
+          </motion.div>
+        </ListItem>
+        {/* Divider */}
+        <Divider sx={{ my: 1 }} />
+
+        {/* Profile */}
+        <ListItem disablePadding>
+          <motion.div
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            variants={hoverEffect}
+          >
+            <ListItemButton
+              component={Link}
+              href="/dashboard/profile"
+              onClick={handleLinkClick}
+              className={`flex items-center -space-x-6 ${checkActive(
+                "/dashboard/profile"
+              )} transition duration-300 ease-in-out rounded-md p-2`}
+            >
+              <ListItemIcon className={iconActive("/dashboard/profile")}>
+                <motion.div whileHover={{ scale: 1.1 }}>
+                  <FaUserCircle className="dark:text-white" />
+                </motion.div>
+              </ListItemIcon>
+              <ListItemText
+                primary="Profile"
+                sx={{
+                  fontWeight:
+                    pathname === "/dashboard/profile" ? "bold" : "normal",
+                }}
+              />
             </ListItemButton>
           </motion.div>
         </ListItem>
@@ -263,5 +363,3 @@ export default function TemporaryDrawer() {
     </div>
   );
 }
-
-

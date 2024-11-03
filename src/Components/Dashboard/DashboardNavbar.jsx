@@ -20,6 +20,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import ToggleMenu from "../ToggleMenu/ToggleMenu";
+import Toggle from "../Toggle/Toggle";
 
 
 
@@ -141,8 +142,8 @@ export default function DashboardNavbar() {
               </div>
 
               <Link href={"/"} className="hidden md:flex">
-                <Image src={img} unoptimized className="dark:hidden h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
-                <Image src={img2} unoptimized className="hidden dark:block h-[60px] max-w-[150px] -mr-6" height={20} width={200} />
+                <Image src={img} unoptimized className="dark:hidden h-[60px] max-w-[150px] -mr-6" height={20} width={200} alt="bookify" />
+                <Image src={img2} unoptimized className="hidden dark:block h-[60px] max-w-[150px] -mr-6" height={20} width={200} alt="bookify"/>
               </Link>
             </div>
 
@@ -190,9 +191,11 @@ export default function DashboardNavbar() {
                   </div>
                 </div>
                 {/* Icons moved to the right side */}
-                <div className="flex items-center gap-2 md:gap-4">
-                  {" "}
-                  {/* Adjusted gap for smaller screens */}
+                <div className="flex items-center gap-2 md:gap-4"> {/* Adjusted gap for smaller screens */}
+                  
+                  {/* Toggle Component */}
+                <Toggle />
+
                   {/* Notification Button */}
                   <div className="relative">
                     <div>

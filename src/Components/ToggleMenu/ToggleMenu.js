@@ -90,13 +90,13 @@ export default function AccountMenu({ session }) {
         <Divider />
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
-            <FaChalkboardTeacher className="mr-1" />
+            <FaChalkboardTeacher className="mr-0.5" />
           </ListItemIcon>
           <Link href="/dashboard">Dashboard</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
-            <FaSignOutAlt className="mr-1" />
+            <FaSignOutAlt className="mr-0.5" />
           </ListItemIcon>
           <button
             onClick={() => {

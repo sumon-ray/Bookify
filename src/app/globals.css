@@ -172,6 +172,7 @@ html {
 }
 
 @layer utilities {
+
   .custom-audio::-webkit-media-controls-play-button,
   .custom-audio::-webkit-media-controls-pause-button {
     background-color: #fff;
@@ -224,6 +225,7 @@ div:where(.swal2-container) div:where(.swal2-popup) {
   color: white !important;
   border: none !important;
 }
+
 /* Customize the scrollbar */
 .overflow-y-scroll::-webkit-scrollbar {
   margin-top: 5px;
@@ -248,16 +250,20 @@ div:where(.swal2-container) div:where(.swal2-popup) {
 .overflow-y-scroll::-webkit-scrollbar-thumb:hover {
   background: #364957 !important;
 }
+
 .overflow-y-scroll {
   scrollbar-color: #ffffff #364957cc !important;
   scrollbar-width: thin;
 }
+
 .border {
   border-width: 2px;
 }
+
 .border-input {
   border-color: #364957;
 }
+
 .css-1ejouah-MuiButtonBase-root-MuiTab-root.Mui-selected {
   color: black !important;
 }
@@ -269,21 +275,31 @@ div:where(.swal2-container) div:where(.swal2-popup) {
 .css-19kzrtu {
   padding: 3px !important;
 }
+
 input[type="file"]::file-selector-button {
   background-color: #364957;
   color: white;
 }
 
 .menu-container {
-    display: flex; /* Ensure the icons are in a row */
-    align-items: center; /* Align items vertically centered */
+  display: flex;
+  /* Ensure the icons are in a row */
+  align-items: center;
+  /* Align items vertically centered */
 }
 
-.profile-icon, .theme-icon {
-    margin-left: 10px; /* Add space between menu and icons */
+.profile-icon,
+.theme-icon {
+  margin-left: 10px;
+  /* Add space between menu and icons */
 }
 
 .bg-\[\#364957\] {
   --tw-bg-opacity: 1;
   background-color: #364957 !important;
+}
+
+
+[data-theme="dark"] .css-j60oyd.Mui-selected {
+  color: white !important;
 }

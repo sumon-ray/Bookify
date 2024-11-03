@@ -17,9 +17,9 @@ const SocialLogin = () => {
 
     // If the sign-in was successful, check if the session is authenticated and then redirect
     if (resp && !resp.error) {
-      router.push("/"); // Manual redirect if sign-in succeeds
+      router.push("/");
     } else {
-      console.error("Sign-in error", resp.error); // Log the error for debugging
+      console.error("Sign-in error", resp.error);
     }
   };
 
@@ -35,7 +35,7 @@ const SocialLogin = () => {
       <div>
         <button
           onClick={() => handleSocialLogin("google")}
-          className="flex items-center justify-center mt-4 bg-white text-gray-600 transition-colors duration-300 transform border rounded-lg dark:bg-[#0A0A0C] dark:text-white"
+          className="flex items-center justify-center mt-4 bg-white text-gray-600 transition-colors duration-300 transform border rounded-lg dark:bg-[#272727A6] dark:text-white"
         >
           <div className="px-4 py-2">
             <svg className="w-6 h-6" viewBox="0 0 40 40">

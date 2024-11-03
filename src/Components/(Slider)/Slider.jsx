@@ -31,7 +31,7 @@ const Slider = () => {
     })
 
     return (
-        <div className="bg-[#EFEEE9]  dark:bg-[#0A0A0C] lg:min-h-screen flex flex-col-reverse md:flex-row items-center justify-center  lg:gap-x-40  md:pt-16 lg:pt-9">
+        <div className="bg-[#EFEEE9] dark:bg-gradient-to-r from-[#0A0A0CC4] from-10% via-[#0A0A0CD6] via-30% to-[#0A0A0CF0] to-90%  lg:min-h-screen flex flex-col-reverse md:flex-row items-center justify-center  lg:gap-x-40  md:pt-16 lg:pt-9">
 
             <div className="w-full md:w-[60%] lg:w-[50%] space-y-1.5 md:space-y-2 lg:space-y-4 p-6 md:p-10 lg:p-0">
                 <h1 className="text-2xl md:text-3xl lg:text-7xl font-bold text-[#000000] dark:text-white">Swap Books<br /> Share Knowledge</h1>
@@ -52,7 +52,7 @@ const Slider = () => {
                 </div>
                 <button onClick={() => {
                     scrollBy(0, 1300)
-                }} className="flex items-center gap-x-2.5 font-medium p-2 md:p-3 bg-[white] dark:bg-[#0A0A0C] rounded-md text-black dark:text-white border-4 border-[#000000] dark:border-white">
+                }} className="flex items-center gap-x-2.5 font-medium p-2 md:p-3 bg-[white] dark:bg-[#272727] rounded-md text-black dark:text-white border-2 border-[#000000] dark:border-white">
                     Go to Library <HiOutlineArrowNarrowRight className="text-lg md:text-xl mt-1" />
                 </button>
             </div>
@@ -74,6 +74,29 @@ const Slider = () => {
                             height: '460px',
                         }}
                     >
+
+                        <SwiperSlide>
+                            <div
+                                style={{
+                                    backgroundImage: `url('https://i.postimg.cc/zffgcKwm/Crime-and-Punishment.jpg')`,
+                                    width: '100%',
+                                    height: '100%',
+                                }}
+                                className="bg-cover bg-center rounded-lg object-fill"
+                            />
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <div
+                                style={{
+                                    backgroundImage: `url('https://media.audiobookstore.com/i/b/ib01/ib01-square-1536.jpg')`,
+                                    width: '100%',
+                                    height: '100%',
+                                }}
+                                className="bg-cover bg-center rounded-lg object-fill"
+                            />
+                        </SwiperSlide>
+
                         <SwiperSlide>
                             <div
                                 style={{
@@ -110,28 +133,6 @@ const Slider = () => {
                         <SwiperSlide>
                             <div
                                 style={{
-                                    backgroundImage: `url('https://i.postimg.cc/zffgcKwm/Crime-and-Punishment.jpg')`,
-                                    width: '100%',
-                                    height: '100%',
-                                }}
-                                className="bg-cover bg-center rounded-lg object-fill"
-                            />
-                        </SwiperSlide>
-
-                        <SwiperSlide>
-                            <div
-                                style={{
-                                    backgroundImage: `url('https://media.audiobookstore.com/i/b/ib01/ib01-square-1536.jpg')`,
-                                    width: '100%',
-                                    height: '100%',
-                                }}
-                                className="bg-cover bg-center rounded-lg object-fill"
-                            />
-                        </SwiperSlide>
-
-                        <SwiperSlide>
-                            <div
-                                style={{
                                     backgroundImage: `url('https://i.postimg.cc/5tJs8ygy/war-and-peace.jpg')`,
                                     width: '100%',
                                     height: '100%',
@@ -154,7 +155,6 @@ const Slider = () => {
                     </Swiper>
                 </div>
             </div>
-
 
             <div className="lg:hidden pt-6 md:pt-0">
                 <Carousel className="w-44 md:w-52">
