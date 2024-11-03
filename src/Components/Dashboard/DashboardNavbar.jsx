@@ -20,6 +20,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import ToggleMenu from "../ToggleMenu/ToggleMenu";
+import Toggle from "../Toggle/Toggle";
 
 
 
@@ -190,9 +191,11 @@ export default function DashboardNavbar() {
                   </div>
                 </div>
                 {/* Icons moved to the right side */}
-                <div className="flex items-center gap-2 md:gap-4">
-                  {" "}
-                  {/* Adjusted gap for smaller screens */}
+                <div className="flex items-center gap-2 md:gap-4"> {/* Adjusted gap for smaller screens */}
+                  
+                  {/* Toggle Component */}
+                <Toggle />
+
                   {/* Notification Button */}
                   <div className="relative">
                     <div>
