@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { FaShareFromSquare } from "react-icons/fa6";
 import SocialSharingButtons from "@/Components/AudioBook/SocialSharingButtons";
+import Heading from "@/Components/Heading/Heading";
 
 export default function Page() {
   const [currentAudio, setCurrentAudio] = useState(null);
@@ -93,7 +94,7 @@ export default function Page() {
         <div className="mt-14 sm:mt-10 pt-14 relative z-10 rounded-xl ">
           {/* Cover Image */}
           {/* Cover Image */}
-          <div className="bg-white border-slate-100 transition-all duration-500  border-b rounded-t-xl p-4 pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8  dark:bg-[#0A0A0C] dark:text-white dark:border-[#0A0A0C]">
+          <div className="bg-white border-slate-100 transition-all duration-500  rounded-t-xl p-4 pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8  dark:bg-[#0A0A0C] dark:text-white dark:border-[#0A0A0C]">
             {currentAudioBook && (
               <div className="flex space-x-4 flex-col lg:flex-row dark:bg-[#0A0A0C] dark:text-white">
                 <Image
@@ -261,11 +262,7 @@ export default function Page() {
 
         {/* All Audio Books section */}
         <div className="container ">
-          <div className="p-2 mt-4 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[400px] h-12 mx-auto">
-            <h1 className=" md:text-xl lg:text-2xl  uppercase font-bold text-center">
-              All Audio Books
-            </h1>
-          </div>
+          <Heading heading="All Audio Books"></Heading>
 
           <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
             <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

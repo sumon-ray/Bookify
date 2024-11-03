@@ -4,26 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
-import { CgProfile } from "react-icons/cg";
 import img from "../../src/assets/images/About/logo (1).png";
 import img2 from "../../src/assets/images/About/bookdark.png";
 import { FaChalkboardTeacher, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import ProfileUpdateModal from "./ProfileUpdateModal";
 import toast from "react-hot-toast";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
-import Badge from "@mui/material/Badge";
-import { Menu, MenuItem } from "@mui/material";
 import { TbExchange } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import NavbarDrawer from "./Navbar/NavbarDrawer";
-import Cart from "./cart/Cart";
 import Toggle from "./Toggle/Toggle";
+import ToggleMenu from "../Components/ToggleMenu/ToggleMenu";
 
 const Navbar = () => {
   const session = useSession();
   const pathName = usePathname();
-  const [toggle, setToggle] = useState(false);
   const [down, setDown] = useState(false);
   // console.log(pathName);
 
@@ -63,8 +58,12 @@ const Navbar = () => {
       path: "/exchange",
     },
     {
-      title: "Audio Books",
+      title: "Audio books",
       path: "/audiobooks",
+    },
+    {
+      title: "All Books",
+      path: "/all-books",
     },
     {
       title: "Contact",
@@ -90,7 +89,7 @@ const Navbar = () => {
 
   return (
     <div className="overflow-hidden">
-      <nav className="md:flex items-center md:justify-between bg-[#F3F2ED] dark:bg-[#272727E6] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
+      <nav className="md:flex items-center md:justify-between bg-[#F3F2ED] border-b border-black  dark:border-white dark:bg-[#272727E6] py-1.5 lg:pr-10 lg:pl-5 md:fixed z-50 w-full top-0">
         {/* bookify logo */}
         <div className="flex md:flex-none items-center justify-between">
           <>
@@ -118,12 +117,14 @@ const Navbar = () => {
           </>
 
           {/* Hamburger icon for mobile */}
-          <div className="flex items-center">
-            <Toggle className='md:hidden mr-0' />
+          <div className="flex dark:text-white items-center">
+            {/* Adjusted the positioning of the NavbarDrawer */}
+            <div className=" cursor-pointer md:hidden flex items-center justify-center">
+              <div className="">
+                <Toggle className="p-4" />
+              </div>
 
-            
-            <div className="text-3xl cursor-pointer md:hidden">
-              <NavbarDrawer />
+              <NavbarDrawer className="" />
             </div>
           </div>
         </div>
@@ -133,11 +134,12 @@ const Navbar = () => {
           <ul
             className={`hidden md:flex font-normal gap-x-6 md:bg-none lg:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[10] left-0 w-1/2 md:w-auto md:pl-0 pl-9 transition-all duration-200 ease-in`}
           >
-            {links.slice(0,1).map((link) => (
+            {links.slice(0, 1).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path && "font-black"
-                  } lg:text-[16px] md:my-0 my-7`}
+                className={`${
+                  pathName === link.path && "font-black"
+                } lg:text-[16px] md:my-0 my-7`}
               >
                 <Link
                   href={link.path}
@@ -148,41 +150,40 @@ const Navbar = () => {
               </li>
             ))}
 
-
             <li className="lg:text-[16px] md:my-0 my-7 font-normal">
               {links?.slice(1, 2).map((link, index) => (
                 <Link
                   key={index}
                   href={link?.path}
-                  className={`flex items-center ${pathName === link?.path ? "font-black" : ""
-                    }`}
+                  className={`flex items-center ${
+                    pathName === link?.path ? "font-black" : ""
+                  }`}
                 >
                   <p>{link?.title}</p>
-                  <Badge
-                    // sx={{backgroundImage:'#364957'}}
-                    // badgeContent={data?.length || "0"}
+                  {/* <Badge
                     color="primary"
                     anchorOrigin={{
                       vertical: "top",
                       horizontal: "right",
                     }}
-                  >
-                    <TbExchange className="text-xl -mb-1" />
-                  </Badge>
+                  > */}
+                  <TbExchange className="text-xl -mb-1" />
+                  {/* </Badge> */}
                 </Link>
               ))}
             </li>
 
-            {/* Contact and remaining links */}
+            {/* Contact and remaining links without TbExchange icon */}
             {links.slice(2).map((link) => (
               <li
                 key={link.path}
-                className={`${pathName === link.path && " font-black"
-                  } lg:text-[16px] md:my-0 my-7`}
+                className={`${
+                  pathName === link.path && " font-black"
+                } lg:text-[16px] md:my-0 my-7 flex items-center`}
               >
                 <Link
                   href={link.path}
-                  className="text-[black] dark:text-white duration-500"
+                  className="text-[black] dark:text-white duration-500 flex items-center"
                 >
                   {link.title}
                 </Link>
@@ -234,78 +235,23 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex hidden md:block gap-2">
-                  <Toggle />
- <div className="flex lg:justify-center   items-center gap-2">
-          {session?.status === "unauthenticated" && (
-            <Link href="/login"> 
-              <button className="btn text-[16px] md:block hidden font-semibold bg-[#364957]  text-white p-3 px-4 rounded-lg">
-                Sign In
-              </button>
-            </Link>
-          )}
-          {session?.status === "authenticated" && (
-            <>
-              <div className="relative text-left hidden md:block ">
-                <button
-                  type="button"
-                  className="flex items-center text-sm"
-                  onClick={() => setToggle(!toggle)}
-                  onChange={() => setToggle(!toggle)}
-                >
-                  {session?.data?.user.image ? (
-                    <Image
-                      src={session?.data?.user?.image}
-                      width={32}
-                      height={32}
-                      className="rounded-full hover:border-2"
-                      alt="profile-image"
-                    />
-                  ) : (
-                    <CgProfile className="text-black font-black text-3xl" />
-                  )}
+        <div className="hidden md:flex gap-1 md:justify-center items-center">
+          <Toggle />
+          <div className="flex items-center gap-2">
+            {session?.status === "unauthenticated" && (
+              <Link href="/login">
+                <button className="btn text-[16px] md:block hidden font-semibold  text-white p-3 px-4 rounded-lg bg-[#374956] dark:bg-[#fefefe]   dark:text-black">
+                  Login
                 </button>
-              </div>
-
-              {toggle ? (
-                <div className="z-50 absolute top-[70px] right-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow">
-                  <ul className="pt-1" aria-labelledby="user-menu-button">
-                    <li className="ml-2 text-left ">
-                      <p className="block text-sm font-normal space-x-6">
-                        {session?.data?.user?.name}
-                      </p>
-                      <p className="block text-[12px] text-gray-500 truncate">
-                        {session?.data?.user?.email}
-                      </p>
-                    </li>
-                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                      <FaChalkboardTeacher className="mr-1" />
-                      <Link href="/dashboard">Dashboard</Link>
-                    </li>
-                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                      <FaUserEdit className="mr-1" />
-                      <ProfileUpdateModal />
-                    </li>
-                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex rounded-b items-center">
-                      <FaSignOutAlt className="mr-1" />
-                      <button
-                        onClick={() => {
-                          signOut();
-                          toast.success("Signed out successfully!");
-                        }}
-                      >
-                        Sign out
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              ) : null}
-            </>
-          )}
+              </Link>
+            )}
+            {session?.status === "authenticated" && (
+              <>
+                <ToggleMenu session={session}></ToggleMenu>
+              </>
+            )}
+          </div>
         </div>
-
-</div>
-
       </nav>
     </div>
   );

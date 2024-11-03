@@ -54,7 +54,7 @@ export default function DetailsCard({ genre, title }) {
     <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-0">
 
       {
-        <div className="grid grid-cols-2  md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-7">
+        <div className="grid grid-cols-2  md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-7 pt-4">
           {
             relatedBook?.map((book, idx) =>
               <motion.div

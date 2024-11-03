@@ -1,5 +1,5 @@
 import { Rating } from "@mui/material";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function PeopleReview({ data, isLoading }) {
     return (
@@ -33,9 +33,8 @@ export default function PeopleReview({ data, isLoading }) {
                         </div>
                     </div>
                     : <div className="p-6 space-y-2.5">
-                        <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row items-center">
-                            <Image
-                                unoptimized
+                        <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row md:items-center">
+                            <img
                                 src={data?.profile}
                                 height={10} width={10} alt="profile"
                                 className="w-11 h-11 rounded-full object-fill -mb-1" />

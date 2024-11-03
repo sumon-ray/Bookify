@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles/globals.css */
+@import url("https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap");
 
 html {
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -117,7 +119,6 @@ html {
 
   /* Dark mode colors */
 
-
   .dark {
     --background: 0 0% 0%;
     /* Black background */
@@ -158,9 +159,6 @@ html {
     --ring: 0 0% 98%;
     /* Lighter ring */
   }
-
-
-
 }
 
 @layer base {
@@ -202,7 +200,6 @@ html {
     color: var(--card-foreground);
     /* White text */
   }
-
 }
 
 .css-ihowzd-MuiBadge-badge {
@@ -219,15 +216,16 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
 }
 
 div:where(.swal2-container) div:where(.swal2-popup) {
-  background: #F3F2ED !important;
+  background: #f3f2ed !important;
   color: black !important;
 }
 
 .custom-confirm-button {
-  background-color: #364957 !important; 
+  background-color: #364957 !important;
   color: white !important;
   border: none !important;
 }
+
 /* Customize the scrollbar */
 .overflow-y-scroll::-webkit-scrollbar {
   margin-top: 5px;
@@ -239,29 +237,33 @@ div:where(.swal2-container) div:where(.swal2-popup) {
 .overflow-y-scroll::-webkit-scrollbar-track {
   background: #364957 !important;
   /* background of the track */
-  border-radius: 10px !important
-    /* optional rounded corners */
+  border-radius: 10px !important;
+  /* optional rounded corners */
 }
 
 /* Handle */
 .overflow-y-scroll::-webkit-scrollbar-thumb {
   background: #000000 !important;
-  border-radius: 10px !important
+  border-radius: 10px !important;
 }
 
 .overflow-y-scroll::-webkit-scrollbar-thumb:hover {
   background: #364957 !important;
 }
+
 .overflow-y-scroll {
-  scrollbar-color: #ffffff #364957CC !important;
+  scrollbar-color: #ffffff #364957cc !important;
   scrollbar-width: thin;
 }
+
 .border {
   border-width: 2px;
 }
+
 .border-input {
   border-color: #364957;
 }
+
 .css-1ejouah-MuiButtonBase-root-MuiTab-root.Mui-selected {
   color: black !important;
 }
@@ -273,7 +275,31 @@ div:where(.swal2-container) div:where(.swal2-popup) {
 .css-19kzrtu {
   padding: 3px !important;
 }
-input[type=file]::file-selector-button {
+
+input[type="file"]::file-selector-button {
   background-color: #364957;
   color: white;
+}
+
+.menu-container {
+  display: flex;
+  /* Ensure the icons are in a row */
+  align-items: center;
+  /* Align items vertically centered */
+}
+
+.profile-icon,
+.theme-icon {
+  margin-left: 10px;
+  /* Add space between menu and icons */
+}
+
+.bg-\[\#364957\] {
+  --tw-bg-opacity: 1;
+  background-color: #364957 !important;
+}
+
+
+[data-theme="dark"] .css-j60oyd.Mui-selected {
+  color: white !important;
 }

@@ -13,6 +13,7 @@ import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { FiBookOpen, FiUser, FiTag } from "react-icons/fi";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
+import Heading from "../Heading/Heading";
 
 const OurLibrary = () => {
   const [category, setCategory] = useState("All");
@@ -67,18 +68,14 @@ const OurLibrary = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-      <div className='p-2 rounded-tl-2xl rounded-br-2xl border border-black dark:border-gray-300 max-w-[200px] md:max-w-[385px] h-12 mx-auto'>
-        <h1 className='md:text-2xl uppercase font-bold text-center'>
-          <span className='hidden md:block'>Explore Exchange Library</span>
-          <span className='block md:hidden'>Exchange Library</span>
-        </h1>
-      </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+      <Heading heading='Explore Exchange Library'></Heading>
 
       {/* Dynamic Category Selector */}
-      <div className="py-3 mt-8 lg:mt-2  lg:px-5 md:pl-20 lg:pl-0 ">
+      <div className="py-3 mt-8 lg:mt-2  lg:px-5 md:pl-0 lg:pl-0 ">
         <select
-          className="lg:w-[25%] md:w-full sm:w-full  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
+          className="lg:w-[24.9%] md:w-full sm:w-full  border-4 border-[#EFEEE9] focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
@@ -89,7 +86,7 @@ const OurLibrary = () => {
             categories.map((cat, index) => (
               <option key={index} value={cat}>
                 {cat}
-              </option>
+              </option> 
             ))
           ) : (
             <option>

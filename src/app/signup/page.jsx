@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { Suspense, useState } from "react";
 import img from "../../assets/images/About/logo (1).png";
+import img2 from "../../assets/images/About/bookdark.png";
 import Image from "next/image";
 import axios from "axios";
 
@@ -55,36 +56,49 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex lg:flex-row-reverse justify-center w-full h-screen mx-auto overflow-hidden rounded-lg  dark:bg-[#0A0A0C] dark:text-white">
+    <div className="flex lg:flex-row-reverse justify-center w-full h-screen mx-auto overflow-hidden rounded-lg  dark:bg-[#272727A6] dark:text-white">
       <Image
-        width={500}
-        height={500}
-        src="https://i.ibb.co/rxGD6T6/signup.png"
+        width={791}
+        height={572}
+        src="https://i.ibb.co/wMzqwPJ/sign-up.png"
         alt="sign up"
-        className="hidden bg-center bg-contain bg-no-repeat lg:block w-1/2 mx-6 my-8"
+        className="hidden bg-center object-cover lg:block w-1/2"
       ></Image>
 
-      <div className="w-full mx-6 mb-8 lg:px-16 md:px-8 lg:w-1/2 flex flex-col justify-center my-4">
+      <div className="w-full mx-6 lg:px-16 md:px-8 lg:w-1/2 flex flex-col justify-center">
         <Link href={"/"}>
-          <div className="flex items-center justify-center text-[#B7B7B7] dark:bg-[#0A0A0C] dark:text-white">
-            <Image
-              alt="sign-up-image"
-              src={img}
-              className="h-[68px] w-36"
-              height={20}
-              width={200}
-            />
+          <div className="mt-4 flex items-center justify-center ">
+            <div className="dark:hidden">
+              <Image
+                src={img}
+                className="h-14 md:h-[68px] w-28  md:w-36"
+                height={1100}
+                width={600}
+                alt="Logo"
+              />
+            </div>
+
+            <div className="hidden dark:block">
+              <Image
+                src={img2}
+                className="h-14 md:h-[68px] w-28  md:w-36"
+                height={20}
+                width={200}
+                unoptimized
+                alt="Logo"
+              />
+            </div>
           </div>
         </Link>
 
-        <p className="mt-1 text-xl text-center  dark:bg-[#0A0A0C] dark:text-white">
+        <p className="mt-1 text-xl text-center  dark:text-white">
           Welcome back!
         </p>
 
         <SocialLogin></SocialLogin>
         <form onSubmit={handleSignUp}>
           <div className="flex items-center justify-between mt-4">
-            <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white lg:w-1/4"></span>
+            <span className="w-1/5 border-b dark:bg-[#272727A6] dark:text-white lg:w-1/4"></span>
 
             <p className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">
               or register
@@ -94,11 +108,11 @@ const SignUp = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium  dark:bg-[#0A0A0C] dark:text-white">
+            <label className="block mb-2 text-sm font-medium   dark:text-white">
               Name
             </label>
             <input
-              className="block w-full px-4 py-2 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
+              className="block w-full px-4 py-2 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#272727A6] dark:text-white"
               type="text"
               name="name"
               id="name"
@@ -106,11 +120,11 @@ const SignUp = () => {
             />
           </div>
           <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium  dark:bg-[#0A0A0C] dark:text-white">
+            <label className="block mb-2 text-sm font-medium   dark:text-white">
               Email Address
             </label>
             <input
-              className="block w-full px-4 py-2 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
+              className="block w-full px-4 py-2 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#272727A6] dark:text-white"
               type="email"
               name="email"
               id="email"
@@ -119,12 +133,12 @@ const SignUp = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium  dark:bg-[#0A0A0C] dark:text-white">
+            <label className="block mb-2 text-sm font-medium   dark:text-white">
               Password
             </label>
 
             <input
-              className="block w-full px-4 py-2 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
+              className="block w-full px-4 py-2 bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#272727A6] dark:text-white"
               type="password"
               name="password"
               id="password"
@@ -133,13 +147,13 @@ const SignUp = () => {
           </div>
           <div className="mt-4">
             <div className="flex justify-between">
-              <label className="block mb-2 text-sm font-medium  dark:bg-[#0A0A0C] dark:text-white ">
+              <label className="block mb-2 text-sm font-medium  dark:bg-[#272727A6] dark:text-white ">
                 Profile Photo
               </label>
             </div>
 
             <input
-              className="block w-full px-4  bg-white border rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#0A0A0C] dark:text-white"
+              className="block w-full px-4 bg-white border border-[#364957]  rounded-lg focus:border-[#364957] focus:ring-opacity-0 focus:outline-none focus:ring focus:ring-blue-300 dark:bg-[#272727A6] dark:text-white"
               type="file"
               name="file"
               id="file"
@@ -147,7 +161,7 @@ const SignUp = () => {
           </div>
 
           {/* Error handle */}
-          <div className="flex w-full max-w-sm overflow-hidden dark:bg-[#0A0A0C] dark:text-white">
+          <div className="flex w-full max-w-sm overflow-hidden  dark:text-white">
             <div className="px-4 py-2 -mx-3">
               <div className="mx-3">
                 <span className="font-semibold text-red-500 dark:text-red-400"></span>
@@ -155,7 +169,7 @@ const SignUp = () => {
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-4">
             <button
               type="submit"
               className="w-full px-6 py-3 text-sm font-medium tracking-wide  bg-[#364957]  text-[#ffffff]  capitalize transition-colors duration-300 transform  rounded-lg"
@@ -164,7 +178,7 @@ const SignUp = () => {
               {loading ? (
                 <div className="flex items-center text-sm font-medium justify-center">
                   <svg
-                    class="animate-spin border-indigo-300"
+                    className="animate-spin border-[#364957]"
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
@@ -192,17 +206,19 @@ const SignUp = () => {
           </div>
         </form>
 
-        <div className="flex items-center justify-between mt-4">
-          <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white md:w-1/4"></span>
+        <div className="flex items-center justify-between my-4">
+          <span className="border-b dark:bg-[#272727A6] dark:text-white md:w-1/4"></span>
+          <span>
+            Already have an account?{" "}
+            <Link
+              href="/login"
+              className="text-[#364957] font-semibold dark:text-white hover:underline"
+            >
+              Login
+            </Link>
+          </span>
 
-          <Link
-            href="/login"
-            className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
-          >
-            or sign in
-          </Link>
-
-          <span className="w-1/5 border-b dark:bg-[#0A0A0C] dark:text-white md:w-1/4"></span>
+          <span className="border-b dark:bg-[#272727A6] dark:text-white md:w-1/4"></span>
         </div>
       </div>
     </div>

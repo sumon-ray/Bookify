@@ -84,7 +84,7 @@ const MoladGet = ({ receiver }) => {
     return (
         <div>
             <button onClick={() => setMsgModal(!msgModal)}>
-                <AiFillMessage className='text-xl text-center absolute left-[34px] top-6' title='Coming soon' />
+                <AiFillMessage className='text-xl text-center absolute left-[34px] top-6 dark:text-white'  />
             </button>
 
             {msgModal && (
@@ -113,11 +113,11 @@ const MoladGet = ({ receiver }) => {
                         <div className="flex flex-col flex-grow h-0 p-4 overflow-auto dark:bg-[#272727]">
                             {messages.map((msg, index) => (
                                 <div key={index} className={`flex w-full mt-2 space-x-3 max-w-xs ${msg.senderEmail === senderEmail ? 'ml-auto justify-end' : ''}`}>
-                                    {msg.senderEmail !== senderEmail && <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>}
+                                    {/* {msg.senderEmail !== senderEmail && <div className="flex-shrink-0 h-10 w-10  bg-gray-300"></div>} */}
                                     <div className={`p-2 rounded-lg ${msg.senderEmail === senderEmail ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}>
                                         {msg.messageText}
                                     </div>
-                                    {msg.senderEmail === senderEmail && <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-300"></div>}
+                                    {/* {msg.senderEmail === senderEmail && <div className="flex-shrink-0 h-10 w-10  bg-blue-300"></div>} */}
                                 </div>
                             ))}
                         </div>
@@ -135,7 +135,7 @@ const MoladGet = ({ receiver }) => {
 
                             <div className="relative  ">
                                 <input
-                                    className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
+                                    className="bg-[#EFEEE9] w-full border-0 focus:ring-[#EFEEE9] focus:outline-none focus:ring rounded-md py-2 px-4 pr-14 outline-none"
                                     type="text"
                                     placeholder="Type your message…"
                                     value={message}
@@ -149,7 +149,7 @@ const MoladGet = ({ receiver }) => {
                                     /> */}
                                     <div
                                         onClick={handleSendMessage}
-                                        className={`bg-[#364957] p-2 px-4 text-white rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer `}>
+                                        className={`bg-[#364957] p-[9.5px] px-4 text-white rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer `}>
                                         send
                                     </div>
                                 </div>

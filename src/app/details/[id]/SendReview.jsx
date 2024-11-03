@@ -1,4 +1,5 @@
-import { Button, Rating } from '@mui/material';
+import { Rating } from '@mui/material';
+import { Button } from '@nextui-org/react';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
@@ -41,7 +42,7 @@ function SendReview({ refetch, openStar, setOpenStar , value}) {
 
     return (
         <div className="relative">
-            <Button onClick={() => setIsOpen(true)} variant="contained" className="bg-[#364957] dark:bg-[#0A0A0C]" size="small">write review</Button>
+            <Button onClick={() => setIsOpen(true)} variant="contained" className="bg-[#364957] dark:bg-[#272727A6] text-white rounded-md font-medium" size="small">write review</Button>
             {isOpen && (
                 <div
                     className="fixed inset-0 z-10 overflow-y-auto"
