@@ -24,6 +24,7 @@ import {
   SelectValue,
 } from "@/Components/ui/Select"
 import Lottie from "lottie-react";
+import Link from "next/link";
 
 
 
@@ -564,7 +565,7 @@ export default function Page() {
                               {mybooks?.map((book) => (
                                 <tr key={book?._id} className="border-t border-black dark:border-white dark:text-white">
                                   <td className="pl-0 md:pl-1 md:px-5 py-5">
-                                    <div>
+                                    <Link href={`/details/${book_id}`}>
                                       <Image
                                         unoptimized
                                         className="md:w-[105px] md:h-[125px] rounded-md object-fill"
@@ -573,7 +574,7 @@ export default function Page() {
                                         height={100}
                                         width={100}
                                       />
-                                    </div>
+                                    </Link>
                                   </td>
                                   <td className="px-5 py-5 hidden md:table-cell">
                                     <p className=" text-black dark:text-white whitespace-no-wrap">{book?.title}</p>
@@ -707,7 +708,7 @@ export default function Page() {
                         {usersBooks?.map((book) => (
                           <tr key={book?._id} className="border-t border-black dark:border-white dark:text-white">
                             <td className="pl-1 md:pl-0 md:px-5 py-5">
-                              <div>
+                              <Link href={`/details/${book_id}`}>
                                 <Image
                                   unoptimized
                                   className="md:w-[105px] md:h-[125px] rounded-md object-fill"
@@ -716,7 +717,7 @@ export default function Page() {
                                   height={100}
                                   width={100}
                                 />
-                              </div>
+                              </Link>
                             </td>
                             <td className="px-5 py-5 hidden md:table-cell">
                               <p className=" text-black dark:text-white whitespace-no-wrap">{book?.title}</p>

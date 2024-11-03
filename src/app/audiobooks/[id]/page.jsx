@@ -10,7 +10,7 @@ import SocialSharingButtons from "@/Components/AudioBook/SocialSharingButtons";
 import AllAudioBooks from "./AllAudioBooks";
 import ChapterList from "../ChapterList";
 import LoadingSpiner from "./LoadingSpiner";
-import ReactAudioPlayer from 'react-audio-player'; 
+import ReactAudioPlayer from 'react-audio-player';
 import { LiaHandPointDown } from "react-icons/lia";
 
 export default function Page({ params }) {
@@ -30,7 +30,7 @@ export default function Page({ params }) {
 
   if (isLoading) {
     return (
- <LoadingSpiner />
+      <LoadingSpiner />
     );
   }
 
@@ -62,7 +62,7 @@ export default function Page({ params }) {
   return (
     <div className="min-h-screen px-6 md:px-0  max-w-7xl mx-auto">
       <div id="Main">
-        <div className="mt-5 md:mt-24 lg:mt-20 md:mt-14 relative z-10  ">
+        <div className="mt-5 md:mt-24 lg:mt-20  relative z-10  ">
           {/* Cover Image */}
           <div className=" border-slate-100 transition-all duration-500     pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8   dark:text-white dark:border-[#0A0A0C]">
             {currentAudioBook && (
@@ -79,7 +79,7 @@ export default function Page({ params }) {
                   />
                 </div>
                 <div className=" lg:-translate-y-2  mt-4 md:mt-0 md:pt-3 lg:pt-0 min-w-0 flex-auto font-semibold h-auto flex flex-col justify-between">
-                  <div className="space-y-3 "> 
+                  <div className="space-y-3 ">
                     <div className="flex flex-col md:flex-row justify-between">
                       <p className="text-3xl font-semibold text-gray-900 dark:text-white">
                         {currentAudioBook.title}
@@ -168,27 +168,26 @@ export default function Page({ params }) {
               </div>
             )}
           </div>
-       
-                     {/* audio player */}
+          {/* audio player */}
           <div className="w-full  mx-auto px-4 sm:px-6  transition-all duration-500 dark:text-white dark:border-[#0A0A0C]">
             <ReactAudioPlayer
-              src={currentAudioBook?.audioURL} 
-              autoPlay={false} 
+              src={currentAudioBook?.audioURL}
+              autoPlay={false}
               controls
-              onEnded={() => setIsPlaying(false)} 
+              onEnded={() => setIsPlaying(false)}
               className="w-full"
             />
           </div>
         </div>
 
         {/* Audio Books chapter List Div */}
-<ChapterList className=''
-        chapters={currentAudioBook?.chapters} 
-        currentAudio={currentAudio} 
-        handlePlay={handlePlay} 
-        isPlaying={isPlaying} 
-        audioBookCover={currentAudioBook?.audioBookCover} 
-      />
+        <ChapterList className=''
+          chapters={currentAudioBook?.chapters}
+          currentAudio={currentAudio}
+          handlePlay={handlePlay}
+          isPlaying={isPlaying}
+          audioBookCover={currentAudioBook?.audioBookCover}
+        />
 
         {/* All Audio Books section */}
         <AllAudioBooks data={data} />

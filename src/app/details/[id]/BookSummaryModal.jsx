@@ -61,7 +61,7 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
     setResponse("");
 
     try {
-      const res = await axios.post("http://localhost:4000/generate-content", { prompt: query });
+      const res = await axios.post("https://bookify-server-lilac.vercel.app/generate-content", { prompt: query });
       
       const answer = res.data.answer || "No summary available.";
       setResponse(answer);

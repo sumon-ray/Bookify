@@ -18,7 +18,7 @@ const fadeInLeft = {
 export default function AboutUs() {
   return (
     <motion.section
-      className="pt-16"
+      className="md:pt-16 "
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -26,7 +26,7 @@ export default function AboutUs() {
         visible: { transition: { staggerChildren: 0.3 } },
       }}
     >
-      <div className="container px-8 lg:px-20 mx-auto lg:gap-6 flex flex-col-reverse md:flex-row items-center justify-between">
+      <div className="container px-8 lg:px-20 mx-auto lg:gap-6 flex flex-col-reverse md:flex-row items-center  justify-between">
         {/* Left Section */}
         <motion.div
           className="md:w-1/2 md:mb-0 text-justify flex flex-col items-center justify-center md:text-left px-4"
@@ -60,7 +60,7 @@ export default function AboutUs() {
 
         {/* Right Section with Animation */}
         <motion.div
-          className="md:w-1/2 lg:translate-x-10"
+          className="md:w-1/2  lg:translate-x-10"
           variants={fadeInUp}
         >
           <LottieAnimation />

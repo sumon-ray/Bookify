@@ -26,7 +26,7 @@ const AiChat = () => {
     try {
       // const res = await axios.post(
       //   "https://bookify-server-lilac.vercel.app/ask-ai",{ query }
-        const res = await axios.post("http://localhost:4000/generate-content", { prompt: query })
+        const res = await axios.post("https://bookify-server-lilac.vercel.app/generate-content", { prompt: query })
 
 
       setResponse(res.data.answer);

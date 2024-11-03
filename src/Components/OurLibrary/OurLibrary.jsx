@@ -69,7 +69,7 @@ const OurLibrary = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
       <Heading heading='Explore Exchange Library'></Heading>
 
       {/* Dynamic Category Selector */}
@@ -86,7 +86,7 @@ const OurLibrary = () => {
             categories.map((cat, index) => (
               <option key={index} value={cat}>
                 {cat}
-              </option> 
+              </option>
             ))
           ) : (
             <option>
@@ -196,7 +196,7 @@ const OurLibrary = () => {
           disabled={currentPage === 1}
         >
           {/* <GrLinkPrevious/> */}
-   <GrFormPrevious size={40} className="text-[#272727A6] dark:text-white " />
+          <GrFormPrevious size={40} className="text-[#272727A6] dark:text-white " />
         </button>
         <span className="p-2 mx-2 font-bold">
           Page {currentPage} of {totalPages}
@@ -207,7 +207,7 @@ const OurLibrary = () => {
           disabled={currentPage === totalPages}
         >
           {/* <GrLinkNext/> */}
- <MdOutlineNavigateNext size={40} className="text-[#272727A6] dark:text-white " />
+          <MdOutlineNavigateNext size={40} className="text-[#272727A6] dark:text-white " />
         </button>
       </div>
     </div>
