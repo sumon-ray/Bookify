@@ -117,58 +117,58 @@ const UpdateBook = ({ params }) => {
 
   return (
     <section className="space-y-6 px-8 lg:px-20 pb-12 pt-20">
-      <div className="bg-[#EFEEE9] dark:bg-[#27272733] dark:text-white rounded-md p-6">
-        <h1 className="text-3xl font-black uppercase text-center">Edit Book</h1>
+      <div className="bg-[#EFEEE9] dark:bg-[#0A0A0C] dark:text-white rounded-md p-6">
+        <h1 className="text-3xl font-black uppercase text-center dark:text-white">Edit Book</h1>
       </div>
 
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 *:space-y-0.5">
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">Title</label>
+            <label className="text-sm uppercase dark:text-white">Title</label>
             <input
               type="text"
               name="title"
               value={book.title}
               onChange={handleChange}
-              className="w-full  rounded-lg border dark:bg-[#27272733] dark:text-white dark:border-slate-700  border-gray-300  text-black focus:ring-[#EFEEE9] dark:focus:ring-slate-700  focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full  rounded-lg border dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0  border-gray-300  text-black focus:ring-[#EFEEE9] dark:focus:ring-slate-700  focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">Author</label>
+            <label className="text-sm uppercase dark:text-white">Author</label>
             <input
               type="text"
               name="author"
               value={book.author}
               onChange={handleChange}
-              className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg border dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">Genre</label>
+            <label className="text-sm uppercase dark:text-white">Genre</label>
             <input
               type="text"
               name="genre"
               value={book.genre}
               onChange={handleChange}
-              className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg border dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">Publication Date</label>
+            <label className="text-sm uppercase dark:text-white">Publication Date</label>
             <input
               type="date"
               name="publicationDate"
               value={book.publicationDate}
               onChange={handleChange}
-              className="w-full rounded-lg dark:focus:ring-slate-700 border dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">total Page</label>
+            <label className="text-sm uppercase dark:text-white">total Page</label>
             <input
               name="totalPage"
               value={book.totalPage}
@@ -176,14 +176,14 @@ const UpdateBook = ({ params }) => {
               id="totalPage"
               type="number"
               placeholder="Total Page"
-              className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg border dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
           <div className="col-span-full sm:col-span-2 uppercase">
             <div className="flex items-center gap-3">
               <div className="w-full">
-                <label className="text-sm">Rating</label>
+                <label className="text-sm dark:text-white">Rating</label>
                 <input
                   name="rating"
                   value={book.rating}
@@ -191,30 +191,30 @@ const UpdateBook = ({ params }) => {
                   id="rating"
                   type="number"
                   placeholder="Rating"
-                  className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+                  className="w-full rounded-lg border dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
                 />
               </div>
             </div>
           </div>
 
           <div className="col-span-full sm:col-span-2 uppercase">
-            <label className="text-sm">Published Year</label>
+            <label className="text-sm dark:text-white">Published Year</label>
             <input
               name="publishYear"
               value={book.publishYear}
               onChange={handleChange}
               type="number"
               placeholder="Published Year"
-              className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg border  dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
           {/* condition */}
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">Condition</label>
+            <label className="text-sm uppercase dark:text-white">Condition</label>
             <select
               value={book.condition}
               onChange={handleChange}
-              className="border dark:bg-[#27272733] dark:focus:ring-slate-700 dark:text-white dark:border-slate-700 border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]"
+              className="border dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0 border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]"
             >
               <option value={"Good"}>Good</option>
               <option value={"normal"}>used</option>
@@ -222,8 +222,8 @@ const UpdateBook = ({ params }) => {
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-sm uppercase">exchange Status</label>
-            <select className="border border-gray-300 text-gray-700 mb-6 dark:bg-[#27272733] dark:text-white dark:focus:ring-slate-700 dark:border-slate-700 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]">
+            <label className="text-sm uppercase dark:text-white">exchange Status</label>
+            <select className="border border-gray-300 text-gray-700 mb-6 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]">
               <option className="" value={"Available"}>Available</option>
               <option value={"Not Available"}>Not Available</option>
             </select>
@@ -231,21 +231,21 @@ const UpdateBook = ({ params }) => {
 
           <div className="flex col-span-6 justify-center items-center w-full gap-5 flex-col lg:flex-row ">
           <div className="col-span-full lg:col-span-3 sm:col-span-3 w-full">
-            <label className="text-sm uppercase">Description</label>
+            <label className="text-sm uppercase dark:text-white">Description</label>
             <textarea
               name="description"
               value={book.description}
               onChange={handleChange}
-              className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg border dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
           <div className=" md:relative w-full lg:w-1/2 pt-10">
-            <label className="hidden  text-sm uppercase">Description</label>
+            <label className="hidden  text-sm uppercase dark:text-white">Description</label>
 
             <button
               type="submit"
-              className="flex items-center justify-between gap-x-1 text-white text-sm font-bold bg-[#364957] rounded-lg mx-auto md:h-[65.5%] md:absolute lg:h-4 p-4 md:bottom-0 focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff] mt-5 w-full md:w-full lg:w-1/3"
+              className="flex items-center justify-between gap-x-1 text-white text-sm font-bold bg-[#364957] rounded-lg mx-auto md:h-[65.5%] md:absolute lg:h-4 p-4 md:bottom-0 focus:ring-[#ffffff] focus:outline-none focus:ring focus:border-[#ffffff] mt-5 w-full md:w-full lg:w-1/3 dark:bg-[#0A0A0C] dark:text-white dark:placeholder-white dark:border-0 dark:focus:border-0 dark:focus:ring-0"
             >
               <span>Update Book</span>
               <GrSend className="text-xl" />
