@@ -1,13 +1,4 @@
 "use client"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/Components/ui/Select"
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import { IoIosSearch } from "react-icons/io"
@@ -16,12 +7,24 @@ import Image from "next/image"
 import Link from "next/link"
 import { MdOutlineNavigateNext } from "react-icons/md"
 import { GrFormPrevious } from "react-icons/gr"
+import { useState } from "react"
 
 
 export default function Page() {
+  const [genre, setGenre] = useState('')
+  const [search, setSearch] = useState('')
+  const [searchIcon, setSearchIcon] = useState(false)
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['all books'],
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ['all books', genre, searchIcon],
+    queryFn: async () => {
+      const res = await axios(`https://bookify-server-lilac.vercel.app/books?genre=${genre}&search=${search}`)
+      const data = await res.data
+      return data
+    },
+  })
+  const { data: category } = useQuery({
+    queryKey: ['all books category'],
     queryFn: async () => {
       const res = await axios(`https://bookify-server-lilac.vercel.app/books`)
       const data = await res.data
@@ -29,12 +32,13 @@ export default function Page() {
     },
   })
 
-  const uniqueCategories = [...new Set(data?.map(book => book?.genre))]
+  const uniqueCategories = [...new Set(category?.map(book => book?.genre))]
 
-  // console.log(uniqueCategories)
+
+
 
   return (
-    <div className="py-20 space-y-10">
+    <div className="py-[84px] space-y-10">
 
       <div className="bg-[#EFEEE9] p-6 dark:bg-[#0A0A0C]">
         <h1 className="text-3xl font-black uppercase text-center dark:text-white">all books</h1>
@@ -44,22 +48,30 @@ export default function Page() {
         <div className="flex items-center md:justify-between">
           <div className="relative w-full lg:w-72 md:w-52 ">
             <input
-              className="bg-[white] dark:bg-[#0A0A0C] w-full border-0 focus:ring-[#EFEEE9] dark:focus:ring-0 focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
+              className="bg-[white] dark:bg-[#272727A6] w-full border-0 focus:ring-[#EFEEE9] dark:focus:ring-0 focus:outline-none focus:ring rounded-md py-2 px-4 pr-14"
               type="text"
               placeholder="Search by title..."
-            // onChange={}
+              onChange={(e) => {
+                setSearch(e.target.value)
+              }}
             />
             <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
               <div className={`bg-[#364957] dark:bg-white  p-2 rounded-bl-3xl rounded-md rounded-tl-none cursor-pointer`}>
                 <IoIosSearch onClick={() => {
-
+                  setGenre('')
+                  setSearchIcon(!searchIcon)
+                  refetch()
                 }} className="text-white dark:text-white text-2xl" />
               </div>
             </div>
           </div>
           <div className="hidden md:block">
-            <select className="border-2 border-black focus:border-[#EFEEE9]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:bg-[#0A0A0C] dark:border focus:ring-[#EFEEE9] focus:outline-none focus:ring-2">
-              <option value={' '}>All</option>
+            <select onChange={(e) => {
+              setSearch('')
+              setGenre(e.target.value)
+              refetch()
+            }} className="border-2 border-black focus:border-[#000000]  w-full p-3 px-4  rounded-md font-bold bg-[#ffffff] dark:border-white dark:bg-[#272727A6] dark:bg-[#0A0A0C] dark:border focus:ring-[#000000] focus:outline-none focus:ring-2">
+              <option defaultChecked value={' '} >All</option>
               {
                 uniqueCategories?.map(category => <option key={category} value={category}>{category}</option>)
               }
@@ -67,9 +79,9 @@ export default function Page() {
           </div>
         </div>
 
-      {
-        isLoading
-       ? <div className="flex justify-center w-full items-center min-h-[51vh]">
+        {
+          isLoading
+            ? <div className="flex justify-center w-full items-center min-h-[51vh]">
               <div className='flex flex-col justify-center items-center gap-y-1'>
                 <svg
                   class="animate-spin [animation-duration:1.5s]"
@@ -94,8 +106,8 @@ export default function Page() {
                 </svg>
                 <h1 className='text-lg font-medium'>Loading...</h1>
               </div>
-          </div>
-        : <div className="grid xl:grid-cols-6 gap-8">
+            </div>
+            : <div className="grid xl:grid-cols-6 gap-8">
               {
                 data?.map((book, idx) => <motion.div
                   key={idx}
@@ -126,9 +138,9 @@ export default function Page() {
                   </Link>
                 </motion.div>)
               }
-          </div>
-      }
-        <div className="flex justify-center items-center pt-8">
+            </div>
+        }
+        <div className="flex justify-center items-center pt-4">
           <button
             className="  text-black rounded-md"
           // onClick={handlePrevPage}

@@ -62,7 +62,7 @@ export default function Page({ params }) {
   return (
     <div className="min-h-screen px-6 md:px-0  max-w-7xl mx-auto">
       <div id="Main">
-        <div className="mt-5 md:mt-24 lg:mt-20 md:mt-14 relative z-10  ">
+        <div className="mt-5 md:mt-24 lg:mt-20  relative z-10  ">
           {/* Cover Image */}
           <div className=" border-slate-100 transition-all duration-500     pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8   dark:text-white dark:border-[#0A0A0C]">
             {currentAudioBook && (
