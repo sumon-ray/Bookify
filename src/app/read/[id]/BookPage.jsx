@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 const BookPage = ({ pageNumber, bookData, content, isLeft }) => {
   return (
     <div
-      className={`flex-1 bg-gray-50 shadow-lg rounded-lg border border-gray-200 p-6 no-scrollbar ${
+      className={`flex-1 bg-gray-50 dark:bg-[#27272733] dark:text-white shadow-lg rounded-lg border border-gray-200 dark:border-slate-700 p-6 no-scrollbar ${
         isLeft ? "mb-4 md:mb-0" : ""
       } page-container`}
       style={{ height: "75vh", overflowY: "hidden" }}
     >
       <h2
-        className={`sticky top-0 bg-gray-50 text-xs ${
+        className={`sticky top-0  text-xs ${
           isLeft ? "text-left" : "text-right"
         } font-semibold`}
       >
@@ -28,7 +28,7 @@ const BookPage = ({ pageNumber, bookData, content, isLeft }) => {
         </div>
       )}
 
-      <div className="h-full overflow-y-auto no-scrollbar text-gray-800 text-sm leading-relaxed whitespace-pre-line">
+      <div className="h-full overflow-y-auto no-scrollbar text-gray-800 dark:text-white text-sm leading-relaxed whitespace-pre-line">
         {content ? 
           <motion.div
             key={content.page}

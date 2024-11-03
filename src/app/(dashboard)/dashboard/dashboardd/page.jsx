@@ -77,7 +77,7 @@ const Page = () => {
                <TopBooks topBooks={topBooks}/>
             </div>
             
-            {/* 3 */}<div className=' rounded-b-xl lg:col-span-4 lg:h-[310px] col-span-12 md:mb-4'>
+            {/* 3 */}<div className=' rounded-xl lg:col-span-4 lg:h-[310px] col-span-12 md:mb-4'>
                 <Visitor/>
             </div>
 
