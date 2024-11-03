@@ -54,7 +54,7 @@ const AudioBook = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto dark:text-white">
+    <div className="max-w-7xl mx-auto md:px-6 dark:text-white">
       <Heading heading="Explore Audio Collection" />
       {isLoading ? (
         <div className="flex justify-center items-center pt-1 dark:text-white">
