@@ -174,7 +174,7 @@ const FaqSection = () => {
   }, [searchTerm]);
 
   return (
-    <div className="px-8 py-16 lg:px-28 mx-auto dark:from-gray-900 dark:to-gray-800">
+    <div className="px-8  lg:px-28 mx-auto dark:from-gray-900 dark:to-gray-800">
       <motion.div
         ref={ref}
         animate={controls}
@@ -187,12 +187,12 @@ const FaqSection = () => {
         className="text-center"
       >
         <Heading heading="Frequently Asked Questions"></Heading>
-        <p className="text-lg text-gray-600 mb-8 dark:text-gray-300 max-w-2xl mx-auto">
+        {/* <p className="text-lg text-gray-600 mb-8 dark:text-gray-300 max-w-2xl mx-auto">
           Find answers to common questions about our book exchange platform.
-        </p>
+        </p> */}
       </motion.div>
 
-      <div className="max-w-md mx-auto relative">
+      <div className="max-w-md mx-auto md:mb-8 relative">
         <RiSearchLine className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         <input
           type="text"
@@ -304,7 +304,7 @@ const FaqSection = () => {
         <div className="text-center lg:text-left max-w-2xl">
           <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center mb-4">
             <span>Still have questions</span>
-            <FaQuestion className="text-black" />
+            <FaQuestion className="text-black dark:text-white" />
           </h4>
           <p className="text-lg text-gray-700 dark:text-gray-300">
             Can&apos;t find the answer you&apos;re looking for? Please{" "}

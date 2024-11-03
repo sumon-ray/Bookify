@@ -6,7 +6,7 @@ const useIcon = () => {
   return (
     <div>
       <div className="flex gap-5">
-        <IconButton text="Twitter" color="">
+        <IconButton text="" color="">
           <a
             href="https://www.instagram.com/" 
             target="_blank"
@@ -17,7 +17,7 @@ const useIcon = () => {
           </a>
         </IconButton>
 
-        <IconButton text="Instagram" color="">
+        <IconButton text="" color="">
           <a
             href="https://www.instagram.com/" 
             target="_blank"
@@ -28,7 +28,7 @@ const useIcon = () => {
           </a>
         </IconButton>
 
-        <IconButton text="Discord" color="">
+        <IconButton text="" color="">
           <a
             href="https://discord.com/" 
             target="_blank"
@@ -39,7 +39,7 @@ const useIcon = () => {
           </a>
         </IconButton>
 
-        <IconButton text="Facebook" color="">
+        <IconButton text="" color="">
           <a
             href="https://www.facebook.com/" 
             target="_blank"
