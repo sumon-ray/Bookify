@@ -26,11 +26,6 @@ const customStyles = {
   },
 };
 
-// const backdropBlur ={
-//     backdrop-filter: blur(5px)
-
-//   }
-
 const contentStyles = {
   maxHeight: "300px",
   overflowY: "auto",
@@ -64,17 +59,18 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
     const query = `Summary for "${book.title}" by ${book.author}`;
     setLoading(true);
     setResponse("");
+
     try {
-      const res = await axios.post("https://bookify-server-lilac.vercel.app/ask-ai", { query });
-      setResponse(res.data.answer);
+      const res = await axios.post("http://localhost:4000/generate-content", { prompt: query });
+      
+      const answer = res.data.answer || "No summary available.";
+      setResponse(answer);
     } catch (error) {
       console.error("Error asking AI:", error);
       if (error.response) {
         setResponse("Server error: " + error.response.data.message);
       } else {
-        setResponse(
-          "Network error. Please check your connection and try again."
-        );
+        setResponse("Network error. Please check your connection and try again.");
       }
     } finally {
       setLoading(false);
@@ -88,15 +84,11 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(response);
-
     toast.custom((t) => (
-      <div
-        className={`${
+      <div className={`${
           t.visible ? "animate-enter" : "animate-leave"
-        } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-      >
+        } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}>
         <div className="flex-1 w-0 p-4">📋 Response copied to clipboard!</div>
-
         <div className="flex border-l border-gray-200">
           <button
             onClick={() => toast.dismiss(t.id)}
@@ -115,7 +107,7 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
       onRequestClose={handleClose}
       style={customStyles}
       contentLabel="Book Summary Modal"
-      className={`overflow-auto ${isOpen ? "!backdrop-blur-lg    " : ""}`}
+      className={`overflow-auto ${isOpen ? "!backdrop-blur-lg" : ""}`}
     >
       <div className="relative">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">

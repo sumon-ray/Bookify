@@ -5,7 +5,6 @@ import FaqSection from "@/Components/FaqSection";
 import AudioBook from "@/Components/AudioBook/AudioBook";
 import CommunityHighlights from "@/Components/CommunityHighlights";
 
-
 export default function Home() {
   return (
     <>

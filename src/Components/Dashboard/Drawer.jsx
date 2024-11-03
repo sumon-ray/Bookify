@@ -27,8 +27,8 @@ export default function TemporaryDrawer() {
 
   const checkActive = (route) => {
     return pathname === route
-      ? "bg-[#364957] dark:text-white hover:bg-[#364957]   rounded-md border-l-4 border-l-[#FFD700] text-[#FFFFFF] "
-      : "text-black dark:text-white";
+      ? "bg-[#364957] font-bold dark:text-white hover:bg-[#364957]    rounded-md  text-[#FFFFFF] "
+      : "text-black  dark:text-white";
   };
 
   const handleLinkClick = () => {
@@ -46,7 +46,7 @@ export default function TemporaryDrawer() {
   };
 
   const iconActive = (route) => {
-    return pathname === route ? "text-white text-2xl " : "dark:text-white text-black text-xl";
+    return pathname === route ? "text-red-400 text-2xl " : "dark:text-white text-black text-xl";
   };
 
   const DrawerList = (
@@ -102,7 +102,7 @@ export default function TemporaryDrawer() {
             >
               <ListItemIcon className={iconActive("/dashboard")}>
                 <motion.div whileHover={{ scale: 1.1 }}>
-                  <IoHomeOutline />
+                  <IoHomeOutline className="dark:text-white" />
                 </motion.div>
               </ListItemIcon>
               <ListItemText primary="Home" sx={{ fontWeight: pathname === "/dashboard" ? 'bold' : 'normal' }} />
