@@ -20,58 +20,52 @@ import img2 from "../../assets/images/About/bookdark.png";
 import Image from "next/image";
 import Divider from "@mui/material/Divider";
 import { AiOutlineClose } from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
+import { useSession } from "next-auth/react";
+import useUsers from "@/hooks/useUsers";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
   const pathname = usePathname();
+  const { data: users, session, isLoading, isError, error } = useUsers();
+  // console.log("Session Data:", users);
+  const loggedInEmail = session?.data?.user?.email;
+  console.log(loggedInEmail)
+  const loggedInUser = users?.find((user) => user.email === loggedInEmail);
+console.log(loggedInUser)
 
-  const checkActive = (route) => {
-    return pathname === route
-      ? "bg-[#364957] dark:text-white hover:bg-[#364957]   rounded-md border-l-4 border-l-[#FFD700] text-[#FFFFFF] "
-      : "text-black dark:text-white";
-  };
-
-  const handleLinkClick = () => {
-    setOpen(false);
-  };
-
-  const hoverEffect = {
-    rest: { scale: 1, opacity: 1, boxShadow: "none" },
-    hover: {
-      scale: 1.05,
-      opacity: 1,
-      // boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
-      transition: { type: "spring", stiffness: 300 },
-    },
-  };
-
-  const iconActive = (route) => {
-    return pathname === route ? "text-white text-2xl " : "dark:text-white text-black text-xl";
-  };
+  const isActive = (route) => pathname === route;
 
   const DrawerList = (
-    <Box className='dark:bg-[#272727] h-full bg-white  ' sx={{
-      width: 250,
-      // background: '', 
-      // borderRadius: '12px', 
-      padding: '20px',
-      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-      overflowY: 'auto',
-      '&::-webkit-scrollbar': {
-        width: '8px',
-      },
-      '&::-webkit-scrollbar-thumb': {
-        // background: '#BDC3C7',
-        borderRadius: '10px',
-      },
-      '&::-webkit-scrollbar-track': {
-        // background: '#F0F0F0',
-      },
-    }} role="presentation">
+    <Box
+      className="dark:bg-[#272727] h-full bg-white"
+      sx={{
+        width: 250,
+        padding: "20px",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+        overflowY: "auto",
+      }}
+      role="presentation"
+    >
       <div className="flex justify-between items-center mb-4">
         <Link href={"/"} className="w-full mx-auto -ml-4">
-          <Image src={img} unoptimized className="dark:hidden h-[60px] max-w-[150px] " height={20} width={200} />
-          <Image src={img2} unoptimized className="hidden dark:block h-[60px] max-w-[150px]" height={20} width={200} />
+          <Image
+            src={img}
+            unoptimized
+            className="dark:hidden h-[60px] max-w-[150px]"
+            height={20}
+            width={200}
+            alt="image"
+          />
+          <Image
+            src={img2}
+            unoptimized
+            className="hidden dark:block h-[60px] max-w-[150px]"
+            height={20}
+            width={200}
+            alt="image"
+          />
         </Link>
         <motion.button
           onClick={() => setOpen(false)}
@@ -83,168 +77,159 @@ export default function TemporaryDrawer() {
         </motion.button>
       </div>
 
-      {/* Section Header */}
-      {/* <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>Navigation</Typography> */}
       <List>
         {/* Home */}
+        {/* {loggedInUser?.role === "admin" && ( */}
+
+<ListItem disablePadding>
+<motion.div initial="rest" whileHover="hover" animate="rest">
+  <ListItemButton
+    component={Link}
+    href="dashboard/dashboardd"
+    onClick={() => setOpen(false)}
+    className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
+  >
+    <ListItemIcon>
+      <MdOutlineSpaceDashboard className={`text-xl ${isActive("/dashboard/dashboardd") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
+    </ListItemIcon>
+    <div className={`flex-grow ${isActive("/dashboard/dashboardd") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+      <ListItemText primary="Dashboard" />
+      {isActive("/dashboard/dashboardd") && <div className="border-b-2 border-slate-700 dark:border-white" />}
+    </div>
+  </ListItemButton>
+</motion.div>
+</ListItem>
+        {/* )} */}
+
+
+
         <ListItem disablePadding>
-          <motion.div
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            variants={hoverEffect}
-          >
+          <motion.div initial="rest" whileHover="hover" animate="rest">
             <ListItemButton
               component={Link}
               href="/dashboard"
-              onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard")} transition duration-300 ease-in-out rounded-md p-2`} // Added padding
+              onClick={() => setOpen(false)}
+              className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
-              <ListItemIcon className={iconActive("/dashboard")}>
-                <motion.div whileHover={{ scale: 1.1 }}>
-                  <IoHomeOutline />
-                </motion.div>
+              <ListItemIcon>
+                <IoHomeOutline className={`text-xl ${isActive("/dashboard") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
               </ListItemIcon>
-              <ListItemText primary="Home" sx={{ fontWeight: pathname === "/dashboard" ? 'bold' : 'normal' }} />
+              <div className={`flex-grow ${isActive("/dashboard") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+                <ListItemText primary="Home" />
+                {isActive("/dashboard") && <div className="border-b-2 border-slate-700 dark:border-white" />}
+              </div>
             </ListItemButton>
           </motion.div>
         </ListItem>
 
-        {/* Divider */}
         <Divider sx={{ my: 1 }} />
 
         {/* My Books */}
         <ListItem disablePadding>
-          <motion.div
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            variants={hoverEffect}
-          >
+          <motion.div initial="rest" whileHover="hover" animate="rest">
             <ListItemButton
               component={Link}
               href="/dashboard/myBooks"
-              onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard/myBooks")} transition duration-300 ease-in-out rounded-md p-2`}
+              onClick={() => setOpen(false)}
+              className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
-              <ListItemIcon className={iconActive("/dashboard/myBooks")}>
-                <motion.div whileHover={{ scale: 1.1 }}>
-                  <PiBooks className="dark:text-white" />
-                  {/* Removed Notification badge */}
-                  {/* <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">3</span> */}
-                </motion.div>
+              <ListItemIcon>
+                <PiBooks className={`text-xl ${isActive("/dashboard/myBooks") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
               </ListItemIcon>
-              <ListItemText primary="My Books" sx={{ fontWeight: pathname === "/dashboard/myBooks" ? 'bold' : 'normal' }} />
+              <div className={`flex-grow ${isActive("/dashboard/myBooks") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+                <ListItemText primary="My Books" />
+                {isActive("/dashboard/myBooks") && <div className="border-b-2 dark:border-white border-black" />}
+              </div>
             </ListItemButton>
           </motion.div>
         </ListItem>
 
-        {/* Divider */}
         <Divider sx={{ my: 1 }} />
 
         {/* Add Book */}
         <ListItem disablePadding>
-          <motion.div
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            variants={hoverEffect}
-          >
+          <motion.div initial="rest" whileHover="hover" animate="rest">
             <ListItemButton
               component={Link}
               href="/dashboard/addBook"
-              onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard/addBook")} transition duration-300 ease-in-out rounded-md p-2`}
+              onClick={() => setOpen(false)}
+              className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
-              <ListItemIcon className={iconActive("/dashboard/addBook")}>
-                <motion.div whileHover={{ scale: 1.1 }}>
-                  <MdOutlineAddCircleOutline className="dark:text-white" />
-                </motion.div>
+              <ListItemIcon>
+                <MdOutlineAddCircleOutline className={`text-xl ${isActive("/dashboard/addBook") ? "font-bold dark:text-white text-black" : "text-black dark:text-white"}`} />
               </ListItemIcon>
-              <ListItemText primary="Add Book" sx={{ fontWeight: pathname === "/dashboard/addBook" ? 'bold' : 'normal' }} />
+              <div className={`flex-grow ${isActive("/dashboard/addBook") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+                <ListItemText primary="Add Book" />
+                {isActive("/dashboard/addBook") && <div className="border-b-2 border-black dark:border-white dark:text-white" />}
+              </div>
             </ListItemButton>
           </motion.div>
         </ListItem>
 
-        {/* Divider */}
         <Divider sx={{ my: 1 }} />
 
-        {/* Exchange */}
-        <ListItem disablePadding>
-          <motion.div
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            variants={hoverEffect}
-          >
-            <ListItemButton
-              component={Link}
-              href="/dashboard/exchange"
-              onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard/exchange")} transition duration-300 ease-in-out rounded-md p-2`}
-            >
-              <ListItemIcon className={iconActive("/dashboard/exchange")}>
-                <motion.div whileHover={{ scale: 1.1 }}>
-                  <TbExchange className="dark:text-white" />
-                </motion.div>
-              </ListItemIcon>
-              <ListItemText primary="Exchange" sx={{ fontWeight: pathname === "/dashboard/exchange" ? 'bold' : 'normal' }} />
-            </ListItemButton>
-          </motion.div>
-        </ListItem>
-
-        {/* Divider */}
         <Divider sx={{ my: 1 }} />
 
         {/* Messages */}
         <ListItem disablePadding>
-          <motion.div
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            variants={hoverEffect}
-          >
+          <motion.div initial="rest" whileHover="hover" animate="rest">
             <ListItemButton
               component={Link}
               href="/dashboard/messages"
-              onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard/messages")} transition duration-300 ease-in-out rounded-md p-2`}
+              onClick={() => setOpen(false)}
+              className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
-              <ListItemIcon className={iconActive("/dashboard/messages")}>
-                <motion.div whileHover={{ scale: 1.1 }}>
-                  <MdOutlineMessage className="dark:text-white" />
-                  {/* Removed Notification badge */}
-                  {/* <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">5</span> */}
-                </motion.div>
+              <ListItemIcon>
+                <MdOutlineMessage className={`text-xl ${isActive("/dashboard/messages") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
               </ListItemIcon>
-              <ListItemText primary="Messages" sx={{ fontWeight: pathname === "/dashboard/messages" ? 'bold' : 'normal' }} />
+              <div className={`flex-grow ${isActive("/dashboard/messages") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+                <ListItemText primary="Messages" />
+                {isActive("/dashboard/messages") && <div className="border-b-2 border-black dark:border-white" />}
+              </div>
             </ListItemButton>
           </motion.div>
         </ListItem>
 
-        {/* Divider */}
         <Divider sx={{ my: 1 }} />
 
         {/* Users */}
         <ListItem disablePadding>
-          <motion.div
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            variants={hoverEffect}
-          >
+          <motion.div initial="rest" whileHover="hover" animate="rest">
             <ListItemButton
               component={Link}
               href="/dashboard/users"
-              onClick={handleLinkClick}
-              className={`flex items-center -space-x-6 ${checkActive("/dashboard/users")} transition duration-300 ease-in-out rounded-md p-2`}
+              onClick={() => setOpen(false)}
+              className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
-              <ListItemIcon className={iconActive("/dashboard/users")}>
-                <motion.div whileHover={{ scale: 1.1 }}>
-                  <TbUserShield className="dark:text-white" />
-                </motion.div>
+              <ListItemIcon>
+                <TbUserShield className={`text-xl ${isActive("/dashboard/users") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
               </ListItemIcon>
-              <ListItemText primary="Users" sx={{ fontWeight: pathname === "/dashboard/users" ? 'bold' : 'normal' }} />
+              <div className={`flex-grow ${isActive("/dashboard/users") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+                <ListItemText primary="Users" />
+                {isActive("/dashboard/users") && <div className="border-b-2 border-black dark:border-white" />}
+              </div>
+            </ListItemButton>
+          </motion.div>
+        </ListItem>
+
+        <Divider sx={{ my: 1 }} />
+
+        {/* Profile */}
+        <ListItem disablePadding>
+          <motion.div initial="rest" whileHover="hover" animate="rest">
+            <ListItemButton
+              component={Link}
+              href="/dashboard/profile"
+              onClick={() => setOpen(false)}
+              className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
+            >
+              <ListItemIcon>
+                <FaUserCircle className={`text-xl ${isActive("/dashboard/profile") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
+              </ListItemIcon>
+              <div className={`flex-grow ${isActive("/dashboard/profile") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+                <ListItemText primary="Profile" />
+                {isActive("/dashboard/profile") && <div className="border-b-2 border-black dark:border-white" />}
+              </div>
             </ListItemButton>
           </motion.div>
         </ListItem>
@@ -263,5 +248,3 @@ export default function TemporaryDrawer() {
     </div>
   );
 }
-
-

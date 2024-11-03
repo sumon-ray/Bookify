@@ -38,9 +38,10 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
     const theme = useTheme();
-
+    // Define text color based on the theme
+    const textColor = theme?.theme === 'dark' ? 'white' : 'black';
     const [value, setValue] = React.useState(0);
-
+    console.log(theme.theme);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -51,15 +52,14 @@ export default function BasicTabs() {
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab
                         label="Send request"
-                        sx={{
-                            color: theme === 'dark' ? 'white' : 'black',
-                        }}
+                        sx={{ color: textColor }}
+                        {...a11yProps(0)}
                     />
                     <Tab
                         label="Get request"
-                        sx={{
-                            color: theme === 'dark' ? 'white' : 'black',
-                        }} />
+                        sx={{ color: textColor }}
+                        {...a11yProps(1)}
+                    />
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>

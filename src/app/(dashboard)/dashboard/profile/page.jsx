@@ -124,8 +124,8 @@ const Page = () => {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 dark:bg-opacity-100 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full dark:bg-[#272727A6] dark:text-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center dark:bg-transparent ">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full  dark:bg-gray-600">
             <h2 className="text-xl font-semibold mb-4">Update Profile</h2>
             <form onSubmit={handleUpdate}>
               <div className="mb-4">
@@ -168,7 +168,7 @@ const Page = () => {
                   Profile Photo
                 </label>
                 <input
-                  className="block w-full px-4  text-gray-700 bg-white border rounded-lg  focus:outline-none dark:bg-[#272727A6]"
+                  className="block w-full px-4  text-gray-700 bg-white border rounded-lg  focus:outline-none dark:bg-[#272727A6] dark:text-white"
                   type="file"
                   name="file"
                   id="file"

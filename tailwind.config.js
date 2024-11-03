@@ -1,19 +1,15 @@
 const flowbite = require("flowbite-react/tailwind");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // darkMode: ['class', 'class'],
-
   darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
-    // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     flowbite.content(),
   ],
-  //
   theme: {
     extend: {
       colors: {
@@ -80,16 +76,20 @@ module.exports = {
             transform: "translateY(calc(-100% - var(--gap)))",
           },
         },
+        shine: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '0 0' },
+        },
       },
       animation: {
         marquee: "marquee var(--duration) infinite linear",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        shine: 'shine 1.5s infinite',
       },
       fontFamily: {
         kadwa: ["Kadwa", "sans-serif"],
       },
     },
   },
-
   plugins: [flowbite.plugin(), require("tailwindcss-animate")],
 };

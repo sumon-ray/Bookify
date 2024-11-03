@@ -67,7 +67,7 @@ const UpdateBook = ({ params }) => {
           <div
             className={`${
               t.visible ? "animate-enter" : "animate-leave"
-            } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+            } max-w-md w-full bg-white dark:bg-[#27272733] dark:text-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
           >
             <div className="flex-1 w-0 p-4">✅ Book updated done</div>
 
@@ -87,7 +87,7 @@ const UpdateBook = ({ params }) => {
           <div
             className={`${
               t.visible ? "animate-enter" : "animate-leave"
-            } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+            } max-w-md w-full bg-white dark:bg-[#27272733]  dark:text-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
           >
             <div className="flex-1 w-0 p-4">❌ Book update Failed</div>
 
@@ -117,7 +117,7 @@ const UpdateBook = ({ params }) => {
 
   return (
     <section className="space-y-6 px-8 lg:px-20 pb-12 pt-20">
-      <div className="bg-[#EFEEE9] rounded-md p-6">
+      <div className="bg-[#EFEEE9] dark:bg-[#27272733] dark:text-white rounded-md p-6">
         <h1 className="text-3xl font-black uppercase text-center">Edit Book</h1>
       </div>
 
@@ -130,7 +130,7 @@ const UpdateBook = ({ params }) => {
               name="title"
               value={book.title}
               onChange={handleChange}
-              className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full  rounded-lg border dark:bg-[#27272733] dark:text-white dark:border-slate-700  border-gray-300  text-black focus:ring-[#EFEEE9] dark:focus:ring-slate-700  focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
@@ -141,7 +141,7 @@ const UpdateBook = ({ params }) => {
               name="author"
               value={book.author}
               onChange={handleChange}
-              className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
@@ -152,7 +152,7 @@ const UpdateBook = ({ params }) => {
               name="genre"
               value={book.genre}
               onChange={handleChange}
-              className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
@@ -163,7 +163,7 @@ const UpdateBook = ({ params }) => {
               name="publicationDate"
               value={book.publicationDate}
               onChange={handleChange}
-              className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg dark:focus:ring-slate-700 border dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
@@ -176,7 +176,7 @@ const UpdateBook = ({ params }) => {
               id="totalPage"
               type="number"
               placeholder="Total Page"
-              className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
@@ -191,7 +191,7 @@ const UpdateBook = ({ params }) => {
                   id="rating"
                   type="number"
                   placeholder="Rating"
-                  className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+                  className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
                 />
               </div>
             </div>
@@ -205,7 +205,7 @@ const UpdateBook = ({ params }) => {
               onChange={handleChange}
               type="number"
               placeholder="Published Year"
-              className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
           {/* condition */}
@@ -214,7 +214,7 @@ const UpdateBook = ({ params }) => {
             <select
               value={book.condition}
               onChange={handleChange}
-              className="border border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]"
+              className="border dark:bg-[#27272733] dark:focus:ring-slate-700 dark:text-white dark:border-slate-700 border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]"
             >
               <option value={"Good"}>Good</option>
               <option value={"normal"}>used</option>
@@ -223,8 +223,8 @@ const UpdateBook = ({ params }) => {
 
           <div className="col-span-full sm:col-span-2">
             <label className="text-sm uppercase">exchange Status</label>
-            <select className="border border-gray-300 text-gray-700 mb-6 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]">
-              <option value={"Available"}>Available</option>
+            <select className="border border-gray-300 text-gray-700 mb-6 dark:bg-[#27272733] dark:text-white dark:focus:ring-slate-700 dark:border-slate-700 text-sm rounded-lg  block w-full p-2.5 focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9]">
+              <option className="" value={"Available"}>Available</option>
               <option value={"Not Available"}>Not Available</option>
             </select>
           </div>
@@ -236,7 +236,7 @@ const UpdateBook = ({ params }) => {
               name="description"
               value={book.description}
               onChange={handleChange}
-              className="w-full rounded-lg border border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
+              className="w-full rounded-lg border dark:focus:ring-slate-700 dark:bg-[#27272733] dark:text-white dark:border-slate-700 border-gray-300 text-black focus:ring-[#EFEEE9] focus:outline-none focus:ring focus:border-[#EFEEE9] pl-2.5"
             />
           </div>
 
