@@ -79,52 +79,19 @@ export default function TemporaryDrawer() {
         {/* Home */}
         {/* {loggedInUser?.role === "admin" && ( */}
 
-        <ListItem disablePadding>
-          <motion.div initial="rest" whileHover="hover" animate="rest">
-            <ListItemButton
-              component={Link}
-              href="dashboard/dashboardd"
-              onClick={() => setOpen(false)}
-              className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
-            >
-              <ListItemIcon>
-                <MdOutlineSpaceDashboard
-                  className={`text-xl ${
-                    isActive("/dashboard/dashboardd")
-                      ? "font-bold text-black dark:text-white"
-                      : "text-black dark:text-white"
-                  }`}
-                />
-              </ListItemIcon>
-              <div
-                className={`flex-grow ${
-                  isActive("/dashboard/dashboardd")
-                    ? "font-bold text-black dark:text-white"
-                    : "text-black dark:text-white"
-                }`}
-              >
-                <ListItemText primary="Dashboard" />
-                {isActive("/dashboard/dashboardd") && (
-                  <div className="border-b-2 border-slate-700 dark:border-white" />
-                )}
-              </div>
-            </ListItemButton>
-          </motion.div>
-        </ListItem>
-        {/* )} */}
-        {loggedInUser && (
+        {loggedInUser?.role === "admin" && (
           <ListItem disablePadding>
             <motion.div initial="rest" whileHover="hover" animate="rest">
               <ListItemButton
                 component={Link}
-                href="/dashboard"
+                href="dashboard/dashboardd"
                 onClick={() => setOpen(false)}
                 className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
               >
                 <ListItemIcon>
-                  <IoHomeOutline
+                  <MdOutlineSpaceDashboard
                     className={`text-xl ${
-                      isActive("/dashboard")
+                      isActive("/dashboard/dashboardd")
                         ? "font-bold text-black dark:text-white"
                         : "text-black dark:text-white"
                     }`}
@@ -132,13 +99,13 @@ export default function TemporaryDrawer() {
                 </ListItemIcon>
                 <div
                   className={`flex-grow ${
-                    isActive("/dashboard")
+                    isActive("/dashboard/dashboardd")
                       ? "font-bold text-black dark:text-white"
                       : "text-black dark:text-white"
                   }`}
                 >
-                  <ListItemText primary="Home" />
-                  {isActive("/dashboard") && (
+                  <ListItemText primary="Dashboard" />
+                  {isActive("/dashboard/dashboardd") && (
                     <div className="border-b-2 border-slate-700 dark:border-white" />
                   )}
                 </div>
@@ -146,6 +113,41 @@ export default function TemporaryDrawer() {
             </motion.div>
           </ListItem>
         )}
+
+        {/*  */}
+
+        <ListItem disablePadding>
+          <motion.div initial="rest" whileHover="hover" animate="rest">
+            <ListItemButton
+              component={Link}
+              href="/dashboard"
+              onClick={() => setOpen(false)}
+              className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
+            >
+              <ListItemIcon>
+                <IoHomeOutline
+                  className={`text-xl ${
+                    isActive("/dashboard")
+                      ? "font-bold text-black dark:text-white"
+                      : "text-black dark:text-white"
+                  }`}
+                />
+              </ListItemIcon>
+              <div
+                className={`flex-grow ${
+                  isActive("/dashboard")
+                    ? "font-bold text-black dark:text-white"
+                    : "text-black dark:text-white"
+                }`}
+              >
+                <ListItemText primary="Home" />
+                {isActive("/dashboard") && (
+                  <div className="border-b-2 border-slate-700 dark:border-white" />
+                )}
+              </div>
+            </ListItemButton>
+          </motion.div>
+        </ListItem>
 
         <Divider sx={{ my: 1 }} />
 
@@ -247,7 +249,7 @@ export default function TemporaryDrawer() {
 
         {/* Users */}
 
-        {loggedInUser && (
+        {loggedInUser?.role === "admin" && (
           <ListItem disablePadding>
             <motion.div initial="rest" whileHover="hover" animate="rest">
               <ListItemButton
