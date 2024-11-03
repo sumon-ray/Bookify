@@ -174,7 +174,7 @@ const FaqSection = () => {
   }, [searchTerm]);
 
   return (
-    <div className="px-8  lg:px-28 mx-auto dark:from-gray-900 dark:to-gray-800">
+    <div className="px-8   lg:px-28 mx-auto dark:from-gray-900 dark:to-gray-800">
       <motion.div
         ref={ref}
         animate={controls}
@@ -299,9 +299,9 @@ const FaqSection = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex flex-col lg:flex-row justify-between items-center mt-16 bg-white  dark:bg-[#0A0A0C] p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-sm"
+        className="flex flex-col lg:flex-row justify-between items-center my-8 md:my-16 bg-white  dark:bg-[#0A0A0C] p-8 rounded-xl space-y-6 lg:space-y-0 lg:space-x-8 shadow-sm"
       >
-        <div className="text-center lg:text-left max-w-2xl">
+        <div className="text-center lg:text-left max-w-2xl ">
           <h4 className="text-2xl font-bold flex justify-center lg:justify-start items-center mb-4">
             <span>Still have questions</span>
             <FaQuestion className="text-black dark:text-white" />
