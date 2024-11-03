@@ -8,7 +8,7 @@ const AllAudioBooks = ({ data }) => {
     <div className="container">
       <Heading heading="All Audio Books"></Heading>
 
-      <div className="container space-y-6 lg:-mt-7 sm:space-y-12 pb-20">
+      <div className="container space-y-6 sm:space-y-12 pb-20">
         <div className="grid justify-center grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
           {data?.map((book) => (
             <motion.div
