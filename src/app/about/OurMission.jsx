@@ -44,13 +44,13 @@ const OurMission = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <Button
+          {/* <Button
             color=""
             className="outline outline-2 outline-[#364957]"
             size="lg"
           >
             Join the Movement
-          </Button>
+          </Button> */}
         </motion.div>
       </div>
 

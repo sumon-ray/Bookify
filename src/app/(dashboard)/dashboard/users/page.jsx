@@ -135,7 +135,7 @@ const Page = () => {
   const currentUsers = data.slice(startOffset, startOffset + usersPerPage);
 
   return (
-    <section className="container px-4 mx-auto">
+    <section className="container px-4 mx-auto md:mt-4 mt-14 ">
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800  dark:text-white ">
           Total members
