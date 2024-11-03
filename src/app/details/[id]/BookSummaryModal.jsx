@@ -11,14 +11,14 @@ import toast from "react-hot-toast";
 const customStyles = {
   content: {
     position: "fixed",
-    top: "50%",
+    top: "48%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     borderRadius: "12px",
     padding: "20px",
     border: "none",
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-    backgroundColor: "#f9fafb",
+    // backgroundColor: "#f9fafb",
     maxWidth: "600px",
     width: "90%",
     overflow: "hidden",
@@ -87,7 +87,7 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
     toast.custom((t) => (
       <div className={`${
           t.visible ? "animate-enter" : "animate-leave"
-        } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}>
+        } max-w-md w-full bg-white dark:bg-[#27272733] dark:text-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}>
         <div className="flex-1 w-0 p-4">📋 Response copied to clipboard!</div>
         <div className="flex border-l border-gray-200">
           <button
@@ -102,15 +102,21 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={handleClose}
-      style={customStyles}
-      contentLabel="Book Summary Modal"
-      className={`overflow-auto ${isOpen ? "!backdrop-blur-lg" : ""}`}
-    >
-      <div className="relative">
-        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
+<Modal
+  isOpen={isOpen}
+  onRequestClose={handleClose}
+  style={{
+    ...customStyles,
+    overlay: {
+      background: 'rgba(0, 0, 0, 0.7)', 
+    },
+  }}
+  contentLabel="Book Summary Modal"
+  className={`overflow-auto ${isOpen ? "!backdrop-blur-lg" : ""}`} // Apply backdrop blur if modal is open
+>
+
+      <div className="relative ">
+        <h2 className="text-3xl font-bold mb-6 text-center text-slate-200   dark:text-white">
           Book Summary
         </h2>
 
@@ -132,7 +138,7 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
             <FaCopy
               onClick={copyToClipboard}
               size={24}
-              className="cursor-pointer dark:text-black"
+              className="cursor-pointer text-white dark:text-white"
               title="Copy to clipboard"
             />
           </div>

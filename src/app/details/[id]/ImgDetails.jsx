@@ -123,7 +123,7 @@ export default function ImgDetails({ Book = {} }) {
   return (
     <div className="flex flex-col md:flex-row gap-3 md:gap-8 max-w-6xl mx-auto pb-5 pt-1 px-7">
 
-      <figure className="md:w-[43%] bg-[#EFEEE9] dark:bg-[#272727A6] px-6 py-6 flex items-center justify-center border border-black dark:border-white dark:border-2 rounded-md">
+      <figure className="md:w-[43%] bg-[#EFEEE9] dark:bg-[#0A0A0CCC] px-6 py-6 flex items-center justify-center border border-black dark:border-white dark:border-2 rounded-md">
         <Image
           height={100}
           width={100}
@@ -195,7 +195,7 @@ export default function ImgDetails({ Book = {} }) {
           <button
             onClick={addToBook}
             type="button"
-            className="flex items-center btn_1 text-xs md:text-base  gap-0.5 px-2 py-1.5 w-28 justify-center text-white rounded-md transition dark:bg-[#ffffff] dark:text-black">
+            className="flex items-center btn_1 text-xs md:text-base  gap-0.5 px-2 py-1.5 w-28 justify-center text-white rounded-md transition dark:bg-[#0A0A0C]">
             {
               loadingExchange ? <svg
                 class="animate-spin [animation-duration:1.3s]"

@@ -303,3 +303,11 @@ input[type="file"]::file-selector-button {
 [data-theme="dark"] .css-j60oyd.Mui-selected {
   color: white !important;
 } */
+
+
+
+
+body.modal-open {
+  background-color: #1a1a1a !important; /* or any dark color you prefer */
+  transition: background-color 0.3s ease;
+}
