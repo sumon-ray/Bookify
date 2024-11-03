@@ -5,10 +5,10 @@ import Heading from "@/Components/Heading/Heading";
 
 const AllAudioBooks = ({ data }) => {
   return (
-    <div className="container ">
+    <div className="container">
       <Heading heading="All Audio Books"></Heading>
 
-      <div className="container px-6 md:px-0 my-10 mx-auto space-y-6 sm:space-y-12">
+      <div className="container space-y-6 lg:-mt-7 sm:space-y-12 pb-20">
         <div className="grid justify-center grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
           {data?.map((book) => (
             <motion.div

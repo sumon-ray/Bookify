@@ -66,8 +66,8 @@ const Visitor = () => {
   }, []);
 
   return (
-    <div className="text-black rounded-b-xl dark:bg-[#272727A6]">
-      <Card className="shadow-none border-none rounded-xl">
+    <div className="text-black rounded-xl   ">
+      <Card className="shadow-none border-none rounded-xl ">
         <CardHeader className="items-start pb-0 font-bold">
           <CardTitle className="font-bold">New Users</CardTitle>
           <CardDescription>2024</CardDescription>

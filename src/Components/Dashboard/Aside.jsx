@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { IoHomeOutline } from "react-icons/io5";
-import { PiBooks } from "react-icons/pi";
+import { PiBooks, PiBooksDuotone } from "react-icons/pi";
 import { MdOutlineAddCircleOutline, MdOutlineMessage } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { TbExchange, TbUserShield } from "react-icons/tb";
@@ -93,6 +93,23 @@ export default function Aside() {
             variants={hoverEffect}
           >
             <Link
+              href="/dashboard/myBooks"
+              className={`flex items-center gap-2 p-2 ${checkActive(
+                "/dashboard/myBooks"
+              )}`}
+            >
+              <PiBooksDuotone className="text-xl dark:text-white" />
+              <span className="font-bold dark:text-white">My Book</span>
+            </Link>
+          </motion.li>
+          <motion.li
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            variants={hoverEffect}
+          >
+            
+            <Link
               href="/dashboard/addBook"
               className={`flex items-center gap-2 p-2 ${checkActive(
                 "/dashboard/addBook"
@@ -146,7 +163,7 @@ export default function Aside() {
             <Link
               href="/dashboard/profile"
               className={`flex items-center gap-2 px-2 py-1 ${checkActive(
-                "/dashboard/myBooks"
+                "/dashboard/profile"
               )}`}
             >
               <FaUserCircle className="dark:text-white" />

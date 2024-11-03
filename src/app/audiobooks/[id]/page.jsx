@@ -21,10 +21,9 @@ export default function Page({ params }) {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["audioBooks"],
     queryFn: async () => {
-      const res = await axios.get(
-        "https://bookify-server-lilac.vercel.app/audiobook"
-      );
-      return res.data;
+      const res = await axios.get("https://bookify-server-lilac.vercel.app/audiobook");
+      const data = await res.data;
+      return data
     },
   });
 
@@ -34,11 +33,7 @@ export default function Page({ params }) {
     );
   }
 
-  if (isError) {
-    return <div>Error: {error.message}</div>;
-  }
-
-  const currentAudioBook = data.find((book) => book._id === params.id);
+  const currentAudioBook = data?.find((book) => book._id === params?.id);
 
   // Function to handle playing a new audio
   const handlePlay = (audioURL, id) => {
@@ -60,9 +55,9 @@ export default function Page({ params }) {
   };
 
   return (
-    <div className="min-h-screen px-6 md:px-0  max-w-7xl mx-auto">
+    <div className="min-h-screen px-6 md:px-0  max-w-7xl mx-auto pt-5 md:pt-24 lg:pt-20">
       <div id="Main">
-        <div className="mt-5 md:mt-24 lg:mt-20 md:mt-14 relative z-10  ">
+        <div className="relative z-10">
           {/* Cover Image */}
           <div className=" border-slate-100 transition-all duration-500     pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8   dark:text-white dark:border-[#0A0A0C]">
             {currentAudioBook && (
