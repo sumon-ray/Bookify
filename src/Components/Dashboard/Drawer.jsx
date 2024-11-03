@@ -33,7 +33,7 @@ export default function TemporaryDrawer() {
   const loggedInEmail = session?.data?.user?.email;
   console.log(loggedInEmail)
   const loggedInUser = users?.find((user) => user.email === loggedInEmail);
-console.log(loggedInUser)
+  console.log(loggedInUser)
 
   const isActive = (route) => pathname === route;
 
@@ -81,24 +81,24 @@ console.log(loggedInUser)
         {/* Home */}
         {/* {loggedInUser?.role === "admin" && ( */}
 
-<ListItem disablePadding>
-<motion.div initial="rest" whileHover="hover" animate="rest">
-  <ListItemButton
-    component={Link}
-    href="dashboard/dashboardd"
-    onClick={() => setOpen(false)}
-    className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
-  >
-    <ListItemIcon>
-      <MdOutlineSpaceDashboard className={`text-xl ${isActive("/dashboard/dashboardd") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
-    </ListItemIcon>
-    <div className={`flex-grow ${isActive("/dashboard/dashboardd") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
-      <ListItemText primary="Dashboard" />
-      {isActive("/dashboard/dashboardd") && <div className="border-b-2 border-slate-700 dark:border-white" />}
-    </div>
-  </ListItemButton>
-</motion.div>
-</ListItem>
+        <ListItem disablePadding>
+          <motion.div initial="rest" whileHover="hover" animate="rest">
+            <ListItemButton
+              component={Link}
+              href="dashboard/dashboardd"
+              onClick={() => setOpen(false)}
+              className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
+            >
+              <ListItemIcon>
+                <MdOutlineSpaceDashboard className={`text-xl ${isActive("/dashboard/dashboardd") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
+              </ListItemIcon>
+              <div className={`flex-grow ${isActive("/dashboard/dashboardd") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+                <ListItemText primary="Dashboard" />
+                {isActive("/dashboard/dashboardd") && <div className="border-b-2 border-slate-700 dark:border-white" />}
+              </div>
+            </ListItemButton>
+          </motion.div>
+        </ListItem>
         {/* )} */}
 
 
@@ -175,16 +175,16 @@ console.log(loggedInUser)
           <motion.div initial="rest" whileHover="hover" animate="rest">
             <ListItemButton
               component={Link}
-              href="/dashboard/messages"
+              href="/dashboard/exchange-request"
               onClick={() => setOpen(false)}
               className="flex items-center p-2 transition duration-300 ease-in-out rounded-md"
             >
               <ListItemIcon>
-                <MdOutlineMessage className={`text-xl ${isActive("/dashboard/messages") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
+                <TbExchange className={`text-xl ${isActive("/dashboard/exchange-request") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`} />
               </ListItemIcon>
-              <div className={`flex-grow ${isActive("/dashboard/messages") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
-                <ListItemText primary="Messages" />
-                {isActive("/dashboard/messages") && <div className="border-b-2 border-black dark:border-white" />}
+              <div className={`flex-grow ${isActive("/dashboard/exchange-request") ? "font-bold text-black dark:text-white" : "text-black dark:text-white"}`}>
+                <ListItemText primary="request" />
+                {isActive("/dashboard/exchange-request") && <div className="border-b-2 border-black dark:border-white" />}
               </div>
             </ListItemButton>
           </motion.div>
