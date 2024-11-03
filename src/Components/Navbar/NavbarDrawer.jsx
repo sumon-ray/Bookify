@@ -18,6 +18,8 @@ import { signOut, useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
+import { FaRegFileAudio } from 'react-icons/fa6';
+import { PiBooksFill } from 'react-icons/pi';
 
 
 export default function NavbarDrawer() {
@@ -63,6 +65,30 @@ export default function NavbarDrawer() {
                     </ListItemButton>
                 </ListItem>
 
+                <ListItem >
+                    <ListItemButton sx={{
+                        '&:hover': {
+                            backgroundColor: theme === 'dark' ? '#333333' : '#EFEEE9',  // Dark mode hover color
+                        },
+                    }}>
+                        <Link style={{ color: theme === 'dark' ? '#ffffff' : '#000000' }} href={'/audiobooks/671e8aa0cc79bac9d2cf7419'} className={`${checkActive('/audiobooks/671e8aa0cc79bac9d2cf7419')} flex items-center text-black text-lg gap-x-2`}>
+                            <FaRegFileAudio/> <span>Audio books</span>
+                        </Link>
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem >
+                    <ListItemButton sx={{
+                        '&:hover': {
+                            backgroundColor: theme === 'dark' ? '#333333' : '#EFEEE9',  // Dark mode hover color
+                        },
+                    }}>
+                        <Link style={{ color: theme === 'dark' ? '#ffffff' : '#000000' }} href={'/all-books'} className={`${checkActive('/all-books')} flex items-center text-black text-lg gap-x-2`}>
+                            <PiBooksFill /> <span>All books</span>
+                        </Link>
+                    </ListItemButton>
+                </ListItem>
+
                 {
                     session?.user?.email
                     && <ListItem >
@@ -72,7 +98,7 @@ export default function NavbarDrawer() {
                             },
                         }}>
                             <Link style={{ color: theme === 'dark' ? '#ffffff' : '#000000' }} href={'/dashboard'} className={`${checkActive('/dashboard')} flex items-center text-black text-lg gap-x-2`}>
-                                <GrDashboard /><span>Dashboard</span>
+                                <GrDashboard /><span>dashboard</span>
                             </Link>
                         </ListItemButton>
                     </ListItem>
