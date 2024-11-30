@@ -1,6 +1,6 @@
 # Bookify 
-## Live Site
-- live site [here](https://bookify-mocha.vercel.app)
+## Live Link
+- [Bookify](https://bookify-mocha.vercel.app)
 
 ## Getting Started
 
