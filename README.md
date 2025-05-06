@@ -1,6 +1,18 @@
 
 ## Consideration 📍 
 
+## DATABASE 
+## Step 1
+ npx prisma migrate status
+ ## step 2
+ npx prisma db push
+## step 3
+npx prisma migrate resolve --applied 20250429195920_user
+## if multiple
+## syep 4
+npx prisma generate
+ ## ENDS
+
 DO NOT TOUCH MAIN BRANCH🌿 
 1. Always pull the code from development branch before start your working.
 2. Do not push directly on the main branch. 
