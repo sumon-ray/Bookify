@@ -23,7 +23,8 @@ It is safer for us to prevent any accidental conflicts
 
 ## Ghore Package
 1. [https://coverr.co/](https://coverr.co/)
-2. [https://coverr.co/](https://www.vecteezy.com/) 
+2. [https://coverr.co/](https://www.vecteezy.com/)
+3. https://www.pixelcut.ai/ai-image-editor?tool=inpaint
 
 ## For Now Use This Components Library
 1. https://mambaui.com/components/breadcrumb
