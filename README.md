@@ -25,7 +25,10 @@ It is safer for us to prevent any accidental conflicts
 1. [https://coverr.co/](https://coverr.co/)
 2. [https://coverr.co/](https://www.vecteezy.com/)
 3. https://www.pixelcut.ai/ai-image-editor?tool=inpaint
-
+4. https://www.vecteezy.com/photo/59007738-training-session-with-business-professionals-in-discussion-q-and-a-format-workshop-room-with-whiteboard-and-bright-sticky-notes
+5. https://www.eventible.com/learning/event-contract-agreement/
+6. https://www.dreamstime.com/photos-images/business-meeting-vertical.html
+7. 
 ## For Now Use This Components Library
 1. https://mambaui.com/components/breadcrumb
 2. https://merakiui.com/components/application-ui/buttons
