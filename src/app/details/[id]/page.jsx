@@ -2,26 +2,24 @@
 "use client";
 
 import Heading from "@/Components/Heading/Heading";
-import { useCart } from "@/context/CartContext"; // আপনার CartContext এর পাথ
+import { useCart } from "@/context/CartContext";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useParams } from "next/navigation";
-import { useEffect } from "react"; // <--- এখানে useEffect ইম্পোর্ট করা হয়েছে
-import DetailsCard from "./DetailsCard";
-import DetailsTab from "./DetailsTab";
-import ImgDetails from "./ImgDetails";
+import { useEffect } from "react";
+import DetailsCard from "./DetailsCard"; // আপনার বিদ্যমান কম্পোনেন্ট
+import DetailsTab from "./DetailsTab";   // আপনার বিদ্যমান কম্পোনেন্ট
+import ImgDetails from "./ImgDetails";   // আপনার বিদ্যমান কম্পোনেন্ট
 
 export default function Details() {
   const params = useParams();
-  // useCart হুক থেকে addToCart, userId, loadingCart নেওয়া হয়েছে
   const { addToCart, userId, loadingCart } = useCart();
 
-  // **এখানে userId এর মান কনসোলে প্রিন্ট করা হচ্ছে**
-  // এটি আপনাকে দেখাবে যে Details পেজে এসে CartContext থেকে userId পাওয়া যাচ্ছে কিনা।
+  // প্রয়োজনে ডিবাগিং এর জন্য কনসোল লগ রাখতে পারেন
   useEffect(() => {
-    console.log("Details Page: User ID from CartContext:", userId);
-    console.log("Details Page: Loading Cart status:", loadingCart);
-  }, [userId, loadingCart]); // নির্ভরতা অ্যারেতে userId এবং loadingCart যোগ করা হয়েছে
+    // console.log("Details Page: User ID from CartContext:", userId);
+    // console.log("Details Page: Loading Cart status:", loadingCart);
+  }, [userId, loadingCart]);
 
   const { data, isLoading } = useQuery({
     queryKey: ["details of book", params?.id],
@@ -29,47 +27,38 @@ export default function Details() {
       const res = await axios(
         `https://bookify-server-five.vercel.app/book/${params?.id}`
       );
-      const data = await res.data;
-      return data;
+      return res.data; // সরাসরি ডেটা রিটার্ন করা
     },
-    // params.id বিদ্যমান থাকলে তবেই কোয়েরি চালাবে
     enabled: !!params?.id,
   });
 
-  // কার্টে বই যোগ করার হ্যান্ডলার
   const handleAddToCart = () => {
-    // নিশ্চিত করা হচ্ছে যে বইয়ের প্রয়োজনীয় তথ্য বিদ্যমান আছে
     if (!data || !data._id || !data.title || data.price === undefined) {
       alert("বইয়ের তথ্য বা মূল্য সম্পূর্ণ নয়।");
       return;
     }
 
-    // কার্টে যোগ করার জন্য প্রয়োজনীয় ডেটা প্রস্তুত করা
     const bookToAdd = {
       _id: data._id,
       title: data.title,
       author: data.author,
-      price: parseFloat(data.price), // মূল্যকে সংখ্যায় রূপান্তর করা
-      coverImage: data.coverImage, // কার্টে দেখানোর জন্য কভার ইমেজ যোগ করতে পারেন
-      // অন্য কোনো প্রপার্টি যা কার্টে সংরক্ষণ করতে চান
+      price: parseFloat(data.price),
+      coverImage: data.coverImage,
     };
-    addToCart(bookToAdd); // কার্ট কন্টেক্সট এ বই যোগ করা
-    alert(`${data.title} কার্টে যোগ করা হয়েছে!`); // ব্যবহারকারীকে প্রতিক্রিয়া জানানো
+    addToCart(bookToAdd);
+    alert(`${data.title} কার্টে যোগ করা হয়েছে!`);
   };
 
   return (
     <section className="space-y-8 mt-0 md:mt-20 mb-16 md:mb-20">
-      {/* টাইটেল সেকশন */}
       <div className="bg-[#EFEEE9] p-6 dark:bg-[#0A0A0C]">
         <h1 className="text-3xl font-black uppercase text-center dark:text-white">
-          বইয়ের বিবরণ
+         Book Details
         </h1>
       </div>
 
-      {/* লোডিং অবস্থা */}
       {isLoading ? (
-        // লোডিং স্পিনার কম্পোনেন্ট (আপনার SVG কোড)
-        <div className="flex justify-center w-full items-center min-h-[62.3vh]">
+        <div className="flex flex-col justify-center w-full items-center min-h-[62.3vh]">
           <div className="flex flex-col justify-center items-center gap-y-1">
             <svg
               className="animate-spin [animation-duration:1.5s]"
@@ -99,61 +88,18 @@ export default function Details() {
         </div>
       ) : (
         <>
-          {/* বইয়ের ছবি এবং অন্যান্য ট্যাব */}
+          {/* বইয়ের ছবি এবং প্রাথমিক বিবরণ */}
           <ImgDetails Book={data} />
-          <DetailsTab Book={data} />
 
-          {/* বইয়ের তথ্য এবং অ্যাকশন বাটন সেকশন */}
-          {data && (
-            <div className="p-4 bg-white dark:bg-gray-800 shadow rounded-lg mx-auto max-w-2xl">
-              <h2 className="text-2xl font-bold dark:text-white mb-4 text-center">
-                বইয়ের তথ্য
-              </h2>
-              <div className="space-y-2 text-base">
-                {" "}
-                {/* ফন্ট সাইজ সামঞ্জস্য করা হয়েছে */}
-                <p className="text-gray-700 dark:text-gray-300">
-                  <span className="font-semibold">নাম:</span> {data.title}
-                </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  <span className="font-semibold">লেখক:</span> {data.author}
-                </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  <span className="font-semibold">ধরণ:</span> {data.genre}
-                </p>
-                {/* বিবরণ একটি বড় অংশে থাকতে পারে, তাই একটি div ব্যবহার করতে পারেন */}
-                <div className="text-gray-700 dark:text-gray-300">
-                  <span className="font-semibold">বর্ণনা:</span>{" "}
-                  <p className="inline">{data.description}</p>
-                </div>
-              </div>
+          <div className="flex flex-col md:flex-row gap-4 md:gap-8 justify-center items-start px-4 md:px-8">
+          
 
-              {/* শর্তাধীন রেন্ডারিং: যদি price থাকে তবেই 'Add to Cart' বাটন দেখাবে */}
-              <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 flex flex-col items-center">
-                {data.price ? ( // যদি price প্রপার্টি বিদ্যমান থাকে এবং এর মান ০, নাল, আনডিফাইন্ড বা ফাঁকা না হয়
-                  <>
-                    <p className="text-gray-700 dark:text-gray-300 text-3xl font-bold mb-4">
-                      <span className="font-semibold">দাম:</span> ${data.price}
-                    </p>
-                    <button
-                      onClick={handleAddToCart}
-                      className="w-full md:w-1/2 px-8 py-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition duration-300 shadow-xl text-lg uppercase tracking-wide"
-                    >
-                      Add to Cart
-                    </button>
-                  </>
-                ) : (
-                  // যদি price না থাকে (অর্থাৎ এটি একটি ফ্রি বই)
-                  <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">
-                    Free
-                  </p>
-                )}
-              </div>
-            </div>
-          )}
+            {/* অন্যান্য ট্যাব সেকশন */}
+            <DetailsTab Book={data} />
+          </div>
 
           {/* সম্পর্কিত বই সেকশন */}
-          <Heading heading={"Related Books"} />
+          <Heading heading={"সম্পর্কিত বই"} />
           <DetailsCard genre={data?.genre} title={data?.title} />
         </>
       )}
