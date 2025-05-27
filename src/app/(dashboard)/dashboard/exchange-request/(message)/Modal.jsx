@@ -59,7 +59,7 @@ const Modal = ({ receiver }) => {
                     MgsNotification: "Send you a Message",
 
                 };
-                console.log("data for post ", data);
+                // console.log("data for post ", data);
                 if (!msgModal) {
                     axios.post('https://bookify-server-lilac.vercel.app/notification', data)
                         .then(response => {

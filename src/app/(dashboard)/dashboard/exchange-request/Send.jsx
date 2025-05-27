@@ -25,7 +25,7 @@ import toast from 'react-hot-toast';
 
 function Row({ row, refetch }) {
     const [open, setOpen] = React.useState(false);
-    console.log(row, "Row data");
+    // console.log(row, "Row data");
     function deleteRequest(message) {
         Swal.fire({
             title: "Are you sure?",

@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 
 export default function AIContentGenerator() {
   const [prompt, setPrompt] = useState("");
@@ -12,8 +12,11 @@ export default function AIContentGenerator() {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post("http://localhost:4000/generate-content", { prompt });
-      console.log("API Response:", res.data); // Log the response
+      const res = await axios.post(
+        "https://bookify-server-five.vercel.app/generate-content",
+        { prompt }
+      );
+      // console.log("API Response:", res.data); // Log the response
       setResponse(res.data.answer); // Set the answer directly from the server response
     } catch (err) {
       console.error("Error generating content:", err);
@@ -22,29 +25,29 @@ export default function AIContentGenerator() {
       setLoading(false);
     }
   };
-  
+
   return (
     <div>
-    <h1>Generate AI Content</h1>
-    <textarea 
-      value={prompt}
-      onChange={(e) => setPrompt(e.target.value)}
-      placeholder="Enter your prompt here"
-      rows="4"
-      cols="50"
-    />
-    <button onClick={handleGenerateContent} disabled={loading}>
-      {loading ? 'Generating...' : 'Generate'}
-    </button>
-    
-    {response && (
-      <div>
-        <h2>Response:</h2>
-        <p>{response}</p> {/* Display the answer directly */}
-      </div>
-    )}
+      <h1>Generate AI Content</h1>
+      <textarea
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        placeholder="Enter your prompt here"
+        rows="4"
+        cols="50"
+      />
+      <button onClick={handleGenerateContent} disabled={loading}>
+        {loading ? "Generating..." : "Generate"}
+      </button>
 
-    {error && <div style={{ color: 'red' }}>{error}</div>}
-  </div>
+      {response && (
+        <div>
+          <h2>Response:</h2>
+          <p>{response}</p> {/* Display the answer directly */}
+        </div>
+      )}
+
+      {error && <div style={{ color: "red" }}>{error}</div>}
+    </div>
   );
 }

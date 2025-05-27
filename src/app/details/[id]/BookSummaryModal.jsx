@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import Modal from "react-modal";
+import BookSpinner from "@/app/ai-chat/BookSpinner";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FaCopy, FaExclamationTriangle } from "react-icons/fa";
+import Modal from "react-modal";
 import AIResponse from "./AIResponse";
 import CloseButton from "./CloseButton";
-import axios from "axios";
-import BookSpinner from "@/app/ai-chat/BookSpinner";
-import toast from "react-hot-toast";
 
 // Modal style
 const customStyles = {
@@ -61,8 +61,11 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
     setResponse("");
 
     try {
-      const res = await axios.post("https://bookify-server-lilac.vercel.app/generate-content", { prompt: query });
-      
+      const res = await axios.post(
+        "https://bookify-server-five.vercel.app/generate-content",
+        { prompt: query }
+      );
+      // console.log(res)
       const answer = res.data.answer || "No summary available.";
       setResponse(answer);
     } catch (error) {
@@ -70,7 +73,9 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
       if (error.response) {
         setResponse("Server error: " + error.response.data.message);
       } else {
-        setResponse("Network error. Please check your connection and try again.");
+        setResponse(
+          "Network error. Please check your connection and try again."
+        );
       }
     } finally {
       setLoading(false);
@@ -85,9 +90,11 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(response);
     toast.custom((t) => (
-      <div className={`${
+      <div
+        className={`${
           t.visible ? "animate-enter" : "animate-leave"
-        } max-w-md w-full bg-white dark:bg-[#27272733] dark:text-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}>
+        } max-w-md w-full bg-white dark:bg-[#27272733] dark:text-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+      >
         <div className="flex-1 w-0 p-4">📋 Response copied to clipboard!</div>
         <div className="flex border-l border-gray-200">
           <button
@@ -102,19 +109,18 @@ export default function BookSummaryModal({ isOpen, onClose, book }) {
   };
 
   return (
-<Modal
-  isOpen={isOpen}
-  onRequestClose={handleClose}
-  style={{
-    ...customStyles,
-    overlay: {
-      background: 'rgba(0, 0, 0, 0.7)', 
-    },
-  }}
-  contentLabel="Book Summary Modal"
-  className={`overflow-auto ${isOpen ? "!backdrop-blur-lg" : ""}`} // Apply backdrop blur if modal is open
->
-
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={handleClose}
+      style={{
+        ...customStyles,
+        overlay: {
+          background: "rgba(0, 0, 0, 0.7)",
+        },
+      }}
+      contentLabel="Book Summary Modal"
+      className={`overflow-auto ${isOpen ? "!backdrop-blur-lg" : ""}`} // Apply backdrop blur if modal is open
+    >
       <div className="relative ">
         <h2 className="text-3xl font-bold mb-6 text-center text-slate-200   dark:text-white">
           Book Summary

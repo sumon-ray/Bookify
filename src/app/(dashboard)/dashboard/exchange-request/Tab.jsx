@@ -41,7 +41,7 @@ export default function BasicTabs() {
     // Define text color based on the theme
     const textColor = theme?.theme === 'dark' ? 'white' : 'black';
     const [value, setValue] = React.useState(0);
-    console.log(theme.theme);
+    // console.log(theme.theme);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };

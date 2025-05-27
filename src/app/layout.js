@@ -9,6 +9,7 @@ import { Toaster } from "react-hot-toast";
 import { SearchProvider } from "./(dashboard)/dashboard/myBooks/SearchProvider";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider } from "next-themes";
+import { CartProvider } from "@/context/CartContext";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
       <SearchProvider>
         <QueryProvider>
           <AuthProvider>
+            <CartProvider> 
             <body
               className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F3F2ED99] dark:bg-[#27272733] overflow-x-hidden`}>
               <ThemeProvider attribute="class">
@@ -49,6 +51,7 @@ export default function RootLayout({ children }) {
                 </NextUIProvider>
               </ThemeProvider>
             </body>
+            </CartProvider>
           </AuthProvider>
         </QueryProvider>
       </SearchProvider>
