@@ -1,18 +1,19 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { IoHomeOutline } from "react-icons/io5";
-import { PiBooks, PiBooksDuotone } from "react-icons/pi";
-import { MdOutlineAddCircleOutline, MdOutlineMessage } from "react-icons/md";
-import { RxDashboard } from "react-icons/rx";
-import { TbExchange, TbUserShield } from "react-icons/tb";
-import PremiumBoard from "./PremiumBoard";
 import useUsers from "@/hooks/useUsers";
+import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FaBabyCarriage, FaUserCircle } from "react-icons/fa";
 import { HiUsers } from "react-icons/hi";
-import { FaUserCircle } from "react-icons/fa";
+import { IoIosListBox } from "react-icons/io";
+import { IoHomeOutline } from "react-icons/io5";
+import { MdOutlineAddCircleOutline, MdOutlinePayments } from "react-icons/md";
+import { PiBooksDuotone } from "react-icons/pi";
+import { RxDashboard } from "react-icons/rx";
+import { TbExchange } from "react-icons/tb";
+import PremiumBoard from "./PremiumBoard";
 
 export default function Aside() {
   const pathname = usePathname();
@@ -108,7 +109,6 @@ export default function Aside() {
             animate="rest"
             variants={hoverEffect}
           >
-            
             <Link
               href="/dashboard/addBook"
               className={`flex items-center gap-2 p-2 ${checkActive(
@@ -151,6 +151,57 @@ export default function Aside() {
               >
                 <HiUsers className="text-xl dark:text-white" />
                 <span className="font-bold dark:text-white">Users</span>
+              </Link>
+            </motion.li>
+          )}
+
+          <motion.li
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            variants={hoverEffect}
+          >
+            <Link
+              href="/dashboard/my-cart"
+              className={`flex items-center gap-2 px-2 py-1 ${checkActive(
+                "/dashboard/my-cart"
+              )}`}
+            >
+              <FaBabyCarriage className="dark:text-white" />
+              <span className="font-bold dark:text-white">My Cart</span>
+            </Link>
+          </motion.li>
+          <motion.li
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            variants={hoverEffect}
+          >
+            <Link
+              href="/dashboard/my-orders"
+              className={`flex items-center gap-2 px-2 py-1 ${checkActive(
+                "/dashboard/my-orders"
+              )}`}
+            >
+              <IoIosListBox className="dark:text-white" />
+              <span className="font-bold dark:text-white">My Orders</span>
+            </Link>
+          </motion.li>
+          {loggedInUser?.role === "admin" && (
+            <motion.li
+              initial="rest"
+              whileHover="hover"
+              animate="rest"
+              variants={hoverEffect}
+            >
+              <Link
+                href="/dashboard/all-orders"
+                className={`flex items-center gap-2 px-2 py-1 ${checkActive(
+                  "/dashboard/all-orders"
+                )}`}
+              >
+                <MdOutlinePayments className="dark:text-white" />
+                <span className="font-bold dark:text-white">All Orders</span>
               </Link>
             </motion.li>
           )}

@@ -26,7 +26,7 @@ const Page = () => {
         }
         dashboardData()
     },[])
-    console.log(overview);
+    // console.log(overview);
     return (
         <div className=' grid grid-cols-12 gap-4'>
             

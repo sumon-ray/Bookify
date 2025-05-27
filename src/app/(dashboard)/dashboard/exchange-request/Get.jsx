@@ -80,10 +80,10 @@ function Row({ row, refetch }) {
                 approvedName: row?.RequesterName
 
             };
-            console.log("data for post ", dataApprove);
+            // console.log("data for post ", dataApprove);
             axios.post('https://bookify-server-lilac.vercel.app/notification', dataApprove)
                 .then(response => {
-                    console.log('Response:', response.data);
+                    // console.log('Response:', response.data);
                 })
                 .catch(error => {
                     console.error('Error:', error);

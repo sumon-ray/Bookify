@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import Image from 'next/image';
 
 const MoladGet = ({ receiver }) => {
-    console.log(receiver?.requesterEmail, "NOoooooooooooooooo 9");
+    // console.log(receiver?.requesterEmail, "NOoooooooooooooooo 9");
     const { data: session } = useSession();
     const [msgModal, setMsgModal] = useState(false);
     const [message, setMessage] = useState("");
@@ -47,7 +47,7 @@ const MoladGet = ({ receiver }) => {
                 messageText: message,
                 timestamp: new Date(),
             };
-            console.log(messageInfo);
+            // console.log(messageInfo);
             try {
                 await axios.post('https://bookify-server-lilac.vercel.app/message', messageInfo);
                 setMessage(""); // Clear message input
@@ -61,13 +61,13 @@ const MoladGet = ({ receiver }) => {
                     MgsNotification: "Send you a Message",
 
                 };
-                console.log("data for post ", data);
+                // console.log("data for post ", data);
                
                 //  if Modal is opne then sent the notification
                 if (!msgModal) {
                     axios.post('https://bookify-server-lilac.vercel.app/notification', data)
                         .then(response => {
-                            console.log('Response:', response.data);
+                            // console.log('Response:', response.data);
                         })
                         .catch(error => {
                             console.error('Error:', error);
@@ -79,8 +79,7 @@ const MoladGet = ({ receiver }) => {
             }
         }
     };
-    console.log(receiver.requesterProfile
-    );
+ 
     return (
         <div>
             <button onClick={() => setMsgModal(!msgModal)}>

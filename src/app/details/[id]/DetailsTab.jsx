@@ -14,7 +14,7 @@ export default function DetailsTab({ Book }) {
     const { data , refetch , isLoading} = useQuery({
         queryKey: ['review'],
         queryFn: async () => {
-            const res = await axios(`https://bookify-server-lilac.vercel.app/reviews?bookId=${_id}`)
+            const res = await axios(`http://localhost:5000/reviews?bookId=${_id}`)
             const data = await res.data;
             return data
         }
