@@ -18,7 +18,7 @@ import {
 } from "@/Components/ui/Chart";
 
 const CustomerSatisfaction = ({ totalReviews }) => {
-    console.log(totalReviews);
+    // console.log(totalReviews);
     // Function to calculate total good and bad reviews using optional chaining and map
     const calculateTotals = (reviews) => {
         let totalGood = 0;
@@ -32,7 +32,7 @@ const CustomerSatisfaction = ({ totalReviews }) => {
             }
             return null; // return null to satisfy the map function
         });
-        console.log(reviews, totalGood, totalBad);
+        // console.log(reviews, totalGood, totalBad);
         return [
             { type: "Good", count: totalGood },
             { type: "Bad", count: totalBad },

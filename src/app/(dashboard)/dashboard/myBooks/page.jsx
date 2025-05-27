@@ -79,7 +79,7 @@ export default function MyBooks() {
     enabled: !!session?.user?.email
   });
 
-  console.log(data)
+  // console.log(data)
 
   const deleteBookMutation = useMutation({
     mutationFn: async (bookId) => {
@@ -111,7 +111,7 @@ export default function MyBooks() {
       return [];
     }
 
-    console.log("Books data:", data);
+    // console.log("Books data:", data);
 
     const booksCopy = [...data];
 
@@ -302,6 +302,7 @@ export default function MyBooks() {
                         )}
                       </button>
                     </Tooltip>
+                    
                   </div>
                 </div>
               </Link>
