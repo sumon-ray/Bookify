@@ -181,210 +181,207 @@ PUT  /api/exchanges/:id    - Update exchange status
   updated_at: Date
 }
 ```
-## 📁 Project Structure
-```
+## 📂 Project Structure
+
+```plaintext
 src/
-├── app/
+├── app
+│   ├── DemoText.jsx
+│   ├── favicon.ico
+│   ├── GenerateContent.jsx
 │   ├── globals.css
-│   ├── layout.tsx
-│   ├── (auth)/
-│   │   ├── layout.tsx
-│   │   ├── forget-password/page.tsx
-│   │   ├── login/page.tsx
-│   │   ├── register/page.tsx
-│   │   └── reset-password/page.tsx
-│   ├── (commonLayout)/
-│   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   ├── about/page.tsx
-│   │   ├── contact/page.tsx
-│   │   └── events/
-│   │       ├── page.tsx
-│   │       ├── create-event/page.tsx
-│   │       ├── update-event/[slug]/page.tsx
-│   │       └── [slug]/page.tsx
-│   ├── (withLoginUser)/
-│   │   ├── payments/success/[tranId]/page.tsx
-│   │   └── profile/
-│   │       ├── layout.tsx
-│   │       ├── my-events/
-│   │       │   ├── page.tsx
-│   │       │   └── add-event/page.tsx
-│   │       ├── my-received-invites/page.tsx
-│   │       ├── payments-history/page.tsx
-│   │       ├── personal-info/page.tsx
-│   │       ├── privacy_and_security/page.tsx
-│   │       └── review/page.tsx
-│   ├── admin/
-│   │   ├── layout.tsx
-│   │   ├── dashboard/page.tsx
-│   │   ├── manage-invites/
-│   │   │   ├── all-invites/page.tsx
-│   │   │   └── sent-invites/page.tsx
-│   │   ├── manage-payments/page.tsx
-│   │   ├── products/
-│   │   │   ├── add-event/page.tsx
-│   │   │   └── event-list/page.tsx
-│   │   ├── review/page.tsx
-│   │   └── user/page.tsx
-│   ├── api/auth/[...nextauth]/route.ts
-│   ├── types/
-│   │   ├── event.type.ts
-│   │   ├── forgetPassword.ts
-│   │   ├── payment.type.ts
-│   │   ├── resetPassword.ts
-│   │   ├── reviewType.ts
-│   │   ├── TokenUser.type.ts
-│   │   ├── user.type.ts
-│   │   └── userRowProps.ts
-│   └── utils/
-│       ├── auth.ts
-│       └── authOptions.ts
+│   ├── layout.js
+│   ├── loading.js
+│   ├── not-found.js
+│   ├── page.js
+│   ├── QueryProvider.jsx
+│   ├── (dashboard)/
+│   │   └── dashboard
+│   │       ├── layout.jsx
+│   │       ├── page.jsx
+│   │       ├── addBook
+│   │       │   ├── file.css
+│   │       │   └── page.jsx
+│   │       ├── all-orders
+│   │       │   └── page.jsx
+│   │       ├── checkout
+│   │       │   └── page.jsx
+│   │       ├── dashboardd
+│   │       │   ├── CustomerSatisfaction.jsx
+│   │       │   ├── page.jsx
+│   │       │   ├── Reviews.jsx
+│   │       │   ├── TopBooks.jsx
+│   │       │   ├── TotalReviews.jsx
+│   │       │   └── Visitor.jsx
+│   │       ├── exchange-request
+│   │       │   ├── Get.jsx
+│   │       │   ├── page.jsx
+│   │       │   ├── Send.jsx
+│   │       │   ├── tab.css
+│   │       │   ├── Tab.jsx
+│   │       │   └── (message)/
+│   │       │       ├── Modal.jsx
+│   │       │       └── MoladGet.jsx
+│   │       ├── my-cart
+│   │       │   └── page.jsx
+│   │       ├── my-orders
+│   │       │   └── page.jsx
+│   │       ├── myBooks
+│   │       │   ├── Banner.jsx
+│   │       │   ├── BookCard.jsx
+│   │       │   ├── CoverImage.jsx
+│   │       │   ├── Header.jsx
+│   │       │   ├── LoadingSpinner.jsx
+│   │       │   ├── MyBookCard.jsx
+│   │       │   ├── page.jsx
+│   │       │   └── SearchProvider.jsx
+│   │       ├── order-confirmation
+│   │       │   └── page.jsx
+│   │       ├── profile
+│   │       │   └── page.jsx
+│   │       └── users
+│   │           └── page.jsx
+├── about
+│   ├── AboutSection.jsx
+│   ├── LottieAnimation.jsx
+│   ├── OurMission.jsx
+│   ├── page.jsx
+│   ├── Review.jsx
+│   ├── HowItWorks
+│   │   └── HowItWorks.jsx
+│   ├── OurJourney
+│   │   └── OurJourney.jsx
+│   └── Social_Icon
+│       ├── IconButton.jsx
+│       └── UseIcon.jsx
+├── ai-chat
+│   ├── BookSpinner.jsx
+│   └── page.jsx
+├── all-books
+│   └── page.jsx
+├── api
+│   ├── auth
+│   │   └── [...nextauth]
+│   │       └── route.js
+│   └── users
+│       ├── route.js
+│       └── [id]
+│           └── route.js
+├── audiobooks
+│   ├── ChapterList.jsx
+│   └── [id]
+│       ├── AllAudioBooks.jsx
+│       ├── LoadingSpiner.jsx
+│       └── page.jsx
+├── contact
+│   └── page.jsx
+├── details
+│   └── [id]
+│       ├── AIInput.jsx
+│       ├── AIResponse.jsx
+│       ├── BookSummaryModal.jsx
+│       ├── CloseButton.jsx
+│       ├── DetailsCard.jsx
+│       ├── DetailsTab.jsx
+│       ├── ImgDetails.jsx
+│       ├── page.jsx
+│       ├── PeopleReview.jsx
+│       ├── Review.jsx
+│       └── SendReview.jsx
+├── exchange
+│   ├── CustomButton.css
+│   ├── page.jsx
+│   └── scrollbar.css
+├── fonts
+│   ├── GeistMonoVF.woff
+│   └── GeistVF.woff
+├── login
+│   └── page.jsx
+├── read
+│   └── [id]
+│       ├── BookContent.jsx
+│       ├── BookPage.jsx
+│       ├── Modal.jsx
+│       ├── NavigationButtons.jsx
+│       ├── NoteEditor.jsx
+│       ├── page.jsx
+│       └── style.css
+├── signup
+│   ├── page.jsx
+│   └── api
+│       └── route.js
+└── update
+    └── [id]
+        └── page.jsx
+
+src/
+├── components
+│   ├── AboutSection.jsx
+│   ├── AnimatedShinyText.jsx
+│   ├── CommunityHighlights.jsx
+│   ├── Faq.jsx
+│   ├── FaqSection.jsx
+│   ├── Footer.jsx
+│   ├── HeroSection.jsx
+│   ├── Navbar.jsx
+│   ├── OfferSection.jsx
+│   ├── OurCollection.jsx
+│   ├── Player.jsx
+│   ├── ProfileUpdateModal.jsx
+│   ├── Slider.jsx
+│   ├── SocialLogin.jsx
+│   ├── (Category )
+│   │   ├── Card.jsx
+│   │   └── Category.jsx
+│   ├── (Search)
+│   │   └── page.jsx
+│   ├── (Slider)
+│   │   ├── Component.jsx
+│   │   ├── slider.css
+│   │   └── Slider.jsx
+│   ├── (TopAuthor)
+│   │   └── TopAuthor.jsx
+│   ├── AudioBook
+│   │   ├── AudioBook.jsx
+│   │   └── SocialSharingButtons.jsx
+│   ├── BookReview
+│   │   └── BookReviews.jsx
+│   ├── cart
+│   │   └── Cart.jsx
+│   ├── Dashboard
+│   │   ├── Aside.jsx
+│   │   ├── BookSearch.jsx
+│   │   ├── DashboardNavbar.jsx
+│   │   ├── Drawer.jsx
+│   │   ├── LottieAnimation.jsx
+│   │   └── PremiumBoard.jsx
+│   ├── Heading
+│   │   └── Heading.jsx
+│   ├── Navbar
+│   │   └── NavbarDrawer.jsx
+│   ├── OurLibrary
+│   │   ├── Demo.jsx
+│   │   ├── OurLibrary.jsx
+│   │   ├── style.css
+│   │   └── ThreeBackground.jsx
+│   ├── Toggle
+│   │   └── Toggle.jsx
+│   ├── ToggleMenu
+│   │   └── ToggleMenu.js
+│   ├── (ui)
+│   │   ├── badge.jsx
+│   │   ├── button.jsx
+│   │   ├── Card.jsx
+│   │   ├── Carousel.jsx
+│   │   ├── Chart.jsx
+│   │   ├── input.jsx
+│   │   ├── label.jsx
+│   │   ├── marquee.jsx
+│   │   ├── Select.jsx
 │
-├── components/
-│   ├── about/
-│   │   ├── animated-icon.tsx
-│   │   ├── cta-section.tsx
-│   │   ├── faq-section.tsx
-│   │   ├── features-section.tsx
-│   │   ├── hero-section.tsx
-│   │   ├── misson-section.tsx
-│   │   ├── story-section.tsx
-│   │   ├── team-section.tsx
-│   │   ├── testimonial-section.tsx
-│   │   └── values-section.tsx
-│   ├── contact/
-│   │   ├── animated-background.tsx
-│   │   ├── animated-icon.tsx
-│   │   ├── floating-particles.tsx
-│   │   ├── hero-section.tsx
-│   │   ├── interactive-map.tsx
-│   │   ├── live-chat-widget.tsx
-│   │   ├── premium-contact-form.tsx
-│   │   ├── premium-hero.tsx
-│   │   ├── social-connect.tsx
-│   │   └── social-icon.tsx
-│   ├── footer/
-│   │   └── CountdownTimer.tsx
-│   ├── MobileSidebar/
-│   │   └── MobileSidebar.tsx
-│   ├── modules/
-│   │   ├── adminDashboard/
-│   │   │   ├── nav-main.tsx
-│   │   │   └── analytics/page.tsx
-│   │   ├── Auth/
-│   │   │   ├── login/
-│   │   │   │   ├── ForgotPassword.tsx
-│   │   │   │   ├── LoginForm.tsx
-│   │   │   │   └── loginValidation.ts
-│   │   │   └── register/
-│   │   │       ├── RegisterForm.tsx
-│   │   │       └── registerValidation.ts
-│   │   ├── Banner/Banner.tsx
-│   │   ├── Categories/Categories.tsx
-│   │   ├── Events/
-│   │   │   ├── Card.tsx
-│   │   │   ├── CreateEvent.tsx
-│   │   │   ├── DeleteModal.tsx
-│   │   │   ├── EventDetails.tsx
-│   │   │   ├── HomeAllEvents.tsx
-│   │   │   ├── MyEvents.tsx
-│   │   │   ├── ParticipantsTable.tsx
-│   │   │   ├── ShowParticipantsModal.tsx
-│   │   │   ├── UpdateEvent.tsx
-│   │   │   ├── UpdateModal.tsx
-│   │   ├── FAQ/FAQ.tsx
-│   │   ├── Invite/
-│   │   │   ├── InviteModal.tsx
-│   │   │   ├── InviteTable.tsx
-│   │   │   └── MyReceivedInvite.tsx
-│   │   ├── OurAdvantage/OurAdvantage.tsx
-│   │   ├── OurServices/OurService.tsx
-│   │   ├── Payment/
-│   │   │   ├── ManagePaymentsTable.tsx
-│   │   │   ├── MyPaymentsHistory.tsx
-│   │   │   └── PaymentSuccess.tsx
-│   │   ├── Profile/
-│   │   │   ├── ProfileMainLayout.tsx
-│   │   │   ├── change-password/
-│   │   │   │   ├── password-requirements.tsx
-│   │   │   │   ├── password-strength-meter.tsx
-│   │   │   │   ├── password-tips.tsx
-│   │   │   │   ├── PasswordChange.tsx
-│   │   │   │   └── success-animation.tsx
-│   │   │   ├── personal-info/
-│   │   │   │   ├── PersonalInfoComponent.tsx
-│   │   │   │   └── profileValidation.ts
-│   │   │   └── profile-sidebar/
-│   │   │       ├── MobileSidebar.tsx
-│   │   │       └── Sidebar.tsx
-│   │   ├── Review/
-│   │   │   ├── MyReview.tsx
-│   │   │   ├── ReviewCard.tsx
-│   │   │   ├── ReviewForm.tsx
-│   │   │   ├── updateReviewForm.tsx
-│   │   │   └── SpecificEventReview/
-│   │   │       ├── EventReviewReview.tsx
-│   │   │       ├── ReviewButton.tsx
-│   │   │       └── ReviewCarousal.tsx
-│   │   ├── ReviewRow/
-│   │   │   ├── ReviewDetailModal.tsx
-│   │   │   └── ReviewRow.tsx
-│   │   ├── UserRow/UserRow.tsx
-│   │   └── WhoWeAre/WhoRWe.tsx
-│   ├── shared/
-│   │   ├── app-sidebar.tsx
-│   │   ├── Footer.tsx
-│   │   ├── HeroSecton.tsx
-│   │   ├── Navbar.tsx
-│   │   ├── NextButton.tsx
-│   │   ├── premium-event-card.tsx
-│   │   ├── Profile-sidebar.tsx
-│   │   ├── ProfileAvatar.tsx
-│   │   └── Title.tsx
-│   └── ui/
-│       ├── accordion.tsx
-│       ├── alert-dialog.tsx
-│       ├── avatar.tsx
-│       ├── badge.tsx
-│       ├── breadcrumb.tsx
-│       ├── button.tsx
-│       ├── calendar.tsx
-│       ├── card.tsx
-│       ├── carousel.tsx
-│       ├── checkbox.tsx
-│       ├── collapsible.tsx
-│       ├── dialog.tsx
-│       ├── dropdown-menu.tsx
-│       ├── form.tsx
-│       ├── input.tsx
-│       ├── label.tsx
-│       ├── navigation-menu.tsx
-│       ├── progress.tsx
-│       ├── select.tsx
-│       ├── separator.tsx
-│       ├── sheet.tsx
-│       ├── sidebar.tsx
-│       ├── skeleton.tsx
-│       ├── slider.tsx
-│       ├── sonner.tsx
-│       ├── switch.tsx
-│       ├── table.tsx
-│       ├── tabs.tsx
-│       ├── textarea.tsx
-│       └── tooltip.tsx
-│       └── Loader/
-│           ├── Loader.css
-│           └── Loader.tsx
-│
-└── services/
-    ├── AuthService/index.ts
-    ├── EventService/index.ts
-    ├── InviteService/index.ts
-    ├── PaymentService/index.ts
-    ├── ProfileService/index.ts
-    ├── ReviewService/index.ts
-    └── UserService/index.ts
+└── services
+    └── AuthProvider.jsx
+
 
 ```
 ## 🔒 Security Features
