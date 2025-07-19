@@ -200,6 +200,9 @@ PUT  /api/exchanges/:id    - Update exchange status
 - **CDN Integration**: Optimized asset delivery
 
 
+## 📂 Project Structure
+
+```plaintext
 src/
 ├── app/
 │   ├── globals.css
@@ -402,6 +405,7 @@ src/
     ├── ProfileService/index.ts
     ├── ReviewService/index.ts
     └── UserService/index.ts
+
 
 ## 🤝 Contributing
 
