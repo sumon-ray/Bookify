@@ -181,28 +181,8 @@ PUT  /api/exchanges/:id    - Update exchange status
   updated_at: Date
 }
 ```
+## 📁 Project Structure
 
-## 🔒 Security Features
-
-- **Authentication**: Secure JWT-based authentication with NextAuth.js
-- **Input Validation**: Comprehensive server-side validation
-- **XSS Protection**: Sanitized user inputs and secure headers
-- **CSRF Protection**: Token-based request validation
-- **Rate Limiting**: API endpoint protection
-- **Secure File Upload**: Validated and processed image uploads
-
-## 🚀 Performance Optimizations
-
-- **SSR/SSG**: Optimized rendering strategies
-- **Image Optimization**: Next.js automatic image optimization
-- **Caching**: Strategic caching for frequently accessed data
-- **Code Splitting**: Automatic code splitting with Next.js
-- **CDN Integration**: Optimized asset delivery
-
-
-## 📂 Project Structure
-
-```plaintext
 src/
 ├── app/
 │   ├── globals.css
@@ -312,7 +292,7 @@ src/
 │   │   │   ├── ParticipantsTable.tsx
 │   │   │   ├── ShowParticipantsModal.tsx
 │   │   │   ├── UpdateEvent.tsx
-│   │   │   └── UpdateModal.tsx
+│   │   │   ├── UpdateModal.tsx
 │   │   ├── FAQ/FAQ.tsx
 │   │   ├── Invite/
 │   │   │   ├── InviteModal.tsx
@@ -392,7 +372,7 @@ src/
 │       ├── table.tsx
 │       ├── tabs.tsx
 │       ├── textarea.tsx
-│       ├── tooltip.tsx
+│       └── tooltip.tsx
 │       └── Loader/
 │           ├── Loader.css
 │           └── Loader.tsx
@@ -406,6 +386,23 @@ src/
     ├── ReviewService/index.ts
     └── UserService/index.ts
 
+
+## 🔒 Security Features
+
+- **Authentication**: Secure JWT-based authentication with NextAuth.js
+- **Input Validation**: Comprehensive server-side validation
+- **XSS Protection**: Sanitized user inputs and secure headers
+- **CSRF Protection**: Token-based request validation
+- **Rate Limiting**: API endpoint protection
+- **Secure File Upload**: Validated and processed image uploads
+
+## 🚀 Performance Optimizations
+
+- **SSR/SSG**: Optimized rendering strategies
+- **Image Optimization**: Next.js automatic image optimization
+- **Caching**: Strategic caching for frequently accessed data
+- **Code Splitting**: Automatic code splitting with Next.js
+- **CDN Integration**: Optimized asset delivery
 
 ## 🤝 Contributing
 
