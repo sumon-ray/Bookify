@@ -432,6 +432,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ---
 
 ### 🌐 Live Application
-**Experience Bookify**: [https://next-event-pro.vercel.app/](https://bookify-mocha.vercel.app/)
+**Experience Bookify**: [https://bookify-mocha.vercel.app/](https://bookify-mocha.vercel.app)
 
 *Building communities through the love of books* 📚✨
