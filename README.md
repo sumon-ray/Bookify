@@ -1,8 +1,8 @@
 # 📚 Bookify - Book Exchange Platform
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://next-event-pro.vercel.app/)
-[![Frontend](https://img.shields.io/badge/Frontend-Repository-blue)](https://github.com/sumon-ray/Next-Event-Client)
-[![Backend](https://img.shields.io/badge/Backend-Repository-orange)](https://github.com/sumon-ray/Next-Event-Server)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://bookify-mocha.vercel.app/)
+[![Frontend](https://img.shields.io/badge/Frontend-Repository-blue)](https://github.com/sumon-ray/Bookify)
+[![Backend](https://img.shields.io/badge/Backend-Repository-orange)](https://github.com/sumon-ray/Bookify-Server)
 [![Next.js](https://img.shields.io/badge/Next.js-13+-black)](https://nextjs.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Database-green)](https://mongodb.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-blue)](https://tailwindcss.com/)
@@ -74,13 +74,13 @@ Security: CSRF/XSS protection, input validation
 1. **Clone the repositories**
    ```bash
    # Frontend
-   git clone https://github.com/sumon-ray/Next-Event-Client.git
-   cd Next-Event-Client
+   git clone https://github.com/sumon-ray/Bookify.git
+   cd Bookify
    npm install
    
    # Backend
-   git clone https://github.com/sumon-ray/Next-Event-Server.git
-   cd Next-Event-Server
+   git clone https://github.com/sumon-ray/Bookify-Server.git
+   cd Bookify-Server
    npm install
    ```
 
@@ -418,9 +418,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## 👨‍💻 Developer
 
 **Sumon Ray**
-- Portfolio: [Your Portfolio](https://your-portfolio-link.com)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/your-profile)
-- Email: your.email@example.com
+- Portfolio: [Your Portfolio](https://sumon-ray.vercel.app/)
+- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/sumon60/)
+- Email: sumonray146371@gmail.com
 
 ## 🙏 Acknowledgments
 
@@ -432,6 +432,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ---
 
 ### 🌐 Live Application
-**Experience Bookify**: [https://next-event-pro.vercel.app/](https://next-event-pro.vercel.app/)
+**Experience Bookify**: [https://next-event-pro.vercel.app/](https://bookify-mocha.vercel.app/)
 
 *Building communities through the love of books* 📚✨
