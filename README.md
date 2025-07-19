@@ -182,7 +182,7 @@ PUT  /api/exchanges/:id    - Update exchange status
 }
 ```
 ## 📁 Project Structure
-
+```
 src/
 ├── app/
 │   ├── globals.css
@@ -386,7 +386,7 @@ src/
     ├── ReviewService/index.ts
     └── UserService/index.ts
 
-
+```
 ## 🔒 Security Features
 
 - **Authentication**: Secure JWT-based authentication with NextAuth.js
